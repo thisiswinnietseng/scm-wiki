@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>盜刷處理 SOP — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+      background: #fafbff; border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px;
+    }
+    .flow-tag {
+      padding: 6px 14px; border-radius: 6px;
+      font-size: 12px; font-weight: 600; white-space: nowrap;
+    }
+    .flow-arr { color: #ccc; font-size: 16px; }
+    .section-title {
+      font-size: 15px; font-weight: 700; color: var(--primary);
+      margin: 24px 0 12px; display: flex; align-items: center; gap: 8px;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 盜刷處理 SOP</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444);">🛡️</div>
+      <div class="page-header-body">
+        <h1>盜刷處理 SOP</h1>
+        <div class="meta-row">
+          <span class="meta-chip badge-red">異常處理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+
+      <!-- 觸發來源 -->
+      <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
+        <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;">⚡ 風控通知來源</div>
+        <div style="font-size:13px;color:#2d3748;line-height:1.7;">
+          風控透過專用 Slack 群組 <strong>緊急-可疑訂單取消通知</strong> 標記負責 OP。<br>
+          18:30 後的盜刷訂單會標記<strong>夜班 OP</strong>，如為急單夜班會再通知隔日負責 OP。
+        </div>
+      </div>
+
+      <!-- 處理流程 -->
+      <div class="section-title">📋 處理流程</div>
+
+      <div class="flow-bar" style="margin-bottom:16px;">
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">收到盜刷通知</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">確認是否已使用</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">確認聯絡方式 & 聯繫供應商</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#b91c1c,#ef4444);color:white;">開啟特殊原因取消</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">通知風控</span>
+      </div>
+
+      <!-- 分支情境 -->
+      <div class="section-title">🔀 依使用狀態分支</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px;">
+          <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:10px;">✅ 未使用 → 可取消</div>
+          <ol class="step-list" style="margin:0;">
+            <li class="step-item" style="margin-bottom:8px;">
+              <div class="step-num">1</div>
+              <div class="step-content" style="font-size:12px;">確認訂單 SOP 內的聯絡方式，聯繫供應商確認取消</div>
+            </li>
+            <li class="step-item" style="margin-bottom:8px;">
+              <div class="step-num">2</div>
+              <div class="step-content" style="font-size:12px;">於 Be2 開啟<strong>特殊原因取消</strong></div>
+            </li>
+            <li class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content" style="font-size:12px;">通知風控取消完成</div>
+            </li>
+          </ol>
+        </div>
+        <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:16px;">
+          <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:10px;">❌ 已使用 / 供應商拒絕取消</div>
+          <ol class="step-list" style="margin:0;">
+            <li class="step-item" style="margin-bottom:8px;">
+              <div class="step-num">1</div>
+              <div class="step-content" style="font-size:12px;">通知風控，說明已使用或供應商拒絕情況</div>
+            </li>
+            <li class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content" style="font-size:12px;">由風控同意後再決定後續處理方式</div>
+            </li>
+          </ol>
+          <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:3px 8px;">⚠️ 可取消但需收取消費 → 需風控同意後才可取消</span>
+        </div>
+      </div>
+
+      <!-- 即訂即出補充 -->
+      <div class="section-title">⚡ 即訂即出訂單 — 可疑訂單處理</div>
+
+      <div style="background:#f0f4ff;border:1px solid #c5d3f5;border-radius:10px;padding:16px 20px;margin-bottom:16px;">
+        <div style="font-size:13px;color:#2d3748;line-height:1.8;">
+          OP 發現可疑訂單後，發訊後需 <strong>「退齊全」</strong>，將狀態改為 <strong>「旅客資料確認中」</strong>。<br>
+          以客人出發時間為優先考量，向對應語系群組信箱尋求協助。
+        </div>
+        <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #fca5a5;color:#b91c1c;border-radius:4px;padding:3px 8px;">⚠️ 如訂單狀態已改為「已處理」，串接 API 按鍵將無法使用</span>
+      </div>
+
+      <!-- 注意事項 -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;">⚠️ 部分供應商會要求提出盜刷證明，請向風控詢問</span>
+        <span style="font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:4px 10px;display:inline-block;">ℹ️ 確認訂單是否已使用：查看訂單碼狀態「已核銷（已使用）」或「未核銷（未使用）」，或依各線別商品查詢方式確認</span>
+      </div>
+
+    </div>
+
+    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  </div>
+</body>
+</html>

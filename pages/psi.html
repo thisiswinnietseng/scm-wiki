@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSI 即訂即出 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 自動出票 / PSI</div>
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🗄️</div>
+      <div class="page-header-body">
+        <h1>PSI 即訂即出</h1>
+        <p class="subtitle">BD／AM 與供應商事先切票或寄賣，入庫至 PSI 系統後自動出票</p>
+        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>BD／AM 與供應商事先切票或寄賣，將庫存入庫至 PSI 系統，旅客下訂後系統透過 PSI 自動出票。</span>
+
+      <div style="margin-top:20px;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--primary);">💰 金流類型 & 請款方式</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;">
+        <div style="background:#f0f4ff;border:1px solid #c5d3f5;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;">切票（買斷）</div>
+          <div style="font-size:12px;color:#4a5568;">事先支付貨款給供應商取得貨品販售</div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#15803d;margin-bottom:4px;">寄賣匯款</div>
+          <div style="font-size:12px;color:#4a5568;">未事先付款即取得貨品，賣出後結算</div>
+        </div>
+        <div style="background:#fafbff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;">贈品</div>
+          <div style="font-size:12px;color:#4a5568;">不需支付貨款即取得貨品販售</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;">⚠️ 請款方式設定為「切票」→ 只能出以買斷或贈品入庫的貨品；設定為「寄賣匯款」→ 只能出以寄賣入庫的貨品</div>
+
+      <div style="margin-top:20px;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--primary);">📦 品項類型</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;">
+        <div style="background:#f3e5f5;border:1px solid #ce93d8;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:4px;">🖨️ 電子</div>
+          <div style="font-size:12px;color:#4a5568;">供應商電子檔案入庫並發送給客人（PDF、QR Code、Barcode、票券號等）</div>
+        </div>
+        <div style="background:#e8f0fe;border:1px solid #c5d3f5;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;">💻 虛擬</div>
+          <div style="font-size:12px;color:#4a5568;">無實際型態貨品（如門票切位）→ KKday 憑證，不一定需核銷</div>
+        </div>
+        <div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;">📦 實體</div>
+          <div style="font-size:12px;color:#4a5568;">可領取或郵寄的貨品（SIM 卡、紙本票券、伴手禮）</div>
+        </div>
+      </div>
+    </div>
+
+    <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常訂單：PSI 系統自動配票出貨，無需 OP 作業。</span>
+
+    <h3 style="margin-top:1.5rem;">⚠️ 異常訂單：PSI 出貨失敗</h3>
+    <div class="white-box">
+      <div class="cards-grid-2" style="margin-bottom:1rem;">
+        <div style="border:1px solid #ef9a9a;border-radius:8px;padding:12px;background:#fdf5f5;">
+          <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;">❌ 錯誤訊息 A</div>
+          <code style="display:block;font-size:12px;background:rgba(0,0,0,0.05);padding:6px 8px;border-radius:4px;margin-bottom:6px;">PSI出貨失敗(200006,系統配票貨品不足)</code>
+          <div style="font-size:12px;color:#555;">庫存不足，需請 BD／AM 補票。</div>
+        </div>
+        <div style="border:1px solid #ef9a9a;border-radius:8px;padding:12px;background:#fdf5f5;">
+          <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;">❌ 錯誤訊息 B</div>
+          <code style="display:block;font-size:12px;background:rgba(0,0,0,0.05);padding:6px 8px;border-radius:4px;margin-bottom:6px;">PSI出貨失敗(9996,null)</code>
+          <div style="font-size:12px;color:#555;">系統異常，需確認 PSI 狀態。</div>
+        </div>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Slack 聯繫負責 BD／AM</strong>
+            <p>透過 Slack 通知對應 BD 或 AM，附上訂單編號與錯誤訊息截圖。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>BD／AM 依據錯誤訊息確認失敗原因</strong>
+            <p>BD／AM 查看 PSI 系統及供應商庫存狀況，確認失敗根因。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>BD／AM 回覆後續作業方法</strong>
+            <p>依確認結果，BD／AM 回覆 OP 應補票、重新出票或取消等作業指示。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>若需重新出票</strong>
+            <p>至<strong>訂單領貨頁面</strong>，找到對應訂單後點擊「<strong>領貨</strong>」按鈕，手動觸發出票作業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="white-box" style="margin-top:16px;">
+      <div style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:8px;">🔄 PSI 訂單取消退貨流程</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">
+        <div style="background:#f3e5f5;border:1px solid #ce93d8;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:4px;">🖨️ 電子票</div>
+          <div style="font-size:12px;color:#4a5568;">為避免客人再次使用，需請客人提供<strong>轉讓書</strong>（日籍客人以訊息確認即可）</div>
+        </div>
+        <div style="background:#e8f0fe;border:1px solid #c5d3f5;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;">💻 虛擬票</div>
+          <div style="font-size:12px;color:#4a5568;">依各線別商品取消流程操作，細節請與各線 OP 組長確認</div>
+        </div>
+        <div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;">📦 實體票</div>
+          <div style="font-size:12px;color:#4a5568;">依各線別商品取消流程操作，細節請與各線 OP 組長確認</div>
+        </div>
+      </div>
+      <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;">⚠️ PSI 訂單取消退貨細節流程請找各線 OP 組長確認</span>
+    </div>
+  </div>
+  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+</body>
+</html>

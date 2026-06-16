@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>信用卡對帳 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .col-label {
+      padding:6px 10px; font-size:11px; font-weight:700;
+      border-radius:4px; white-space:nowrap;
+    }
+    .col-op { background:#e8f0fe; color:#3c50e0; border:1px solid #c5d3f5; }
+    .col-op-add { background:#fff3e0; color:#e65100; border:1px solid #ffcc80; }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current">信用卡對帳</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#3c50e0,#6dd5ed)">💳</div>
+      <div class="page-header-body">
+        <h1>信用卡對帳</h1>
+        <div class="subtitle">每月帳單核對、請款流程、BPM 送審</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-blue">信用卡</span>
+          <span class="meta-chip">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📅 對帳流程</div>
+      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:16px;">OP 通常在每月最後一週收到財務寄來的信用卡帳單。收到帳單後需核對各欄位，確認無誤後送出 BPM。</p>
+      <div class="flow-bar">
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">財務寄出帳單（每月最後一週）</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 核對帳單欄位</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">標記信用卡幣別總金額</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">送出 BPM</span>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📊 帳單欄位說明</div>
+      <div style="margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <span class="col-label col-op">OP 核對欄位</span>
+        <span class="col-label col-op-add">OP 自行加上欄位</span>
+      </div>
+      <div class="white-box" style="padding:0;overflow:hidden;margin-bottom:0;">
+        <table class="wiki-table">
+          <thead>
+            <tr>
+              <th>欄位名稱</th>
+              <th>說明</th>
+              <th>責任</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>信用卡卡號</td>
+              <td>核對使用的信用卡卡號是否正確</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>交易日期</td>
+              <td>信用卡帳單上的交易發生日期</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>原幣別</td>
+              <td>交易時使用的原始幣別</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>原幣別金額</td>
+              <td>以原幣別計算的交易金額</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>信用卡幣別金額</td>
+              <td>換算為信用卡幣別後的金額</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>交易供應商名稱</td>
+              <td>帳單上顯示的供應商名稱</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>信用卡幣別</td>
+              <td>信用卡結帳幣別</td>
+              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+            </tr>
+            <tr>
+              <td>KKday 訂單</td>
+              <td>對應的 KKday 訂單編號</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+            </tr>
+            <tr>
+              <td>be2 請款單號</td>
+              <td>對應的 Be2 系統請款單號</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+            </tr>
+            <tr>
+              <td>Invoice 是否附上</td>
+              <td>確認 Invoice 是否已上傳附件</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+            </tr>
+            <tr>
+              <td>備註給財務的內容</td>
+              <td>需要特別說明給財務的事項</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">💰 請款流程注意事項</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 每家請款單號金額必須與信用卡帳單原幣別金額一致</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 對帳完成後，在帳單最下方標記信用卡幣別總金額，即可送出 BPM</span>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📝 BPM 請款流程</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>選擇「公司信用卡」</h4>
+            <p>在 BPM 系統中選擇「公司信用卡」付款類型</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>填寫基本資訊</h4>
+            <p>選擇公司主體、幣別，填入卡號、總金額</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>上傳附件</h4>
+            <p>上傳已核對完成的對帳帳單</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>填寫備註</h4>
+            <p>備註欄填入：憑證雲端連結、需備註給財務的內容</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+</body>
+</html>

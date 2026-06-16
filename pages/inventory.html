@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSI 票倉介紹 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">首頁</a>
+      <span class="sep">/</span>
+      <span class="current">PSI 票倉介紹</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">📦</div>
+      <div class="page-header-body">
+        <h1>PSI 票倉介紹</h1>
+        <div class="subtitle">PSI 系統介紹 · 庫存管理 · 退貨流程</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-blue">庫存管理</span>
+          <span class="meta-chip">PSI · 進貨 · 出貨 · 退貨</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PSI 系統介紹 -->
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin-bottom:12px;">🗂️ PSI 系統介紹</h2>
+    <div class="white-box">
+      <p>PSI（進銷存）系統是 KKday 管理票券庫存的核心工具。BD/AM 跟供應商切票/切位後，會將票/位入庫至 PSI 系統，最後再透過 PSI 系統進行出票作業。</p>
+      <p style="margin-top:10px;">整個流程涵蓋從供應商取得票券（進貨）、到訂單成立後配票給旅客（出貨），以及訂單取消後退回票倉（退貨）等完整庫存生命週期管理。</p>
+    </div>
+
+    <!-- 主要功能 -->
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 16px;">⚡ 主要功能</h2>
+    <div class="cards-grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-icon">📥</div>
+        <h3>進貨（入庫）</h3>
+        <p>BD/AM 將供應商提供的票券入庫至系統，建立庫存數量。入庫時需登記票券類型、數量、有效期限等資訊。</p>
+        <span class="card-badge badge-blue">BD/AM 負責</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📤</div>
+        <h3>出貨（出庫）</h3>
+        <p>訂單成立後，系統自動配票並出貨給旅客。PSI 系統從庫存中扣除相應票券，完成出票作業。</p>
+        <span class="card-badge badge-green">系統自動處理</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>庫存管理</h3>
+        <p>追蹤目前可用票券數量，顯示庫存警告，協助 BD/AM 及時補貨，避免缺貨情況影響訂單處理。</p>
+        <span class="card-badge badge-teal">即時監控</span>
+      </div>
+    </div>
+
+    <!-- 庫存異常處理 -->
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 12px;">🚨 庫存異常處理</h2>
+    <p style="font-size:13px;color:var(--gray);margin-bottom:12px;">當 PSI 出貨失敗時，依錯誤代碼判斷原因並採取對應處理方式。</p>
+    <div class="situation-grid">
+      <div class="situation-card situation-fail">
+        <div class="s-title"><span>❌</span> PSI 出貨失敗（200006）</div>
+        <p><strong>錯誤原因：</strong>系統配票貨品不足，庫存量不夠分配給此訂單。</p>
+        <p style="margin-top:6px;"><strong>處理方式：</strong>透過 Slack 聯繫 BD/AM 確認補貨，請 BD/AM 盡速入庫補充票券後再重新出貨。</p>
+      </div>
+      <div class="situation-card situation-fail">
+        <div class="s-title"><span>❌</span> PSI 出貨失敗（9996 / null）</div>
+        <p><strong>錯誤原因：</strong>系統回傳 null，原因不明，可能為票券設定問題或系統異常。</p>
+        <p style="margin-top:6px;"><strong>處理方式：</strong>透過 Slack 聯繫 BD/AM 確認原因，由 BD/AM 檢查票券設定或聯繫技術部門排查。</p>
+      </div>
+    </div>
+
+    <!-- 退貨流程 -->
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 12px;">↩️ 退貨流程</h2>
+    <p style="font-size:13px;color:var(--gray);margin-bottom:16px;">訂單取消後需退回票倉的步驟，依票券類型分為三種處理方式。</p>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);width:36px;height:36px;font-size:16px;">🎟</div>
+          <div class="step-content">
+            <h4>電子票退回</h4>
+            <p>系統自動將電子票作廢並退回票倉庫存。OP 確認訂單已取消且電子票已失效後，在 PSI 系統執行退庫操作，票券數量將自動加回庫存。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);width:36px;height:36px;font-size:16px;">💻</div>
+          <div class="step-content">
+            <h4>虛擬票退回</h4>
+            <p>虛擬票（如序號、兌換碼等）取消後需確認是否已使用。未使用的虛擬票可退回票倉重新分配；已使用的需與供應商確認是否可接受退票。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);width:36px;height:36px;font-size:16px;">📫</div>
+          <div class="step-content">
+            <h4>實體票退回</h4>
+            <p>實體票券需旅客寄回 KKday 後，由 OP 確認收到實體票，再進行退庫。需注意票券完整性，並依供應商規定確認是否可重新販售或需銷毀。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 實體票退回流程較長，需額外追蹤寄回狀態，請注意時效。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+</body>
+</html>

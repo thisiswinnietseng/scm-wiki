@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訂單成立後初步處理 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 訂單成立後初步處理</div>
+
+    <div class="page-header">
+      <div class="page-header-icon">📋</div>
+      <div class="page-header-body">
+        <h1>訂單成立後初步處理</h1>
+        <div class="meta-row">
+          <span class="meta-chip">點單流程 · 風控</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <p>訂單成立後，依照點單方式分為「SYSTEM 點單」與「CS 點單」兩種流程，另需留意風控（Risk Team）對訂單的影響。</p>
+    </div>
+
+    <!-- SYSTEM 點單 -->
+    <h2>🤖 SYSTEM 點單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 系統自動處理訂單流程，通常無需人工介入。</span>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>客戶提交訂單</strong>
+            <p>旅客在 KKday 平台選擇商品、填寫個人資訊並完成付款。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>系統接收並儲存訂單資料</strong>
+            <p>KKday 系統自動接收訂單，並將所有資料完整儲存於後台。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>系統確認資料完整性</strong>
+            <p>自動檢查旅客姓名、聯絡方式等必填欄位是否齊全。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>訂單進入 OP 處理</strong>
+            <p>OP 在「OP 訂單管理（新）」中查看需出票的訂單並進行後續作業。</p>
+          </div>
+        </div>
+      </div>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 💡 訂單處理分為「即訂即出」和「非即訂即出」兩種類型，處理時效與流程有所不同。</span>
+    </div>
+
+    <!-- CS 點單 -->
+    <h2>🧑‍💼 CS 點單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ CS 點單前需確認旅客資料無誤，若資料有缺漏需補齊後再點單。</span>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>客戶提交訂單</strong>
+            <p>旅客透過平台或客服管道提交訂單。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>系統接收並儲存訂單資料</strong>
+            <p>KKday 系統接收訂單並儲存至後台。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>CS 確認資料完整性</strong>
+            <p>若商品頁面有明確要求特定資訊（如回程日期）→ 補充資訊後再點單；若無特殊要求，確認完整後即可點單。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>訂單進入 OP 處理</strong>
+            <p>資料確認無誤後，訂單交由 OP 執行後續出票作業。</p>
+          </div>
+        </div>
+      </div>
+
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 📌 <strong>範例：</strong>永東車票需要備註回程日期，CS 點單前須向旅客確認此資訊並填入備註欄。</span>
+    </div>
+
+    <!-- 風控 -->
+    <h2>🛡️ 風控（Risk Team）</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 風控系統主要偵測可能造成公司損失的交易並加以阻擋，請勿忽視相關通知。</span>
+    <div class="white-box">
+      <div class="cards-grid-3">
+        <div class="box">
+          <strong>🚫 濫用折扣</strong>
+          <p>偵測不正常的折扣使用行為，防止惡意套利。</p>
+        </div>
+        <div class="box">
+          <strong>💳 盜刷偵測</strong>
+          <p>識別異常付款行為，保護旅客與平台安全。</p>
+        </div>
+        <div class="box">
+          <strong>⛔ 違反使用規範</strong>
+          <p>偵測違反商品使用規範的訂單，進行人工審查。</p>
+        </div>
+      </div>
+
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>📋 可疑帳號處理流程</strong>
+        <p>當帳號狀態顯示「可疑」時，須待風控確認。確認完成後，訂單備註會出現：</p>
+        <code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">
+          已調整會員風險等級為：general，人工審查單編號：xxxxx
+        </code>
+        <p style="margin-top:0.75rem;">出現上述備註後，即可正常出票。</p></span>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+</body>
+</html>

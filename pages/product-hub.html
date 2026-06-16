@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商品認識 · SCM 知識庫</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+a.sop-card { display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;text-decoration:none;color:inherit;transition:all 0.15s;border:1px solid transparent;margin-bottom:6px; }
+a.sop-card:hover { background:#fafbff;border-color:#f5a623; }
+a.sop-card .sc-icon { font-size:20px;width:32px;text-align:center;flex-shrink:0; }
+a.sop-card .sc-body { flex:1; }
+a.sop-card .sc-body h4 { font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:2px; }
+a.sop-card .sc-body p { font-size:11px;color:#718096; }
+a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;flex-shrink:0; }
+</style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+<div class="page-header" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+  <div class="ph-icon">🧩</div>
+  <div>
+    <div class="breadcrumb"><a href="../index.html">首頁</a> / 商品認識</div>
+    <h1>商品認識</h1>
+  </div>
+</div>
+
+<div class="page-wrapper">
+  <div class="white-box">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <a class="sop-card" href="frontend.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4>前台商品架構長相</h4><p>一般票券、點對點交通、飯店頁面結構</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
+      <a class="sop-card" href="product-design.html"><div class="sc-icon">🧠</div><div class="sc-body"><h4>商品設計邏輯</h4><p>商品設定如何影響客人認知及作業流程</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
+      <a class="sop-card" href="inventory.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>PSI 票倉介紹</h4><p>PSI 系統票券入庫、出庫、庫存管理</p></div><span class="sc-tag badge-blue">庫存</span></a>
+      <a class="sop-card" href="voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4>憑證類型說明</h4><p>PSI 票倉介紹、憑證類型說明</p></div><span class="sc-tag badge-blue">出票</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>佣金申請 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .type-header {
+      display:flex; align-items:center; gap:10px;
+      background:var(--primary); color:white;
+      border-radius:var(--radius-md) var(--radius-md) 0 0;
+      padding:16px 22px;
+    }
+    .type-header .badge-label {
+      background:rgba(255,255,255,0.15); padding:2px 10px;
+      border-radius:20px; font-size:11px; font-weight:700;
+    }
+    .type-header h2 { font-size:16px; font-weight:700; margin:0; }
+    .type-body {
+      background:white; border:1px solid var(--border);
+      border-top:none; border-radius:0 0 var(--radius-md) var(--radius-md);
+      padding:22px; margin-bottom:24px;
+    }
+    .scenario-list { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+    .scenario-item {
+      display:flex; gap:10px; align-items:flex-start;
+      background:#fafbff; border:1px solid var(--border); border-radius:8px; padding:12px 16px;
+    }
+    .scenario-num {
+      width:22px; height:22px; border-radius:50%; flex-shrink:0;
+      background:var(--primary); color:white;
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:700;
+    }
+    .scenario-item p { font-size:13px; color:#4a5568; line-height:1.6; margin:0; }
+    .field-tag {
+      display:inline-block; background:#eef0fd; border:1px solid #c5d3f5;
+      color:#3c50e0; border-radius:4px; padding:1px 8px; font-size:12px; font-weight:600;
+    }
+    .formula-highlight {
+      background:#fff8e1; border:1px solid #ffe082; border-radius:8px;
+      padding:14px 18px; margin-bottom:14px;
+    }
+    .formula-highlight .formula-text {
+      font-size:14px; font-weight:700; color:var(--primary);
+    }
+    .formula-highlight .formula-sub {
+      font-size:12px; color:#6d4c41; margin-top:4px;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current">佣金申請</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#c62828,#ef5350)">📄</div>
+      <div class="page-header-body">
+        <h1>佣金申請</h1>
+        <div class="subtitle">REM 專案入款通知單、INV 無入款憑證開立</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-red">佣金</span>
+          <span class="meta-chip">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="type-header">
+        <span class="badge-label">REM</span>
+        <h2>專案入款通知單</h2>
+      </div>
+      <div class="type-body">
+        <div class="section-title">📌 適用情境</div>
+        <div class="scenario-list">
+          <div class="scenario-item">
+            <div class="scenario-num">1</div>
+            <p>先前已匯款完成，但後續需將款項扣回並匯款回至 KKday，需開立折讓單抵扣當時商家開立的發票金額</p>
+          </div>
+          <div class="scenario-item">
+            <div class="scenario-num">2</div>
+            <p>開立佣金發票且款項的部分商家另外匯回至 KKday，不會抵扣於當月的款項</p>
+          </div>
+        </div>
+
+        <div class="section-title">📋 開立方式</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>填入商家資訊</h4>
+              <p>依照商家資料正確填寫相關欄位</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>若開立佣金發票</h4>
+              <p>交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">三聯式發票</span>　交易摘要：<span class="field-tag">佣金</span></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>若開立折讓單</h4>
+              <p>交易類別：<span class="field-tag">其他</span>　種類：<span class="field-tag">其他</span>　憑證備註務必填：<span class="field-tag">折讓單</span></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>憑證類型說明</h4>
+              <p>佣金發票請使用<strong>電子憑證</strong>；折讓單請使用<strong>實體憑證</strong>（需蓋公司章）</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="type-header">
+        <span class="badge-label">INV</span>
+        <h2>無入款憑證開立申請單</h2>
+      </div>
+      <div class="type-body">
+        <div class="section-title">📌 適用情境</div>
+        <div class="scenario-list">
+          <div class="scenario-item">
+            <div class="scenario-num">1</div>
+            <p>供應商開立銷售總額之稅金結算書 / Invoice</p>
+          </div>
+          <div class="scenario-item">
+            <div class="scenario-num">2</div>
+            <p>我方需開立佣金之發票</p>
+          </div>
+        </div>
+
+        <div class="formula-highlight">
+          <div class="formula-text">銷售總額 - 佣金 = 匯款金額</div>
+          <div class="formula-sub">依此公式計算開立金額</div>
+        </div>
+
+        <div class="section-title">📋 申請步驟</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>根據供應商資訊填寫</h4>
+              <p>依照供應商提供的資料正確填寫申請單</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>填寫交易資訊</h4>
+              <p>交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">Invoice</span>　交易摘要：<span class="field-tag">XX月 佣金</span></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>填寫預計開立日</h4>
+              <p>依據供應商要求填寫。若要求請款月份日期，需在匯款月份 10 號以前完成</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>填寫金額</h4>
+              <p>開立金額 = 銷售總額 - 匯款金額（= 佣金）</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>上傳附件與備註</h4>
+              <p>上傳：供應商 Invoice / 稅金結算書 / 報表證明</p>
+              <p>備註欄填：<span class="field-tag">銷售總額</span> / <span class="field-tag">佣金</span> / <span class="field-tag">匯款金額</span></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>發票開立後送審</h4>
+              <p>發票開立後，逆開的稅金結算書和供應商給的稅金結算書一起上傳到 BPM → 送審</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+</body>
+</html>

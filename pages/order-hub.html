@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>訂單管理 · SCM 知識庫</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.acc-wrap { background:white;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-bottom:6px;overflow:hidden; }
+.acc-header { padding:13px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;user-select:none; }
+.acc-header:hover { background:#fafbff; }
+.acc-icon { width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px; }
+.acc-name { font-size:14px;font-weight:700;color:var(--primary); }
+.acc-count { font-size:11px;color:var(--gray);background:#f0f0f0;padding:1px 7px;border-radius:10px;margin-left:8px; }
+.acc-arr { font-size:15px;color:#aaa;transition:transform 0.25s;margin-left:auto; }
+.acc-arr.open { transform:rotate(180deg); }
+.acc-body { display:none;padding:8px 16px 12px;border-top:1px solid var(--border); }
+.acc-body.open { display:block; }
+.acc-cards { display:grid;grid-template-columns:1fr 1fr;gap:2px; }
+a.sop-card { display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;text-decoration:none;color:inherit;transition:all 0.15s;border:1px solid transparent;margin-bottom:6px; }
+a.sop-card:hover { background:#fafbff;border-color:#f5a623; }
+a.sop-card .sc-icon { font-size:20px;width:32px;text-align:center;flex-shrink:0; }
+a.sop-card .sc-body { flex:1; }
+a.sop-card .sc-body h4 { font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:2px; }
+a.sop-card .sc-body p { font-size:11px;color:#718096; }
+a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;flex-shrink:0; }
+
+.fmap-wrap {
+  background:white; border-radius:var(--radius-lg);
+  border:1px solid var(--border); box-shadow:var(--shadow-sm);
+  margin-bottom:16px; overflow:hidden;
+}
+.fmap-header {
+  padding:18px 24px; display:flex; align-items:center; gap:14px;
+  cursor:pointer; transition:background 0.15s; user-select:none;
+}
+.fmap-header:hover { background:#fafbff; }
+.fmap-icon {
+  width:44px; height:44px; border-radius:var(--radius-sm); flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:22px;
+}
+.fmap-title { flex:1; }
+.fmap-title h3 { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:2px; }
+.fmap-title p { font-size:12px; color:var(--gray); }
+.fmap-arrow { font-size:18px; color:#aaa; transition:transform 0.25s; }
+.fmap-body { display:none; padding:20px 24px 24px; border-top:1px solid var(--border); }
+.fmap-body.open { display:block; }
+.fmap-arrow.open { transform:rotate(180deg); }
+
+.fmap-section-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin-bottom:0; }
+.fmap-node {
+  border-radius:var(--radius-md); padding:14px 16px; cursor:pointer;
+  transition:all 0.15s; border:2px solid transparent; text-align:center;
+}
+.fmap-node:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.fmap-node-blue  { background:#e8f0fe; border-color:#c5d3f5; }
+.fmap-node-green { background:#e8f5e9; border-color:#a5d6a7; }
+.fmap-node-orange{ background:#fff3e0; border-color:#ffcc80; }
+.fmap-node.active { border-color:var(--accent); box-shadow:0 0 0 3px rgba(245,166,35,0.15); }
+.fn-icon { font-size:22px; margin-bottom:6px; }
+.fn-label { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:3px; }
+.fn-sub { font-size:11px; color:var(--gray); margin-bottom:8px; }
+.fn-arrow { font-size:12px; color:#aaa; transition:transform 0.2s; }
+.fn-arrow.open { transform:rotate(180deg); color:var(--accent); }
+
+.fmap-detail {
+  display:none; margin-top:10px;
+  background:#fafbff; border-radius:var(--radius-md);
+  border:1px solid var(--border); padding:18px 20px;
+  animation:fadeIn 0.2s ease;
+}
+.fmap-detail.open { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+.fmap-note {
+  margin-top:12px; padding:8px 12px;
+  background:#fff8e1; border-left:3px solid var(--accent);
+  border-radius:0 6px 6px 0; font-size:12px; color:#6d4c41;
+}
+.fmap-exception-title { font-size:12px; font-weight:700; color:#555; margin-top:12px; margin-bottom:6px; }
+.fmap-exception-row { display:flex; gap:8px; flex-wrap:wrap; }
+.fe-item {
+  background:#fce4ec; border:1px solid #f48fb1; color:#c62828;
+  padding:5px 12px; border-radius:20px; font-size:12px; font-weight:600;
+}
+
+.fmap-flow { display:flex; align-items:center; flex-wrap:wrap; gap:4px; }
+.ff-step { padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; }
+.ff-blue   { background:#e8eeff; color:#3c50e0; border:1px solid #c5d3f5; }
+.ff-green  { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+.ff-orange { background:#fff3e0; color:#e65100; border:1px solid #ffcc80; }
+.ff-arr { color:#ccc; font-size:14px; padding:0 2px; }
+
+.fmap-sub-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; }
+.fmap-sub-card {
+  background:white; border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px;
+}
+.fsc-title { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:6px; }
+.fsc-flow { display:flex; align-items:center; flex-wrap:wrap; gap:3px; margin-bottom:6px; }
+.fsc-step { font-size:11px; padding:3px 8px; border-radius:4px; background:#f0f4f8; color:#4a5568; }
+.fsc-step.green { background:#e8f5e9; color:#2e7d32; }
+.fsc-arr { color:#ccc; font-size:11px; }
+.fsc-note { font-size:11px; color:#666; line-height:1.5; }
+.fsc-note.warn { color:#e65100; background:#fff3e0; padding:4px 8px; border-radius:4px; }
+
+.sec-div {
+  font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+  color:var(--gray); padding:18px 2px 8px;
+  display:flex; align-items:center; gap:10px;
+}
+.sec-div::after { content:''; flex:1; height:1px; background:var(--border); }
+</style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+<div class="page-header" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">
+  <div class="ph-icon">🛒</div>
+  <div>
+    <div class="breadcrumb"><a href="../index.html">首頁</a> / 訂單管理</div>
+    <h1>訂單管理</h1>
+  </div>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-order-flow')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">📋</div>
+      <span class="acc-name">訂單處理流程</span><span class="acc-count">2 篇</span>
+      <span class="acc-arr" id="arr-acc-order-flow">▾</span>
+    </div>
+    <div class="acc-body" id="acc-order-flow">
+      <div class="acc-cards">
+        <a class="sop-card" href="order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4>訂單成立後初步處理</h4><p>SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal">訂單</span></a>
+        <a class="sop-card" href="order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4>訂單進單後處理流程</h4><p>四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal">訂單</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-auto')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)">🤖</div>
+      <span class="acc-name">自動出票</span><span class="acc-count">5 篇</span>
+      <span class="acc-arr" id="arr-acc-auto">▾</span>
+    </div>
+    <div class="acc-body" id="acc-auto">
+      <div class="acc-cards">
+        <a class="sop-card" href="api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4>API</h4><p>串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>OCBT</h4><p>多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4>PSI</h4><p>票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4>一般即訂即出</h4><p>系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4>假即訂即出</h4><p>系統出憑證但仍需 OP 人工訂購</p></div></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-manual')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">✍️</div>
+      <span class="acc-name">人工訂購</span><span class="acc-count">5 篇</span>
+      <span class="acc-arr" id="arr-acc-manual">▾</span>
+    </div>
+    <div class="acc-body" id="acc-manual">
+      <div class="acc-cards">
+        <a class="sop-card" href="platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4>平台訂購</h4><p>供應商平台 7 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4>Mail 訂購</h4><p>電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4>通訊軟體訂購</h4><p>KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4>Google Sheet 訂購</h4><p>填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4>組合商品訂購</h4><p>三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange">人工</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-physical')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#8e24aa,#ce93d8)">📦</div>
+      <span class="acc-name">實體出貨</span><span class="acc-count">2 篇</span>
+      <span class="acc-arr" id="arr-acc-physical">▾</span>
+    </div>
+    <div class="acc-body" id="acc-physical">
+      <div class="acc-cards">
+        <a class="sop-card" href="sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4>實體 SIM 卡 POS 出貨</h4><p>每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple">實體</span></a>
+        <a class="sop-card" href="mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4>郵寄流程</h4><p>JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple">實體</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-exception')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">⚠️</div>
+      <span class="acc-name">異常處理</span><span class="acc-count">6 篇</span>
+      <span class="acc-arr" id="arr-acc-exception">▾</span>
+    </div>
+    <div class="acc-body" id="acc-exception">
+      <div class="acc-cards">
+        <a class="sop-card" href="cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4>特例取消流程</h4><p>客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4>部分取消 / 部分退款</h4><p>保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4>訂單更改</h4><p>改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4>商品異動 & 挽單流程</h4><p>額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4>訂單恢復</h4><p>適用條件、三方審核流程</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4>盜刷處理 SOP</h4><p>風控通知、已使用/未使用分支、即訂即出可疑訂單</p></div><span class="sc-tag badge-red">異常</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-div">📊 訂單流程圖</div>
+
+  <div class="fmap-wrap">
+    <div class="fmap-header" onclick="toggleMap('map-order')">
+      <div class="fmap-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">🗺️</div>
+      <div class="fmap-title">
+        <h3>訂單</h3>
+        <p>訂單從下單到出票的整體作業分工</p>
+      </div>
+      <span class="fmap-arrow" id="arrow-map-order">▾</span>
+    </div>
+    <div class="fmap-body" id="map-order">
+
+      <div class="fmap-section-row">
+        <div class="fmap-node fmap-node-blue" onclick="toggleSection('sec-supplier')">
+          <div class="fn-icon">🏪</div>
+          <div class="fn-label">供應商自理</div>
+          <div class="fn-sub">SCM / rezio 系統</div>
+          <div class="fn-arrow" id="arrow-sec-supplier">▾</div>
+        </div>
+        <div class="fmap-node fmap-node-green" onclick="toggleSection('sec-auto')">
+          <div class="fn-icon">🤖</div>
+          <div class="fn-label">KKday 自動出票</div>
+          <div class="fn-sub">API / PSI / 即訂即出</div>
+          <div class="fn-arrow" id="arrow-sec-auto">▾</div>
+        </div>
+        <div class="fmap-node fmap-node-orange" onclick="toggleSection('sec-manual')">
+          <div class="fn-icon">✍️</div>
+          <div class="fn-label">KKday 人工訂購</div>
+          <div class="fn-sub">OP 人工處理</div>
+          <div class="fn-arrow" id="arrow-sec-manual">▾</div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="sec-supplier">
+        <div class="fmap-detail-inner">
+          <div class="fmap-flow">
+            <div class="ff-step ff-blue">客人下單</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-blue">系統通知供應商</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-blue">供應商確認訂單</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-blue">發送電子憑證</div>
+          </div>
+          <div class="fmap-note">⚠️ 正常情況下不需 OP 人工介入，系統自動處理</div>
+          <div class="fmap-exception-title">例外需人工介入：</div>
+          <div class="fmap-exception-row">
+            <div class="fe-item">供應商通知更改系統使用日期</div>
+            <div class="fe-item">會員帳號狀態為「可疑」</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="sec-auto">
+        <div class="fmap-detail-inner">
+          <div class="fmap-sub-row">
+            <div class="fmap-sub-card">
+              <div class="fsc-title">🔌 API</div>
+              <div class="fsc-flow">
+                <span class="fsc-step">客人下單</span>
+                <span class="fsc-arr">→</span>
+                <span class="fsc-step">API 串接</span>
+                <span class="fsc-arr">→</span>
+                <span class="fsc-step green">即時出票</span>
+              </div>
+              <div class="fsc-note warn">失敗時 → Slack 聯繫 BD/AM</div>
+            </div>
+            <div class="fmap-sub-card">
+              <div class="fsc-title">📦 PSI 票倉</div>
+              <div class="fsc-flow">
+                <span class="fsc-step">BD 入庫</span>
+                <span class="fsc-arr">→</span>
+                <span class="fsc-step">系統配票</span>
+                <span class="fsc-arr">→</span>
+                <span class="fsc-step green">即時出票</span>
+              </div>
+              <div class="fsc-note warn">失敗時 → Slack 聯繫 BD/AM</div>
+            </div>
+            <div class="fmap-sub-card">
+              <div class="fsc-title">⚡ 一般即訂即出</div>
+              <div class="fsc-flow">
+                <span class="fsc-step">客人下單</span>
+                <span class="fsc-arr">→</span>
+                <span class="fsc-step green">系統自動出 KKday 憑證</span>
+              </div>
+              <div class="fsc-note warn">可疑訂單 → 風控介入</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="sec-manual">
+        <div class="fmap-detail-inner">
+          <div class="fmap-flow">
+            <div class="ff-step ff-orange">CS 點單確認</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">OP 領單</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">向供應商訂購</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">供應商確認</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">發送憑證</div>
+          </div>
+          <div class="fmap-sub-row" style="margin-top:12px">
+            <div class="fmap-sub-card"><div class="fsc-title">🖥️ 平台訂購</div><div class="fsc-note">登入供應商平台，填寫旅客資料後訂購</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title">📧 Mail 訂購</div><div class="fsc-note">複製訂單資料，發信至供應商信箱</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title">💬 通訊軟體</div><div class="fsc-note">KakaoTalk / WhatsApp 格式訂購</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title">📊 Google Sheet</div><div class="fsc-note">填寫共用表單後通知供應商</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+function toggleAcc(id) {
+  const body = document.getElementById(id);
+  const arr = document.getElementById('arr-' + id);
+  body.classList.toggle('open');
+  if (arr) arr.classList.toggle('open');
+}
+
+function toggleMap(id) {
+  const body = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function toggleSection(id) {
+  const detail = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = detail.classList.contains('open');
+
+  const parent = detail.parentElement;
+  parent.querySelectorAll('.fmap-detail').forEach(d => {
+    if (d !== detail) {
+      d.classList.remove('open');
+      const a = document.getElementById('arrow-' + d.id);
+      if (a) a.classList.remove('open');
+    }
+  });
+  parent.querySelectorAll('.fmap-node').forEach(n => n.classList.remove('active'));
+
+  detail.classList.toggle('open', !isOpen);
+  if (arrow) arrow.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

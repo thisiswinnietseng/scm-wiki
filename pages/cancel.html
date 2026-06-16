@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>特例取消流程 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .cancel-section { margin-bottom:0; }
+    .cancel-section h2 {
+      font-size:15px; font-weight:700; color:var(--primary);
+      margin-bottom:12px; display:flex; align-items:center; gap:8px;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 特例取消流程</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444);">❌</div>
+      <div class="page-header-body">
+        <h1>特例取消流程</h1>
+        <div class="meta-row">
+          <span class="meta-chip badge-red">異常處理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+
+      <!-- KKday 正常情況說明 -->
+      <div style="background:#f0f4ff;border-radius:10px;padding:16px 20px;margin-bottom:24px;border:1px solid #c5d3f5;">
+        <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">KKday 正常情況不會主動取消訂單，以下三種情況除外：</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:160px;background:white;border:1px solid #c5d3f5;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
+            <span style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</span>
+            <span style="font-size:12px;color:#2d3748;">訂單無法訂出</span>
+          </div>
+          <div style="flex:1;min-width:160px;background:white;border:1px solid #c5d3f5;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
+            <span style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</span>
+            <span style="font-size:12px;color:#2d3748;">訂單處理完畢後的商品異動</span>
+          </div>
+          <div style="flex:1;min-width:160px;background:white;border:1px solid #c5d3f5;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
+            <span style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</span>
+            <span style="font-size:12px;color:#2d3748;">供應商因手續費調整請求 KKday 協助取消</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KKday 端取消 -->
+      <div class="cancel-section">
+        <h2>🏢 KKday 端取消</h2>
+        <div class="flow-bar">
+          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">點擊特殊取消原因</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">確認手續費</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">備註原因 & 送出給客服</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:#718096;padding:0 4px;">
+          有手續費 → 計算（百分比或定額）→ 選手續費原因 → 備註取消原因 → 送出給客服<br>
+          無手續費 → 直接送出<br>
+        </div>
+      </div>
+
+      <hr style="margin:1.5rem 0;border-color:var(--border);" />
+
+      <!-- 客人端需求取消 -->
+      <div class="cancel-section">
+        <h2>👤 客人端需求取消</h2>
+        <div class="flow-bar">
+          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">CS 接收需求</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 確認可否取消</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">CS 與旅客確認退款條件</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP Be2 發起取消</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:#718096;padding:0 4px;">
+          OP 確認可否取消時，需聯繫供應商確認同意取消及退費條件<br>
+          <span style="display:inline-block;margin-top:3px;">退款依客人付款方式執行原路退款或匯款退款</span>
+        </div>
+        <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 如有手續費需先告知客人</span>
+      </div>
+
+      <hr style="margin:1.5rem 0;border-color:var(--border);" />
+
+      <!-- 供應商端取消 -->
+      <div class="cancel-section">
+        <h2>🏪 供應商端取消（需 OP 作業特例）</h2>
+        <p style="font-size:13px;font-weight:600;color:#555;margin-bottom:10px;">適用情況</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+          <div style="flex:1;min-width:160px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:18px;">💰</span>
+            <span style="font-size:13px;color:#2d3748;">供應商欲調整取消退費金額</span>
+          </div>
+          <div style="flex:1;min-width:160px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:18px;">📅</span>
+            <span style="font-size:13px;color:#2d3748;">過出發日訂單取消（客訴處理）</span>
+          </div>
+          <div style="flex:1;min-width:160px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:18px;">✅</span>
+            <span style="font-size:13px;color:#2d3748;">供應商同意取消已核銷訂單</span>
+          </div>
+        </div>
+        <p style="font-size:13px;font-weight:600;color:#555;margin-bottom:10px;">處理流程</p>
+        <div class="flow-bar">
+          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">供應商通知 OP</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 確認原因</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">Be2 發起特殊原因取消</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">CS 與旅客確認</span>
+          <span class="flow-arr">→</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+        </div>
+      </div>
+
+      <hr style="margin:1.5rem 0;border-color:var(--border);" />
+
+      <!-- 手續費情境 -->
+      <div class="cancel-section">
+        <h2>💸 取消手續費情境</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px;">
+          <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:8px;">✅ 免收手續費</div>
+            <ul style="margin:0;padding-left:16px;font-size:12px;color:#374151;display:flex;flex-direction:column;gap:4px;">
+              <li>客人在<strong>免費取消期間</strong>申請取消</li>
+              <li>供應商疏失引發客訴，供應商同意免費取消</li>
+            </ul>
+          </div>
+          <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;">❌ 需收手續費</div>
+            <ul style="margin:0;padding-left:16px;font-size:12px;color:#374151;display:flex;flex-direction:column;gap:4px;">
+              <li><strong>%</strong>：e.g. 12/9 前申請取消收 10% 手續費</li>
+              <li><strong>特定金額</strong>：e.g. 公司政策退款，供應商不同意免費取消</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:1.5rem 0;border-color:var(--border);" />
+
+      <!-- 公司政策退款 -->
+      <div class="cancel-section">
+        <h2>🏛️ 公司政策退款（特殊情況）</h2>
+        <div style="font-size:12px;color:#4a5568;margin-bottom:12px;">當客人因特殊情況需取消，但供應商取消政策嚴格無法退款時，客服部門依公司政策審核是否可退款：</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>😢</span> 旅客二等親內直系血親屬<strong>去世</strong></div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>🏥</span> 旅客二等親內直系血親屬<strong>生重病</strong></div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>🌪️</span> 目的地發生<strong>嚴重自然災害</strong>（不可抗力）</div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>✈️</span> 原訂班機<strong>停飛或嚴重延誤</strong></div>
+        </div>
+      </div>
+
+      <hr style="margin:1.5rem 0;border-color:var(--border);" />
+
+      <!-- 補充說明 -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#fafbff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px;">💡 補充 — API 商品</div>
+          <div style="font-size:13px;color:#4a5568;">若商品有串接 API 取消，確認可取消後，進入 Be2 訂單管理的「B2B 串接訂單取消」操作</div>
+        </div>
+        <div style="background:#fafbff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px;">💡 補充 — PSI 出票</div>
+          <div style="font-size:13px;color:#4a5568;">若訂單為 PSI 出票，取消後留意是否需要 PSI 退貨。<br><strong>注意：</strong>無論全額退款（訂單取消）或部分退款（訂單不取消），PSI 訂單的手續費／成本不會變動。</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>商品異動 &amp; 挽單流程 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 商品異動 &amp; 挽單流程</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">🔀</div>
+      <div class="page-header-body">
+        <h1>商品異動 &amp; 挽單流程</h1>
+        <div class="meta-row">
+          <span class="meta-chip badge-red">異常處理</span>
+        </div>
+      </div>
+    </div>
+
+    <h2>商品異動</h2>
+    <div class="white-box">
+      <div class="step-list">
+
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Slack 群組接收異動通知</strong>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>表單確認異動內容</strong>
+            <ul>
+              <li>異動原因</li>
+              <li>受影響訂單明細</li>
+              <li>後續處理流程</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>依異動類型處理</strong>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+              <div style="flex:1;min-width:200px;border:1px solid #a5d6a7;border-radius:8px;padding:12px 16px;background:#f1f8f1;">
+                <div style="font-size:12px;font-weight:700;color:#2e7d32;margin-bottom:6px;">✅ OP 直接作業</div>
+                <div style="font-size:12px;color:#2d3748;">改成本、發起批次取消等，無需等待客人回覆</div>
+              </div>
+              <div style="flex:1;min-width:200px;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;background:#fff8f0;">
+                <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:6px;">⏳ 須先通知客人</div>
+                <div style="font-size:12px;color:#2d3748;">客服通知客人後，待客人回覆，再依客人選擇操作：<br>・同意改期 → OP 執行改期<br>・同意取消 → OP 發起取消</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <h2>額滿 / 售罄（挽單）</h2>
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;border:1px solid #a5d6a7;border-radius:8px;padding:12px 16px;background:#f1f8f1;">
+        <div style="font-size:11px;font-weight:700;color:#2e7d32;letter-spacing:0.5px;margin-bottom:4px;">✅ 適用情況</div>
+        <div style="font-size:13px;color:#2d3748;">名額已滿、供應商設有名額上限</div>
+      </div>
+      <div style="flex:1;min-width:200px;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;background:#fff8f0;">
+        <div style="font-size:11px;font-weight:700;color:#e65100;letter-spacing:0.5px;margin-bottom:4px;">⚠️ 例外（改為取消）</div>
+        <div style="font-size:13px;color:#2d3748;">AGODA 分銷商訂單遇額滿一律取消；系統錯誤但實際有名額 → 人工確認</div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <h3>挽單流程</h3>
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">前往客服操作台</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">點「新增工單」</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">選擇工單分類：<strong>訂單異動 → 額滿售罄 → 挽單</strong></div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">填入最晚處理時間</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">確認建立工單</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-content">點進工單 → 點「開始處理」→ 確認</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">7</div>
+          <div class="step-content">點「後拋」→ 選自動分派</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            填入後拋備註（依商品頁面 或 依 OP 提供日期場次，<strong>中英雙語</strong>）
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">9</div>
+          <div class="step-content">填入後拋截止時間</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">10</div>
+          <div class="step-content">確認後拋</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">11</div>
+          <div class="step-content">
+            Be2 訂單狀態記得點回「旅客資料已齊全」
+            <span style="display:inline-block;margin-top:5px;font-size:12px;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:2px 8px;">⚠️ 這步容易漏掉，記得確認！</span>
+          </div>
+        </li>
+      </ol>
+
+    </div>
+
+    <h2>關閉前台售罄日期操作</h2>
+    <div class="white-box">
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            新商品管理 → 商品管理 → 輸入 prod_oid
+            <span style="display:inline-block;margin-top:5px;font-size:12px;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:2px 8px;">⚠️ 非 prod_mid</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">查詢到商品 → 庫存設定 → 選套餐品項</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Option A — 調整庫存量：</strong>查詢日期 → 勾選 → 編輯已選取資料 → 更改數量 → 存檔
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Option B — 關閉日期 / 場次銷售開關：</strong>查詢 → 勾選需關閉日期 → 編輯已選取資料 → 勾選「關閉」→ 存檔
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  </div>
+</body>
+</html>

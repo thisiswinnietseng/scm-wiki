@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API 自動出票 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 自動出票 / API</div>
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">🔌</div>
+      <div class="page-header-body">
+        <h1>API 自動出票</h1>
+        <p class="subtitle">BE2 系統與供應商訂購平台串接，即時查詢和預訂票券及酒店</p>
+        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。</span>
+    </div>
+
+    <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 通常無需 OP 作業，系統自動完成訂購與出票。</span>
+
+    <h3 style="margin-top:1.5rem;">⚠️ API 失敗處理方式</h3>
+    <div class="white-box">
+      <span style="display:inline-block;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;">❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。</span>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Slack 聯繫 BD／AM</strong>
+            <p>透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>BD／AM 確認失敗原因</strong>
+            <p>BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>BD／AM 回覆作業方法</strong>
+            <p>依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+        <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱確認常見錯誤原因。</span>
+        <span style="font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。</span>
+      </div>
+    </div>
+  </div>
+  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCBT — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 自動出票 / OCBT</div>
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)">📦</div>
+      <div class="page-header-body">
+        <h1>OCBT 組合商品</h1>
+        <p class="subtitle">由兩家以上不同供應商的即訂即出商品組成的組合訂單</p>
+        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。</span>
+    </div>
+
+    <h3 style="margin-top:1.5rem;">📋 OCBT 設定限制</h3>
+    <div class="white-box">
+      <ul style="line-height:2rem;padding-left:1.25rem;">
+        <li>母商品前置日必須 <strong>≥</strong> 子商品前置日</li>
+        <li>月曆模式：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span></li>
+        <li>母商品的銷售日期必須符合子商品銷售日期</li>
+        <li>母商品旅規必須覆蓋子商品旅規</li>
+        <li>母商品開啟的市場，子商品也要一併開啟市場</li>
+      </ul>
+      <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。</span>
+    </div>
+
+    <h3 style="margin-top:1.5rem;">⚠️ OCBT 失敗處理方式</h3>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Slack 聯繫 BD／AM</strong>
+            <p>透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>BD／AM 確認失敗原因</strong>
+            <p>BD／AM 確認是哪個子商品出票失敗及原因。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>BD／AM 回覆後續作業方法</strong>
+            <p>依確認結果，BD／AM 回覆處理方式。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>若需人工出票</strong>
+            <p>請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+</body>
+</html>

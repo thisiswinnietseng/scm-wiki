@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCM 知識庫</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; color: white; pointer-events: none; white-space: nowrap;
+}
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+
+.lifecycle-wrap {
+  background:white; border-radius:var(--radius-lg);
+  border:1px solid var(--border); box-shadow:var(--shadow-sm);
+  padding:22px 28px; margin-bottom:20px;
+}
+.lifecycle-label { font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--gray); text-transform:uppercase; margin-bottom:16px; }
+.lifecycle { display:flex; align-items:center; overflow-x:auto; padding-bottom:4px; }
+.lc-step { display:flex; flex-direction:column; align-items:center; gap:6px; min-width:80px; }
+.lc-dot { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:19px; box-shadow:0 4px 12px rgba(0,0,0,0.12); }
+.lc-step span { font-size:11px; color:#555; text-align:center; font-weight:600; line-height:1.4; }
+.lc-arrow { color:#d1d5db; font-size:16px; padding:0 2px; flex-shrink:0; margin-bottom:18px; }
+.d-purple { background:linear-gradient(135deg,#667eea,#764ba2); }
+.d-teal   { background:linear-gradient(135deg,#11998e,#38ef7d); }
+.d-orange { background:linear-gradient(135deg,#f7971e,#ffd200); }
+.d-blue   { background:linear-gradient(135deg,#2193b0,#6dd5ed); }
+.d-green  { background:linear-gradient(135deg,#56ab2f,#a8e063); }
+.d-gray   { background:linear-gradient(135deg,#636e72,#b2bec3); }
+.d-red    { background:linear-gradient(135deg,#f953c6,#b91d73); }
+
+.sec-accordion {
+  border-radius:var(--radius-lg); overflow:hidden;
+  box-shadow:var(--shadow-sm); margin-bottom:10px;
+}
+.sec-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 24px; cursor:pointer; user-select:none;
+  transition:filter 0.15s;
+}
+.sec-header:hover { filter:brightness(1.05); }
+.sec-header-left { display:flex; align-items:center; gap:16px; }
+.sec-header-icon { font-size:32px; line-height:1; }
+.sec-header-text h2 { font-size:18px; font-weight:700; color:white; margin:0 0 3px; }
+.sec-header-text p { font-size:12px; color:rgba(255,255,255,0.75); margin:0; }
+.sec-arr { font-size:20px; color:rgba(255,255,255,0.8); transition:transform 0.25s; }
+.sec-arr.open { transform:rotate(180deg); }
+
+.sec-body { display:none; background:white; border:1px solid var(--border); border-top:none; border-radius:0 0 var(--radius-lg) var(--radius-lg); }
+.sec-body.open { display:block; }
+
+.sec-cards { display:grid; grid-template-columns:1fr 1fr; padding:12px 16px 8px; gap:2px; }
+
+.group-divider {
+  grid-column: 1/-1; margin: 10px 0 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.group-divider-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 4px 12px 4px 8px; border-radius: 6px;
+  color: white;
+}
+.group-divider-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.6); flex-shrink:0; }
+.group-divider::after { content: ''; flex: 1; height: 1px; background: #f0f0f0; }
+
+a.sop-card {
+  display:flex; align-items:center; gap:12px;
+  padding:10px 12px; border-radius:var(--radius-sm);
+  text-decoration:none; color:inherit; transition:all 0.15s;
+  border:1px solid transparent; margin-bottom:4px;
+}
+a.sop-card:hover { background:#fafbff; border-color:var(--accent); }
+a.sop-card .sc-icon { font-size:20px; width:32px; text-align:center; flex-shrink:0; }
+a.sop-card .sc-body { flex:1; min-width:0; }
+a.sop-card .sc-body h4 { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+a.sop-card .sc-body p { font-size:11px; color:var(--gray); }
+a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; flex-shrink:0; }
+
+.disabled-card { pointer-events:none; opacity:0.6; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" href="index.html">首頁</a>
+    <a class="nav-link" href="#" onclick="openSec('product');return false;">商品認識</a>
+    <a class="nav-link" href="#" onclick="openSec('order');return false;">訂單管理</a>
+    <a class="nav-link" href="#" onclick="openSec('accounting');return false;">帳務管理</a>
+    <a class="nav-link" href="pages/messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+<div class="page-wrapper-wide" style="padding-top:24px;">
+
+  <div class="lifecycle-wrap">
+    <div class="lifecycle-label">訂單生命週期</div>
+    <div class="lifecycle">
+      <div class="lc-step"><div class="lc-dot d-purple">🛒</div><span>旅客下單</span></div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-step"><div class="lc-dot d-teal">🔍</div><span>初步確認</span></div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-step"><div class="lc-dot d-orange">⚙️</div><span>訂單分流</span></div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-step"><div class="lc-dot d-blue">🎫</div><span>出票/訂購</span></div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-step"><div class="lc-dot d-green">📧</div><span>發送憑證</span></div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-step"><div class="lc-dot d-gray">✅</div><span>訂單完成</span></div>
+      <div class="lc-arrow">→</div>
+      <div class="lc-step"><div class="lc-dot d-red">⚠️</div><span>異常處理</span></div>
+    </div>
+  </div>
+
+  <div class="sec-accordion">
+    <div class="sec-header" onclick="toggleSec('product')" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+      <div class="sec-header-left">
+        <div class="sec-header-icon">🧩</div>
+        <div class="sec-header-text">
+          <h2>商品認識</h2>
+          <p>前台架構 · 商品設計 · PSI 票倉 · 憑證類型</p>
+        </div>
+      </div>
+      <span class="sec-arr" id="arr-product">▾</span>
+    </div>
+    <div class="sec-body" id="body-product">
+      <div class="sec-cards">
+        <a class="sop-card" href="pages/frontend.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4>前台商品架構長相</h4><p>一般票券、點對點交通、飯店頁面結構</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
+        <a class="sop-card" href="pages/product-design.html"><div class="sc-icon">🧠</div><div class="sc-body"><h4>商品設計邏輯</h4><p>商品設定如何影響客人認知及作業流程</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
+        <a class="sop-card" href="pages/inventory.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>PSI 票倉介紹</h4><p>PSI 系統票券入庫、出庫、庫存管理</p></div><span class="sc-tag badge-blue">庫存</span></a>
+        <a class="sop-card" href="pages/voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4>憑證類型說明</h4><p>PSI 票倉介紹、憑證類型說明</p></div><span class="sc-tag badge-blue">出票</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-accordion">
+    <div class="sec-header" onclick="toggleSec('order')" style="background:linear-gradient(135deg,#1a1a2e,#2193b0)">
+      <div class="sec-header-left">
+        <div class="sec-header-icon">🛒</div>
+        <div class="sec-header-text">
+          <h2>訂單管理</h2>
+          <p>處理流程 · 自動出票 · 人工訂購 · 實體出貨 · 異常處理</p>
+        </div>
+      </div>
+      <span class="sec-arr" id="arr-order">▾</span>
+    </div>
+    <div class="sec-body" id="body-order">
+      <div class="sec-cards">
+        <div class="group-divider"><span class="group-divider-tag" style="background:#00695c"><span class="dot"></span>訂單處理流程</span></div>
+        <a class="sop-card" href="pages/order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4>訂單成立後初步處理</h4><p>SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal">訂單</span></a>
+        <a class="sop-card" href="pages/order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4>訂單進單後處理流程</h4><p>四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal">訂單</span></a>
+
+        <div class="group-divider"><span class="group-divider-tag" style="background:#2e7d32"><span class="dot"></span>自動出票</span></div>
+        <a class="sop-card" href="pages/api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4>API</h4><p>串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="pages/ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>OCBT</h4><p>多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="pages/psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4>PSI</h4><p>票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="pages/general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4>一般即訂即出</h4><p>系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green">自動</span></a>
+        <a class="sop-card" href="pages/fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4>假即訂即出</h4><p>系統出憑證但仍需 OP 人工訂購</p></div></a>
+
+        <div class="group-divider"><span class="group-divider-tag" style="background:#e65100"><span class="dot"></span>人工訂購</span></div>
+        <a class="sop-card" href="pages/platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4>平台訂購</h4><p>供應商平台 7 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="pages/mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4>Mail 訂購</h4><p>電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="pages/messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4>通訊軟體訂購</h4><p>KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="pages/google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4>Google Sheet 訂購</h4><p>填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="pages/combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4>組合商品訂購</h4><p>三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange">人工</span></a>
+
+        <div class="group-divider"><span class="group-divider-tag" style="background:#6a1b9a"><span class="dot"></span>實體出貨</span></div>
+        <a class="sop-card" href="pages/sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4>實體 SIM 卡 POS 出貨</h4><p>每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple">實體</span></a>
+        <a class="sop-card" href="pages/mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4>郵寄流程</h4><p>JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple">實體</span></a>
+
+        <div class="group-divider"><span class="group-divider-tag" style="background:#c62828"><span class="dot"></span>異常處理</span></div>
+        <a class="sop-card" href="pages/cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4>特例取消流程</h4><p>客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="pages/partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4>部分取消 / 部分退款</h4><p>保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="pages/order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4>訂單更改</h4><p>改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="pages/amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4>商品異動 & 挽單流程</h4><p>額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="pages/restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4>訂單恢復</h4><p>適用條件、三方審核流程</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="pages/fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4>盜刷處理 SOP</h4><p>風控通知、已使用/未使用分支</p></div><span class="sc-tag badge-red">異常</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-accordion">
+    <div class="sec-header" onclick="toggleSec('accounting')" style="background:linear-gradient(135deg,#f7971e,#e65100)">
+      <div class="sec-header-left">
+        <div class="sec-header-icon">💰</div>
+        <div class="sec-header-text">
+          <h2>帳務管理</h2>
+        </div>
+      </div>
+      <span class="sec-arr" id="arr-accounting">▾</span>
+    </div>
+    <div class="sec-body" id="body-accounting">
+      <div class="sec-cards">
+        <a class="sop-card" href="pages/payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>請款方式</h4><p>銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange">請款</span></a>
+        <a class="sop-card" href="pages/reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4>銀行匯款對帳流程</h4><p>全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal">對帳</span></a>
+        <a class="sop-card" href="pages/supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4>預存款管理</h4><p>補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue">預存款</span></a>
+        <a class="sop-card" href="pages/credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>信用卡對帳</h4><p>每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue">信用卡</span></a>
+        <a class="sop-card" href="pages/commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4>佣金申請</h4><p>REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red">佣金</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-accordion">
+    <div class="sec-header" onclick="toggleSec('messaging')" style="background:linear-gradient(135deg,#636e72,#2d3436)">
+      <div class="sec-header-left">
+        <div class="sec-header-icon">💬</div>
+        <div class="sec-header-text">
+          <h2>訊息管理</h2>
+          <p>Be2 · 工單系統 · Slack · 供應商群組</p>
+        </div>
+      </div>
+      <span class="sec-arr" id="arr-messaging">▾</span>
+    </div>
+    <div class="sec-body" id="body-messaging">
+      <div class="sec-cards">
+        <a class="sop-card" href="pages/messaging-hub.html"><div class="sc-icon">💬</div><div class="sc-body"><h4>訊息管理總覽</h4><p>四種溝通工具說明 · 供應商訊息處理流程</p></div><span class="sc-tag badge-blue">訊息</span></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+
+<script>
+function toggleSec(id) {
+  const body = document.getElementById('body-' + id);
+  const arr = document.getElementById('arr-' + id);
+  if (!body) return;
+  body.classList.toggle('open');
+  if (arr) arr.classList.toggle('open');
+}
+function openSec(id) {
+  const body = document.getElementById('body-' + id);
+  const arr = document.getElementById('arr-' + id);
+  if (!body) return;
+  body.classList.add('open');
+  if (arr) arr.classList.add('open');
+  body.closest('.sec-accordion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>

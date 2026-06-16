@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>請款方式 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .method-card {
+      background:white; border-radius:var(--radius-md);
+      border:1px solid var(--border); padding:22px;
+      box-shadow:var(--shadow-sm); margin-bottom:16px;
+    }
+    .method-card-title {
+      display:flex; align-items:center; gap:10px;
+      margin-bottom:14px;
+    }
+    .method-card-title h3 { font-size:16px; font-weight:700; color:var(--primary); margin:0; }
+    .method-card-title .icon { font-size:24px; }
+    .sub-label { font-size:12px; font-weight:700; color:#555; margin:12px 0 6px; text-transform:uppercase; letter-spacing:0.5px; }
+    .tag-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+    .cycle-tag {
+      padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600;
+      background:#f0f4ff; color:#3c50e0; border:1px solid #c5d3f5;
+    }
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .timeline-row {
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .timeline-item {
+      display:flex; align-items:flex-start; gap:12px;
+      background:#fafbff; border:1px solid var(--border); border-radius:8px; padding:12px 16px;
+    }
+    .timeline-dot {
+      width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:5px;
+    }
+    .timeline-item p { font-size:13px; color:#4a5568; line-height:1.6; margin:0; }
+    .timeline-item strong { color:var(--primary); }
+    .mode-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .mode-box {
+      background:white; border:1px solid var(--border); border-radius:8px;
+      padding:14px; text-align:center;
+    }
+    .mode-box .mode-val { font-size:22px; font-weight:700; color:var(--primary); }
+    .mode-box .mode-lbl { font-size:11px; color:var(--gray); margin-top:4px; }
+    .mode-box .mode-sub { font-size:12px; color:#4a5568; margin-top:6px; }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current">請款方式</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💳</div>
+      <div class="page-header-body">
+        <h1>請款方式</h1>
+        <div class="subtitle">銀行匯款、預存款、信用卡三種請款方式總覽</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-orange">請款</span>
+          <span class="meta-chip">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">💳 三種請款方式</div>
+
+      <div class="method-card" style="border-left:4px solid #e65100;">
+        <div class="method-card-title">
+          <span class="icon">🏦</span>
+          <h3>銀行匯款</h3>
+        </div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">供應商提供銀行帳號後，KKday 財務依據請款單進行匯款。依結算頻率分為以下幾種週期：</p>
+        <div class="tag-row">
+          <span class="cycle-tag">週結</span>
+          <span class="cycle-tag">半月結</span>
+          <span class="cycle-tag">月結</span>
+          <span class="cycle-tag">寄賣匯款</span>
+        </div>
+      </div>
+
+      <div class="method-card" style="border-left:4px solid #3c50e0;">
+        <div class="method-card-title">
+          <span class="icon">🏧</span>
+          <h3>預存款</h3>
+        </div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">KKday 先補款到供應商，供應商再從中扣款訂購。Be2 預存金餘額不可為負向。</p>
+        <div class="sub-label">最低水位設定模式</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;">
+          <div class="mode-box">
+            <div class="mode-val">10 天</div>
+            <div class="mode-lbl">最低水位</div>
+            <div class="mode-sub">預計補款 21 天</div>
+          </div>
+          <div class="mode-box">
+            <div class="mode-val">5 天</div>
+            <div class="mode-lbl">最低水位</div>
+            <div class="mode-sub">預計補款 12 天</div>
+          </div>
+          <div class="mode-box">
+            <div class="mode-val">固定金額</div>
+            <div class="mode-lbl">最低水位</div>
+            <div class="mode-sub">預計補款自訂</div>
+          </div>
+        </div>
+        <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ Be2 預存金餘額不可為負向</span>
+      </div>
+
+      <div class="method-card" style="border-left:4px solid #00695c;">
+        <div class="method-card-title">
+          <span class="icon">💳</span>
+          <h3>信用卡</h3>
+        </div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">使用公司信用卡直接於供應商平台付款。財務每月提供帳單，須於隔月月底前核對完成並送出 BPM。</p>
+        <div class="tag-row">
+          <span class="cycle-tag" style="background:#e0f2f1;color:#00695c;border-color:#80cbc4;">實體信用卡</span>
+          <span class="cycle-tag" style="background:#e0f2f1;color:#00695c;border-color:#80cbc4;">虛擬信用卡</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📅 付款日期與時程</div>
+      <div class="timeline-row">
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#3c50e0;"></div>
+          <p><strong>預存款</strong>：每週一確認餘額，每週二 12:00 前完成簽核，<strong>週四</strong>財務匯款</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#e65100;"></div>
+          <p><strong>週結</strong>：每週三 18:00 前完成簽核，<strong>週四</strong>財務匯款</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#00695c;"></div>
+          <p><strong>銀行匯款</strong>：約付款日前六個工作天。實際截止日請留意 Slack 群組 <strong>tw-office</strong> 財務公告</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px;">
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 只有請款方式是週結，才可以跑週結流程</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 留意需交紙本的主體，須在截止時間前印出紙本給會計工讀生掃完 code</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 需交紙本為台灣簽約主體：<br>
+          &nbsp;&nbsp;<span style="color:#718096;">• 酷遊天股份有限公司 - Kkday.com International Company Limited (Taiwan)</span><br>
+          &nbsp;&nbsp;<span style="color:#718096;">• 酷遊天國際旅行社股份有限公司 - Taiwanmania.com International Travel Service Co., Ltd.</span></span>
+      </div>
+    </div>
+
+
+    <div class="white-box">
+      <div class="section-title">🧾 結帳方式</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#fafbff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">出發日請款</div>
+          <div style="font-size:13px;color:#4a5568;">訂單出發後，供應商再向 KKday 請款</div>
+        </div>
+        <div style="background:#fafbff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">核銷日請款</div>
+          <div style="font-size:13px;color:#4a5568;">訂單核銷後，供應商再向 KKday 請款</div>
+        </div>
+        <div style="background:#fafbff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">訂單處理完成請款</div>
+          <div style="font-size:13px;color:#4a5568;">供應商或 OP 完成訂單處理後（訂單狀態 ＝ 已處理），供應商再向 KKday 請款</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+</body>
+</html>

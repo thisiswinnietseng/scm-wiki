@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>商品設計邏輯 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 商品設計邏輯</div>
+
+    <div class="page-header">
+      <div class="page-header-icon">🛍️</div>
+      <div class="page-header-body">
+        <h1>商品設計邏輯</h1>
+        <div class="meta-row">
+          <span class="meta-chip">商品設定 · 訂購流程</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <p>商品設定對客人的認知與整體訂購處理流程均有直接影響。了解各設定項目的意義，有助於 CS 與 OP 提供更精準的服務。</p>
+    </div>
+
+    <!-- 售前影響 -->
+    <h2>📣 售前影響</h2>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>產品諮詢</strong>
+            <p>旅客依商品頁面上的詳細行程規劃、住宿服務描述來判斷是否符合需求，CS 需熟悉商品描述以準確回覆旅客問題。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>價格詢問與優惠</strong>
+            <p>價格透明度與折扣促銷資訊影響旅客購買決策，CS 應了解目前促銷設定，避免誤導旅客。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>旅客評價</strong>
+            <p>星級評分、圖片分享等內容影響旅客對商品的第一印象與信任度。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 售後影響 -->
+    <h2>📦 售後影響</h2>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>訂單確認</strong>
+            <p>系統依商品設定寄送電子郵件通知，旅客可透過訂單追蹤頁面查看狀態。設定錯誤可能導致通知遺漏或錯誤。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>訂單修改與退換</strong>
+            <p>修改流程與退換政策由商品設定決定，CS 與 OP 需依照設定執行，不可逾越範圍承諾旅客額外權益。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 訂購處理流程影響 -->
+    <h2>⚙️ 訂購處理流程影響</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 各設定項目直接影響 CS / OP 的日常作業範疇，請務必熟悉對應關係。</span>
+
+    <div class="white-box">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th>設定項目</th>
+            <th>影響說明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>商品設定</td>
+            <td>CS 根據商品主要描述回覆客人問題</td>
+          </tr>
+          <tr>
+            <td>方案設定（票種、數量單位）</td>
+            <td>OP 根據規格設定進行訂購處理</td>
+          </tr>
+          <tr>
+            <td>月曆設定（前置日、作業時間）</td>
+            <td>規範可訂購日期、影響憑證發送時效</td>
+          </tr>
+          <tr>
+            <td>成本／售價設定</td>
+            <td>影響 OP 核對帳款、支付供應商款項</td>
+          </tr>
+          <tr>
+            <td>取消設定</td>
+            <td>影響 OP／CS 執行取消流程</td>
+          </tr>
+          <tr>
+            <td>地點設定</td>
+            <td>CS 根據設定地點回答旅客查詢</td>
+          </tr>
+          <tr>
+            <td>訂購資料設定</td>
+            <td>OP 向供應商訂購時所需提交的資料</td>
+          </tr>
+          <tr>
+            <td>出票設定</td>
+            <td>決定是否需要 OP／CS 介入處理</td>
+          </tr>
+          <tr>
+            <td>供應商資訊</td>
+            <td>確認各套餐對應的供應商</td>
+          </tr>
+          <tr>
+            <td>訂購方式／請款設定</td>
+            <td>影響 OP 訂購流程及請款時間</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>帳務管理 · SCM 知識庫</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.acc-wrap { background:white;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-bottom:6px;overflow:hidden; }
+.acc-header { padding:13px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;user-select:none; }
+.acc-header:hover { background:#fafbff; }
+.acc-icon { width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px; }
+.acc-name { font-size:14px;font-weight:700;color:var(--primary); }
+.acc-count { font-size:11px;color:var(--gray);background:#f0f0f0;padding:1px 7px;border-radius:10px;margin-left:8px; }
+.acc-arr { font-size:15px;color:#aaa;transition:transform 0.25s;margin-left:auto; }
+.acc-arr.open { transform:rotate(180deg); }
+.acc-body { display:none;padding:8px 16px 12px;border-top:1px solid var(--border); }
+.acc-body.open { display:block; }
+.acc-cards { display:grid;grid-template-columns:1fr 1fr;gap:2px; }
+a.sop-card { display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;text-decoration:none;color:inherit;transition:all 0.15s;border:1px solid transparent;margin-bottom:6px; }
+a.sop-card:hover { background:#fafbff;border-color:#f5a623; }
+a.sop-card .sc-icon { font-size:20px;width:32px;text-align:center;flex-shrink:0; }
+a.sop-card .sc-body { flex:1; }
+a.sop-card .sc-body h4 { font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:2px; }
+a.sop-card .sc-body p { font-size:11px;color:#718096; }
+a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;flex-shrink:0; }
+
+.fmap-wrap {
+  background:white; border-radius:var(--radius-lg);
+  border:1px solid var(--border); box-shadow:var(--shadow-sm);
+  margin-bottom:16px; overflow:hidden;
+}
+.fmap-header {
+  padding:18px 24px; display:flex; align-items:center; gap:14px;
+  cursor:pointer; transition:background 0.15s; user-select:none;
+}
+.fmap-header:hover { background:#fafbff; }
+.fmap-icon {
+  width:44px; height:44px; border-radius:var(--radius-sm); flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:22px;
+}
+.fmap-title { flex:1; }
+.fmap-title h3 { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:2px; }
+.fmap-title p { font-size:12px; color:var(--gray); }
+.fmap-arrow { font-size:18px; color:#aaa; transition:transform 0.25s; }
+.fmap-body { display:none; padding:20px 24px 24px; border-top:1px solid var(--border); }
+.fmap-body.open { display:block; }
+.fmap-arrow.open { transform:rotate(180deg); }
+
+.fmap-section-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin-bottom:0; }
+.fmap-node {
+  border-radius:var(--radius-md); padding:14px 16px; cursor:pointer;
+  transition:all 0.15s; border:2px solid transparent; text-align:center;
+}
+.fmap-node:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.fmap-node-blue  { background:#e8f0fe; border-color:#c5d3f5; }
+.fmap-node-green { background:#e8f5e9; border-color:#a5d6a7; }
+.fmap-node-orange{ background:#fff3e0; border-color:#ffcc80; }
+.fmap-node-purple{ background:#f3e5f5; border-color:#ce93d8; }
+.fmap-node.active { border-color:var(--accent); box-shadow:0 0 0 3px rgba(245,166,35,0.15); }
+.fn-icon { font-size:22px; margin-bottom:6px; }
+.fn-label { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:3px; }
+.fn-sub { font-size:11px; color:var(--gray); margin-bottom:8px; }
+.fn-arrow { font-size:12px; color:#aaa; transition:transform 0.2s; }
+.fn-arrow.open { transform:rotate(180deg); color:var(--accent); }
+
+.fmap-detail {
+  display:none; margin-top:10px;
+  background:#fafbff; border-radius:var(--radius-md);
+  border:1px solid var(--border); padding:18px 20px;
+  animation:fadeIn 0.2s ease;
+}
+.fmap-detail.open { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+.fmap-note {
+  margin-top:12px; padding:8px 12px;
+  background:#fff8e1; border-left:3px solid var(--accent);
+  border-radius:0 6px 6px 0; font-size:12px; color:#6d4c41;
+}
+
+.fmap-flow { display:flex; align-items:center; flex-wrap:wrap; gap:4px; }
+.ff-step { padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; }
+.ff-blue   { background:#e8eeff; color:#3c50e0; border:1px solid #c5d3f5; }
+.ff-green  { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+.ff-orange { background:#fff3e0; color:#e65100; border:1px solid #ffcc80; }
+.ff-purple { background:#f3e5f5; color:#6a1b9a; border:1px solid #ce93d8; }
+.ff-arr { color:#ccc; font-size:14px; padding:0 2px; }
+
+.sec-div {
+  font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+  color:var(--gray); padding:18px 2px 8px;
+  display:flex; align-items:center; gap:10px;
+}
+.sec-div::after { content:''; flex:1; height:1px; background:var(--border); }
+</style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+<div class="page-header" style="background:linear-gradient(135deg,#f7971e,#ffd200)">
+  <div class="ph-icon">💰</div>
+  <div>
+    <div class="breadcrumb"><a href="../index.html">首頁</a> / 帳務管理</div>
+    <h1>帳務管理</h1>
+  </div>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-payment')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💳</div>
+      <span class="acc-name">請款方式</span><span class="acc-count">1 篇</span>
+      <span class="acc-arr" id="arr-acc-payment">▾</span>
+    </div>
+    <div class="acc-body" id="acc-payment">
+      <div class="acc-cards">
+        <a class="sop-card" href="payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>請款方式</h4><p>銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange">請款</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-reconcile')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">📋</div>
+      <span class="acc-name">對帳流程</span><span class="acc-count">1 篇</span>
+      <span class="acc-arr" id="arr-acc-reconcile">▾</span>
+    </div>
+    <div class="acc-body" id="acc-reconcile">
+      <div class="acc-cards">
+        <a class="sop-card" href="reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4>對帳流程</h4><p>全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal">對帳</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-deposit')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#3c50e0,#6dd5ed)">🏧</div>
+      <span class="acc-name">預存款管理</span><span class="acc-count">2 篇</span>
+      <span class="acc-arr" id="arr-acc-deposit">▾</span>
+    </div>
+    <div class="acc-body" id="acc-deposit">
+      <div class="acc-cards">
+        <a class="sop-card" href="supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4>預存款管理</h4><p>補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue">預存款</span></a>
+        <a class="sop-card" href="credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>信用卡對帳</h4><p>每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue">信用卡</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap">
+    <div class="acc-header" onclick="toggleAcc('acc-commission')">
+      <div class="acc-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">📄</div>
+      <span class="acc-name">佣金申請</span><span class="acc-count">1 篇</span>
+      <span class="acc-arr" id="arr-acc-commission">▾</span>
+    </div>
+    <div class="acc-body" id="acc-commission">
+      <div class="acc-cards">
+        <a class="sop-card" href="commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4>佣金申請</h4><p>REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red">佣金</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-div">📊 帳款流程圖</div>
+
+  <div class="fmap-wrap">
+    <div class="fmap-header" onclick="toggleMap('map-payment')">
+      <div class="fmap-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💳</div>
+      <div class="fmap-title">
+        <h3>帳款</h3>
+        <p>各供應商請款方式與流程說明</p>
+      </div>
+      <span class="fmap-arrow" id="arrow-map-payment">▾</span>
+    </div>
+    <div class="fmap-body" id="map-payment">
+
+      <div class="fmap-section-row">
+        <div class="fmap-node fmap-node-blue" onclick="toggleSection('pay-cc')">
+          <div class="fn-icon">💳</div>
+          <div class="fn-label">信用卡付款</div>
+          <div class="fn-sub">訂購時直接刷卡</div>
+          <div class="fn-arrow" id="arrow-pay-cc">▾</div>
+        </div>
+        <div class="fmap-node fmap-node-green" onclick="toggleSection('pay-deposit')">
+          <div class="fn-icon">🏧</div>
+          <div class="fn-label">預存款扣除</div>
+          <div class="fn-sub">預先存入再扣款</div>
+          <div class="fn-arrow" id="arrow-pay-deposit">▾</div>
+        </div>
+        <div class="fmap-node fmap-node-orange" onclick="toggleSection('pay-monthly')">
+          <div class="fn-icon">📅</div>
+          <div class="fn-label">月結帳</div>
+          <div class="fn-sub">每月統一結算</div>
+          <div class="fn-arrow" id="arrow-pay-monthly">▾</div>
+        </div>
+        <div class="fmap-node fmap-node-purple" onclick="toggleSection('pay-invoice')">
+          <div class="fn-icon">📄</div>
+          <div class="fn-label">Invoice</div>
+          <div class="fn-sub">供應商開立後付款</div>
+          <div class="fn-arrow" id="arrow-pay-invoice">▾</div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="pay-cc">
+        <div class="fmap-detail-inner">
+          <div class="fmap-flow">
+            <div class="ff-step ff-blue">OP 於供應商平台訂購</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-blue">選擇信用卡付款</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-blue">系統即時扣款</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-blue">訂單確認完成</div>
+          </div>
+          <div class="fmap-note">⚠️ 注意每張信用卡的額度限制，刷卡前確認餘額</div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="pay-deposit">
+        <div class="fmap-detail-inner">
+          <div class="fmap-flow">
+            <div class="ff-step ff-green">預先存款至供應商帳戶</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-green">OP 訂購時直接扣除</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-green">餘額不足需補款</div>
+          </div>
+          <div class="fmap-note">⚠️ 預存金帳戶若不再使用，應及時關閉，避免掛錯帳戶</div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="pay-monthly">
+        <div class="fmap-detail-inner">
+          <div class="fmap-flow">
+            <div class="ff-step ff-orange">每筆訂單正常訂購</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">當月訂單累積</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">月底前提交請款</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-orange">FA 處理付款</div>
+          </div>
+          <div class="fmap-note">適合訂單量大、長期合作的供應商</div>
+        </div>
+      </div>
+
+      <div class="fmap-detail" id="pay-invoice">
+        <div class="fmap-detail-inner">
+          <div class="fmap-flow">
+            <div class="ff-step ff-purple">供應商服務完成</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-purple">供應商開立 Invoice</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-purple">OP 核對後送 BPM 審核</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-purple">FA 審核後付款</div>
+            <div class="ff-arr">→</div>
+            <div class="ff-step ff-purple">提供水單給供應商</div>
+          </div>
+          <div class="fmap-note">⚠️ 需走 BPM 流程審核，時間較長，請提前安排</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+function toggleAcc(id) {
+  const body = document.getElementById(id);
+  const arr = document.getElementById('arr-' + id);
+  body.classList.toggle('open');
+  if (arr) arr.classList.toggle('open');
+}
+
+function toggleMap(id) {
+  const body = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function toggleSection(id) {
+  const detail = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = detail.classList.contains('open');
+
+  const parent = detail.parentElement;
+  parent.querySelectorAll('.fmap-detail').forEach(d => {
+    if (d !== detail) {
+      d.classList.remove('open');
+      const a = document.getElementById('arrow-' + d.id);
+      if (a) a.classList.remove('open');
+    }
+  });
+  parent.querySelectorAll('.fmap-node').forEach(n => n.classList.remove('active'));
+
+  detail.classList.toggle('open', !isOpen);
+  if (arrow) arrow.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訊息管理 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+.tool-card { border-radius: 12px; padding: 20px; border: 1px solid var(--border); background: white; }
+.tool-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.tool-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.tool-name { font-size: 15px; font-weight: 700; color: var(--primary); }
+.tool-sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
+.tool-body { font-size: 13px; color: #4a5568; line-height: 1.7; }
+.tool-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.tool-tag { font-size: 11px; padding: 2px 9px; border-radius: 20px; background: #f0f4ff; color: #3c50e0; border: 1px solid #c5d3f5; }
+.section-title { font-size: 15px; font-weight: 700; color: var(--primary); margin: 28px 0 14px; display: flex; align-items: center; gap: 8px; }
+.flow-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; background: #fafbff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; }
+.flow-tag { padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.flow-arr { color: #ccc; font-size: 16px; }
+.rule-list { display: flex; flex-direction: column; gap: 10px; }
+.rule-item { display: flex; gap: 14px; align-items: flex-start; background: #fafbff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.rule-num { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; background: linear-gradient(135deg,#667eea,#764ba2); }
+.rule-content h4 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.rule-content p { font-size: 12px; color: #4a5568; line-height: 1.7; }
+.branch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.branch-card { border-radius: 10px; padding: 16px; border: 1px solid var(--border); background: white; }
+.branch-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.branch-card ul { margin: 0; padding-left: 16px; font-size: 12px; color: #4a5568; line-height: 1.9; }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link active" href="#">訊息管理</a>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+  <div class="breadcrumb">首頁 / 訊息管理</div>
+
+  <div class="page-header">
+    <div class="page-header-icon" style="background:linear-gradient(135deg,#636e72,#2d3436)">💬</div>
+    <div class="page-header-body">
+      <h1>訊息管理</h1>
+      <div class="subtitle">四種溝通工具 · 供應商訊息處理流程</div>
+      <div class="meta-row">
+        <span class="meta-chip badge-blue">訊息</span>
+        <span class="meta-chip">Be2 · 工單 · Slack · 供應商群組</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="white-box">
+
+    <div class="section-title">🛠️ 四種訊息系統</div>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">🖥️</div>
+          <div>
+            <div class="tool-name">Be2</div>
+            <div class="tool-sub">系統訊息 & 外部門聯繫</div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <strong>System 訊息</strong>（自動觸發）
+          <ul style="padding-left:16px;margin:6px 0 10px;line-height:1.9;">
+            <li>即訂即出失敗（API / OCBT / PSI）</li>
+            <li>系統異常通知</li>
+            <li>可疑訂單警示</li>
+          </ul>
+          <strong>外部門訊息</strong>：風控小組或其他部門透過 Be2 聯繫 OP
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">🎫</div>
+          <div>
+            <div class="tool-name">工單系統</div>
+            <div class="tool-sub">CS ↔ OP 溝通橋樑</div>
+          </div>
+        </div>
+        <div class="tool-body">
+          主要用於 <strong>CS（客服）</strong> 與 <strong>OP（運營）</strong> 之間的工作溝通與任務轉派。
+          <br><br>
+          詳細使用方式請見先前的課程教學。
+        </div>
+        <div class="tool-tags">
+          <span class="tool-tag">CS → OP</span>
+          <span class="tool-tag">OP → CS</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">💼</div>
+          <div>
+            <div class="tool-name">Slack</div>
+            <div class="tool-sub">公司主要內部通訊工具</div>
+          </div>
+        </div>
+        <div class="tool-body">
+          所有重要通知、活動安排、重大公告皆透過 Slack 群組發布。
+          <ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;">
+            <li>各員工可在群組內提問並尋找負責人</li>
+            <li>公司活動 / 公告通知</li>
+            <li>OP 上班期間需設為「<strong>上線</strong>」狀態</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)">📱</div>
+          <div>
+            <div class="tool-name">供應商群組</div>
+            <div class="tool-sub">外部供應商聯繫管道</div>
+          </div>
+        </div>
+        <div class="tool-body">
+          依供應商使用習慣選擇通訊工具：
+          <ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;">
+            <li>LINE</li>
+            <li>WhatsApp</li>
+            <li>微信（WeChat）</li>
+            <li>Email（部分商家）</li>
+          </ul>
+        </div>
+        <div class="tool-tags">
+          <span class="tool-tag">各線別群組信箱</span>
+        </div>
+      </div>
+    </div>
+
+    <hr style="margin:4px 0 24px;border-color:var(--border);" />
+
+    <div class="section-title">⚙️ Slack 使用規範</div>
+
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-num">1</div>
+        <div class="rule-content">
+          <h4>提問與溝通</h4>
+          <p>在對應的群組內提問並尋找負責人解決問題。根據不同部門和需求選擇正確群組，確保問題能快速解決。</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">2</div>
+        <div class="rule-content">
+          <h4>活動與公告通知</h4>
+          <p>公司有任何活動或重大公告時，會在對應群組中通知。請定期查看 Slack 群組，確保不會錯過重要信息。</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">3</div>
+        <div class="rule-content">
+          <h4>上線狀態設定</h4>
+          <p>OP 員工在上班時，需將自己設置為「<strong>上線</strong>」狀態，以便其他同事可以及時聯繫，高效處理工作事宜。</p>
+        </div>
+      </div>
+    </div>
+
+    <hr style="margin:24px 0;border-color:var(--border);" />
+
+    <div class="section-title">🔄 供應商訊息處理流程</div>
+
+    <div class="flow-bar">
+      <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">供應商反映問題</span>
+      <span class="flow-arr">→</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 受理</span>
+      <span class="flow-arr">→</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">判斷問題類別</span>
+      <span class="flow-arr">→</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">轉交對應單位</span>
+    </div>
+
+    <div style="font-size:13px;color:#4a5568;margin-bottom:12px;">
+      商家將有問題的訂單提供至群組內或各線別信箱，OP 收到後根據問題性質轉交相應單位：
+    </div>
+
+    <div class="branch-grid">
+      <div class="branch-card" style="border-color:#a5d6a7;background:#f0fdf4;">
+        <h4 style="color:#15803d;">📨 需轉達旅客的資訊</h4>
+        <ul>
+          <li>OP 透過<strong>工單系統</strong>轉發給 CS</li>
+          <li>由客服部門與旅客溝通並處理</li>
+        </ul>
+      </div>
+      <div class="branch-card" style="border-color:#c5d3f5;background:#f0f4ff;">
+        <h4 style="color:#3c50e0;">⚙️ 系統設定問題</h4>
+        <ul>
+          <li>在供應商群組內 <strong>@BD</strong> 或 <strong>@AM</strong></li>
+          <li>或於 <strong>Slack 群組</strong>聯繫 BD / AM 支援</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+</div>
+</body>
+</html>

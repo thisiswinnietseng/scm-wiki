@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>自動出票 — 一般即訂即出 & PSI — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 自動出票 — 一般即訂即出 & PSI</div>
+
+    <div class="page-header">
+      <div class="page-header-icon">⚡</div>
+      <div class="page-header-body">
+        <h1>自動出票 — 一般即訂即出 & PSI</h1>
+        <div class="meta-row">
+          <span class="meta-chip">即訂即出 · PSI 出票</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 一般即訂即出 -->
+    <h2>🎫 一般即訂即出</h2>
+    <div class="white-box">
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>所有不是利用 API／PSI 出票的商品，訂單成立後系統自動產出 KKday 憑證並即時發送給旅客。通常不需人工介入。</span>
+    </div>
+
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常訂單：系統自動產出憑證並發送，無需 OP 作業。</span>
+
+    <!-- PSI Section -->
+    <h2 style="margin-top:2rem;">🗄️ PSI 即訂即出</h2>
+    <div class="white-box">
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>BD／AM 與供應商事先切票或寄賣，將庫存入庫至 PSI 系統，旅客下訂後系統透過 PSI 自動出票。</span>
+    </div>
+
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常訂單：PSI 系統自動配票出貨，無需 OP 作業。</span>
+
+    <h3 style="margin-top:1.5rem;">⚠️ 異常訂單：PSI 出貨失敗</h3>
+    <div class="white-box">
+      <div class="cards-grid-2" style="margin-bottom:1rem;">
+        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;">❌ <strong>錯誤訊息 A</strong>
+          <code style="display:block; margin-top:0.5rem; font-size:0.85em; background:rgba(0,0,0,0.05); padding:0.4rem 0.6rem; border-radius:4px;">
+            PSI出貨失敗(200006,系統配票貨品不足)
+          </code>
+          <p style="font-size:0.85rem; margin:0.5rem 0 0;">庫存不足，需請 BD／AM 補票。</p></span>
+        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;">❌ <strong>錯誤訊息 B</strong>
+          <code style="display:block; margin-top:0.5rem; font-size:0.85em; background:rgba(0,0,0,0.05); padding:0.4rem 0.6rem; border-radius:4px;">
+            PSI出貨失敗(9996,null)
+          </code>
+          <p style="font-size:0.85rem; margin:0.5rem 0 0;">系統異常，需確認 PSI 狀態。</p></span>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Slack 聯繫負責 BD／AM</strong>
+            <p>透過 Slack 通知對應 BD 或 AM，附上訂單編號與錯誤訊息截圖。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>BD／AM 依據錯誤訊息確認失敗原因</strong>
+            <p>BD／AM 查看 PSI 系統及供應商庫存狀況，確認失敗根因。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>BD／AM 回覆後續作業方法</strong>
+            <p>依確認結果，BD／AM 回覆 OP 應補票、重新出票或取消等作業指示。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>若需重新出票</strong>
+            <p>至<strong>訂單領貨頁面</strong>，找到對應訂單後點擊「<strong>領貨</strong>」按鈕，手動觸發出票作業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+</body>
+</html>

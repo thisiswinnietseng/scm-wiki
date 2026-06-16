@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訂單進單後處理流程 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 訂單進單後處理流程</div>
+
+    <div class="page-header">
+      <div class="page-header-icon">🔄</div>
+      <div class="page-header-body">
+        <h1>訂單進單後處理流程</h1>
+        <div class="meta-row">
+          <span class="meta-chip">進單流程 · 例外處理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <p>訂單進單後，依照處理方式分為「<strong>供應商處理訂單</strong>」與「<strong>KKday 處理訂單</strong>」兩大類。正常情況下盡量減少人工介入，以下說明各類型的標準流程與例外情境。</p>
+    </div>
+
+    <!-- 供應商處理訂單 -->
+    <h2>🏪 供應商處理訂單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常情況下，供應商系統自動處理訂單，<strong>不需人工介入</strong>。</span>
+
+    <h3 style="margin-top:1.5rem;">例外情境一：供應商通知需更改系統使用日期 或 旅客資料</h3>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>供應商主動通知</strong>
+            <p>供應商通知 OP 需調整系統上的資料。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Be2 領單</strong>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:10px;">
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;">Step 1 — OP 需請客服先幫忙領單</div>
+                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 因 OP 系統權限關係，需請客服端先幫忙領單</span>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;">Step 2 — 客服協助點選訂單「客服領取鍵」&amp;「旅客資料已齊全」</div>
+                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 因系統權限關係，客服需領單後 OP 才可以更改系統</span>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;">Step 3 — OP 點選「OP 領取鍵」</div>
+                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 系統設定關係，需點選領取鍵後才可改資料</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>修改訂單資料</strong>
+            <p>依供應商通知內容更改。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>通知供應商</strong>
+            <p>通知供應商系統已更改完成以及協助更新憑證並發送給客人。</p>
+          </div>
+        </div>
+      </div>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 修改系統需具備對應權限，操作前務必確認。</span>
+    </div>
+
+    <h3 style="margin-top:1.5rem;">例外情境二：會員帳號狀態為可疑</h3>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>待風控確認</strong>
+            <p>發現訂單帳號狀態為「可疑」，暫停出票，等待 Risk Team 審查結果。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>風控通知 OP 可出票</strong>
+            <p>風控審查完成後，會在訂單備註留下確認訊息，通知 OP 可繼續作業。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>OP 通知供應商</strong>
+            <p>OP 確認後，通知供應商訂單狀態正常，可繼續處理。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KKday 處理訂單 -->
+    <h2>🏢 KKday 處理訂單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 以下四種情境涵蓋 KKday 自行處理訂單時的常見狀況，請依情境選擇對應作業方式。</span>
+
+    <div class="situation-grid" style="margin-top:1rem;">
+      <div class="situation-card situation-ok">
+        <div style="font-size:1.5rem; margin-bottom:0.5rem;">✅</div>
+        <strong>情境一</strong>
+        <p>旅客資料完整<br>供應商可確認接單</p>
+        <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
+        <ol style="padding-left:1.2rem; margin:0; font-size:0.9rem;">
+          <li>向供應商下訂</li>
+          <li>供應商確認</li>
+          <li>發送憑證給旅客</li>
+        </ol>
+      </div>
+
+      <div class="situation-card situation-fail">
+        <div style="font-size:1.5rem; margin-bottom:0.5rem;">❌</div>
+        <strong>情境二</strong>
+        <p>旅客資料完整<br>供應商<u>無法</u>接單</p>
+        <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
+        <p style="font-size:0.9rem; margin:0;">請 CS 聯繫旅客確認改期或取消，依旅客意願處理後續。</p>
+      </div>
+
+      <div class="situation-card situation-fail">
+        <div style="font-size:1.5rem; margin-bottom:0.5rem;">⚠️</div>
+        <strong>情境三</strong>
+        <p>旅客資料<u>不完整</u><br>旅客有回覆</p>
+        <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
+        <ol style="padding-left:1.2rem; margin:0; font-size:0.9rem;">
+          <li>通知 CRM 聯繫旅客確認</li>
+          <li>旅客補充資料</li>
+          <li>確認後重新訂出</li>
+        </ol>
+      </div>
+
+      <div class="situation-card situation-fail">
+        <div style="font-size:1.5rem; margin-bottom:0.5rem;">🚫</div>
+        <strong>情境四</strong>
+        <p>旅客資料<u>不完整</u><br>旅客<u>未回覆</u></p>
+        <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
+        <p style="font-size:0.9rem; margin:0;">多次通知仍未獲回覆，依政策取消訂單並通知旅客。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>憑證類型說明 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .section-title {
+      font-size: 15px; font-weight: 700; color: var(--primary);
+      margin: 24px 0 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .psi-flow {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+      background: #fafbff; border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px; margin-bottom: 14px;
+    }
+    .psi-tag {
+      padding: 6px 14px; border-radius: 6px;
+      font-size: 12px; font-weight: 600; white-space: nowrap;
+    }
+    .psi-arr { color: #ccc; font-size: 16px; }
+
+    .voucher-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+    @media (max-width: 700px) { .voucher-grid { grid-template-columns: 1fr; } }
+    .voucher-card {
+      border-radius: 10px; padding: 18px; border: 1px solid var(--border);
+      background: white;
+    }
+    .voucher-card .vc-icon { font-size: 28px; margin-bottom: 8px; }
+    .voucher-card h3 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .voucher-card p { font-size: 12px; color: #4a5568; line-height: 1.7; margin-bottom: 10px; }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 憑證類型說明</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#7b2ff7,#f107a3)">🎫</div>
+      <div class="page-header-body">
+        <h1>憑證類型說明</h1>
+        <div class="meta-row">
+          <span class="meta-chip badge-blue">出票</span>
+          <span class="meta-chip badge-green">庫存</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+
+      <!-- 憑證類型 -->
+      <div class="section-title">📄 憑證類型</div>
+
+      <span style="display:inline-block;margin-bottom:14px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 系統設定 KKday Voucher，也可以上傳 Supplier Voucher；但系統設定 Supplier 版型，就無法產出 KKday Voucher。</span>
+
+      <div class="voucher-grid">
+        <div class="voucher-card">
+          <div class="vc-icon">🏷️</div>
+          <h3>KKday Voucher</h3>
+          <p>由 KKday 系統自動產出的電子憑證，採用 KKday 標準版型，包含訂單資訊、QR Code 或條碼等，旅客可直接使用。</p>
+          <span class="card-badge badge-blue">系統自動產出</span>
+        </div>
+        <div class="voucher-card">
+          <div class="vc-icon">🏢</div>
+          <h3>Supplier 版型（官方）</h3>
+          <p>供應商提供的官方憑證格式，通常由供應商系統直接產出或由 OP 申請後取得，具有官方認可的格式與效力。</p>
+          <span class="card-badge badge-green">供應商官方格式</span>
+        </div>
+        <div class="voucher-card">
+          <div class="vc-icon">📝</div>
+          <h3>Supplier 版型（非官方）</h3>
+          <p>OP 自行整理的憑證格式，依照供應商要求的資訊自行製作，通常用於供應商無法提供官方憑證的情況。</p>
+          <span class="card-badge badge-orange">OP 自行製作</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  </div>
+</body>
+</html>

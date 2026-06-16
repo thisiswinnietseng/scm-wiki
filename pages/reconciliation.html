@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>對帳流程 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .type-card {
+      background:white; border-radius:var(--radius-md);
+      border:1px solid var(--border); padding:20px;
+      box-shadow:var(--shadow-sm); margin-bottom:14px;
+    }
+    .type-card-header {
+      display:flex; align-items:center; gap:10px; margin-bottom:10px;
+    }
+    .type-num {
+      width:28px; height:28px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:13px; font-weight:700; color:white;
+    }
+    .type-card-header h3 { font-size:15px; font-weight:700; color:var(--primary); margin:0; }
+    .info-row {
+      display:flex; gap:6px; flex-wrap:wrap; margin-top:10px;
+    }
+    .info-tag {
+      padding:3px 10px; border-radius:20px; font-size:12px; font-weight:600;
+    }
+    .email-box {
+      background:#fafbff; border:1px solid var(--border); border-radius:8px;
+      padding:16px 20px; font-size:13px; color:#4a5568; line-height:1.8;
+    }
+    .email-box .field-row { display:flex; gap:8px; margin-bottom:4px; }
+    .email-box .field-label { font-weight:700; color:var(--primary); min-width:80px; flex-shrink:0; }
+    .bpm-num {
+      display:inline-block; background:#eef0fd; border:1px solid #c5d3f5;
+      color:#3c50e0; border-radius:6px; padding:4px 12px; font-size:13px; font-weight:700; margin-top:8px;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current">對帳流程</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">📋</div>
+      <div class="page-header-body">
+        <h1>對帳流程</h1>
+        <div class="subtitle">全自動、自動、人工對帳種類 + BPM 請款流程</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-teal">對帳</span>
+          <span class="meta-chip">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">🔄 對帳種類（三種）</div>
+
+      <div class="type-card">
+        <div class="type-card-header">
+          <div class="type-num" style="background:linear-gradient(135deg,#11998e,#38ef7d);">1</div>
+          <h3>全自動對帳</h3>
+        </div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;">系統於報表產出後第三天自動產出 Invoice，供應商無需進系統按確認。Auto-invoice BPM 自動送審。</p>
+        <div class="info-row">
+          <span class="info-tag" style="background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;">系統全自動</span>
+          <span class="info-tag" style="background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;">供應商免操作</span>
+        </div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-card-header">
+          <div class="type-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);">2</div>
+          <h3>自動對帳</h3>
+        </div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;">供應商透過 SCM 或 Rezio 系統核對，仍須寄送 Invoice 或紙本發票。</p>
+        <div class="info-row">
+          <span class="info-tag" style="background:#e8f0fe;color:#3c50e0;border:1px solid #c5d3f5;">SCM / Rezio</span>
+          <span class="info-tag" style="background:#e8f0fe;color:#3c50e0;border:1px solid #c5d3f5;">需寄送 Invoice</span>
+        </div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-card-header">
+          <div class="type-num" style="background:linear-gradient(135deg,#f7971e,#ffd200);">3</div>
+          <h3>人工對帳</h3>
+        </div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;">供應商或 KKday 提供對帳報表，進行核對。</p>
+        <div class="info-row">
+          <span class="info-tag" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">人工核對</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📅 對帳時程</div>
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:200px;background:#e0f2f1;border:1px solid #80cbc4;border-radius:8px;padding:12px 16px;">
+            <div style="font-size:12px;font-weight:700;color:#00695c;margin-bottom:4px;">報表產出日</div>
+            <div style="font-size:20px;font-weight:700;color:var(--primary);">每月 3 日 &amp; 18 日</div>
+          </div>
+          <div style="flex:1;min-width:200px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;">
+            <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;">應請款表更新</div>
+            <div style="font-size:14px;font-weight:700;color:var(--primary);">約每月 4 日 &amp; 19 日</div>
+            <div style="font-size:11px;color:#718096;margin-top:4px;">更新會在 go-scm 通知</div>
+          </div>
+          <div style="flex:1;min-width:200px;background:#fafbff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;">
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;">全自動 Invoice 產出</div>
+            <div style="font-size:14px;font-weight:700;color:var(--primary);">報表後第三天自動產出</div>
+          </div>
+          <div style="flex:1;min-width:200px;background:#fafbff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;">
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;">自動 Invoice 產出</div>
+            <div style="font-size:14px;font-weight:700;color:var(--primary);">6 日 &amp; 21 日</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">🔁 自動對帳流程</div>
+      <div class="flow-bar">
+        <span class="flow-tag" style="background:linear-gradient(135deg,#11998e,#38ef7d);color:white;">系統自動產出 Invoice</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">系統自動跑 BPM</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">供應商點擊確認 + 寄 Invoice</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">OP 收到 Invoice 後出款日作業</span>
+      </div>
+      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 如上月供應商未確認，次月系統將無法自動生成對帳單</span>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">🏢 各主體收單時間 &amp; 大額付款定義</div>
+      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">各主體收單時間因應不同國家及銀行規定而有所不同。大額付款定義根據不同主體規模及營運模式而有差異。</p>
+      <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 時區皆為台灣時間 GMT+8</span>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📝 BPM 審核流程</div>
+      <div class="flow-bar" style="margin-bottom:14px;">
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">申請人送出</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">主管審核</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">會計審核</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">財務審核</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 會計審核完畢後財務才能在 BPM 看到此單</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 向財務詢問前請確認會計審核是否完成</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 若需向財務詢問請提供 BPM 單號，財務無法查詢請款單號</span>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">🚨 緊急付款申請 Email 格式</div>
+      <div class="email-box">
+        <div class="field-row">
+          <span class="field-label">To:</span>
+          <span>Cashier@kkday.com / acc-all@kkday.com / op-head@kkday.com / op@kkday.com</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">CC:</span>
+          <span>fa-all@kkday.com</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Subject:</span>
+          <span>【Urgent Payment Request】/ 【申請緊急出款】+ BPM 單號 ＋ 供應商名</span>
+        </div>
+        <div style="margin-top:10px;border-top:1px solid var(--border);padding-top:10px;">
+          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">信件內容需填寫：</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">申請人</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">我方公司別</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">BPM 單號</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">供應商</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">幣別＋金額</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">Expected Urgent payment date</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">Reason</span>
+          </div>
+        </div>
+      </div>
+      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 若信件內容與實際 BPM 內容不符，可能會多一個工作日</span>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+</body>
+</html>

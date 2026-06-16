@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前台商品架構長相 — SCM 知識庫</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.product-type { background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+.product-type h2 { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+.product-type .example { font-size: 12px; color: var(--gray); margin-bottom: 20px; padding: 6px 12px; background: #f7f8fc; border-radius: 6px; display: inline-block; }
+.feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.feature-item { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; }
+.feature-item h4 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.feature-item ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.feature-item ul li { font-size: 12px; color: #555; padding-left: 14px; position: relative; }
+.feature-item ul li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+</style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+<div class="page-wrapper">
+  <div class="breadcrumb">
+    <a href="../index.html">首頁</a><span class="sep">›</span>
+    <span>商品認識</span><span class="sep">›</span>
+    <span class="current">前台商品架構長相</span>
+  </div>
+  <div class="page-header">
+    <div class="page-header-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🏪</div>
+    <div class="page-header-body">
+      <h1>前台商品架構長相</h1>
+      <p class="subtitle">介紹所有 CS/OP 會接觸到的 KKday 商品頁面結構，依類型分為三大類</p>
+      <div class="meta-row">
+        <span class="meta-chip badge-blue">新人必讀</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 一般商品 -->
+  <div class="product-type">
+    <h2>1️⃣ 一般商品（票券類、行程類）</h2>
+    <span class="example">EX：香港迪士尼樂園門票、一日遊行程</span>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;">主要針對整體的純票券、半日/一日遊等商品，頁面包含行程安排、價格、日期等內容。</p>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h4>🎯 選擇方案（Select Package）</h4>
+        <ul>
+          <li>展示不同行程、票種、人數、天數選項</li>
+          <li>日期及數量選擇框</li>
+          <li>每個方案清楚標明價格，促銷時顯示折扣標籤</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>📝 商品說明（Product Description）</h4>
+        <ul>
+          <li>使用說明：開放時間、使用方式</li>
+          <li>方案選項：各方案詳細介紹</li>
+          <li>重要資訊：如餐券適用餐廳列表</li>
+          <li>兌換方式：手機顯示或列印電子憑證（QR code 須清晰完整）</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>🗺️ 行程介紹（Itinerary Details）</h4>
+        <ul>
+          <li>按天展示行程：每天的活動安排</li>
+          <li>時間點與地點標註</li>
+          <li>每個景點的活動描述</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>📋 購買須知（Purchase Information）</h4>
+        <ul>
+          <li>注意事項：特殊要求、參與條件</li>
+          <li>立即確認商品：憑證於寄送後 30 分鐘生效</li>
+          <li>其他提示：附官方細則避免爭議</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>📖 如何使用（How to Use）</h4>
+        <ul>
+          <li>憑證使用方式說明</li>
+          <li>使用期限與有效期提示</li>
+          <li>過期處理說明</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>📍 體驗地點（Experience Locations）</h4>
+        <ul>
+          <li>集合地點、景點名稱、地址</li>
+          <li>地圖展示</li>
+          <li>開放時間</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>⭐ 旅客評價（Traveler Reviews）</h4>
+        <ul>
+          <li>星級評分</li>
+          <li>用戶詳細評語</li>
+          <li>旅遊照片分享</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>🙋 取得協助（Get Help）</h4>
+        <ul>
+          <li>KKday 幫助中心（熱門問題分類）</li>
+          <li>真人客服協助</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 點對點商品 -->
+  <div class="product-type">
+    <h2>2️⃣ 點對點商品（鐵路、巴士、租車、郵輪、機票）</h2>
+    <span class="example">EX：台灣高鐵票、機場接送、JRPASS</span>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;">主要針對交通工具預訂，頁面簡潔強調搜索、篩選、票價顯示，讓用戶快速找到想要的交通服務。</p>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h4>🔍 出發地與目的地選擇</h4>
+        <ul>
+          <li>搜尋框可自動完成或推薦熱門地點</li>
+          <li>靈活的點對點搜索</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>📅 日期與時間選擇</h4>
+        <ul>
+          <li>選擇出發日期與時間</li>
+          <li>查看可用票務</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>🎫 票務詳細資訊</h4>
+        <ul>
+          <li>票種、航班號或車次</li>
+          <li>出發時間、抵達時間</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>💳 預訂與支付</h4>
+        <ul>
+          <li>選擇票種及人數後進入支付流程</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 飯店 -->
+  <div class="product-type">
+    <h2>3️⃣ 飯店</h2>
+    <span class="example">EX：台北君悅酒店、礁溪老爺</span>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;">住宿相關商品，通常包括飯店選擇、房型選擇、日期選擇等。</p>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h4>🏨 設施與服務</h4>
+        <ul><li>飯店設施服務詳細介紹</li></ul>
+      </div>
+      <div class="feature-item">
+        <h4>📜 飯店規定</h4>
+        <ul>
+          <li>入住規定：最早入住／最晚退房時間</li>
+          <li>兒童與加床、加餐收費標準</li>
+          <li>其他規定（禁菸等）</li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <h4>📖 飯店介紹</h4>
+        <ul><li>特色介紹以吸引客人購買</li></ul>
+      </div>
+      <div class="feature-item">
+        <h4>❌ 取消政策 & 協助</h4>
+        <ul>
+          <li>商品的取消政策說明</li>
+          <li>KKday 幫助中心 / 真人客服</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+</body>
+</html>

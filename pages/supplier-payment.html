@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>預存款管理 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .recon-row {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:16px;
+    }
+    .recon-item {
+      background:white; border:1px solid var(--border); border-radius:8px;
+      padding:14px 16px;
+    }
+    .recon-item h4 { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:4px; }
+    .recon-item p { font-size:12px; color:#4a5568; line-height:1.6; }
+    .formula-box {
+      background:#1a1a2e; color:white; border-radius:10px;
+      padding:20px 24px; font-family:monospace; font-size:14px; line-height:2;
+      margin-bottom:16px;
+    }
+    .formula-box .formula-title { font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:8px; font-family:'Noto Sans TC',sans-serif; }
+    .formula-box .highlight { color:#f5a623; font-weight:700; }
+    .formula-var { display:flex; flex-direction:column; gap:6px; }
+    .formula-var-item {
+      display:flex; gap:10px; align-items:flex-start;
+      font-size:13px; color:#4a5568;
+    }
+    .formula-var-key {
+      background:#eef0fd; color:#3c50e0; border:1px solid #c5d3f5;
+      border-radius:4px; padding:1px 8px; font-weight:700; flex-shrink:0;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current">預存款管理</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#3c50e0,#6dd5ed)">🏧</div>
+      <div class="page-header-body">
+        <h1>預存款管理</h1>
+        <div class="subtitle">補款申請、入款啟用、正負向操作、節日預估</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-blue">預存款</span>
+          <span class="meta-chip">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">💡 預存款介紹</div>
+      <div class="flow-bar" style="margin-bottom:14px;">
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">供應商先補款至 KKday</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">KKday 販售商品（從預存款扣除）</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">完成付款</span>
+      </div>
+      <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ Be2 預存金餘額不可為負向</span>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📊 對帳方式</div>
+      <div class="recon-row">
+        <div class="recon-item">
+          <h4>週結型</h4>
+          <p>核對餘額至供應商提供的報表區間</p>
+        </div>
+        <div class="recon-item">
+          <h4>半月結型</h4>
+          <p>有些供應商餘額可負值</p>
+        </div>
+        <div class="recon-item">
+          <h4>月結型</h4>
+          <p>有些供應商餘額可負值</p>
+        </div>
+        <div class="recon-item">
+          <h4>不定期型</h4>
+          <p>快低於水位，請供應商提供報表</p>
+        </div>
+      </div>
+      <div class="recon-item" style="background:#fafbff;">
+        <h4>平台核對</h4>
+        <p>核對餘額至當下</p>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">🧾 Invoice 規範</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 金額與補款金額一致（可先付款後補 Invoice）</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 境外匯款需轉匯，費時較長</span>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">📋 BPM 補款申請步驟</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>核對帳款、拉完請款單</h4>
+            <p>確認 be2 餘額（扣除已請款訂單）= 供應商端餘額</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>點「新增預存金」</h4>
+            <p>於 Be2 系統點擊新增預存金按鈕</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>填寫類別與摘要</h4>
+            <p>類別：<strong>預存金-補款</strong>；BPM 交易摘要：<strong>供應商編號 + 名稱 + 預存金補款</strong></p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>填寫預定付款日期</h4>
+            <p>週結選最近週四</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>填寫補款資訊</h4>
+            <p>填寫首次／既有預存金補款；填寫單月銷量及此次預存金額</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <h4>上傳附件</h4>
+            <p>上傳：供應商餘額證明、be2 系統餘額截圖、invoice / 明細</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <h4>送審</h4>
+            <p>確認所有資料後送出 BPM 審核</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">✅ 入款啟用步驟</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>確認供應商收到款項</h4>
+            <p>確認供應商收到款項後，至 Be2 執行啟用</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>選擇要啟用的單號</h4>
+            <p>在 Be2 系統中選擇對應的補款單號</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>點啟用</h4>
+            <p>點擊啟用後，be2 餘額即更新</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">↔️ 正負向特殊情境</div>
+      <p style="font-size:13px;color:#4a5568;margin-bottom:12px;">適用情境：退佣返還、預存帳戶結清、請款方式設定有誤</p>
+      <span style="display:inline-block;margin-bottom:16px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 兩家預存之間的正負向轉換，必須要有一正一負的對應 BPM 單號</span>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:10px;padding:18px;">
+          <div style="font-size:14px;font-weight:700;color:#2e7d32;margin-bottom:12px;">正向操作</div>
+          <div class="step-list" style="gap:0;">
+            <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #c8e6c9;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">點新增預存金</p>
+            </div>
+            <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #c8e6c9;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">類別選「補款」</p>
+            </div>
+            <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #c8e6c9;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">BPM 摘要填「正向不付款」</p>
+            </div>
+            <div style="display:flex;gap:10px;padding:8px 0;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">4</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">本次扣抵填正向金額 → 確認付款金額變 0</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fce4ec;border:1px solid #ef9a9a;border-radius:10px;padding:18px;">
+          <div style="font-size:14px;font-weight:700;color:#c62828;margin-bottom:12px;">負向操作</div>
+          <div class="step-list" style="gap:0;">
+            <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f48fb1;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#c62828;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">點新增負向</p>
+            </div>
+            <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f48fb1;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#c62828;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">類別選「預存金-轉出」</p>
+            </div>
+            <div style="display:flex;gap:10px;padding:8px 0;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#c62828;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</div>
+              <p style="font-size:12px;color:#2d3748;margin:0;">填扣除金額 → 送審</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <div class="section-title">🎉 節日預估公式</div>
+      <div class="formula-box">
+        <div class="formula-title">預估補款金額</div>
+        <span class="highlight">預估補款金額 = (N × Q) - Y</span>
+      </div>
+      <div class="formula-var">
+        <div class="formula-var-item">
+          <span class="formula-var-key">N</span>
+          <span>預估日 ～ 下次補款日總天數 + 2 天</span>
+        </div>
+        <div class="formula-var-item">
+          <span class="formula-var-key">Q</span>
+          <span>過去七天平均單日使用量</span>
+        </div>
+        <div class="formula-var-item">
+          <span class="formula-var-key">Y</span>
+          <span>供應商餘額</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px;">
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 如需調整，請 BD 提出說明</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 提出金額與 OP 預估差異較大，建議 BD 發信，市場主管同意</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+</body>
+</html>

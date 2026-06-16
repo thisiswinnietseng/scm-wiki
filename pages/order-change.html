@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訂單更改 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .change-section { margin-bottom:32px; }
+    .change-section h2 { font-size:16px;font-weight:700;color:var(--primary);padding-bottom:10px;border-bottom:2px solid var(--border);margin-bottom:16px;display:flex;align-items:center;gap:8px; }
+    .scenario-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+    .scenario-card { border:1px solid var(--border);border-radius:10px;padding:16px;background:white; }
+    .scenario-card .sc-head { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--gray);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0f0f0; }
+    .scenario-card.type-supplier { border-top:3px solid #667eea; }
+    .scenario-card.type-kkday { border-top:3px solid #f7971e; }
+    .step-mini { display:flex;flex-direction:column;gap:6px; }
+    .step-mini-item { display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#4a5568;line-height:1.5; }
+    .step-mini-num { width:20px;height:20px;border-radius:50%;background:var(--primary);color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px; }
+    .option-block { background:#f7f8fc;border-radius:8px;padding:10px 12px;margin-bottom:8px;border:1px solid var(--border); }
+    .option-label { font-size:11px;font-weight:700;color:var(--accent);margin-bottom:6px; }
+    .sub-note { font-size:12px;color:#718096;margin-top:8px;padding:8px 12px;background:#f7f8fc;border-radius:6px; }
+    .warning-tag { display:inline-block;margin:6px 0;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px; }
+    .tag-red { display:inline-block;font-size:12px;font-weight:700;color:#c62828;background:#fce4ec;border-radius:4px;padding:2px 8px;margin-bottom:10px; }
+    .diff-note { background:#fff8ee;border:1px solid #ffe0b2;border-radius:8px;padding:14px 16px;margin-top:12px; }
+    .diff-note .dn-title { font-size:13px;font-weight:700;color:#e65100;margin-bottom:8px; }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 異常處理 / 訂單更改</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">✏️</div>
+      <div class="page-header-body">
+        <h1>訂單更改</h1>
+        <p class="subtitle">依訂單處理單位（供應商自理 / KKday 處理）及旅客聯繫對象分四種情境</p>
+        <div class="meta-row"><span class="meta-chip badge-red">異常處理</span></div>
+      </div>
+    </div>
+
+    <!-- 四種情境說明 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;">
+      <div style="background:#f0f4ff;border:1px solid #c5d3f5;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:11px;font-weight:700;color:#667eea;margin-bottom:4px;">🏪 供應商自理訂單</div>
+        <div style="font-size:12px;color:#555;">旅客聯繫供應商 → <strong>供應商通知 OP</strong></div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">旅客聯繫 KKday → <strong>無（客人直接與 CS 溝通）</strong></div>
+      </div>
+      <div style="background:#fff8ee;border:1px solid #ffe0b2;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:11px;font-weight:700;color:#e65100;margin-bottom:4px;">🏢 KKday 處理訂單</div>
+        <div style="font-size:12px;color:#555;">旅客聯繫供應商 → <strong>供應商通知 OP</strong></div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">旅客聯繫 KKday → <strong>無（客人直接與 CS 溝通）</strong></div>
+      </div>
+    </div>
+
+    <!-- TYPE 1: 更改旅客資料 -->
+    <div class="change-section">
+      <h2>📝 更改旅客資料 / 規格</h2>
+      <div class="scenario-grid">
+        <div class="scenario-card type-supplier">
+          <div class="sc-head">🏪 供應商自理 · 旅客聯繫供應商</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>供應商主動通知 OP 更改需求</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">2</div><div>請 CS 領單並齊全，OP 點「已領取」→ OP 改（<strong>不需與客人確認</strong>）</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">3</div><div>OP 通知供應商，供應商更新憑證並重發給旅客</div></div>
+          </div>
+        </div>
+        <div class="scenario-card type-supplier">
+          <div class="sc-head">🏪 供應商自理 · 旅客聯繫 KKday</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 通知供應商 → 供應商同意即可改 → 改之後通知 CS</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">2</div><div>CS 改資料（<strong>須與客人確認</strong>）</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">3</div><div>OP 通知供應商，供應商更新憑證重發給旅客</div></div>
+          </div>
+        </div>
+        <div class="scenario-card type-kkday">
+          <div class="sc-head">🏢 KKday 處理 · 旅客聯繫供應商</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 先確認供應商是否可改</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">2</div><div>供應商同意後 → 請 CS 改資料 → 通知 OP</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">3</div><div>OP 確認無誤後 → 更新憑證並重發給客人</div></div>
+          </div>
+          <div class="warning-tag">⚠️ 須與客人確認</div>
+        </div>
+        <div class="scenario-card type-kkday">
+          <div class="sc-head">🏢 KKday 處理 · 旅客聯繫 KKday</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 先確認供應商是否可改</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">2</div><div>供應商同意後 → 請 CS 改資料 → 通知 OP</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">3</div><div>OP 確認無誤後 → 更新憑證並重發給客人</div></div>
+          </div>
+          <div class="warning-tag">⚠️ 須與客人確認</div>
+        </div>
+      </div>
+      <div class="sub-note">💡 若供應商不同意更改 → 回覆客服：此單供應商不同意更改，請協助與客告知此單原單安排。</div>
+    </div>
+
+    <!-- TYPE 2: 更改出發日期（已過） -->
+    <div class="change-section">
+      <h2>📅 更改出發日期（已過出發日 或 已核銷）</h2>
+      <div class="tag-red">🚫 Be2 無法改單，系統無法更改日期</div>
+      <div class="scenario-grid" style="margin-top:12px;">
+        <div class="scenario-card type-supplier">
+          <div class="sc-head">🏪 供應商自理 · 旅客聯繫供應商</div>
+          <div class="option-block">
+            <div class="option-label">📌 選項 A：單換單</div>
+            <div class="step-mini">
+              <div class="step-mini-item"><div class="step-mini-num">1</div><div>詢問供應商是否可單換單</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">2</div><div>供應商同意 → CS 轉達客人 → 客人重新下新單後通知 OP</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">3</div><div>OP 轉達供應商新單號，請供應商取消舊訂單</div></div>
+            </div>
+          </div>
+          <div class="option-block">
+            <div class="option-label">📌 選項 B：備註在憑證</div>
+            <div class="step-mini">
+              <div class="step-mini-item"><div class="step-mini-num">1</div><div>供應商同意 → OP 備註在憑證處，請供應商更新憑證</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">2</div><div>OP 請 CS 通知客人留意新日期</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-card type-supplier">
+          <div class="sc-head">🏪 供應商自理 · 旅客聯繫 KKday</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 聯繫供應商確認是否接受改期</div></div>
+          </div>
+          <div class="option-block" style="margin-top:8px;">
+            <div class="option-label">📌 單換單 或 📌 備註在憑證</div>
+            <div style="font-size:12px;color:#718096;">流程同左欄</div>
+          </div>
+        </div>
+        <div class="scenario-card type-kkday">
+          <div class="sc-head">🏢 KKday 處理 · 旅客聯繫供應商</div>
+          <div class="option-block">
+            <div class="option-label">📌 單換單 或 📌 備註在憑證</div>
+            <div style="font-size:12px;color:#718096;">流程同供應商自理左欄</div>
+          </div>
+        </div>
+        <div class="scenario-card type-kkday">
+          <div class="sc-head">🏢 KKday 處理 · 旅客聯繫 KKday</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 聯繫供應商確認是否接受改期</div></div>
+          </div>
+          <div class="option-block" style="margin-top:8px;">
+            <div class="option-label">📌 單換單 或 📌 備註在憑證</div>
+            <div style="font-size:12px;color:#718096;">流程同供應商自理左欄</div>
+          </div>
+        </div>
+      </div>
+      <div class="diff-note">
+        <div class="dn-title">💰 若需要補差價</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">情境 1：供應商建議客人加價給 KKday</div>
+            <div class="step-mini">
+              <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 請 CS 與客人確認是否同意補差價</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">2</div><div>客人同意 → OP 請 BD/AM 開補差價套餐</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">3</div><div>套餐開好後通知 CS，CS 引導客人下單</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">4</div><div>CS 收到差價單後點單並通知 OP</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">5</div><div>OP 通知 BD/AM 下架套餐，通知供應商更新憑證重發旅客</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">情境 2：供應商建議客人現場支付</div>
+            <div class="step-mini">
+              <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 與供應商確認差價金額</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">2</div><div>請 CS 向客人查詢是否同意</div></div>
+              <div class="step-mini-item"><div class="step-mini-num">3</div><div>客人同意 → OP 轉達供應商並修改訂單，更新憑證並發給客人</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="sub-note" style="margin-top:10px;">💡 若更改後的成本少過原訂單成本 → OP 可開部退退還差價給客人</div>
+      </div>
+    </div>
+
+    <!-- TYPE 3: 更改出發日期（未過） -->
+    <div class="change-section">
+      <h2>🗓️ 更改出發日期（未出發 或 未核銷）</h2>
+      <div class="scenario-grid">
+        <div class="scenario-card type-supplier">
+          <div class="sc-head">🏪 供應商自理 · 旅客聯繫供應商</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">✅</div><div>OP 直接改單</div></div>
+          </div>
+          <div class="warning-tag">⚠️ 若需加價，依照加價流程或單換單</div>
+        </div>
+        <div class="scenario-card type-supplier">
+          <div class="sc-head">🏪 供應商自理 · 旅客聯繫 KKday</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 通知供應商 → 供應商同意後 OP 改單</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">2</div><div>改完後通知 CS</div></div>
+          </div>
+          <div class="warning-tag">⚠️ 若需加價，依照加價流程</div>
+        </div>
+        <div class="scenario-card type-kkday">
+          <div class="sc-head">🏢 KKday 處理 · 旅客聯繫供應商</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>須與客人確認 → CS 改資料 → OP 通知供應商</div></div>
+          </div>
+          <div class="warning-tag">⚠️ 若需加價，依照加價流程</div>
+        </div>
+        <div class="scenario-card type-kkday">
+          <div class="sc-head">🏢 KKday 處理 · 旅客聯繫 KKday</div>
+          <div class="step-mini">
+            <div class="step-mini-item"><div class="step-mini-num">1</div><div>OP 確認供應商是否同意改期</div></div>
+            <div class="step-mini-item"><div class="step-mini-num">2</div><div>供應商同意 → OP 更改出發日、更新憑證 → 通知 CS 轉達客人</div></div>
+          </div>
+          <div class="warning-tag">⚠️ 若需加價，依照加價流程</div>
+        </div>
+      </div>
+      <div class="diff-note" style="margin-top:12px;">
+        <div class="dn-title">📋 KKday 處理 — 依訂單狀態</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">狀態：旅客資料已齊全</div>
+            <div style="font-size:12px;color:#555;">改日期 → OP 可直接更改系統，正常出單即可<br>改旅客資料規格 → 請 CS 直接改系統，正常出單即可</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">狀態：已訂出，待供應商確認</div>
+            <div style="font-size:12px;color:#555;">已確認 → 回到「已處理」處理流程<br>未確認 → 請 CS 改系統後，更新供應商最新旅客資料，待供應商回覆確認</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+</body>
+</html>

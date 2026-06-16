@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>組合商品 — SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 人工訂購 / 組合商品</div>
+
+    <div class="page-header">
+      <div class="page-header-icon">📦</div>
+      <div class="page-header-body">
+        <h1>人工訂購：組合商品</h1>
+        <p class="subtitle">由兩個以上不同商品組成的套餐方案，客人下訂的訂單僅包含母商品，故需人工協助訂購子商品。</p>
+        <div class="meta-row">
+          <span class="meta-chip badge-orange">人工訂購</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="white-box" style="overflow-x:auto;">
+      <style>
+        .tree { display:flex; flex-direction:column; align-items:center; font-size:12px; min-width:820px; }
+        .tree-root {
+          background:linear-gradient(135deg,#1a1a2e,#0f3460);
+          color:white; font-weight:700; font-size:14px;
+          padding:10px 28px; border-radius:8px;
+          box-shadow:0 4px 12px rgba(26,26,46,0.2);
+        }
+        .tree-connector-v { width:2px; height:24px; background:#d1d5db; }
+        .tree-node {
+          border:1.5px solid #e2e8f0; padding:8px 14px; border-radius:8px;
+          background:white; text-align:center; line-height:1.5; color:#2d3748;
+          min-width:100px; box-shadow:0 1px 4px rgba(0,0,0,0.06);
+        }
+        .tree-node.top {
+          font-weight:700; background:#f0f4ff;
+          border:1.5px solid #c5d3f5; color:#1a1a2e;
+        }
+        .tree-leaf {
+          border:1.5px solid #e2e8f0; padding:7px 12px; border-radius:8px;
+          background:#f7f8fc; text-align:center; line-height:1.5; color:#4a5568;
+          min-width:90px;
+        }
+        .tree-leaf.green {
+          border-color:#a5d6a7; background:#f1f8f1; color:#2e7d32;
+        }
+        .tree-leaf.orange {
+          border-color:#ffcc80; background:#fff8f0; color:#e65100;
+        }
+        .tree-final {
+          background:linear-gradient(135deg,#f7971e,#ffd200);
+          color:#1a1a2e; font-weight:700;
+          padding:8px 18px; border-radius:8px;
+          box-shadow:0 3px 10px rgba(245,166,35,0.25);
+          min-width:120px; text-align:center; line-height:1.5;
+        }
+      </style>
+
+      <div class="tree">
+        <!-- Root -->
+        <div class="tree-root">組合商品</div>
+        <div class="tree-connector-v"></div>
+
+        <!-- Three columns connector -->
+        <div style="display:flex;width:90%;border-top:1.5px solid #999;">
+          <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:20px;background:#999;"></div></div>
+          <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:20px;background:#999;"></div></div>
+          <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:20px;background:#999;"></div></div>
+        </div>
+
+        <!-- Three top nodes -->
+        <div style="display:flex;gap:12px;width:90%;justify-content:center;align-items:flex-start;">
+
+          <!-- 類型一 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+            <div class="tree-node top" style="width:100%;">母商品-需人工作業<br>子商品-需人工作業</div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-node" style="width:90%;">人工訂出母商品</div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-node" style="width:90%;">人工訂出子商品</div>
+            <div class="tree-connector-v"></div>
+            <div style="display:flex;width:90%;border-top:1.5px solid #999;">
+              <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:16px;background:#999;"></div></div>
+              <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:16px;background:#999;"></div></div>
+            </div>
+            <div style="display:flex;gap:8px;width:90%;">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+                <div class="tree-leaf green" style="width:100%;">子商品成本0</div>
+                <div class="tree-connector-v"></div>
+                <div class="tree-leaf green" style="width:100%;">依照訂購方式訂出</div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+                <div class="tree-leaf orange" style="width:100%;">子商品應請款</div>
+                <div class="tree-connector-v"></div>
+                <div class="tree-leaf orange" style="width:100%;">B2D平台下訂</div>
+              </div>
+            </div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-final">母訂單及子訂單憑證<br>一併寄出</div>
+          </div>
+
+          <!-- 類型二 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+            <div class="tree-node top" style="width:100%;">母商品-即訂即出<br>子商品-需人工作業<br><span style="font-size:11px;color:#666;">（假即訂即出）</span></div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-node" style="width:90%;">人工訂出子商品</div>
+            <div class="tree-connector-v"></div>
+            <div style="display:flex;width:90%;border-top:1.5px solid #999;">
+              <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:16px;background:#999;"></div></div>
+              <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:16px;background:#999;"></div></div>
+            </div>
+            <div style="display:flex;gap:8px;width:90%;">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+                <div class="tree-leaf green" style="width:100%;">子商品成本0</div>
+                <div class="tree-connector-v"></div>
+                <div class="tree-leaf green" style="width:100%;">依照訂購方式訂出</div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+                <div class="tree-leaf orange" style="width:100%;">子商品應請款</div>
+                <div class="tree-connector-v"></div>
+                <div class="tree-leaf orange" style="width:100%;">B2D平台下訂</div>
+              </div>
+            </div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-final">母訂單及子訂單憑證<br>一併寄出</div>
+          </div>
+
+          <!-- 類型三 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
+            <div class="tree-node top" style="width:100%;">母商品-即訂即出<br>子商品-即訂即出<br><span style="font-size:11px;color:#666;">（無法使用OCBT的商品）</span></div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-node" style="width:90%;">至B2D平台下訂子商品</div>
+            <div class="tree-connector-v"></div>
+            <div class="tree-final">母訂單及子訂單憑證<br>一併寄出</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- 類型一 -->
+    <h2>類型一：母商品及子商品皆需人工作業</h2>
+    <div class="white-box">
+      <div class="step-list">
+
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>依照訂購方式描述訂出母商品</strong>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>依照訂購方式描述訂出子商品</strong>
+            <div class="situation-grid">
+              <div class="situation-card situation-ok">
+                <strong>子商品 0 元成本／無需請款</strong>
+                <p>無需成立子訂單，依訂購方式作業即可。</p>
+              </div>
+              <div class="situation-card situation-warn">
+                <strong>子商品涉及成本且需請款</strong>
+                <p>需至 B2D 平台建立並確認子訂單，將子訂單單號回填至母訂單訂單基本資訊內。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>寄出所有憑證</strong>
+            <p>待母子商品訂單皆確認完成，將所有憑證一併寄出給客人（客人會持有兩份或以上的憑證）。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 類型二 -->
+    <h2>類型二：母商品為即訂即出，子商品需人工作業（假即訂即出）</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 客人下訂完成會先收到母商品憑證，僅子商品需人工作業。</span>
+    <div class="white-box">
+      <div class="step-list">
+
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>依照訂購方式訂出子商品</strong>
+            <p>判斷邏輯同類型一步驟 2（依子商品是否涉及成本決定是否建立子訂單）。</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>寄出所有憑證</strong>
+            <p>待母子商品皆確認完成，將所有憑證一併寄出。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 類型三 -->
+    <h2>類型三：母商品及子商品皆為即訂即出（無法使用 OCBT）</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 受限制無法使用 OCBT，需透過 OP 人工作業。</span>
+    <div class="white-box">
+      <div class="step-list">
+
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>至 B2D 平台訂出子商品</strong>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>寄出所有憑證</strong>
+            <p>子商品即訂即出，將所有憑證一併寄出。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 取消 -->
+    <h2>組合訂單取消</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 基本上不可取消，以下為例外情況。母子訂單掛的組別可能不同，需要在母訂單作業、發信息處理。</span>
+
+    <div class="cards-grid-2">
+
+      <div class="white-box">
+        <h3>整筆取消</h3>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>子訂單負責 OP 開啟取消</strong>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>確認子訂單完成取消後，OP 於母訂單開啟取消</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="white-box">
+        <h3>部分取消</h3>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>需要取消的子訂單負責 OP 開啟取消</strong>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>確認子訂單完成取消後，OP 於母訂單開啟「部分退款」</strong>
+              <ul>
+                <li>成本異動選「否」</li>
+                <li>備註說明部分取消的商品</li>
+                <li>退款金額請客服向 BD 確認</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>部分取消（部分退款）— SCM 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px;
+    }
+    .flow-tag {
+      padding:6px 14px; border-radius:6px;
+      font-size:12px; font-weight:600; white-space:nowrap;
+    }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .note-text { margin-top:10px; font-size:12px; color:#718096; padding:0 4px; line-height:1.8; }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.nav-links { flex-shrink: 0; margin-left: auto; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <div class="nav-title">
+    <h1>SCM <em>知識庫</em></h1>
+    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">首頁</a>
+    <a class="nav-link" href="../index.html">商品認識</a>
+    <a class="nav-link" href="../index.html">訂單管理</a>
+    <a class="nav-link" href="../index.html">帳務管理</a>
+    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">首頁 / 部分取消（部分退款）</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#c2410c,#f97316);">💸</div>
+      <div class="page-header-body">
+        <h1>部分取消（部分退款）</h1>
+        <p class="subtitle">保留訂單，僅有訂單金額變動。通常用於行程類商品。訂單狀態為「已處理」。</p>
+        <div class="meta-row">
+          <span class="meta-chip badge-red">異常處理</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+
+      <!-- 流程 -->
+      <div class="flow-bar">
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">OP 發起部分退款</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">確認成本是否異動</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">選異動原因 & 備註退款金額</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 送出給客服</span>
+        <span class="flow-arr">→</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+      </div>
+
+      <div style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px;">📋 適用情境</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="background:#fafbff;border:1px solid #c5d3f5;border-radius:10px;padding:14px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:8px;">成本不變（供應商請款金額無異動）</div>
+          <div style="font-size:12px;color:#4a5568;">客訴原因為<strong>部門疏失</strong>，與供應商無關，由公司吸收部分退款給旅客。</div>
+        </div>
+        <div style="background:#fafbff;border:1px solid #c5d3f5;border-radius:10px;padding:14px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:8px;">成本有變（供應商請款金額有異動）</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;color:#4a5568;display:flex;flex-direction:column;gap:4px;">
+            <li>客訴為<strong>供應商疏失</strong>，已提供服務但供應商同意部分退款</li>
+            <li>客人在免費取消期間提出<strong>人數變更</strong>，供應商同意部分退款</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note-text">
+        <strong style="color:#555;">成本異動判斷：</strong><br>
+        否（公司政策吸收）→ 直接進行<br>
+        是（供應商疏失 / 客人在免費取消期間提出）→ 在「更改成本為」輸入供應商變更後成本
+      </div>
+      <span style="display:inline-block;margin-top:6px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ HKD / MYR 幣別僅能輸入整數，需無條件進位</span>
+
+
+
+    </div>
+
+    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  </div>
+</body>
+</html>
