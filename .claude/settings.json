@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"📌 記得推上 GitHub Pages！\\n執行：cd /Users/winnie.tseng_1/Desktop/scm-wiki-mockup && git add . && git commit -m \\\"更新內容\\\" && git push\\n🌐 網址：https://thisiswinnietseng.github.io/scm-wiki/\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
