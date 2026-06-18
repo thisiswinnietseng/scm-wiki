@@ -144,6 +144,33 @@ a.sop-card .sc-body h4 { font-size:13px; font-weight:700; color:var(--primary); 
 a.sop-card .sc-body p { font-size:11px; color:var(--gray); }
 a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; flex-shrink:0; }
 
+/* Quick Links */
+.quicklinks-wrap {
+  background:white; border-radius:var(--radius-lg);
+  border:1px solid var(--border); box-shadow:var(--shadow-sm);
+  padding:20px 24px; margin-top:12px;
+}
+.quicklinks-label {
+  font-size:13px; font-weight:700; color:var(--primary);
+  margin-bottom:14px; letter-spacing:0.3px;
+}
+.quicklinks-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:10px;
+}
+@media(max-width:700px){ .quicklinks-grid{ grid-template-columns:1fr 1fr; } }
+.ql-card {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-radius:10px;
+  border:1px solid var(--border); text-decoration:none;
+  color:inherit; transition:all 0.15s; background:#fafbff;
+}
+.ql-card:hover { border-color:var(--accent); box-shadow:0 2px 8px rgba(102,126,234,0.15); transform:translateY(-1px); }
+.ql-icon { width:38px; height:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.ql-body { flex:1; min-width:0; }
+.ql-name { font-size:13px; font-weight:700; color:var(--primary); }
+.ql-url { font-size:10px; color:var(--gray); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ql-arrow { font-size:14px; color:#a0aec0; flex-shrink:0; }
+
 /* CS Coming Soon */
 .coming-soon {
   padding:48px 24px; text-align:center;
@@ -378,6 +405,61 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
     </div>
   </div>
 
+  <!-- 超連結專區 -->
+  <div class="quicklinks-wrap">
+    <div class="quicklinks-label" data-i18n="ql-label">🔗 超連結專區</div>
+    <div class="quicklinks-grid">
+      <a class="ql-card" href="https://docs.google.com/spreadsheets/d/1_Y-sEdNWoSkgOoI3o1caoPHs9ggiy0Wvu6TwI8Jpa_Y/edit?pli=1#gid=654199293" target="_blank">
+        <div class="ql-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">📅</div>
+        <div class="ql-body">
+          <div class="ql-name" data-i18n="ql-scm">SCM 班表</div>
+          <div class="ql-url">Google Sheets</div>
+        </div>
+        <span class="ql-arrow">↗</span>
+      </a>
+      <a class="ql-card" href="https://docs.google.com/spreadsheets/d/1WREYLFm7yiAAZlAoTgWX5O7N87yAR8V6fatMVLiVGPU/edit?pli=1&gid=625913861#gid=625913861" target="_blank">
+        <div class="ql-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)">📅</div>
+        <div class="ql-body">
+          <div class="ql-name" data-i18n="ql-crm">CRM 班表</div>
+          <div class="ql-url">Google Sheets</div>
+        </div>
+        <span class="ql-arrow">↗</span>
+      </a>
+      <a class="ql-card" href="https://be2.kkday.com/v2/auth/login" target="_blank">
+        <div class="ql-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">🖥️</div>
+        <div class="ql-body">
+          <div class="ql-name" data-i18n="ql-be2">Be2 系統</div>
+          <div class="ql-url">be2.kkday.com</div>
+        </div>
+        <span class="ql-arrow">↗</span>
+      </a>
+      <a class="ql-card" href="https://b2d.kkday.com/Login/?ReturnUrl=%2F" target="_blank">
+        <div class="ql-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🖥️</div>
+        <div class="ql-body">
+          <div class="ql-name" data-i18n="ql-b2d">B2D 系統</div>
+          <div class="ql-url">b2d.kkday.com</div>
+        </div>
+        <span class="ql-arrow">↗</span>
+      </a>
+      <a class="ql-card" href="https://odoo.eip.kkday.net/zh_TW/home" target="_blank">
+        <div class="ql-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">📋</div>
+        <div class="ql-body">
+          <div class="ql-name" data-i18n="ql-bpm">BPM 系統</div>
+          <div class="ql-url">odoo.eip.kkday.net</div>
+        </div>
+        <span class="ql-arrow">↗</span>
+      </a>
+      <a class="ql-card" href="https://psi.kkday.com/auth/login" target="_blank">
+        <div class="ql-icon" style="background:linear-gradient(135deg,#1a1a2e,#2193b0)">📦</div>
+        <div class="ql-body">
+          <div class="ql-name" data-i18n="ql-psi">PSI 系統</div>
+          <div class="ql-url">psi.kkday.com</div>
+        </div>
+        <span class="ql-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <div class="wiki-footer" data-i18n="go-footer">GO 知識庫 · 內部使用，請勿對外分享</div>
@@ -441,6 +523,9 @@ SCMi18n.init({
     'card-messaging-hub-title': '訊息管理總覽', 'card-messaging-hub-desc': '四種溝通工具說明 · 供應商訊息處理流程',
     'cs-wip-title': 'CS 內容建置中',
     'cs-wip-desc': '客服相關 SOP、處理流程與常見問答即將上線，敬請期待。',
+    'ql-label': '🔗 超連結專區',
+    'ql-scm': 'SCM 班表', 'ql-crm': 'CRM 班表', 'ql-be2': 'Be2 系統',
+    'ql-b2d': 'B2D 系統', 'ql-bpm': 'BPM 系統', 'ql-psi': 'PSI 系統',
     'go-footer': 'GO 知識庫 · 內部使用，請勿對外分享'
   },
   en: {
@@ -500,6 +585,9 @@ SCMi18n.init({
     'card-messaging-hub-title': 'Messaging Overview', 'card-messaging-hub-desc': '4 communication tools · Supplier message handling flow',
     'cs-wip-title': 'CS Content Coming Soon',
     'cs-wip-desc': 'CS SOPs, handling flows, and FAQs will be available soon. Stay tuned.',
+    'ql-label': '🔗 Quick Links',
+    'ql-scm': 'SCM Schedule', 'ql-crm': 'CRM Schedule', 'ql-be2': 'Be2 System',
+    'ql-b2d': 'B2D System', 'ql-bpm': 'BPM System', 'ql-psi': 'PSI System',
     'go-footer': 'GO Wiki · Internal use only, do not share externally'
   },
   ja: {
@@ -559,6 +647,9 @@ SCMi18n.init({
     'card-messaging-hub-title': 'メッセージ管理概要', 'card-messaging-hub-desc': '4つのコミュニケーションツール · サプライヤーメッセージ処理フロー',
     'cs-wip-title': 'CS コンテンツ準備中',
     'cs-wip-desc': 'CS SOP・処理フロー・FAQ を近日公開予定。お待ちください。',
+    'ql-label': '🔗 クイックリンク',
+    'ql-scm': 'SCM シフト表', 'ql-crm': 'CRM シフト表', 'ql-be2': 'Be2 システム',
+    'ql-b2d': 'B2D システム', 'ql-bpm': 'BPM システム', 'ql-psi': 'PSI システム',
     'go-footer': 'GO ナレッジベース · 内部使用のみ、外部への共有禁止'
   },
   ko: {
@@ -618,6 +709,9 @@ SCMi18n.init({
     'card-messaging-hub-title': '메시지 관리 개요', 'card-messaging-hub-desc': '4가지 커뮤니케이션 도구 · 공급업체 메시지 처리 흐름',
     'cs-wip-title': 'CS 콘텐츠 준비 중',
     'cs-wip-desc': 'CS SOP, 처리 흐름, FAQ가 곧 공개될 예정입니다. 기대해 주세요.',
+    'ql-label': '🔗 빠른 링크',
+    'ql-scm': 'SCM 스케줄', 'ql-crm': 'CRM 스케줄', 'ql-be2': 'Be2 시스템',
+    'ql-b2d': 'B2D 시스템', 'ql-bpm': 'BPM 시스템', 'ql-psi': 'PSI 시스템',
     'go-footer': 'GO 지식베이스 · 내부 전용, 외부 공유 금지'
   }
 });
