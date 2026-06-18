@@ -6,6 +6,7 @@
 <title>GO 知識庫</title>
 <link rel="stylesheet" href="styles.css">
 <script src="i18n.js"></script>
+<script src="search-index.js"></script>
 <style>
 .nav { height: 96px !important; position: relative; }
 .nav-title {
@@ -144,6 +145,78 @@ a.sop-card .sc-body h4 { font-size:13px; font-weight:700; color:var(--primary); 
 a.sop-card .sc-body p { font-size:11px; color:var(--gray); }
 a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; flex-shrink:0; }
 
+/* ── Search ─────────────────────────────────── */
+.search-wrap {
+  position:relative; margin-bottom:16px;
+}
+.search-box {
+  width:100%; box-sizing:border-box;
+  padding:14px 52px 14px 48px;
+  border-radius:14px; border:2px solid var(--border);
+  font-size:15px; font-family:inherit; outline:none;
+  background:white; color:var(--primary);
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  transition:border-color 0.15s, box-shadow 0.15s;
+}
+.search-box:focus {
+  border-color:#667eea;
+  box-shadow:0 0 0 4px rgba(102,126,234,0.12), 0 2px 12px rgba(0,0,0,0.06);
+}
+.search-icon {
+  position:absolute; left:16px; top:50%; transform:translateY(-50%);
+  font-size:18px; pointer-events:none;
+}
+.search-clear {
+  position:absolute; right:14px; top:50%; transform:translateY(-50%);
+  background:none; border:none; cursor:pointer;
+  font-size:18px; color:#a0aec0; padding:4px; display:none;
+  border-radius:50%; transition:background 0.15s;
+}
+.search-clear:hover { background:#f0f0f0; }
+.search-results {
+  position:absolute; top:calc(100% + 6px); left:0; right:0;
+  background:white; border-radius:14px;
+  border:1px solid var(--border);
+  box-shadow:0 8px 32px rgba(0,0,0,0.12);
+  z-index:200; max-height:480px; overflow-y:auto;
+  display:none;
+}
+.search-results.active { display:block; }
+.search-header {
+  padding:10px 16px 6px;
+  font-size:11px; font-weight:700; letter-spacing:0.8px;
+  color:var(--gray); text-transform:uppercase; border-bottom:1px solid var(--border);
+}
+.search-item {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; cursor:pointer;
+  border-bottom:1px solid #f7f7f7; text-decoration:none; color:inherit;
+  transition:background 0.1s;
+}
+.search-item:last-child { border-bottom:none; }
+.search-item:hover { background:#fafbff; }
+.si-icon {
+  width:36px; height:36px; border-radius:9px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; background:#f0f4ff;
+}
+.si-body { flex:1; min-width:0; }
+.si-title { font-size:14px; font-weight:700; color:var(--primary); margin-bottom:2px; }
+.si-title mark { background:#fff3b0; color:var(--primary); border-radius:3px; padding:0 2px; }
+.si-cat { font-size:11px; color:var(--gray); }
+.si-snippet { font-size:11px; color:#718096; margin-top:3px; line-height:1.5; }
+.si-snippet mark { background:#fff3b0; color:#4a5568; border-radius:2px; padding:0 1px; }
+.si-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:8px; flex-shrink:0; background:#e8edf8; color:#3c50e0; }
+.search-empty {
+  padding:32px 16px; text-align:center;
+  font-size:14px; color:var(--gray);
+}
+.search-shortcut {
+  position:absolute; right:44px; top:50%; transform:translateY(-50%);
+  background:#f0f0f0; border-radius:5px; padding:2px 7px;
+  font-size:11px; color:#999; font-family:monospace; pointer-events:none;
+}
+
 /* Quick Links */
 .quicklinks-wrap {
   background:white; border-radius:var(--radius-lg);
@@ -197,6 +270,17 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
 </nav>
 
 <div class="page-wrapper-wide" style="padding-top:24px;">
+
+  <!-- 搜尋框 -->
+  <div class="search-wrap" id="searchWrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-box" id="searchInput" type="text"
+      placeholder="搜尋知識庫… 例如：OCBT取消、對帳、信用卡"
+      autocomplete="off" />
+    <span class="search-shortcut" id="searchShortcut">⌘K</span>
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+    <div class="search-results" id="searchResults"></div>
+  </div>
 
   <!-- 訂單生命週期 -->
   <div class="lifecycle-wrap">
@@ -714,6 +798,121 @@ SCMi18n.init({
     'ql-b2d': 'B2D 시스템', 'ql-bpm': 'BPM 시스템', 'ql-psi': 'PSI 시스템',
     'go-footer': 'GO 지식베이스 · 내부 전용, 외부 공유 금지'
   }
+});
+
+// ── 搜尋功能 ────────────────────────────────────────────────
+const searchInput  = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const searchClear  = document.getElementById('searchClear');
+const searchShortcut = document.getElementById('searchShortcut');
+
+function highlight(text, keywords) {
+  if (!keywords.length) return text;
+  const re = new RegExp(`(${keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+function search(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) { hideResults(); return; }
+
+  const keywords = q.split(/\s+/).filter(k => k.length >= 1);
+  const scored = [];
+
+  for (const item of GO_SEARCH_INDEX) {
+    let score = 0;
+    const titleLow   = item.title.toLowerCase();
+    const tagsLow    = item.tags.join(' ').toLowerCase();
+    const contentLow = item.content.toLowerCase();
+    const catLow     = item.category.toLowerCase();
+
+    for (const kw of keywords) {
+      if (titleLow.includes(kw))   score += 10;
+      if (tagsLow.includes(kw))    score += 5;
+      if (contentLow.includes(kw)) score += 2;
+      if (catLow.includes(kw))     score += 1;
+    }
+    if (score > 0) scored.push({ item, score });
+  }
+
+  scored.sort((a, b) => b.score - a.score);
+  renderResults(scored.slice(0, 8), keywords, q);
+}
+
+function renderResults(scored, keywords, rawQ) {
+  searchResults.innerHTML = '';
+
+  if (!scored.length) {
+    searchResults.innerHTML = `<div class="search-empty">😅 找不到「${rawQ}」相關內容，試試其他關鍵字</div>`;
+    searchResults.classList.add('active');
+    return;
+  }
+
+  const header = document.createElement('div');
+  header.className = 'search-header';
+  header.textContent = `找到 ${scored.length} 筆結果`;
+  searchResults.appendChild(header);
+
+  for (const { item } of scored) {
+    // Build snippet from content
+    const contentLow = item.content.toLowerCase();
+    const kw = keywords.find(k => contentLow.includes(k)) || keywords[0];
+    const idx = kw ? Math.max(0, contentLow.indexOf(kw) - 15) : 0;
+    const snippet = item.content.slice(idx, idx + 60) + '…';
+
+    const a = document.createElement('a');
+    a.className = 'search-item';
+    a.href = item.url;
+    a.innerHTML = `
+      <div class="si-icon">${item.icon}</div>
+      <div class="si-body">
+        <div class="si-title">${highlight(item.title, keywords)}</div>
+        <div class="si-cat">${item.category}</div>
+        <div class="si-snippet">${highlight(snippet, keywords)}</div>
+      </div>
+      ${item.badge ? `<span class="si-badge">${item.badge}</span>` : ''}
+    `;
+    searchResults.appendChild(a);
+  }
+  searchResults.classList.add('active');
+}
+
+function hideResults() {
+  searchResults.classList.remove('active');
+  searchResults.innerHTML = '';
+}
+
+function clearSearch() {
+  searchInput.value = '';
+  hideResults();
+  searchClear.style.display = 'none';
+  searchShortcut.style.display = '';
+  searchInput.focus();
+}
+
+searchInput.addEventListener('input', () => {
+  const v = searchInput.value;
+  searchClear.style.display   = v ? 'block' : 'none';
+  searchShortcut.style.display = v ? 'none' : '';
+  search(v);
+});
+
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Escape') clearSearch();
+});
+
+// ⌘K / Ctrl+K 快捷鍵
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    searchInput.focus();
+    searchInput.select();
+  }
+});
+
+// 點擊外部關閉
+document.addEventListener('click', e => {
+  if (!document.getElementById('searchWrap').contains(e.target)) hideResults();
 });
 
 function toggleSec(id) {
