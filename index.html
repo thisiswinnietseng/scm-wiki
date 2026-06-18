@@ -40,23 +40,31 @@
 .lc-dot { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:19px; box-shadow:0 4px 12px rgba(0,0,0,0.12); }
 .lc-step span { font-size:11px; color:#555; text-align:center; font-weight:600; line-height:1.4; }
 .lc-arrow { color:#d1d5db; font-size:16px; padding:0 2px; flex-shrink:0; margin-bottom:18px; }
-.d-purple { background:linear-gradient(135deg,#667eea,#764ba2); }
-.d-cs     { background:linear-gradient(135deg,#f093fb,#f5576c); }
-.d-sys    { background:linear-gradient(135deg,#4facfe,#00c6ff); }
-.d-op     { background:linear-gradient(135deg,#1a1a2e,#2193b0); }
-.d-green  { background:linear-gradient(135deg,#43e97b,#38f9d7); }
-.d-gold   { background:linear-gradient(135deg,#f7971e,#ffd200); }
-.d-csop   { background:linear-gradient(135deg,#f5576c,#764ba2); }
+.d-customer { background:linear-gradient(135deg,#89f7fe,#66a6ff); }  /* 旅客下單：天藍，購物車清晰可見 */
+.d-cs       { background:linear-gradient(135deg,#f093fb,#f5576c); }  /* 初步確認：CS玫瑰 */
+.d-sys      { background:linear-gradient(135deg,#a18cd1,#fbc2eb); }  /* 訂單分流：淡紫系統 */
+.d-op       { background:linear-gradient(135deg,#1a1a2e,#2193b0); }  /* 出票/訂購：OP深藍 */
+.d-green    { background:linear-gradient(135deg,#43e97b,#38f9d7); }  /* 發送憑證：薄荷綠 */
+.d-gold     { background:linear-gradient(135deg,#f7971e,#ffd200); }  /* 訂單完成：金黃 */
+.d-csop     { background:linear-gradient(135deg,#f5576c,#764ba2); }  /* 異常處理：CS+OP */
 
 /* Dept tag under lifecycle step */
 .lc-dept {
   font-size:9px; font-weight:800; letter-spacing:0.5px;
-  padding:2px 7px; border-radius:8px; margin-top:1px;
-  display:inline-block; line-height:1.4;
+  padding:2px 7px; border-radius:8px; margin-top:2px;
+  display:inline-block; line-height:1.4; white-space:nowrap;
+}
+.lc-dept-placeholder {
+  /* invisible placeholder to keep all steps same height */
+  display:inline-block; height:18px; margin-top:2px; visibility:hidden;
 }
 .dept-cs   { background:#fde8f5; color:#c2185b; border:1px solid #f48fb1; }
 .dept-op   { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
 .dept-csop { background:#ede7f6; color:#512da8; border:1px solid #b39ddb; }
+
+/* Lifecycle alignment fix */
+.lifecycle { align-items: flex-start !important; }
+.lc-arrow  { margin-top: 14px; margin-bottom: 0 !important; }
 
 /* Section accordion */
 .sec-accordion {
@@ -168,8 +176,9 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
     <div class="lifecycle-label" data-i18n="lc-label">訂單生命週期</div>
     <div class="lifecycle">
       <div class="lc-step">
-        <div class="lc-dot d-purple">🛒</div>
+        <div class="lc-dot d-customer">🛒</div>
         <span data-i18n="lc-1">旅客下單</span>
+        <span class="lc-dept-placeholder"></span>
       </div>
       <div class="lc-arrow">→</div>
       <div class="lc-step">
@@ -181,6 +190,7 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
       <div class="lc-step">
         <div class="lc-dot d-sys">⚙️</div>
         <span data-i18n="lc-3">訂單分流</span>
+        <span class="lc-dept-placeholder"></span>
       </div>
       <div class="lc-arrow">→</div>
       <div class="lc-step">
@@ -257,7 +267,7 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
 
         <!-- 訂單管理 nested accordion -->
         <div class="sub-accordion">
-          <div class="sub-header" onclick="toggleSub('order')" style="background:linear-gradient(135deg,#667eea,#764ba2);">
+          <div class="sub-header" onclick="toggleSub('order')" style="background:linear-gradient(135deg,#0093E9,#80D0C7);">
             <div class="sub-header-left">
               <span style="font-size:22px;">🛒</span>
               <div>
