@@ -22,109 +22,112 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
 <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 <div class="page-wrapper">
   <div class="breadcrumb">
-    <a href="../index.html">首頁</a><span class="sep">›</span>
-    <span>商品認識</span><span class="sep">›</span>
-    <span class="current">前台商品架構長相</span>
+    <a href="../index.html" data-i18n="frontend-breadcrumb-home">首頁</a><span class="sep">›</span>
+    <span data-i18n="frontend-breadcrumb-category">商品認識</span><span class="sep">›</span>
+    <span class="current" data-i18n="frontend-breadcrumb-current">前台商品架構長相</span>
   </div>
   <div class="page-header">
     <div class="page-header-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🏪</div>
     <div class="page-header-body">
-      <h1>前台商品架構長相</h1>
-      <p class="subtitle">介紹所有 CS/OP 會接觸到的 KKday 商品頁面結構，依類型分為三大類</p>
+      <h1 data-i18n="frontend-title">前台商品架構長相</h1>
+      <p class="subtitle" data-i18n="frontend-subtitle">介紹所有 CS/OP 會接觸到的 KKday 商品頁面結構，依類型分為三大類</p>
       <div class="meta-row">
-        <span class="meta-chip badge-blue">新人必讀</span>
+        <span class="meta-chip badge-blue" data-i18n="frontend-chip-new">新人必讀</span>
       </div>
     </div>
   </div>
 
   <!-- 一般商品 -->
   <div class="product-type">
-    <h2>1️⃣ 一般商品（票券類、行程類）</h2>
-    <span class="example">EX：香港迪士尼樂園門票、一日遊行程</span>
-    <p style="font-size:13px;color:#555;margin-bottom:16px;">主要針對整體的純票券、半日/一日遊等商品，頁面包含行程安排、價格、日期等內容。</p>
+    <h2 data-i18n="frontend-type1-title">1️⃣ 一般商品（票券類、行程類）</h2>
+    <span class="example" data-i18n="frontend-type1-example">EX：香港迪士尼樂園門票、一日遊行程</span>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;" data-i18n="frontend-type1-desc">主要針對整體的純票券、半日/一日遊等商品，頁面包含行程安排、價格、日期等內容。</p>
     <div class="feature-grid">
       <div class="feature-item">
-        <h4>🎯 選擇方案（Select Package）</h4>
+        <h4 data-i18n="frontend-f1-title">🎯 選擇方案（Select Package）</h4>
         <ul>
-          <li>展示不同行程、票種、人數、天數選項</li>
-          <li>日期及數量選擇框</li>
-          <li>每個方案清楚標明價格，促銷時顯示折扣標籤</li>
+          <li data-i18n="frontend-f1-li1">展示不同行程、票種、人數、天數選項</li>
+          <li data-i18n="frontend-f1-li2">日期及數量選擇框</li>
+          <li data-i18n="frontend-f1-li3">每個方案清楚標明價格，促銷時顯示折扣標籤</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>📝 商品說明（Product Description）</h4>
+        <h4 data-i18n="frontend-f2-title">📝 商品說明（Product Description）</h4>
         <ul>
-          <li>使用說明：開放時間、使用方式</li>
-          <li>方案選項：各方案詳細介紹</li>
-          <li>重要資訊：如餐券適用餐廳列表</li>
-          <li>兌換方式：手機顯示或列印電子憑證（QR code 須清晰完整）</li>
+          <li data-i18n="frontend-f2-li1">使用說明：開放時間、使用方式</li>
+          <li data-i18n="frontend-f2-li2">方案選項：各方案詳細介紹</li>
+          <li data-i18n="frontend-f2-li3">重要資訊：如餐券適用餐廳列表</li>
+          <li data-i18n="frontend-f2-li4">兌換方式：手機顯示或列印電子憑證（QR code 須清晰完整）</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>🗺️ 行程介紹（Itinerary Details）</h4>
+        <h4 data-i18n="frontend-f3-title">🗺️ 行程介紹（Itinerary Details）</h4>
         <ul>
-          <li>按天展示行程：每天的活動安排</li>
-          <li>時間點與地點標註</li>
-          <li>每個景點的活動描述</li>
+          <li data-i18n="frontend-f3-li1">按天展示行程：每天的活動安排</li>
+          <li data-i18n="frontend-f3-li2">時間點與地點標註</li>
+          <li data-i18n="frontend-f3-li3">每個景點的活動描述</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>📋 購買須知（Purchase Information）</h4>
+        <h4 data-i18n="frontend-f4-title">📋 購買須知（Purchase Information）</h4>
         <ul>
-          <li>注意事項：特殊要求、參與條件</li>
-          <li>立即確認商品：憑證於寄送後 30 分鐘生效</li>
-          <li>其他提示：附官方細則避免爭議</li>
+          <li data-i18n="frontend-f4-li1">注意事項：特殊要求、參與條件</li>
+          <li data-i18n="frontend-f4-li2">立即確認商品：憑證於寄送後 30 分鐘生效</li>
+          <li data-i18n="frontend-f4-li3">其他提示：附官方細則避免爭議</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>📖 如何使用（How to Use）</h4>
+        <h4 data-i18n="frontend-f5-title">📖 如何使用（How to Use）</h4>
         <ul>
-          <li>憑證使用方式說明</li>
-          <li>使用期限與有效期提示</li>
-          <li>過期處理說明</li>
+          <li data-i18n="frontend-f5-li1">憑證使用方式說明</li>
+          <li data-i18n="frontend-f5-li2">使用期限與有效期提示</li>
+          <li data-i18n="frontend-f5-li3">過期處理說明</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>📍 體驗地點（Experience Locations）</h4>
+        <h4 data-i18n="frontend-f6-title">📍 體驗地點（Experience Locations）</h4>
         <ul>
-          <li>集合地點、景點名稱、地址</li>
-          <li>地圖展示</li>
-          <li>開放時間</li>
+          <li data-i18n="frontend-f6-li1">集合地點、景點名稱、地址</li>
+          <li data-i18n="frontend-f6-li2">地圖展示</li>
+          <li data-i18n="frontend-f6-li3">開放時間</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>⭐ 旅客評價（Traveler Reviews）</h4>
+        <h4 data-i18n="frontend-f7-title">⭐ 旅客評價（Traveler Reviews）</h4>
         <ul>
-          <li>星級評分</li>
-          <li>用戶詳細評語</li>
-          <li>旅遊照片分享</li>
+          <li data-i18n="frontend-f7-li1">星級評分</li>
+          <li data-i18n="frontend-f7-li2">用戶詳細評語</li>
+          <li data-i18n="frontend-f7-li3">旅遊照片分享</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>🙋 取得協助（Get Help）</h4>
+        <h4 data-i18n="frontend-f8-title">🙋 取得協助（Get Help）</h4>
         <ul>
-          <li>KKday 幫助中心（熱門問題分類）</li>
-          <li>真人客服協助</li>
+          <li data-i18n="frontend-f8-li1">KKday 幫助中心（熱門問題分類）</li>
+          <li data-i18n="frontend-f8-li2">真人客服協助</li>
         </ul>
       </div>
     </div>
@@ -132,35 +135,35 @@
 
   <!-- 點對點商品 -->
   <div class="product-type">
-    <h2>2️⃣ 點對點商品（鐵路、巴士、租車、郵輪、機票）</h2>
-    <span class="example">EX：台灣高鐵票、機場接送、JRPASS</span>
-    <p style="font-size:13px;color:#555;margin-bottom:16px;">主要針對交通工具預訂，頁面簡潔強調搜索、篩選、票價顯示，讓用戶快速找到想要的交通服務。</p>
+    <h2 data-i18n="frontend-type2-title">2️⃣ 點對點商品（鐵路、巴士、租車、郵輪、機票）</h2>
+    <span class="example" data-i18n="frontend-type2-example">EX：台灣高鐵票、機場接送、JRPASS</span>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;" data-i18n="frontend-type2-desc">主要針對交通工具預訂，頁面簡潔強調搜索、篩選、票價顯示，讓用戶快速找到想要的交通服務。</p>
     <div class="feature-grid">
       <div class="feature-item">
-        <h4>🔍 出發地與目的地選擇</h4>
+        <h4 data-i18n="frontend-t2f1-title">🔍 出發地與目的地選擇</h4>
         <ul>
-          <li>搜尋框可自動完成或推薦熱門地點</li>
-          <li>靈活的點對點搜索</li>
+          <li data-i18n="frontend-t2f1-li1">搜尋框可自動完成或推薦熱門地點</li>
+          <li data-i18n="frontend-t2f1-li2">靈活的點對點搜索</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>📅 日期與時間選擇</h4>
+        <h4 data-i18n="frontend-t2f2-title">📅 日期與時間選擇</h4>
         <ul>
-          <li>選擇出發日期與時間</li>
-          <li>查看可用票務</li>
+          <li data-i18n="frontend-t2f2-li1">選擇出發日期與時間</li>
+          <li data-i18n="frontend-t2f2-li2">查看可用票務</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>🎫 票務詳細資訊</h4>
+        <h4 data-i18n="frontend-t2f3-title">🎫 票務詳細資訊</h4>
         <ul>
-          <li>票種、航班號或車次</li>
-          <li>出發時間、抵達時間</li>
+          <li data-i18n="frontend-t2f3-li1">票種、航班號或車次</li>
+          <li data-i18n="frontend-t2f3-li2">出發時間、抵達時間</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>💳 預訂與支付</h4>
+        <h4 data-i18n="frontend-t2f4-title">💳 預訂與支付</h4>
         <ul>
-          <li>選擇票種及人數後進入支付流程</li>
+          <li data-i18n="frontend-t2f4-li1">選擇票種及人數後進入支付流程</li>
         </ul>
       </div>
     </div>
@@ -168,37 +171,329 @@
 
   <!-- 飯店 -->
   <div class="product-type">
-    <h2>3️⃣ 飯店</h2>
-    <span class="example">EX：台北君悅酒店、礁溪老爺</span>
-    <p style="font-size:13px;color:#555;margin-bottom:16px;">住宿相關商品，通常包括飯店選擇、房型選擇、日期選擇等。</p>
+    <h2 data-i18n="frontend-type3-title">3️⃣ 飯店</h2>
+    <span class="example" data-i18n="frontend-type3-example">EX：台北君悅酒店、礁溪老爺</span>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;" data-i18n="frontend-type3-desc">住宿相關商品，通常包括飯店選擇、房型選擇、日期選擇等。</p>
     <div class="feature-grid">
       <div class="feature-item">
-        <h4>🏨 設施與服務</h4>
-        <ul><li>飯店設施服務詳細介紹</li></ul>
+        <h4 data-i18n="frontend-t3f1-title">🏨 設施與服務</h4>
+        <ul><li data-i18n="frontend-t3f1-li1">飯店設施服務詳細介紹</li></ul>
       </div>
       <div class="feature-item">
-        <h4>📜 飯店規定</h4>
+        <h4 data-i18n="frontend-t3f2-title">📜 飯店規定</h4>
         <ul>
-          <li>入住規定：最早入住／最晚退房時間</li>
-          <li>兒童與加床、加餐收費標準</li>
-          <li>其他規定（禁菸等）</li>
+          <li data-i18n="frontend-t3f2-li1">入住規定：最早入住／最晚退房時間</li>
+          <li data-i18n="frontend-t3f2-li2">兒童與加床、加餐收費標準</li>
+          <li data-i18n="frontend-t3f2-li3">其他規定（禁菸等）</li>
         </ul>
       </div>
       <div class="feature-item">
-        <h4>📖 飯店介紹</h4>
-        <ul><li>特色介紹以吸引客人購買</li></ul>
+        <h4 data-i18n="frontend-t3f3-title">📖 飯店介紹</h4>
+        <ul><li data-i18n="frontend-t3f3-li1">特色介紹以吸引客人購買</li></ul>
       </div>
       <div class="feature-item">
-        <h4>❌ 取消政策 & 協助</h4>
+        <h4 data-i18n="frontend-t3f4-title">❌ 取消政策 &amp; 協助</h4>
         <ul>
-          <li>商品的取消政策說明</li>
-          <li>KKday 幫助中心 / 真人客服</li>
+          <li data-i18n="frontend-t3f4-li1">商品的取消政策說明</li>
+          <li data-i18n="frontend-t3f4-li2">KKday 幫助中心 / 真人客服</li>
         </ul>
       </div>
     </div>
   </div>
 
 </div>
-<div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'frontend-breadcrumb-home': '首頁',
+    'frontend-breadcrumb-category': '商品認識',
+    'frontend-breadcrumb-current': '前台商品架構長相',
+    'frontend-title': '前台商品架構長相',
+    'frontend-subtitle': '介紹所有 CS/OP 會接觸到的 KKday 商品頁面結構，依類型分為三大類',
+    'frontend-chip-new': '新人必讀',
+    'frontend-type1-title': '1️⃣ 一般商品（票券類、行程類）',
+    'frontend-type1-example': 'EX：香港迪士尼樂園門票、一日遊行程',
+    'frontend-type1-desc': '主要針對整體的純票券、半日/一日遊等商品，頁面包含行程安排、價格、日期等內容。',
+    'frontend-f1-title': '🎯 選擇方案（Select Package）',
+    'frontend-f1-li1': '展示不同行程、票種、人數、天數選項',
+    'frontend-f1-li2': '日期及數量選擇框',
+    'frontend-f1-li3': '每個方案清楚標明價格，促銷時顯示折扣標籤',
+    'frontend-f2-title': '📝 商品說明（Product Description）',
+    'frontend-f2-li1': '使用說明：開放時間、使用方式',
+    'frontend-f2-li2': '方案選項：各方案詳細介紹',
+    'frontend-f2-li3': '重要資訊：如餐券適用餐廳列表',
+    'frontend-f2-li4': '兌換方式：手機顯示或列印電子憑證（QR code 須清晰完整）',
+    'frontend-f3-title': '🗺️ 行程介紹（Itinerary Details）',
+    'frontend-f3-li1': '按天展示行程：每天的活動安排',
+    'frontend-f3-li2': '時間點與地點標註',
+    'frontend-f3-li3': '每個景點的活動描述',
+    'frontend-f4-title': '📋 購買須知（Purchase Information）',
+    'frontend-f4-li1': '注意事項：特殊要求、參與條件',
+    'frontend-f4-li2': '立即確認商品：憑證於寄送後 30 分鐘生效',
+    'frontend-f4-li3': '其他提示：附官方細則避免爭議',
+    'frontend-f5-title': '📖 如何使用（How to Use）',
+    'frontend-f5-li1': '憑證使用方式說明',
+    'frontend-f5-li2': '使用期限與有效期提示',
+    'frontend-f5-li3': '過期處理說明',
+    'frontend-f6-title': '📍 體驗地點（Experience Locations）',
+    'frontend-f6-li1': '集合地點、景點名稱、地址',
+    'frontend-f6-li2': '地圖展示',
+    'frontend-f6-li3': '開放時間',
+    'frontend-f7-title': '⭐ 旅客評價（Traveler Reviews）',
+    'frontend-f7-li1': '星級評分',
+    'frontend-f7-li2': '用戶詳細評語',
+    'frontend-f7-li3': '旅遊照片分享',
+    'frontend-f8-title': '🙋 取得協助（Get Help）',
+    'frontend-f8-li1': 'KKday 幫助中心（熱門問題分類）',
+    'frontend-f8-li2': '真人客服協助',
+    'frontend-type2-title': '2️⃣ 點對點商品（鐵路、巴士、租車、郵輪、機票）',
+    'frontend-type2-example': 'EX：台灣高鐵票、機場接送、JRPASS',
+    'frontend-type2-desc': '主要針對交通工具預訂，頁面簡潔強調搜索、篩選、票價顯示，讓用戶快速找到想要的交通服務。',
+    'frontend-t2f1-title': '🔍 出發地與目的地選擇',
+    'frontend-t2f1-li1': '搜尋框可自動完成或推薦熱門地點',
+    'frontend-t2f1-li2': '靈活的點對點搜索',
+    'frontend-t2f2-title': '📅 日期與時間選擇',
+    'frontend-t2f2-li1': '選擇出發日期與時間',
+    'frontend-t2f2-li2': '查看可用票務',
+    'frontend-t2f3-title': '🎫 票務詳細資訊',
+    'frontend-t2f3-li1': '票種、航班號或車次',
+    'frontend-t2f3-li2': '出發時間、抵達時間',
+    'frontend-t2f4-title': '💳 預訂與支付',
+    'frontend-t2f4-li1': '選擇票種及人數後進入支付流程',
+    'frontend-type3-title': '3️⃣ 飯店',
+    'frontend-type3-example': 'EX：台北君悅酒店、礁溪老爺',
+    'frontend-type3-desc': '住宿相關商品，通常包括飯店選擇、房型選擇、日期選擇等。',
+    'frontend-t3f1-title': '🏨 設施與服務',
+    'frontend-t3f1-li1': '飯店設施服務詳細介紹',
+    'frontend-t3f2-title': '📜 飯店規定',
+    'frontend-t3f2-li1': '入住規定：最早入住／最晚退房時間',
+    'frontend-t3f2-li2': '兒童與加床、加餐收費標準',
+    'frontend-t3f2-li3': '其他規定（禁菸等）',
+    'frontend-t3f3-title': '📖 飯店介紹',
+    'frontend-t3f3-li1': '特色介紹以吸引客人購買',
+    'frontend-t3f4-title': '❌ 取消政策 & 協助',
+    'frontend-t3f4-li1': '商品的取消政策說明',
+    'frontend-t3f4-li2': 'KKday 幫助中心 / 真人客服',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用'
+  },
+  en: {
+    'frontend-breadcrumb-home': 'Home',
+    'frontend-breadcrumb-category': 'Product Knowledge',
+    'frontend-breadcrumb-current': 'Frontend Product Structure',
+    'frontend-title': 'Frontend Product Structure',
+    'frontend-subtitle': 'Overview of KKday product page layouts for CS/OP — categorized into three main types',
+    'frontend-chip-new': 'New Staff Must-Read',
+    'frontend-type1-title': '1️⃣ General Products (Tickets & Tours)',
+    'frontend-type1-example': 'EX: Hong Kong Disneyland Ticket, Day Tour',
+    'frontend-type1-desc': 'Covers standalone tickets, half-day/full-day tours, etc. Pages include itinerary, pricing, and date selection.',
+    'frontend-f1-title': '🎯 Select Package',
+    'frontend-f1-li1': 'Displays itinerary options, ticket types, pax count, and duration',
+    'frontend-f1-li2': 'Date and quantity selector',
+    'frontend-f1-li3': 'Clear pricing per package; discount labels shown during promotions',
+    'frontend-f2-title': '📝 Product Description',
+    'frontend-f2-li1': 'Usage instructions: opening hours and redemption method',
+    'frontend-f2-li2': 'Package options: detailed description of each option',
+    'frontend-f2-li3': 'Important info: e.g., applicable restaurants for meal vouchers',
+    'frontend-f2-li4': 'Redemption: mobile display or printed e-voucher (QR code must be clear and complete)',
+    'frontend-f3-title': '🗺️ Itinerary Details',
+    'frontend-f3-li1': 'Day-by-day itinerary with daily activity schedule',
+    'frontend-f3-li2': 'Time slots and location notes',
+    'frontend-f3-li3': 'Activity description for each attraction',
+    'frontend-f4-title': '📋 Purchase Information',
+    'frontend-f4-li1': 'Notes: special requirements and participation conditions',
+    'frontend-f4-li2': 'Instant confirmation: voucher valid 30 minutes after delivery',
+    'frontend-f4-li3': 'Additional notes: official terms attached to prevent disputes',
+    'frontend-f5-title': '📖 How to Use',
+    'frontend-f5-li1': 'Voucher usage instructions',
+    'frontend-f5-li2': 'Validity period reminder',
+    'frontend-f5-li3': 'Expiry handling instructions',
+    'frontend-f6-title': '📍 Experience Locations',
+    'frontend-f6-li1': 'Meeting point, attraction name, and address',
+    'frontend-f6-li2': 'Map display',
+    'frontend-f6-li3': 'Opening hours',
+    'frontend-f7-title': '⭐ Traveler Reviews',
+    'frontend-f7-li1': 'Star ratings',
+    'frontend-f7-li2': 'Detailed user comments',
+    'frontend-f7-li3': 'Travel photo sharing',
+    'frontend-f8-title': '🙋 Get Help',
+    'frontend-f8-li1': 'KKday Help Center (FAQ categories)',
+    'frontend-f8-li2': 'Live customer support',
+    'frontend-type2-title': '2️⃣ Point-to-Point Products (Rail, Bus, Car Rental, Cruise, Flight)',
+    'frontend-type2-example': 'EX: Taiwan HSR Ticket, Airport Transfer, JRPASS',
+    'frontend-type2-desc': 'Covers transportation bookings with a clean layout focused on search, filtering, and fare display for quick results.',
+    'frontend-t2f1-title': '🔍 Origin & Destination Selection',
+    'frontend-t2f1-li1': 'Search box with autocomplete and popular destination suggestions',
+    'frontend-t2f1-li2': 'Flexible point-to-point search',
+    'frontend-t2f2-title': '📅 Date & Time Selection',
+    'frontend-t2f2-li1': 'Select departure date and time',
+    'frontend-t2f2-li2': 'View available ticketing options',
+    'frontend-t2f3-title': '🎫 Ticket Details',
+    'frontend-t2f3-li1': 'Ticket type, flight number or train number',
+    'frontend-t2f3-li2': 'Departure time and arrival time',
+    'frontend-t2f4-title': '💳 Booking & Payment',
+    'frontend-t2f4-li1': 'Enter payment flow after selecting ticket type and pax count',
+    'frontend-type3-title': '3️⃣ Hotels',
+    'frontend-type3-example': 'EX: Grand Hyatt Taipei, Jiaoxi Lalu',
+    'frontend-type3-desc': 'Accommodation products including hotel selection, room type, and date picker.',
+    'frontend-t3f1-title': '🏨 Facilities & Services',
+    'frontend-t3f1-li1': 'Detailed introduction of hotel facilities and services',
+    'frontend-t3f2-title': '📜 Hotel Policies',
+    'frontend-t3f2-li1': 'Check-in policy: earliest check-in / latest check-out time',
+    'frontend-t3f2-li2': 'Child policy, extra bed and meal surcharges',
+    'frontend-t3f2-li3': 'Other policies (e.g., no-smoking)',
+    'frontend-t3f3-title': '📖 Hotel Introduction',
+    'frontend-t3f3-li1': 'Highlights to attract guests to book',
+    'frontend-t3f4-title': '❌ Cancellation Policy & Support',
+    'frontend-t3f4-li1': 'Product cancellation policy details',
+    'frontend-t3f4-li2': 'KKday Help Center / Live support',
+    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only'
+  },
+  ja: {
+    'frontend-breadcrumb-home': 'ホーム',
+    'frontend-breadcrumb-category': '商品知識',
+    'frontend-breadcrumb-current': 'フロントエンド商品構造',
+    'frontend-title': 'フロントエンド商品構造',
+    'frontend-subtitle': 'CS/OP が扱う KKday 商品ページの構成を3種類に分けて紹介します',
+    'frontend-chip-new': '新人必読',
+    'frontend-type1-title': '1️⃣ 一般商品（チケット類・ツアー類）',
+    'frontend-type1-example': 'EX：香港ディズニーランドチケット、1日ツアー',
+    'frontend-type1-desc': '単体チケットや半日・1日ツアーなど。ページにはスケジュール、料金、日付選択が含まれます。',
+    'frontend-f1-title': '🎯 プラン選択（Select Package）',
+    'frontend-f1-li1': '行程・チケット種別・人数・日数のオプションを表示',
+    'frontend-f1-li2': '日付と数量の選択ボックス',
+    'frontend-f1-li3': '各プランの料金を明記、セール時は割引ラベルを表示',
+    'frontend-f2-title': '📝 商品説明（Product Description）',
+    'frontend-f2-li1': '利用方法：営業時間・使用方法',
+    'frontend-f2-li2': 'プランオプション：各プランの詳細説明',
+    'frontend-f2-li3': '重要情報：例）食事券対象レストラン一覧',
+    'frontend-f2-li4': '引き換え方法：スマートフォン表示または印刷（QR code は鮮明かつ完全であること）',
+    'frontend-f3-title': '🗺️ 行程詳細（Itinerary Details）',
+    'frontend-f3-li1': '日別スケジュール：各日のアクティビティ',
+    'frontend-f3-li2': '時間帯と場所の記載',
+    'frontend-f3-li3': '各スポットのアクティビティ説明',
+    'frontend-f4-title': '📋 購入に際して（Purchase Information）',
+    'frontend-f4-li1': '注意事項：特別要件・参加条件',
+    'frontend-f4-li2': '即時確認商品：バウチャーは送付後30分で有効',
+    'frontend-f4-li3': 'その他：公式規約を添付してトラブルを防止',
+    'frontend-f5-title': '📖 ご利用方法（How to Use）',
+    'frontend-f5-li1': 'バウチャーの使用方法説明',
+    'frontend-f5-li2': '有効期限の案内',
+    'frontend-f5-li3': '期限切れ時の対応説明',
+    'frontend-f6-title': '📍 体験場所（Experience Locations）',
+    'frontend-f6-li1': '集合場所・観光スポット名・住所',
+    'frontend-f6-li2': '地図表示',
+    'frontend-f6-li3': '営業時間',
+    'frontend-f7-title': '⭐ 旅行者レビュー（Traveler Reviews）',
+    'frontend-f7-li1': '星評価',
+    'frontend-f7-li2': 'ユーザーの詳細なコメント',
+    'frontend-f7-li3': '旅行写真のシェア',
+    'frontend-f8-title': '🙋 サポートを受ける（Get Help）',
+    'frontend-f8-li1': 'KKday ヘルプセンター（よくある質問カテゴリ）',
+    'frontend-f8-li2': 'ライブカスタマーサポート',
+    'frontend-type2-title': '2️⃣ 点対点商品（鉄道・バス・レンタカー・クルーズ・航空券）',
+    'frontend-type2-example': 'EX：台湾新幹線チケット・空港送迎・JRPASS',
+    'frontend-type2-desc': '交通手段の予約に特化。検索・絞り込み・運賃表示を重視したシンプルなレイアウトです。',
+    'frontend-t2f1-title': '🔍 出発地・目的地の選択',
+    'frontend-t2f1-li1': '検索ボックスにオートコンプリートや人気スポットの提案機能',
+    'frontend-t2f1-li2': '柔軟な点対点検索',
+    'frontend-t2f2-title': '📅 日付・時間の選択',
+    'frontend-t2f2-li1': '出発日と時間を選択',
+    'frontend-t2f2-li2': '空席状況の確認',
+    'frontend-t2f3-title': '🎫 チケット詳細',
+    'frontend-t2f3-li1': 'チケット種別・便名または列車番号',
+    'frontend-t2f3-li2': '出発時間・到着時間',
+    'frontend-t2f4-title': '💳 予約・お支払い',
+    'frontend-t2f4-li1': 'チケット種別と人数を選択後、支払いフローへ',
+    'frontend-type3-title': '3️⃣ ホテル',
+    'frontend-type3-example': 'EX：グランドハイアット台北・礁溪老爺',
+    'frontend-type3-desc': '宿泊関連商品。ホテル選択・客室タイプ・日付選択などが含まれます。',
+    'frontend-t3f1-title': '🏨 施設とサービス',
+    'frontend-t3f1-li1': 'ホテル施設・サービスの詳細説明',
+    'frontend-t3f2-title': '📜 ホテルポリシー',
+    'frontend-t3f2-li1': 'チェックインポリシー：最早チェックイン・最終チェックアウト時間',
+    'frontend-t3f2-li2': 'お子様ポリシー・エキストラベッドや食事の追加料金',
+    'frontend-t3f2-li3': 'その他のルール（禁煙など）',
+    'frontend-t3f3-title': '📖 ホテル紹介',
+    'frontend-t3f3-li1': '宿泊を促進するホテルの特徴紹介',
+    'frontend-t3f4-title': '❌ キャンセルポリシー＆サポート',
+    'frontend-t3f4-li1': '商品のキャンセルポリシー説明',
+    'frontend-t3f4-li2': 'KKday ヘルプセンター / ライブサポート',
+    'footer': 'SCM ナレッジベース — 受注処理チーム · 内部使用のみ'
+  },
+  ko: {
+    'frontend-breadcrumb-home': '홈',
+    'frontend-breadcrumb-category': '상품 이해',
+    'frontend-breadcrumb-current': '프론트엔드 상품 구조',
+    'frontend-title': '프론트엔드 상품 구조',
+    'frontend-subtitle': 'CS/OP가 접하는 KKday 상품 페이지 구성을 세 가지 유형으로 소개합니다',
+    'frontend-chip-new': '신입 필독',
+    'frontend-type1-title': '1️⃣ 일반 상품（티켓류 · 투어류）',
+    'frontend-type1-example': 'EX：홍콩 디즈니랜드 티켓, 당일 투어',
+    'frontend-type1-desc': '단독 티켓, 반일/당일 투어 등의 상품. 페이지에는 일정, 가격, 날짜 선택 등이 포함됩니다.',
+    'frontend-f1-title': '🎯 패키지 선택（Select Package）',
+    'frontend-f1-li1': '다양한 일정·티켓 종류·인원·기간 옵션 표시',
+    'frontend-f1-li2': '날짜 및 수량 선택 박스',
+    'frontend-f1-li3': '각 패키지의 명확한 가격 표기, 프로모션 시 할인 라벨 표시',
+    'frontend-f2-title': '📝 상품 설명（Product Description）',
+    'frontend-f2-li1': '이용 안내：영업시간 및 사용 방법',
+    'frontend-f2-li2': '패키지 옵션：각 옵션 상세 설명',
+    'frontend-f2-li3': '중요 정보：예) 식사 바우처 이용 가능 레스토랑 목록',
+    'frontend-f2-li4': '교환 방법：모바일 화면 제시 또는 인쇄（QR code는 선명하고 완전해야 함）',
+    'frontend-f3-title': '🗺️ 여행 일정（Itinerary Details）',
+    'frontend-f3-li1': '일별 일정：매일의 액티비티 계획',
+    'frontend-f3-li2': '시간대 및 장소 표기',
+    'frontend-f3-li3': '각 명소의 액티비티 설명',
+    'frontend-f4-title': '📋 구매 안내（Purchase Information）',
+    'frontend-f4-li1': '주의사항：특별 요건 및 참가 조건',
+    'frontend-f4-li2': '즉시 확정 상품：바우처는 발송 후 30분 이내 유효',
+    'frontend-f4-li3': '기타 안내：공식 약관 첨부로 분쟁 예방',
+    'frontend-f5-title': '📖 이용 방법（How to Use）',
+    'frontend-f5-li1': '바우처 사용 방법 안내',
+    'frontend-f5-li2': '유효 기간 안내',
+    'frontend-f5-li3': '기간 만료 시 처리 방법',
+    'frontend-f6-title': '📍 체험 장소（Experience Locations）',
+    'frontend-f6-li1': '집합 장소, 명소명, 주소',
+    'frontend-f6-li2': '지도 표시',
+    'frontend-f6-li3': '영업시간',
+    'frontend-f7-title': '⭐ 여행자 리뷰（Traveler Reviews）',
+    'frontend-f7-li1': '별점 평가',
+    'frontend-f7-li2': '사용자 상세 후기',
+    'frontend-f7-li3': '여행 사진 공유',
+    'frontend-f8-title': '🙋 도움 받기（Get Help）',
+    'frontend-f8-li1': 'KKday 고객센터（자주 묻는 질문 분류）',
+    'frontend-f8-li2': '실시간 고객 지원',
+    'frontend-type2-title': '2️⃣ 점대점 상품（철도 · 버스 · 렌터카 · 크루즈 · 항공권）',
+    'frontend-type2-example': 'EX：대만 고속철도 티켓, 공항 픽업, JRPASS',
+    'frontend-type2-desc': '교통수단 예약에 특화. 검색·필터·요금 표시를 중심으로 한 간결한 레이아웃.',
+    'frontend-t2f1-title': '🔍 출발지 및 목적지 선택',
+    'frontend-t2f1-li1': '자동완성 및 인기 장소 추천 검색창',
+    'frontend-t2f1-li2': '유연한 점대점 검색',
+    'frontend-t2f2-title': '📅 날짜 및 시간 선택',
+    'frontend-t2f2-li1': '출발 날짜와 시간 선택',
+    'frontend-t2f2-li2': '이용 가능한 티켓 확인',
+    'frontend-t2f3-title': '🎫 티켓 상세 정보',
+    'frontend-t2f3-li1': '티켓 종류, 편명 또는 열차 번호',
+    'frontend-t2f3-li2': '출발 시간 및 도착 시간',
+    'frontend-t2f4-title': '💳 예약 및 결제',
+    'frontend-t2f4-li1': '티켓 종류와 인원 선택 후 결제 프로세스로 진행',
+    'frontend-type3-title': '3️⃣ 호텔',
+    'frontend-type3-example': 'EX：그랜드 하얏트 타이베이, 자오시 라루',
+    'frontend-type3-desc': '숙박 관련 상품. 호텔 선택, 객실 유형, 날짜 선택 등이 포함됩니다.',
+    'frontend-t3f1-title': '🏨 시설 및 서비스',
+    'frontend-t3f1-li1': '호텔 시설 및 서비스 상세 소개',
+    'frontend-t3f2-title': '📜 호텔 규정',
+    'frontend-t3f2-li1': '체크인 규정：최조 체크인 / 최종 체크아웃 시간',
+    'frontend-t3f2-li2': '어린이 정책, 추가 침대 및 식사 추가 요금',
+    'frontend-t3f2-li3': '기타 규정（금연 등）',
+    'frontend-t3f3-title': '📖 호텔 소개',
+    'frontend-t3f3-li1': '예약을 유도하는 호텔 특징 소개',
+    'frontend-t3f4-title': '❌ 취소 정책 & 지원',
+    'frontend-t3f4-li1': '상품 취소 정책 설명',
+    'frontend-t3f4-li2': 'KKday 고객센터 / 실시간 지원',
+    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용'
+  }
+});
+</script>
 </body>
 </html>

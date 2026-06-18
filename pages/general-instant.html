@@ -11,41 +11,92 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 自動出票 / 一般即訂即出</div>
+    <div class="breadcrumb" data-i18n="gi-breadcrumb">首頁 / 自動出票 / 一般即訂即出</div>
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">⚡</div>
       <div class="page-header-body">
-        <h1>一般即訂即出</h1>
-        <p class="subtitle">訂單成立後系統自動產出 KKday 憑證並即時發送給旅客</p>
-        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+        <h1 data-i18n="gi-title">一般即訂即出</h1>
+        <p class="subtitle" data-i18n="gi-subtitle">訂單成立後系統自動產出 KKday 憑證並即時發送給旅客</p>
+        <div class="meta-row"><span class="meta-chip badge-green" data-i18n="gi-meta">自動出票</span></div>
       </div>
     </div>
 
     <div class="white-box">
-      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>所有不是利用 API／PSI 出票的商品，訂單成立後系統自動產出 KKday 憑證並即時發送給旅客。通常不需人工介入。</span>
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="gi-definition">ℹ️ <strong>定義：</strong>所有不是利用 API／PSI 出票的商品，訂單成立後系統自動產出 KKday 憑證並即時發送給旅客。通常不需人工介入。</span>
     </div>
 
-    <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常訂單：系統自動產出憑證並發送，無需 OP 作業。</span>
+    <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="gi-auto-note">✅ 正常訂單：系統自動產出憑證並發送，無需 OP 作業。</span>
   </div>
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用',
+    'gi-breadcrumb': '首頁 / 自動出票 / 一般即訂即出',
+    'gi-title': '一般即訂即出',
+    'gi-subtitle': '訂單成立後系統自動產出 KKday 憑證並即時發送給旅客',
+    'gi-meta': '自動出票',
+    'gi-definition': 'ℹ️ <strong>定義：</strong>所有不是利用 API／PSI 出票的商品，訂單成立後系統自動產出 KKday 憑證並即時發送給旅客。通常不需人工介入。',
+    'gi-auto-note': '✅ 正常訂單：系統自動產出憑證並發送，無需 OP 作業。',
+  },
+  en: {
+    'nav-title': 'SCM <em>Knowledge Base</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Knowledge Base · Internal Use',
+    'gi-breadcrumb': 'Home / Auto Issuance / General Instant Issuance',
+    'gi-title': 'General Instant Issuance',
+    'gi-subtitle': 'Upon order placement, the system automatically generates a KKday Voucher and instantly delivers it to the traveler',
+    'gi-meta': 'Auto Issuance',
+    'gi-definition': 'ℹ️ <strong>Definition：</strong>For all products not issued via API or PSI, the system automatically generates a KKday Voucher upon order placement and instantly sends it to the traveler. No manual intervention is typically required.',
+    'gi-auto-note': '✅ Normal orders: The system automatically generates and sends the voucher. No OP action required.',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
+    'footer': 'SCM ナレッジベース · 社内使用',
+    'gi-breadcrumb': 'ホーム / 自動発券 / 一般即時発券',
+    'gi-title': '一般即時発券',
+    'gi-subtitle': '注文成立後、システムが KKday バウチャーを自動生成して旅行者に即時送付',
+    'gi-meta': '自動発券',
+    'gi-definition': 'ℹ️ <strong>定義：</strong>API または PSI で発券されない全商品について、注文成立後にシステムが KKday バウチャーを自動生成して旅行者に即時送付します。通常、人手による介入は不要です。',
+    'gi-auto-note': '✅ 通常注文：システムが自動でバウチャーを生成・送付します。OP 作業は不要です。',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식 베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식 베이스 · 내부 사용',
+    'gi-breadcrumb': '홈 / 자동 발권 / 일반 즉시 발권',
+    'gi-title': '일반 즉시 발권',
+    'gi-subtitle': '주문 성립 후 시스템이 KKday 바우처를 자동으로 생성하여 여행자에게 즉시 발송',
+    'gi-meta': '자동 발권',
+    'gi-definition': 'ℹ️ <strong>정의：</strong>API 또는 PSI를 통해 발권되지 않는 모든 상품에 대해, 주문 성립 후 시스템이 자동으로 KKday 바우처를 생성하여 여행자에게 즉시 발송합니다. 일반적으로 수동 개입이 필요하지 않습니다.',
+    'gi-auto-note': '✅ 정상 주문：시스템이 자동으로 바우처를 생성하고 발송합니다. OP 작업이 필요하지 않습니다.',
+  }
+});
+</script>
 </body>
 </html>

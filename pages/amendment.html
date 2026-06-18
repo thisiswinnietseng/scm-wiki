@@ -11,57 +11,60 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 商品異動 &amp; 挽單流程</div>
+    <div class="breadcrumb" data-i18n="amend-breadcrumb">首頁 / 商品異動 &amp; 挽單流程</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">🔀</div>
       <div class="page-header-body">
-        <h1>商品異動 &amp; 挽單流程</h1>
+        <h1 data-i18n="amend-title">商品異動 &amp; 挽單流程</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-red">異常處理</span>
+          <span class="meta-chip badge-red" data-i18n="amend-chip">異常處理</span>
         </div>
       </div>
     </div>
 
-    <h2>商品異動</h2>
+    <h2 data-i18n="amend-product-change-title">商品異動</h2>
     <div class="white-box">
       <div class="step-list">
 
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>Slack 群組接收異動通知</strong>
+            <strong data-i18n="amend-step1-title">Slack 群組接收異動通知</strong>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>表單確認異動內容</strong>
+            <strong data-i18n="amend-step2-title">表單確認異動內容</strong>
             <ul>
-              <li>異動原因</li>
-              <li>受影響訂單明細</li>
-              <li>後續處理流程</li>
+              <li data-i18n="amend-step2-li1">異動原因</li>
+              <li data-i18n="amend-step2-li2">受影響訂單明細</li>
+              <li data-i18n="amend-step2-li3">後續處理流程</li>
             </ul>
           </div>
         </div>
@@ -69,15 +72,15 @@
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>依異動類型處理</strong>
+            <strong data-i18n="amend-step3-title">依異動類型處理</strong>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
               <div style="flex:1;min-width:200px;border:1px solid #a5d6a7;border-radius:8px;padding:12px 16px;background:#f1f8f1;">
-                <div style="font-size:12px;font-weight:700;color:#2e7d32;margin-bottom:6px;">✅ OP 直接作業</div>
-                <div style="font-size:12px;color:#2d3748;">改成本、發起批次取消等，無需等待客人回覆</div>
+                <div style="font-size:12px;font-weight:700;color:#2e7d32;margin-bottom:6px;" data-i18n="amend-step3-op-label">✅ OP 直接作業</div>
+                <div style="font-size:12px;color:#2d3748;" data-i18n="amend-step3-op-desc">改成本、發起批次取消等，無需等待客人回覆</div>
               </div>
               <div style="flex:1;min-width:200px;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;background:#fff8f0;">
-                <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:6px;">⏳ 須先通知客人</div>
-                <div style="font-size:12px;color:#2d3748;">客服通知客人後，待客人回覆，再依客人選擇操作：<br>・同意改期 → OP 執行改期<br>・同意取消 → OP 發起取消</div>
+                <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:6px;" data-i18n="amend-step3-notify-label">⏳ 須先通知客人</div>
+                <div style="font-size:12px;color:#2d3748;" data-i18n-html="amend-step3-notify-desc">客服通知客人後，待客人回覆，再依客人選擇操作：<br>・同意改期 → OP 執行改期<br>・同意取消 → OP 發起取消</div>
               </div>
             </div>
           </div>
@@ -86,104 +89,268 @@
       </div>
     </div>
 
-    <h2>額滿 / 售罄（挽單）</h2>
+    <h2 data-i18n="amend-soldout-title">額滿 / 售罄（挽單）</h2>
     <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
       <div style="flex:1;min-width:200px;border:1px solid #a5d6a7;border-radius:8px;padding:12px 16px;background:#f1f8f1;">
-        <div style="font-size:11px;font-weight:700;color:#2e7d32;letter-spacing:0.5px;margin-bottom:4px;">✅ 適用情況</div>
-        <div style="font-size:13px;color:#2d3748;">名額已滿、供應商設有名額上限</div>
+        <div style="font-size:11px;font-weight:700;color:#2e7d32;letter-spacing:0.5px;margin-bottom:4px;" data-i18n="amend-soldout-applicable">✅ 適用情況</div>
+        <div style="font-size:13px;color:#2d3748;" data-i18n="amend-soldout-applicable-desc">名額已滿、供應商設有名額上限</div>
       </div>
       <div style="flex:1;min-width:200px;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;background:#fff8f0;">
-        <div style="font-size:11px;font-weight:700;color:#e65100;letter-spacing:0.5px;margin-bottom:4px;">⚠️ 例外（改為取消）</div>
-        <div style="font-size:13px;color:#2d3748;">AGODA 分銷商訂單遇額滿一律取消；系統錯誤但實際有名額 → 人工確認</div>
+        <div style="font-size:11px;font-weight:700;color:#e65100;letter-spacing:0.5px;margin-bottom:4px;" data-i18n="amend-soldout-exception">⚠️ 例外（改為取消）</div>
+        <div style="font-size:13px;color:#2d3748;" data-i18n="amend-soldout-exception-desc">AGODA 分銷商訂單遇額滿一律取消；系統錯誤但實際有名額 → 人工確認</div>
       </div>
     </div>
 
     <div class="white-box">
-      <h3>挽單流程</h3>
+      <h3 data-i18n="amend-rescue-title">挽單流程</h3>
       <ol class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
-          <div class="step-content">前往客服操作台</div>
+          <div class="step-content" data-i18n="amend-rescue-step1">前往客服操作台</div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
-          <div class="step-content">點「新增工單」</div>
+          <div class="step-content" data-i18n="amend-rescue-step2">點「新增工單」</div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
-          <div class="step-content">選擇工單分類：<strong>訂單異動 → 額滿售罄 → 挽單</strong></div>
+          <div class="step-content" data-i18n-html="amend-rescue-step3">選擇工單分類：<strong>訂單異動 → 額滿售罄 → 挽單</strong></div>
         </li>
         <li class="step-item">
           <div class="step-num">4</div>
-          <div class="step-content">填入最晚處理時間</div>
+          <div class="step-content" data-i18n="amend-rescue-step4">填入最晚處理時間</div>
         </li>
         <li class="step-item">
           <div class="step-num">5</div>
-          <div class="step-content">確認建立工單</div>
+          <div class="step-content" data-i18n="amend-rescue-step5">確認建立工單</div>
         </li>
         <li class="step-item">
           <div class="step-num">6</div>
-          <div class="step-content">點進工單 → 點「開始處理」→ 確認</div>
+          <div class="step-content" data-i18n="amend-rescue-step6">點進工單 → 點「開始處理」→ 確認</div>
         </li>
         <li class="step-item">
           <div class="step-num">7</div>
-          <div class="step-content">點「後拋」→ 選自動分派</div>
+          <div class="step-content" data-i18n="amend-rescue-step7">點「後拋」→ 選自動分派</div>
         </li>
         <li class="step-item">
           <div class="step-num">8</div>
-          <div class="step-content">
+          <div class="step-content" data-i18n-html="amend-rescue-step8">
             填入後拋備註（依商品頁面 或 依 OP 提供日期場次，<strong>中英雙語</strong>）
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">9</div>
-          <div class="step-content">填入後拋截止時間</div>
+          <div class="step-content" data-i18n="amend-rescue-step9">填入後拋截止時間</div>
         </li>
         <li class="step-item">
           <div class="step-num">10</div>
-          <div class="step-content">確認後拋</div>
+          <div class="step-content" data-i18n="amend-rescue-step10">確認後拋</div>
         </li>
         <li class="step-item">
           <div class="step-num">11</div>
           <div class="step-content">
-            Be2 訂單狀態記得點回「旅客資料已齊全」
-            <span style="display:inline-block;margin-top:5px;font-size:12px;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:2px 8px;">⚠️ 這步容易漏掉，記得確認！</span>
+            <span data-i18n="amend-rescue-step11">Be2 訂單狀態記得點回「旅客資料已齊全」</span>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:2px 8px;" data-i18n="amend-rescue-step11-warn">⚠️ 這步容易漏掉，記得確認！</span>
           </div>
         </li>
       </ol>
 
     </div>
 
-    <h2>關閉前台售罄日期操作</h2>
+    <h2 data-i18n="amend-close-title">關閉前台售罄日期操作</h2>
     <div class="white-box">
       <ol class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            新商品管理 → 商品管理 → 輸入 prod_oid
-            <span style="display:inline-block;margin-top:5px;font-size:12px;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:2px 8px;">⚠️ 非 prod_mid</span>
+            <span data-i18n="amend-close-step1">新商品管理 → 商品管理 → 輸入 prod_oid</span>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:2px 8px;" data-i18n="amend-close-step1-warn">⚠️ 非 prod_mid</span>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
-          <div class="step-content">查詢到商品 → 庫存設定 → 選套餐品項</div>
+          <div class="step-content" data-i18n="amend-close-step2">查詢到商品 → 庫存設定 → 選套餐品項</div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
-          <div class="step-content">
+          <div class="step-content" data-i18n-html="amend-close-step3">
             <strong>Option A — 調整庫存量：</strong>查詢日期 → 勾選 → 編輯已選取資料 → 更改數量 → 存檔
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">4</div>
-          <div class="step-content">
+          <div class="step-content" data-i18n-html="amend-close-step4">
             <strong>Option B — 關閉日期 / 場次銷售開關：</strong>查詢 → 勾選需關閉日期 → 編輯已選取資料 → 勾選「關閉」→ 存檔
           </div>
         </li>
       </ol>
     </div>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'amend-breadcrumb': '首頁 / 商品異動 & 挽單流程',
+    'amend-title': '商品異動 & 挽單流程',
+    'amend-chip': '異常處理',
+    'amend-product-change-title': '商品異動',
+    'amend-step1-title': 'Slack 群組接收異動通知',
+    'amend-step2-title': '表單確認異動內容',
+    'amend-step2-li1': '異動原因',
+    'amend-step2-li2': '受影響訂單明細',
+    'amend-step2-li3': '後續處理流程',
+    'amend-step3-title': '依異動類型處理',
+    'amend-step3-op-label': '✅ OP 直接作業',
+    'amend-step3-op-desc': '改成本、發起批次取消等，無需等待客人回覆',
+    'amend-step3-notify-label': '⏳ 須先通知客人',
+    'amend-step3-notify-desc': '客服通知客人後，待客人回覆，再依客人選擇操作：<br>・同意改期 → OP 執行改期<br>・同意取消 → OP 發起取消',
+    'amend-soldout-title': '額滿 / 售罄（挽單）',
+    'amend-soldout-applicable': '✅ 適用情況',
+    'amend-soldout-applicable-desc': '名額已滿、供應商設有名額上限',
+    'amend-soldout-exception': '⚠️ 例外（改為取消）',
+    'amend-soldout-exception-desc': 'AGODA 分銷商訂單遇額滿一律取消；系統錯誤但實際有名額 → 人工確認',
+    'amend-rescue-title': '挽單流程',
+    'amend-rescue-step1': '前往客服操作台',
+    'amend-rescue-step2': '點「新增工單」',
+    'amend-rescue-step3': '選擇工單分類：<strong>訂單異動 → 額滿售罄 → 挽單</strong>',
+    'amend-rescue-step4': '填入最晚處理時間',
+    'amend-rescue-step5': '確認建立工單',
+    'amend-rescue-step6': '點進工單 → 點「開始處理」→ 確認',
+    'amend-rescue-step7': '點「後拋」→ 選自動分派',
+    'amend-rescue-step8': '填入後拋備註（依商品頁面 或 依 OP 提供日期場次，<strong>中英雙語</strong>）',
+    'amend-rescue-step9': '填入後拋截止時間',
+    'amend-rescue-step10': '確認後拋',
+    'amend-rescue-step11': 'Be2 訂單狀態記得點回「旅客資料已齊全」',
+    'amend-rescue-step11-warn': '⚠️ 這步容易漏掉，記得確認！',
+    'amend-close-title': '關閉前台售罄日期操作',
+    'amend-close-step1': '新商品管理 → 商品管理 → 輸入 prod_oid',
+    'amend-close-step1-warn': '⚠️ 非 prod_mid',
+    'amend-close-step2': '查詢到商品 → 庫存設定 → 選套餐品項',
+    'amend-close-step3': '<strong>Option A — 調整庫存量：</strong>查詢日期 → 勾選 → 編輯已選取資料 → 更改數量 → 存檔',
+    'amend-close-step4': '<strong>Option B — 關閉日期 / 場次銷售開關：</strong>查詢 → 勾選需關閉日期 → 編輯已選取資料 → 勾選「關閉」→ 存檔',
+  },
+  en: {
+    'amend-breadcrumb': 'Home / Product Change & Order Rescue Flow',
+    'amend-title': 'Product Change & Order Rescue Flow',
+    'amend-chip': 'Exception Handling',
+    'amend-product-change-title': 'Product Change',
+    'amend-step1-title': 'Receive Change Notification via Slack Group',
+    'amend-step2-title': 'Review Change Details in Form',
+    'amend-step2-li1': 'Reason for change',
+    'amend-step2-li2': 'Affected order details',
+    'amend-step2-li3': 'Follow-up handling process',
+    'amend-step3-title': 'Handle by Change Type',
+    'amend-step3-op-label': '✅ OP Acts Directly',
+    'amend-step3-op-desc': 'Update cost, initiate batch cancellation, etc. — no need to wait for customer reply',
+    'amend-step3-notify-label': '⏳ Notify Customer First',
+    'amend-step3-notify-desc': 'CS notifies customer and awaits response; act based on customer\'s choice:<br>・Agrees to reschedule → OP executes reschedule<br>・Agrees to cancel → OP initiates cancellation',
+    'amend-soldout-title': 'Sold Out / Full Capacity (Order Rescue)',
+    'amend-soldout-applicable': '✅ Applicable Scenarios',
+    'amend-soldout-applicable-desc': 'Capacity reached; supplier has quota limit',
+    'amend-soldout-exception': '⚠️ Exception (Change to Cancellation)',
+    'amend-soldout-exception-desc': 'AGODA reseller orders always cancel when full; system error but slots available → manual verification',
+    'amend-rescue-title': 'Order Rescue Flow',
+    'amend-rescue-step1': 'Go to CS Operations Console',
+    'amend-rescue-step2': 'Click "Create New Ticket"',
+    'amend-rescue-step3': 'Select ticket category: <strong>Order Change → Sold Out → Order Rescue</strong>',
+    'amend-rescue-step4': 'Enter the latest processing deadline',
+    'amend-rescue-step5': 'Confirm ticket creation',
+    'amend-rescue-step6': 'Open the ticket → Click "Start Processing" → Confirm',
+    'amend-rescue-step7': 'Click "Push Back" → Select Auto-assign',
+    'amend-rescue-step8': 'Fill in push-back remarks (based on product page or OP-provided date/session, <strong>bilingual Chinese-English</strong>)',
+    'amend-rescue-step9': 'Enter push-back deadline',
+    'amend-rescue-step10': 'Confirm push-back',
+    'amend-rescue-step11': 'Remember to set Be2 order status back to "Traveler Info Complete"',
+    'amend-rescue-step11-warn': '⚠️ Easy to forget — always double-check!',
+    'amend-close-title': 'Close Sold-Out Dates on Frontend',
+    'amend-close-step1': 'Product Management → Product Admin → Enter prod_oid',
+    'amend-close-step1-warn': '⚠️ Not prod_mid',
+    'amend-close-step2': 'Find product → Inventory Settings → Select package item',
+    'amend-close-step3': '<strong>Option A — Adjust Inventory Quantity:</strong> Query date → Check → Edit selected → Change quantity → Save',
+    'amend-close-step4': '<strong>Option B — Close Date / Session Sales Switch:</strong> Query → Check dates to close → Edit selected → Check "Close" → Save',
+  },
+  ja: {
+    'amend-breadcrumb': 'ホーム / 商品変更 & 挽回フロー',
+    'amend-title': '商品変更 & 挽回フロー',
+    'amend-chip': '例外処理',
+    'amend-product-change-title': '商品変更',
+    'amend-step1-title': 'Slack グループで変更通知を受信',
+    'amend-step2-title': 'フォームで変更内容を確認',
+    'amend-step2-li1': '変更理由',
+    'amend-step2-li2': '影響を受ける注文の詳細',
+    'amend-step2-li3': 'その後の処理フロー',
+    'amend-step3-title': '変更種別に応じて処理',
+    'amend-step3-op-label': '✅ OP が直接対応',
+    'amend-step3-op-desc': 'コスト変更、一括キャンセル発起など — お客様の回答を待たずに進める',
+    'amend-step3-notify-label': '⏳ 先にお客様に通知',
+    'amend-step3-notify-desc': 'CS がお客様に通知後、回答を待ち、選択に応じて対応：<br>・日程変更に同意 → OP が変更を実行<br>・キャンセルに同意 → OP がキャンセルを発起',
+    'amend-soldout-title': '定員超過 / 売り切れ（挽回）',
+    'amend-soldout-applicable': '✅ 適用状況',
+    'amend-soldout-applicable-desc': '定員超過；サプライヤーに名義上限あり',
+    'amend-soldout-exception': '⚠️ 例外（キャンセルに変更）',
+    'amend-soldout-exception-desc': 'AGODA 代理店注文は定員超過で一律キャンセル；システムエラーだが実際には空きあり → 手動確認',
+    'amend-rescue-title': '挽回フロー',
+    'amend-rescue-step1': 'CS 操作コンソールへ移動',
+    'amend-rescue-step2': '「新規チケット作成」をクリック',
+    'amend-rescue-step3': 'チケット分類を選択：<strong>注文変更 → 売り切れ → 挽回</strong>',
+    'amend-rescue-step4': '最遅処理期限を入力',
+    'amend-rescue-step5': 'チケット作成を確認',
+    'amend-rescue-step6': 'チケットを開く → 「処理開始」をクリック → 確認',
+    'amend-rescue-step7': '「差し戻し」をクリック → 自動振り分けを選択',
+    'amend-rescue-step8': '差し戻し備考を入力（商品ページまたは OP 提供の日程・場次に基づき、<strong>中英二言語</strong>）',
+    'amend-rescue-step9': '差し戻し期限を入力',
+    'amend-rescue-step10': '差し戻しを確認',
+    'amend-rescue-step11': 'Be2 注文ステータスを「旅客情報完備」に戻すことを忘れずに',
+    'amend-rescue-step11-warn': '⚠️ 見落としやすいステップ — 必ず確認！',
+    'amend-close-title': 'フロントエンドの売り切れ日程を非公開にする操作',
+    'amend-close-step1': '新商品管理 → 商品管理 → prod_oid を入力',
+    'amend-close-step1-warn': '⚠️ prod_mid ではありません',
+    'amend-close-step2': '商品を検索 → 在庫設定 → パッケージ品目を選択',
+    'amend-close-step3': '<strong>Option A — 在庫数量を調整：</strong>日付を検索 → チェック → 選択データを編集 → 数量変更 → 保存',
+    'amend-close-step4': '<strong>Option B — 日程 / 場次の販売スイッチをオフ：</strong>検索 → 非公開にする日程にチェック → 選択データを編集 → 「非公開」にチェック → 保存',
+  },
+  ko: {
+    'amend-breadcrumb': '홈 / 상품 변동 & 구제 프로세스',
+    'amend-title': '상품 변동 & 구제 프로세스',
+    'amend-chip': '예외 처리',
+    'amend-product-change-title': '상품 변동',
+    'amend-step1-title': 'Slack 그룹에서 변동 알림 수신',
+    'amend-step2-title': '양식에서 변동 내용 확인',
+    'amend-step2-li1': '변동 사유',
+    'amend-step2-li2': '영향받는 주문 내역',
+    'amend-step2-li3': '후속 처리 프로세스',
+    'amend-step3-title': '변동 유형에 따라 처리',
+    'amend-step3-op-label': '✅ OP 직접 작업',
+    'amend-step3-op-desc': '비용 변경, 일괄 취소 발기 등 — 고객 회신을 기다릴 필요 없음',
+    'amend-step3-notify-label': '⏳ 먼저 고객에게 통보',
+    'amend-step3-notify-desc': 'CS가 고객에게 통보 후 회신을 기다려 선택에 따라 처리：<br>・일정 변경 동의 → OP가 변경 실행<br>・취소 동의 → OP가 취소 발기',
+    'amend-soldout-title': '정원 초과 / 매진（구제）',
+    'amend-soldout-applicable': '✅ 적용 상황',
+    'amend-soldout-applicable-desc': '정원 초과；공급업체 정원 상한 설정',
+    'amend-soldout-exception': '⚠️ 예외（취소로 변경）',
+    'amend-soldout-exception-desc': 'AGODA 리셀러 주문은 정원 초과 시 일률 취소；시스템 오류이나 실제 자리 있음 → 수동 확인',
+    'amend-rescue-title': '구제 프로세스',
+    'amend-rescue-step1': 'CS 운영 콘솔로 이동',
+    'amend-rescue-step2': '「새 티켓 생성」클릭',
+    'amend-rescue-step3': '티켓 분류 선택：<strong>주문 변동 → 매진 → 구제</strong>',
+    'amend-rescue-step4': '최종 처리 기한 입력',
+    'amend-rescue-step5': '티켓 생성 확인',
+    'amend-rescue-step6': '티켓 열기 → 「처리 시작」클릭 → 확인',
+    'amend-rescue-step7': '「반려」클릭 → 자동 배정 선택',
+    'amend-rescue-step8': '반려 메모 입력（상품 페이지 또는 OP 제공 날짜/회차 기준, <strong>중영 이중 언어</strong>）',
+    'amend-rescue-step9': '반려 마감 기한 입력',
+    'amend-rescue-step10': '반려 확인',
+    'amend-rescue-step11': 'Be2 주문 상태를 「여행자 정보 완비」로 되돌리는 것을 잊지 말 것',
+    'amend-rescue-step11-warn': '⚠️ 놓치기 쉬운 단계 — 반드시 확인！',
+    'amend-close-title': '프론트엔드 매진 날짜 비공개 처리',
+    'amend-close-step1': '신상품 관리 → 상품 관리 → prod_oid 입력',
+    'amend-close-step1-warn': '⚠️ prod_mid 아님',
+    'amend-close-step2': '상품 조회 → 재고 설정 → 패키지 품목 선택',
+    'amend-close-step3': '<strong>Option A — 재고 수량 조정：</strong>날짜 조회 → 체크 → 선택 항목 편집 → 수량 변경 → 저장',
+    'amend-close-step4': '<strong>Option B — 날짜 / 회차 판매 스위치 비활성화：</strong>조회 → 비활성화할 날짜 체크 → 선택 항목 편집 → 「비활성화」체크 → 저장',
+  }
+});
+</script>
 </body>
 </html>

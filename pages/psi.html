@@ -11,86 +11,89 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 自動出票 / PSI</div>
+    <div class="breadcrumb" data-i18n="psi-breadcrumb">首頁 / 自動出票 / PSI</div>
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🗄️</div>
       <div class="page-header-body">
-        <h1>PSI 即訂即出</h1>
-        <p class="subtitle">BD／AM 與供應商事先切票或寄賣，入庫至 PSI 系統後自動出票</p>
-        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+        <h1 data-i18n="psi-title">PSI 即訂即出</h1>
+        <p class="subtitle" data-i18n="psi-subtitle">BD／AM 與供應商事先切票或寄賣，入庫至 PSI 系統後自動出票</p>
+        <div class="meta-row"><span class="meta-chip badge-green" data-i18n="psi-meta">自動出票</span></div>
       </div>
     </div>
 
     <div class="white-box">
-      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>BD／AM 與供應商事先切票或寄賣，將庫存入庫至 PSI 系統，旅客下訂後系統透過 PSI 自動出票。</span>
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="psi-definition">ℹ️ <strong>定義：</strong>BD／AM 與供應商事先切票或寄賣，將庫存入庫至 PSI 系統，旅客下訂後系統透過 PSI 自動出票。</span>
 
-      <div style="margin-top:20px;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--primary);">💰 金流類型 & 請款方式</div>
+      <div style="margin-top:20px;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--primary);" data-i18n="psi-payment-label">💰 金流類型 &amp; 請款方式</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;">
         <div style="background:#f0f4ff;border:1px solid #c5d3f5;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;">切票（買斷）</div>
-          <div style="font-size:12px;color:#4a5568;">事先支付貨款給供應商取得貨品販售</div>
+          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;" data-i18n="psi-payment-buyout-title">切票（買斷）</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-payment-buyout-desc">事先支付貨款給供應商取得貨品販售</div>
         </div>
         <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#15803d;margin-bottom:4px;">寄賣匯款</div>
-          <div style="font-size:12px;color:#4a5568;">未事先付款即取得貨品，賣出後結算</div>
+          <div style="font-size:12px;font-weight:700;color:#15803d;margin-bottom:4px;" data-i18n="psi-payment-consign-title">寄賣匯款</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-payment-consign-desc">未事先付款即取得貨品，賣出後結算</div>
         </div>
         <div style="background:#fafbff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;">贈品</div>
-          <div style="font-size:12px;color:#4a5568;">不需支付貨款即取得貨品販售</div>
+          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;" data-i18n="psi-payment-gift-title">贈品</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-payment-gift-desc">不需支付貨款即取得貨品販售</div>
         </div>
       </div>
-      <div style="margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;">⚠️ 請款方式設定為「切票」→ 只能出以買斷或贈品入庫的貨品；設定為「寄賣匯款」→ 只能出以寄賣入庫的貨品</div>
+      <div style="margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;" data-i18n="psi-payment-note">⚠️ 請款方式設定為「切票」→ 只能出以買斷或贈品入庫的貨品；設定為「寄賣匯款」→ 只能出以寄賣入庫的貨品</div>
 
-      <div style="margin-top:20px;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--primary);">📦 品項類型</div>
+      <div style="margin-top:20px;margin-bottom:4px;font-size:13px;font-weight:700;color:var(--primary);" data-i18n="psi-item-label">📦 品項類型</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;">
         <div style="background:#f3e5f5;border:1px solid #ce93d8;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:4px;">🖨️ 電子</div>
-          <div style="font-size:12px;color:#4a5568;">供應商電子檔案入庫並發送給客人（PDF、QR Code、Barcode、票券號等）</div>
+          <div style="font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:4px;" data-i18n="psi-item-electronic-title">🖨️ 電子</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-item-electronic-desc">供應商電子檔案入庫並發送給客人（PDF、QR Code、Barcode、票券號等）</div>
         </div>
         <div style="background:#e8f0fe;border:1px solid #c5d3f5;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;">💻 虛擬</div>
-          <div style="font-size:12px;color:#4a5568;">無實際型態貨品（如門票切位）→ KKday 憑證，不一定需核銷</div>
+          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;" data-i18n="psi-item-virtual-title">💻 虛擬</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-item-virtual-desc">無實際型態貨品（如門票切位）→ KKday 憑證，不一定需核銷</div>
         </div>
         <div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;">📦 實體</div>
-          <div style="font-size:12px;color:#4a5568;">可領取或郵寄的貨品（SIM 卡、紙本票券、伴手禮）</div>
+          <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;" data-i18n="psi-item-physical-title">📦 實體</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-item-physical-desc">可領取或郵寄的貨品（SIM 卡、紙本票券、伴手禮）</div>
         </div>
       </div>
     </div>
 
-    <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常訂單：PSI 系統自動配票出貨，無需 OP 作業。</span>
+    <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="psi-auto-note">✅ 正常訂單：PSI 系統自動配票出貨，無需 OP 作業。</span>
 
-    <h3 style="margin-top:1.5rem;">⚠️ 異常訂單：PSI 出貨失敗</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="psi-fail-title">⚠️ 異常訂單：PSI 出貨失敗</h3>
     <div class="white-box">
       <div class="cards-grid-2" style="margin-bottom:1rem;">
         <div style="border:1px solid #ef9a9a;border-radius:8px;padding:12px;background:#fdf5f5;">
-          <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;">❌ 錯誤訊息 A</div>
+          <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;" data-i18n="psi-err-a-label">❌ 錯誤訊息 A</div>
           <code style="display:block;font-size:12px;background:rgba(0,0,0,0.05);padding:6px 8px;border-radius:4px;margin-bottom:6px;">PSI出貨失敗(200006,系統配票貨品不足)</code>
-          <div style="font-size:12px;color:#555;">庫存不足，需請 BD／AM 補票。</div>
+          <div style="font-size:12px;color:#555;" data-i18n="psi-err-a-desc">庫存不足，需請 BD／AM 補票。</div>
         </div>
         <div style="border:1px solid #ef9a9a;border-radius:8px;padding:12px;background:#fdf5f5;">
-          <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;">❌ 錯誤訊息 B</div>
+          <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;" data-i18n="psi-err-b-label">❌ 錯誤訊息 B</div>
           <code style="display:block;font-size:12px;background:rgba(0,0,0,0.05);padding:6px 8px;border-radius:4px;margin-bottom:6px;">PSI出貨失敗(9996,null)</code>
-          <div style="font-size:12px;color:#555;">系統異常，需確認 PSI 狀態。</div>
+          <div style="font-size:12px;color:#555;" data-i18n="psi-err-b-desc">系統異常，需確認 PSI 狀態。</div>
         </div>
       </div>
 
@@ -98,52 +101,244 @@
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>Slack 聯繫負責 BD／AM</strong>
-            <p>透過 Slack 通知對應 BD 或 AM，附上訂單編號與錯誤訊息截圖。</p>
+            <strong data-i18n="psi-step1-title">Slack 聯繫負責 BD／AM</strong>
+            <p data-i18n="psi-step1-desc">透過 Slack 通知對應 BD 或 AM，附上訂單編號與錯誤訊息截圖。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>BD／AM 依據錯誤訊息確認失敗原因</strong>
-            <p>BD／AM 查看 PSI 系統及供應商庫存狀況，確認失敗根因。</p>
+            <strong data-i18n="psi-step2-title">BD／AM 依據錯誤訊息確認失敗原因</strong>
+            <p data-i18n="psi-step2-desc">BD／AM 查看 PSI 系統及供應商庫存狀況，確認失敗根因。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>BD／AM 回覆後續作業方法</strong>
-            <p>依確認結果，BD／AM 回覆 OP 應補票、重新出票或取消等作業指示。</p>
+            <strong data-i18n="psi-step3-title">BD／AM 回覆後續作業方法</strong>
+            <p data-i18n="psi-step3-desc">依確認結果，BD／AM 回覆 OP 應補票、重新出票或取消等作業指示。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>若需重新出票</strong>
-            <p>至<strong>訂單領貨頁面</strong>，找到對應訂單後點擊「<strong>領貨</strong>」按鈕，手動觸發出票作業。</p>
+            <strong data-i18n="psi-step4-title">若需重新出票</strong>
+            <p data-i18n-html="psi-step4-desc">至<strong>訂單領貨頁面</strong>，找到對應訂單後點擊「<strong>領貨</strong>」按鈕，手動觸發出票作業。</p>
           </div>
         </div>
       </div>
     </div>
     <div class="white-box" style="margin-top:16px;">
-      <div style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:8px;">🔄 PSI 訂單取消退貨流程</div>
+      <div style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:8px;" data-i18n="psi-refund-title">🔄 PSI 訂單取消退貨流程</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">
         <div style="background:#f3e5f5;border:1px solid #ce93d8;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:4px;">🖨️ 電子票</div>
-          <div style="font-size:12px;color:#4a5568;">為避免客人再次使用，需請客人提供<strong>轉讓書</strong>（日籍客人以訊息確認即可）</div>
+          <div style="font-size:12px;font-weight:700;color:#6a1b9a;margin-bottom:4px;" data-i18n="psi-refund-electronic-title">🖨️ 電子票</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n-html="psi-refund-electronic-desc">為避免客人再次使用，需請客人提供<strong>轉讓書</strong>（日籍客人以訊息確認即可）</div>
         </div>
         <div style="background:#e8f0fe;border:1px solid #c5d3f5;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;">💻 虛擬票</div>
-          <div style="font-size:12px;color:#4a5568;">依各線別商品取消流程操作，細節請與各線 OP 組長確認</div>
+          <div style="font-size:12px;font-weight:700;color:#3c50e0;margin-bottom:4px;" data-i18n="psi-refund-virtual-title">💻 虛擬票</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-refund-virtual-desc">依各線別商品取消流程操作，細節請與各線 OP 組長確認</div>
         </div>
         <div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:12px 14px;">
-          <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;">📦 實體票</div>
-          <div style="font-size:12px;color:#4a5568;">依各線別商品取消流程操作，細節請與各線 OP 組長確認</div>
+          <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;" data-i18n="psi-refund-physical-title">📦 實體票</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n="psi-refund-physical-desc">依各線別商品取消流程操作，細節請與各線 OP 組長確認</div>
         </div>
       </div>
-      <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;">⚠️ PSI 訂單取消退貨細節流程請找各線 OP 組長確認</span>
+      <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;" data-i18n="psi-refund-note">⚠️ PSI 訂單取消退貨細節流程請找各線 OP 組長確認</span>
     </div>
   </div>
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用',
+    'psi-breadcrumb': '首頁 / 自動出票 / PSI',
+    'psi-title': 'PSI 即訂即出',
+    'psi-subtitle': 'BD／AM 與供應商事先切票或寄賣，入庫至 PSI 系統後自動出票',
+    'psi-meta': '自動出票',
+    'psi-definition': 'ℹ️ <strong>定義：</strong>BD／AM 與供應商事先切票或寄賣，將庫存入庫至 PSI 系統，旅客下訂後系統透過 PSI 自動出票。',
+    'psi-payment-label': '💰 金流類型 & 請款方式',
+    'psi-payment-buyout-title': '切票（買斷）',
+    'psi-payment-buyout-desc': '事先支付貨款給供應商取得貨品販售',
+    'psi-payment-consign-title': '寄賣匯款',
+    'psi-payment-consign-desc': '未事先付款即取得貨品，賣出後結算',
+    'psi-payment-gift-title': '贈品',
+    'psi-payment-gift-desc': '不需支付貨款即取得貨品販售',
+    'psi-payment-note': '⚠️ 請款方式設定為「切票」→ 只能出以買斷或贈品入庫的貨品；設定為「寄賣匯款」→ 只能出以寄賣入庫的貨品',
+    'psi-item-label': '📦 品項類型',
+    'psi-item-electronic-title': '🖨️ 電子',
+    'psi-item-electronic-desc': '供應商電子檔案入庫並發送給客人（PDF、QR Code、Barcode、票券號等）',
+    'psi-item-virtual-title': '💻 虛擬',
+    'psi-item-virtual-desc': '無實際型態貨品（如門票切位）→ KKday 憑證，不一定需核銷',
+    'psi-item-physical-title': '📦 實體',
+    'psi-item-physical-desc': '可領取或郵寄的貨品（SIM 卡、紙本票券、伴手禮）',
+    'psi-auto-note': '✅ 正常訂單：PSI 系統自動配票出貨，無需 OP 作業。',
+    'psi-fail-title': '⚠️ 異常訂單：PSI 出貨失敗',
+    'psi-err-a-label': '❌ 錯誤訊息 A',
+    'psi-err-a-desc': '庫存不足，需請 BD／AM 補票。',
+    'psi-err-b-label': '❌ 錯誤訊息 B',
+    'psi-err-b-desc': '系統異常，需確認 PSI 狀態。',
+    'psi-step1-title': 'Slack 聯繫負責 BD／AM',
+    'psi-step1-desc': '透過 Slack 通知對應 BD 或 AM，附上訂單編號與錯誤訊息截圖。',
+    'psi-step2-title': 'BD／AM 依據錯誤訊息確認失敗原因',
+    'psi-step2-desc': 'BD／AM 查看 PSI 系統及供應商庫存狀況，確認失敗根因。',
+    'psi-step3-title': 'BD／AM 回覆後續作業方法',
+    'psi-step3-desc': '依確認結果，BD／AM 回覆 OP 應補票、重新出票或取消等作業指示。',
+    'psi-step4-title': '若需重新出票',
+    'psi-step4-desc': '至<strong>訂單領貨頁面</strong>，找到對應訂單後點擊「<strong>領貨</strong>」按鈕，手動觸發出票作業。',
+    'psi-refund-title': '🔄 PSI 訂單取消退貨流程',
+    'psi-refund-electronic-title': '🖨️ 電子票',
+    'psi-refund-electronic-desc': '為避免客人再次使用，需請客人提供<strong>轉讓書</strong>（日籍客人以訊息確認即可）',
+    'psi-refund-virtual-title': '💻 虛擬票',
+    'psi-refund-virtual-desc': '依各線別商品取消流程操作，細節請與各線 OP 組長確認',
+    'psi-refund-physical-title': '📦 實體票',
+    'psi-refund-physical-desc': '依各線別商品取消流程操作，細節請與各線 OP 組長確認',
+    'psi-refund-note': '⚠️ PSI 訂單取消退貨細節流程請找各線 OP 組長確認',
+  },
+  en: {
+    'nav-title': 'SCM <em>Knowledge Base</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Knowledge Base · Internal Use',
+    'psi-breadcrumb': 'Home / Auto Issuance / PSI',
+    'psi-title': 'PSI Instant Issuance',
+    'psi-subtitle': 'BD／AM pre-purchases or consigns tickets from suppliers; once stocked in PSI, tickets are issued automatically',
+    'psi-meta': 'Auto Issuance',
+    'psi-definition': 'ℹ️ <strong>Definition：</strong>BD／AM pre-purchases or consigns tickets from suppliers and stocks inventory in the PSI system. When a traveler places an order, the system automatically issues the ticket via PSI.',
+    'psi-payment-label': '💰 Payment Type & Settlement Method',
+    'psi-payment-buyout-title': 'Pre-purchase (Buyout)',
+    'psi-payment-buyout-desc': 'Pay the supplier upfront to acquire and sell inventory',
+    'psi-payment-consign-title': 'Consignment Settlement',
+    'psi-payment-consign-desc': 'Acquire inventory without upfront payment; settle after sales',
+    'psi-payment-gift-title': 'Complimentary',
+    'psi-payment-gift-desc': 'Acquire inventory at no cost for sale',
+    'psi-payment-note': '⚠️ If settlement is set to "Pre-purchase" → only buyout or complimentary stock can be issued; if set to "Consignment" → only consigned stock can be issued',
+    'psi-item-label': '📦 Item Types',
+    'psi-item-electronic-title': '🖨️ Electronic',
+    'psi-item-electronic-desc': 'Supplier\'s electronic files stocked and sent to customers (PDF, QR Code, Barcode, ticket numbers, etc.)',
+    'psi-item-virtual-title': '💻 Virtual',
+    'psi-item-virtual-desc': 'Non-physical items (e.g., ticket slot allocations) → KKday Voucher; redemption may not be required',
+    'psi-item-physical-title': '📦 Physical',
+    'psi-item-physical-desc': 'Items for pickup or mailing (SIM cards, paper tickets, souvenirs)',
+    'psi-auto-note': '✅ Normal orders: PSI system automatically allocates and dispatches tickets. No OP action required.',
+    'psi-fail-title': '⚠️ Exception: PSI Issuance Failure',
+    'psi-err-a-label': '❌ Error Message A',
+    'psi-err-a-desc': 'Insufficient inventory. Ask BD／AM to replenish stock.',
+    'psi-err-b-label': '❌ Error Message B',
+    'psi-err-b-desc': 'System error. Check PSI status.',
+    'psi-step1-title': 'Contact Responsible BD／AM via Slack',
+    'psi-step1-desc': 'Notify the relevant BD or AM via Slack, attaching the order number and error message screenshot.',
+    'psi-step2-title': 'BD／AM Confirms Failure Cause Based on Error Message',
+    'psi-step2-desc': 'BD／AM reviews the PSI system and supplier inventory to confirm the root cause.',
+    'psi-step3-title': 'BD／AM Advises Next Steps',
+    'psi-step3-desc': 'Based on findings, BD／AM instructs OP to replenish stock, re-issue, cancel, etc.',
+    'psi-step4-title': 'If Re-issuance is Required',
+    'psi-step4-desc': 'Go to the <strong>Order Pickup page</strong>, locate the order, and click the "<strong>Pickup</strong>" button to manually trigger issuance.',
+    'psi-refund-title': '🔄 PSI Order Cancellation & Return Process',
+    'psi-refund-electronic-title': '🖨️ Electronic Ticket',
+    'psi-refund-electronic-desc': 'To prevent reuse, request the customer to provide a <strong>letter of transfer</strong> (Japanese customers may confirm via message)',
+    'psi-refund-virtual-title': '💻 Virtual Ticket',
+    'psi-refund-virtual-desc': 'Follow the cancellation procedure for each product line. Confirm details with the OP team lead for that line.',
+    'psi-refund-physical-title': '📦 Physical Ticket',
+    'psi-refund-physical-desc': 'Follow the cancellation procedure for each product line. Confirm details with the OP team lead for that line.',
+    'psi-refund-note': '⚠️ For detailed PSI order cancellation and return procedures, consult the OP team lead for your product line.',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
+    'footer': 'SCM ナレッジベース · 社内使用',
+    'psi-breadcrumb': 'ホーム / 自動発券 / PSI',
+    'psi-title': 'PSI 即時発券',
+    'psi-subtitle': 'BD／AM がサプライヤーと事前に切符購入または委託販売を行い、PSI システム入庫後に自動発券',
+    'psi-meta': '自動発券',
+    'psi-definition': 'ℹ️ <strong>定義：</strong>BD／AM がサプライヤーと事前に切符購入または委託販売を行い、在庫を PSI システムに登録します。旅行者が注文すると、システムが PSI 経由で自動発券します。',
+    'psi-payment-label': '💰 決済タイプ & 請求方法',
+    'psi-payment-buyout-title': '切符購入（買い切り）',
+    'psi-payment-buyout-desc': 'サプライヤーに事前に代金を支払い商品を仕入れて販売',
+    'psi-payment-consign-title': '委託販売送金',
+    'psi-payment-consign-desc': '事前払いなしで商品を仕入れ、販売後に決済',
+    'psi-payment-gift-title': '贈品',
+    'psi-payment-gift-desc': '代金不要で商品を取得して販売',
+    'psi-payment-note': '⚠️ 請求方法が「切符購入」の場合 → 買い切りまたは贈品として入庫した商品のみ発券可能；「委託販売送金」の場合 → 委託として入庫した商品のみ発券可能',
+    'psi-item-label': '📦 品目タイプ',
+    'psi-item-electronic-title': '🖨️ 電子',
+    'psi-item-electronic-desc': 'サプライヤーの電子ファイルを入庫してお客様に送付（PDF、QR Code、Barcode、チケット番号など）',
+    'psi-item-virtual-title': '💻 バーチャル',
+    'psi-item-virtual-desc': '実体のない商品（例：入場チケット枠）→ KKday バウチャー、引換不要の場合あり',
+    'psi-item-physical-title': '📦 実体',
+    'psi-item-physical-desc': '受取または郵送が可能な商品（SIM カード、紙チケット、お土産）',
+    'psi-auto-note': '✅ 通常注文：PSI システムが自動でチケットを割り当て出荷。OP 作業不要。',
+    'psi-fail-title': '⚠️ 異常注文：PSI 出荷失敗',
+    'psi-err-a-label': '❌ エラーメッセージ A',
+    'psi-err-a-desc': '在庫不足。BD／AM に補充を依頼してください。',
+    'psi-err-b-label': '❌ エラーメッセージ B',
+    'psi-err-b-desc': 'システム異常。PSI の状態を確認してください。',
+    'psi-step1-title': 'Slack で担当 BD／AM に連絡',
+    'psi-step1-desc': 'Slack で担当 BD または AM に、注文番号とエラーメッセージのスクリーンショットを添付して通知します。',
+    'psi-step2-title': 'BD／AM がエラーメッセージに基づいて失敗原因を確認',
+    'psi-step2-desc': 'BD／AM が PSI システムとサプライヤーの在庫状況を確認し、失敗の根本原因を特定します。',
+    'psi-step3-title': 'BD／AM が後続対応方法を回答',
+    'psi-step3-desc': '確認結果に基づき、BD／AM が OP に補充、再発券、キャンセルなどの指示を回答します。',
+    'psi-step4-title': '再発券が必要な場合',
+    'psi-step4-desc': '<strong>注文受取ページ</strong>で対象注文を見つけ、「<strong>受取</strong>」ボタンをクリックして手動で発券を実行します。',
+    'psi-refund-title': '🔄 PSI 注文取消・返品フロー',
+    'psi-refund-electronic-title': '🖨️ 電子チケット',
+    'psi-refund-electronic-desc': 'お客様の再利用防止のため、<strong>譲渡書</strong>の提出を依頼してください（日本籍のお客様はメッセージによる確認で可）',
+    'psi-refund-virtual-title': '💻 バーチャルチケット',
+    'psi-refund-virtual-desc': '各ラインの商品取消フローに従って操作してください。詳細は各ライン OP リーダーに確認してください。',
+    'psi-refund-physical-title': '📦 実体チケット',
+    'psi-refund-physical-desc': '各ラインの商品取消フローに従って操作してください。詳細は各ライン OP リーダーに確認してください。',
+    'psi-refund-note': '⚠️ PSI 注文取消・返品の詳細フローは各ライン OP リーダーに確認してください。',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식 베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식 베이스 · 내부 사용',
+    'psi-breadcrumb': '홈 / 자동 발권 / PSI',
+    'psi-title': 'PSI 즉시 발권',
+    'psi-subtitle': 'BD／AM가 공급업체와 사전에 티켓을 구매하거나 위탁 판매하여 PSI 시스템에 입고 후 자동 발권',
+    'psi-meta': '자동 발권',
+    'psi-definition': 'ℹ️ <strong>정의：</strong>BD／AM가 공급업체와 사전에 티켓을 구매하거나 위탁 판매하여 재고를 PSI 시스템에 입고합니다. 여행자가 주문하면 시스템이 PSI를 통해 자동으로 발권합니다.',
+    'psi-payment-label': '💰 결제 유형 & 청구 방식',
+    'psi-payment-buyout-title': '티켓 구매（매입）',
+    'psi-payment-buyout-desc': '사전에 공급업체에 대금을 지불하여 상품을 매입해 판매',
+    'psi-payment-consign-title': '위탁 판매 송금',
+    'psi-payment-consign-desc': '사전 결제 없이 상품을 입고하여 판매 후 정산',
+    'psi-payment-gift-title': '증정품',
+    'psi-payment-gift-desc': '대금 없이 상품을 취득하여 판매',
+    'psi-payment-note': '⚠️ 청구 방식이 「티켓 구매」로 설정된 경우 → 매입 또는 증정품으로 입고된 상품만 발권 가능；「위탁 판매 송금」으로 설정된 경우 → 위탁으로 입고된 상품만 발권 가능',
+    'psi-item-label': '📦 품목 유형',
+    'psi-item-electronic-title': '🖨️ 전자',
+    'psi-item-electronic-desc': '공급업체 전자 파일을 입고하여 고객에게 발송（PDF、QR Code、Barcode、티켓 번호 등）',
+    'psi-item-virtual-title': '💻 가상',
+    'psi-item-virtual-desc': '실체가 없는 상품（예：입장권 배정）→ KKday 바우처，핵소가 필요하지 않을 수도 있음',
+    'psi-item-physical-title': '📦 실물',
+    'psi-item-physical-desc': '수령 또는 우편 발송이 가능한 상품（SIM 카드、종이 티켓、기념품）',
+    'psi-auto-note': '✅ 정상 주문：PSI 시스템이 자동으로 티켓을 배정 및 발송합니다. OP 작업이 필요하지 않습니다.',
+    'psi-fail-title': '⚠️ 이상 주문：PSI 발송 실패',
+    'psi-err-a-label': '❌ 오류 메시지 A',
+    'psi-err-a-desc': '재고 부족. BD／AM에게 티켓 보충을 요청하세요.',
+    'psi-err-b-label': '❌ 오류 메시지 B',
+    'psi-err-b-desc': '시스템 오류. PSI 상태를 확인하세요.',
+    'psi-step1-title': 'Slack으로 담당 BD／AM에 연락',
+    'psi-step1-desc': 'Slack을 통해 담당 BD 또는 AM에게 주문 번호와 오류 메시지 스크린샷을 첨부하여 알립니다.',
+    'psi-step2-title': 'BD／AM가 오류 메시지에 따라 실패 원인 확인',
+    'psi-step2-desc': 'BD／AM가 PSI 시스템 및 공급업체 재고 상황을 확인하여 실패 근본 원인을 파악합니다.',
+    'psi-step3-title': 'BD／AM가 후속 처리 방법 회신',
+    'psi-step3-desc': '확인 결과에 따라 BD／AM가 OP에게 보충, 재발권, 취소 등의 지시를 회신합니다.',
+    'psi-step4-title': '재발권이 필요한 경우',
+    'psi-step4-desc': '<strong>주문 수령 페이지</strong>로 이동하여 해당 주문을 찾은 후 「<strong>수령</strong>」 버튼을 클릭하여 수동으로 발권을 실행합니다.',
+    'psi-refund-title': '🔄 PSI 주문 취소 및 반품 플로우',
+    'psi-refund-electronic-title': '🖨️ 전자 티켓',
+    'psi-refund-electronic-desc': '고객의 재사용 방지를 위해 고객으로부터 <strong>양도서</strong>를 받아야 합니다（일본 고객은 메시지 확인으로 가능）',
+    'psi-refund-virtual-title': '💻 가상 티켓',
+    'psi-refund-virtual-desc': '각 라인별 상품 취소 절차에 따라 진행하세요. 세부 사항은 각 라인 OP 팀장에게 확인하세요.',
+    'psi-refund-physical-title': '📦 실물 티켓',
+    'psi-refund-physical-desc': '각 라인별 상품 취소 절차에 따라 진행하세요. 세부 사항은 각 라인 OP 팀장에게 확인하세요.',
+    'psi-refund-note': '⚠️ PSI 주문 취소 및 반품 세부 절차는 각 라인 OP 팀장에게 확인하세요.',
+  }
+});
+</script>
 </body>
 </html>

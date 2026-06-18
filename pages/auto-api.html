@@ -11,134 +11,296 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 自動出票 — API & OCBT</div>
+    <div class="breadcrumb" data-i18n="api-breadcrumb">首頁 / 自動出票 — API & OCBT</div>
 
     <div class="page-header">
       <div class="page-header-icon">🔌</div>
       <div class="page-header-body">
-        <h1>自動出票 — API & OCBT</h1>
+        <h1 data-i18n="api-title">自動出票 — API & OCBT</h1>
         <div class="meta-row">
-          <span class="meta-chip">API 串接 · 組合商品</span>
+          <span class="meta-chip" data-i18n="api-meta">API 串接 · 組合商品</span>
         </div>
       </div>
     </div>
 
     <!-- API Section -->
-    <h2>🔗 API 自動出票</h2>
+    <h2 data-i18n="api-section-title">🔗 API 自動出票</h2>
     <div class="white-box">
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="api-definition">ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。</span>
     </div>
 
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 通常無需 OP 作業，系統自動完成訂購與出票。</span>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="api-auto-note">✅ 通常無需 OP 作業，系統自動完成訂購與出票。</span>
 
     <!-- API 失敗 -->
-    <h3 style="margin-top:1.5rem;">⚠️ API 失敗處理方式</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="api-fail-title">⚠️ API 失敗處理方式</h3>
     <div class="white-box">
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;">❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;" data-i18n="api-fail-note">❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。</span>
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>Slack 聯繫 BD／AM</strong>
-            <p>透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。</p>
+            <strong data-i18n="api-fail-step1-title">Slack 聯繫 BD／AM</strong>
+            <p data-i18n="api-fail-step1-desc">透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>BD／AM 確認失敗原因</strong>
-            <p>BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。</p>
+            <strong data-i18n="api-fail-step2-title">BD／AM 確認失敗原因</strong>
+            <p data-i18n="api-fail-step2-desc">BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>BD／AM 回覆作業方法</strong>
-            <p>依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。</p>
+            <strong data-i18n="api-fail-step3-title">BD／AM 回覆作業方法</strong>
+            <p data-i18n="api-fail-step3-desc">依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。</p>
           </div>
         </div>
       </div>
 
       <div class="cards-grid-2" style="margin-top:1rem;">
-        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱對照表確認常見錯誤原因。</span>
-        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 💡 <strong>例外：</strong>若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。</span>
+        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n-html="api-hk-note">⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱對照表確認常見錯誤原因。</span>
+        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="api-exception-note">ℹ️ 💡 <strong>例外：</strong>若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。</span>
       </div>
     </div>
 
-    <!-- API 取消 -->
     <!-- OCBT Section -->
-    <h2 style="margin-top:2rem;">📦 OCBT 組合商品</h2>
+    <h2 style="margin-top:2rem;" data-i18n="ocbt-section-title">📦 OCBT 組合商品</h2>
     <div class="white-box">
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="ocbt-definition">ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。</span>
     </div>
 
-    <h3 style="margin-top:1.5rem;">📋 OCBT 設定限制</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="ocbt-limits-title">📋 OCBT 設定限制</h3>
     <div class="white-box">
       <ul style="line-height:2rem; padding-left:1.25rem;">
-        <li>母商品前置日必須 <strong>≥</strong> 子商品前置日</li>
-        <li>月曆模式：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span></li>
-        <li>母商品的銷售日期必須符合子商品銷售日期</li>
-        <li>母商品旅規必須覆蓋子商品旅規</li>
-        <li>母商品開啟的市場，子商品也要一併開啟市場</li>
+        <li data-i18n-html="ocbt-limit1">母商品前置日必須 <strong>≥</strong> 子商品前置日</li>
+        <li data-i18n-html="ocbt-limit2">月曆模式：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span></li>
+        <li data-i18n="ocbt-limit3">母商品的銷售日期必須符合子商品銷售日期</li>
+        <li data-i18n="ocbt-limit4">母商品旅規必須覆蓋子商品旅規</li>
+        <li data-i18n="ocbt-limit5">母商品開啟的市場，子商品也要一併開啟市場</li>
       </ul>
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="ocbt-limits-warn">⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。</span>
     </div>
 
-    <h3 style="margin-top:1.5rem;">⚠️ OCBT 失敗處理方式</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="ocbt-fail-title">⚠️ OCBT 失敗處理方式</h3>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>Slack 聯繫 BD／AM</strong>
-            <p>透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。</p>
+            <strong data-i18n="ocbt-fail-step1-title">Slack 聯繫 BD／AM</strong>
+            <p data-i18n="ocbt-fail-step1-desc">透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>BD／AM 確認失敗原因</strong>
-            <p>BD／AM 確認是哪個子商品出票失敗及原因。</p>
+            <strong data-i18n="ocbt-fail-step2-title">BD／AM 確認失敗原因</strong>
+            <p data-i18n="ocbt-fail-step2-desc">BD／AM 確認是哪個子商品出票失敗及原因。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>BD／AM 回覆後續作業方法</strong>
-            <p>依確認結果，BD／AM 回覆處理方式。</p>
+            <strong data-i18n="ocbt-fail-step3-title">BD／AM 回覆後續作業方法</strong>
+            <p data-i18n="ocbt-fail-step3-desc">依確認結果，BD／AM 回覆處理方式。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>若需人工出票</strong>
-            <p>請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。</p>
+            <strong data-i18n="ocbt-fail-step4-title">若需人工出票</strong>
+            <p data-i18n-html="ocbt-fail-step4-desc">請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'api-breadcrumb': '首頁 / 自動出票 — API & OCBT',
+    'api-title': '自動出票 — API & OCBT',
+    'api-meta': 'API 串接 · 組合商品',
+    'api-section-title': '🔗 API 自動出票',
+    'api-definition': 'ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。',
+    'api-auto-note': '✅ 通常無需 OP 作業，系統自動完成訂購與出票。',
+    'api-fail-title': '⚠️ API 失敗處理方式',
+    'api-fail-note': '❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。',
+    'api-fail-step1-title': 'Slack 聯繫 BD／AM',
+    'api-fail-step1-desc': '透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。',
+    'api-fail-step2-title': 'BD／AM 確認失敗原因',
+    'api-fail-step2-desc': 'BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。',
+    'api-fail-step3-title': 'BD／AM 回覆作業方法',
+    'api-fail-step3-desc': '依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。',
+    'api-hk-note': '⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱對照表確認常見錯誤原因。',
+    'api-exception-note': 'ℹ️ 💡 <strong>例外：</strong>若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。',
+    'ocbt-section-title': '📦 OCBT 組合商品',
+    'ocbt-definition': 'ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。',
+    'ocbt-limits-title': '📋 OCBT 設定限制',
+    'ocbt-limit1': '母商品前置日必須 <strong>≥</strong> 子商品前置日',
+    'ocbt-limit2': '月曆模式：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span>',
+    'ocbt-limit3': '母商品的銷售日期必須符合子商品銷售日期',
+    'ocbt-limit4': '母商品旅規必須覆蓋子商品旅規',
+    'ocbt-limit5': '母商品開啟的市場，子商品也要一併開啟市場',
+    'ocbt-limits-warn': '⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。',
+    'ocbt-fail-title': '⚠️ OCBT 失敗處理方式',
+    'ocbt-fail-step1-title': 'Slack 聯繫 BD／AM',
+    'ocbt-fail-step1-desc': '透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。',
+    'ocbt-fail-step2-title': 'BD／AM 確認失敗原因',
+    'ocbt-fail-step2-desc': 'BD／AM 確認是哪個子商品出票失敗及原因。',
+    'ocbt-fail-step3-title': 'BD／AM 回覆後續作業方法',
+    'ocbt-fail-step3-desc': '依確認結果，BD／AM 回覆處理方式。',
+    'ocbt-fail-step4-title': '若需人工出票',
+    'ocbt-fail-step4-desc': '請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'api-breadcrumb': 'Home / Auto-Ticketing — API & OCBT',
+    'api-title': 'Auto-Ticketing — API & OCBT',
+    'api-meta': 'API Integration · Combo Products',
+    'api-section-title': '🔗 API Auto-Ticketing',
+    'api-definition': 'ℹ️ <strong>Definition:</strong> API connects the BE2 system with supplier booking platforms to share data in real time, enabling instant ticket and hotel lookup and booking — significantly reducing manual effort.',
+    'api-auto-note': '✅ Typically no OP action required; the system handles ordering and ticketing automatically.',
+    'api-fail-title': '⚠️ API Failure Handling',
+    'api-fail-note': '❌ OP will receive two error notifications — follow the steps below.',
+    'api-fail-step1-title': 'Contact BD／AM via Slack',
+    'api-fail-step1-desc': 'Notify the relevant BD or AM via Slack with details of the failed API order.',
+    'api-fail-step2-title': 'BD／AM Investigates Failure Cause',
+    'api-fail-step2-desc': 'BD／AM confirms the API failure cause with the supplier — possible reasons include insufficient inventory, connection error, or product delisting.',
+    'api-fail-step3-title': 'BD／AM Advises Next Steps',
+    'api-fail-step3-desc': 'Based on findings, BD／AM advises OP on how to proceed (re-trigger API, manual booking, reschedule, or cancel).',
+    'api-hk-note': '⚠️ <strong>HK AM Note:</strong> HK AM has built an API error message reference table — check it first to identify common error causes.',
+    'api-exception-note': 'ℹ️ 💡 <strong>Exception:</strong> If the failure is due to a suspicious order, the risk control team will re-trigger the API; no additional OP action needed.',
+    'ocbt-section-title': '📦 OCBT Combo Products',
+    'ocbt-definition': 'ℹ️ <strong>Definition:</strong> OCBT consists of instant-booking products from two or more different suppliers. The parent order is essentially a shell order; each sub-order issues tickets directly to the corresponding supplier.',
+    'ocbt-limits-title': '📋 OCBT Configuration Restrictions',
+    'ocbt-limit1': 'Parent product lead days must be <strong>≥</strong> sub-product lead days',
+    'ocbt-limit2': 'Calendar mode: <span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">Specified Date</span>',
+    'ocbt-limit3': 'Parent product sale dates must cover sub-product sale dates',
+    'ocbt-limit4': 'Parent product traveler rules must cover sub-product traveler rules',
+    'ocbt-limit5': 'Markets enabled on the parent product must also be enabled on sub-products',
+    'ocbt-limits-warn': '⚠️ If a product cannot use OCBT, OP must process the combo product order manually.',
+    'ocbt-fail-title': '⚠️ OCBT Failure Handling',
+    'ocbt-fail-step1-title': 'Contact BD／AM via Slack',
+    'ocbt-fail-step1-desc': 'Notify the relevant BD or AM via Slack with the order number of the failed OCBT ticketing.',
+    'ocbt-fail-step2-title': 'BD／AM Investigates Failure Cause',
+    'ocbt-fail-step2-desc': 'BD／AM identifies which sub-product failed and the reason.',
+    'ocbt-fail-step3-title': 'BD／AM Advises Next Steps',
+    'ocbt-fail-step3-desc': 'Based on findings, BD／AM advises OP on how to proceed.',
+    'ocbt-fail-step4-title': 'Manual Ticketing If Required',
+    'ocbt-fail-step4-desc': 'Request ProdOID from BD／AM and process manual booking via the <strong>B2D page</strong>.',
+    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'api-breadcrumb': 'ホーム / 自動発券 — API & OCBT',
+    'api-title': '自動発券 — API & OCBT',
+    'api-meta': 'API 連携 · セット商品',
+    'api-section-title': '🔗 API 自動発券',
+    'api-definition': 'ℹ️ <strong>定義：</strong>API が BE2 システムとサプライヤーの予約プラットフォームを接続・情報共有し、チケットやホテルのリアルタイム照会・予約を可能にし、手動作業を大幅に削減します。',
+    'api-auto-note': '✅ 通常 OP の作業は不要。システムが自動で注文と発券を完了します。',
+    'api-fail-title': '⚠️ API 失敗時の対応方法',
+    'api-fail-note': '❌ OP には2件のエラー通知が届きます。以下の手順に従ってください。',
+    'api-fail-step1-title': 'Slack で BD／AM に連絡',
+    'api-fail-step1-desc': 'Slack で対応する BD または AM に通知し、API 注文失敗の注文情報を説明。',
+    'api-fail-step2-title': 'BD／AM が失敗原因を確認',
+    'api-fail-step2-desc': 'BD／AM がサプライヤーと API 失敗原因を確認。在庫不足・接続エラー・商品廃止などが考えられます。',
+    'api-fail-step3-title': 'BD／AM が対応方法を回答',
+    'api-fail-step3-desc': '確認結果に基づき、BD／AM が OP に後続対応方法を回答（再トリガー、手動補完、日程変更、キャンセルなど）。',
+    'api-hk-note': '⚠️ <strong>HK AM 補足：</strong>HK AM が API エラーメッセージ対照表を作成済み。まず対照表で一般的なエラー原因を確認してください。',
+    'api-exception-note': 'ℹ️ 💡 <strong>例外：</strong>失敗原因が不審注文の場合、リスク管理チームが API を再トリガーします。OP の追加対応は不要。',
+    'ocbt-section-title': '📦 OCBT セット商品',
+    'ocbt-definition': 'ℹ️ <strong>定義：</strong>OCBT は2社以上の異なるサプライヤーの即時予約商品で構成されます。親注文は実質的に空のシェル注文であり、各サブ注文がそれぞれの対応サプライヤーに直接発券します。',
+    'ocbt-limits-title': '📋 OCBT 設定制限',
+    'ocbt-limit1': '親商品のリードタイムは <strong>≥</strong> サブ商品のリードタイム',
+    'ocbt-limit2': 'カレンダーモード：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span>',
+    'ocbt-limit3': '親商品の販売日程はサブ商品の販売日程をカバーする必要があります',
+    'ocbt-limit4': '親商品の旅行者ルールはサブ商品の旅行者ルールをカバーする必要があります',
+    'ocbt-limit5': '親商品で有効化した市場は、サブ商品でも有効化する必要があります',
+    'ocbt-limits-warn': '⚠️ 商品が OCBT を使用できない場合、OP が手動でセット商品注文を処理する必要があります。',
+    'ocbt-fail-title': '⚠️ OCBT 失敗時の対応方法',
+    'ocbt-fail-step1-title': 'Slack で BD／AM に連絡',
+    'ocbt-fail-step1-desc': 'Slack で対応する BD または AM に、OCBT 発券失敗の注文番号を通知。',
+    'ocbt-fail-step2-title': 'BD／AM が失敗原因を確認',
+    'ocbt-fail-step2-desc': 'BD／AM がどのサブ商品が発券失敗したか、および原因を確認。',
+    'ocbt-fail-step3-title': 'BD／AM が後続対応方法を回答',
+    'ocbt-fail-step3-desc': '確認結果に基づき、BD／AM が対応方法を回答。',
+    'ocbt-fail-step4-title': '手動発券が必要な場合',
+    'ocbt-fail-step4-desc': 'BD／AM に ProdOID を提供してもらい、<strong>B2D ページ</strong>で手動注文作業を実施。',
+    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'api-breadcrumb': '홈 / 자동 발권 — API & OCBT',
+    'api-title': '자동 발권 — API & OCBT',
+    'api-meta': 'API 연동 · 세트 상품',
+    'api-section-title': '🔗 API 자동 발권',
+    'api-definition': 'ℹ️ <strong>정의：</strong>API가 BE2 시스템과 공급업체 예약 플랫폼을 연결하여 정보를 실시간으로 공유하고, 티켓 및 호텔을 즉시 조회·예약할 수 있어 수동 작업을 크게 줄입니다.',
+    'api-auto-note': '✅ 일반적으로 OP 작업 불필요. 시스템이 자동으로 주문 및 발권을 완료합니다.',
+    'api-fail-title': '⚠️ API 실패 처리 방법',
+    'api-fail-note': '❌ OP는 두 건의 오류 알림을 받습니다. 아래 단계에 따라 처리하세요.',
+    'api-fail-step1-title': 'Slack으로 BD／AM에 연락',
+    'api-fail-step1-desc': 'Slack으로 해당 BD 또는 AM에 API 주문 실패 주문 정보를 알립니다.',
+    'api-fail-step2-title': 'BD／AM이 실패 원인 확인',
+    'api-fail-step2-desc': 'BD／AM이 공급업체와 API 실패 원인을 확인합니다. 재고 부족, 연결 오류, 상품 비활성화 등이 원인일 수 있습니다.',
+    'api-fail-step3-title': 'BD／AM이 처리 방법 회신',
+    'api-fail-step3-desc': '확인 결과에 따라 BD／AM이 OP에 후속 처리 방법을 안내합니다（재트리거, 수동 보완, 일정 변경, 취소 등）.',
+    'api-hk-note': '⚠️ <strong>HK AM 보충：</strong>HK AM이 API 오류 메시지 대조표를 작성해 두었으니, 먼저 대조표에서 일반적인 오류 원인을 확인하세요.',
+    'api-exception-note': 'ℹ️ 💡 <strong>예외：</strong>실패 원인이 의심 주문인 경우 리스크 컨트롤 팀이 API를 재트리거하므로 OP 추가 작업 불필요.',
+    'ocbt-section-title': '📦 OCBT 세트 상품',
+    'ocbt-definition': 'ℹ️ <strong>정의：</strong>OCBT는 두 곳 이상의 서로 다른 공급업체의 즉시 예약 상품으로 구성됩니다. 모 주문은 실질적으로 빈 셸 주문이며, 각 하위 주문이 해당 공급업체에 직접 발권합니다.',
+    'ocbt-limits-title': '📋 OCBT 설정 제한',
+    'ocbt-limit1': '모 상품 리드타임은 <strong>≥</strong> 하위 상품 리드타임',
+    'ocbt-limit2': '달력 모드：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">지정일</span>',
+    'ocbt-limit3': '모 상품 판매 날짜는 하위 상품 판매 날짜를 포함해야 합니다',
+    'ocbt-limit4': '모 상품 여행자 규정은 하위 상품 여행자 규정을 포함해야 합니다',
+    'ocbt-limit5': '모 상품에서 활성화된 시장은 하위 상품에서도 함께 활성화해야 합니다',
+    'ocbt-limits-warn': '⚠️ 상품이 OCBT를 사용할 수 없는 경우 OP가 수동으로 세트 상품 주문을 처리해야 합니다.',
+    'ocbt-fail-title': '⚠️ OCBT 실패 처리 방법',
+    'ocbt-fail-step1-title': 'Slack으로 BD／AM에 연락',
+    'ocbt-fail-step1-desc': 'Slack으로 해당 BD 또는 AM에 OCBT 발권 실패 주문 번호를 알립니다.',
+    'ocbt-fail-step2-title': 'BD／AM이 실패 원인 확인',
+    'ocbt-fail-step2-desc': 'BD／AM이 어느 하위 상품의 발권이 실패했는지와 원인을 확인합니다.',
+    'ocbt-fail-step3-title': 'BD／AM이 후속 처리 방법 회신',
+    'ocbt-fail-step3-desc': '확인 결과에 따라 BD／AM이 처리 방법을 안내합니다.',
+    'ocbt-fail-step4-title': '수동 발권이 필요한 경우',
+    'ocbt-fail-step4-desc': 'BD／AM에게 ProdOID를 받아 <strong>B2D 페이지</strong>에서 수동 주문 작업을 진행합니다.',
+    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
+  }
+});
+</script>
 </body>
 </html>

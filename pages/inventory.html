@@ -11,121 +11,300 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
     <div class="breadcrumb">
-      <a href="../index.html">首頁</a>
+      <a href="../index.html" data-i18n="inv-breadcrumb-home">首頁</a>
       <span class="sep">/</span>
-      <span class="current">PSI 票倉介紹</span>
+      <span class="current" data-i18n="inv-breadcrumb-current">PSI 票倉介紹</span>
     </div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">📦</div>
       <div class="page-header-body">
-        <h1>PSI 票倉介紹</h1>
-        <div class="subtitle">PSI 系統介紹 · 庫存管理 · 退貨流程</div>
+        <h1 data-i18n="inv-title">PSI 票倉介紹</h1>
+        <div class="subtitle" data-i18n="inv-subtitle">PSI 系統介紹 · 庫存管理 · 退貨流程</div>
         <div class="meta-row">
-          <span class="meta-chip badge-blue">庫存管理</span>
-          <span class="meta-chip">PSI · 進貨 · 出貨 · 退貨</span>
+          <span class="meta-chip badge-blue" data-i18n="inv-chip1">庫存管理</span>
+          <span class="meta-chip" data-i18n="inv-chip2">PSI · 進貨 · 出貨 · 退貨</span>
         </div>
       </div>
     </div>
 
     <!-- PSI 系統介紹 -->
-    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin-bottom:12px;">🗂️ PSI 系統介紹</h2>
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin-bottom:12px;" data-i18n="inv-psi-title">🗂️ PSI 系統介紹</h2>
     <div class="white-box">
-      <p>PSI（進銷存）系統是 KKday 管理票券庫存的核心工具。BD/AM 跟供應商切票/切位後，會將票/位入庫至 PSI 系統，最後再透過 PSI 系統進行出票作業。</p>
-      <p style="margin-top:10px;">整個流程涵蓋從供應商取得票券（進貨）、到訂單成立後配票給旅客（出貨），以及訂單取消後退回票倉（退貨）等完整庫存生命週期管理。</p>
+      <p data-i18n="inv-psi-desc1">PSI（進銷存）系統是 KKday 管理票券庫存的核心工具。BD/AM 跟供應商切票/切位後，會將票/位入庫至 PSI 系統，最後再透過 PSI 系統進行出票作業。</p>
+      <p style="margin-top:10px;" data-i18n="inv-psi-desc2">整個流程涵蓋從供應商取得票券（進貨）、到訂單成立後配票給旅客（出貨），以及訂單取消後退回票倉（退貨）等完整庫存生命週期管理。</p>
     </div>
 
     <!-- 主要功能 -->
-    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 16px;">⚡ 主要功能</h2>
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 16px;" data-i18n="inv-func-title">⚡ 主要功能</h2>
     <div class="cards-grid-3" style="margin-bottom:20px;">
       <div class="card">
         <div class="card-icon">📥</div>
-        <h3>進貨（入庫）</h3>
-        <p>BD/AM 將供應商提供的票券入庫至系統，建立庫存數量。入庫時需登記票券類型、數量、有效期限等資訊。</p>
-        <span class="card-badge badge-blue">BD/AM 負責</span>
+        <h3 data-i18n="inv-card1-title">進貨（入庫）</h3>
+        <p data-i18n="inv-card1-desc">BD/AM 將供應商提供的票券入庫至系統，建立庫存數量。入庫時需登記票券類型、數量、有效期限等資訊。</p>
+        <span class="card-badge badge-blue" data-i18n="inv-card1-badge">BD/AM 負責</span>
       </div>
       <div class="card">
         <div class="card-icon">📤</div>
-        <h3>出貨（出庫）</h3>
-        <p>訂單成立後，系統自動配票並出貨給旅客。PSI 系統從庫存中扣除相應票券，完成出票作業。</p>
-        <span class="card-badge badge-green">系統自動處理</span>
+        <h3 data-i18n="inv-card2-title">出貨（出庫）</h3>
+        <p data-i18n="inv-card2-desc">訂單成立後，系統自動配票並出貨給旅客。PSI 系統從庫存中扣除相應票券，完成出票作業。</p>
+        <span class="card-badge badge-green" data-i18n="inv-card2-badge">系統自動處理</span>
       </div>
       <div class="card">
         <div class="card-icon">📊</div>
-        <h3>庫存管理</h3>
-        <p>追蹤目前可用票券數量，顯示庫存警告，協助 BD/AM 及時補貨，避免缺貨情況影響訂單處理。</p>
-        <span class="card-badge badge-teal">即時監控</span>
+        <h3 data-i18n="inv-card3-title">庫存管理</h3>
+        <p data-i18n="inv-card3-desc">追蹤目前可用票券數量，顯示庫存警告，協助 BD/AM 及時補貨，避免缺貨情況影響訂單處理。</p>
+        <span class="card-badge badge-teal" data-i18n="inv-card3-badge">即時監控</span>
       </div>
     </div>
 
     <!-- 庫存異常處理 -->
-    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 12px;">🚨 庫存異常處理</h2>
-    <p style="font-size:13px;color:var(--gray);margin-bottom:12px;">當 PSI 出貨失敗時，依錯誤代碼判斷原因並採取對應處理方式。</p>
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 12px;" data-i18n="inv-error-title">🚨 庫存異常處理</h2>
+    <p style="font-size:13px;color:var(--gray);margin-bottom:12px;" data-i18n="inv-error-desc">當 PSI 出貨失敗時，依錯誤代碼判斷原因並採取對應處理方式。</p>
     <div class="situation-grid">
       <div class="situation-card situation-fail">
-        <div class="s-title"><span>❌</span> PSI 出貨失敗（200006）</div>
-        <p><strong>錯誤原因：</strong>系統配票貨品不足，庫存量不夠分配給此訂單。</p>
-        <p style="margin-top:6px;"><strong>處理方式：</strong>透過 Slack 聯繫 BD/AM 確認補貨，請 BD/AM 盡速入庫補充票券後再重新出貨。</p>
+        <div class="s-title"><span>❌</span> <span data-i18n="inv-err1-title">PSI 出貨失敗（200006）</span></div>
+        <p><strong data-i18n="inv-err1-cause-label">錯誤原因：</strong><span data-i18n="inv-err1-cause">系統配票貨品不足，庫存量不夠分配給此訂單。</span></p>
+        <p style="margin-top:6px;"><strong data-i18n="inv-err1-action-label">處理方式：</strong><span data-i18n="inv-err1-action">透過 Slack 聯繫 BD/AM 確認補貨，請 BD/AM 盡速入庫補充票券後再重新出貨。</span></p>
       </div>
       <div class="situation-card situation-fail">
-        <div class="s-title"><span>❌</span> PSI 出貨失敗（9996 / null）</div>
-        <p><strong>錯誤原因：</strong>系統回傳 null，原因不明，可能為票券設定問題或系統異常。</p>
-        <p style="margin-top:6px;"><strong>處理方式：</strong>透過 Slack 聯繫 BD/AM 確認原因，由 BD/AM 檢查票券設定或聯繫技術部門排查。</p>
+        <div class="s-title"><span>❌</span> <span data-i18n="inv-err2-title">PSI 出貨失敗（9996 / null）</span></div>
+        <p><strong data-i18n="inv-err2-cause-label">錯誤原因：</strong><span data-i18n="inv-err2-cause">系統回傳 null，原因不明，可能為票券設定問題或系統異常。</span></p>
+        <p style="margin-top:6px;"><strong data-i18n="inv-err2-action-label">處理方式：</strong><span data-i18n="inv-err2-action">透過 Slack 聯繫 BD/AM 確認原因，由 BD/AM 檢查票券設定或聯繫技術部門排查。</span></p>
       </div>
     </div>
 
     <!-- 退貨流程 -->
-    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 12px;">↩️ 退貨流程</h2>
-    <p style="font-size:13px;color:var(--gray);margin-bottom:16px;">訂單取消後需退回票倉的步驟，依票券類型分為三種處理方式。</p>
+    <h2 style="font-size:17px;font-weight:700;color:var(--primary);margin:28px 0 12px;" data-i18n="inv-return-title">↩️ 退貨流程</h2>
+    <p style="font-size:13px;color:var(--gray);margin-bottom:16px;" data-i18n="inv-return-desc">訂單取消後需退回票倉的步驟，依票券類型分為三種處理方式。</p>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);width:36px;height:36px;font-size:16px;">🎟</div>
           <div class="step-content">
-            <h4>電子票退回</h4>
-            <p>系統自動將電子票作廢並退回票倉庫存。OP 確認訂單已取消且電子票已失效後，在 PSI 系統執行退庫操作，票券數量將自動加回庫存。</p>
+            <h4 data-i18n="inv-ret1-title">電子票退回</h4>
+            <p data-i18n="inv-ret1-desc">系統自動將電子票作廢並退回票倉庫存。OP 確認訂單已取消且電子票已失效後，在 PSI 系統執行退庫操作，票券數量將自動加回庫存。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);width:36px;height:36px;font-size:16px;">💻</div>
           <div class="step-content">
-            <h4>虛擬票退回</h4>
-            <p>虛擬票（如序號、兌換碼等）取消後需確認是否已使用。未使用的虛擬票可退回票倉重新分配；已使用的需與供應商確認是否可接受退票。</p>
+            <h4 data-i18n="inv-ret2-title">虛擬票退回</h4>
+            <p data-i18n="inv-ret2-desc">虛擬票（如序號、兌換碼等）取消後需確認是否已使用。未使用的虛擬票可退回票倉重新分配；已使用的需與供應商確認是否可接受退票。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);width:36px;height:36px;font-size:16px;">📫</div>
           <div class="step-content">
-            <h4>實體票退回</h4>
-            <p>實體票券需旅客寄回 KKday 後，由 OP 確認收到實體票，再進行退庫。需注意票券完整性，並依供應商規定確認是否可重新販售或需銷毀。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 實體票退回流程較長，需額外追蹤寄回狀態，請注意時效。</span>
+            <h4 data-i18n="inv-ret3-title">實體票退回</h4>
+            <p data-i18n="inv-ret3-desc">實體票券需旅客寄回 KKday 後，由 OP 確認收到實體票，再進行退庫。需注意票券完整性，並依供應商規定確認是否可重新販售或需銷毀。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="inv-ret3-warn">⚠️ 實體票退回流程較長，需額外追蹤寄回狀態，請注意時效。</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'inv-breadcrumb-home': '首頁',
+    'inv-breadcrumb-current': 'PSI 票倉介紹',
+    'inv-title': 'PSI 票倉介紹',
+    'inv-subtitle': 'PSI 系統介紹 · 庫存管理 · 退貨流程',
+    'inv-chip1': '庫存管理',
+    'inv-chip2': 'PSI · 進貨 · 出貨 · 退貨',
+    'inv-psi-title': '🗂️ PSI 系統介紹',
+    'inv-psi-desc1': 'PSI（進銷存）系統是 KKday 管理票券庫存的核心工具。BD/AM 跟供應商切票/切位後，會將票/位入庫至 PSI 系統，最後再透過 PSI 系統進行出票作業。',
+    'inv-psi-desc2': '整個流程涵蓋從供應商取得票券（進貨）、到訂單成立後配票給旅客（出貨），以及訂單取消後退回票倉（退貨）等完整庫存生命週期管理。',
+    'inv-func-title': '⚡ 主要功能',
+    'inv-card1-title': '進貨（入庫）',
+    'inv-card1-desc': 'BD/AM 將供應商提供的票券入庫至系統，建立庫存數量。入庫時需登記票券類型、數量、有效期限等資訊。',
+    'inv-card1-badge': 'BD/AM 負責',
+    'inv-card2-title': '出貨（出庫）',
+    'inv-card2-desc': '訂單成立後，系統自動配票並出貨給旅客。PSI 系統從庫存中扣除相應票券，完成出票作業。',
+    'inv-card2-badge': '系統自動處理',
+    'inv-card3-title': '庫存管理',
+    'inv-card3-desc': '追蹤目前可用票券數量，顯示庫存警告，協助 BD/AM 及時補貨，避免缺貨情況影響訂單處理。',
+    'inv-card3-badge': '即時監控',
+    'inv-error-title': '🚨 庫存異常處理',
+    'inv-error-desc': '當 PSI 出貨失敗時，依錯誤代碼判斷原因並採取對應處理方式。',
+    'inv-err1-title': 'PSI 出貨失敗（200006）',
+    'inv-err1-cause-label': '錯誤原因：',
+    'inv-err1-cause': '系統配票貨品不足，庫存量不夠分配給此訂單。',
+    'inv-err1-action-label': '處理方式：',
+    'inv-err1-action': '透過 Slack 聯繫 BD/AM 確認補貨，請 BD/AM 盡速入庫補充票券後再重新出貨。',
+    'inv-err2-title': 'PSI 出貨失敗（9996 / null）',
+    'inv-err2-cause-label': '錯誤原因：',
+    'inv-err2-cause': '系統回傳 null，原因不明，可能為票券設定問題或系統異常。',
+    'inv-err2-action-label': '處理方式：',
+    'inv-err2-action': '透過 Slack 聯繫 BD/AM 確認原因，由 BD/AM 檢查票券設定或聯繫技術部門排查。',
+    'inv-return-title': '↩️ 退貨流程',
+    'inv-return-desc': '訂單取消後需退回票倉的步驟，依票券類型分為三種處理方式。',
+    'inv-ret1-title': '電子票退回',
+    'inv-ret1-desc': '系統自動將電子票作廢並退回票倉庫存。OP 確認訂單已取消且電子票已失效後，在 PSI 系統執行退庫操作，票券數量將自動加回庫存。',
+    'inv-ret2-title': '虛擬票退回',
+    'inv-ret2-desc': '虛擬票（如序號、兌換碼等）取消後需確認是否已使用。未使用的虛擬票可退回票倉重新分配；已使用的需與供應商確認是否可接受退票。',
+    'inv-ret3-title': '實體票退回',
+    'inv-ret3-desc': '實體票券需旅客寄回 KKday 後，由 OP 確認收到實體票，再進行退庫。需注意票券完整性，並依供應商規定確認是否可重新販售或需銷毀。',
+    'inv-ret3-warn': '⚠️ 實體票退回流程較長，需額外追蹤寄回狀態，請注意時效。',
+    'footer': 'SCM 知識庫 · 內部使用'
+  },
+  en: {
+    'inv-breadcrumb-home': 'Home',
+    'inv-breadcrumb-current': 'PSI Inventory Introduction',
+    'inv-title': 'PSI Inventory Introduction',
+    'inv-subtitle': 'PSI System Overview · Inventory Management · Return Process',
+    'inv-chip1': 'Inventory Management',
+    'inv-chip2': 'PSI · Stock In · Stock Out · Returns',
+    'inv-psi-title': '🗂️ PSI System Overview',
+    'inv-psi-desc1': 'PSI (Procurement-Sales-Inventory) is KKday\'s core tool for managing ticket inventory. After BD/AM allocates tickets/slots with suppliers, they are stocked into PSI, which is then used to issue tickets to customers.',
+    'inv-psi-desc2': 'The full lifecycle covers: receiving tickets from suppliers (stock in), allocating tickets to customers after order confirmation (stock out), and returning tickets to inventory after order cancellation (returns).',
+    'inv-func-title': '⚡ Key Functions',
+    'inv-card1-title': 'Stock In (Receiving)',
+    'inv-card1-desc': 'BD/AM receives tickets from suppliers and stocks them into the system, registering ticket type, quantity, and expiry date.',
+    'inv-card1-badge': 'BD/AM Responsible',
+    'inv-card2-title': 'Stock Out (Fulfillment)',
+    'inv-card2-desc': 'Once an order is confirmed, the system automatically allocates and delivers tickets to the customer. PSI deducts the corresponding tickets from inventory.',
+    'inv-card2-badge': 'System Auto-Processed',
+    'inv-card3-title': 'Inventory Management',
+    'inv-card3-desc': 'Tracks available ticket quantities, displays low-stock warnings, and helps BD/AM replenish in time to avoid stockouts affecting order processing.',
+    'inv-card3-badge': 'Real-time Monitoring',
+    'inv-error-title': '🚨 Inventory Exception Handling',
+    'inv-error-desc': 'When PSI fulfillment fails, diagnose the cause by error code and take the appropriate action.',
+    'inv-err1-title': 'PSI Fulfillment Failed (200006)',
+    'inv-err1-cause-label': 'Error Cause: ',
+    'inv-err1-cause': 'Insufficient inventory — system cannot allocate enough tickets for this order.',
+    'inv-err1-action-label': 'Action: ',
+    'inv-err1-action': 'Contact BD/AM via Slack to confirm restocking. Ask BD/AM to stock in tickets as soon as possible, then re-fulfill.',
+    'inv-err2-title': 'PSI Fulfillment Failed (9996 / null)',
+    'inv-err2-cause-label': 'Error Cause: ',
+    'inv-err2-cause': 'System returned null — cause unknown; may be a ticket configuration issue or system anomaly.',
+    'inv-err2-action-label': 'Action: ',
+    'inv-err2-action': 'Contact BD/AM via Slack to investigate. BD/AM should check ticket settings or escalate to the technical team.',
+    'inv-return-title': '↩️ Return Process',
+    'inv-return-desc': 'Steps to return tickets to inventory after order cancellation, categorized by ticket type.',
+    'inv-ret1-title': 'E-Ticket Return',
+    'inv-ret1-desc': 'The system automatically voids the e-ticket and restores it to inventory. After OP confirms cancellation and that the e-ticket is invalidated, execute the return in PSI to automatically add the quantity back.',
+    'inv-ret2-title': 'Virtual Ticket Return',
+    'inv-ret2-desc': 'Virtual tickets (e.g., serial numbers, redemption codes) must be verified as unused after cancellation. Unused virtual tickets can be returned to inventory for reallocation; used ones require supplier confirmation on whether a return is accepted.',
+    'inv-ret3-title': 'Physical Ticket Return',
+    'inv-ret3-desc': 'Physical tickets must be mailed back to KKday by the customer. OP confirms receipt before processing the return in PSI. Ticket integrity must be verified, and the supplier\'s policy on resale or destruction must be followed.',
+    'inv-ret3-warn': '⚠️ Physical ticket returns take longer. Track the return shipment status carefully and be mindful of deadlines.',
+    'footer': 'SCM Wiki · Internal Use Only'
+  },
+  ja: {
+    'inv-breadcrumb-home': 'ホーム',
+    'inv-breadcrumb-current': 'PSI チケット倉庫の紹介',
+    'inv-title': 'PSI チケット倉庫の紹介',
+    'inv-subtitle': 'PSI システム概要 · 在庫管理 · 返品フロー',
+    'inv-chip1': '在庫管理',
+    'inv-chip2': 'PSI · 入庫 · 出庫 · 返品',
+    'inv-psi-title': '🗂️ PSI システム概要',
+    'inv-psi-desc1': 'PSI（調達・販売・在庫管理）システムは、KKday のチケット在庫管理の中核ツールです。BD/AM が仕入先からチケット/枠を確保した後、PSI に入庫し、最終的に PSI を通じてチケット発行を行います。',
+    'inv-psi-desc2': '全フローは、仕入先からのチケット受領（入庫）、注文成立後の旅行者へのチケット割り当て（出庫）、注文キャンセル後の在庫への返品（返品）という完全なライフサイクルを網羅しています。',
+    'inv-func-title': '⚡ 主な機能',
+    'inv-card1-title': '入庫（受領）',
+    'inv-card1-desc': 'BD/AM が仕入先から提供されたチケットをシステムに入庫し、在庫数を登録します。入庫時にはチケット種別・数量・有効期限などを記録します。',
+    'inv-card1-badge': 'BD/AM 担当',
+    'inv-card2-title': '出庫（フルフィルメント）',
+    'inv-card2-desc': '注文成立後、システムが自動的にチケットを割り当て旅行者に発行します。PSI は在庫から該当チケットを差し引きます。',
+    'inv-card2-badge': 'システム自動処理',
+    'inv-card3-title': '在庫管理',
+    'inv-card3-desc': '利用可能なチケット数を追跡し、在庫警告を表示します。BD/AM が適時に補充できるよう支援し、在庫切れによる注文処理への影響を防ぎます。',
+    'inv-card3-badge': 'リアルタイム監視',
+    'inv-error-title': '🚨 在庫異常対応',
+    'inv-error-desc': 'PSI の出庫が失敗した場合は、エラーコードで原因を特定し、対応策を取ります。',
+    'inv-err1-title': 'PSI 出庫失敗（200006）',
+    'inv-err1-cause-label': 'エラー原因：',
+    'inv-err1-cause': '在庫不足 — 本注文に割り当てる十分なチケットがありません。',
+    'inv-err1-action-label': '対応方法：',
+    'inv-err1-action': 'Slack で BD/AM に補充の確認を依頼し、BD/AM が速やかに入庫した後に再出庫してください。',
+    'inv-err2-title': 'PSI 出庫失敗（9996 / null）',
+    'inv-err2-cause-label': 'エラー原因：',
+    'inv-err2-cause': 'システムが null を返しました。原因不明で、チケット設定の問題またはシステム異常の可能性があります。',
+    'inv-err2-action-label': '対応方法：',
+    'inv-err2-action': 'Slack で BD/AM に原因の確認を依頼し、BD/AM がチケット設定を確認するか技術部門にエスカレーションしてください。',
+    'inv-return-title': '↩️ 返品フロー',
+    'inv-return-desc': '注文キャンセル後に在庫へ返品するステップ。チケット種別ごとに3つの処理方法があります。',
+    'inv-ret1-title': '電子チケット返品',
+    'inv-ret1-desc': 'システムが電子チケットを自動的に無効化し、在庫に戻します。OP が注文キャンセルと電子チケットの無効化を確認後、PSI で返品操作を実行するとチケット数量が自動的に在庫に戻されます。',
+    'inv-ret2-title': '仮想チケット返品',
+    'inv-ret2-desc': '仮想チケット（シリアル番号・引換コードなど）はキャンセル後に使用済みかどうかを確認する必要があります。未使用の仮想チケットは在庫に戻して再割り当て可能です。使用済みの場合は仕入先に返品可否を確認してください。',
+    'inv-ret3-title': '実物チケット返品',
+    'inv-ret3-desc': '実物チケットは旅行者が KKday に郵送した後、OP が受領を確認してから返品処理を行います。チケットの完全性を確認し、仕入先の規定に従って再販売または廃棄を判断してください。',
+    'inv-ret3-warn': '⚠️ 実物チケットの返品フローは時間がかかります。返送状況を追跡し、期限に注意してください。',
+    'footer': 'SCM ナレッジベース · 内部使用のみ'
+  },
+  ko: {
+    'inv-breadcrumb-home': '홈',
+    'inv-breadcrumb-current': 'PSI 티켓 창고 소개',
+    'inv-title': 'PSI 티켓 창고 소개',
+    'inv-subtitle': 'PSI 시스템 소개 · 재고 관리 · 반품 프로세스',
+    'inv-chip1': '재고 관리',
+    'inv-chip2': 'PSI · 입고 · 출고 · 반품',
+    'inv-psi-title': '🗂️ PSI 시스템 소개',
+    'inv-psi-desc1': 'PSI（구매·판매·재고 관리）시스템은 KKday의 티켓 재고 관리를 위한 핵심 도구입니다. BD/AM이 공급업체와 티켓/좌석을 확보한 후 PSI에 입고하고, 최종적으로 PSI를 통해 발권 작업을 수행합니다.',
+    'inv-psi-desc2': '전체 프로세스는 공급업체로부터 티켓 수령（입고）, 주문 확정 후 여행객에게 티켓 배정（출고）, 주문 취소 후 창고 반품（반품）의 완전한 재고 수명 주기 관리를 포함합니다.',
+    'inv-func-title': '⚡ 주요 기능',
+    'inv-card1-title': '입고（재고 수령）',
+    'inv-card1-desc': 'BD/AM이 공급업체가 제공한 티켓을 시스템에 입고하여 재고 수량을 등록합니다. 입고 시 티켓 유형, 수량, 유효 기간 등의 정보를 기록해야 합니다.',
+    'inv-card1-badge': 'BD/AM 담당',
+    'inv-card2-title': '출고（재고 출하）',
+    'inv-card2-desc': '주문 확정 후 시스템이 자동으로 티켓을 배정하여 여행객에게 발송합니다. PSI 시스템은 재고에서 해당 티켓을 차감합니다.',
+    'inv-card2-badge': '시스템 자동 처리',
+    'inv-card3-title': '재고 관리',
+    'inv-card3-desc': '현재 사용 가능한 티켓 수량을 추적하고, 재고 경고를 표시하여 BD/AM이 적시에 보충할 수 있도록 지원합니다. 재고 부족으로 주문 처리에 영향이 생기지 않도록 합니다.',
+    'inv-card3-badge': '실시간 모니터링',
+    'inv-error-title': '🚨 재고 이상 처리',
+    'inv-error-desc': 'PSI 출고 실패 시 오류 코드로 원인을 파악하고 해당 처리 방법을 취합니다.',
+    'inv-err1-title': 'PSI 출고 실패（200006）',
+    'inv-err1-cause-label': '오류 원인：',
+    'inv-err1-cause': '재고 부족 — 시스템이 해당 주문에 충분한 티켓을 배정할 수 없습니다.',
+    'inv-err1-action-label': '처리 방법：',
+    'inv-err1-action': 'Slack으로 BD/AM에게 연락하여 보충 여부를 확인하고, BD/AM이 최대한 빨리 입고한 후 재출고하도록 요청합니다.',
+    'inv-err2-title': 'PSI 출고 실패（9996 / null）',
+    'inv-err2-cause-label': '오류 원인：',
+    'inv-err2-cause': '시스템이 null을 반환했습니다. 원인 불명으로, 티켓 설정 문제 또는 시스템 이상일 수 있습니다.',
+    'inv-err2-action-label': '처리 방법：',
+    'inv-err2-action': 'Slack으로 BD/AM에게 원인 확인을 요청하고, BD/AM이 티켓 설정을 점검하거나 기술팀에 에스컬레이션하도록 합니다.',
+    'inv-return-title': '↩️ 반품 프로세스',
+    'inv-return-desc': '주문 취소 후 창고로 반품하는 단계로, 티켓 유형에 따라 세 가지 처리 방법으로 구분됩니다.',
+    'inv-ret1-title': '전자 티켓 반품',
+    'inv-ret1-desc': '시스템이 자동으로 전자 티켓을 무효화하고 재고로 반환합니다. OP가 주문 취소 및 전자 티켓 무효화를 확인한 후 PSI에서 반품 작업을 실행하면 티켓 수량이 자동으로 재고에 추가됩니다.',
+    'inv-ret2-title': '가상 티켓 반품',
+    'inv-ret2-desc': '가상 티켓（시리얼 번호, 교환 코드 등）은 취소 후 사용 여부를 확인해야 합니다. 미사용 가상 티켓은 재고로 반환하여 재배정할 수 있으며, 사용된 경우 공급업체에 반품 수락 여부를 확인해야 합니다.',
+    'inv-ret3-title': '실물 티켓 반품',
+    'inv-ret3-desc': '실물 티켓은 여행객이 KKday로 우편 발송한 후 OP가 수령을 확인하고 반품 처리를 진행합니다. 티켓의 완전성을 확인하고, 공급업체 규정에 따라 재판매 또는 폐기 여부를 결정해야 합니다.',
+    'inv-ret3-warn': '⚠️ 실물 티켓 반품 프로세스는 시간이 더 걸립니다. 반송 상태를 별도로 추적하고 기한에 주의하십시오.',
+    'footer': 'SCM 지식베이스 · 내부 전용'
+  }
+});
+</script>
 </body>
 </html>

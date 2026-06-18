@@ -11,7 +11,10 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
 .tool-card { border-radius: 12px; padding: 20px; border: 1px solid var(--border); background: white; }
 .tool-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
@@ -35,41 +38,41 @@
 .branch-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
 .branch-card ul { margin: 0; padding-left: 16px; font-size: 12px; color: #4a5568; line-height: 1.9; }
   </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
 <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link active" href="#">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
 <div class="page-wrapper">
-  <div class="breadcrumb">首頁 / 訊息管理</div>
+  <div class="breadcrumb" data-i18n="mh-breadcrumb">首頁 / 訊息管理</div>
 
   <div class="page-header">
     <div class="page-header-icon" style="background:linear-gradient(135deg,#636e72,#2d3436)">💬</div>
     <div class="page-header-body">
-      <h1>訊息管理</h1>
-      <div class="subtitle">四種溝通工具 · 供應商訊息處理流程</div>
+      <h1 data-i18n="mh-title">訊息管理</h1>
+      <div class="subtitle" data-i18n="mh-subtitle">四種溝通工具 · 供應商訊息處理流程</div>
       <div class="meta-row">
-        <span class="meta-chip badge-blue">訊息</span>
-        <span class="meta-chip">Be2 · 工單 · Slack · 供應商群組</span>
+        <span class="meta-chip badge-blue" data-i18n="mh-chip1">訊息</span>
+        <span class="meta-chip" data-i18n="mh-chip2">Be2 · 工單 · Slack · 供應商群組</span>
       </div>
     </div>
   </div>
 
   <div class="white-box">
 
-    <div class="section-title">🛠️ 四種訊息系統</div>
+    <div class="section-title" data-i18n="mh-sec1">🛠️ 四種訊息系統</div>
 
     <div class="tool-grid">
       <div class="tool-card">
@@ -77,10 +80,10 @@
           <div class="tool-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">🖥️</div>
           <div>
             <div class="tool-name">Be2</div>
-            <div class="tool-sub">系統訊息 & 外部門聯繫</div>
+            <div class="tool-sub" data-i18n="mh-be2-sub">系統訊息 & 外部門聯繫</div>
           </div>
         </div>
-        <div class="tool-body">
+        <div class="tool-body" data-i18n-html="mh-be2-body">
           <strong>System 訊息</strong>（自動觸發）
           <ul style="padding-left:16px;margin:6px 0 10px;line-height:1.9;">
             <li>即訂即出失敗（API / OCBT / PSI）</li>
@@ -95,11 +98,11 @@
         <div class="tool-card-header">
           <div class="tool-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">🎫</div>
           <div>
-            <div class="tool-name">工單系統</div>
-            <div class="tool-sub">CS ↔ OP 溝通橋樑</div>
+            <div class="tool-name" data-i18n="mh-ticket-name">工單系統</div>
+            <div class="tool-sub" data-i18n="mh-ticket-sub">CS ↔ OP 溝通橋樑</div>
           </div>
         </div>
-        <div class="tool-body">
+        <div class="tool-body" data-i18n-html="mh-ticket-body">
           主要用於 <strong>CS（客服）</strong> 與 <strong>OP（運營）</strong> 之間的工作溝通與任務轉派。
           <br><br>
           詳細使用方式請見先前的課程教學。
@@ -115,10 +118,10 @@
           <div class="tool-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">💼</div>
           <div>
             <div class="tool-name">Slack</div>
-            <div class="tool-sub">公司主要內部通訊工具</div>
+            <div class="tool-sub" data-i18n="mh-slack-sub">公司主要內部通訊工具</div>
           </div>
         </div>
-        <div class="tool-body">
+        <div class="tool-body" data-i18n-html="mh-slack-body">
           所有重要通知、活動安排、重大公告皆透過 Slack 群組發布。
           <ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;">
             <li>各員工可在群組內提問並尋找負責人</li>
@@ -132,11 +135,11 @@
         <div class="tool-card-header">
           <div class="tool-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)">📱</div>
           <div>
-            <div class="tool-name">供應商群組</div>
-            <div class="tool-sub">外部供應商聯繫管道</div>
+            <div class="tool-name" data-i18n="mh-supplier-name">供應商群組</div>
+            <div class="tool-sub" data-i18n="mh-supplier-sub">外部供應商聯繫管道</div>
           </div>
         </div>
-        <div class="tool-body">
+        <div class="tool-body" data-i18n-html="mh-supplier-body">
           依供應商使用習慣選擇通訊工具：
           <ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;">
             <li>LINE</li>
@@ -146,77 +149,221 @@
           </ul>
         </div>
         <div class="tool-tags">
-          <span class="tool-tag">各線別群組信箱</span>
+          <span class="tool-tag" data-i18n="mh-supplier-tag">各線別群組信箱</span>
         </div>
       </div>
     </div>
 
     <hr style="margin:4px 0 24px;border-color:var(--border);" />
 
-    <div class="section-title">⚙️ Slack 使用規範</div>
+    <div class="section-title" data-i18n="mh-sec2">⚙️ Slack 使用規範</div>
 
     <div class="rule-list">
       <div class="rule-item">
         <div class="rule-num">1</div>
         <div class="rule-content">
-          <h4>提問與溝通</h4>
-          <p>在對應的群組內提問並尋找負責人解決問題。根據不同部門和需求選擇正確群組，確保問題能快速解決。</p>
+          <h4 data-i18n="mh-rule1-title">提問與溝通</h4>
+          <p data-i18n="mh-rule1-desc">在對應的群組內提問並尋找負責人解決問題。根據不同部門和需求選擇正確群組，確保問題能快速解決。</p>
         </div>
       </div>
       <div class="rule-item">
         <div class="rule-num">2</div>
         <div class="rule-content">
-          <h4>活動與公告通知</h4>
-          <p>公司有任何活動或重大公告時，會在對應群組中通知。請定期查看 Slack 群組，確保不會錯過重要信息。</p>
+          <h4 data-i18n="mh-rule2-title">活動與公告通知</h4>
+          <p data-i18n="mh-rule2-desc">公司有任何活動或重大公告時，會在對應群組中通知。請定期查看 Slack 群組，確保不會錯過重要信息。</p>
         </div>
       </div>
       <div class="rule-item">
         <div class="rule-num">3</div>
         <div class="rule-content">
-          <h4>上線狀態設定</h4>
-          <p>OP 員工在上班時，需將自己設置為「<strong>上線</strong>」狀態，以便其他同事可以及時聯繫，高效處理工作事宜。</p>
+          <h4 data-i18n="mh-rule3-title">上線狀態設定</h4>
+          <p data-i18n-html="mh-rule3-desc">OP 員工在上班時，需將自己設置為「<strong>上線</strong>」狀態，以便其他同事可以及時聯繫，高效處理工作事宜。</p>
         </div>
       </div>
     </div>
 
     <hr style="margin:24px 0;border-color:var(--border);" />
 
-    <div class="section-title">🔄 供應商訊息處理流程</div>
+    <div class="section-title" data-i18n="mh-sec3">🔄 供應商訊息處理流程</div>
 
     <div class="flow-bar">
-      <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">供應商反映問題</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="mh-flow1">供應商反映問題</span>
       <span class="flow-arr">→</span>
-      <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 受理</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="mh-flow2">OP 受理</span>
       <span class="flow-arr">→</span>
-      <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">判斷問題類別</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="mh-flow3">判斷問題類別</span>
       <span class="flow-arr">→</span>
-      <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">轉交對應單位</span>
+      <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="mh-flow4">轉交對應單位</span>
     </div>
 
-    <div style="font-size:13px;color:#4a5568;margin-bottom:12px;">
+    <div style="font-size:13px;color:#4a5568;margin-bottom:12px;" data-i18n="mh-flow-desc">
       商家將有問題的訂單提供至群組內或各線別信箱，OP 收到後根據問題性質轉交相應單位：
     </div>
 
     <div class="branch-grid">
       <div class="branch-card" style="border-color:#a5d6a7;background:#f0fdf4;">
-        <h4 style="color:#15803d;">📨 需轉達旅客的資訊</h4>
+        <h4 style="color:#15803d;" data-i18n="mh-branch1-title">📨 需轉達旅客的資訊</h4>
         <ul>
-          <li>OP 透過<strong>工單系統</strong>轉發給 CS</li>
-          <li>由客服部門與旅客溝通並處理</li>
+          <li data-i18n-html="mh-branch1-li1">OP 透過<strong>工單系統</strong>轉發給 CS</li>
+          <li data-i18n="mh-branch1-li2">由客服部門與旅客溝通並處理</li>
         </ul>
       </div>
       <div class="branch-card" style="border-color:#c5d3f5;background:#f0f4ff;">
-        <h4 style="color:#3c50e0;">⚙️ 系統設定問題</h4>
+        <h4 style="color:#3c50e0;" data-i18n="mh-branch2-title">⚙️ 系統設定問題</h4>
         <ul>
-          <li>在供應商群組內 <strong>@BD</strong> 或 <strong>@AM</strong></li>
-          <li>或於 <strong>Slack 群組</strong>聯繫 BD / AM 支援</li>
+          <li data-i18n-html="mh-branch2-li1">在供應商群組內 <strong>@BD</strong> 或 <strong>@AM</strong></li>
+          <li data-i18n-html="mh-branch2-li2">或於 <strong>Slack 群組</strong>聯繫 BD / AM 支援</li>
         </ul>
       </div>
     </div>
 
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
 </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'mh-breadcrumb': '首頁 / 訊息管理',
+    'mh-title': '訊息管理',
+    'mh-subtitle': '四種溝通工具 · 供應商訊息處理流程',
+    'mh-chip1': '訊息',
+    'mh-chip2': 'Be2 · 工單 · Slack · 供應商群組',
+    'mh-sec1': '🛠️ 四種訊息系統',
+    'mh-be2-sub': '系統訊息 & 外部門聯繫',
+    'mh-be2-body': '<strong>System 訊息</strong>（自動觸發）<ul style="padding-left:16px;margin:6px 0 10px;line-height:1.9;"><li>即訂即出失敗（API / OCBT / PSI）</li><li>系統異常通知</li><li>可疑訂單警示</li></ul><strong>外部門訊息</strong>：風控小組或其他部門透過 Be2 聯繫 OP',
+    'mh-ticket-name': '工單系統',
+    'mh-ticket-sub': 'CS ↔ OP 溝通橋樑',
+    'mh-ticket-body': '主要用於 <strong>CS（客服）</strong> 與 <strong>OP（運營）</strong> 之間的工作溝通與任務轉派。<br><br>詳細使用方式請見先前的課程教學。',
+    'mh-slack-sub': '公司主要內部通訊工具',
+    'mh-slack-body': '所有重要通知、活動安排、重大公告皆透過 Slack 群組發布。<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>各員工可在群組內提問並尋找負責人</li><li>公司活動 / 公告通知</li><li>OP 上班期間需設為「<strong>上線</strong>」狀態</li></ul>',
+    'mh-supplier-name': '供應商群組',
+    'mh-supplier-sub': '外部供應商聯繫管道',
+    'mh-supplier-body': '依供應商使用習慣選擇通訊工具：<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>LINE</li><li>WhatsApp</li><li>微信（WeChat）</li><li>Email（部分商家）</li></ul>',
+    'mh-supplier-tag': '各線別群組信箱',
+    'mh-sec2': '⚙️ Slack 使用規範',
+    'mh-rule1-title': '提問與溝通',
+    'mh-rule1-desc': '在對應的群組內提問並尋找負責人解決問題。根據不同部門和需求選擇正確群組，確保問題能快速解決。',
+    'mh-rule2-title': '活動與公告通知',
+    'mh-rule2-desc': '公司有任何活動或重大公告時，會在對應群組中通知。請定期查看 Slack 群組，確保不會錯過重要信息。',
+    'mh-rule3-title': '上線狀態設定',
+    'mh-rule3-desc': 'OP 員工在上班時，需將自己設置為「<strong>上線</strong>」狀態，以便其他同事可以及時聯繫，高效處理工作事宜。',
+    'mh-sec3': '🔄 供應商訊息處理流程',
+    'mh-flow1': '供應商反映問題', 'mh-flow2': 'OP 受理', 'mh-flow3': '判斷問題類別', 'mh-flow4': '轉交對應單位',
+    'mh-flow-desc': '商家將有問題的訂單提供至群組內或各線別信箱，OP 收到後根據問題性質轉交相應單位：',
+    'mh-branch1-title': '📨 需轉達旅客的資訊',
+    'mh-branch1-li1': 'OP 透過<strong>工單系統</strong>轉發給 CS',
+    'mh-branch1-li2': '由客服部門與旅客溝通並處理',
+    'mh-branch2-title': '⚙️ 系統設定問題',
+    'mh-branch2-li1': '在供應商群組內 <strong>@BD</strong> 或 <strong>@AM</strong>',
+    'mh-branch2-li2': '或於 <strong>Slack 群組</strong>聯繫 BD / AM 支援'
+  },
+  en: {
+    'mh-breadcrumb': 'Home / Messaging',
+    'mh-title': 'Messaging',
+    'mh-subtitle': '4 Communication Tools · Supplier Message Handling Flow',
+    'mh-chip1': 'Messaging',
+    'mh-chip2': 'Be2 · Ticket System · Slack · Supplier Groups',
+    'mh-sec1': '🛠️ 4 Messaging Systems',
+    'mh-be2-sub': 'System Messages & Cross-Dept Contact',
+    'mh-be2-body': '<strong>System Messages</strong> (auto-triggered)<ul style="padding-left:16px;margin:6px 0 10px;line-height:1.9;"><li>Instant booking failures (API / OCBT / PSI)</li><li>System error notifications</li><li>Suspicious order alerts</li></ul><strong>Cross-dept messages</strong>: Risk control or other departments contacting OP via Be2',
+    'mh-ticket-name': 'Ticket System',
+    'mh-ticket-sub': 'CS ↔ OP Communication Bridge',
+    'mh-ticket-body': 'Primary channel for <strong>CS (Customer Service)</strong> and <strong>OP (Operations)</strong> to communicate and transfer tasks.<br><br>Refer to previous training for detailed usage.',
+    'mh-slack-sub': 'Main Internal Communication Tool',
+    'mh-slack-body': 'All important notices, events, and announcements are published via Slack groups.<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>Staff can ask questions and find responsible parties in groups</li><li>Company events / announcements</li><li>OP must set status to "<strong>Online</strong>" during working hours</li></ul>',
+    'mh-supplier-name': 'Supplier Groups',
+    'mh-supplier-sub': 'External Supplier Contact Channel',
+    'mh-supplier-body': 'Choose communication tool based on supplier preference:<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>LINE</li><li>WhatsApp</li><li>WeChat</li><li>Email (some suppliers)</li></ul>',
+    'mh-supplier-tag': 'Line-specific group mailboxes',
+    'mh-sec2': '⚙️ Slack Usage Guidelines',
+    'mh-rule1-title': 'Questions & Communication',
+    'mh-rule1-desc': 'Ask questions in the appropriate group and find the responsible party. Choose the correct group based on department and need to ensure fast resolution.',
+    'mh-rule2-title': 'Events & Announcements',
+    'mh-rule2-desc': 'Company events and major announcements are posted in relevant groups. Check Slack regularly to avoid missing important information.',
+    'mh-rule3-title': 'Online Status Setting',
+    'mh-rule3-desc': 'OP staff must set their status to "<strong>Online</strong>" during working hours so colleagues can reach them promptly.',
+    'mh-sec3': '🔄 Supplier Message Handling Flow',
+    'mh-flow1': 'Supplier Reports Issue', 'mh-flow2': 'OP Receives', 'mh-flow3': 'Categorize Issue', 'mh-flow4': 'Transfer to Team',
+    'mh-flow-desc': 'Suppliers submit problematic orders to the group or line-specific mailbox. OP routes to the appropriate team based on issue type:',
+    'mh-branch1-title': '📨 Info to Relay to Traveler',
+    'mh-branch1-li1': 'OP forwards to CS via <strong>Ticket System</strong>',
+    'mh-branch1-li2': 'CS handles communication with the traveler',
+    'mh-branch2-title': '⚙️ System Configuration Issues',
+    'mh-branch2-li1': 'Tag <strong>@BD</strong> or <strong>@AM</strong> in supplier group',
+    'mh-branch2-li2': 'Or contact BD / AM via <strong>Slack group</strong>'
+  },
+  ja: {
+    'mh-breadcrumb': 'ホーム / メッセージ管理',
+    'mh-title': 'メッセージ管理',
+    'mh-subtitle': '4つのコミュニケーションツール · サプライヤーメッセージ処理フロー',
+    'mh-chip1': 'メッセージ',
+    'mh-chip2': 'Be2 · チケットシステム · Slack · サプライヤーグループ',
+    'mh-sec1': '🛠️ 4つのメッセージシステム',
+    'mh-be2-sub': 'システムメッセージ & 他部門連絡',
+    'mh-be2-body': '<strong>システムメッセージ</strong>（自動トリガー）<ul style="padding-left:16px;margin:6px 0 10px;line-height:1.9;"><li>即時予約失敗（API / OCBT / PSI）</li><li>システム異常通知</li><li>疑い注文アラート</li></ul><strong>他部門メッセージ</strong>：リスク管理チームなどが Be2 経由で OP に連絡',
+    'mh-ticket-name': 'チケットシステム',
+    'mh-ticket-sub': 'CS ↔ OP コミュニケーション橋渡し',
+    'mh-ticket-body': '<strong>CS（カスタマーサービス）</strong>と<strong>OP（オペレーション）</strong>間の業務連絡とタスク移管に使用。<br><br>詳細は過去のトレーニング資料を参照。',
+    'mh-slack-sub': '社内メイン通信ツール',
+    'mh-slack-body': '重要な通知・イベント・公告はすべて Slack グループで発信。<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>各グループで質問し担当者を探す</li><li>社内イベント / 公告通知</li><li>OP は勤務中「<strong>オンライン</strong>」状態にする</li></ul>',
+    'mh-supplier-name': 'サプライヤーグループ',
+    'mh-supplier-sub': '外部サプライヤー連絡チャネル',
+    'mh-supplier-body': 'サプライヤーの習慣に合わせてツールを選択：<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>LINE</li><li>WhatsApp</li><li>WeChat</li><li>Email（一部の商家）</li></ul>',
+    'mh-supplier-tag': '各ライン別グループメールボックス',
+    'mh-sec2': '⚙️ Slack 使用ルール',
+    'mh-rule1-title': '質問とコミュニケーション',
+    'mh-rule1-desc': '適切なグループで質問し担当者を見つけて解決する。部門とニーズに応じて正しいグループを選択。',
+    'mh-rule2-title': 'イベントと公告通知',
+    'mh-rule2-desc': '社内イベントや重要な公告は各グループに通知される。定期的に Slack を確認し、重要情報を見逃さないこと。',
+    'mh-rule3-title': 'オンライン状態の設定',
+    'mh-rule3-desc': 'OP スタッフは勤務中、「<strong>オンライン</strong>」状態に設定し、同僚がすぐに連絡できるようにすること。',
+    'mh-sec3': '🔄 サプライヤーメッセージ処理フロー',
+    'mh-flow1': 'サプライヤーが問題を報告', 'mh-flow2': 'OP が受理', 'mh-flow3': '問題を分類', 'mh-flow4': '担当部門へ転送',
+    'mh-flow-desc': '商家はグループまたはライン別メールボックスに問題注文を提出。OP は問題の性質に応じて適切な部門に転送：',
+    'mh-branch1-title': '📨 旅客への伝達が必要な情報',
+    'mh-branch1-li1': 'OP が<strong>チケットシステム</strong>経由で CS に転送',
+    'mh-branch1-li2': 'CS が旅客と連絡・対応',
+    'mh-branch2-title': '⚙️ システム設定の問題',
+    'mh-branch2-li1': 'サプライヤーグループで <strong>@BD</strong> または <strong>@AM</strong> をタグ',
+    'mh-branch2-li2': 'または <strong>Slack グループ</strong>で BD / AM に連絡'
+  },
+  ko: {
+    'mh-breadcrumb': '홈 / 메시지 관리',
+    'mh-title': '메시지 관리',
+    'mh-subtitle': '4가지 커뮤니케이션 도구 · 공급업체 메시지 처리 흐름',
+    'mh-chip1': '메시지',
+    'mh-chip2': 'Be2 · 티켓 시스템 · Slack · 공급업체 그룹',
+    'mh-sec1': '🛠️ 4가지 메시지 시스템',
+    'mh-be2-sub': '시스템 메시지 & 타부서 연락',
+    'mh-be2-body': '<strong>시스템 메시지</strong>（자동 트리거）<ul style="padding-left:16px;margin:6px 0 10px;line-height:1.9;"><li>즉시 예약 실패（API / OCBT / PSI）</li><li>시스템 이상 알림</li><li>의심 주문 경고</li></ul><strong>타부서 메시지</strong>：위험 관리팀 등이 Be2를 통해 OP에 연락',
+    'mh-ticket-name': '티켓 시스템',
+    'mh-ticket-sub': 'CS ↔ OP 커뮤니케이션 브리지',
+    'mh-ticket-body': '<strong>CS（고객서비스）</strong>와 <strong>OP（운영）</strong> 간 업무 소통 및 태스크 이관에 주로 사용.<br><br>자세한 사용법은 이전 교육 자료 참조.',
+    'mh-slack-sub': '사내 주요 내부 통신 도구',
+    'mh-slack-body': '모든 중요 알림, 행사, 공지는 Slack 그룹으로 발송.<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>그룹 내 질문 및 담당자 찾기</li><li>사내 행사 / 공지 알림</li><li>OP는 근무 중 「<strong>온라인</strong>」 상태로 설정</li></ul>',
+    'mh-supplier-name': '공급업체 그룹',
+    'mh-supplier-sub': '외부 공급업체 연락 채널',
+    'mh-supplier-body': '공급업체 선호도에 따라 통신 도구 선택：<ul style="padding-left:16px;margin:8px 0 0;line-height:1.9;"><li>LINE</li><li>WhatsApp</li><li>WeChat</li><li>Email（일부 공급업체）</li></ul>',
+    'mh-supplier-tag': '라인별 그룹 메일박스',
+    'mh-sec2': '⚙️ Slack 사용 규칙',
+    'mh-rule1-title': '질문 및 소통',
+    'mh-rule1-desc': '해당 그룹에서 질문하고 담당자를 찾아 해결. 부서와 필요에 따라 올바른 그룹 선택.',
+    'mh-rule2-title': '행사 및 공지 알림',
+    'mh-rule2-desc': '사내 행사나 중요 공지는 해당 그룹에 알림. Slack을 정기적으로 확인하여 중요 정보를 놓치지 않도록.',
+    'mh-rule3-title': '온라인 상태 설정',
+    'mh-rule3-desc': 'OP 직원은 근무 중 「<strong>온라인</strong>」 상태로 설정하여 동료가 즉시 연락할 수 있도록.',
+    'mh-sec3': '🔄 공급업체 메시지 처리 흐름',
+    'mh-flow1': '공급업체 문제 보고', 'mh-flow2': 'OP 접수', 'mh-flow3': '문제 분류', 'mh-flow4': '해당 팀에 이관',
+    'mh-flow-desc': '공급업체가 그룹 또는 라인별 메일함에 문제 주문 제출. OP는 문제 성격에 따라 해당 팀으로 이관：',
+    'mh-branch1-title': '📨 여행자에게 전달할 정보',
+    'mh-branch1-li1': 'OP가 <strong>티켓 시스템</strong>을 통해 CS로 전달',
+    'mh-branch1-li2': 'CS가 여행자와 소통 및 처리',
+    'mh-branch2-title': '⚙️ 시스템 설정 문제',
+    'mh-branch2-li1': '공급업체 그룹에서 <strong>@BD</strong> 또는 <strong>@AM</strong> 태그',
+    'mh-branch2-li2': '또는 <strong>Slack 그룹</strong>에서 BD / AM 지원 요청'
+  }
+});
+</script>
 </body>
 </html>

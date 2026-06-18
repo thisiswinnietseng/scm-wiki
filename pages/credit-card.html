@@ -30,130 +30,133 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
     <div class="breadcrumb">
-      <a href="../index.html">首頁</a>
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
       <span class="sep">/</span>
-      <a href="../index.html#accounting">帳務管理</a>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
       <span class="sep">/</span>
-      <span class="current">信用卡對帳</span>
+      <span class="current" data-i18n="cc-breadcrumb-current">信用卡對帳</span>
     </div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#3c50e0,#6dd5ed)">💳</div>
       <div class="page-header-body">
-        <h1>信用卡對帳</h1>
-        <div class="subtitle">每月帳單核對、請款流程、BPM 送審</div>
+        <h1 data-i18n="cc-title">信用卡對帳</h1>
+        <div class="subtitle" data-i18n="cc-subtitle">每月帳單核對、請款流程、BPM 送審</div>
         <div class="meta-row">
-          <span class="meta-chip badge-blue">信用卡</span>
-          <span class="meta-chip">帳務管理</span>
+          <span class="meta-chip badge-blue" data-i18n="cc-chip1">信用卡</span>
+          <span class="meta-chip" data-i18n="cc-chip2">帳務管理</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📅 對帳流程</div>
-      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:16px;">OP 通常在每月最後一週收到財務寄來的信用卡帳單。收到帳單後需核對各欄位，確認無誤後送出 BPM。</p>
+      <div class="section-title" data-i18n="cc-flow-title">📅 對帳流程</div>
+      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:16px;" data-i18n="cc-flow-desc">OP 通常在每月最後一週收到財務寄來的信用卡帳單。收到帳單後需核對各欄位，確認無誤後送出 BPM。</p>
       <div class="flow-bar">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">財務寄出帳單（每月最後一週）</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="cc-flow1">財務寄出帳單（每月最後一週）</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 核對帳單欄位</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="cc-flow2">OP 核對帳單欄位</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">標記信用卡幣別總金額</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="cc-flow3">標記信用卡幣別總金額</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">送出 BPM</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="cc-flow4">送出 BPM</span>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📊 帳單欄位說明</div>
+      <div class="section-title" data-i18n="cc-fields-title">📊 帳單欄位說明</div>
       <div style="margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-        <span class="col-label col-op">OP 核對欄位</span>
-        <span class="col-label col-op-add">OP 自行加上欄位</span>
+        <span class="col-label col-op" data-i18n="cc-legend-op">OP 核對欄位</span>
+        <span class="col-label col-op-add" data-i18n="cc-legend-op-add">OP 自行加上欄位</span>
       </div>
       <div class="white-box" style="padding:0;overflow:hidden;margin-bottom:0;">
         <table class="wiki-table">
           <thead>
             <tr>
-              <th>欄位名稱</th>
-              <th>說明</th>
-              <th>責任</th>
+              <th data-i18n="cc-th-field">欄位名稱</th>
+              <th data-i18n="cc-th-desc">說明</th>
+              <th data-i18n="cc-th-resp">責任</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>信用卡卡號</td>
-              <td>核對使用的信用卡卡號是否正確</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field1-name">信用卡卡號</td>
+              <td data-i18n="cc-field1-desc">核對使用的信用卡卡號是否正確</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>交易日期</td>
-              <td>信用卡帳單上的交易發生日期</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field2-name">交易日期</td>
+              <td data-i18n="cc-field2-desc">信用卡帳單上的交易發生日期</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>原幣別</td>
-              <td>交易時使用的原始幣別</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field3-name">原幣別</td>
+              <td data-i18n="cc-field3-desc">交易時使用的原始幣別</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>原幣別金額</td>
-              <td>以原幣別計算的交易金額</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field4-name">原幣別金額</td>
+              <td data-i18n="cc-field4-desc">以原幣別計算的交易金額</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>信用卡幣別金額</td>
-              <td>換算為信用卡幣別後的金額</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field5-name">信用卡幣別金額</td>
+              <td data-i18n="cc-field5-desc">換算為信用卡幣別後的金額</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>交易供應商名稱</td>
-              <td>帳單上顯示的供應商名稱</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field6-name">交易供應商名稱</td>
+              <td data-i18n="cc-field6-desc">帳單上顯示的供應商名稱</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>信用卡幣別</td>
-              <td>信用卡結帳幣別</td>
-              <td><span class="col-label col-op" style="font-size:11px;">OP 核對</span></td>
+              <td data-i18n="cc-field7-name">信用卡幣別</td>
+              <td data-i18n="cc-field7-desc">信用卡結帳幣別</td>
+              <td><span class="col-label col-op" style="font-size:11px;" data-i18n="cc-resp-op">OP 核對</span></td>
             </tr>
             <tr>
-              <td>KKday 訂單</td>
-              <td>對應的 KKday 訂單編號</td>
-              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+              <td data-i18n="cc-field8-name">KKday 訂單</td>
+              <td data-i18n="cc-field8-desc">對應的 KKday 訂單編號</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;" data-i18n="cc-resp-op-add">OP 自行加上</span></td>
             </tr>
             <tr>
-              <td>be2 請款單號</td>
-              <td>對應的 Be2 系統請款單號</td>
-              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+              <td data-i18n="cc-field9-name">be2 請款單號</td>
+              <td data-i18n="cc-field9-desc">對應的 Be2 系統請款單號</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;" data-i18n="cc-resp-op-add">OP 自行加上</span></td>
             </tr>
             <tr>
-              <td>Invoice 是否附上</td>
-              <td>確認 Invoice 是否已上傳附件</td>
-              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+              <td data-i18n="cc-field10-name">Invoice 是否附上</td>
+              <td data-i18n="cc-field10-desc">確認 Invoice 是否已上傳附件</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;" data-i18n="cc-resp-op-add">OP 自行加上</span></td>
             </tr>
             <tr>
-              <td>備註給財務的內容</td>
-              <td>需要特別說明給財務的事項</td>
-              <td><span class="col-label col-op-add" style="font-size:11px;">OP 自行加上</span></td>
+              <td data-i18n="cc-field11-name">備註給財務的內容</td>
+              <td data-i18n="cc-field11-desc">需要特別說明給財務的事項</td>
+              <td><span class="col-label col-op-add" style="font-size:11px;" data-i18n="cc-resp-op-add">OP 自行加上</span></td>
             </tr>
           </tbody>
         </table>
@@ -161,48 +164,292 @@
     </div>
 
     <div class="white-box">
-      <div class="section-title">💰 請款流程注意事項</div>
+      <div class="section-title" data-i18n="cc-billing-notes-title">💰 請款流程注意事項</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 每家請款單號金額必須與信用卡帳單原幣別金額一致</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 對帳完成後，在帳單最下方標記信用卡幣別總金額，即可送出 BPM</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="cc-billing-note1">✅ 每家請款單號金額必須與信用卡帳單原幣別金額一致</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="cc-billing-note2">✅ 對帳完成後，在帳單最下方標記信用卡幣別總金額，即可送出 BPM</span>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📝 BPM 請款流程</div>
+      <div class="section-title" data-i18n="cc-bpm-title">📝 BPM 請款流程</div>
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <h4>選擇「公司信用卡」</h4>
-            <p>在 BPM 系統中選擇「公司信用卡」付款類型</p>
+            <h4 data-i18n="cc-bpm-step1-title">選擇「公司信用卡」</h4>
+            <p data-i18n="cc-bpm-step1-desc">在 BPM 系統中選擇「公司信用卡」付款類型</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h4>填寫基本資訊</h4>
-            <p>選擇公司主體、幣別，填入卡號、總金額</p>
+            <h4 data-i18n="cc-bpm-step2-title">填寫基本資訊</h4>
+            <p data-i18n="cc-bpm-step2-desc">選擇公司主體、幣別，填入卡號、總金額</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h4>上傳附件</h4>
-            <p>上傳已核對完成的對帳帳單</p>
+            <h4 data-i18n="cc-bpm-step3-title">上傳附件</h4>
+            <p data-i18n="cc-bpm-step3-desc">上傳已核對完成的對帳帳單</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <h4>填寫備註</h4>
-            <p>備註欄填入：憑證雲端連結、需備註給財務的內容</p>
+            <h4 data-i18n="cc-bpm-step4-title">填寫備註</h4>
+            <p data-i18n="cc-bpm-step4-desc">備註欄填入：憑證雲端連結、需備註給財務的內容</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享',
+    'breadcrumb-home': '首頁',
+    'breadcrumb-accounting': '帳務管理',
+    'cc-breadcrumb-current': '信用卡對帳',
+    'cc-title': '信用卡對帳',
+    'cc-subtitle': '每月帳單核對、請款流程、BPM 送審',
+    'cc-chip1': '信用卡',
+    'cc-chip2': '帳務管理',
+    'cc-flow-title': '📅 對帳流程',
+    'cc-flow-desc': 'OP 通常在每月最後一週收到財務寄來的信用卡帳單。收到帳單後需核對各欄位，確認無誤後送出 BPM。',
+    'cc-flow1': '財務寄出帳單（每月最後一週）',
+    'cc-flow2': 'OP 核對帳單欄位',
+    'cc-flow3': '標記信用卡幣別總金額',
+    'cc-flow4': '送出 BPM',
+    'cc-fields-title': '📊 帳單欄位說明',
+    'cc-legend-op': 'OP 核對欄位',
+    'cc-legend-op-add': 'OP 自行加上欄位',
+    'cc-th-field': '欄位名稱',
+    'cc-th-desc': '說明',
+    'cc-th-resp': '責任',
+    'cc-field1-name': '信用卡卡號',
+    'cc-field1-desc': '核對使用的信用卡卡號是否正確',
+    'cc-resp-op': 'OP 核對',
+    'cc-field2-name': '交易日期',
+    'cc-field2-desc': '信用卡帳單上的交易發生日期',
+    'cc-field3-name': '原幣別',
+    'cc-field3-desc': '交易時使用的原始幣別',
+    'cc-field4-name': '原幣別金額',
+    'cc-field4-desc': '以原幣別計算的交易金額',
+    'cc-field5-name': '信用卡幣別金額',
+    'cc-field5-desc': '換算為信用卡幣別後的金額',
+    'cc-field6-name': '交易供應商名稱',
+    'cc-field6-desc': '帳單上顯示的供應商名稱',
+    'cc-field7-name': '信用卡幣別',
+    'cc-field7-desc': '信用卡結帳幣別',
+    'cc-field8-name': 'KKday 訂單',
+    'cc-field8-desc': '對應的 KKday 訂單編號',
+    'cc-resp-op-add': 'OP 自行加上',
+    'cc-field9-name': 'be2 請款單號',
+    'cc-field9-desc': '對應的 Be2 系統請款單號',
+    'cc-field10-name': 'Invoice 是否附上',
+    'cc-field10-desc': '確認 Invoice 是否已上傳附件',
+    'cc-field11-name': '備註給財務的內容',
+    'cc-field11-desc': '需要特別說明給財務的事項',
+    'cc-billing-notes-title': '💰 請款流程注意事項',
+    'cc-billing-note1': '✅ 每家請款單號金額必須與信用卡帳單原幣別金額一致',
+    'cc-billing-note2': '✅ 對帳完成後，在帳單最下方標記信用卡幣別總金額，即可送出 BPM',
+    'cc-bpm-title': '📝 BPM 請款流程',
+    'cc-bpm-step1-title': '選擇「公司信用卡」',
+    'cc-bpm-step1-desc': '在 BPM 系統中選擇「公司信用卡」付款類型',
+    'cc-bpm-step2-title': '填寫基本資訊',
+    'cc-bpm-step2-desc': '選擇公司主體、幣別，填入卡號、總金額',
+    'cc-bpm-step3-title': '上傳附件',
+    'cc-bpm-step3-desc': '上傳已核對完成的對帳帳單',
+    'cc-bpm-step4-title': '填寫備註',
+    'cc-bpm-step4-desc': '備註欄填入：憑證雲端連結、需備註給財務的內容',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally',
+    'breadcrumb-home': 'Home',
+    'breadcrumb-accounting': 'Accounting',
+    'cc-breadcrumb-current': 'Credit Card Reconciliation',
+    'cc-title': 'Credit Card Reconciliation',
+    'cc-subtitle': 'Monthly Statement Review, Billing Flow, BPM Submission',
+    'cc-chip1': 'Credit Card',
+    'cc-chip2': 'Accounting',
+    'cc-flow-title': '📅 Reconciliation Flow',
+    'cc-flow-desc': 'OP typically receives the credit card statement from Finance during the last week of each month. Upon receipt, verify all fields and submit BPM after confirmation.',
+    'cc-flow1': 'Finance Sends Statement (Last Week of Month)',
+    'cc-flow2': 'OP Verifies Statement Fields',
+    'cc-flow3': 'Mark Total in Card Currency',
+    'cc-flow4': 'Submit BPM',
+    'cc-fields-title': '📊 Statement Field Reference',
+    'cc-legend-op': 'OP Verify Field',
+    'cc-legend-op-add': 'OP-Added Field',
+    'cc-th-field': 'Field Name',
+    'cc-th-desc': 'Description',
+    'cc-th-resp': 'Responsibility',
+    'cc-field1-name': 'Credit Card Number',
+    'cc-field1-desc': 'Verify the credit card number used is correct',
+    'cc-resp-op': 'OP Verify',
+    'cc-field2-name': 'Transaction Date',
+    'cc-field2-desc': 'Date the transaction occurred on the statement',
+    'cc-field3-name': 'Original Currency',
+    'cc-field3-desc': 'Original currency used at time of transaction',
+    'cc-field4-name': 'Original Currency Amount',
+    'cc-field4-desc': 'Transaction amount in original currency',
+    'cc-field5-name': 'Card Currency Amount',
+    'cc-field5-desc': 'Amount converted to card billing currency',
+    'cc-field6-name': 'Transaction Supplier Name',
+    'cc-field6-desc': 'Supplier name as displayed on statement',
+    'cc-field7-name': 'Card Billing Currency',
+    'cc-field7-desc': 'Currency used for card billing',
+    'cc-field8-name': 'KKday Order',
+    'cc-field8-desc': 'Corresponding KKday order number',
+    'cc-resp-op-add': 'OP Added',
+    'cc-field9-name': 'Be2 Billing Reference',
+    'cc-field9-desc': 'Corresponding Be2 billing reference number',
+    'cc-field10-name': 'Invoice Attached',
+    'cc-field10-desc': 'Confirm Invoice has been uploaded as attachment',
+    'cc-field11-name': 'Notes for Finance',
+    'cc-field11-desc': 'Any special remarks to communicate to Finance',
+    'cc-billing-notes-title': '💰 Billing Process Notes',
+    'cc-billing-note1': '✅ Each billing reference amount must match the original currency amount on the credit card statement',
+    'cc-billing-note2': '✅ After reconciliation, mark total card currency amount at the bottom of the statement, then submit BPM',
+    'cc-bpm-title': '📝 BPM Billing Flow',
+    'cc-bpm-step1-title': 'Select "Corporate Credit Card"',
+    'cc-bpm-step1-desc': 'Select "Corporate Credit Card" payment type in BPM',
+    'cc-bpm-step2-title': 'Fill in Basic Information',
+    'cc-bpm-step2-desc': 'Select company entity and currency; enter card number and total amount',
+    'cc-bpm-step3-title': 'Upload Attachments',
+    'cc-bpm-step3-desc': 'Upload the completed reconciliation statement',
+    'cc-bpm-step4-title': 'Fill in Remarks',
+    'cc-bpm-step4-desc': 'In remarks: add cloud link to vouchers and any notes for Finance',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定 · 外部共有禁止',
+    'breadcrumb-home': 'ホーム',
+    'breadcrumb-accounting': '経理管理',
+    'cc-breadcrumb-current': 'クレジットカード照合',
+    'cc-title': 'クレジットカード照合',
+    'cc-subtitle': '毎月の明細確認・請求フロー・BPM 送付',
+    'cc-chip1': 'クレジットカード',
+    'cc-chip2': '経理管理',
+    'cc-flow-title': '📅 照合フロー',
+    'cc-flow-desc': 'OP は通常毎月最終週に経理からクレジットカード明細を受け取ります。受領後は各欄を確認し、問題なければ BPM を送付します。',
+    'cc-flow1': '経理が明細を送付（毎月最終週）',
+    'cc-flow2': 'OP が明細欄を確認',
+    'cc-flow3': 'カード通貨合計金額をマーク',
+    'cc-flow4': 'BPM を送付',
+    'cc-fields-title': '📊 明細欄の説明',
+    'cc-legend-op': 'OP 確認欄',
+    'cc-legend-op-add': 'OP 追加欄',
+    'cc-th-field': '欄名',
+    'cc-th-desc': '説明',
+    'cc-th-resp': '担当',
+    'cc-field1-name': 'クレジットカード番号',
+    'cc-field1-desc': '使用したカード番号が正しいか確認',
+    'cc-resp-op': 'OP 確認',
+    'cc-field2-name': '取引日',
+    'cc-field2-desc': '明細上の取引発生日',
+    'cc-field3-name': '原通貨',
+    'cc-field3-desc': '取引時に使用した元の通貨',
+    'cc-field4-name': '原通貨金額',
+    'cc-field4-desc': '原通貨での取引金額',
+    'cc-field5-name': 'カード通貨金額',
+    'cc-field5-desc': 'カード請求通貨に換算した金額',
+    'cc-field6-name': '取引サプライヤー名',
+    'cc-field6-desc': '明細に表示されるサプライヤー名',
+    'cc-field7-name': 'カード請求通貨',
+    'cc-field7-desc': 'カードの請求通貨',
+    'cc-field8-name': 'KKday 注文',
+    'cc-field8-desc': '対応する KKday 注文番号',
+    'cc-resp-op-add': 'OP 追加',
+    'cc-field9-name': 'Be2 請求番号',
+    'cc-field9-desc': '対応する Be2 の請求番号',
+    'cc-field10-name': 'Invoice 添付済み',
+    'cc-field10-desc': 'Invoice が添付されているか確認',
+    'cc-field11-name': '経理への備考',
+    'cc-field11-desc': '経理に特別に説明が必要な事項',
+    'cc-billing-notes-title': '💰 請求プロセスの注意事項',
+    'cc-billing-note1': '✅ 各請求番号の金額はクレジットカード明細の原通貨金額と一致すること',
+    'cc-billing-note2': '✅ 照合完了後、明細の最下部にカード通貨の合計金額をマークして BPM を送付',
+    'cc-bpm-title': '📝 BPM 請求フロー',
+    'cc-bpm-step1-title': '「法人クレジットカード」を選択',
+    'cc-bpm-step1-desc': 'BPM で「法人クレジットカード」支払タイプを選択',
+    'cc-bpm-step2-title': '基本情報を入力',
+    'cc-bpm-step2-desc': '会社主体・通貨を選択し、カード番号・合計金額を入力',
+    'cc-bpm-step3-title': '添付ファイルをアップロード',
+    'cc-bpm-step3-desc': '照合済みの明細書をアップロード',
+    'cc-bpm-step4-title': '備考を入力',
+    'cc-bpm-step4-desc': '備考欄に：証憑のクラウドリンク・経理への備考事項を記入',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
+    'breadcrumb-home': '홈',
+    'breadcrumb-accounting': '회계 관리',
+    'cc-breadcrumb-current': '신용카드 대사',
+    'cc-title': '신용카드 대사',
+    'cc-subtitle': '매월 청구서 확인·청구 프로세스·BPM 제출',
+    'cc-chip1': '신용카드',
+    'cc-chip2': '회계 관리',
+    'cc-flow-title': '📅 대사 흐름',
+    'cc-flow-desc': 'OP는 보통 매월 마지막 주에 재무팀으로부터 신용카드 청구서를 받습니다. 수령 후 각 항목을 확인하고 이상 없으면 BPM을 제출합니다.',
+    'cc-flow1': '재무팀이 청구서 발송（매월 마지막 주）',
+    'cc-flow2': 'OP가 청구서 항목 확인',
+    'cc-flow3': '카드 통화 총금액 표시',
+    'cc-flow4': 'BPM 제출',
+    'cc-fields-title': '📊 청구서 항목 설명',
+    'cc-legend-op': 'OP 확인 항목',
+    'cc-legend-op-add': 'OP 추가 항목',
+    'cc-th-field': '항목명',
+    'cc-th-desc': '설명',
+    'cc-th-resp': '담당',
+    'cc-field1-name': '신용카드 번호',
+    'cc-field1-desc': '사용한 신용카드 번호가 올바른지 확인',
+    'cc-resp-op': 'OP 확인',
+    'cc-field2-name': '거래일',
+    'cc-field2-desc': '청구서상 거래 발생일',
+    'cc-field3-name': '원통화',
+    'cc-field3-desc': '거래 시 사용한 원래 통화',
+    'cc-field4-name': '원통화 금액',
+    'cc-field4-desc': '원통화 기준 거래 금액',
+    'cc-field5-name': '카드 통화 금액',
+    'cc-field5-desc': '카드 청구 통화로 환산한 금액',
+    'cc-field6-name': '거래 공급업체명',
+    'cc-field6-desc': '청구서에 표시된 공급업체명',
+    'cc-field7-name': '카드 청구 통화',
+    'cc-field7-desc': '카드 청구 통화',
+    'cc-field8-name': 'KKday 주문',
+    'cc-field8-desc': '해당 KKday 주문번호',
+    'cc-resp-op-add': 'OP 추가',
+    'cc-field9-name': 'Be2 청구 번호',
+    'cc-field9-desc': '해당 Be2 청구 번호',
+    'cc-field10-name': 'Invoice 첨부 여부',
+    'cc-field10-desc': 'Invoice가 첨부 파일로 업로드되었는지 확인',
+    'cc-field11-name': '재무팀 메모',
+    'cc-field11-desc': '재무팀에 별도로 설명이 필요한 사항',
+    'cc-billing-notes-title': '💰 청구 프로세스 주의사항',
+    'cc-billing-note1': '✅ 각 청구 번호 금액은 신용카드 청구서의 원통화 금액과 일치해야 함',
+    'cc-billing-note2': '✅ 대사 완료 후 청구서 하단에 카드 통화 총금액을 표시하고 BPM 제출',
+    'cc-bpm-title': '📝 BPM 청구 프로세스',
+    'cc-bpm-step1-title': '「법인 신용카드」선택',
+    'cc-bpm-step1-desc': 'BPM에서「법인 신용카드」결제 유형 선택',
+    'cc-bpm-step2-title': '기본 정보 입력',
+    'cc-bpm-step2-desc': '회사 주체 및 통화 선택; 카드번호 및 총금액 입력',
+    'cc-bpm-step3-title': '첨부 파일 업로드',
+    'cc-bpm-step3-desc': '대사 완료된 청구서 업로드',
+    'cc-bpm-step4-title': '메모 입력',
+    'cc-bpm-step4-desc': '메모란에：증빙 클라우드 링크·재무팀 전달 내용 입력',
+  }
+});
+</script>
 </body>
 </html>

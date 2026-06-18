@@ -115,31 +115,34 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
 
 <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
 <div class="page-header" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">
   <div class="ph-icon">🛒</div>
   <div>
-    <div class="breadcrumb"><a href="../index.html">首頁</a> / 訂單管理</div>
-    <h1>訂單管理</h1>
+    <div class="breadcrumb"><a href="../index.html" data-i18n="oh-breadcrumb-home">首頁</a> / <span data-i18n="oh-breadcrumb-current">訂單管理</span></div>
+    <h1 data-i18n="oh-title">訂單管理</h1>
   </div>
 </div>
 
@@ -148,13 +151,13 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-order-flow')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">📋</div>
-      <span class="acc-name">訂單處理流程</span><span class="acc-count">2 篇</span>
+      <span class="acc-name" data-i18n="oh-grp1-name">訂單處理流程</span><span class="acc-count">2 篇</span>
       <span class="acc-arr" id="arr-acc-order-flow">▾</span>
     </div>
     <div class="acc-body" id="acc-order-flow">
       <div class="acc-cards">
-        <a class="sop-card" href="order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4>訂單成立後初步處理</h4><p>SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal">訂單</span></a>
-        <a class="sop-card" href="order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4>訂單進單後處理流程</h4><p>四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal">訂單</span></a>
+        <a class="sop-card" href="order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4 data-i18n="oh-card1-title">訂單成立後初步處理</h4><p data-i18n="oh-card1-desc">SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal" data-i18n="oh-tag-order">訂單</span></a>
+        <a class="sop-card" href="order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4 data-i18n="oh-card2-title">訂單進單後處理流程</h4><p data-i18n="oh-card2-desc">四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal" data-i18n="oh-tag-order">訂單</span></a>
       </div>
     </div>
   </div>
@@ -162,16 +165,16 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-auto')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)">🤖</div>
-      <span class="acc-name">自動出票</span><span class="acc-count">5 篇</span>
+      <span class="acc-name" data-i18n="oh-grp2-name">自動出票</span><span class="acc-count">5 篇</span>
       <span class="acc-arr" id="arr-acc-auto">▾</span>
     </div>
     <div class="acc-body" id="acc-auto">
       <div class="acc-cards">
-        <a class="sop-card" href="api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4>API</h4><p>串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>OCBT</h4><p>多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4>PSI</h4><p>票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4>一般即訂即出</h4><p>系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4>假即訂即出</h4><p>系統出憑證但仍需 OP 人工訂購</p></div></a>
+        <a class="sop-card" href="api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4>API</h4><p data-i18n="oh-api-desc">串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="oh-tag-auto">自動</span></a>
+        <a class="sop-card" href="ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>OCBT</h4><p data-i18n="oh-ocbt-desc">多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green" data-i18n="oh-tag-auto">自動</span></a>
+        <a class="sop-card" href="psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4>PSI</h4><p data-i18n="oh-psi-desc">票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="oh-tag-auto">自動</span></a>
+        <a class="sop-card" href="general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4 data-i18n="oh-instant-title">一般即訂即出</h4><p data-i18n="oh-instant-desc">系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green" data-i18n="oh-tag-auto">自動</span></a>
+        <a class="sop-card" href="fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4 data-i18n="oh-fakeinstant-title">假即訂即出</h4><p data-i18n="oh-fakeinstant-desc">系統出憑證但仍需 OP 人工訂購</p></div></a>
       </div>
     </div>
   </div>
@@ -179,16 +182,16 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-manual')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">✍️</div>
-      <span class="acc-name">人工訂購</span><span class="acc-count">5 篇</span>
+      <span class="acc-name" data-i18n="oh-grp3-name">人工訂購</span><span class="acc-count">5 篇</span>
       <span class="acc-arr" id="arr-acc-manual">▾</span>
     </div>
     <div class="acc-body" id="acc-manual">
       <div class="acc-cards">
-        <a class="sop-card" href="platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4>平台訂購</h4><p>供應商平台 7 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4>Mail 訂購</h4><p>電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4>通訊軟體訂購</h4><p>KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4>Google Sheet 訂購</h4><p>填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4>組合商品訂購</h4><p>三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <a class="sop-card" href="platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4 data-i18n="oh-platform-title">平台訂購</h4><p data-i18n="oh-platform-desc">供應商平台 7 步驟</p></div><span class="sc-tag badge-orange" data-i18n="oh-tag-manual">人工</span></a>
+        <a class="sop-card" href="mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4 data-i18n="oh-mail-title">Mail 訂購</h4><p data-i18n="oh-mail-desc">電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange" data-i18n="oh-tag-manual">人工</span></a>
+        <a class="sop-card" href="messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="oh-msg-title">通訊軟體訂購</h4><p data-i18n="oh-msg-desc">KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange" data-i18n="oh-tag-manual">人工</span></a>
+        <a class="sop-card" href="google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4 data-i18n="oh-gsheet-title">Google Sheet 訂購</h4><p data-i18n="oh-gsheet-desc">填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange" data-i18n="oh-tag-manual">人工</span></a>
+        <a class="sop-card" href="combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4 data-i18n="oh-combo-title">組合商品訂購</h4><p data-i18n="oh-combo-desc">三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange" data-i18n="oh-tag-manual">人工</span></a>
       </div>
     </div>
   </div>
@@ -196,13 +199,13 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-physical')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#8e24aa,#ce93d8)">📦</div>
-      <span class="acc-name">實體出貨</span><span class="acc-count">2 篇</span>
+      <span class="acc-name" data-i18n="oh-grp4-name">實體出貨</span><span class="acc-count">2 篇</span>
       <span class="acc-arr" id="arr-acc-physical">▾</span>
     </div>
     <div class="acc-body" id="acc-physical">
       <div class="acc-cards">
-        <a class="sop-card" href="sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4>實體 SIM 卡 POS 出貨</h4><p>每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple">實體</span></a>
-        <a class="sop-card" href="mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4>郵寄流程</h4><p>JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple">實體</span></a>
+        <a class="sop-card" href="sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4 data-i18n="oh-sim-title">實體 SIM 卡 POS 出貨</h4><p data-i18n="oh-sim-desc">每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple" data-i18n="oh-tag-physical">實體</span></a>
+        <a class="sop-card" href="mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4 data-i18n="oh-mailship-title">郵寄流程</h4><p data-i18n="oh-mailship-desc">JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple" data-i18n="oh-tag-physical">實體</span></a>
       </div>
     </div>
   </div>
@@ -210,29 +213,29 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-exception')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">⚠️</div>
-      <span class="acc-name">異常處理</span><span class="acc-count">6 篇</span>
+      <span class="acc-name" data-i18n="oh-grp5-name">異常處理</span><span class="acc-count">6 篇</span>
       <span class="acc-arr" id="arr-acc-exception">▾</span>
     </div>
     <div class="acc-body" id="acc-exception">
       <div class="acc-cards">
-        <a class="sop-card" href="cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4>特例取消流程</h4><p>客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4>部分取消 / 部分退款</h4><p>保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4>訂單更改</h4><p>改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4>商品異動 & 挽單流程</h4><p>額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4>訂單恢復</h4><p>適用條件、三方審核流程</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4>盜刷處理 SOP</h4><p>風控通知、已使用/未使用分支、即訂即出可疑訂單</p></div><span class="sc-tag badge-red">異常</span></a>
+        <a class="sop-card" href="cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4 data-i18n="oh-cancel-title">特例取消流程</h4><p data-i18n="oh-cancel-desc">客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red" data-i18n="oh-tag-exception">異常</span></a>
+        <a class="sop-card" href="partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4 data-i18n="oh-partial-title">部分取消 / 部分退款</h4><p data-i18n="oh-partial-desc">保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red" data-i18n="oh-tag-exception">異常</span></a>
+        <a class="sop-card" href="order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4 data-i18n="oh-change-title">訂單更改</h4><p data-i18n="oh-change-desc">改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red" data-i18n="oh-tag-exception">異常</span></a>
+        <a class="sop-card" href="amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4 data-i18n="oh-amendment-title">商品異動 &amp; 挽單流程</h4><p data-i18n="oh-amendment-desc">額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red" data-i18n="oh-tag-exception">異常</span></a>
+        <a class="sop-card" href="restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4 data-i18n="oh-restore-title">訂單恢復</h4><p data-i18n="oh-restore-desc">適用條件、三方審核流程</p></div><span class="sc-tag badge-red" data-i18n="oh-tag-exception">異常</span></a>
+        <a class="sop-card" href="fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4 data-i18n="oh-fraud-title">盜刷處理 SOP</h4><p data-i18n="oh-fraud-desc">風控通知、已使用/未使用分支、即訂即出可疑訂單</p></div><span class="sc-tag badge-red" data-i18n="oh-tag-exception">異常</span></a>
       </div>
     </div>
   </div>
 
-  <div class="sec-div">📊 訂單流程圖</div>
+  <div class="sec-div" data-i18n="oh-flowchart-section">📊 訂單流程圖</div>
 
   <div class="fmap-wrap">
     <div class="fmap-header" onclick="toggleMap('map-order')">
       <div class="fmap-icon" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)">🗺️</div>
       <div class="fmap-title">
-        <h3>訂單</h3>
-        <p>訂單從下單到出票的整體作業分工</p>
+        <h3 data-i18n="oh-map-title">訂單</h3>
+        <p data-i18n="oh-map-subtitle">訂單從下單到出票的整體作業分工</p>
       </div>
       <span class="fmap-arrow" id="arrow-map-order">▾</span>
     </div>
@@ -241,20 +244,20 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
       <div class="fmap-section-row">
         <div class="fmap-node fmap-node-blue" onclick="toggleSection('sec-supplier')">
           <div class="fn-icon">🏪</div>
-          <div class="fn-label">供應商自理</div>
-          <div class="fn-sub">SCM / rezio 系統</div>
+          <div class="fn-label" data-i18n="oh-node-supplier">供應商自理</div>
+          <div class="fn-sub" data-i18n="oh-node-supplier-sub">SCM / rezio 系統</div>
           <div class="fn-arrow" id="arrow-sec-supplier">▾</div>
         </div>
         <div class="fmap-node fmap-node-green" onclick="toggleSection('sec-auto')">
           <div class="fn-icon">🤖</div>
-          <div class="fn-label">KKday 自動出票</div>
-          <div class="fn-sub">API / PSI / 即訂即出</div>
+          <div class="fn-label" data-i18n="oh-node-auto">KKday 自動出票</div>
+          <div class="fn-sub" data-i18n="oh-node-auto-sub">API / PSI / 即訂即出</div>
           <div class="fn-arrow" id="arrow-sec-auto">▾</div>
         </div>
         <div class="fmap-node fmap-node-orange" onclick="toggleSection('sec-manual')">
           <div class="fn-icon">✍️</div>
-          <div class="fn-label">KKday 人工訂購</div>
-          <div class="fn-sub">OP 人工處理</div>
+          <div class="fn-label" data-i18n="oh-node-manual">KKday 人工訂購</div>
+          <div class="fn-sub" data-i18n="oh-node-manual-sub">OP 人工處理</div>
           <div class="fn-arrow" id="arrow-sec-manual">▾</div>
         </div>
       </div>
@@ -262,19 +265,19 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
       <div class="fmap-detail" id="sec-supplier">
         <div class="fmap-detail-inner">
           <div class="fmap-flow">
-            <div class="ff-step ff-blue">客人下單</div>
+            <div class="ff-step ff-blue" data-i18n="oh-sup-step1">客人下單</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-blue">系統通知供應商</div>
+            <div class="ff-step ff-blue" data-i18n="oh-sup-step2">系統通知供應商</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-blue">供應商確認訂單</div>
+            <div class="ff-step ff-blue" data-i18n="oh-sup-step3">供應商確認訂單</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-blue">發送電子憑證</div>
+            <div class="ff-step ff-blue" data-i18n="oh-sup-step4">發送電子憑證</div>
           </div>
-          <div class="fmap-note">⚠️ 正常情況下不需 OP 人工介入，系統自動處理</div>
-          <div class="fmap-exception-title">例外需人工介入：</div>
+          <div class="fmap-note" data-i18n="oh-sup-note">⚠️ 正常情況下不需 OP 人工介入，系統自動處理</div>
+          <div class="fmap-exception-title" data-i18n="oh-sup-exception-title">例外需人工介入：</div>
           <div class="fmap-exception-row">
-            <div class="fe-item">供應商通知更改系統使用日期</div>
-            <div class="fe-item">會員帳號狀態為「可疑」</div>
+            <div class="fe-item" data-i18n="oh-sup-ex1">供應商通知更改系統使用日期</div>
+            <div class="fe-item" data-i18n="oh-sup-ex2">會員帳號狀態為「可疑」</div>
           </div>
         </div>
       </div>
@@ -285,33 +288,33 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
             <div class="fmap-sub-card">
               <div class="fsc-title">🔌 API</div>
               <div class="fsc-flow">
-                <span class="fsc-step">客人下單</span>
+                <span class="fsc-step" data-i18n="oh-api-step1">客人下單</span>
                 <span class="fsc-arr">→</span>
-                <span class="fsc-step">API 串接</span>
+                <span class="fsc-step" data-i18n="oh-api-step2">API 串接</span>
                 <span class="fsc-arr">→</span>
-                <span class="fsc-step green">即時出票</span>
+                <span class="fsc-step green" data-i18n="oh-api-step3">即時出票</span>
               </div>
-              <div class="fsc-note warn">失敗時 → Slack 聯繫 BD/AM</div>
+              <div class="fsc-note warn" data-i18n="oh-api-note">失敗時 → Slack 聯繫 BD/AM</div>
             </div>
             <div class="fmap-sub-card">
-              <div class="fsc-title">📦 PSI 票倉</div>
+              <div class="fsc-title" data-i18n="oh-psi-flow-title">📦 PSI 票倉</div>
               <div class="fsc-flow">
-                <span class="fsc-step">BD 入庫</span>
+                <span class="fsc-step" data-i18n="oh-psi-step1">BD 入庫</span>
                 <span class="fsc-arr">→</span>
-                <span class="fsc-step">系統配票</span>
+                <span class="fsc-step" data-i18n="oh-psi-step2">系統配票</span>
                 <span class="fsc-arr">→</span>
-                <span class="fsc-step green">即時出票</span>
+                <span class="fsc-step green" data-i18n="oh-psi-step3">即時出票</span>
               </div>
-              <div class="fsc-note warn">失敗時 → Slack 聯繫 BD/AM</div>
+              <div class="fsc-note warn" data-i18n="oh-psi-note">失敗時 → Slack 聯繫 BD/AM</div>
             </div>
             <div class="fmap-sub-card">
-              <div class="fsc-title">⚡ 一般即訂即出</div>
+              <div class="fsc-title" data-i18n="oh-inst-flow-title">⚡ 一般即訂即出</div>
               <div class="fsc-flow">
-                <span class="fsc-step">客人下單</span>
+                <span class="fsc-step" data-i18n="oh-inst-step1">客人下單</span>
                 <span class="fsc-arr">→</span>
-                <span class="fsc-step green">系統自動出 KKday 憑證</span>
+                <span class="fsc-step green" data-i18n="oh-inst-step2">系統自動出 KKday 憑證</span>
               </div>
-              <div class="fsc-note warn">可疑訂單 → 風控介入</div>
+              <div class="fsc-note warn" data-i18n="oh-inst-note">可疑訂單 → 風控介入</div>
             </div>
           </div>
         </div>
@@ -320,21 +323,21 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
       <div class="fmap-detail" id="sec-manual">
         <div class="fmap-detail-inner">
           <div class="fmap-flow">
-            <div class="ff-step ff-orange">CS 點單確認</div>
+            <div class="ff-step ff-orange" data-i18n="oh-man-step1">CS 點單確認</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">OP 領單</div>
+            <div class="ff-step ff-orange" data-i18n="oh-man-step2">OP 領單</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">向供應商訂購</div>
+            <div class="ff-step ff-orange" data-i18n="oh-man-step3">向供應商訂購</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">供應商確認</div>
+            <div class="ff-step ff-orange" data-i18n="oh-man-step4">供應商確認</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">發送憑證</div>
+            <div class="ff-step ff-orange" data-i18n="oh-man-step5">發送憑證</div>
           </div>
           <div class="fmap-sub-row" style="margin-top:12px">
-            <div class="fmap-sub-card"><div class="fsc-title">🖥️ 平台訂購</div><div class="fsc-note">登入供應商平台，填寫旅客資料後訂購</div></div>
-            <div class="fmap-sub-card"><div class="fsc-title">📧 Mail 訂購</div><div class="fsc-note">複製訂單資料，發信至供應商信箱</div></div>
-            <div class="fmap-sub-card"><div class="fsc-title">💬 通訊軟體</div><div class="fsc-note">KakaoTalk / WhatsApp 格式訂購</div></div>
-            <div class="fmap-sub-card"><div class="fsc-title">📊 Google Sheet</div><div class="fsc-note">填寫共用表單後通知供應商</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title" data-i18n="oh-sub-platform-title">🖥️ 平台訂購</div><div class="fsc-note" data-i18n="oh-sub-platform-note">登入供應商平台，填寫旅客資料後訂購</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title" data-i18n="oh-sub-mail-title">📧 Mail 訂購</div><div class="fsc-note" data-i18n="oh-sub-mail-note">複製訂單資料，發信至供應商信箱</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title" data-i18n="oh-sub-msg-title">💬 通訊軟體</div><div class="fsc-note" data-i18n="oh-sub-msg-note">KakaoTalk / WhatsApp 格式訂購</div></div>
+            <div class="fmap-sub-card"><div class="fsc-title" data-i18n="oh-sub-sheet-title">📊 Google Sheet</div><div class="fsc-note" data-i18n="oh-sub-sheet-note">填寫共用表單後通知供應商</div></div>
           </div>
         </div>
       </div>
@@ -344,7 +347,7 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 
 </div>
 
-<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
 <script>
 function toggleAcc(id) {
   const body = document.getElementById(id);
@@ -378,6 +381,394 @@ function toggleSection(id) {
   detail.classList.toggle('open', !isOpen);
   if (arrow) arrow.classList.toggle('open', !isOpen);
 }
+</script>
+<script>
+SCMi18n.init({
+  zh: {
+    'oh-breadcrumb-home': '首頁',
+    'oh-breadcrumb-current': '訂單管理',
+    'oh-title': '訂單管理',
+    'oh-grp1-name': '訂單處理流程',
+    'oh-card1-title': '訂單成立後初步處理',
+    'oh-card1-desc': 'SYSTEM 點單、CS 點單、風控可疑訂單',
+    'oh-card2-title': '訂單進單後處理流程',
+    'oh-card2-desc': '四大情境：資料齊全/不齊 × 供應商可/不可接單',
+    'oh-tag-order': '訂單',
+    'oh-grp2-name': '自動出票',
+    'oh-api-desc': '串接供應商平台即時出票，失敗處理方式',
+    'oh-ocbt-desc': '多供應商組合即訂即出，設定限制與失敗處理',
+    'oh-psi-desc': '票倉庫存出票，出貨失敗處理方式',
+    'oh-instant-title': '一般即訂即出',
+    'oh-instant-desc': '系統自動產出 KKday 憑證發送旅客',
+    'oh-fakeinstant-title': '假即訂即出',
+    'oh-fakeinstant-desc': '系統出憑證但仍需 OP 人工訂購',
+    'oh-tag-auto': '自動',
+    'oh-grp3-name': '人工訂購',
+    'oh-platform-title': '平台訂購',
+    'oh-platform-desc': '供應商平台 7 步驟',
+    'oh-mail-title': 'Mail 訂購',
+    'oh-mail-desc': '電子郵件訂購 4 步驟',
+    'oh-msg-title': '通訊軟體訂購',
+    'oh-msg-desc': 'KakaoTalk / WhatsApp 訂購格式範本',
+    'oh-gsheet-title': 'Google Sheet 訂購',
+    'oh-gsheet-desc': '填單流程、告知供應商、追蹤確認',
+    'oh-combo-title': '組合商品訂購',
+    'oh-combo-desc': '三種組合類型、子訂單建立方式',
+    'oh-tag-manual': '人工',
+    'oh-grp4-name': '實體出貨',
+    'oh-sim-title': '實體 SIM 卡 POS 出貨',
+    'oh-sim-desc': '每日撈單、印標籤、揀貨、POS 操作',
+    'oh-mailship-title': '郵寄流程',
+    'oh-mailship-desc': 'JRPASS、高鐵票券郵寄作業步驟',
+    'oh-tag-physical': '實體',
+    'oh-grp5-name': '異常處理',
+    'oh-cancel-title': '特例取消流程',
+    'oh-cancel-desc': '客人端、供應商端、KKday 發起取消',
+    'oh-partial-title': '部分取消 / 部分退款',
+    'oh-partial-desc': '保留訂單退部分款項，Be2 操作流程',
+    'oh-change-title': '訂單更改',
+    'oh-change-desc': '改日期、改旅客資料，四象限對照表',
+    'oh-amendment-title': '商品異動 & 挽單流程',
+    'oh-amendment-desc': '額滿售罄挽單、關閉前台日期操作',
+    'oh-restore-title': '訂單恢復',
+    'oh-restore-desc': '適用條件、三方審核流程',
+    'oh-fraud-title': '盜刷處理 SOP',
+    'oh-fraud-desc': '風控通知、已使用/未使用分支、即訂即出可疑訂單',
+    'oh-tag-exception': '異常',
+    'oh-flowchart-section': '📊 訂單流程圖',
+    'oh-map-title': '訂單',
+    'oh-map-subtitle': '訂單從下單到出票的整體作業分工',
+    'oh-node-supplier': '供應商自理',
+    'oh-node-supplier-sub': 'SCM / rezio 系統',
+    'oh-node-auto': 'KKday 自動出票',
+    'oh-node-auto-sub': 'API / PSI / 即訂即出',
+    'oh-node-manual': 'KKday 人工訂購',
+    'oh-node-manual-sub': 'OP 人工處理',
+    'oh-sup-step1': '客人下單',
+    'oh-sup-step2': '系統通知供應商',
+    'oh-sup-step3': '供應商確認訂單',
+    'oh-sup-step4': '發送電子憑證',
+    'oh-sup-note': '⚠️ 正常情況下不需 OP 人工介入，系統自動處理',
+    'oh-sup-exception-title': '例外需人工介入：',
+    'oh-sup-ex1': '供應商通知更改系統使用日期',
+    'oh-sup-ex2': '會員帳號狀態為「可疑」',
+    'oh-api-step1': '客人下單',
+    'oh-api-step2': 'API 串接',
+    'oh-api-step3': '即時出票',
+    'oh-api-note': '失敗時 → Slack 聯繫 BD/AM',
+    'oh-psi-flow-title': '📦 PSI 票倉',
+    'oh-psi-step1': 'BD 入庫',
+    'oh-psi-step2': '系統配票',
+    'oh-psi-step3': '即時出票',
+    'oh-psi-note': '失敗時 → Slack 聯繫 BD/AM',
+    'oh-inst-flow-title': '⚡ 一般即訂即出',
+    'oh-inst-step1': '客人下單',
+    'oh-inst-step2': '系統自動出 KKday 憑證',
+    'oh-inst-note': '可疑訂單 → 風控介入',
+    'oh-man-step1': 'CS 點單確認',
+    'oh-man-step2': 'OP 領單',
+    'oh-man-step3': '向供應商訂購',
+    'oh-man-step4': '供應商確認',
+    'oh-man-step5': '發送憑證',
+    'oh-sub-platform-title': '🖥️ 平台訂購',
+    'oh-sub-platform-note': '登入供應商平台，填寫旅客資料後訂購',
+    'oh-sub-mail-title': '📧 Mail 訂購',
+    'oh-sub-mail-note': '複製訂單資料，發信至供應商信箱',
+    'oh-sub-msg-title': '💬 通訊軟體',
+    'oh-sub-msg-note': 'KakaoTalk / WhatsApp 格式訂購',
+    'oh-sub-sheet-title': '📊 Google Sheet',
+    'oh-sub-sheet-note': '填寫共用表單後通知供應商',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享'
+  },
+  en: {
+    'oh-breadcrumb-home': 'Home',
+    'oh-breadcrumb-current': 'Order Management',
+    'oh-title': 'Order Management',
+    'oh-grp1-name': 'Order Processing Flow',
+    'oh-card1-title': 'Initial Processing After Order Placement',
+    'oh-card1-desc': 'SYSTEM order, CS order, fraud-flagged orders',
+    'oh-card2-title': 'Order Processing Workflow',
+    'oh-card2-desc': '4 scenarios: complete/incomplete data × supplier can/cannot accept',
+    'oh-tag-order': 'Order',
+    'oh-grp2-name': 'Auto-Ticketing',
+    'oh-api-desc': 'Real-time ticketing via supplier platform integration; failure handling',
+    'oh-ocbt-desc': 'Multi-supplier combo instant booking; configuration limits and failure handling',
+    'oh-psi-desc': 'Ticket inventory fulfillment; stock-out failure handling',
+    'oh-instant-title': 'General Instant Booking',
+    'oh-instant-desc': 'System auto-generates KKday voucher and sends to customer',
+    'oh-fakeinstant-title': 'Pseudo Instant Booking',
+    'oh-fakeinstant-desc': 'System issues voucher but OP manual order is still required',
+    'oh-tag-auto': 'Auto',
+    'oh-grp3-name': 'Manual Ordering',
+    'oh-platform-title': 'Platform Order',
+    'oh-platform-desc': '7-step supplier platform order process',
+    'oh-mail-title': 'Mail Order',
+    'oh-mail-desc': '4-step email ordering process',
+    'oh-msg-title': 'Messaging App Order',
+    'oh-msg-desc': 'KakaoTalk / WhatsApp order format templates',
+    'oh-gsheet-title': 'Google Sheet Order',
+    'oh-gsheet-desc': 'Form submission, supplier notification, and confirmation tracking',
+    'oh-combo-title': 'Combo Product Order',
+    'oh-combo-desc': 'Three combo types and sub-order creation methods',
+    'oh-tag-manual': 'Manual',
+    'oh-grp4-name': 'Physical Delivery',
+    'oh-sim-title': 'Physical SIM Card POS Fulfillment',
+    'oh-sim-desc': 'Daily order pull, label printing, picking, POS operation',
+    'oh-mailship-title': 'Mail Delivery Process',
+    'oh-mailship-desc': 'JRPASS and HSR ticket mailing steps',
+    'oh-tag-physical': 'Physical',
+    'oh-grp5-name': 'Exception Handling',
+    'oh-cancel-title': 'Special Cancellation Flow',
+    'oh-cancel-desc': 'Customer-initiated, supplier-initiated, and KKday-initiated cancellations',
+    'oh-partial-title': 'Partial Cancellation / Partial Refund',
+    'oh-partial-desc': 'Retain order, refund partial amount; Be2 operation flow',
+    'oh-change-title': 'Order Modification',
+    'oh-change-desc': 'Date change, traveler info update, four-quadrant reference table',
+    'oh-amendment-title': 'Product Amendment & Order Retention',
+    'oh-amendment-desc': 'Sold-out order retention, closing frontend date operations',
+    'oh-restore-title': 'Order Restoration',
+    'oh-restore-desc': 'Eligibility conditions and three-party review process',
+    'oh-fraud-title': 'Fraud Order SOP',
+    'oh-fraud-desc': 'Fraud alert notification, used/unused branches, instant-booking suspicious orders',
+    'oh-tag-exception': 'Exception',
+    'oh-flowchart-section': '📊 Order Flow Diagram',
+    'oh-map-title': 'Order',
+    'oh-map-subtitle': 'Overall task breakdown from order placement to ticket issuance',
+    'oh-node-supplier': 'Supplier Self-Managed',
+    'oh-node-supplier-sub': 'SCM / rezio system',
+    'oh-node-auto': 'KKday Auto-Ticketing',
+    'oh-node-auto-sub': 'API / PSI / Instant Booking',
+    'oh-node-manual': 'KKday Manual Order',
+    'oh-node-manual-sub': 'OP Manual Processing',
+    'oh-sup-step1': 'Customer Places Order',
+    'oh-sup-step2': 'System Notifies Supplier',
+    'oh-sup-step3': 'Supplier Confirms Order',
+    'oh-sup-step4': 'Send E-Voucher',
+    'oh-sup-note': '⚠️ Under normal conditions, no OP intervention required — system auto-handles',
+    'oh-sup-exception-title': 'Exceptions requiring manual intervention:',
+    'oh-sup-ex1': 'Supplier requests date change in system',
+    'oh-sup-ex2': 'Member account status flagged as "suspicious"',
+    'oh-api-step1': 'Customer Places Order',
+    'oh-api-step2': 'API Integration',
+    'oh-api-step3': 'Instant Ticket Issued',
+    'oh-api-note': 'On failure → Contact BD/AM via Slack',
+    'oh-psi-flow-title': '📦 PSI Inventory',
+    'oh-psi-step1': 'BD Stocks In',
+    'oh-psi-step2': 'System Allocates',
+    'oh-psi-step3': 'Instant Ticket Issued',
+    'oh-psi-note': 'On failure → Contact BD/AM via Slack',
+    'oh-inst-flow-title': '⚡ General Instant Booking',
+    'oh-inst-step1': 'Customer Places Order',
+    'oh-inst-step2': 'System Auto-Issues KKday Voucher',
+    'oh-inst-note': 'Suspicious order → Fraud control intervention',
+    'oh-man-step1': 'CS Confirms Order',
+    'oh-man-step2': 'OP Claims Order',
+    'oh-man-step3': 'Order Placed with Supplier',
+    'oh-man-step4': 'Supplier Confirms',
+    'oh-man-step5': 'Send Voucher',
+    'oh-sub-platform-title': '🖥️ Platform Order',
+    'oh-sub-platform-note': 'Log in to supplier platform, fill in traveler info, then place order',
+    'oh-sub-mail-title': '📧 Mail Order',
+    'oh-sub-mail-note': 'Copy order details and send email to supplier',
+    'oh-sub-msg-title': '💬 Messaging App',
+    'oh-sub-msg-note': 'KakaoTalk / WhatsApp order format',
+    'oh-sub-sheet-title': '📊 Google Sheet',
+    'oh-sub-sheet-note': 'Fill in shared form and notify supplier',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally'
+  },
+  ja: {
+    'oh-breadcrumb-home': 'ホーム',
+    'oh-breadcrumb-current': '注文管理',
+    'oh-title': '注文管理',
+    'oh-grp1-name': '注文処理フロー',
+    'oh-card1-title': '注文成立後の初期処理',
+    'oh-card1-desc': 'SYSTEM 点単・CS 点単・不正疑い注文',
+    'oh-card2-title': '注文受付後の処理フロー',
+    'oh-card2-desc': '4パターン：情報完全/不完全 × 仕入先が受注可/不可',
+    'oh-tag-order': '注文',
+    'oh-grp2-name': '自動発券',
+    'oh-api-desc': '仕入先プラットフォーム連携のリアルタイム発券・失敗対応',
+    'oh-ocbt-desc': '複数仕入先組み合わせ即時予約・設定制限と失敗対応',
+    'oh-psi-desc': 'チケット在庫からの発券・出庫失敗対応',
+    'oh-instant-title': '一般即時予約',
+    'oh-instant-desc': 'システムが自動で KKday バウチャーを発行し旅行者に送信',
+    'oh-fakeinstant-title': '擬似即時予約',
+    'oh-fakeinstant-desc': 'システムがバウチャーを発行するが OP の手動注文が必要',
+    'oh-tag-auto': '自動',
+    'oh-grp3-name': '手動注文',
+    'oh-platform-title': 'プラットフォーム注文',
+    'oh-platform-desc': '仕入先プラットフォーム 7 ステップ',
+    'oh-mail-title': 'メール注文',
+    'oh-mail-desc': 'メール注文 4 ステップ',
+    'oh-msg-title': 'メッセージアプリ注文',
+    'oh-msg-desc': 'KakaoTalk / WhatsApp 注文フォーマットテンプレート',
+    'oh-gsheet-title': 'Google Sheet 注文',
+    'oh-gsheet-desc': 'フォーム記入・仕入先通知・確認追跡',
+    'oh-combo-title': 'コンボ商品注文',
+    'oh-combo-desc': '3種類のコンボタイプとサブ注文の作成方法',
+    'oh-tag-manual': '手動',
+    'oh-grp4-name': '実物出荷',
+    'oh-sim-title': '実物 SIM カード POS 出荷',
+    'oh-sim-desc': '日次注文取込・ラベル印刷・ピッキング・POS 操作',
+    'oh-mailship-title': '郵送フロー',
+    'oh-mailship-desc': 'JRPASS・新幹線チケットの郵送作業ステップ',
+    'oh-tag-physical': '実物',
+    'oh-grp5-name': '例外処理',
+    'oh-cancel-title': '特例キャンセルフロー',
+    'oh-cancel-desc': 'お客様発起・仕入先発起・KKday 発起のキャンセル',
+    'oh-partial-title': '一部キャンセル / 一部返金',
+    'oh-partial-desc': '注文を維持しつつ一部返金・Be2 操作フロー',
+    'oh-change-title': '注文変更',
+    'oh-change-desc': '日程変更・旅行者情報変更・四象限参照表',
+    'oh-amendment-title': '商品変更 & 注文維持フロー',
+    'oh-amendment-desc': '満席・売り切れ時の注文維持・フロントエンド日程クローズ操作',
+    'oh-restore-title': '注文復元',
+    'oh-restore-desc': '適用条件と三者審査フロー',
+    'oh-fraud-title': '不正利用対応 SOP',
+    'oh-fraud-desc': '不正警告通知・使用済/未使用の分岐・即時予約疑い注文',
+    'oh-tag-exception': '例外',
+    'oh-flowchart-section': '📊 注文フロー図',
+    'oh-map-title': '注文',
+    'oh-map-subtitle': '注文から発券までの全体的な役割分担',
+    'oh-node-supplier': '仕入先自己管理',
+    'oh-node-supplier-sub': 'SCM / rezio システム',
+    'oh-node-auto': 'KKday 自動発券',
+    'oh-node-auto-sub': 'API / PSI / 即時予約',
+    'oh-node-manual': 'KKday 手動注文',
+    'oh-node-manual-sub': 'OP 手動処理',
+    'oh-sup-step1': 'お客様注文',
+    'oh-sup-step2': 'システムが仕入先に通知',
+    'oh-sup-step3': '仕入先が注文確認',
+    'oh-sup-step4': '電子バウチャー送信',
+    'oh-sup-note': '⚠️ 通常は OP の手動介入不要、システムが自動処理',
+    'oh-sup-exception-title': '手動介入が必要な例外：',
+    'oh-sup-ex1': '仕入先からシステム使用日変更の通知あり',
+    'oh-sup-ex2': '会員アカウントが「疑い」ステータス',
+    'oh-api-step1': 'お客様注文',
+    'oh-api-step2': 'API 連携',
+    'oh-api-step3': 'リアルタイム発券',
+    'oh-api-note': '失敗時 → Slack で BD/AM に連絡',
+    'oh-psi-flow-title': '📦 PSI チケット倉庫',
+    'oh-psi-step1': 'BD が入庫',
+    'oh-psi-step2': 'システムが割り当て',
+    'oh-psi-step3': 'リアルタイム発券',
+    'oh-psi-note': '失敗時 → Slack で BD/AM に連絡',
+    'oh-inst-flow-title': '⚡ 一般即時予約',
+    'oh-inst-step1': 'お客様注文',
+    'oh-inst-step2': 'システムが自動で KKday バウチャーを発行',
+    'oh-inst-note': '疑い注文 → 不正制御が介入',
+    'oh-man-step1': 'CS が注文確認',
+    'oh-man-step2': 'OP が注文受付',
+    'oh-man-step3': '仕入先へ注文',
+    'oh-man-step4': '仕入先確認',
+    'oh-man-step5': 'バウチャー送信',
+    'oh-sub-platform-title': '🖥️ プラットフォーム注文',
+    'oh-sub-platform-note': '仕入先プラットフォームにログインし旅行者情報を記入して注文',
+    'oh-sub-mail-title': '📧 メール注文',
+    'oh-sub-mail-note': '注文データをコピーして仕入先メールアドレスへ送信',
+    'oh-sub-msg-title': '💬 メッセージアプリ',
+    'oh-sub-msg-note': 'KakaoTalk / WhatsApp フォーマットで注文',
+    'oh-sub-sheet-title': '📊 Google Sheet',
+    'oh-sub-sheet-note': '共有フォームに記入後に仕入先へ通知',
+    'footer': 'SCM ナレッジベース · 内部使用のみ — 外部への共有禁止'
+  },
+  ko: {
+    'oh-breadcrumb-home': '홈',
+    'oh-breadcrumb-current': '주문 관리',
+    'oh-title': '주문 관리',
+    'oh-grp1-name': '주문 처리 프로세스',
+    'oh-card1-title': '주문 성립 후 초기 처리',
+    'oh-card1-desc': 'SYSTEM 점단, CS 점단, 사기 의심 주문',
+    'oh-card2-title': '주문 접수 후 처리 프로세스',
+    'oh-card2-desc': '4가지 상황：데이터 완전/불완전 × 공급업체 수주 가능/불가능',
+    'oh-tag-order': '주문',
+    'oh-grp2-name': '자동 발권',
+    'oh-api-desc': '공급업체 플랫폼 연동 실시간 발권, 실패 처리 방법',
+    'oh-ocbt-desc': '다중 공급업체 조합 즉시 예약, 설정 제한 및 실패 처리',
+    'oh-psi-desc': '티켓 창고 재고 발권, 출고 실패 처리 방법',
+    'oh-instant-title': '일반 즉시 예약',
+    'oh-instant-desc': '시스템이 자동으로 KKday 바우처를 생성하여 여행객에게 발송',
+    'oh-fakeinstant-title': '가짜 즉시 예약',
+    'oh-fakeinstant-desc': '시스템이 바우처를 발행하지만 OP의 수동 주문이 여전히 필요',
+    'oh-tag-auto': '자동',
+    'oh-grp3-name': '수동 주문',
+    'oh-platform-title': '플랫폼 주문',
+    'oh-platform-desc': '공급업체 플랫폼 7단계',
+    'oh-mail-title': '이메일 주문',
+    'oh-mail-desc': '이메일 주문 4단계',
+    'oh-msg-title': '메신저 주문',
+    'oh-msg-desc': 'KakaoTalk / WhatsApp 주문 형식 템플릿',
+    'oh-gsheet-title': 'Google Sheet 주문',
+    'oh-gsheet-desc': '양식 작성, 공급업체 통보, 확인 추적',
+    'oh-combo-title': '콤보 상품 주문',
+    'oh-combo-desc': '세 가지 콤보 유형 및 서브 주문 생성 방법',
+    'oh-tag-manual': '수동',
+    'oh-grp4-name': '실물 출하',
+    'oh-sim-title': '실물 SIM 카드 POS 출하',
+    'oh-sim-desc': '일일 주문 수집, 라벨 인쇄, 피킹, POS 작업',
+    'oh-mailship-title': '우편 발송 프로세스',
+    'oh-mailship-desc': 'JRPASS, 고속철도 티켓 우편 발송 단계',
+    'oh-tag-physical': '실물',
+    'oh-grp5-name': '예외 처리',
+    'oh-cancel-title': '특례 취소 프로세스',
+    'oh-cancel-desc': '고객 발기, 공급업체 발기, KKday 발기 취소',
+    'oh-partial-title': '부분 취소 / 부분 환불',
+    'oh-partial-desc': '주문 유지 후 일부 금액 환불, Be2 운영 프로세스',
+    'oh-change-title': '주문 변경',
+    'oh-change-desc': '날짜 변경, 여행객 정보 변경, 사분면 참조표',
+    'oh-amendment-title': '상품 변동 & 주문 유지 프로세스',
+    'oh-amendment-desc': '매진 주문 유지, 프론트엔드 날짜 클로즈 작업',
+    'oh-restore-title': '주문 복원',
+    'oh-restore-desc': '적용 조건 및 삼자 심사 프로세스',
+    'oh-fraud-title': '부정 사용 처리 SOP',
+    'oh-fraud-desc': '사기 경보 알림, 사용/미사용 분기, 즉시 예약 의심 주문',
+    'oh-tag-exception': '예외',
+    'oh-flowchart-section': '📊 주문 흐름도',
+    'oh-map-title': '주문',
+    'oh-map-subtitle': '주문부터 발권까지의 전체적인 역할 분담',
+    'oh-node-supplier': '공급업체 자체 관리',
+    'oh-node-supplier-sub': 'SCM / rezio 시스템',
+    'oh-node-auto': 'KKday 자동 발권',
+    'oh-node-auto-sub': 'API / PSI / 즉시 예약',
+    'oh-node-manual': 'KKday 수동 주문',
+    'oh-node-manual-sub': 'OP 수동 처리',
+    'oh-sup-step1': '고객 주문',
+    'oh-sup-step2': '시스템이 공급업체에 알림',
+    'oh-sup-step3': '공급업체 주문 확인',
+    'oh-sup-step4': '전자 바우처 발송',
+    'oh-sup-note': '⚠️ 정상 상황에서는 OP 수동 개입 불필요, 시스템이 자동 처리',
+    'oh-sup-exception-title': '수동 개입이 필요한 예외：',
+    'oh-sup-ex1': '공급업체가 시스템 사용 날짜 변경을 통보',
+    'oh-sup-ex2': '회원 계정 상태가 "의심"으로 표시',
+    'oh-api-step1': '고객 주문',
+    'oh-api-step2': 'API 연동',
+    'oh-api-step3': '실시간 발권',
+    'oh-api-note': '실패 시 → Slack으로 BD/AM 연락',
+    'oh-psi-flow-title': '📦 PSI 티켓 창고',
+    'oh-psi-step1': 'BD 입고',
+    'oh-psi-step2': '시스템 배정',
+    'oh-psi-step3': '실시간 발권',
+    'oh-psi-note': '실패 시 → Slack으로 BD/AM 연락',
+    'oh-inst-flow-title': '⚡ 일반 즉시 예약',
+    'oh-inst-step1': '고객 주문',
+    'oh-inst-step2': '시스템 자동으로 KKday 바우처 발행',
+    'oh-inst-note': '의심 주문 → 사기 통제 개입',
+    'oh-man-step1': 'CS 주문 확인',
+    'oh-man-step2': 'OP 주문 수령',
+    'oh-man-step3': '공급업체에 주문',
+    'oh-man-step4': '공급업체 확인',
+    'oh-man-step5': '바우처 발송',
+    'oh-sub-platform-title': '🖥️ 플랫폼 주문',
+    'oh-sub-platform-note': '공급업체 플랫폼에 로그인 후 여행객 정보를 입력하여 주문',
+    'oh-sub-mail-title': '📧 이메일 주문',
+    'oh-sub-mail-note': '주문 데이터를 복사하여 공급업체 이메일로 발송',
+    'oh-sub-msg-title': '💬 메신저',
+    'oh-sub-msg-note': 'KakaoTalk / WhatsApp 형식으로 주문',
+    'oh-sub-sheet-title': '📊 Google Sheet',
+    'oh-sub-sheet-note': '공유 양식 작성 후 공급업체에 통보',
+    'footer': 'SCM 지식베이스 · 내부 전용 — 외부 공유 금지'
+  }
+});
 </script>
 </body>
 </html>

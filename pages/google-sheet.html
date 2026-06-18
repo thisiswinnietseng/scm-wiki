@@ -11,40 +11,43 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 人工訂購 / Google Sheet 訂購</div>
+    <div class="breadcrumb" data-i18n="gs-breadcrumb">首頁 / 人工訂購 / Google Sheet 訂購</div>
 
     <div class="page-header">
       <div class="page-header-icon">📊</div>
       <div class="page-header-body">
-        <h1>人工訂購：Google Sheet 訂購</h1>
+        <h1 data-i18n="gs-title">人工訂購：Google Sheet 訂購</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-orange">人工訂購</span>
+          <span class="meta-chip badge-orange" data-i18n="gs-meta">人工訂購</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <p>利用 Google Sheet 整理資料後向供應商進行訂購。</p>
+      <p data-i18n="gs-desc">利用 Google Sheet 整理資料後向供應商進行訂購。</p>
     </div>
 
     <div class="white-box">
@@ -53,19 +56,19 @@
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>確認訂單資料</strong>
+            <strong data-i18n="gs-step1-title">確認訂單資料</strong>
             <p></p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 若不齊全需請客服再次確認</span>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="gs-step1-warn">⚠️ 若不齊全需請客服再次確認</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>進行訂購作業</strong>
+            <strong data-i18n="gs-step2-title">進行訂購作業</strong>
             <ul>
-              <li>至 Google Sheet 進行填單</li>
-              <li>告知供應商有新訂單並等待供應商確認表單</li>
+              <li data-i18n="gs-step2-li1">至 Google Sheet 進行填單</li>
+              <li data-i18n="gs-step2-li2">告知供應商有新訂單並等待供應商確認表單</li>
             </ul>
           </div>
         </div>
@@ -73,15 +76,15 @@
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>待供應商回覆 / 發憑證</strong>
+            <strong data-i18n="gs-step3-title">待供應商回覆 / 發憑證</strong>
             <div class="situation-grid">
               <div class="situation-card situation-ok">
-                <strong>✅ 可預約</strong>
-                <p>發憑證。</p>
+                <strong data-i18n="gs-status-ok">✅ 可預約</strong>
+                <p data-i18n="gs-status-ok-desc">發憑證。</p>
               </div>
               <div class="situation-card situation-fail">
-                <strong>❌ 不可預約</strong>
-                <p>挽單 or 取消。</p>
+                <strong data-i18n="gs-status-fail">❌ 不可預約</strong>
+                <p data-i18n="gs-status-fail-desc">挽單 or 取消。</p>
               </div>
             </div>
           </div>
@@ -91,6 +94,86 @@
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'gs-breadcrumb': '首頁 / 人工訂購 / Google Sheet 訂購',
+    'gs-title': '人工訂購：Google Sheet 訂購',
+    'gs-meta': '人工訂購',
+    'gs-desc': '利用 Google Sheet 整理資料後向供應商進行訂購。',
+    'gs-step1-title': '確認訂單資料',
+    'gs-step1-warn': '⚠️ 若不齊全需請客服再次確認',
+    'gs-step2-title': '進行訂購作業',
+    'gs-step2-li1': '至 Google Sheet 進行填單',
+    'gs-step2-li2': '告知供應商有新訂單並等待供應商確認表單',
+    'gs-step3-title': '待供應商回覆 / 發憑證',
+    'gs-status-ok': '✅ 可預約',
+    'gs-status-ok-desc': '發憑證。',
+    'gs-status-fail': '❌ 不可預約',
+    'gs-status-fail-desc': '挽單 or 取消。',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'gs-breadcrumb': 'Home / Manual Ordering / Google Sheet Order',
+    'gs-title': 'Manual Ordering: Google Sheet Order',
+    'gs-meta': 'Manual Ordering',
+    'gs-desc': 'Organize order data in Google Sheet and submit the booking to the supplier.',
+    'gs-step1-title': 'Verify Order Information',
+    'gs-step1-warn': '⚠️ If incomplete, request CS to confirm again',
+    'gs-step2-title': 'Place the Order',
+    'gs-step2-li1': 'Fill in the Google Sheet form',
+    'gs-step2-li2': 'Notify the supplier of the new order and await confirmation of the form',
+    'gs-step3-title': 'Await Supplier Reply / Send Voucher',
+    'gs-status-ok': '✅ Booking Available',
+    'gs-status-ok-desc': 'Send voucher.',
+    'gs-status-fail': '❌ Booking Not Available',
+    'gs-status-fail-desc': 'Offer alternative or cancel.',
+    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'gs-breadcrumb': 'ホーム / 手動注文 / Google Sheet 注文',
+    'gs-title': '手動注文：Google Sheet 注文',
+    'gs-meta': '手動注文',
+    'gs-desc': 'Google Sheet に情報を整理してサプライヤーへ注文。',
+    'gs-step1-title': '注文情報の確認',
+    'gs-step1-warn': '⚠️ 不完全な場合は CS に再確認を依頼',
+    'gs-step2-title': '注文作業の実施',
+    'gs-step2-li1': 'Google Sheet にフォームを記入',
+    'gs-step2-li2': 'サプライヤーに新規注文を通知し、フォームの確認を待つ',
+    'gs-step3-title': 'サプライヤーの返答待ち / バウチャー送付',
+    'gs-status-ok': '✅ 予約可能',
+    'gs-status-ok-desc': 'バウチャーを送付。',
+    'gs-status-fail': '❌ 予約不可',
+    'gs-status-fail-desc': '代替案の提案またはキャンセル処理。',
+    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'gs-breadcrumb': '홈 / 수동 주문 / Google Sheet 주문',
+    'gs-title': '수동 주문：Google Sheet 주문',
+    'gs-meta': '수동 주문',
+    'gs-desc': 'Google Sheet에 정보를 정리한 후 공급업체에 주문.',
+    'gs-step1-title': '주문 정보 확인',
+    'gs-step1-warn': '⚠️ 정보가 불완전한 경우 CS에 재확인 요청',
+    'gs-step2-title': '주문 작업 진행',
+    'gs-step2-li1': 'Google Sheet 양식 작성',
+    'gs-step2-li2': '공급업체에 신규 주문 통보 후 양식 확인 대기',
+    'gs-step3-title': '공급업체 회신 대기 / 바우처 발송',
+    'gs-status-ok': '✅ 예약 가능',
+    'gs-status-ok-desc': '바우처 발송.',
+    'gs-status-fail': '❌ 예약 불가',
+    'gs-status-fail-desc': '대체 제안 또는 취소 처리.',
+    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
+  }
+});
+</script>
 </body>
 </html>

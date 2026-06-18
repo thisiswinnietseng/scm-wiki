@@ -11,72 +11,75 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 訂單進單後處理流程</div>
+    <div class="breadcrumb" data-i18n="of-breadcrumb">首頁 / 訂單進單後處理流程</div>
 
     <div class="page-header">
       <div class="page-header-icon">🔄</div>
       <div class="page-header-body">
-        <h1>訂單進單後處理流程</h1>
+        <h1 data-i18n="of-title">訂單進單後處理流程</h1>
         <div class="meta-row">
-          <span class="meta-chip">進單流程 · 例外處理</span>
+          <span class="meta-chip" data-i18n="of-meta">進單流程 · 例外處理</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <p>訂單進單後，依照處理方式分為「<strong>供應商處理訂單</strong>」與「<strong>KKday 處理訂單</strong>」兩大類。正常情況下盡量減少人工介入，以下說明各類型的標準流程與例外情境。</p>
+      <p data-i18n-html="of-intro">訂單進單後，依照處理方式分為「<strong>供應商處理訂單</strong>」與「<strong>KKday 處理訂單</strong>」兩大類。正常情況下盡量減少人工介入，以下說明各類型的標準流程與例外情境。</p>
     </div>
 
     <!-- 供應商處理訂單 -->
-    <h2>🏪 供應商處理訂單</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 正常情況下，供應商系統自動處理訂單，<strong>不需人工介入</strong>。</span>
+    <h2 data-i18n="of-supplier-title">🏪 供應商處理訂單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n-html="of-supplier-note">✅ 正常情況下，供應商系統自動處理訂單，<strong>不需人工介入</strong>。</span>
 
-    <h3 style="margin-top:1.5rem;">例外情境一：供應商通知需更改系統使用日期 或 旅客資料</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="of-exc1-title">例外情境一：供應商通知需更改系統使用日期 或 旅客資料</h3>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>供應商主動通知</strong>
-            <p>供應商通知 OP 需調整系統上的資料。</p>
+            <strong data-i18n="of-exc1-step1-title">供應商主動通知</strong>
+            <p data-i18n="of-exc1-step1-desc">供應商通知 OP 需調整系統上的資料。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>Be2 領單</strong>
+            <strong data-i18n="of-exc1-step2-title">Be2 領單</strong>
             <div style="margin-top:8px;display:flex;flex-direction:column;gap:10px;">
               <div>
-                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;">Step 1 — OP 需請客服先幫忙領單</div>
-                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 因 OP 系統權限關係，需請客服端先幫忙領單</span>
+                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;" data-i18n="of-exc1-be2-s1-label">Step 1 — OP 需請客服先幫忙領單</div>
+                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="of-exc1-be2-s1-note">⚠️ 因 OP 系統權限關係，需請客服端先幫忙領單</span>
               </div>
               <div>
-                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;">Step 2 — 客服協助點選訂單「客服領取鍵」&amp;「旅客資料已齊全」</div>
-                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 因系統權限關係，客服需領單後 OP 才可以更改系統</span>
+                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;" data-i18n="of-exc1-be2-s2-label">Step 2 — 客服協助點選訂單「客服領取鍵」&amp;「旅客資料已齊全」</div>
+                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="of-exc1-be2-s2-note">⚠️ 因系統權限關係，客服需領單後 OP 才可以更改系統</span>
               </div>
               <div>
-                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;">Step 3 — OP 點選「OP 領取鍵」</div>
-                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 系統設定關係，需點選領取鍵後才可改資料</span>
+                <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:3px;" data-i18n="of-exc1-be2-s3-label">Step 3 — OP 點選「OP 領取鍵」</div>
+                <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="of-exc1-be2-s3-note">⚠️ 系統設定關係，需點選領取鍵後才可改資料</span>
               </div>
             </div>
           </div>
@@ -84,59 +87,59 @@
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>修改訂單資料</strong>
-            <p>依供應商通知內容更改。</p>
+            <strong data-i18n="of-exc1-step3-title">修改訂單資料</strong>
+            <p data-i18n="of-exc1-step3-desc">依供應商通知內容更改。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>通知供應商</strong>
-            <p>通知供應商系統已更改完成以及協助更新憑證並發送給客人。</p>
+            <strong data-i18n="of-exc1-step4-title">通知供應商</strong>
+            <p data-i18n="of-exc1-step4-desc">通知供應商系統已更改完成以及協助更新憑證並發送給客人。</p>
           </div>
         </div>
       </div>
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 修改系統需具備對應權限，操作前務必確認。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="of-exc1-bottom-note">⚠️ 修改系統需具備對應權限，操作前務必確認。</span>
     </div>
 
-    <h3 style="margin-top:1.5rem;">例外情境二：會員帳號狀態為可疑</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="of-exc2-title">例外情境二：會員帳號狀態為可疑</h3>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>待風控確認</strong>
-            <p>發現訂單帳號狀態為「可疑」，暫停出票，等待 Risk Team 審查結果。</p>
+            <strong data-i18n="of-exc2-step1-title">待風控確認</strong>
+            <p data-i18n="of-exc2-step1-desc">發現訂單帳號狀態為「可疑」，暫停出票，等待 Risk Team 審查結果。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>風控通知 OP 可出票</strong>
-            <p>風控審查完成後，會在訂單備註留下確認訊息，通知 OP 可繼續作業。</p>
+            <strong data-i18n="of-exc2-step2-title">風控通知 OP 可出票</strong>
+            <p data-i18n="of-exc2-step2-desc">風控審查完成後，會在訂單備註留下確認訊息，通知 OP 可繼續作業。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>OP 通知供應商</strong>
-            <p>OP 確認後，通知供應商訂單狀態正常，可繼續處理。</p>
+            <strong data-i18n="of-exc2-step3-title">OP 通知供應商</strong>
+            <p data-i18n="of-exc2-step3-desc">OP 確認後，通知供應商訂單狀態正常，可繼續處理。</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- KKday 處理訂單 -->
-    <h2>🏢 KKday 處理訂單</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 以下四種情境涵蓋 KKday 自行處理訂單時的常見狀況，請依情境選擇對應作業方式。</span>
+    <h2 data-i18n="of-kkday-title">🏢 KKday 處理訂單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="of-kkday-note">ℹ️ 以下四種情境涵蓋 KKday 自行處理訂單時的常見狀況，請依情境選擇對應作業方式。</span>
 
     <div class="situation-grid" style="margin-top:1rem;">
       <div class="situation-card situation-ok">
         <div style="font-size:1.5rem; margin-bottom:0.5rem;">✅</div>
-        <strong>情境一</strong>
-        <p>旅客資料完整<br>供應商可確認接單</p>
+        <strong data-i18n="of-sit1-title">情境一</strong>
+        <p data-i18n="of-sit1-desc">旅客資料完整<br>供應商可確認接單</p>
         <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
-        <ol style="padding-left:1.2rem; margin:0; font-size:0.9rem;">
+        <ol style="padding-left:1.2rem; margin:0; font-size:0.9rem;" data-i18n-html="of-sit1-steps">
           <li>向供應商下訂</li>
           <li>供應商確認</li>
           <li>發送憑證給旅客</li>
@@ -145,18 +148,18 @@
 
       <div class="situation-card situation-fail">
         <div style="font-size:1.5rem; margin-bottom:0.5rem;">❌</div>
-        <strong>情境二</strong>
-        <p>旅客資料完整<br>供應商<u>無法</u>接單</p>
+        <strong data-i18n="of-sit2-title">情境二</strong>
+        <p data-i18n-html="of-sit2-desc">旅客資料完整<br>供應商<u>無法</u>接單</p>
         <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
-        <p style="font-size:0.9rem; margin:0;">請 CS 聯繫旅客確認改期或取消，依旅客意願處理後續。</p>
+        <p style="font-size:0.9rem; margin:0;" data-i18n="of-sit2-action">請 CS 聯繫旅客確認改期或取消，依旅客意願處理後續。</p>
       </div>
 
       <div class="situation-card situation-fail">
         <div style="font-size:1.5rem; margin-bottom:0.5rem;">⚠️</div>
-        <strong>情境三</strong>
-        <p>旅客資料<u>不完整</u><br>旅客有回覆</p>
+        <strong data-i18n="of-sit3-title">情境三</strong>
+        <p data-i18n-html="of-sit3-desc">旅客資料<u>不完整</u><br>旅客有回覆</p>
         <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
-        <ol style="padding-left:1.2rem; margin:0; font-size:0.9rem;">
+        <ol style="padding-left:1.2rem; margin:0; font-size:0.9rem;" data-i18n-html="of-sit3-steps">
           <li>通知 CRM 聯繫旅客確認</li>
           <li>旅客補充資料</li>
           <li>確認後重新訂出</li>
@@ -165,14 +168,206 @@
 
       <div class="situation-card situation-fail">
         <div style="font-size:1.5rem; margin-bottom:0.5rem;">🚫</div>
-        <strong>情境四</strong>
-        <p>旅客資料<u>不完整</u><br>旅客<u>未回覆</u></p>
+        <strong data-i18n="of-sit4-title">情境四</strong>
+        <p data-i18n-html="of-sit4-desc">旅客資料<u>不完整</u><br>旅客<u>未回覆</u></p>
         <hr style="border-color:rgba(0,0,0,0.1); margin:0.75rem 0;">
-        <p style="font-size:0.9rem; margin:0;">多次通知仍未獲回覆，依政策取消訂單並通知旅客。</p>
+        <p style="font-size:0.9rem; margin:0;" data-i18n="of-sit4-action">多次通知仍未獲回覆，依政策取消訂單並通知旅客。</p>
       </div>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+    'of-breadcrumb': '首頁 / 訂單進單後處理流程',
+    'of-title': '訂單進單後處理流程',
+    'of-meta': '進單流程 · 例外處理',
+    'of-intro': '訂單進單後，依照處理方式分為「<strong>供應商處理訂單</strong>」與「<strong>KKday 處理訂單</strong>」兩大類。正常情況下盡量減少人工介入，以下說明各類型的標準流程與例外情境。',
+    'of-supplier-title': '🏪 供應商處理訂單',
+    'of-supplier-note': '✅ 正常情況下，供應商系統自動處理訂單，<strong>不需人工介入</strong>。',
+    'of-exc1-title': '例外情境一：供應商通知需更改系統使用日期 或 旅客資料',
+    'of-exc1-step1-title': '供應商主動通知',
+    'of-exc1-step1-desc': '供應商通知 OP 需調整系統上的資料。',
+    'of-exc1-step2-title': 'Be2 領單',
+    'of-exc1-be2-s1-label': 'Step 1 — OP 需請客服先幫忙領單',
+    'of-exc1-be2-s1-note': '⚠️ 因 OP 系統權限關係，需請客服端先幫忙領單',
+    'of-exc1-be2-s2-label': 'Step 2 — 客服協助點選訂單「客服領取鍵」&「旅客資料已齊全」',
+    'of-exc1-be2-s2-note': '⚠️ 因系統權限關係，客服需領單後 OP 才可以更改系統',
+    'of-exc1-be2-s3-label': 'Step 3 — OP 點選「OP 領取鍵」',
+    'of-exc1-be2-s3-note': '⚠️ 系統設定關係，需點選領取鍵後才可改資料',
+    'of-exc1-step3-title': '修改訂單資料',
+    'of-exc1-step3-desc': '依供應商通知內容更改。',
+    'of-exc1-step4-title': '通知供應商',
+    'of-exc1-step4-desc': '通知供應商系統已更改完成以及協助更新憑證並發送給客人。',
+    'of-exc1-bottom-note': '⚠️ 修改系統需具備對應權限，操作前務必確認。',
+    'of-exc2-title': '例外情境二：會員帳號狀態為可疑',
+    'of-exc2-step1-title': '待風控確認',
+    'of-exc2-step1-desc': '發現訂單帳號狀態為「可疑」，暫停出票，等待 Risk Team 審查結果。',
+    'of-exc2-step2-title': '風控通知 OP 可出票',
+    'of-exc2-step2-desc': '風控審查完成後，會在訂單備註留下確認訊息，通知 OP 可繼續作業。',
+    'of-exc2-step3-title': 'OP 通知供應商',
+    'of-exc2-step3-desc': 'OP 確認後，通知供應商訂單狀態正常，可繼續處理。',
+    'of-kkday-title': '🏢 KKday 處理訂單',
+    'of-kkday-note': 'ℹ️ 以下四種情境涵蓋 KKday 自行處理訂單時的常見狀況，請依情境選擇對應作業方式。',
+    'of-sit1-title': '情境一',
+    'of-sit1-desc': '旅客資料完整<br>供應商可確認接單',
+    'of-sit1-steps': '<li>向供應商下訂</li><li>供應商確認</li><li>發送憑證給旅客</li>',
+    'of-sit2-title': '情境二',
+    'of-sit2-desc': '旅客資料完整<br>供應商<u>無法</u>接單',
+    'of-sit2-action': '請 CS 聯繫旅客確認改期或取消，依旅客意願處理後續。',
+    'of-sit3-title': '情境三',
+    'of-sit3-desc': '旅客資料<u>不完整</u><br>旅客有回覆',
+    'of-sit3-steps': '<li>通知 CRM 聯繫旅客確認</li><li>旅客補充資料</li><li>確認後重新訂出</li>',
+    'of-sit4-title': '情境四',
+    'of-sit4-desc': '旅客資料<u>不完整</u><br>旅客<u>未回覆</u>',
+    'of-sit4-action': '多次通知仍未獲回覆，依政策取消訂單並通知旅客。',
+  },
+  en: {
+    'nav-title': 'SCM <em>Knowledge Base</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Knowledge Base — Order Processing Team · Internal Use',
+    'of-breadcrumb': 'Home / Post-Order Processing Flow',
+    'of-title': 'Post-Order Processing Flow',
+    'of-meta': 'Order Flow · Exception Handling',
+    'of-intro': 'After an order is received, it is handled in one of two ways: <strong>Supplier Processing</strong> or <strong>KKday Processing</strong>. Manual intervention should be minimized under normal circumstances. The following outlines the standard flow and exception scenarios for each type.',
+    'of-supplier-title': '🏪 Supplier Processing',
+    'of-supplier-note': '✅ Under normal circumstances, the supplier system automatically processes orders. <strong>No manual intervention required.</strong>',
+    'of-exc1-title': 'Exception 1: Supplier Requests Date or Traveler Data Change',
+    'of-exc1-step1-title': 'Supplier Proactively Notifies',
+    'of-exc1-step1-desc': 'The supplier notifies OP that system data needs to be adjusted.',
+    'of-exc1-step2-title': 'Be2 Order Claim',
+    'of-exc1-be2-s1-label': 'Step 1 — OP must ask CS to claim the order first',
+    'of-exc1-be2-s1-note': '⚠️ Due to OP system permission restrictions, CS must claim the order first',
+    'of-exc1-be2-s2-label': 'Step 2 — CS clicks "CS Claim" & "Traveler Info Complete" on the order',
+    'of-exc1-be2-s2-note': '⚠️ Due to permission restrictions, CS must claim the order before OP can edit the system',
+    'of-exc1-be2-s3-label': 'Step 3 — OP clicks "OP Claim" button',
+    'of-exc1-be2-s3-note': '⚠️ Due to system configuration, the claim button must be clicked before data can be edited',
+    'of-exc1-step3-title': 'Update Order Data',
+    'of-exc1-step3-desc': 'Update according to supplier notification.',
+    'of-exc1-step4-title': 'Notify Supplier',
+    'of-exc1-step4-desc': 'Notify the supplier that changes are complete, and update and resend the voucher to the customer.',
+    'of-exc1-bottom-note': '⚠️ System edits require appropriate permissions. Confirm before proceeding.',
+    'of-exc2-title': 'Exception 2: Member Account Status is Suspicious',
+    'of-exc2-step1-title': 'Awaiting Risk Team Confirmation',
+    'of-exc2-step1-desc': 'Order account status shows "Suspicious." Suspend ticket issuance and wait for Risk Team review.',
+    'of-exc2-step2-title': 'Risk Team Notifies OP to Proceed',
+    'of-exc2-step2-desc': 'After review, Risk Team leaves a confirmation note in the order remarks, notifying OP to continue.',
+    'of-exc2-step3-title': 'OP Notifies Supplier',
+    'of-exc2-step3-desc': 'After confirmation, OP notifies the supplier that the order is clear and can proceed.',
+    'of-kkday-title': '🏢 KKday Processing',
+    'of-kkday-note': 'ℹ️ The following four scenarios cover common situations when KKday handles orders directly. Select the appropriate action for each scenario.',
+    'of-sit1-title': 'Scenario 1',
+    'of-sit1-desc': 'Traveler data is complete<br>Supplier confirms booking',
+    'of-sit1-steps': '<li>Place order with supplier</li><li>Supplier confirms</li><li>Send voucher to traveler</li>',
+    'of-sit2-title': 'Scenario 2',
+    'of-sit2-desc': 'Traveler data is complete<br>Supplier <u>cannot</u> accept order',
+    'of-sit2-action': 'Ask CS to contact the traveler to confirm reschedule or cancellation, then proceed based on traveler preference.',
+    'of-sit3-title': 'Scenario 3',
+    'of-sit3-desc': 'Traveler data is <u>incomplete</u><br>Traveler has responded',
+    'of-sit3-steps': '<li>Notify CRM to contact traveler</li><li>Traveler provides missing data</li><li>Re-book after confirmation</li>',
+    'of-sit4-title': 'Scenario 4',
+    'of-sit4-desc': 'Traveler data is <u>incomplete</u><br>Traveler has <u>not responded</u>',
+    'of-sit4-action': 'After multiple failed contact attempts, cancel the order per policy and notify the traveler.',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
+    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内使用',
+    'of-breadcrumb': 'ホーム / 注文受付後の処理フロー',
+    'of-title': '注文受付後の処理フロー',
+    'of-meta': '注文フロー · 例外処理',
+    'of-intro': '注文受付後、処理方式に応じて「<strong>サプライヤー処理</strong>」と「<strong>KKday 処理</strong>」の2つに分かれます。通常はできるだけ人手介入を減らします。以下に各タイプの標準フローと例外シナリオを説明します。',
+    'of-supplier-title': '🏪 サプライヤー処理',
+    'of-supplier-note': '✅ 通常、サプライヤーシステムが自動で注文を処理します。<strong>人手介入は不要です。</strong>',
+    'of-exc1-title': '例外シナリオ1：サプライヤーからシステム利用日または旅行者情報の変更依頼',
+    'of-exc1-step1-title': 'サプライヤーからの通知',
+    'of-exc1-step1-desc': 'サプライヤーが OP にシステム上のデータ変更を依頼します。',
+    'of-exc1-step2-title': 'Be2 注文受領',
+    'of-exc1-be2-s1-label': 'Step 1 — OP は CS に先に注文受領を依頼する必要があります',
+    'of-exc1-be2-s1-note': '⚠️ OP システム権限の関係で、先に CS 側に注文受領を依頼する必要があります',
+    'of-exc1-be2-s2-label': 'Step 2 — CS が注文の「CS 受領ボタン」と「旅行者情報完備」をクリック',
+    'of-exc1-be2-s2-note': '⚠️ システム権限の関係で、CS が受領した後でないと OP はシステムを変更できません',
+    'of-exc1-be2-s3-label': 'Step 3 — OP が「OP 受領ボタン」をクリック',
+    'of-exc1-be2-s3-note': '⚠️ システム設定の関係で、受領ボタンをクリックしてからでないとデータを変更できません',
+    'of-exc1-step3-title': '注文データの変更',
+    'of-exc1-step3-desc': 'サプライヤーの通知内容に従って変更します。',
+    'of-exc1-step4-title': 'サプライヤーへの通知',
+    'of-exc1-step4-desc': 'サプライヤーにシステム変更完了を通知し、バウチャーを更新してお客様に送付します。',
+    'of-exc1-bottom-note': '⚠️ システム変更には対応する権限が必要です。操作前に必ず確認してください。',
+    'of-exc2-title': '例外シナリオ2：会員アカウントが不審状態',
+    'of-exc2-step1-title': 'リスクチームの確認待ち',
+    'of-exc2-step1-desc': '注文アカウント状態が「不審」の場合、発券を停止し Risk Team の審査結果を待ちます。',
+    'of-exc2-step2-title': 'リスクチームから OP へ発券許可通知',
+    'of-exc2-step2-desc': '審査完了後、リスクチームが注文備考に確認メッセージを残し、OP に継続作業を通知します。',
+    'of-exc2-step3-title': 'OP からサプライヤーへの通知',
+    'of-exc2-step3-desc': 'OP 確認後、注文状態が正常であることをサプライヤーに通知し処理を継続します。',
+    'of-kkday-title': '🏢 KKday 処理',
+    'of-kkday-note': 'ℹ️ 以下4つのシナリオは KKday が直接注文を処理する際のよくある状況をカバーしています。状況に応じた対応方法を選択してください。',
+    'of-sit1-title': 'シナリオ1',
+    'of-sit1-desc': '旅行者情報が完備<br>サプライヤーが受注確認',
+    'of-sit1-steps': '<li>サプライヤーへ発注</li><li>サプライヤー確認</li><li>旅行者にバウチャー送付</li>',
+    'of-sit2-title': 'シナリオ2',
+    'of-sit2-desc': '旅行者情報が完備<br>サプライヤーが<u>受注不可</u>',
+    'of-sit2-action': 'CS が旅行者に連絡して日程変更またはキャンセルを確認し、旅行者の意向に従って処理します。',
+    'of-sit3-title': 'シナリオ3',
+    'of-sit3-desc': '旅行者情報が<u>不完全</u><br>旅行者から返答あり',
+    'of-sit3-steps': '<li>CRM に旅行者への連絡を依頼</li><li>旅行者が情報を補完</li><li>確認後に再発注</li>',
+    'of-sit4-title': 'シナリオ4',
+    'of-sit4-desc': '旅行者情報が<u>不完全</u><br>旅行者から<u>返答なし</u>',
+    'of-sit4-action': '複数回通知しても返答がない場合、ポリシーに従って注文をキャンセルし旅行者に通知します。',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식 베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식 베이스 — 주문 처리팀 · 내부 사용',
+    'of-breadcrumb': '홈 / 주문 접수 후 처리 플로우',
+    'of-title': '주문 접수 후 처리 플로우',
+    'of-meta': '주문 플로우 · 예외 처리',
+    'of-intro': '주문 접수 후, 처리 방식에 따라 「<strong>공급업체 처리</strong>」와 「<strong>KKday 처리</strong>」 두 가지로 나뉩니다. 정상적인 상황에서는 수동 개입을 최소화합니다. 아래는 각 유형의 표준 플로우와 예외 상황을 설명합니다.',
+    'of-supplier-title': '🏪 공급업체 처리',
+    'of-supplier-note': '✅ 정상적인 경우 공급업체 시스템이 자동으로 주문을 처리합니다. <strong>수동 개입이 필요하지 않습니다.</strong>',
+    'of-exc1-title': '예외 상황 1：공급업체가 시스템 사용 날짜 또는 여행자 정보 변경 요청',
+    'of-exc1-step1-title': '공급업체 능동 통지',
+    'of-exc1-step1-desc': '공급업체가 OP에게 시스템 데이터 조정을 요청합니다.',
+    'of-exc1-step2-title': 'Be2 주문 수령',
+    'of-exc1-be2-s1-label': 'Step 1 — OP는 CS에게 먼저 주문 수령을 요청해야 합니다',
+    'of-exc1-be2-s1-note': '⚠️ OP 시스템 권한 관계로 CS가 먼저 주문을 수령해야 합니다',
+    'of-exc1-be2-s2-label': 'Step 2 — CS가 주문의 「CS 수령 버튼」 &「여행자 정보 완비」를 클릭',
+    'of-exc1-be2-s2-note': '⚠️ 시스템 권한 관계로, CS가 수령한 후에야 OP가 시스템을 수정할 수 있습니다',
+    'of-exc1-be2-s3-label': 'Step 3 — OP가 「OP 수령 버튼」 클릭',
+    'of-exc1-be2-s3-note': '⚠️ 시스템 설정 관계로, 수령 버튼 클릭 후에야 데이터를 수정할 수 있습니다',
+    'of-exc1-step3-title': '주문 데이터 수정',
+    'of-exc1-step3-desc': '공급업체 통지 내용에 따라 수정합니다.',
+    'of-exc1-step4-title': '공급업체 통지',
+    'of-exc1-step4-desc': '공급업체에 시스템 수정 완료를 통지하고 바우처를 업데이트하여 고객에게 발송합니다.',
+    'of-exc1-bottom-note': '⚠️ 시스템 수정에는 해당 권한이 필요합니다. 작업 전 반드시 확인하세요.',
+    'of-exc2-title': '예외 상황 2：회원 계정 상태가 의심',
+    'of-exc2-step1-title': '리스크팀 확인 대기',
+    'of-exc2-step1-desc': '주문 계정 상태가 「의심」으로 나타나면 발권을 중단하고 Risk Team 심사 결과를 기다립니다.',
+    'of-exc2-step2-title': '리스크팀이 OP에 발권 가능 통지',
+    'of-exc2-step2-desc': '심사 완료 후 리스크팀이 주문 비고에 확인 메시지를 남겨 OP에게 계속 진행하도록 통지합니다.',
+    'of-exc2-step3-title': 'OP가 공급업체에 통지',
+    'of-exc2-step3-desc': 'OP 확인 후 공급업체에 주문 상태가 정상임을 통지하여 처리를 계속합니다.',
+    'of-kkday-title': '🏢 KKday 처리',
+    'of-kkday-note': 'ℹ️ 아래 4가지 상황은 KKday가 직접 주문을 처리할 때 흔히 발생하는 경우를 다룹니다. 상황에 맞는 처리 방식을 선택하세요.',
+    'of-sit1-title': '상황 1',
+    'of-sit1-desc': '여행자 정보 완비<br>공급업체가 수주 확인',
+    'of-sit1-steps': '<li>공급업체에 발주</li><li>공급업체 확인</li><li>여행자에게 바우처 발송</li>',
+    'of-sit2-title': '상황 2',
+    'of-sit2-desc': '여행자 정보 완비<br>공급업체가 <u>수주 불가</u>',
+    'of-sit2-action': 'CS가 여행자에게 연락하여 일정 변경 또는 취소를 확인하고, 여행자의 의향에 따라 후속 처리합니다.',
+    'of-sit3-title': '상황 3',
+    'of-sit3-desc': '여행자 정보 <u>불완전</u><br>여행자 답변 있음',
+    'of-sit3-steps': '<li>CRM에 여행자 연락 요청</li><li>여행자가 정보 보완</li><li>확인 후 재발주</li>',
+    'of-sit4-title': '상황 4',
+    'of-sit4-desc': '여행자 정보 <u>불완전</u><br>여행자 <u>미응답</u>',
+    'of-sit4-action': '여러 번 통지해도 응답이 없으면 정책에 따라 주문을 취소하고 여행자에게 통지합니다.',
+  }
+});
+</script>
 </body>
 </html>

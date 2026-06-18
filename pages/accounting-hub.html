@@ -99,31 +99,34 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
 
 <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
 <div class="page-header" style="background:linear-gradient(135deg,#f7971e,#ffd200)">
   <div class="ph-icon">💰</div>
   <div>
-    <div class="breadcrumb"><a href="../index.html">首頁</a> / 帳務管理</div>
-    <h1>帳務管理</h1>
+    <div class="breadcrumb"><a href="../index.html" data-i18n="ah-breadcrumb-home">首頁</a> / <span data-i18n="ah-breadcrumb-current">帳務管理</span></div>
+    <h1 data-i18n="ah-title">帳務管理</h1>
   </div>
 </div>
 
@@ -132,12 +135,12 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-payment')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💳</div>
-      <span class="acc-name">請款方式</span><span class="acc-count">1 篇</span>
+      <span class="acc-name" data-i18n="ah-grp1-name">請款方式</span><span class="acc-count">1 篇</span>
       <span class="acc-arr" id="arr-acc-payment">▾</span>
     </div>
     <div class="acc-body" id="acc-payment">
       <div class="acc-cards">
-        <a class="sop-card" href="payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>請款方式</h4><p>銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange">請款</span></a>
+        <a class="sop-card" href="payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="ah-card1-title">請款方式</h4><p data-i18n="ah-card1-desc">銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange" data-i18n="ah-tag-payment">請款</span></a>
       </div>
     </div>
   </div>
@@ -145,12 +148,12 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-reconcile')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">📋</div>
-      <span class="acc-name">對帳流程</span><span class="acc-count">1 篇</span>
+      <span class="acc-name" data-i18n="ah-grp2-name">對帳流程</span><span class="acc-count">1 篇</span>
       <span class="acc-arr" id="arr-acc-reconcile">▾</span>
     </div>
     <div class="acc-body" id="acc-reconcile">
       <div class="acc-cards">
-        <a class="sop-card" href="reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4>對帳流程</h4><p>全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal">對帳</span></a>
+        <a class="sop-card" href="reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4 data-i18n="ah-card2-title">對帳流程</h4><p data-i18n="ah-card2-desc">全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal" data-i18n="ah-tag-reconcile">對帳</span></a>
       </div>
     </div>
   </div>
@@ -158,13 +161,13 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-deposit')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#3c50e0,#6dd5ed)">🏧</div>
-      <span class="acc-name">預存款管理</span><span class="acc-count">2 篇</span>
+      <span class="acc-name" data-i18n="ah-grp3-name">預存款管理</span><span class="acc-count">2 篇</span>
       <span class="acc-arr" id="arr-acc-deposit">▾</span>
     </div>
     <div class="acc-body" id="acc-deposit">
       <div class="acc-cards">
-        <a class="sop-card" href="supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4>預存款管理</h4><p>補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue">預存款</span></a>
-        <a class="sop-card" href="credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>信用卡對帳</h4><p>每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue">信用卡</span></a>
+        <a class="sop-card" href="supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4 data-i18n="ah-card3-title">預存款管理</h4><p data-i18n="ah-card3-desc">補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue" data-i18n="ah-tag-deposit">預存款</span></a>
+        <a class="sop-card" href="credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="ah-card4-title">信用卡對帳</h4><p data-i18n="ah-card4-desc">每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue" data-i18n="ah-tag-cc">信用卡</span></a>
       </div>
     </div>
   </div>
@@ -172,24 +175,24 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
   <div class="acc-wrap">
     <div class="acc-header" onclick="toggleAcc('acc-commission')">
       <div class="acc-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">📄</div>
-      <span class="acc-name">佣金申請</span><span class="acc-count">1 篇</span>
+      <span class="acc-name" data-i18n="ah-grp4-name">佣金申請</span><span class="acc-count">1 篇</span>
       <span class="acc-arr" id="arr-acc-commission">▾</span>
     </div>
     <div class="acc-body" id="acc-commission">
       <div class="acc-cards">
-        <a class="sop-card" href="commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4>佣金申請</h4><p>REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red">佣金</span></a>
+        <a class="sop-card" href="commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4 data-i18n="ah-card5-title">佣金申請</h4><p data-i18n="ah-card5-desc">REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red" data-i18n="ah-tag-commission">佣金</span></a>
       </div>
     </div>
   </div>
 
-  <div class="sec-div">📊 帳款流程圖</div>
+  <div class="sec-div" data-i18n="ah-flowchart-section">📊 帳款流程圖</div>
 
   <div class="fmap-wrap">
     <div class="fmap-header" onclick="toggleMap('map-payment')">
       <div class="fmap-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💳</div>
       <div class="fmap-title">
-        <h3>帳款</h3>
-        <p>各供應商請款方式與流程說明</p>
+        <h3 data-i18n="ah-map-title">帳款</h3>
+        <p data-i18n="ah-map-subtitle">各供應商請款方式與流程說明</p>
       </div>
       <span class="fmap-arrow" id="arrow-map-payment">▾</span>
     </div>
@@ -198,26 +201,26 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
       <div class="fmap-section-row">
         <div class="fmap-node fmap-node-blue" onclick="toggleSection('pay-cc')">
           <div class="fn-icon">💳</div>
-          <div class="fn-label">信用卡付款</div>
-          <div class="fn-sub">訂購時直接刷卡</div>
+          <div class="fn-label" data-i18n="ah-node-cc">信用卡付款</div>
+          <div class="fn-sub" data-i18n="ah-node-cc-sub">訂購時直接刷卡</div>
           <div class="fn-arrow" id="arrow-pay-cc">▾</div>
         </div>
         <div class="fmap-node fmap-node-green" onclick="toggleSection('pay-deposit')">
           <div class="fn-icon">🏧</div>
-          <div class="fn-label">預存款扣除</div>
-          <div class="fn-sub">預先存入再扣款</div>
+          <div class="fn-label" data-i18n="ah-node-deposit">預存款扣除</div>
+          <div class="fn-sub" data-i18n="ah-node-deposit-sub">預先存入再扣款</div>
           <div class="fn-arrow" id="arrow-pay-deposit">▾</div>
         </div>
         <div class="fmap-node fmap-node-orange" onclick="toggleSection('pay-monthly')">
           <div class="fn-icon">📅</div>
-          <div class="fn-label">月結帳</div>
-          <div class="fn-sub">每月統一結算</div>
+          <div class="fn-label" data-i18n="ah-node-monthly">月結帳</div>
+          <div class="fn-sub" data-i18n="ah-node-monthly-sub">每月統一結算</div>
           <div class="fn-arrow" id="arrow-pay-monthly">▾</div>
         </div>
         <div class="fmap-node fmap-node-purple" onclick="toggleSection('pay-invoice')">
           <div class="fn-icon">📄</div>
           <div class="fn-label">Invoice</div>
-          <div class="fn-sub">供應商開立後付款</div>
+          <div class="fn-sub" data-i18n="ah-node-invoice-sub">供應商開立後付款</div>
           <div class="fn-arrow" id="arrow-pay-invoice">▾</div>
         </div>
       </div>
@@ -225,60 +228,60 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
       <div class="fmap-detail" id="pay-cc">
         <div class="fmap-detail-inner">
           <div class="fmap-flow">
-            <div class="ff-step ff-blue">OP 於供應商平台訂購</div>
+            <div class="ff-step ff-blue" data-i18n="ah-cc-step1">OP 於供應商平台訂購</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-blue">選擇信用卡付款</div>
+            <div class="ff-step ff-blue" data-i18n="ah-cc-step2">選擇信用卡付款</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-blue">系統即時扣款</div>
+            <div class="ff-step ff-blue" data-i18n="ah-cc-step3">系統即時扣款</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-blue">訂單確認完成</div>
+            <div class="ff-step ff-blue" data-i18n="ah-cc-step4">訂單確認完成</div>
           </div>
-          <div class="fmap-note">⚠️ 注意每張信用卡的額度限制，刷卡前確認餘額</div>
+          <div class="fmap-note" data-i18n="ah-cc-note">⚠️ 注意每張信用卡的額度限制，刷卡前確認餘額</div>
         </div>
       </div>
 
       <div class="fmap-detail" id="pay-deposit">
         <div class="fmap-detail-inner">
           <div class="fmap-flow">
-            <div class="ff-step ff-green">預先存款至供應商帳戶</div>
+            <div class="ff-step ff-green" data-i18n="ah-dep-step1">預先存款至供應商帳戶</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-green">OP 訂購時直接扣除</div>
+            <div class="ff-step ff-green" data-i18n="ah-dep-step2">OP 訂購時直接扣除</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-green">餘額不足需補款</div>
+            <div class="ff-step ff-green" data-i18n="ah-dep-step3">餘額不足需補款</div>
           </div>
-          <div class="fmap-note">⚠️ 預存金帳戶若不再使用，應及時關閉，避免掛錯帳戶</div>
+          <div class="fmap-note" data-i18n="ah-dep-note">⚠️ 預存金帳戶若不再使用，應及時關閉，避免掛錯帳戶</div>
         </div>
       </div>
 
       <div class="fmap-detail" id="pay-monthly">
         <div class="fmap-detail-inner">
           <div class="fmap-flow">
-            <div class="ff-step ff-orange">每筆訂單正常訂購</div>
+            <div class="ff-step ff-orange" data-i18n="ah-mon-step1">每筆訂單正常訂購</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">當月訂單累積</div>
+            <div class="ff-step ff-orange" data-i18n="ah-mon-step2">當月訂單累積</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">月底前提交請款</div>
+            <div class="ff-step ff-orange" data-i18n="ah-mon-step3">月底前提交請款</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-orange">FA 處理付款</div>
+            <div class="ff-step ff-orange" data-i18n="ah-mon-step4">FA 處理付款</div>
           </div>
-          <div class="fmap-note">適合訂單量大、長期合作的供應商</div>
+          <div class="fmap-note" data-i18n="ah-mon-note">適合訂單量大、長期合作的供應商</div>
         </div>
       </div>
 
       <div class="fmap-detail" id="pay-invoice">
         <div class="fmap-detail-inner">
           <div class="fmap-flow">
-            <div class="ff-step ff-purple">供應商服務完成</div>
+            <div class="ff-step ff-purple" data-i18n="ah-inv-step1">供應商服務完成</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-purple">供應商開立 Invoice</div>
+            <div class="ff-step ff-purple" data-i18n="ah-inv-step2">供應商開立 Invoice</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-purple">OP 核對後送 BPM 審核</div>
+            <div class="ff-step ff-purple" data-i18n="ah-inv-step3">OP 核對後送 BPM 審核</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-purple">FA 審核後付款</div>
+            <div class="ff-step ff-purple" data-i18n="ah-inv-step4">FA 審核後付款</div>
             <div class="ff-arr">→</div>
-            <div class="ff-step ff-purple">提供水單給供應商</div>
+            <div class="ff-step ff-purple" data-i18n="ah-inv-step5">提供水單給供應商</div>
           </div>
-          <div class="fmap-note">⚠️ 需走 BPM 流程審核，時間較長，請提前安排</div>
+          <div class="fmap-note" data-i18n="ah-inv-note">⚠️ 需走 BPM 流程審核，時間較長，請提前安排</div>
         </div>
       </div>
 
@@ -287,7 +290,7 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 
 </div>
 
-<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
 <script>
 function toggleAcc(id) {
   const body = document.getElementById(id);
@@ -321,6 +324,230 @@ function toggleSection(id) {
   detail.classList.toggle('open', !isOpen);
   if (arrow) arrow.classList.toggle('open', !isOpen);
 }
+</script>
+<script>
+SCMi18n.init({
+  zh: {
+    'ah-breadcrumb-home': '首頁',
+    'ah-breadcrumb-current': '帳務管理',
+    'ah-title': '帳務管理',
+    'ah-grp1-name': '請款方式',
+    'ah-card1-title': '請款方式',
+    'ah-card1-desc': '銀行匯款、預存款、信用卡三種請款方式總覽',
+    'ah-tag-payment': '請款',
+    'ah-grp2-name': '對帳流程',
+    'ah-card2-title': '對帳流程',
+    'ah-card2-desc': '全自動、自動、人工對帳種類 + BPM 請款流程',
+    'ah-tag-reconcile': '對帳',
+    'ah-grp3-name': '預存款管理',
+    'ah-card3-title': '預存款管理',
+    'ah-card3-desc': '補款申請、入款啟用、正負向操作、節日預估',
+    'ah-tag-deposit': '預存款',
+    'ah-card4-title': '信用卡對帳',
+    'ah-card4-desc': '每月帳單核對、請款流程、BPM 送審',
+    'ah-tag-cc': '信用卡',
+    'ah-grp4-name': '佣金申請',
+    'ah-card5-title': '佣金申請',
+    'ah-card5-desc': 'REM 專案入款通知單、INV 無入款憑證開立',
+    'ah-tag-commission': '佣金',
+    'ah-flowchart-section': '📊 帳款流程圖',
+    'ah-map-title': '帳款',
+    'ah-map-subtitle': '各供應商請款方式與流程說明',
+    'ah-node-cc': '信用卡付款',
+    'ah-node-cc-sub': '訂購時直接刷卡',
+    'ah-node-deposit': '預存款扣除',
+    'ah-node-deposit-sub': '預先存入再扣款',
+    'ah-node-monthly': '月結帳',
+    'ah-node-monthly-sub': '每月統一結算',
+    'ah-node-invoice-sub': '供應商開立後付款',
+    'ah-cc-step1': 'OP 於供應商平台訂購',
+    'ah-cc-step2': '選擇信用卡付款',
+    'ah-cc-step3': '系統即時扣款',
+    'ah-cc-step4': '訂單確認完成',
+    'ah-cc-note': '⚠️ 注意每張信用卡的額度限制，刷卡前確認餘額',
+    'ah-dep-step1': '預先存款至供應商帳戶',
+    'ah-dep-step2': 'OP 訂購時直接扣除',
+    'ah-dep-step3': '餘額不足需補款',
+    'ah-dep-note': '⚠️ 預存金帳戶若不再使用，應及時關閉，避免掛錯帳戶',
+    'ah-mon-step1': '每筆訂單正常訂購',
+    'ah-mon-step2': '當月訂單累積',
+    'ah-mon-step3': '月底前提交請款',
+    'ah-mon-step4': 'FA 處理付款',
+    'ah-mon-note': '適合訂單量大、長期合作的供應商',
+    'ah-inv-step1': '供應商服務完成',
+    'ah-inv-step2': '供應商開立 Invoice',
+    'ah-inv-step3': 'OP 核對後送 BPM 審核',
+    'ah-inv-step4': 'FA 審核後付款',
+    'ah-inv-step5': '提供水單給供應商',
+    'ah-inv-note': '⚠️ 需走 BPM 流程審核，時間較長，請提前安排',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享'
+  },
+  en: {
+    'ah-breadcrumb-home': 'Home',
+    'ah-breadcrumb-current': 'Accounting Management',
+    'ah-title': 'Accounting Management',
+    'ah-grp1-name': 'Payment Methods',
+    'ah-card1-title': 'Payment Methods',
+    'ah-card1-desc': 'Overview of three payment methods: bank transfer, prepaid deposit, and credit card',
+    'ah-tag-payment': 'Payment',
+    'ah-grp2-name': 'Reconciliation Process',
+    'ah-card2-title': 'Reconciliation Process',
+    'ah-card2-desc': 'Full-auto, auto, and manual reconciliation types + BPM payment request flow',
+    'ah-tag-reconcile': 'Reconciliation',
+    'ah-grp3-name': 'Prepaid Deposit Management',
+    'ah-card3-title': 'Prepaid Deposit Management',
+    'ah-card3-desc': 'Top-up requests, deposit activation, positive/negative operations, holiday estimates',
+    'ah-tag-deposit': 'Deposit',
+    'ah-card4-title': 'Credit Card Reconciliation',
+    'ah-card4-desc': 'Monthly statement verification, payment request flow, BPM submission',
+    'ah-tag-cc': 'Credit Card',
+    'ah-grp4-name': 'Commission Application',
+    'ah-card5-title': 'Commission Application',
+    'ah-card5-desc': 'REM project remittance notification, INV voucher issuance without remittance',
+    'ah-tag-commission': 'Commission',
+    'ah-flowchart-section': '📊 Payment Flow Diagram',
+    'ah-map-title': 'Payments',
+    'ah-map-subtitle': 'Payment methods and processes for each supplier',
+    'ah-node-cc': 'Credit Card Payment',
+    'ah-node-cc-sub': 'Charged directly at time of order',
+    'ah-node-deposit': 'Prepaid Deposit Deduction',
+    'ah-node-deposit-sub': 'Pre-deposited, then deducted',
+    'ah-node-monthly': 'Monthly Settlement',
+    'ah-node-monthly-sub': 'Consolidated monthly billing',
+    'ah-node-invoice-sub': 'Payment after supplier issues invoice',
+    'ah-cc-step1': 'OP Places Order on Supplier Platform',
+    'ah-cc-step2': 'Select Credit Card Payment',
+    'ah-cc-step3': 'System Charges Immediately',
+    'ah-cc-step4': 'Order Confirmed',
+    'ah-cc-note': '⚠️ Note credit limit of each card; verify balance before charging',
+    'ah-dep-step1': 'Pre-deposit Funds to Supplier Account',
+    'ah-dep-step2': 'OP Order Deducted Automatically',
+    'ah-dep-step3': 'Top Up Required When Balance is Low',
+    'ah-dep-note': '⚠️ Close inactive prepaid accounts promptly to avoid incorrect charges',
+    'ah-mon-step1': 'Orders Placed Normally Each Time',
+    'ah-mon-step2': 'Monthly Orders Accumulate',
+    'ah-mon-step3': 'Submit Payment Request Before Month-End',
+    'ah-mon-step4': 'FA Processes Payment',
+    'ah-mon-note': 'Suitable for high-volume, long-term suppliers',
+    'ah-inv-step1': 'Supplier Completes Service',
+    'ah-inv-step2': 'Supplier Issues Invoice',
+    'ah-inv-step3': 'OP Verifies and Submits to BPM for Approval',
+    'ah-inv-step4': 'FA Approves and Processes Payment',
+    'ah-inv-step5': 'Provide Remittance Slip to Supplier',
+    'ah-inv-note': '⚠️ BPM approval process takes time — plan ahead',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally'
+  },
+  ja: {
+    'ah-breadcrumb-home': 'ホーム',
+    'ah-breadcrumb-current': '経理管理',
+    'ah-title': '経理管理',
+    'ah-grp1-name': '請求方法',
+    'ah-card1-title': '請求方法',
+    'ah-card1-desc': '銀行振込・預り金・クレジットカードの3種類の請求方法概要',
+    'ah-tag-payment': '請求',
+    'ah-grp2-name': '照合フロー',
+    'ah-card2-title': '照合フロー',
+    'ah-card2-desc': '全自動・自動・手動照合の種類 + BPM 請求フロー',
+    'ah-tag-reconcile': '照合',
+    'ah-grp3-name': '預り金管理',
+    'ah-card3-title': '預り金管理',
+    'ah-card3-desc': '補充申請・入金有効化・プラス/マイナス操作・祝日予測',
+    'ah-tag-deposit': '預り金',
+    'ah-card4-title': 'クレジットカード照合',
+    'ah-card4-desc': '月次明細の確認・請求フロー・BPM 送付',
+    'ah-tag-cc': 'クレジットカード',
+    'ah-grp4-name': '手数料申請',
+    'ah-card5-title': '手数料申請',
+    'ah-card5-desc': 'REM プロジェクト入金通知書・INV 入金なし証明書発行',
+    'ah-tag-commission': '手数料',
+    'ah-flowchart-section': '📊 支払フロー図',
+    'ah-map-title': '支払',
+    'ah-map-subtitle': '各仕入先の請求方法とフロー説明',
+    'ah-node-cc': 'クレジットカード払い',
+    'ah-node-cc-sub': '注文時に直接決済',
+    'ah-node-deposit': '預り金から差し引き',
+    'ah-node-deposit-sub': '事前入金して差し引く',
+    'ah-node-monthly': '月次精算',
+    'ah-node-monthly-sub': '毎月一括精算',
+    'ah-node-invoice-sub': '仕入先の Invoice 発行後に支払い',
+    'ah-cc-step1': 'OP が仕入先プラットフォームで注文',
+    'ah-cc-step2': 'クレジットカード払いを選択',
+    'ah-cc-step3': 'システムが即時決済',
+    'ah-cc-step4': '注文確認完了',
+    'ah-cc-note': '⚠️ 各カードの限度額に注意し、決済前に残高を確認してください',
+    'ah-dep-step1': '仕入先アカウントに事前入金',
+    'ah-dep-step2': 'OP の注文時に直接差し引き',
+    'ah-dep-step3': '残高不足時は補充が必要',
+    'ah-dep-note': '⚠️ 使用しなくなった預り金アカウントは速やかに閉鎖し、誤った口座への計上を防ぐこと',
+    'ah-mon-step1': '通常通り各注文を処理',
+    'ah-mon-step2': '当月注文が累積',
+    'ah-mon-step3': '月末前に請求書を提出',
+    'ah-mon-step4': 'FA が支払いを処理',
+    'ah-mon-note': '注文量が多い長期取引の仕入先に適しています',
+    'ah-inv-step1': '仕入先がサービスを完了',
+    'ah-inv-step2': '仕入先が Invoice を発行',
+    'ah-inv-step3': 'OP が確認後 BPM に送付して承認を依頼',
+    'ah-inv-step4': 'FA が承認後に支払い',
+    'ah-inv-step5': '仕入先に送金明細を提供',
+    'ah-inv-note': '⚠️ BPM 承認フローには時間がかかります。早めに手続きしてください',
+    'footer': 'SCM ナレッジベース · 内部使用のみ — 外部への共有禁止'
+  },
+  ko: {
+    'ah-breadcrumb-home': '홈',
+    'ah-breadcrumb-current': '경리 관리',
+    'ah-title': '경리 관리',
+    'ah-grp1-name': '청구 방법',
+    'ah-card1-title': '청구 방법',
+    'ah-card1-desc': '은행 이체, 선불 예치금, 신용카드 세 가지 청구 방법 개요',
+    'ah-tag-payment': '청구',
+    'ah-grp2-name': '대사 프로세스',
+    'ah-card2-title': '대사 프로세스',
+    'ah-card2-desc': '완전 자동, 자동, 수동 대사 유형 + BPM 청구 프로세스',
+    'ah-tag-reconcile': '대사',
+    'ah-grp3-name': '선불 예치금 관리',
+    'ah-card3-title': '선불 예치금 관리',
+    'ah-card3-desc': '충전 신청, 입금 활성화, 플러스/마이너스 작업, 명절 예측',
+    'ah-tag-deposit': '예치금',
+    'ah-card4-title': '신용카드 대사',
+    'ah-card4-desc': '월별 청구서 확인, 청구 프로세스, BPM 제출',
+    'ah-tag-cc': '신용카드',
+    'ah-grp4-name': '수수료 신청',
+    'ah-card5-title': '수수료 신청',
+    'ah-card5-desc': 'REM 프로젝트 입금 통보서, INV 입금 없는 증빙서류 발행',
+    'ah-tag-commission': '수수료',
+    'ah-flowchart-section': '📊 결제 흐름도',
+    'ah-map-title': '결제',
+    'ah-map-subtitle': '각 공급업체의 청구 방법 및 프로세스 설명',
+    'ah-node-cc': '신용카드 결제',
+    'ah-node-cc-sub': '주문 시 직접 결제',
+    'ah-node-deposit': '선불 예치금 차감',
+    'ah-node-deposit-sub': '사전 입금 후 차감',
+    'ah-node-monthly': '월별 정산',
+    'ah-node-monthly-sub': '매월 통합 정산',
+    'ah-node-invoice-sub': '공급업체 Invoice 발행 후 결제',
+    'ah-cc-step1': 'OP가 공급업체 플랫폼에서 주문',
+    'ah-cc-step2': '신용카드 결제 선택',
+    'ah-cc-step3': '시스템 즉시 차감',
+    'ah-cc-step4': '주문 확인 완료',
+    'ah-cc-note': '⚠️ 각 신용카드의 한도를 확인하고, 결제 전 잔액을 확인하세요',
+    'ah-dep-step1': '공급업체 계좌에 사전 입금',
+    'ah-dep-step2': 'OP 주문 시 자동 차감',
+    'ah-dep-step3': '잔액 부족 시 충전 필요',
+    'ah-dep-note': '⚠️ 더 이상 사용하지 않는 예치금 계좌는 즉시 폐쇄하여 잘못된 계좌에 청구되지 않도록 하세요',
+    'ah-mon-step1': '각 주문 정상 처리',
+    'ah-mon-step2': '당월 주문 누적',
+    'ah-mon-step3': '월말 전 청구서 제출',
+    'ah-mon-step4': 'FA가 결제 처리',
+    'ah-mon-note': '주문량이 많고 장기 협력하는 공급업체에 적합',
+    'ah-inv-step1': '공급업체 서비스 완료',
+    'ah-inv-step2': '공급업체가 Invoice 발행',
+    'ah-inv-step3': 'OP 확인 후 BPM에 제출하여 승인 요청',
+    'ah-inv-step4': 'FA 승인 후 결제',
+    'ah-inv-step5': '공급업체에 송금 명세서 제공',
+    'ah-inv-note': '⚠️ BPM 승인 프로세스는 시간이 걸립니다. 미리 준비하세요',
+    'footer': 'SCM 지식베이스 · 내부 전용 — 외부 공유 금지'
+  }
+});
 </script>
 </body>
 </html>

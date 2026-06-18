@@ -11,94 +11,233 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 人工訂單處理 / 假即訂即出</div>
+    <div class="breadcrumb" data-i18n="fi-breadcrumb">首頁 / 人工訂單處理 / 假即訂即出</div>
 
     <div class="page-header">
       <div class="page-header-icon">🎫</div>
       <div class="page-header-body">
-        <h1>人工訂單處理：假即訂即出</h1>
+        <h1 data-i18n="fi-page-title">人工訂單處理：假即訂即出</h1>
         <div class="meta-row">
-          
+
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <p>客人下單付款後系統立即產生憑證並發送給客人，但「假即訂即出」仍需要 OP 人工處理訂單。</p>
-      <p style="font-size:13px;color:#718096;margin-top:8px;">💡 舉例：組合商品（A 即訂即出，有其他子商品需要訂購）</p>
-      <div style="margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:#fff0f0;border:1.5px solid #ffb3b3;border-radius:20px;padding:5px 14px;"><span style="width:8px;height:8px;border-radius:50%;background:#e53935;flex-shrink:0;box-shadow:0 0 0 3px rgba(229,57,53,0.15);"></span><span style="font-size:13px;font-weight:600;color:#c62828;">需要旅客訂購後 24 小時內完成訂單作業</span></div>
+      <p data-i18n="fi-desc">客人下單付款後系統立即產生憑證並發送給客人，但「假即訂即出」仍需要 OP 人工處理訂單。</p>
+      <p style="font-size:13px;color:#718096;margin-top:8px;" data-i18n="fi-example">💡 舉例：組合商品（A 即訂即出，有其他子商品需要訂購）</p>
+      <div style="margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:#fff0f0;border:1.5px solid #ffb3b3;border-radius:20px;padding:5px 14px;"><span style="width:8px;height:8px;border-radius:50%;background:#e53935;flex-shrink:0;box-shadow:0 0 0 3px rgba(229,57,53,0.15);"></span><span style="font-size:13px;font-weight:600;color:#c62828;" data-i18n="fi-deadline">需要旅客訂購後 24 小時內完成訂單作業</span></div>
     </div>
 
-    <h2>商品設定方式</h2>
+    <h2 data-i18n="fi-setting-title">商品設定方式</h2>
     <div class="white-box">
       <div class="cards-grid-2">
-        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>出票方式</strong>
-          <p>立即自動出票</p></span>
-        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>KKday CS/OP 處理方式</strong>
-          <p>是，要處理</p></span>
+        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong data-i18n="fi-ticket-label">出票方式</strong>
+          <p data-i18n="fi-ticket-value">立即自動出票</p></span>
+        <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong data-i18n="fi-op-label">KKday CS/OP 處理方式</strong>
+          <p data-i18n="fi-op-value">是，要處理</p></span>
       </div>
     </div>
 
-    <h2>適用情境</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 當商品保證有貨，但仍需要 OP 向供應商進行訂購時，設定為「假即訂即出」。<br />
+    <h2 data-i18n="fi-scenario-title">適用情境</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="fi-scenario-desc">ℹ️ 當商品保證有貨，但仍需要 OP 向供應商進行訂購時，設定為「假即訂即出」。<br />
       此類訂單出現在「OP 訂單管理」內，訂單狀態顯示為「已處理」。</span>
 
-    <h2>與一般即訂即出的差異</h2>
+    <h2 data-i18n="fi-diff-title">與一般即訂即出的差異</h2>
     <div class="white-box">
       <table class="wiki-table">
         <thead>
           <tr>
-            <th>項目</th>
-            <th>一般即訂即出</th>
-            <th>假即訂即出</th>
+            <th data-i18n="fi-th-item">項目</th>
+            <th data-i18n="fi-th-regular">一般即訂即出</th>
+            <th data-i18n="fi-th-fake">假即訂即出</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>憑證發送</td>
-            <td>系統自動</td>
-            <td>系統自動</td>
+            <td data-i18n="fi-row1-label">憑證發送</td>
+            <td data-i18n="fi-row1-regular">系統自動</td>
+            <td data-i18n="fi-row1-fake">系統自動</td>
           </tr>
           <tr>
-            <td>OP 作業</td>
-            <td>不需要</td>
-            <td>需要</td>
+            <td data-i18n="fi-row2-label">OP 作業</td>
+            <td data-i18n="fi-row2-regular">不需要</td>
+            <td data-i18n="fi-row2-fake">需要</td>
           </tr>
           <tr>
-            <td>訂單狀態</td>
-            <td>已處理</td>
-            <td>已處理</td>
+            <td data-i18n="fi-row3-label">訂單狀態</td>
+            <td data-i18n="fi-row3-regular">已處理</td>
+            <td data-i18n="fi-row3-fake">已處理</td>
           </tr>
           <tr>
-            <td>適用情況</td>
-            <td>有庫存且可自動出票</td>
-            <td>保證有貨但需向供應商訂購</td>
+            <td data-i18n="fi-row4-label">適用情況</td>
+            <td data-i18n="fi-row4-regular">有庫存且可自動出票</td>
+            <td data-i18n="fi-row4-fake">保證有貨但需向供應商訂購</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'fi-breadcrumb': '首頁 / 人工訂單處理 / 假即訂即出',
+    'fi-page-title': '人工訂單處理：假即訂即出',
+    'fi-desc': '客人下單付款後系統立即產生憑證並發送給客人，但「假即訂即出」仍需要 OP 人工處理訂單。',
+    'fi-example': '💡 舉例：組合商品（A 即訂即出，有其他子商品需要訂購）',
+    'fi-deadline': '需要旅客訂購後 24 小時內完成訂單作業',
+    'fi-setting-title': '商品設定方式',
+    'fi-ticket-label': '出票方式',
+    'fi-ticket-value': '立即自動出票',
+    'fi-op-label': 'KKday CS/OP 處理方式',
+    'fi-op-value': '是，要處理',
+    'fi-scenario-title': '適用情境',
+    'fi-scenario-desc': 'ℹ️ 當商品保證有貨，但仍需要 OP 向供應商進行訂購時，設定為「假即訂即出」。<br />此類訂單出現在「OP 訂單管理」內，訂單狀態顯示為「已處理」。',
+    'fi-diff-title': '與一般即訂即出的差異',
+    'fi-th-item': '項目',
+    'fi-th-regular': '一般即訂即出',
+    'fi-th-fake': '假即訂即出',
+    'fi-row1-label': '憑證發送',
+    'fi-row1-regular': '系統自動',
+    'fi-row1-fake': '系統自動',
+    'fi-row2-label': 'OP 作業',
+    'fi-row2-regular': '不需要',
+    'fi-row2-fake': '需要',
+    'fi-row3-label': '訂單狀態',
+    'fi-row3-regular': '已處理',
+    'fi-row3-fake': '已處理',
+    'fi-row4-label': '適用情況',
+    'fi-row4-regular': '有庫存且可自動出票',
+    'fi-row4-fake': '保證有貨但需向供應商訂購',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'fi-breadcrumb': 'Home / Manual Order Processing / Fake Instant Booking',
+    'fi-page-title': 'Manual Order Processing: Fake Instant Booking',
+    'fi-desc': 'After a customer places and pays for an order, the system immediately generates and sends a voucher — however, "Fake Instant Booking" still requires OP to manually process the order.',
+    'fi-example': '💡 Example: Combo products (Product A is instant booking, but other sub-products require manual ordering)',
+    'fi-deadline': 'Order must be fulfilled within 24 hours of customer purchase',
+    'fi-setting-title': 'Product Configuration',
+    'fi-ticket-label': 'Ticketing Method',
+    'fi-ticket-value': 'Automatic immediate issuance',
+    'fi-op-label': 'KKday CS/OP Handling',
+    'fi-op-value': 'Yes, manual action required',
+    'fi-scenario-title': 'Applicable Scenarios',
+    'fi-scenario-desc': 'ℹ️ When a product is guaranteed to be available but still requires OP to place an order with the supplier, configure it as "Fake Instant Booking."<br />These orders appear in "OP Order Management" with status "Processed."',
+    'fi-diff-title': 'Difference from Regular Instant Booking',
+    'fi-th-item': 'Item',
+    'fi-th-regular': 'Regular Instant Booking',
+    'fi-th-fake': 'Fake Instant Booking',
+    'fi-row1-label': 'Voucher Delivery',
+    'fi-row1-regular': 'System automatic',
+    'fi-row1-fake': 'System automatic',
+    'fi-row2-label': 'OP Action',
+    'fi-row2-regular': 'Not required',
+    'fi-row2-fake': 'Required',
+    'fi-row3-label': 'Order Status',
+    'fi-row3-regular': 'Processed',
+    'fi-row3-fake': 'Processed',
+    'fi-row4-label': 'Use Case',
+    'fi-row4-regular': 'In stock, auto-ticketing enabled',
+    'fi-row4-fake': 'Guaranteed availability, supplier order required',
+    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'fi-breadcrumb': 'ホーム / 手動注文処理 / 仮即時予約',
+    'fi-page-title': '手動注文処理：仮即時予約',
+    'fi-desc': '旅行者が注文・決済後、システムが即座にバウチャーを発行・送付しますが、「仮即時予約」では OP による手動処理が引き続き必要です。',
+    'fi-example': '💡 例：セット商品（商品 A は即時予約、他のサブ商品は手動注文が必要）',
+    'fi-deadline': '旅行者の購入後 24 時間以内に注文処理を完了してください',
+    'fi-setting-title': '商品設定方法',
+    'fi-ticket-label': '発券方式',
+    'fi-ticket-value': '即時自動発券',
+    'fi-op-label': 'KKday CS/OP 処理方式',
+    'fi-op-value': 'はい、処理が必要',
+    'fi-scenario-title': '適用シナリオ',
+    'fi-scenario-desc': 'ℹ️ 商品の在庫が保証されているが、OP がサプライヤーへ注文する必要がある場合、「仮即時予約」に設定します。<br />この種の注文は「OP 注文管理」に表示され、注文ステータスは「処理済み」となります。',
+    'fi-diff-title': '通常の即時予約との違い',
+    'fi-th-item': '項目',
+    'fi-th-regular': '通常即時予約',
+    'fi-th-fake': '仮即時予約',
+    'fi-row1-label': 'バウチャー送付',
+    'fi-row1-regular': 'システム自動',
+    'fi-row1-fake': 'システム自動',
+    'fi-row2-label': 'OP 作業',
+    'fi-row2-regular': '不要',
+    'fi-row2-fake': '必要',
+    'fi-row3-label': '注文ステータス',
+    'fi-row3-regular': '処理済み',
+    'fi-row3-fake': '処理済み',
+    'fi-row4-label': '適用ケース',
+    'fi-row4-regular': '在庫あり・自動発券可',
+    'fi-row4-fake': '在庫保証・サプライヤー注文が必要',
+    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'fi-breadcrumb': '홈 / 수동 주문 처리 / 가짜 즉시 예약',
+    'fi-page-title': '수동 주문 처리：가짜 즉시 예약',
+    'fi-desc': '고객이 주문 및 결제 완료 후 시스템이 즉시 바우처를 생성하여 전송하지만, "가짜 즉시 예약"은 여전히 OP의 수동 처리가 필요합니다.',
+    'fi-example': '💡 예시：세트 상품（상품 A는 즉시 예약, 다른 하위 상품은 수동 주문 필요）',
+    'fi-deadline': '여행자 구매 후 24시간 이내에 주문 처리를 완료해야 합니다',
+    'fi-setting-title': '상품 설정 방법',
+    'fi-ticket-label': '발권 방식',
+    'fi-ticket-value': '즉시 자동 발권',
+    'fi-op-label': 'KKday CS/OP 처리 방식',
+    'fi-op-value': '예, 처리 필요',
+    'fi-scenario-title': '적용 시나리오',
+    'fi-scenario-desc': 'ℹ️ 상품의 재고가 보장되지만 OP가 공급업체에 주문해야 하는 경우 "가짜 즉시 예약"으로 설정합니다.<br />이러한 주문은 "OP 주문 관리"에 표시되며 주문 상태는 "처리됨"으로 표시됩니다.',
+    'fi-diff-title': '일반 즉시 예약과의 차이점',
+    'fi-th-item': '항목',
+    'fi-th-regular': '일반 즉시 예약',
+    'fi-th-fake': '가짜 즉시 예약',
+    'fi-row1-label': '바우처 발송',
+    'fi-row1-regular': '시스템 자동',
+    'fi-row1-fake': '시스템 자동',
+    'fi-row2-label': 'OP 작업',
+    'fi-row2-regular': '불필요',
+    'fi-row2-fake': '필요',
+    'fi-row3-label': '주문 상태',
+    'fi-row3-regular': '처리됨',
+    'fi-row3-fake': '처리됨',
+    'fi-row4-label': '적용 사례',
+    'fi-row4-regular': '재고 있음·자동 발권 가능',
+    'fi-row4-fake': '재고 보장·공급업체 주문 필요',
+    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
+  }
+});
+</script>
 </body>
 </html>

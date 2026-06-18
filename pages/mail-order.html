@@ -11,35 +11,38 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 人工訂購 / Mail 訂購</div>
+    <div class="breadcrumb" data-i18n="mo-breadcrumb">首頁 / 人工訂購 / Mail 訂購</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">📧</div>
       <div class="page-header-body">
-        <h1>Mail 訂購</h1>
-        <p class="subtitle">通過電子郵件（Email）發送訂單詳情至供應商進行訂購</p>
+        <h1 data-i18n="mo-title">Mail 訂購</h1>
+        <p class="subtitle" data-i18n="mo-subtitle">通過電子郵件（Email）發送訂單詳情至供應商進行訂購</p>
         <div class="meta-row">
-          <span class="meta-chip badge-orange">人工訂購</span>
+          <span class="meta-chip badge-orange" data-i18n="mo-meta">人工訂購</span>
         </div>
       </div>
     </div>
@@ -50,47 +53,47 @@
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>確認訂單資料是否齊全</strong>
-            <p>特別注意接送地點是否完整。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 有缺漏 → 先向客人確認</span>
+            <strong data-i18n="mo-step1-title">確認訂單資料是否齊全</strong>
+            <p data-i18n="mo-step1-desc">特別注意接送地點是否完整。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mo-step1-warn">⚠️ 有缺漏 → 先向客人確認</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>確認供應商郵箱</strong>
-            <p>在 BE2 的「OP 訂購方式描述」中查詢確認供應商郵箱地址。</p>
+            <strong data-i18n="mo-step2-title">確認供應商郵箱</strong>
+            <p data-i18n="mo-step2-desc">在 BE2 的「OP 訂購方式描述」中查詢確認供應商郵箱地址。</p>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>複製訂單旅客資料</strong>
-            <p>進入 BE2 商品資料頁籤，點擊「複製訂單旅客資料」按鈕，根據語系選擇複製，直接貼入 Email。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 客人備註語系可能與供應商不同 → 需協助翻譯；有疑問先與客服確認</span>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 記得密件副本群組信箱，以利追蹤</span>
+            <strong data-i18n="mo-step3-title">複製訂單旅客資料</strong>
+            <p data-i18n="mo-step3-desc">進入 BE2 商品資料頁籤，點擊「複製訂單旅客資料」按鈕，根據語系選擇複製，直接貼入 Email。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mo-step3-warn1">⚠️ 客人備註語系可能與供應商不同 → 需協助翻譯；有疑問先與客服確認</span>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mo-step3-warn2">⚠️ 記得密件副本群組信箱，以利追蹤</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>追蹤訂單狀態</strong>
+            <strong data-i18n="mo-step4-title">追蹤訂單狀態</strong>
             <div class="situation-grid">
               <div class="situation-card situation-ok">
-                <strong>✅ 供應商可接單</strong>
-                <p>確認詳情後發憑證（KKday Voucher / 供應商版型）</p>
-                <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 確認前留意付款方式，部分需先付款</span>
+                <strong data-i18n="mo-status-ok">✅ 供應商可接單</strong>
+                <p data-i18n="mo-status-ok-desc">確認詳情後發憑證（KKday Voucher / 供應商版型）</p>
+                <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mo-status-ok-warn">⚠️ 確認前留意付款方式，部分需先付款</span>
               </div>
               <div class="situation-card situation-fail">
-                <strong>❌ 供應商無法接單</strong>
-                <p>根據候補日期挽單；無合適日期則進入取消處理</p>
+                <strong data-i18n="mo-status-fail">❌ 供應商無法接單</strong>
+                <p data-i18n="mo-status-fail-desc">根據候補日期挽單；無合適日期則進入取消處理</p>
               </div>
               <div class="situation-card situation-warn">
-                <strong>⚠️ 其他注意事項</strong>
-                <p>長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD</p>
+                <strong data-i18n="mo-status-warn">⚠️ 其他注意事項</strong>
+                <p data-i18n="mo-status-warn-desc">長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD</p>
               </div>
             </div>
           </div>
@@ -100,6 +103,114 @@
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'mo-breadcrumb': '首頁 / 人工訂購 / Mail 訂購',
+    'mo-title': 'Mail 訂購',
+    'mo-subtitle': '通過電子郵件（Email）發送訂單詳情至供應商進行訂購',
+    'mo-meta': '人工訂購',
+    'mo-step1-title': '確認訂單資料是否齊全',
+    'mo-step1-desc': '特別注意接送地點是否完整。',
+    'mo-step1-warn': '⚠️ 有缺漏 → 先向客人確認',
+    'mo-step2-title': '確認供應商郵箱',
+    'mo-step2-desc': '在 BE2 的「OP 訂購方式描述」中查詢確認供應商郵箱地址。',
+    'mo-step3-title': '複製訂單旅客資料',
+    'mo-step3-desc': '進入 BE2 商品資料頁籤，點擊「複製訂單旅客資料」按鈕，根據語系選擇複製，直接貼入 Email。',
+    'mo-step3-warn1': '⚠️ 客人備註語系可能與供應商不同 → 需協助翻譯；有疑問先與客服確認',
+    'mo-step3-warn2': '⚠️ 記得密件副本群組信箱，以利追蹤',
+    'mo-step4-title': '追蹤訂單狀態',
+    'mo-status-ok': '✅ 供應商可接單',
+    'mo-status-ok-desc': '確認詳情後發憑證（KKday Voucher / 供應商版型）',
+    'mo-status-ok-warn': '⚠️ 確認前留意付款方式，部分需先付款',
+    'mo-status-fail': '❌ 供應商無法接單',
+    'mo-status-fail-desc': '根據候補日期挽單；無合適日期則進入取消處理',
+    'mo-status-warn': '⚠️ 其他注意事項',
+    'mo-status-warn-desc': '長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD',
+    'footer': 'SCM 知識庫 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'mo-breadcrumb': 'Home / Manual Ordering / Email Order',
+    'mo-title': 'Email Order',
+    'mo-subtitle': 'Send order details to the supplier via email to complete the booking',
+    'mo-meta': 'Manual Ordering',
+    'mo-step1-title': 'Verify Order Information is Complete',
+    'mo-step1-desc': 'Pay special attention to whether the pickup/drop-off location is fully provided.',
+    'mo-step1-warn': '⚠️ Information missing → Confirm with the customer first',
+    'mo-step2-title': 'Confirm Supplier Email Address',
+    'mo-step2-desc': 'Look up the supplier\'s email address in the "OP Ordering Instructions" field in BE2.',
+    'mo-step3-title': 'Copy Traveler Order Details',
+    'mo-step3-desc': 'Go to the BE2 product info tab, click "Copy Traveler Order Info," select the appropriate language, and paste directly into the email.',
+    'mo-step3-warn1': '⚠️ Customer notes may be in a different language than the supplier requires → Translate if needed; confirm with CS if in doubt',
+    'mo-step3-warn2': '⚠️ Remember to BCC the team group mailbox for tracking purposes',
+    'mo-step4-title': 'Track Order Status',
+    'mo-status-ok': '✅ Supplier Confirms Booking',
+    'mo-status-ok-desc': 'Send voucher after confirming details (KKday Voucher / Supplier template)',
+    'mo-status-ok-warn': '⚠️ Check payment method before confirming — some suppliers require upfront payment',
+    'mo-status-fail': '❌ Supplier Cannot Accept Booking',
+    'mo-status-fail-desc': 'Offer alternative dates to save the booking; if no suitable date, proceed with cancellation',
+    'mo-status-warn': '⚠️ Other Notes',
+    'mo-status-warn-desc': 'Follow up proactively if no reply for an extended period (within 24 hours recommended); report price discrepancies to BD immediately',
+    'footer': 'SCM Wiki · Internal Use Only',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'mo-breadcrumb': 'ホーム / 手動注文 / メール注文',
+    'mo-title': 'メール注文',
+    'mo-subtitle': '電子メール（Email）で注文詳細をサプライヤーに送付して予約',
+    'mo-meta': '手動注文',
+    'mo-step1-title': '注文情報の確認',
+    'mo-step1-desc': '送迎場所が完全に記載されているか特に注意してください。',
+    'mo-step1-warn': '⚠️ 情報不足 → まず旅行者に確認',
+    'mo-step2-title': 'サプライヤーのメールアドレス確認',
+    'mo-step2-desc': 'BE2 の「OP 注文方法説明」からサプライヤーのメールアドレスを確認。',
+    'mo-step3-title': '旅行者注文情報のコピー',
+    'mo-step3-desc': 'BE2 の商品情報タブに入り「旅行者注文情報をコピー」ボタンをクリック、言語を選択してコピーし、メールに直接貼り付け。',
+    'mo-step3-warn1': '⚠️ 旅行者の備考言語がサプライヤーの使用言語と異なる場合あり → 翻訳対応が必要；不明な場合は CS に確認',
+    'mo-step3-warn2': '⚠️ 追跡のため、チームグループメールアドレスへの BCC を忘れずに',
+    'mo-step4-title': '注文状況の追跡',
+    'mo-status-ok': '✅ サプライヤー受注可能',
+    'mo-status-ok-desc': '詳細確認後にバウチャー送付（KKday Voucher / サプライヤー版型）',
+    'mo-status-ok-warn': '⚠️ 確認前に支払い方法を確認 — 一部は事前払いが必要',
+    'mo-status-fail': '❌ サプライヤー受注不可',
+    'mo-status-fail-desc': '代替日程でのキャンセル防止を試みる；適切な日程がなければキャンセル処理へ',
+    'mo-status-warn': '⚠️ その他の注意事項',
+    'mo-status-warn-desc': '長時間返信がない場合は積極的にフォローアップ（24時間以内推奨）；価格異常（誤り）は直ちに BD へ報告',
+    'footer': 'SCM ナレッジベース · 社内専用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'mo-breadcrumb': '홈 / 수동 주문 / 이메일 주문',
+    'mo-title': '이메일 주문',
+    'mo-subtitle': '이메일로 주문 상세 정보를 공급업체에 전송하여 예약 진행',
+    'mo-meta': '수동 주문',
+    'mo-step1-title': '주문 정보 완전성 확인',
+    'mo-step1-desc': '픽업/드롭오프 위치가 완전히 기재되어 있는지 특히 주의.',
+    'mo-step1-warn': '⚠️ 정보 누락 → 먼저 고객에게 확인',
+    'mo-step2-title': '공급업체 이메일 주소 확인',
+    'mo-step2-desc': 'BE2의 "OP 주문 방식 설명"에서 공급업체 이메일 주소 조회 및 확인.',
+    'mo-step3-title': '여행자 주문 정보 복사',
+    'mo-step3-desc': 'BE2 상품 정보 탭에서 "여행자 주문 정보 복사" 버튼 클릭, 언어 선택 후 복사하여 이메일에 직접 붙여넣기.',
+    'mo-step3-warn1': '⚠️ 고객 비고 언어와 공급업체 사용 언어가 다를 수 있음 → 번역 지원 필요; 불분명한 경우 CS에 먼저 확인',
+    'mo-step3-warn2': '⚠️ 추적을 위해 팀 그룹 메일함에 숨은 참조(BCC) 잊지 말기',
+    'mo-step4-title': '주문 상태 추적',
+    'mo-status-ok': '✅ 공급업체 예약 가능',
+    'mo-status-ok-desc': '상세 확인 후 바우처 발송（KKday Voucher / 공급업체 양식）',
+    'mo-status-ok-warn': '⚠️ 확인 전 결제 방법 확인 — 일부는 선결제 필요',
+    'mo-status-fail': '❌ 공급업체 예약 불가',
+    'mo-status-fail-desc': '대체 날짜로 예약 구제 시도; 적합한 날짜 없으면 취소 처리',
+    'mo-status-warn': '⚠️ 기타 주의사항',
+    'mo-status-warn-desc': '장시간 미회신 시 적극적으로 후속 조치（24시간 이내 권장）; 가격 이상（오류）은 즉시 BD에 보고',
+    'footer': 'SCM 지식베이스 · 내부 전용',
+  }
+});
+</script>
 </body>
 </html>

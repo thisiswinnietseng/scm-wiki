@@ -27,34 +27,37 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 盜刷處理 SOP</div>
+    <div class="breadcrumb" data-i18n="fraud-breadcrumb">首頁 / 盜刷處理 SOP</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444);">🛡️</div>
       <div class="page-header-body">
-        <h1>盜刷處理 SOP</h1>
+        <h1 data-i18n="fraud-title">盜刷處理 SOP</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-red">異常處理</span>
+          <span class="meta-chip badge-red" data-i18n="fraud-meta-chip">異常處理</span>
         </div>
       </div>
     </div>
@@ -63,85 +66,209 @@
 
       <!-- 觸發來源 -->
       <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
-        <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;">⚡ 風控通知來源</div>
-        <div style="font-size:13px;color:#2d3748;line-height:1.7;">
+        <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;" data-i18n="fraud-source-title">⚡ 風控通知來源</div>
+        <div style="font-size:13px;color:#2d3748;line-height:1.7;" data-i18n-html="fraud-source-body">
           風控透過專用 Slack 群組 <strong>緊急-可疑訂單取消通知</strong> 標記負責 OP。<br>
           18:30 後的盜刷訂單會標記<strong>夜班 OP</strong>，如為急單夜班會再通知隔日負責 OP。
         </div>
       </div>
 
       <!-- 處理流程 -->
-      <div class="section-title">📋 處理流程</div>
+      <div class="section-title" data-i18n="fraud-flow-title">📋 處理流程</div>
 
       <div class="flow-bar" style="margin-bottom:16px;">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">收到盜刷通知</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="fraud-flow1">收到盜刷通知</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">確認是否已使用</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="fraud-flow2">確認是否已使用</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">確認聯絡方式 & 聯繫供應商</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="fraud-flow3">確認聯絡方式 &amp; 聯繫供應商</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#b91c1c,#ef4444);color:white;">開啟特殊原因取消</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#b91c1c,#ef4444);color:white;" data-i18n="fraud-flow4">開啟特殊原因取消</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">通知風控</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="fraud-flow5">通知風控</span>
       </div>
 
       <!-- 分支情境 -->
-      <div class="section-title">🔀 依使用狀態分支</div>
+      <div class="section-title" data-i18n="fraud-branch-title">🔀 依使用狀態分支</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
         <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px;">
-          <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:10px;">✅ 未使用 → 可取消</div>
+          <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:10px;" data-i18n="fraud-unused-title">✅ 未使用 → 可取消</div>
           <ol class="step-list" style="margin:0;">
             <li class="step-item" style="margin-bottom:8px;">
               <div class="step-num">1</div>
-              <div class="step-content" style="font-size:12px;">確認訂單 SOP 內的聯絡方式，聯繫供應商確認取消</div>
+              <div class="step-content" style="font-size:12px;" data-i18n="fraud-unused-step1">確認訂單 SOP 內的聯絡方式，聯繫供應商確認取消</div>
             </li>
             <li class="step-item" style="margin-bottom:8px;">
               <div class="step-num">2</div>
-              <div class="step-content" style="font-size:12px;">於 Be2 開啟<strong>特殊原因取消</strong></div>
+              <div class="step-content" style="font-size:12px;" data-i18n-html="fraud-unused-step2">於 Be2 開啟<strong>特殊原因取消</strong></div>
             </li>
             <li class="step-item">
               <div class="step-num">3</div>
-              <div class="step-content" style="font-size:12px;">通知風控取消完成</div>
+              <div class="step-content" style="font-size:12px;" data-i18n="fraud-unused-step3">通知風控取消完成</div>
             </li>
           </ol>
         </div>
         <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:16px;">
-          <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:10px;">❌ 已使用 / 供應商拒絕取消</div>
+          <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:10px;" data-i18n="fraud-used-title">❌ 已使用 / 供應商拒絕取消</div>
           <ol class="step-list" style="margin:0;">
             <li class="step-item" style="margin-bottom:8px;">
               <div class="step-num">1</div>
-              <div class="step-content" style="font-size:12px;">通知風控，說明已使用或供應商拒絕情況</div>
+              <div class="step-content" style="font-size:12px;" data-i18n="fraud-used-step1">通知風控，說明已使用或供應商拒絕情況</div>
             </li>
             <li class="step-item">
               <div class="step-num">2</div>
-              <div class="step-content" style="font-size:12px;">由風控同意後再決定後續處理方式</div>
+              <div class="step-content" style="font-size:12px;" data-i18n="fraud-used-step2">由風控同意後再決定後續處理方式</div>
             </li>
           </ol>
-          <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:3px 8px;">⚠️ 可取消但需收取消費 → 需風控同意後才可取消</span>
+          <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:3px 8px;" data-i18n="fraud-used-note">⚠️ 可取消但需收取消費 → 需風控同意後才可取消</span>
         </div>
       </div>
 
       <!-- 即訂即出補充 -->
-      <div class="section-title">⚡ 即訂即出訂單 — 可疑訂單處理</div>
+      <div class="section-title" data-i18n="fraud-instant-title">⚡ 即訂即出訂單 — 可疑訂單處理</div>
 
       <div style="background:#f0f4ff;border:1px solid #c5d3f5;border-radius:10px;padding:16px 20px;margin-bottom:16px;">
-        <div style="font-size:13px;color:#2d3748;line-height:1.8;">
+        <div style="font-size:13px;color:#2d3748;line-height:1.8;" data-i18n-html="fraud-instant-body">
           OP 發現可疑訂單後，發訊後需 <strong>「退齊全」</strong>，將狀態改為 <strong>「旅客資料確認中」</strong>。<br>
           以客人出發時間為優先考量，向對應語系群組信箱尋求協助。
         </div>
-        <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #fca5a5;color:#b91c1c;border-radius:4px;padding:3px 8px;">⚠️ 如訂單狀態已改為「已處理」，串接 API 按鍵將無法使用</span>
+        <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #fca5a5;color:#b91c1c;border-radius:4px;padding:3px 8px;" data-i18n="fraud-instant-note">⚠️ 如訂單狀態已改為「已處理」，串接 API 按鍵將無法使用</span>
       </div>
 
       <!-- 注意事項 -->
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;">⚠️ 部分供應商會要求提出盜刷證明，請向風控詢問</span>
-        <span style="font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:4px 10px;display:inline-block;">ℹ️ 確認訂單是否已使用：查看訂單碼狀態「已核銷（已使用）」或「未核銷（未使用）」，或依各線別商品查詢方式確認</span>
+        <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;" data-i18n="fraud-note1">⚠️ 部分供應商會要求提出盜刷證明，請向風控詢問</span>
+        <span style="font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:4px 10px;display:inline-block;" data-i18n="fraud-note2">ℹ️ 確認訂單是否已使用：查看訂單碼狀態「已核銷（已使用）」或「未核銷（未使用）」，或依各線別商品查詢方式確認</span>
       </div>
 
     </div>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用',
+    'fraud-breadcrumb': '首頁 / 盜刷處理 SOP',
+    'fraud-title': '盜刷處理 SOP',
+    'fraud-meta-chip': '異常處理',
+    'fraud-source-title': '⚡ 風控通知來源',
+    'fraud-source-body': '風控透過專用 Slack 群組 <strong>緊急-可疑訂單取消通知</strong> 標記負責 OP。<br>18:30 後的盜刷訂單會標記<strong>夜班 OP</strong>，如為急單夜班會再通知隔日負責 OP。',
+    'fraud-flow-title': '📋 處理流程',
+    'fraud-flow1': '收到盜刷通知',
+    'fraud-flow2': '確認是否已使用',
+    'fraud-flow3': '確認聯絡方式 & 聯繫供應商',
+    'fraud-flow4': '開啟特殊原因取消',
+    'fraud-flow5': '通知風控',
+    'fraud-branch-title': '🔀 依使用狀態分支',
+    'fraud-unused-title': '✅ 未使用 → 可取消',
+    'fraud-unused-step1': '確認訂單 SOP 內的聯絡方式，聯繫供應商確認取消',
+    'fraud-unused-step2': '於 Be2 開啟<strong>特殊原因取消</strong>',
+    'fraud-unused-step3': '通知風控取消完成',
+    'fraud-used-title': '❌ 已使用 / 供應商拒絕取消',
+    'fraud-used-step1': '通知風控，說明已使用或供應商拒絕情況',
+    'fraud-used-step2': '由風控同意後再決定後續處理方式',
+    'fraud-used-note': '⚠️ 可取消但需收取消費 → 需風控同意後才可取消',
+    'fraud-instant-title': '⚡ 即訂即出訂單 — 可疑訂單處理',
+    'fraud-instant-body': 'OP 發現可疑訂單後，發訊後需 <strong>「退齊全」</strong>，將狀態改為 <strong>「旅客資料確認中」</strong>。<br>以客人出發時間為優先考量，向對應語系群組信箱尋求協助。',
+    'fraud-instant-note': '⚠️ 如訂單狀態已改為「已處理」，串接 API 按鍵將無法使用',
+    'fraud-note1': '⚠️ 部分供應商會要求提出盜刷證明，請向風控詢問',
+    'fraud-note2': 'ℹ️ 確認訂單是否已使用：查看訂單碼狀態「已核銷（已使用）」或「未核銷（未使用）」，或依各線別商品查詢方式確認',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only',
+    'fraud-breadcrumb': 'Home / Fraud Order SOP',
+    'fraud-title': 'Fraud Order Handling SOP',
+    'fraud-meta-chip': 'Exception Handling',
+    'fraud-source-title': '⚡ Risk Control Notification Source',
+    'fraud-source-body': 'Risk Control tags the responsible OP via the dedicated Slack channel <strong>Urgent-Suspicious Order Cancellation Alerts</strong>.<br>Fraud orders after 18:30 are tagged to the <strong>Night Shift OP</strong>; urgent orders will also notify the next day\'s responsible OP.',
+    'fraud-flow-title': '📋 Handling Flow',
+    'fraud-flow1': 'Receive Fraud Alert',
+    'fraud-flow2': 'Check If Order Used',
+    'fraud-flow3': 'Confirm Contact & Contact Supplier',
+    'fraud-flow4': 'Initiate Special Reason Cancellation',
+    'fraud-flow5': 'Notify Risk Control',
+    'fraud-branch-title': '🔀 Branch by Usage Status',
+    'fraud-unused-title': '✅ Unused → Can Cancel',
+    'fraud-unused-step1': 'Check contact method in order SOP and contact supplier to confirm cancellation',
+    'fraud-unused-step2': 'Initiate <strong>Special Reason Cancellation</strong> in Be2',
+    'fraud-unused-step3': 'Notify Risk Control that cancellation is complete',
+    'fraud-used-title': '❌ Used / Supplier Refuses Cancellation',
+    'fraud-used-step1': 'Notify Risk Control, explaining order is used or supplier refuses',
+    'fraud-used-step2': 'Await Risk Control approval before deciding next steps',
+    'fraud-used-note': '⚠️ Cancellable but with cancellation fee → must obtain Risk Control approval first',
+    'fraud-instant-title': '⚡ Instant-Book Orders — Suspicious Order Handling',
+    'fraud-instant-body': 'When OP identifies a suspicious instant-book order, send a message then select <strong>"Full Refund"</strong> and change status to <strong>"Traveler Data Confirming"</strong>.<br>Prioritize traveler departure time; seek assistance via the relevant language group mailbox.',
+    'fraud-instant-note': '⚠️ If order status has changed to "Processed", the API integration button will be unavailable',
+    'fraud-note1': '⚠️ Some suppliers may require fraud proof documents — please consult Risk Control',
+    'fraud-note2': 'ℹ️ To confirm if order was used: check order code status "Redeemed (Used)" or "Unredeemed (Unused)", or verify via each product line\'s inquiry method',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定',
+    'fraud-breadcrumb': 'ホーム / 不正利用対応 SOP',
+    'fraud-title': '不正利用対応 SOP',
+    'fraud-meta-chip': '異常処理',
+    'fraud-source-title': '⚡ リスク管理通知元',
+    'fraud-source-body': 'リスク管理チームが専用 Slack チャンネル <strong>緊急-不審注文キャンセル通知</strong> で担当 OP をタグ付け。<br>18:30 以降の不正注文は<strong>夜間シフト OP</strong> にタグ付けされ、急ぎの場合は翌日担当 OP にも通知。',
+    'fraud-flow-title': '📋 対応フロー',
+    'fraud-flow1': '不正通知を受信',
+    'fraud-flow2': '使用済み確認',
+    'fraud-flow3': '連絡先確認 & サプライヤーへ連絡',
+    'fraud-flow4': '特別理由キャンセルを開始',
+    'fraud-flow5': 'リスク管理に通知',
+    'fraud-branch-title': '🔀 使用状況による分岐',
+    'fraud-unused-title': '✅ 未使用 → キャンセル可能',
+    'fraud-unused-step1': '注文 SOP 内の連絡先を確認し、サプライヤーにキャンセルを連絡',
+    'fraud-unused-step2': 'Be2 で<strong>特別理由キャンセル</strong>を開始',
+    'fraud-unused-step3': 'リスク管理にキャンセル完了を通知',
+    'fraud-used-title': '❌ 使用済み / サプライヤーがキャンセル拒否',
+    'fraud-used-step1': 'リスク管理に通知し、使用済みまたはサプライヤー拒否の状況を説明',
+    'fraud-used-step2': 'リスク管理の承認後に後続対応を決定',
+    'fraud-used-note': '⚠️ キャンセル可能だがキャンセル料発生 → リスク管理の承認が必要',
+    'fraud-instant-title': '⚡ 即時予約注文 — 不審注文対応',
+    'fraud-instant-body': 'OP が不審な即時予約注文を発見後、メッセージ送信後に<strong>「全額返金」</strong>を選択し、ステータスを<strong>「旅行者情報確認中」</strong>に変更。<br>旅行者の出発時間を優先し、対応言語グループメールで支援を求める。',
+    'fraud-instant-note': '⚠️ 注文ステータスが「処理済み」に変更済みの場合、API 連携ボタンは使用不可',
+    'fraud-note1': '⚠️ 一部のサプライヤーは不正証明書類を要求する場合があります。リスク管理にご確認ください',
+    'fraud-note2': 'ℹ️ 注文使用済み確認方法：注文コードのステータス「精算済み（使用済み）」または「未精算（未使用）」を確認、または各商品ラインの照会方法で確認',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용',
+    'fraud-breadcrumb': '홈 / 사기 결제 처리 SOP',
+    'fraud-title': '사기 결제 처리 SOP',
+    'fraud-meta-chip': '이상 처리',
+    'fraud-source-title': '⚡ 리스크 관리 알림 출처',
+    'fraud-source-body': '리스크 관리팀이 전용 Slack 채널 <strong>긴급-의심 주문 취소 알림</strong>에서 담당 OP를 태그합니다.<br>18:30 이후 사기 주문은 <strong>야간 OP</strong>에 태그되며, 긴급 주문의 경우 다음날 담당 OP에게도 통보합니다.',
+    'fraud-flow-title': '📋 처리 절차',
+    'fraud-flow1': '사기 알림 수신',
+    'fraud-flow2': '사용 여부 확인',
+    'fraud-flow3': '연락처 확인 & 공급업체 연락',
+    'fraud-flow4': '특별 사유 취소 개시',
+    'fraud-flow5': '리스크 관리 통보',
+    'fraud-branch-title': '🔀 사용 상태별 분기',
+    'fraud-unused-title': '✅ 미사용 → 취소 가능',
+    'fraud-unused-step1': '주문 SOP 내 연락처 확인 후 공급업체에 취소 연락',
+    'fraud-unused-step2': 'Be2에서 <strong>특별 사유 취소</strong> 개시',
+    'fraud-unused-step3': '리스크 관리에 취소 완료 통보',
+    'fraud-used-title': '❌ 사용됨 / 공급업체 취소 거부',
+    'fraud-used-step1': '리스크 관리에 통보하여 사용됨 또는 공급업체 거부 상황 설명',
+    'fraud-used-step2': '리스크 관리 승인 후 후속 처리 방식 결정',
+    'fraud-used-note': '⚠️ 취소 가능하나 취소 수수료 발생 → 리스크 관리 승인 후에만 취소 가능',
+    'fraud-instant-title': '⚡ 즉시 예약 주문 — 의심 주문 처리',
+    'fraud-instant-body': 'OP가 의심 즉시예약 주문 발견 후 메시지 발송 후 <strong>「전액 환불」</strong>을 선택하고 상태를 <strong>「여행자 정보 확인 중」</strong>으로 변경.<br>여행자 출발 시간을 우선순위로 하고, 해당 언어 그룹 메일로 지원 요청.',
+    'fraud-instant-note': '⚠️ 주문 상태가 이미 「처리됨」으로 변경된 경우 API 연동 버튼 사용 불가',
+    'fraud-note1': '⚠️ 일부 공급업체는 사기 증빙 서류 제출을 요구할 수 있으니 리스크 관리팀에 문의하세요',
+    'fraud-note2': 'ℹ️ 주문 사용 여부 확인: 주문 코드 상태 「정산됨（사용됨）」또는 「미정산（미사용）」확인, 또는 각 상품 라인별 조회 방법으로 확인',
+  }
+});
+</script>
 </body>
 </html>

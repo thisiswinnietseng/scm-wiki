@@ -11,41 +11,44 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 人工訂購 / 平台訂購 & Mail 訂購</div>
+    <div class="breadcrumb" data-i18n="pm-breadcrumb">首頁 / 人工訂購 / 平台訂購 & Mail 訂購</div>
 
     <div class="page-header">
       <div class="page-header-icon">🛒</div>
       <div class="page-header-body">
-        <h1>人工訂購：平台訂購 &amp; Mail 訂購</h1>
+        <h1 data-i18n="pm-title">人工訂購：平台訂購 &amp; Mail 訂購</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-orange">人工訂購</span>
+          <span class="meta-chip badge-orange" data-i18n="pm-chip">人工訂購</span>
         </div>
       </div>
     </div>
 
     <!-- 平台訂購 -->
-    <h2>🖥️ 平台訂購</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 到供應商線上平台或 B2B 平台選擇商品並購買。</span>
+    <h2 data-i18n="pm-platform-h2">🖥️ 平台訂購</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="pm-platform-def">ℹ️ 到供應商線上平台或 B2B 平台選擇商品並購買。</span>
 
     <div class="white-box">
       <div class="step-list">
@@ -53,69 +56,69 @@
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>確認訂單資料是否齊全</strong>
+            <strong data-i18n="pm-p1-title">確認訂單資料是否齊全</strong>
             <ul>
-              <li>含接送服務 → 確認接送地點是否清楚正確</li>
-              <li>含加購選項（行李、餐食等）→ 確認客人是否已加購並記錄</li>
-              <li>組合商品（如「列車票＋隨上隨下觀光巴士票」）→ 確認客人是否備註巴士使用日期</li>
+              <li data-i18n="pm-p1-li1">含接送服務 → 確認接送地點是否清楚正確</li>
+              <li data-i18n="pm-p1-li2">含加購選項（行李、餐食等）→ 確認客人是否已加購並記錄</li>
+              <li data-i18n="pm-p1-li3">組合商品（如「列車票＋隨上隨下觀光巴士票」）→ 確認客人是否備註巴士使用日期</li>
             </ul>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 資料有缺漏 → 退給客服確認後再進行下一步</span>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-p1-warn">⚠️ 資料有缺漏 → 退給客服確認後再進行下一步</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>平台登入</strong>
-            <p>使用 RoboForm / BE2 訂購方式所備註的平台網站、帳號 ID 及密碼登入。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 每組擁有不同的 RoboForm 使用權限</span>
+            <strong data-i18n="pm-p2-title">平台登入</strong>
+            <p data-i18n="pm-p2-desc">使用 RoboForm / BE2 訂購方式所備註的平台網站、帳號 ID 及密碼登入。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-p2-warn">⚠️ 每組擁有不同的 RoboForm 使用權限</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>選擇商品與套餐</strong>
-            <p>根據 BE2 商品資料頁籤，於供應商平台選擇對應商品及套餐。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 部分商品有加購選項（如接送需加購行李），請確認客人是否有加購</span>
+            <strong data-i18n="pm-p3-title">選擇商品與套餐</strong>
+            <p data-i18n="pm-p3-desc">根據 BE2 商品資料頁籤，於供應商平台選擇對應商品及套餐。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-p3-warn">⚠️ 部分商品有加購選項（如接送需加購行李），請確認客人是否有加購</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>填寫旅客資料</strong>
-            <p>旅客姓名、聯繫方式（Email／手機）、護照號碼（如適用）。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 部分平台可能有額外填寫要求，請依供應商規範確認</span>
+            <strong data-i18n="pm-p4-title">填寫旅客資料</strong>
+            <p data-i18n="pm-p4-desc">旅客姓名、聯繫方式（Email／手機）、護照號碼（如適用）。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-p4-warn">⚠️ 部分平台可能有額外填寫要求，請依供應商規範確認</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">5</div>
           <div class="step-content">
-            <strong>確認訂單詳情</strong>
-            <p>確認：商品及套餐名稱、數量（成人／兒童／嬰兒）、價格是否符合成本。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 若發現價格異常 → 與 BD／組內確認</span>
+            <strong data-i18n="pm-p5-title">確認訂單詳情</strong>
+            <p data-i18n="pm-p5-desc">確認：商品及套餐名稱、數量（成人／兒童／嬰兒）、價格是否符合成本。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-p5-warn">⚠️ 若發現價格異常 → 與 BD／組內確認</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">6</div>
           <div class="step-content">
-            <strong>選擇付款方式</strong>
-            <p>信用卡 / 預存款扣除 / 月結帳 / Invoice。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 每家供應商付款方式不同，需依據統一付款方式選擇</span>
+            <strong data-i18n="pm-p6-title">選擇付款方式</strong>
+            <p data-i18n="pm-p6-desc">信用卡 / 預存款扣除 / 月結帳 / Invoice。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-p6-warn">⚠️ 每家供應商付款方式不同，需依據統一付款方式選擇</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">7</div>
           <div class="step-content">
-            <strong>追蹤訂單狀態 &amp; 發送憑證</strong>
+            <strong data-i18n="pm-p7-title">追蹤訂單狀態 &amp; 發送憑證</strong>
             <ul>
-              <li>憑證類型：KKday Voucher / Supplier 版型（官方／非官方格式）</li>
-              <li>部分平台即時生成 → 直接發送</li>
-              <li>需手動確認 → 等供應商回覆後發送</li>
+              <li data-i18n="pm-p7-li1">憑證類型：KKday Voucher / Supplier 版型（官方／非官方格式）</li>
+              <li data-i18n="pm-p7-li2">部分平台即時生成 → 直接發送</li>
+              <li data-i18n="pm-p7-li3">需手動確認 → 等供應商回覆後發送</li>
             </ul>
           </div>
         </div>
@@ -124,8 +127,8 @@
     </div>
 
     <!-- Mail 訂購 -->
-    <h2>📧 Mail 訂購</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 通過 Email 發送訂單詳情至供應商。</span>
+    <h2 data-i18n="pm-mail-h2">📧 Mail 訂購</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="pm-mail-def">ℹ️ 通過 Email 發送訂單詳情至供應商。</span>
 
     <div class="white-box">
       <div class="step-list">
@@ -133,46 +136,46 @@
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>確認訂單資料是否齊全</strong>
-            <p>同平台訂購，特別注意接送地點是否完整。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 有缺漏 → 先向客人確認</span>
+            <strong data-i18n="pm-m1-title">確認訂單資料是否齊全</strong>
+            <p data-i18n="pm-m1-desc">同平台訂購，特別注意接送地點是否完整。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-m1-warn">⚠️ 有缺漏 → 先向客人確認</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>複製訂單旅客資料</strong>
-            <p>進入 BE2 商品資料頁籤，點擊「複製訂單旅客資料」按鈕，根據語系選擇複製，直接貼入 Email。</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 客人備註語系可能與供應商不同 → 需協助翻譯；有疑問先與客服確認</span>
+            <strong data-i18n="pm-m2-title">複製訂單旅客資料</strong>
+            <p data-i18n="pm-m2-desc">進入 BE2 商品資料頁籤，點擊「複製訂單旅客資料」按鈕，根據語系選擇複製，直接貼入 Email。</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-m2-warn">⚠️ 客人備註語系可能與供應商不同 → 需協助翻譯；有疑問先與客服確認</span>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>確認供應商郵箱</strong>
-            <p>在 BE2 的「OP 訂購方式描述」中查詢確認供應商郵箱地址。</p>
+            <strong data-i18n="pm-m3-title">確認供應商郵箱</strong>
+            <p data-i18n="pm-m3-desc">在 BE2 的「OP 訂購方式描述」中查詢確認供應商郵箱地址。</p>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>追蹤訂單狀態</strong>
+            <strong data-i18n="pm-m4-title">追蹤訂單狀態</strong>
             <div class="situation-grid">
               <div class="situation-card situation-ok">
-                <strong>✅ 供應商可接單</strong>
-                <p>確認詳情後發憑證（KKday Voucher / 供應商版型）</p>
-                <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 確認前留意付款方式，部分需先付款</span>
+                <strong data-i18n="pm-m4-ok-title">✅ 供應商可接單</strong>
+                <p data-i18n="pm-m4-ok-desc">確認詳情後發憑證（KKday Voucher / 供應商版型）</p>
+                <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-m4-ok-warn">⚠️ 確認前留意付款方式，部分需先付款</span>
               </div>
               <div class="situation-card situation-fail">
-                <strong>❌ 供應商無法接單</strong>
-                <p>根據候補日期挽單；無合適日期則進入取消處理</p>
+                <strong data-i18n="pm-m4-fail-title">❌ 供應商無法接單</strong>
+                <p data-i18n="pm-m4-fail-desc">根據候補日期挽單；無合適日期則進入取消處理</p>
               </div>
               <div class="situation-card situation-warn">
-                <strong>⚠️ 其他注意事項</strong>
-                <p>長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD</p>
+                <strong data-i18n="pm-m4-warn-title">⚠️ 其他注意事項</strong>
+                <p data-i18n="pm-m4-warn-desc">長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD</p>
               </div>
             </div>
           </div>
@@ -182,6 +185,206 @@
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'pm-breadcrumb': '首頁 / 人工訂購 / 平台訂購 & Mail 訂購',
+    'pm-title': '人工訂購：平台訂購 & Mail 訂購',
+    'pm-chip': '人工訂購',
+    'pm-platform-h2': '🖥️ 平台訂購',
+    'pm-platform-def': 'ℹ️ 到供應商線上平台或 B2B 平台選擇商品並購買。',
+    'pm-p1-title': '確認訂單資料是否齊全',
+    'pm-p1-li1': '含接送服務 → 確認接送地點是否清楚正確',
+    'pm-p1-li2': '含加購選項（行李、餐食等）→ 確認客人是否已加購並記錄',
+    'pm-p1-li3': '組合商品（如「列車票＋隨上隨下觀光巴士票」）→ 確認客人是否備註巴士使用日期',
+    'pm-p1-warn': '⚠️ 資料有缺漏 → 退給客服確認後再進行下一步',
+    'pm-p2-title': '平台登入',
+    'pm-p2-desc': '使用 RoboForm / BE2 訂購方式所備註的平台網站、帳號 ID 及密碼登入。',
+    'pm-p2-warn': '⚠️ 每組擁有不同的 RoboForm 使用權限',
+    'pm-p3-title': '選擇商品與套餐',
+    'pm-p3-desc': '根據 BE2 商品資料頁籤，於供應商平台選擇對應商品及套餐。',
+    'pm-p3-warn': '⚠️ 部分商品有加購選項（如接送需加購行李），請確認客人是否有加購',
+    'pm-p4-title': '填寫旅客資料',
+    'pm-p4-desc': '旅客姓名、聯繫方式（Email／手機）、護照號碼（如適用）。',
+    'pm-p4-warn': '⚠️ 部分平台可能有額外填寫要求，請依供應商規範確認',
+    'pm-p5-title': '確認訂單詳情',
+    'pm-p5-desc': '確認：商品及套餐名稱、數量（成人／兒童／嬰兒）、價格是否符合成本。',
+    'pm-p5-warn': '⚠️ 若發現價格異常 → 與 BD／組內確認',
+    'pm-p6-title': '選擇付款方式',
+    'pm-p6-desc': '信用卡 / 預存款扣除 / 月結帳 / Invoice。',
+    'pm-p6-warn': '⚠️ 每家供應商付款方式不同，需依據統一付款方式選擇',
+    'pm-p7-title': '追蹤訂單狀態 & 發送憑證',
+    'pm-p7-li1': '憑證類型：KKday Voucher / Supplier 版型（官方／非官方格式）',
+    'pm-p7-li2': '部分平台即時生成 → 直接發送',
+    'pm-p7-li3': '需手動確認 → 等供應商回覆後發送',
+    'pm-mail-h2': '📧 Mail 訂購',
+    'pm-mail-def': 'ℹ️ 通過 Email 發送訂單詳情至供應商。',
+    'pm-m1-title': '確認訂單資料是否齊全',
+    'pm-m1-desc': '同平台訂購，特別注意接送地點是否完整。',
+    'pm-m1-warn': '⚠️ 有缺漏 → 先向客人確認',
+    'pm-m2-title': '複製訂單旅客資料',
+    'pm-m2-desc': '進入 BE2 商品資料頁籤，點擊「複製訂單旅客資料」按鈕，根據語系選擇複製，直接貼入 Email。',
+    'pm-m2-warn': '⚠️ 客人備註語系可能與供應商不同 → 需協助翻譯；有疑問先與客服確認',
+    'pm-m3-title': '確認供應商郵箱',
+    'pm-m3-desc': '在 BE2 的「OP 訂購方式描述」中查詢確認供應商郵箱地址。',
+    'pm-m4-title': '追蹤訂單狀態',
+    'pm-m4-ok-title': '✅ 供應商可接單',
+    'pm-m4-ok-desc': '確認詳情後發憑證（KKday Voucher / 供應商版型）',
+    'pm-m4-ok-warn': '⚠️ 確認前留意付款方式，部分需先付款',
+    'pm-m4-fail-title': '❌ 供應商無法接單',
+    'pm-m4-fail-desc': '根據候補日期挽單；無合適日期則進入取消處理',
+    'pm-m4-warn-title': '⚠️ 其他注意事項',
+    'pm-m4-warn-desc': '長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD'
+  },
+  en: {
+    'pm-breadcrumb': 'Home / Manual Purchase / Platform & Email Purchase',
+    'pm-title': 'Manual Purchase: Platform & Email',
+    'pm-chip': 'Manual Purchase',
+    'pm-platform-h2': '🖥️ Platform Purchase',
+    'pm-platform-def': 'ℹ️ Select and purchase products on supplier or B2B platforms.',
+    'pm-p1-title': 'Verify Order Information is Complete',
+    'pm-p1-li1': 'Includes transfer → Confirm pickup/dropoff location is clear and correct',
+    'pm-p1-li2': 'Includes add-ons (luggage, meals, etc.) → Confirm customer has added and recorded',
+    'pm-p1-li3': 'Combo products (e.g. train + hop-on bus) → Confirm customer noted bus usage date',
+    'pm-p1-warn': '⚠️ Missing info → Return to CS for confirmation before proceeding',
+    'pm-p2-title': 'Platform Login',
+    'pm-p2-desc': 'Log in using the platform URL, account ID, and password noted in RoboForm / BE2 purchase method.',
+    'pm-p2-warn': '⚠️ Each team has different RoboForm access permissions',
+    'pm-p3-title': 'Select Product & Package',
+    'pm-p3-desc': 'Based on BE2 product info tab, select the matching product and package on the supplier platform.',
+    'pm-p3-warn': '⚠️ Some products have add-on options (e.g. luggage for transfers) — confirm if customer purchased',
+    'pm-p4-title': 'Fill in Traveler Information',
+    'pm-p4-desc': 'Traveler name, contact (Email/phone), passport number (if applicable).',
+    'pm-p4-warn': '⚠️ Some platforms may have extra requirements — confirm per supplier guidelines',
+    'pm-p5-title': 'Confirm Order Details',
+    'pm-p5-desc': 'Verify: product/package name, quantity (adult/child/infant), price matches cost.',
+    'pm-p5-warn': '⚠️ Abnormal price → Confirm with BD / team',
+    'pm-p6-title': 'Select Payment Method',
+    'pm-p6-desc': 'Credit card / Prepayment deduction / Monthly billing / Invoice.',
+    'pm-p6-warn': '⚠️ Payment methods vary by supplier — follow the unified payment method',
+    'pm-p7-title': 'Track Order & Send Voucher',
+    'pm-p7-li1': 'Voucher type: KKday Voucher / Supplier format (official/unofficial)',
+    'pm-p7-li2': 'Some platforms generate instantly → Send directly',
+    'pm-p7-li3': 'Requires manual confirmation → Wait for supplier reply then send',
+    'pm-mail-h2': '📧 Email Purchase',
+    'pm-mail-def': 'ℹ️ Send order details to supplier via email.',
+    'pm-m1-title': 'Verify Order Information is Complete',
+    'pm-m1-desc': 'Same as platform purchase — pay special attention to transfer location completeness.',
+    'pm-m1-warn': '⚠️ Missing info → Confirm with customer first',
+    'pm-m2-title': 'Copy Traveler Order Data',
+    'pm-m2-desc': 'Go to BE2 product info tab, click "Copy Order Traveler Data", select language, paste directly into email.',
+    'pm-m2-warn': '⚠️ Customer notes may differ from supplier language → Translate as needed; confirm with CS if unsure',
+    'pm-m3-title': 'Confirm Supplier Email Address',
+    'pm-m3-desc': 'Look up the supplier email address in BE2 "OP Purchase Method Description".',
+    'pm-m4-title': 'Track Order Status',
+    'pm-m4-ok-title': '✅ Supplier Can Accept',
+    'pm-m4-ok-desc': 'Send voucher after confirming details (KKday Voucher / Supplier format)',
+    'pm-m4-ok-warn': '⚠️ Check payment method before confirming — some require payment first',
+    'pm-m4-fail-title': '❌ Supplier Cannot Accept',
+    'pm-m4-fail-desc': 'Offer alternative dates; if no suitable date, proceed to cancellation',
+    'pm-m4-warn-title': '⚠️ Other Notes',
+    'pm-m4-warn-desc': 'Follow up proactively if no reply (within 24 hours); report price errors to BD immediately'
+  },
+  ja: {
+    'pm-breadcrumb': 'ホーム / 手動購入 / プラットフォーム & メール購入',
+    'pm-title': '手動購入：プラットフォーム & メール',
+    'pm-chip': '手動購入',
+    'pm-platform-h2': '🖥️ プラットフォーム購入',
+    'pm-platform-def': 'ℹ️ サプライヤーのオンラインプラットフォームまたは B2B プラットフォームで商品を選択・購入。',
+    'pm-p1-title': '注文情報の確認',
+    'pm-p1-li1': '送迎サービス含む → 送迎場所が正確かどうか確認',
+    'pm-p1-li2': 'オプション含む（荷物・食事等）→ 顧客が追加済みか確認・記録',
+    'pm-p1-li3': 'コンボ商品（列車 + ホップオンバス等）→ 顧客がバス利用日を備考しているか確認',
+    'pm-p1-warn': '⚠️ 不足情報あり → CS に返して確認後、次のステップへ',
+    'pm-p2-title': 'プラットフォームログイン',
+    'pm-p2-desc': 'RoboForm / BE2 購入方法に記載のプラットフォーム URL・アカウント ID・パスワードでログイン。',
+    'pm-p2-warn': '⚠️ チームごとに異なる RoboForm 使用権限あり',
+    'pm-p3-title': '商品・プランの選択',
+    'pm-p3-desc': 'BE2 商品情報タブを参照し、サプライヤープラットフォームで対応商品・プランを選択。',
+    'pm-p3-warn': '⚠️ 一部商品に追加オプションあり（送迎の荷物等）— 顧客が追加済みか確認',
+    'pm-p4-title': '旅客情報の入力',
+    'pm-p4-desc': '旅客名・連絡先（Email /電話）・パスポート番号（必要な場合）。',
+    'pm-p4-warn': '⚠️ 一部プラットフォームは追加入力要件あり — サプライヤー規定を確認',
+    'pm-p5-title': '注文内容の確認',
+    'pm-p5-desc': '確認：商品・プラン名、数量（大人/子供/幼児）、価格がコストと一致しているか。',
+    'pm-p5-warn': '⚠️ 価格異常あり → BD / チームに確認',
+    'pm-p6-title': '支払方法の選択',
+    'pm-p6-desc': 'クレジットカード / 前払金控除 / 月次請求 / Invoice。',
+    'pm-p6-warn': '⚠️ サプライヤーにより支払方法が異なる — 統一支払方法に従うこと',
+    'pm-p7-title': '注文追跡 & バウチャー送付',
+    'pm-p7-li1': 'バウチャータイプ：KKday Voucher / サプライヤー版型（公式/非公式）',
+    'pm-p7-li2': '一部プラットフォームは即時生成 → 直接送付',
+    'pm-p7-li3': '手動確認が必要 → サプライヤーの返信後に送付',
+    'pm-mail-h2': '📧 メール購入',
+    'pm-mail-def': 'ℹ️ Email でサプライヤーに注文詳細を送付。',
+    'pm-m1-title': '注文情報の確認',
+    'pm-m1-desc': 'プラットフォーム購入と同様 — 送迎場所の完全性に特に注意。',
+    'pm-m1-warn': '⚠️ 不足あり → 先に顧客に確認',
+    'pm-m2-title': '注文旅客データのコピー',
+    'pm-m2-desc': 'BE2 商品情報タブで「注文旅客データコピー」ボタンをクリック、言語を選択してコピーし Email に貼り付け。',
+    'pm-m2-warn': '⚠️ 顧客の備考言語とサプライヤーが異なる場合 → 翻訳が必要；不明な点は CS に確認',
+    'pm-m3-title': 'サプライヤーメールアドレスの確認',
+    'pm-m3-desc': 'BE2 の「OP 購入方法の説明」でサプライヤーのメールアドレスを確認。',
+    'pm-m4-title': '注文状況の追跡',
+    'pm-m4-ok-title': '✅ サプライヤーが受注可能',
+    'pm-m4-ok-desc': '詳細確認後バウチャー送付（KKday Voucher / サプライヤー版型）',
+    'pm-m4-ok-warn': '⚠️ 確認前に支払方法を確認 — 一部は先払いが必要',
+    'pm-m4-fail-title': '❌ サプライヤーが受注不可',
+    'pm-m4-fail-desc': '代替日程で引き留め；適切な日程がなければキャンセル処理へ',
+    'pm-m4-warn-title': '⚠️ その他の注意事項',
+    'pm-m4-warn-desc': '長時間返信なしは積極的にフォローアップ（24時間以内推奨）；価格エラーは BD に即報告'
+  },
+  ko: {
+    'pm-breadcrumb': '홈 / 수동 구매 / 플랫폼 & 이메일 구매',
+    'pm-title': '수동 구매：플랫폼 & 이메일',
+    'pm-chip': '수동 구매',
+    'pm-platform-h2': '🖥️ 플랫폼 구매',
+    'pm-platform-def': 'ℹ️ 공급업체 온라인 플랫폼 또는 B2B 플랫폼에서 상품 선택 및 구매.',
+    'pm-p1-title': '주문 정보 완전성 확인',
+    'pm-p1-li1': '픽업 서비스 포함 → 픽업/드롭오프 위치가 정확한지 확인',
+    'pm-p1-li2': '옵션 포함 (수하물, 식사 등) → 고객이 추가 구매했는지 확인 및 기록',
+    'pm-p1-li3': '콤보 상품 (열차 + 홉온버스 등) → 고객이 버스 이용 날짜를 기재했는지 확인',
+    'pm-p1-warn': '⚠️ 정보 누락 → CS에 반환하여 확인 후 다음 단계 진행',
+    'pm-p2-title': '플랫폼 로그인',
+    'pm-p2-desc': 'RoboForm / BE2 구매 방법에 기재된 플랫폼 URL, 계정 ID, 비밀번호로 로그인.',
+    'pm-p2-warn': '⚠️ 팀마다 다른 RoboForm 사용 권한 보유',
+    'pm-p3-title': '상품 및 패키지 선택',
+    'pm-p3-desc': 'BE2 상품 정보 탭을 참조하여 공급업체 플랫폼에서 해당 상품 및 패키지 선택.',
+    'pm-p3-warn': '⚠️ 일부 상품에 추가 옵션 있음 (픽업 수하물 등) — 고객이 추가 구매했는지 확인',
+    'pm-p4-title': '여행자 정보 입력',
+    'pm-p4-desc': '여행자 이름, 연락처 (이메일/전화), 여권 번호 (해당 시).',
+    'pm-p4-warn': '⚠️ 일부 플랫폼은 추가 입력 요구 사항 있음 — 공급업체 규정에 따라 확인',
+    'pm-p5-title': '주문 내용 확인',
+    'pm-p5-desc': '확인：상품/패키지명, 수량 (성인/아동/유아), 가격이 원가와 일치하는지.',
+    'pm-p5-warn': '⚠️ 가격 이상 발견 → BD / 팀에 확인',
+    'pm-p6-title': '결제 방법 선택',
+    'pm-p6-desc': '신용카드 / 선불금 차감 / 월별 결제 / Invoice.',
+    'pm-p6-warn': '⚠️ 공급업체마다 결제 방법 다름 — 통일된 결제 방법에 따라 선택',
+    'pm-p7-title': '주문 추적 & 바우처 발송',
+    'pm-p7-li1': '바우처 유형：KKday Voucher / 공급업체 형식 (공식/비공식)',
+    'pm-p7-li2': '일부 플랫폼은 즉시 생성 → 바로 발송',
+    'pm-p7-li3': '수동 확인 필요 → 공급업체 회신 후 발송',
+    'pm-mail-h2': '📧 이메일 구매',
+    'pm-mail-def': 'ℹ️ 공급업체에 이메일로 주문 정보 발송.',
+    'pm-m1-title': '주문 정보 완전성 확인',
+    'pm-m1-desc': '플랫폼 구매와 동일 — 픽업 위치 완전성에 특히 주의.',
+    'pm-m1-warn': '⚠️ 누락 있음 → 먼저 고객에게 확인',
+    'pm-m2-title': '주문 여행자 데이터 복사',
+    'pm-m2-desc': 'BE2 상품 정보 탭에서 「주문 여행자 데이터 복사」 버튼 클릭, 언어 선택 후 복사하여 이메일에 붙여넣기.',
+    'pm-m2-warn': '⚠️ 고객 메모 언어가 공급업체와 다를 수 있음 → 번역 필요; 불분명한 경우 CS와 확인',
+    'pm-m3-title': '공급업체 이메일 주소 확인',
+    'pm-m3-desc': 'BE2의 「OP 구매 방법 설명」에서 공급업체 이메일 주소 확인.',
+    'pm-m4-title': '주문 상태 추적',
+    'pm-m4-ok-title': '✅ 공급업체 수락 가능',
+    'pm-m4-ok-desc': '내용 확인 후 바우처 발송 (KKday Voucher / 공급업체 형식)',
+    'pm-m4-ok-warn': '⚠️ 확인 전 결제 방법 확인 — 일부는 선결제 필요',
+    'pm-m4-fail-title': '❌ 공급업체 수락 불가',
+    'pm-m4-fail-desc': '대체 날짜로 유지 시도; 적합한 날짜 없으면 취소 처리',
+    'pm-m4-warn-title': '⚠️ 기타 주의사항',
+    'pm-m4-warn-desc': '장시간 미회신 시 적극 추적 (24시간 이내 권장); 가격 오류는 BD에 즉시 보고'
+  }
+});
+</script>
 </body>
 </html>

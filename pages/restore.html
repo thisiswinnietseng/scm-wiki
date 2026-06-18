@@ -71,34 +71,37 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 訂單恢復</div>
+    <div class="breadcrumb" data-i18n="restore-breadcrumb">首頁 / 訂單恢復</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">🔁</div>
       <div class="page-header-body">
-        <h1>訂單恢復</h1>
+        <h1 data-i18n="restore-title">訂單恢復</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-red">異常處理</span>
+          <span class="meta-chip badge-red" data-i18n="restore-meta-chip">異常處理</span>
         </div>
       </div>
     </div>
@@ -107,85 +110,85 @@
 
       <!-- 定義說明 -->
       <div style="background:#f0f4ff; border:1px solid #c5d3f5; border-radius:10px; padding:16px 20px; margin-bottom:24px;">
-        <div style="font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:8px;">📌 什麼是訂單恢復？</div>
-        <div style="font-size:13px; color:#2d3748; line-height:1.7;">
+        <div style="font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:8px;" data-i18n="restore-def-title">📌 什麼是訂單恢復？</div>
+        <div style="font-size:13px; color:#2d3748; line-height:1.7;" data-i18n-html="restore-def-body">
           將訂單狀態從 <strong>「已取消」</strong> 改回 <strong>「已處理」</strong> 或 <strong>「待供應商請款」</strong> 的作業流程。<br>
           通常由供應商提出，需 KKday 協助執行，並走三方審核：
         </div>
         <div style="margin-top:12px;">
           <div class="flow-bar">
-            <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">✓ 客服申請恢復訂單</span>
+            <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="restore-flow1">✓ 客服申請恢復訂單</span>
             <span class="flow-arr">→</span>
-            <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">✓ OP 確認</span>
+            <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="restore-flow2">✓ OP 確認</span>
             <span class="flow-arr">→</span>
-            <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">✓ 客服主管確認</span>
+            <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="restore-flow3">✓ 客服主管確認</span>
           </div>
         </div>
       </div>
 
       <!-- 可 / 不可恢復條件 -->
-      <div class="section-title">📋 恢復條件</div>
+      <div class="section-title" data-i18n="restore-cond-title">📋 恢復條件</div>
       <div class="cond-grid">
         <div class="cond-box ok">
-          <div class="cond-title">✅ 符合條件（可恢復）</div>
+          <div class="cond-title" data-i18n="restore-cond-ok-title">✅ 符合條件（可恢復）</div>
           <ul>
-            <li>KKday 或供應商主動取消的訂單</li>
-            <li>有有效收款單（線上付款須請款成功；人工付款狀態不限）</li>
-            <li>每張訂單此功能只能使用一次</li>
-            <li>供應商同意且可正常提供服務</li>
+            <li data-i18n="restore-cond-ok1">KKday 或供應商主動取消的訂單</li>
+            <li data-i18n="restore-cond-ok2">有有效收款單（線上付款須請款成功；人工付款狀態不限）</li>
+            <li data-i18n="restore-cond-ok3">每張訂單此功能只能使用一次</li>
+            <li data-i18n="restore-cond-ok4">供應商同意且可正常提供服務</li>
           </ul>
         </div>
         <div class="cond-box no">
-          <div class="cond-title">❌ 不可恢復情況</div>
+          <div class="cond-title" data-i18n="restore-cond-no-title">❌ 不可恢復情況</div>
           <ul>
-            <li>客人申請取消的訂單</li>
-            <li>串接核銷訂單</li>
-            <li>使用可退款折扣券的訂單</li>
-            <li>0 元售價訂單</li>
-            <li>Open date 訂單</li>
-            <li>AJ 訂單</li>
-            <li>取消後已執行部分退款</li>
-            <li>組合商品訂單</li>
+            <li data-i18n="restore-cond-no1">客人申請取消的訂單</li>
+            <li data-i18n="restore-cond-no2">串接核銷訂單</li>
+            <li data-i18n="restore-cond-no3">使用可退款折扣券的訂單</li>
+            <li data-i18n="restore-cond-no4">0 元售價訂單</li>
+            <li data-i18n="restore-cond-no5">Open date 訂單</li>
+            <li data-i18n="restore-cond-no6">AJ 訂單</li>
+            <li data-i18n="restore-cond-no7">取消後已執行部分退款</li>
+            <li data-i18n="restore-cond-no8">組合商品訂單</li>
           </ul>
         </div>
       </div>
 
       <!-- 適用情境 -->
-      <div class="section-title">💡 適用情境</div>
+      <div class="section-title" data-i18n="restore-scenario-title">💡 適用情境</div>
       <div class="scenario-grid">
         <div class="scenario-box">
-          <div class="sc-title">🏪 供應商提出</div>
+          <div class="sc-title" data-i18n="restore-scenario-supplier-title">🏪 供應商提出</div>
           <ul>
-            <li>誤取消訂單</li>
-            <li>原本無法提供服務，後改為可提供（避免旅客重新下單出現不同價格）</li>
+            <li data-i18n="restore-scenario-supplier1">誤取消訂單</li>
+            <li data-i18n="restore-scenario-supplier2">原本無法提供服務，後改為可提供（避免旅客重新下單出現不同價格）</li>
           </ul>
         </div>
         <div class="scenario-box">
-          <div class="sc-title">👤 旅客提出</div>
+          <div class="sc-title" data-i18n="restore-scenario-traveler-title">👤 旅客提出</div>
           <ul>
-            <li>旅客希望恢復訂單</li>
+            <li data-i18n="restore-scenario-traveler1">旅客希望恢復訂單</li>
           </ul>
         </div>
       </div>
 
       <!-- 操作流程 -->
-      <div class="section-title">⚙️ 操作流程</div>
+      <div class="section-title" data-i18n="restore-steps-title">⚙️ 操作流程</div>
       <ol class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
-          <div class="step-content">
+          <div class="step-content" data-i18n-html="restore-step1">
             <strong>客服</strong>確認符合條件後，於 Be2「恢復訂單狀態」功能發起申請
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
-          <div class="step-content">
+          <div class="step-content" data-i18n-html="restore-step2">
             <strong>OP</strong> 確認訂單恢復原因及相關資訊後核可，並<strong>發訊息通知客服：「OP 已點恢復訂單確認」</strong>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
-          <div class="step-content">
+          <div class="step-content" data-i18n-html="restore-step3">
             <strong>客服主管</strong>最終確認，完成恢復
           </div>
         </li>
@@ -193,7 +196,163 @@
 
     </div>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用',
+    'restore-breadcrumb': '首頁 / 訂單恢復',
+    'restore-title': '訂單恢復',
+    'restore-meta-chip': '異常處理',
+    'restore-def-title': '📌 什麼是訂單恢復？',
+    'restore-def-body': '將訂單狀態從 <strong>「已取消」</strong> 改回 <strong>「已處理」</strong> 或 <strong>「待供應商請款」</strong> 的作業流程。<br>通常由供應商提出，需 KKday 協助執行，並走三方審核：',
+    'restore-flow1': '✓ 客服申請恢復訂單',
+    'restore-flow2': '✓ OP 確認',
+    'restore-flow3': '✓ 客服主管確認',
+    'restore-cond-title': '📋 恢復條件',
+    'restore-cond-ok-title': '✅ 符合條件（可恢復）',
+    'restore-cond-ok1': 'KKday 或供應商主動取消的訂單',
+    'restore-cond-ok2': '有有效收款單（線上付款須請款成功；人工付款狀態不限）',
+    'restore-cond-ok3': '每張訂單此功能只能使用一次',
+    'restore-cond-ok4': '供應商同意且可正常提供服務',
+    'restore-cond-no-title': '❌ 不可恢復情況',
+    'restore-cond-no1': '客人申請取消的訂單',
+    'restore-cond-no2': '串接核銷訂單',
+    'restore-cond-no3': '使用可退款折扣券的訂單',
+    'restore-cond-no4': '0 元售價訂單',
+    'restore-cond-no5': 'Open date 訂單',
+    'restore-cond-no6': 'AJ 訂單',
+    'restore-cond-no7': '取消後已執行部分退款',
+    'restore-cond-no8': '組合商品訂單',
+    'restore-scenario-title': '💡 適用情境',
+    'restore-scenario-supplier-title': '🏪 供應商提出',
+    'restore-scenario-supplier1': '誤取消訂單',
+    'restore-scenario-supplier2': '原本無法提供服務，後改為可提供（避免旅客重新下單出現不同價格）',
+    'restore-scenario-traveler-title': '👤 旅客提出',
+    'restore-scenario-traveler1': '旅客希望恢復訂單',
+    'restore-steps-title': '⚙️ 操作流程',
+    'restore-step1': '<strong>客服</strong>確認符合條件後，於 Be2「恢復訂單狀態」功能發起申請',
+    'restore-step2': '<strong>OP</strong> 確認訂單恢復原因及相關資訊後核可，並<strong>發訊息通知客服：「OP 已點恢復訂單確認」</strong>',
+    'restore-step3': '<strong>客服主管</strong>最終確認，完成恢復',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only',
+    'restore-breadcrumb': 'Home / Order Restoration',
+    'restore-title': 'Order Restoration',
+    'restore-meta-chip': 'Exception Handling',
+    'restore-def-title': '📌 What is Order Restoration?',
+    'restore-def-body': 'The process of reverting an order status from <strong>"Cancelled"</strong> back to <strong>"Processed"</strong> or <strong>"Pending Supplier Billing"</strong>.<br>Typically initiated by the supplier, requiring KKday execution with a three-party approval flow:',
+    'restore-flow1': '✓ CS Submits Restoration Request',
+    'restore-flow2': '✓ OP Confirms',
+    'restore-flow3': '✓ CS Supervisor Confirms',
+    'restore-cond-title': '📋 Restoration Conditions',
+    'restore-cond-ok-title': '✅ Eligible (Restorable)',
+    'restore-cond-ok1': 'Orders cancelled by KKday or the supplier',
+    'restore-cond-ok2': 'Valid payment record exists (online payment must be successfully billed; manual payment has no status restriction)',
+    'restore-cond-ok3': 'This feature can only be used once per order',
+    'restore-cond-ok4': 'Supplier agrees and can provide the service normally',
+    'restore-cond-no-title': '❌ Not Eligible for Restoration',
+    'restore-cond-no1': 'Orders cancelled by the customer',
+    'restore-cond-no2': 'API-integrated redemption orders',
+    'restore-cond-no3': 'Orders using refundable discount vouchers',
+    'restore-cond-no4': 'Zero-price orders',
+    'restore-cond-no5': 'Open date orders',
+    'restore-cond-no6': 'AJ orders',
+    'restore-cond-no7': 'Partial refund already executed after cancellation',
+    'restore-cond-no8': 'Bundle product orders',
+    'restore-scenario-title': '💡 Applicable Scenarios',
+    'restore-scenario-supplier-title': '🏪 Initiated by Supplier',
+    'restore-scenario-supplier1': 'Order accidentally cancelled',
+    'restore-scenario-supplier2': 'Service previously unavailable, now restored (avoids traveler re-booking at different price)',
+    'restore-scenario-traveler-title': '👤 Initiated by Traveler',
+    'restore-scenario-traveler1': 'Traveler requests order reinstatement',
+    'restore-steps-title': '⚙️ Operation Flow',
+    'restore-step1': '<strong>CS</strong> verifies eligibility, then initiates request via Be2 "Restore Order Status" function',
+    'restore-step2': '<strong>OP</strong> reviews restoration reason and approves, then <strong>notifies CS: "OP has confirmed order restoration"</strong>',
+    'restore-step3': '<strong>CS Supervisor</strong> gives final approval to complete restoration',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定',
+    'restore-breadcrumb': 'ホーム / 注文復元',
+    'restore-title': '注文復元',
+    'restore-meta-chip': '異常処理',
+    'restore-def-title': '📌 注文復元とは？',
+    'restore-def-body': '注文ステータスを <strong>「キャンセル済み」</strong> から <strong>「処理済み」</strong> または <strong>「サプライヤー請求待ち」</strong> に戻す作業フローです。<br>通常はサプライヤーからの申請で、KKday が実行し、三者承認フローを経ます：',
+    'restore-flow1': '✓ CS が復元申請',
+    'restore-flow2': '✓ OP 確認',
+    'restore-flow3': '✓ CS スーパーバイザー確認',
+    'restore-cond-title': '📋 復元条件',
+    'restore-cond-ok-title': '✅ 条件を満たす（復元可能）',
+    'restore-cond-ok1': 'KKday またはサプライヤーが自主的にキャンセルした注文',
+    'restore-cond-ok2': '有効な入金伝票あり（オンライン決済は請求成功必須；手動決済はステータス不問）',
+    'restore-cond-ok3': '各注文につきこの機能は1回のみ使用可能',
+    'restore-cond-ok4': 'サプライヤーが同意し、通常通りサービス提供可能',
+    'restore-cond-no-title': '❌ 復元不可のケース',
+    'restore-cond-no1': '顧客が申請したキャンセル注文',
+    'restore-cond-no2': 'API 連携の消込注文',
+    'restore-cond-no3': '返金可能割引クーポン使用注文',
+    'restore-cond-no4': '0円注文',
+    'restore-cond-no5': 'Open date 注文',
+    'restore-cond-no6': 'AJ 注文',
+    'restore-cond-no7': 'キャンセル後に一部返金済み',
+    'restore-cond-no8': 'セット商品注文',
+    'restore-scenario-title': '💡 適用シナリオ',
+    'restore-scenario-supplier-title': '🏪 サプライヤーからの申請',
+    'restore-scenario-supplier1': '誤ってキャンセルした注文',
+    'restore-scenario-supplier2': '当初サービス提供不可だったが、後に提供可能となった場合（旅行者の再注文による価格差異を防ぐため）',
+    'restore-scenario-traveler-title': '👤 旅行者からの申請',
+    'restore-scenario-traveler1': '旅行者が注文の復元を希望',
+    'restore-steps-title': '⚙️ 操作フロー',
+    'restore-step1': '<strong>CS</strong> が条件を確認後、Be2 の「注文ステータス復元」機能から申請',
+    'restore-step2': '<strong>OP</strong> が復元理由と関連情報を確認・承認し、<strong>CS に通知：「OP が注文復元を確認済み」</strong>',
+    'restore-step3': '<strong>CS スーパーバイザー</strong>が最終確認し、復元完了',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용',
+    'restore-breadcrumb': '홈 / 주문 복원',
+    'restore-title': '주문 복원',
+    'restore-meta-chip': '이상 처리',
+    'restore-def-title': '📌 주문 복원이란?',
+    'restore-def-body': '주문 상태를 <strong>「취소됨」</strong>에서 <strong>「처리됨」</strong> 또는 <strong>「공급업체 청구 대기」</strong>로 되돌리는 작업 프로세스입니다.<br>일반적으로 공급업체가 신청하며 KKday가 실행하고 삼자 승인 절차를 거칩니다:',
+    'restore-flow1': '✓ CS 복원 신청',
+    'restore-flow2': '✓ OP 확인',
+    'restore-flow3': '✓ CS 슈퍼바이저 확인',
+    'restore-cond-title': '📋 복원 조건',
+    'restore-cond-ok-title': '✅ 조건 충족（복원 가능）',
+    'restore-cond-ok1': 'KKday 또는 공급업체가 자발적으로 취소한 주문',
+    'restore-cond-ok2': '유효한 수금 전표 존재（온라인 결제는 청구 성공 필수；수동 결제는 상태 불문）',
+    'restore-cond-ok3': '주문당 이 기능은 1회만 사용 가능',
+    'restore-cond-ok4': '공급업체 동의 및 정상 서비스 제공 가능',
+    'restore-cond-no-title': '❌ 복원 불가 상황',
+    'restore-cond-no1': '고객이 신청한 취소 주문',
+    'restore-cond-no2': 'API 연동 취소 주문',
+    'restore-cond-no3': '환불 가능 할인 쿠폰 사용 주문',
+    'restore-cond-no4': '0원 판매가 주문',
+    'restore-cond-no5': 'Open date 주문',
+    'restore-cond-no6': 'AJ 주문',
+    'restore-cond-no7': '취소 후 부분 환불 이미 실행',
+    'restore-cond-no8': '묶음 상품 주문',
+    'restore-scenario-title': '💡 적용 시나리오',
+    'restore-scenario-supplier-title': '🏪 공급업체 신청',
+    'restore-scenario-supplier1': '실수로 취소한 주문',
+    'restore-scenario-supplier2': '원래 서비스 제공 불가였으나 이후 제공 가능으로 변경（여행자 재주문 시 다른 가격 발생 방지）',
+    'restore-scenario-traveler-title': '👤 여행자 신청',
+    'restore-scenario-traveler1': '여행자가 주문 복원을 희망',
+    'restore-steps-title': '⚙️ 운영 절차',
+    'restore-step1': '<strong>CS</strong>가 조건 확인 후 Be2「주문 상태 복원」기능에서 신청',
+    'restore-step2': '<strong>OP</strong>가 복원 사유 및 관련 정보 확인 후 승인하고, <strong>CS에 통보：「OP 주문 복원 확인 완료」</strong>',
+    'restore-step3': '<strong>CS 슈퍼바이저</strong>가 최종 확인하여 복원 완료',
+  }
+});
+</script>
 </body>
 </html>

@@ -11,133 +11,292 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 郵寄流程</div>
+    <div class="breadcrumb" data-i18n="mail-breadcrumb">首頁 / 郵寄流程</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background: linear-gradient(135deg, #1d4ed8, #3b82f6);">✉️</div>
       <div class="page-header-body">
-        <h1>郵寄流程</h1>
+        <h1 data-i18n="mail-title">郵寄流程</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-purple">實體出貨</span>
+          <span class="meta-chip badge-purple" data-i18n="mail-chip">實體出貨</span>
         </div>
       </div>
     </div>
 
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 郵寄商品分三類：<strong>實體 SIM 卡 ＆ 各國交通卡</strong> / <strong>JRPASS 票券</strong> / <strong>高鐵票券</strong></span>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="mail-categories">ℹ️ 郵寄商品分三類：<strong>實體 SIM 卡 ＆ 各國交通卡</strong> / <strong>JRPASS 票券</strong> / <strong>高鐵票券</strong></span>
 
-    <h2>JRPASS 實體票券</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 每天 12:00 撈單</span>
+    <h2 data-i18n="mail-jr-title">JRPASS 實體票券</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mail-jr-deadline">⚠️ 每天 12:00 撈單</span>
     <div class="white-box">
       <ol class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>撈單</strong>
-            <p>BE2 → 訂單報表匯出；條件：郵寄 / 26888 JTBGMT (JR PASS GROUP) / KKday / 狀態：處理中＋旅客資料已齊＋OP已領取＋已訂出待供應商回覆 / 寄送地區：台灣 → 匯出 CSV</p>
+            <strong data-i18n="mail-jr-step1-title">撈單</strong>
+            <p data-i18n="mail-jr-step1-desc">BE2 → 訂單報表匯出；條件：郵寄 / 26888 JTBGMT (JR PASS GROUP) / KKday / 狀態：處理中＋旅客資料已齊＋OP已領取＋已訂出待供應商回覆 / 寄送地區：台灣 → 匯出 CSV</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>整理</strong>
-            <p>貼至「JRPASS 台灣郵寄表整理」，需要：訂單編號、地址、姓名、電話、數量、出發日期、上表日期；印標籤（與 SIM 卡方式相同）</p>
+            <strong data-i18n="mail-jr-step2-title">整理</strong>
+            <p data-i18n="mail-jr-step2-desc">貼至「JRPASS 台灣郵寄表整理」，需要：訂單編號、地址、姓名、電話、數量、出發日期、上表日期；印標籤（與 SIM 卡方式相同）</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>列印</strong>
-            <p>進台灣 JRPASS 雲端列印；使用 JRPASS 特殊紙張</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 銀色雷射標需在規定匡格內</span>
+            <strong data-i18n="mail-jr-step3-title">列印</strong>
+            <p data-i18n="mail-jr-step3-desc">進台灣 JRPASS 雲端列印；使用 JRPASS 特殊紙張</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mail-jr-step3-note">⚠️ 銀色雷射標需在規定匡格內</span>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>處理票據</strong>
-            <p>核對客人英文姓名 / 區域 / 票種是否與票券一致；撕下第一聯保留，第二三聯放入信封；Be2 備註「印」或「P」；點單至「已寄出」；製作大宗普掛表；列印（兩份）</p>
+            <strong data-i18n="mail-jr-step4-title">處理票據</strong>
+            <p data-i18n-html="mail-jr-step4-desc">核對客人英文姓名 / 區域 / 票種是否與票券一致；撕下第一聯保留，第二三聯放入信封；Be2 備註「印」或「P」；點單至「已寄出」；製作大宗普掛表；列印（兩份）</p>
           </div>
         </li>
       </ol>
     </div>
 
-    <h2>高鐵實體票券</h2>
+    <h2 data-i18n="mail-hsr-title">高鐵實體票券</h2>
     <div class="white-box">
       <ol class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>整理與通知</strong>
-            <p>中文組整理票券表單，通知 IB 組</p>
+            <strong data-i18n="mail-hsr-step1-title">整理與通知</strong>
+            <p data-i18n="mail-hsr-step1-desc">中文組整理票券表單，通知 IB 組</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>查詢與出票</strong>
-            <p>開「高鐵新共表-總表」複製當日訂單號 → Be2 查詢供應商編號 → 高鐵後台系統 → 待取票查詢及出票 → 貼供應商訂單編號 → AGTS 出票 → 確認印票</p>
+            <strong data-i18n="mail-hsr-step2-title">查詢與出票</strong>
+            <p data-i18n="mail-hsr-step2-desc">開「高鐵新共表-總表」複製當日訂單號 → Be2 查詢供應商編號 → 高鐵後台系統 → 待取票查詢及出票 → 貼供應商訂單編號 → AGTS 出票 → 確認印票</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>列印</strong>
-            <p>高鐵特殊紙張；規格：#E10，上邊距 18.5 / 下邊距 9.5 / 左邊距 75 / 右邊距 13.5，比例 90%；Be2 備註欄打「印」</p>
+            <strong data-i18n="mail-hsr-step3-title">列印</strong>
+            <p data-i18n="mail-hsr-step3-desc">高鐵特殊紙張；規格：#E10，上邊距 18.5 / 下邊距 9.5 / 左邊距 75 / 右邊距 13.5，比例 90%；Be2 備註欄打「印」</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>包裝與寄送</strong>
-            <p>放入信封；大宗普掛表（20 個要連號）；貼普掛貼紙；列印（兩份）</p>
+            <strong data-i18n="mail-hsr-step4-title">包裝與寄送</strong>
+            <p data-i18n="mail-hsr-step4-desc">放入信封；大宗普掛表（20 個要連號）；貼普掛貼紙；列印（兩份）</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">5</div>
           <div class="step-content">
-            <strong>通知客人</strong>
-            <p>Be2 → 旅客對話 → 發送郵寄編號</p>
-            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 訂單處理進度不做變更</span>
+            <strong data-i18n="mail-hsr-step5-title">通知客人</strong>
+            <p data-i18n="mail-hsr-step5-desc">Be2 → 旅客對話 → 發送郵寄編號</p>
+            <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="mail-hsr-step5-note">⚠️ 訂單處理進度不做變更</span>
           </div>
         </li>
       </ol>
     </div>
 
-    <h2>處理單位對照</h2>
+    <h2 data-i18n="mail-dept-title">處理單位對照</h2>
     <div class="white-box">
       <table class="wiki-table">
         <thead>
-          <tr><th>商品類型</th><th>負責組別</th></tr>
+          <tr><th data-i18n="mail-table-col1">商品類型</th><th data-i18n="mail-table-col2">負責組別</th></tr>
         </thead>
         <tbody>
-          <tr><td>實體 SIM 卡 ＆ 各國交通卡</td><td>IB 組</td></tr>
-          <tr><td>JRPASS 票券</td><td>IB 組</td></tr>
-          <tr><td>高鐵票券</td><td>中文組</td></tr>
+          <tr><td data-i18n="mail-table-row1-type">實體 SIM 卡 ＆ 各國交通卡</td><td data-i18n="mail-table-row1-dept">IB 組</td></tr>
+          <tr><td data-i18n="mail-table-row2-type">JRPASS 票券</td><td data-i18n="mail-table-row2-dept">IB 組</td></tr>
+          <tr><td data-i18n="mail-table-row3-type">高鐵票券</td><td data-i18n="mail-table-row3-dept">中文組</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'mail-breadcrumb': '首頁 / 郵寄流程',
+    'mail-title': '郵寄流程',
+    'mail-chip': '實體出貨',
+    'mail-categories': 'ℹ️ 郵寄商品分三類：<strong>實體 SIM 卡 ＆ 各國交通卡</strong> / <strong>JRPASS 票券</strong> / <strong>高鐵票券</strong>',
+    'mail-jr-title': 'JRPASS 實體票券',
+    'mail-jr-deadline': '⚠️ 每天 12:00 撈單',
+    'mail-jr-step1-title': '撈單',
+    'mail-jr-step1-desc': 'BE2 → 訂單報表匯出；條件：郵寄 / 26888 JTBGMT (JR PASS GROUP) / KKday / 狀態：處理中＋旅客資料已齊＋OP已領取＋已訂出待供應商回覆 / 寄送地區：台灣 → 匯出 CSV',
+    'mail-jr-step2-title': '整理',
+    'mail-jr-step2-desc': '貼至「JRPASS 台灣郵寄表整理」，需要：訂單編號、地址、姓名、電話、數量、出發日期、上表日期；印標籤（與 SIM 卡方式相同）',
+    'mail-jr-step3-title': '列印',
+    'mail-jr-step3-desc': '進台灣 JRPASS 雲端列印；使用 JRPASS 特殊紙張',
+    'mail-jr-step3-note': '⚠️ 銀色雷射標需在規定匡格內',
+    'mail-jr-step4-title': '處理票據',
+    'mail-jr-step4-desc': '核對客人英文姓名 / 區域 / 票種是否與票券一致；撕下第一聯保留，第二三聯放入信封；Be2 備註「印」或「P」；點單至「已寄出」；製作大宗普掛表；列印（兩份）',
+    'mail-hsr-title': '高鐵實體票券',
+    'mail-hsr-step1-title': '整理與通知',
+    'mail-hsr-step1-desc': '中文組整理票券表單，通知 IB 組',
+    'mail-hsr-step2-title': '查詢與出票',
+    'mail-hsr-step2-desc': '開「高鐵新共表-總表」複製當日訂單號 → Be2 查詢供應商編號 → 高鐵後台系統 → 待取票查詢及出票 → 貼供應商訂單編號 → AGTS 出票 → 確認印票',
+    'mail-hsr-step3-title': '列印',
+    'mail-hsr-step3-desc': '高鐵特殊紙張；規格：#E10，上邊距 18.5 / 下邊距 9.5 / 左邊距 75 / 右邊距 13.5，比例 90%；Be2 備註欄打「印」',
+    'mail-hsr-step4-title': '包裝與寄送',
+    'mail-hsr-step4-desc': '放入信封；大宗普掛表（20 個要連號）；貼普掛貼紙；列印（兩份）',
+    'mail-hsr-step5-title': '通知客人',
+    'mail-hsr-step5-desc': 'Be2 → 旅客對話 → 發送郵寄編號',
+    'mail-hsr-step5-note': '⚠️ 訂單處理進度不做變更',
+    'mail-dept-title': '處理單位對照',
+    'mail-table-col1': '商品類型',
+    'mail-table-col2': '負責組別',
+    'mail-table-row1-type': '實體 SIM 卡 ＆ 各國交通卡',
+    'mail-table-row1-dept': 'IB 組',
+    'mail-table-row2-type': 'JRPASS 票券',
+    'mail-table-row2-dept': 'IB 組',
+    'mail-table-row3-type': '高鐵票券',
+    'mail-table-row3-dept': '中文組',
+  },
+  en: {
+    'mail-breadcrumb': 'Home / Mail Delivery Process',
+    'mail-title': 'Mail Delivery Process',
+    'mail-chip': 'Physical Shipment',
+    'mail-categories': 'ℹ️ Mailing products fall into three categories: <strong>Physical SIM Cards &amp; Transit Cards</strong> / <strong>JRPASS Vouchers</strong> / <strong>HSR Tickets</strong>',
+    'mail-jr-title': 'JRPASS Physical Vouchers',
+    'mail-jr-deadline': '⚠️ Pull orders daily by 12:00',
+    'mail-jr-step1-title': 'Pull Orders',
+    'mail-jr-step1-desc': 'BE2 → Export Order Report; Criteria: Mail / 26888 JTBGMT (JR PASS GROUP) / KKday / Status: Processing + Info Complete + OP Received + Booked Awaiting Supplier / Shipping Region: Taiwan → Export CSV',
+    'mail-jr-step2-title': 'Organize',
+    'mail-jr-step2-desc': 'Paste into "JRPASS Taiwan Mailing Sheet"; required fields: order number, address, name, phone, quantity, departure date, entry date; print labels (same method as SIM card)',
+    'mail-jr-step3-title': 'Print',
+    'mail-jr-step3-desc': 'Access Taiwan JRPASS cloud print; use JRPASS special paper',
+    'mail-jr-step3-note': '⚠️ Silver laser label must be within the designated frame',
+    'mail-jr-step4-title': 'Process Vouchers',
+    'mail-jr-step4-desc': 'Verify passenger English name / region / pass type against voucher; tear off and retain the 1st copy; insert 2nd and 3rd copies into envelope; add "P" or "印" note in Be2; mark order as "Shipped"; create bulk registered mail form; print (two copies)',
+    'mail-hsr-title': 'HSR Physical Tickets',
+    'mail-hsr-step1-title': 'Organize and Notify',
+    'mail-hsr-step1-desc': 'Chinese team organizes ticket form and notifies IB team',
+    'mail-hsr-step2-title': 'Search and Issue Tickets',
+    'mail-hsr-step2-desc': 'Open "HSR New Master Sheet - Summary", copy today\'s order numbers → Search supplier order number in Be2 → HSR backend system → Pending ticket retrieval and issuance → Paste supplier order number → AGTS issue ticket → Confirm print',
+    'mail-hsr-step3-title': 'Print',
+    'mail-hsr-step3-desc': 'Use HSR special paper; settings: #E10, top margin 18.5 / bottom 9.5 / left 75 / right 13.5, scale 90%; note "印" in Be2 remarks',
+    'mail-hsr-step4-title': 'Pack and Ship',
+    'mail-hsr-step4-desc': 'Place in envelope; bulk registered mail form (20 items must be consecutive); attach registered mail sticker; print (two copies)',
+    'mail-hsr-step5-title': 'Notify Customer',
+    'mail-hsr-step5-desc': 'Be2 → Traveler Chat → Send tracking number',
+    'mail-hsr-step5-note': '⚠️ Do not update order processing status',
+    'mail-dept-title': 'Handling Department Reference',
+    'mail-table-col1': 'Product Type',
+    'mail-table-col2': 'Responsible Team',
+    'mail-table-row1-type': 'Physical SIM Cards & Transit Cards',
+    'mail-table-row1-dept': 'IB Team',
+    'mail-table-row2-type': 'JRPASS Vouchers',
+    'mail-table-row2-dept': 'IB Team',
+    'mail-table-row3-type': 'HSR Tickets',
+    'mail-table-row3-dept': 'Chinese Team',
+  },
+  ja: {
+    'mail-breadcrumb': 'ホーム / 郵送フロー',
+    'mail-title': '郵送フロー',
+    'mail-chip': '実物出荷',
+    'mail-categories': 'ℹ️ 郵送商品は3種類：<strong>実物 SIM カード ＆ 各国交通カード</strong> / <strong>JRPASS 券</strong> / <strong>新幹線チケット</strong>',
+    'mail-jr-title': 'JRPASS 実物券',
+    'mail-jr-deadline': '⚠️ 毎日 12:00 に受注データ取得',
+    'mail-jr-step1-title': '受注データ取得',
+    'mail-jr-step1-desc': 'BE2 → 注文レポート出力；条件：郵送 / 26888 JTBGMT (JR PASS GROUP) / KKday / ステータス：処理中＋旅行者情報完備＋OP受領済み＋サプライヤー回答待ち / 発送地域：台湾 → CSV 出力',
+    'mail-jr-step2-title': '整理',
+    'mail-jr-step2-desc': '「JRPASS 台湾郵送表整理」に貼り付け；必要項目：注文番号、住所、氏名、電話、数量、出発日、入力日；ラベル印刷（SIM カードと同様）',
+    'mail-jr-step3-title': '印刷',
+    'mail-jr-step3-desc': '台湾 JRPASS クラウド印刷を使用；JRPASS 専用用紙を使用',
+    'mail-jr-step3-note': '⚠️ 銀色レーザーラベルは指定枠内に収めること',
+    'mail-jr-step4-title': '券の処理',
+    'mail-jr-step4-desc': '旅客の英語氏名 / エリア / パス種別が券と一致するか確認；第1联を切り取り保管、第2・3联を封筒に封入；Be2 に「印」または「P」を備考記入；注文を「発送済み」へ；大量書留リストを作成；印刷（2部）',
+    'mail-hsr-title': '新幹線実物チケット',
+    'mail-hsr-step1-title': '整理と通知',
+    'mail-hsr-step1-desc': '中国語チームがチケット表を整理し、IB チームに通知',
+    'mail-hsr-step2-title': '検索と発券',
+    'mail-hsr-step2-desc': '「新幹線新共通表-総表」を開き当日の注文番号をコピー → Be2 でサプライヤー番号を検索 → 新幹線バックエンドシステム → 取得待ちチケット照会・発券 → サプライヤー注文番号を貼付 → AGTS 発券 → 印刷確認',
+    'mail-hsr-step3-title': '印刷',
+    'mail-hsr-step3-desc': '新幹線専用用紙；設定：#E10、上余白 18.5 / 下 9.5 / 左 75 / 右 13.5、縮尺 90%；Be2 備考欄に「印」と記入',
+    'mail-hsr-step4-title': '梱包と発送',
+    'mail-hsr-step4-desc': '封筒に封入；大量書留リスト（20件は連番必須）；書留シールを貼付；印刷（2部）',
+    'mail-hsr-step5-title': '顧客への通知',
+    'mail-hsr-step5-desc': 'Be2 → 旅客チャット → 郵便追跡番号を送付',
+    'mail-hsr-step5-note': '⚠️ 注文処理状況は変更しないこと',
+    'mail-dept-title': '担当部門対照表',
+    'mail-table-col1': '商品種別',
+    'mail-table-col2': '担当チーム',
+    'mail-table-row1-type': '実物 SIM カード ＆ 各国交通カード',
+    'mail-table-row1-dept': 'IB チーム',
+    'mail-table-row2-type': 'JRPASS 券',
+    'mail-table-row2-dept': 'IB チーム',
+    'mail-table-row3-type': '新幹線チケット',
+    'mail-table-row3-dept': '中国語チーム',
+  },
+  ko: {
+    'mail-breadcrumb': '홈 / 우편 발송 프로세스',
+    'mail-title': '우편 발송 프로세스',
+    'mail-chip': '실물 출고',
+    'mail-categories': 'ℹ️ 우편 발송 상품은 3가지：<strong>실물 SIM 카드 ＆ 각국 교통카드</strong> / <strong>JRPASS 쿠폰</strong> / <strong>고속철도 티켓</strong>',
+    'mail-jr-title': 'JRPASS 실물 쿠폰',
+    'mail-jr-deadline': '⚠️ 매일 12:00 주문 조회',
+    'mail-jr-step1-title': '주문 조회',
+    'mail-jr-step1-desc': 'BE2 → 주문 보고서 내보내기；조건：우편 / 26888 JTBGMT (JR PASS GROUP) / KKday / 상태：처리 중＋여행자 정보 완비＋OP 수령 완료＋공급업체 회신 대기 / 발송 지역：대만 → CSV 내보내기',
+    'mail-jr-step2-title': '정리',
+    'mail-jr-step2-desc': '「JRPASS 대만 우편표 정리」에 붙여넣기；필요 항목：주문 번호, 주소, 이름, 전화, 수량, 출발일, 입력일；라벨 인쇄（SIM 카드와 동일 방법）',
+    'mail-jr-step3-title': '인쇄',
+    'mail-jr-step3-desc': '대만 JRPASS 클라우드 인쇄 접속；JRPASS 전용 용지 사용',
+    'mail-jr-step3-note': '⚠️ 은색 레이저 라벨은 지정 프레임 내에 있어야 함',
+    'mail-jr-step4-title': '쿠폰 처리',
+    'mail-jr-step4-desc': '여행자 영문 이름 / 지역 / 패스 종류가 쿠폰과 일치하는지 확인；1번째 연을 뜯어 보관, 2·3번째 연을 봉투에 넣음；Be2 비고에 「印」또는 「P」기재；주문을 「발송 완료」로 변경；대량 등기 목록 작성；인쇄（2부）',
+    'mail-hsr-title': '고속철도 실물 티켓',
+    'mail-hsr-step1-title': '정리 및 통보',
+    'mail-hsr-step1-desc': '중국어 팀이 티켓 표를 정리하고 IB 팀에 통보',
+    'mail-hsr-step2-title': '조회 및 발권',
+    'mail-hsr-step2-desc': '「고속철도 신통합표-총표」열기, 당일 주문 번호 복사 → Be2에서 공급업체 번호 조회 → 고속철도 백엔드 시스템 → 티켓 수령 대기 조회 및 발권 → 공급업체 주문 번호 붙여넣기 → AGTS 발권 → 인쇄 확인',
+    'mail-hsr-step3-title': '인쇄',
+    'mail-hsr-step3-desc': '고속철도 전용 용지；규격：#E10, 상단 여백 18.5 / 하단 9.5 / 좌측 75 / 우측 13.5, 비율 90%；Be2 비고란에 「印」입력',
+    'mail-hsr-step4-title': '포장 및 발송',
+    'mail-hsr-step4-desc': '봉투에 넣기；대량 등기 목록（20개는 연번 필수）；등기 스티커 부착；인쇄（2부）',
+    'mail-hsr-step5-title': '고객 통보',
+    'mail-hsr-step5-desc': 'Be2 → 여행자 대화 → 우편 추적 번호 발송',
+    'mail-hsr-step5-note': '⚠️ 주문 처리 진행 상황은 변경하지 않음',
+    'mail-dept-title': '처리 부서 대조표',
+    'mail-table-col1': '상품 유형',
+    'mail-table-col2': '담당 팀',
+    'mail-table-row1-type': '실물 SIM 카드 ＆ 각국 교통카드',
+    'mail-table-row1-dept': 'IB 팀',
+    'mail-table-row2-type': 'JRPASS 쿠폰',
+    'mail-table-row2-dept': 'IB 팀',
+    'mail-table-row3-type': '고속철도 티켓',
+    'mail-table-row3-dept': '중국어 팀',
+  }
+});
+</script>
 </body>
 </html>

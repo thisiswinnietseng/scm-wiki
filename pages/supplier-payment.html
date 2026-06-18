@@ -49,216 +49,219 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
     <div class="breadcrumb">
-      <a href="../index.html">首頁</a>
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
       <span class="sep">/</span>
-      <a href="../index.html#accounting">帳務管理</a>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
       <span class="sep">/</span>
-      <span class="current">預存款管理</span>
+      <span class="current" data-i18n="sp-breadcrumb-current">預存款管理</span>
     </div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#3c50e0,#6dd5ed)">🏧</div>
       <div class="page-header-body">
-        <h1>預存款管理</h1>
-        <div class="subtitle">補款申請、入款啟用、正負向操作、節日預估</div>
+        <h1 data-i18n="sp-title">預存款管理</h1>
+        <div class="subtitle" data-i18n="sp-subtitle">補款申請、入款啟用、正負向操作、節日預估</div>
         <div class="meta-row">
-          <span class="meta-chip badge-blue">預存款</span>
-          <span class="meta-chip">帳務管理</span>
+          <span class="meta-chip badge-blue" data-i18n="sp-chip1">預存款</span>
+          <span class="meta-chip" data-i18n="sp-chip2">帳務管理</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">💡 預存款介紹</div>
+      <div class="section-title" data-i18n="sp-intro-title">💡 預存款介紹</div>
       <div class="flow-bar" style="margin-bottom:14px;">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">供應商先補款至 KKday</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="sp-flow1">供應商先補款至 KKday</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">KKday 販售商品（從預存款扣除）</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="sp-flow2">KKday 販售商品（從預存款扣除）</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">完成付款</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="sp-flow3">完成付款</span>
       </div>
-      <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ Be2 預存金餘額不可為負向</span>
+      <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="sp-intro-note">⚠️ Be2 預存金餘額不可為負向</span>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📊 對帳方式</div>
+      <div class="section-title" data-i18n="sp-recon-title">📊 對帳方式</div>
       <div class="recon-row">
         <div class="recon-item">
-          <h4>週結型</h4>
-          <p>核對餘額至供應商提供的報表區間</p>
+          <h4 data-i18n="sp-recon-weekly-title">週結型</h4>
+          <p data-i18n="sp-recon-weekly-desc">核對餘額至供應商提供的報表區間</p>
         </div>
         <div class="recon-item">
-          <h4>半月結型</h4>
-          <p>有些供應商餘額可負值</p>
+          <h4 data-i18n="sp-recon-bimonthly-title">半月結型</h4>
+          <p data-i18n="sp-recon-bimonthly-desc">有些供應商餘額可負值</p>
         </div>
         <div class="recon-item">
-          <h4>月結型</h4>
-          <p>有些供應商餘額可負值</p>
+          <h4 data-i18n="sp-recon-monthly-title">月結型</h4>
+          <p data-i18n="sp-recon-monthly-desc">有些供應商餘額可負值</p>
         </div>
         <div class="recon-item">
-          <h4>不定期型</h4>
-          <p>快低於水位，請供應商提供報表</p>
+          <h4 data-i18n="sp-recon-irregular-title">不定期型</h4>
+          <p data-i18n="sp-recon-irregular-desc">快低於水位，請供應商提供報表</p>
         </div>
       </div>
       <div class="recon-item" style="background:#fafbff;">
-        <h4>平台核對</h4>
-        <p>核對餘額至當下</p>
+        <h4 data-i18n="sp-recon-platform-title">平台核對</h4>
+        <p data-i18n="sp-recon-platform-desc">核對餘額至當下</p>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">🧾 Invoice 規範</div>
+      <div class="section-title" data-i18n="sp-invoice-title">🧾 Invoice 規範</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 金額與補款金額一致（可先付款後補 Invoice）</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 境外匯款需轉匯，費時較長</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="sp-invoice-note1">✅ 金額與補款金額一致（可先付款後補 Invoice）</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="sp-invoice-note2">⚠️ 境外匯款需轉匯，費時較長</span>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📋 BPM 補款申請步驟</div>
+      <div class="section-title" data-i18n="sp-bpm-title">📋 BPM 補款申請步驟</div>
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <h4>核對帳款、拉完請款單</h4>
-            <p>確認 be2 餘額（扣除已請款訂單）= 供應商端餘額</p>
+            <h4 data-i18n="sp-bpm-step1-title">核對帳款、拉完請款單</h4>
+            <p data-i18n="sp-bpm-step1-desc">確認 be2 餘額（扣除已請款訂單）= 供應商端餘額</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h4>點「新增預存金」</h4>
-            <p>於 Be2 系統點擊新增預存金按鈕</p>
+            <h4 data-i18n="sp-bpm-step2-title">點「新增預存金」</h4>
+            <p data-i18n="sp-bpm-step2-desc">於 Be2 系統點擊新增預存金按鈕</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h4>填寫類別與摘要</h4>
-            <p>類別：<strong>預存金-補款</strong>；BPM 交易摘要：<strong>供應商編號 + 名稱 + 預存金補款</strong></p>
+            <h4 data-i18n="sp-bpm-step3-title">填寫類別與摘要</h4>
+            <p data-i18n-html="sp-bpm-step3-desc">類別：<strong>預存金-補款</strong>；BPM 交易摘要：<strong>供應商編號 + 名稱 + 預存金補款</strong></p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <h4>填寫預定付款日期</h4>
-            <p>週結選最近週四</p>
+            <h4 data-i18n="sp-bpm-step4-title">填寫預定付款日期</h4>
+            <p data-i18n="sp-bpm-step4-desc">週結選最近週四</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">5</div>
           <div class="step-content">
-            <h4>填寫補款資訊</h4>
-            <p>填寫首次／既有預存金補款；填寫單月銷量及此次預存金額</p>
+            <h4 data-i18n="sp-bpm-step5-title">填寫補款資訊</h4>
+            <p data-i18n="sp-bpm-step5-desc">填寫首次／既有預存金補款；填寫單月銷量及此次預存金額</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">6</div>
           <div class="step-content">
-            <h4>上傳附件</h4>
-            <p>上傳：供應商餘額證明、be2 系統餘額截圖、invoice / 明細</p>
+            <h4 data-i18n="sp-bpm-step6-title">上傳附件</h4>
+            <p data-i18n="sp-bpm-step6-desc">上傳：供應商餘額證明、be2 系統餘額截圖、invoice / 明細</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">7</div>
           <div class="step-content">
-            <h4>送審</h4>
-            <p>確認所有資料後送出 BPM 審核</p>
+            <h4 data-i18n="sp-bpm-step7-title">送審</h4>
+            <p data-i18n="sp-bpm-step7-desc">確認所有資料後送出 BPM 審核</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">✅ 入款啟用步驟</div>
+      <div class="section-title" data-i18n="sp-activate-title">✅ 入款啟用步驟</div>
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <h4>確認供應商收到款項</h4>
-            <p>確認供應商收到款項後，至 Be2 執行啟用</p>
+            <h4 data-i18n="sp-activate-step1-title">確認供應商收到款項</h4>
+            <p data-i18n="sp-activate-step1-desc">確認供應商收到款項後，至 Be2 執行啟用</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <h4>選擇要啟用的單號</h4>
-            <p>在 Be2 系統中選擇對應的補款單號</p>
+            <h4 data-i18n="sp-activate-step2-title">選擇要啟用的單號</h4>
+            <p data-i18n="sp-activate-step2-desc">在 Be2 系統中選擇對應的補款單號</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <h4>點啟用</h4>
-            <p>點擊啟用後，be2 餘額即更新</p>
+            <h4 data-i18n="sp-activate-step3-title">點啟用</h4>
+            <p data-i18n="sp-activate-step3-desc">點擊啟用後，be2 餘額即更新</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">↔️ 正負向特殊情境</div>
-      <p style="font-size:13px;color:#4a5568;margin-bottom:12px;">適用情境：退佣返還、預存帳戶結清、請款方式設定有誤</p>
-      <span style="display:inline-block;margin-bottom:16px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 兩家預存之間的正負向轉換，必須要有一正一負的對應 BPM 單號</span>
+      <div class="section-title" data-i18n="sp-posneg-title">↔️ 正負向特殊情境</div>
+      <p style="font-size:13px;color:#4a5568;margin-bottom:12px;" data-i18n="sp-posneg-desc">適用情境：退佣返還、預存帳戶結清、請款方式設定有誤</p>
+      <span style="display:inline-block;margin-bottom:16px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="sp-posneg-note">⚠️ 兩家預存之間的正負向轉換，必須要有一正一負的對應 BPM 單號</span>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:10px;padding:18px;">
-          <div style="font-size:14px;font-weight:700;color:#2e7d32;margin-bottom:12px;">正向操作</div>
+          <div style="font-size:14px;font-weight:700;color:#2e7d32;margin-bottom:12px;" data-i18n="sp-pos-title">正向操作</div>
           <div class="step-list" style="gap:0;">
             <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #c8e6c9;">
               <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">點新增預存金</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-pos-step1">點新增預存金</p>
             </div>
             <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #c8e6c9;">
               <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">類別選「補款」</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-pos-step2">類別選「補款」</p>
             </div>
             <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #c8e6c9;">
               <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">BPM 摘要填「正向不付款」</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-pos-step3">BPM 摘要填「正向不付款」</p>
             </div>
             <div style="display:flex;gap:10px;padding:8px 0;">
               <div style="width:22px;height:22px;border-radius:50%;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">4</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">本次扣抵填正向金額 → 確認付款金額變 0</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-pos-step4">本次扣抵填正向金額 → 確認付款金額變 0</p>
             </div>
           </div>
         </div>
 
         <div style="background:#fce4ec;border:1px solid #ef9a9a;border-radius:10px;padding:18px;">
-          <div style="font-size:14px;font-weight:700;color:#c62828;margin-bottom:12px;">負向操作</div>
+          <div style="font-size:14px;font-weight:700;color:#c62828;margin-bottom:12px;" data-i18n="sp-neg-title">負向操作</div>
           <div class="step-list" style="gap:0;">
             <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f48fb1;">
               <div style="width:22px;height:22px;border-radius:50%;background:#c62828;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">點新增負向</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-neg-step1">點新增負向</p>
             </div>
             <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f48fb1;">
               <div style="width:22px;height:22px;border-radius:50%;background:#c62828;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">類別選「預存金-轉出」</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-neg-step2">類別選「預存金-轉出」</p>
             </div>
             <div style="display:flex;gap:10px;padding:8px 0;">
               <div style="width:22px;height:22px;border-radius:50%;background:#c62828;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</div>
-              <p style="font-size:12px;color:#2d3748;margin:0;">填扣除金額 → 送審</p>
+              <p style="font-size:12px;color:#2d3748;margin:0;" data-i18n="sp-neg-step3">填扣除金額 → 送審</p>
             </div>
           </div>
         </div>
@@ -266,32 +269,328 @@
     </div>
 
     <div class="white-box">
-      <div class="section-title">🎉 節日預估公式</div>
+      <div class="section-title" data-i18n="sp-formula-title">🎉 節日預估公式</div>
       <div class="formula-box">
-        <div class="formula-title">預估補款金額</div>
-        <span class="highlight">預估補款金額 = (N × Q) - Y</span>
+        <div class="formula-title" data-i18n="sp-formula-label">預估補款金額</div>
+        <span class="highlight" data-i18n="sp-formula-text">預估補款金額 = (N × Q) - Y</span>
       </div>
       <div class="formula-var">
         <div class="formula-var-item">
           <span class="formula-var-key">N</span>
-          <span>預估日 ～ 下次補款日總天數 + 2 天</span>
+          <span data-i18n="sp-formula-n">預估日 ～ 下次補款日總天數 + 2 天</span>
         </div>
         <div class="formula-var-item">
           <span class="formula-var-key">Q</span>
-          <span>過去七天平均單日使用量</span>
+          <span data-i18n="sp-formula-q">過去七天平均單日使用量</span>
         </div>
         <div class="formula-var-item">
           <span class="formula-var-key">Y</span>
-          <span>供應商餘額</span>
+          <span data-i18n="sp-formula-y">供應商餘額</span>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px;">
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 如需調整，請 BD 提出說明</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 提出金額與 OP 預估差異較大，建議 BD 發信，市場主管同意</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="sp-formula-note1">⚠️ 如需調整，請 BD 提出說明</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="sp-formula-note2">⚠️ 提出金額與 OP 預估差異較大，建議 BD 發信，市場主管同意</span>
       </div>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享',
+    'breadcrumb-home': '首頁',
+    'breadcrumb-accounting': '帳務管理',
+    'sp-breadcrumb-current': '預存款管理',
+    'sp-title': '預存款管理',
+    'sp-subtitle': '補款申請、入款啟用、正負向操作、節日預估',
+    'sp-chip1': '預存款',
+    'sp-chip2': '帳務管理',
+    'sp-intro-title': '💡 預存款介紹',
+    'sp-flow1': '供應商先補款至 KKday',
+    'sp-flow2': 'KKday 販售商品（從預存款扣除）',
+    'sp-flow3': '完成付款',
+    'sp-intro-note': '⚠️ Be2 預存金餘額不可為負向',
+    'sp-recon-title': '📊 對帳方式',
+    'sp-recon-weekly-title': '週結型',
+    'sp-recon-weekly-desc': '核對餘額至供應商提供的報表區間',
+    'sp-recon-bimonthly-title': '半月結型',
+    'sp-recon-bimonthly-desc': '有些供應商餘額可負值',
+    'sp-recon-monthly-title': '月結型',
+    'sp-recon-monthly-desc': '有些供應商餘額可負值',
+    'sp-recon-irregular-title': '不定期型',
+    'sp-recon-irregular-desc': '快低於水位，請供應商提供報表',
+    'sp-recon-platform-title': '平台核對',
+    'sp-recon-platform-desc': '核對餘額至當下',
+    'sp-invoice-title': '🧾 Invoice 規範',
+    'sp-invoice-note1': '✅ 金額與補款金額一致（可先付款後補 Invoice）',
+    'sp-invoice-note2': '⚠️ 境外匯款需轉匯，費時較長',
+    'sp-bpm-title': '📋 BPM 補款申請步驟',
+    'sp-bpm-step1-title': '核對帳款、拉完請款單',
+    'sp-bpm-step1-desc': '確認 be2 餘額（扣除已請款訂單）= 供應商端餘額',
+    'sp-bpm-step2-title': '點「新增預存金」',
+    'sp-bpm-step2-desc': '於 Be2 系統點擊新增預存金按鈕',
+    'sp-bpm-step3-title': '填寫類別與摘要',
+    'sp-bpm-step3-desc': '類別：<strong>預存金-補款</strong>；BPM 交易摘要：<strong>供應商編號 + 名稱 + 預存金補款</strong>',
+    'sp-bpm-step4-title': '填寫預定付款日期',
+    'sp-bpm-step4-desc': '週結選最近週四',
+    'sp-bpm-step5-title': '填寫補款資訊',
+    'sp-bpm-step5-desc': '填寫首次／既有預存金補款；填寫單月銷量及此次預存金額',
+    'sp-bpm-step6-title': '上傳附件',
+    'sp-bpm-step6-desc': '上傳：供應商餘額證明、be2 系統餘額截圖、invoice / 明細',
+    'sp-bpm-step7-title': '送審',
+    'sp-bpm-step7-desc': '確認所有資料後送出 BPM 審核',
+    'sp-activate-title': '✅ 入款啟用步驟',
+    'sp-activate-step1-title': '確認供應商收到款項',
+    'sp-activate-step1-desc': '確認供應商收到款項後，至 Be2 執行啟用',
+    'sp-activate-step2-title': '選擇要啟用的單號',
+    'sp-activate-step2-desc': '在 Be2 系統中選擇對應的補款單號',
+    'sp-activate-step3-title': '點啟用',
+    'sp-activate-step3-desc': '點擊啟用後，be2 餘額即更新',
+    'sp-posneg-title': '↔️ 正負向特殊情境',
+    'sp-posneg-desc': '適用情境：退佣返還、預存帳戶結清、請款方式設定有誤',
+    'sp-posneg-note': '⚠️ 兩家預存之間的正負向轉換，必須要有一正一負的對應 BPM 單號',
+    'sp-pos-title': '正向操作',
+    'sp-pos-step1': '點新增預存金',
+    'sp-pos-step2': '類別選「補款」',
+    'sp-pos-step3': 'BPM 摘要填「正向不付款」',
+    'sp-pos-step4': '本次扣抵填正向金額 → 確認付款金額變 0',
+    'sp-neg-title': '負向操作',
+    'sp-neg-step1': '點新增負向',
+    'sp-neg-step2': '類別選「預存金-轉出」',
+    'sp-neg-step3': '填扣除金額 → 送審',
+    'sp-formula-title': '🎉 節日預估公式',
+    'sp-formula-label': '預估補款金額',
+    'sp-formula-text': '預估補款金額 = (N × Q) - Y',
+    'sp-formula-n': '預估日 ～ 下次補款日總天數 + 2 天',
+    'sp-formula-q': '過去七天平均單日使用量',
+    'sp-formula-y': '供應商餘額',
+    'sp-formula-note1': '⚠️ 如需調整，請 BD 提出說明',
+    'sp-formula-note2': '⚠️ 提出金額與 OP 預估差異較大，建議 BD 發信，市場主管同意',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally',
+    'breadcrumb-home': 'Home',
+    'breadcrumb-accounting': 'Accounting',
+    'sp-breadcrumb-current': 'Prepaid Deposit Management',
+    'sp-title': 'Prepaid Deposit Management',
+    'sp-subtitle': 'Top-up Requests, Activation, Positive/Negative Operations, Holiday Estimates',
+    'sp-chip1': 'Prepaid Deposit',
+    'sp-chip2': 'Accounting',
+    'sp-intro-title': '💡 Prepaid Deposit Overview',
+    'sp-flow1': 'Supplier Tops Up to KKday',
+    'sp-flow2': 'KKday Sells Products (Deduct from Deposit)',
+    'sp-flow3': 'Payment Complete',
+    'sp-intro-note': '⚠️ Be2 prepaid balance must not go negative',
+    'sp-recon-title': '📊 Reconciliation Methods',
+    'sp-recon-weekly-title': 'Weekly',
+    'sp-recon-weekly-desc': 'Reconcile balance against supplier-provided report period',
+    'sp-recon-bimonthly-title': 'Bi-Monthly',
+    'sp-recon-bimonthly-desc': 'Some suppliers allow negative balance',
+    'sp-recon-monthly-title': 'Monthly',
+    'sp-recon-monthly-desc': 'Some suppliers allow negative balance',
+    'sp-recon-irregular-title': 'Ad Hoc',
+    'sp-recon-irregular-desc': 'When balance approaches threshold, request report from supplier',
+    'sp-recon-platform-title': 'Platform Reconciliation',
+    'sp-recon-platform-desc': 'Reconcile balance to current state',
+    'sp-invoice-title': '🧾 Invoice Requirements',
+    'sp-invoice-note1': '✅ Amount must match top-up amount (can pay first and submit Invoice later)',
+    'sp-invoice-note2': '⚠️ International transfers require intermediary routing and take longer',
+    'sp-bpm-title': '📋 BPM Top-Up Application Steps',
+    'sp-bpm-step1-title': 'Reconcile Accounts & Pull Billing Statement',
+    'sp-bpm-step1-desc': 'Confirm Be2 balance (minus already billed orders) = Supplier balance',
+    'sp-bpm-step2-title': 'Click "Add Prepaid Deposit"',
+    'sp-bpm-step2-desc': 'Click the Add Prepaid Deposit button in Be2',
+    'sp-bpm-step3-title': 'Fill in Category & Summary',
+    'sp-bpm-step3-desc': 'Category: <strong>Prepaid - Top-up</strong>; BPM Transaction Summary: <strong>Supplier ID + Name + Prepaid Top-up</strong>',
+    'sp-bpm-step4-title': 'Fill in Scheduled Payment Date',
+    'sp-bpm-step4-desc': 'For weekly settlement, select the nearest Thursday',
+    'sp-bpm-step5-title': 'Fill in Top-Up Details',
+    'sp-bpm-step5-desc': 'Indicate first-time or existing prepaid top-up; fill in monthly sales volume and top-up amount',
+    'sp-bpm-step6-title': 'Upload Attachments',
+    'sp-bpm-step6-desc': 'Upload: Supplier balance proof, Be2 balance screenshot, Invoice / statement',
+    'sp-bpm-step7-title': 'Submit for Approval',
+    'sp-bpm-step7-desc': 'Confirm all information and submit BPM for review',
+    'sp-activate-title': '✅ Activation Steps After Payment',
+    'sp-activate-step1-title': 'Confirm Supplier Received Payment',
+    'sp-activate-step1-desc': 'After confirming supplier received payment, proceed to activate in Be2',
+    'sp-activate-step2-title': 'Select the Reference Number to Activate',
+    'sp-activate-step2-desc': 'In Be2, select the corresponding top-up reference number',
+    'sp-activate-step3-title': 'Click Activate',
+    'sp-activate-step3-desc': 'After clicking Activate, Be2 balance updates immediately',
+    'sp-posneg-title': '↔️ Positive/Negative Special Scenarios',
+    'sp-posneg-desc': 'Applicable for: commission rebates, prepaid account clearing, incorrect billing setup',
+    'sp-posneg-note': '⚠️ Positive/negative transfers between two prepaid accounts must have paired BPM reference numbers (one positive, one negative)',
+    'sp-pos-title': 'Positive Operation',
+    'sp-pos-step1': 'Click Add Prepaid Deposit',
+    'sp-pos-step2': 'Select category "Top-up"',
+    'sp-pos-step3': 'BPM summary: enter "Positive No-Payment"',
+    'sp-pos-step4': 'Enter positive amount as offset → confirm payment amount becomes 0',
+    'sp-neg-title': 'Negative Operation',
+    'sp-neg-step1': 'Click Add Negative',
+    'sp-neg-step2': 'Select category "Prepaid - Transfer Out"',
+    'sp-neg-step3': 'Enter deduction amount → Submit for approval',
+    'sp-formula-title': '🎉 Holiday Estimate Formula',
+    'sp-formula-label': 'Estimated Top-up Amount',
+    'sp-formula-text': 'Estimated Top-up = (N × Q) - Y',
+    'sp-formula-n': 'Total days from estimation date to next top-up date + 2 days',
+    'sp-formula-q': 'Average daily usage over past 7 days',
+    'sp-formula-y': 'Current supplier balance',
+    'sp-formula-note1': '⚠️ If adjustments are needed, BD should provide justification',
+    'sp-formula-note2': '⚠️ If proposed amount differs significantly from OP estimate, BD should email and obtain market supervisor approval',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定 · 外部共有禁止',
+    'breadcrumb-home': 'ホーム',
+    'breadcrumb-accounting': '経理管理',
+    'sp-breadcrumb-current': 'プリペイド管理',
+    'sp-title': 'プリペイド管理',
+    'sp-subtitle': '入金申請・有効化・正負向操作・祝日予測',
+    'sp-chip1': 'プリペイド',
+    'sp-chip2': '経理管理',
+    'sp-intro-title': '💡 プリペイド概要',
+    'sp-flow1': 'サプライヤーが KKday に入金',
+    'sp-flow2': 'KKday が商品販売（プリペイドから差し引き）',
+    'sp-flow3': '支払完了',
+    'sp-intro-note': '⚠️ Be2 プリペイド残高はマイナス不可',
+    'sp-recon-title': '📊 照合方式',
+    'sp-recon-weekly-title': '週次型',
+    'sp-recon-weekly-desc': 'サプライヤー提供のレポート期間に対して残高を照合',
+    'sp-recon-bimonthly-title': '月2回型',
+    'sp-recon-bimonthly-desc': '一部サプライヤーはマイナス残高可能',
+    'sp-recon-monthly-title': '月次型',
+    'sp-recon-monthly-desc': '一部サプライヤーはマイナス残高可能',
+    'sp-recon-irregular-title': '不定期型',
+    'sp-recon-irregular-desc': '残高がしきい値に近づいたらサプライヤーにレポートを要求',
+    'sp-recon-platform-title': 'プラットフォーム照合',
+    'sp-recon-platform-desc': '現在の残高まで照合',
+    'sp-invoice-title': '🧾 Invoice 規定',
+    'sp-invoice-note1': '✅ 金額は入金額と一致（先払い後に Invoice 補完可能）',
+    'sp-invoice-note2': '⚠️ 国際送金は中継が必要で時間がかかります',
+    'sp-bpm-title': '📋 BPM 入金申請ステップ',
+    'sp-bpm-step1-title': '帳票照合・請求書の取得',
+    'sp-bpm-step1-desc': 'Be2 残高（請求済み注文を除く）= サプライヤー残高を確認',
+    'sp-bpm-step2-title': '「プリペイド追加」をクリック',
+    'sp-bpm-step2-desc': 'Be2 でプリペイド追加ボタンをクリック',
+    'sp-bpm-step3-title': 'カテゴリと摘要を入力',
+    'sp-bpm-step3-desc': 'カテゴリ：<strong>プリペイド-入金</strong>；BPM 取引摘要：<strong>サプライヤー番号 + 名称 + プリペイド入金</strong>',
+    'sp-bpm-step4-title': '支払予定日を入力',
+    'sp-bpm-step4-desc': '週次の場合は直近の木曜日を選択',
+    'sp-bpm-step5-title': '入金情報を入力',
+    'sp-bpm-step5-desc': '初回/既存プリペイド入金を記入；月間販売量と今回の入金額を入力',
+    'sp-bpm-step6-title': '添付ファイルをアップロード',
+    'sp-bpm-step6-desc': 'アップロード：サプライヤー残高証明、Be2 残高スクリーンショット、Invoice / 明細',
+    'sp-bpm-step7-title': '審査に送付',
+    'sp-bpm-step7-desc': 'すべての情報を確認後、BPM 審査に送付',
+    'sp-activate-title': '✅ 入金有効化ステップ',
+    'sp-activate-step1-title': 'サプライヤーの入金確認',
+    'sp-activate-step1-desc': 'サプライヤーへの入金確認後、Be2 で有効化を実行',
+    'sp-activate-step2-title': '有効化する単号を選択',
+    'sp-activate-step2-desc': 'Be2 で対応する入金番号を選択',
+    'sp-activate-step3-title': '有効化をクリック',
+    'sp-activate-step3-desc': '有効化クリック後、Be2 残高が即時更新',
+    'sp-posneg-title': '↔️ 正負向の特殊シナリオ',
+    'sp-posneg-desc': '適用シナリオ：コミッション返還、プリペイド口座精算、請求方式の設定誤り',
+    'sp-posneg-note': '⚠️ 2社間のプリペイドの正負向変換には、対になる BPM 番号（正1つ・負1つ）が必要',
+    'sp-pos-title': '正向操作',
+    'sp-pos-step1': 'プリペイド追加をクリック',
+    'sp-pos-step2': 'カテゴリ「入金」を選択',
+    'sp-pos-step3': 'BPM 摘要に「正向不払い」を入力',
+    'sp-pos-step4': '今回の相殺に正向金額を入力 → 支払金額が 0 になることを確認',
+    'sp-neg-title': '負向操作',
+    'sp-neg-step1': '負向追加をクリック',
+    'sp-neg-step2': 'カテゴリ「プリペイド-振替出金」を選択',
+    'sp-neg-step3': '控除金額を入力 → 審査に送付',
+    'sp-formula-title': '🎉 祝日予測フォーミュラ',
+    'sp-formula-label': '入金予測額',
+    'sp-formula-text': '入金予測額 = (N × Q) - Y',
+    'sp-formula-n': '予測日 ～ 次回入金日までの総日数 + 2 日',
+    'sp-formula-q': '過去7日間の平均1日使用量',
+    'sp-formula-y': 'サプライヤー残高',
+    'sp-formula-note1': '⚠️ 調整が必要な場合は BD に説明を求めてください',
+    'sp-formula-note2': '⚠️ 提案金額と OP 予測の差異が大きい場合は BD がメールを送り、市場責任者の承認を得ること',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
+    'breadcrumb-home': '홈',
+    'breadcrumb-accounting': '회계 관리',
+    'sp-breadcrumb-current': '선불 예치금 관리',
+    'sp-title': '선불 예치금 관리',
+    'sp-subtitle': '입금 신청·활성화·정부향 운영·명절 예측',
+    'sp-chip1': '선불 예치금',
+    'sp-chip2': '회계 관리',
+    'sp-intro-title': '💡 선불 예치금 소개',
+    'sp-flow1': '공급업체가 KKday에 선입금',
+    'sp-flow2': 'KKday가 상품 판매（예치금에서 차감）',
+    'sp-flow3': '결제 완료',
+    'sp-intro-note': '⚠️ Be2 선불 예치금 잔액은 음수 불가',
+    'sp-recon-title': '📊 대사 방식',
+    'sp-recon-weekly-title': '주간 정산형',
+    'sp-recon-weekly-desc': '공급업체가 제공한 보고서 기간까지 잔액 대사',
+    'sp-recon-bimonthly-title': '격주 정산형',
+    'sp-recon-bimonthly-desc': '일부 공급업체는 음수 잔액 허용',
+    'sp-recon-monthly-title': '월간 정산형',
+    'sp-recon-monthly-desc': '일부 공급업체는 음수 잔액 허용',
+    'sp-recon-irregular-title': '비정기형',
+    'sp-recon-irregular-desc': '잔액이 기준치에 가까워지면 공급업체에 보고서 요청',
+    'sp-recon-platform-title': '플랫폼 대사',
+    'sp-recon-platform-desc': '현재 잔액까지 대사',
+    'sp-invoice-title': '🧾 Invoice 규정',
+    'sp-invoice-note1': '✅ 금액은 입금액과 일치해야 함（결제 후 Invoice 보완 가능）',
+    'sp-invoice-note2': '⚠️ 해외 송금은 중계가 필요하여 시간이 더 걸립니다',
+    'sp-bpm-title': '📋 BPM 입금 신청 단계',
+    'sp-bpm-step1-title': '대금 대사 및 청구서 취득',
+    'sp-bpm-step1-desc': 'Be2 잔액（청구 완료 주문 제외）= 공급업체 잔액 확인',
+    'sp-bpm-step2-title': '「선불 예치금 추가」 클릭',
+    'sp-bpm-step2-desc': 'Be2에서 선불 예치금 추가 버튼 클릭',
+    'sp-bpm-step3-title': '카테고리 및 적요 입력',
+    'sp-bpm-step3-desc': '카테고리：<strong>선불 예치금-입금</strong>；BPM 거래 적요：<strong>공급업체 코드 + 명칭 + 선불 예치금 입금</strong>',
+    'sp-bpm-step4-title': '예정 결제일 입력',
+    'sp-bpm-step4-desc': '주간 정산은 가장 가까운 목요일 선택',
+    'sp-bpm-step5-title': '입금 정보 입력',
+    'sp-bpm-step5-desc': '최초/기존 선불 예치금 입금 여부 기재；월간 판매량 및 이번 예치금액 입력',
+    'sp-bpm-step6-title': '첨부 파일 업로드',
+    'sp-bpm-step6-desc': '업로드：공급업체 잔액 증명, Be2 잔액 스크린샷, Invoice / 명세서',
+    'sp-bpm-step7-title': '검토 제출',
+    'sp-bpm-step7-desc': '모든 정보 확인 후 BPM 검토 제출',
+    'sp-activate-title': '✅ 입금 활성화 단계',
+    'sp-activate-step1-title': '공급업체 입금 확인',
+    'sp-activate-step1-desc': '공급업체 입금 확인 후 Be2에서 활성화 실행',
+    'sp-activate-step2-title': '활성화할 단호 선택',
+    'sp-activate-step2-desc': 'Be2에서 해당 입금 단호 선택',
+    'sp-activate-step3-title': '활성화 클릭',
+    'sp-activate-step3-desc': '활성화 클릭 후 Be2 잔액 즉시 업데이트',
+    'sp-posneg-title': '↔️ 정부향 특수 시나리오',
+    'sp-posneg-desc': '적용 상황：커미션 반환, 선불 계좌 정산, 청구 방식 설정 오류',
+    'sp-posneg-note': '⚠️ 두 선불 계좌 간 정부향 전환 시 반드시 쌍으로 대응되는 BPM 번호（정향 1개·부향 1개）필요',
+    'sp-pos-title': '정향 조작',
+    'sp-pos-step1': '선불 예치금 추가 클릭',
+    'sp-pos-step2': '카테고리「입금」선택',
+    'sp-pos-step3': 'BPM 적요에「정향 미결제」입력',
+    'sp-pos-step4': '이번 상쇄분에 정향 금액 입력 → 결제 금액이 0이 되는지 확인',
+    'sp-neg-title': '부향 조작',
+    'sp-neg-step1': '부향 추가 클릭',
+    'sp-neg-step2': '카테고리「선불 예치금-이체 출금」선택',
+    'sp-neg-step3': '차감 금액 입력 → 검토 제출',
+    'sp-formula-title': '🎉 명절 예측 공식',
+    'sp-formula-label': '예상 입금액',
+    'sp-formula-text': '예상 입금액 = (N × Q) - Y',
+    'sp-formula-n': '예측일 ～ 다음 입금일까지 총 일수 + 2일',
+    'sp-formula-q': '최근 7일간 일평균 사용량',
+    'sp-formula-y': '공급업체 잔액',
+    'sp-formula-note1': '⚠️ 조정이 필요한 경우 BD가 설명을 제출하세요',
+    'sp-formula-note2': '⚠️ 제안 금액과 OP 예측 차이가 클 경우 BD가 이메일 발송 후 시장 책임자 승인 필요',
+  }
+});
+</script>
 </body>
 </html>

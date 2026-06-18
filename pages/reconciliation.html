@@ -54,148 +54,151 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
     <div class="breadcrumb">
-      <a href="../index.html">首頁</a>
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
       <span class="sep">/</span>
-      <a href="../index.html#accounting">帳務管理</a>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
       <span class="sep">/</span>
-      <span class="current">對帳流程</span>
+      <span class="current" data-i18n="recon-breadcrumb-current">對帳流程</span>
     </div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">📋</div>
       <div class="page-header-body">
-        <h1>對帳流程</h1>
-        <div class="subtitle">全自動、自動、人工對帳種類 + BPM 請款流程</div>
+        <h1 data-i18n="recon-title">對帳流程</h1>
+        <div class="subtitle" data-i18n="recon-subtitle">全自動、自動、人工對帳種類 + BPM 請款流程</div>
         <div class="meta-row">
-          <span class="meta-chip badge-teal">對帳</span>
-          <span class="meta-chip">帳務管理</span>
+          <span class="meta-chip badge-teal" data-i18n="recon-chip1">對帳</span>
+          <span class="meta-chip" data-i18n="recon-chip2">帳務管理</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">🔄 對帳種類（三種）</div>
+      <div class="section-title" data-i18n="recon-types-title">🔄 對帳種類（三種）</div>
 
       <div class="type-card">
         <div class="type-card-header">
           <div class="type-num" style="background:linear-gradient(135deg,#11998e,#38ef7d);">1</div>
-          <h3>全自動對帳</h3>
+          <h3 data-i18n="recon-type1-title">全自動對帳</h3>
         </div>
-        <p style="font-size:13px;color:#4a5568;line-height:1.7;">系統於報表產出後第三天自動產出 Invoice，供應商無需進系統按確認。Auto-invoice BPM 自動送審。</p>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;" data-i18n="recon-type1-desc">系統於報表產出後第三天自動產出 Invoice，供應商無需進系統按確認。Auto-invoice BPM 自動送審。</p>
         <div class="info-row">
-          <span class="info-tag" style="background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;">系統全自動</span>
-          <span class="info-tag" style="background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;">供應商免操作</span>
+          <span class="info-tag" style="background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;" data-i18n="recon-type1-tag1">系統全自動</span>
+          <span class="info-tag" style="background:#e0f2f1;color:#00695c;border:1px solid #80cbc4;" data-i18n="recon-type1-tag2">供應商免操作</span>
         </div>
       </div>
 
       <div class="type-card">
         <div class="type-card-header">
           <div class="type-num" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);">2</div>
-          <h3>自動對帳</h3>
+          <h3 data-i18n="recon-type2-title">自動對帳</h3>
         </div>
-        <p style="font-size:13px;color:#4a5568;line-height:1.7;">供應商透過 SCM 或 Rezio 系統核對，仍須寄送 Invoice 或紙本發票。</p>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;" data-i18n="recon-type2-desc">供應商透過 SCM 或 Rezio 系統核對，仍須寄送 Invoice 或紙本發票。</p>
         <div class="info-row">
           <span class="info-tag" style="background:#e8f0fe;color:#3c50e0;border:1px solid #c5d3f5;">SCM / Rezio</span>
-          <span class="info-tag" style="background:#e8f0fe;color:#3c50e0;border:1px solid #c5d3f5;">需寄送 Invoice</span>
+          <span class="info-tag" style="background:#e8f0fe;color:#3c50e0;border:1px solid #c5d3f5;" data-i18n="recon-type2-tag2">需寄送 Invoice</span>
         </div>
       </div>
 
       <div class="type-card">
         <div class="type-card-header">
           <div class="type-num" style="background:linear-gradient(135deg,#f7971e,#ffd200);">3</div>
-          <h3>人工對帳</h3>
+          <h3 data-i18n="recon-type3-title">人工對帳</h3>
         </div>
-        <p style="font-size:13px;color:#4a5568;line-height:1.7;">供應商或 KKday 提供對帳報表，進行核對。</p>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;" data-i18n="recon-type3-desc">供應商或 KKday 提供對帳報表，進行核對。</p>
         <div class="info-row">
-          <span class="info-tag" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">人工核對</span>
+          <span class="info-tag" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;" data-i18n="recon-type3-tag1">人工核對</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📅 對帳時程</div>
+      <div class="section-title" data-i18n="recon-schedule-title">📅 對帳時程</div>
       <div style="margin-bottom:16px;">
         <div style="display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
           <div style="flex:1;min-width:200px;background:#e0f2f1;border:1px solid #80cbc4;border-radius:8px;padding:12px 16px;">
-            <div style="font-size:12px;font-weight:700;color:#00695c;margin-bottom:4px;">報表、自動 Invoice 產出日</div>
-            <div style="font-size:20px;font-weight:700;color:var(--primary);">每月 3 日 &amp; 18 日</div>
+            <div style="font-size:12px;font-weight:700;color:#00695c;margin-bottom:4px;" data-i18n="recon-sched-report-label">報表、自動 Invoice 產出日</div>
+            <div style="font-size:20px;font-weight:700;color:var(--primary);" data-i18n="recon-sched-report-date">每月 3 日 &amp; 18 日</div>
           </div>
           <div style="flex:1;min-width:200px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;">
-            <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;">應請款表更新</div>
-            <div style="font-size:14px;font-weight:700;color:var(--primary);">約每月 4 日 &amp; 19 日</div>
-            <div style="font-size:11px;color:#718096;margin-top:4px;">更新會在 go-scm 通知</div>
+            <div style="font-size:12px;font-weight:700;color:#e65100;margin-bottom:4px;" data-i18n="recon-sched-billing-label">應請款表更新</div>
+            <div style="font-size:14px;font-weight:700;color:var(--primary);" data-i18n="recon-sched-billing-date">約每月 4 日 &amp; 19 日</div>
+            <div style="font-size:11px;color:#718096;margin-top:4px;" data-i18n="recon-sched-billing-note">更新會在 go-scm 通知</div>
           </div>
           <div style="flex:1;min-width:200px;background:#fafbff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;">
-            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;">全自動 Invoice 產出</div>
-            <div style="font-size:14px;font-weight:700;color:var(--primary);">報表後第三或七天自動產出</div>
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;" data-i18n="recon-sched-autoinv-label">全自動 Invoice 產出</div>
+            <div style="font-size:14px;font-weight:700;color:var(--primary);" data-i18n="recon-sched-autoinv-date">報表後第三或七天自動產出</div>
           </div>
           <div style="flex:1;min-width:200px;background:#fafbff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;">
-            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;">帳單自動確認</div>
-            <div style="font-size:14px;font-weight:700;color:var(--primary);">6 日 &amp; 21 日</div>
+            <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:4px;" data-i18n="recon-sched-autoconfirm-label">帳單自動確認</div>
+            <div style="font-size:14px;font-weight:700;color:var(--primary);" data-i18n="recon-sched-autoconfirm-date">6 日 &amp; 21 日</div>
           </div>
         </div>
       </div>
 
-      <div class="section-title">🔁 自動對帳流程</div>
+      <div class="section-title" data-i18n="recon-autoflow-title">🔁 自動對帳流程</div>
       <div class="flow-bar">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#11998e,#38ef7d);color:white;">系統自動產出 Invoice</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#11998e,#38ef7d);color:white;" data-i18n="recon-autoflow1">系統自動產出 Invoice</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">系統自動跑 BPM</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="recon-autoflow2">系統自動跑 BPM</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">供應商點擊確認 + 寄 Invoice</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="recon-autoflow3">供應商點擊確認 + 寄 Invoice</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">OP 收到 Invoice 後出款日作業</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="recon-autoflow4">OP 收到 Invoice 後出款日作業</span>
       </div>
-      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 如上月供應商未確認，次月系統將無法自動生成對帳單</span>
+      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="recon-autoflow-note">⚠️ 如上月供應商未確認，次月系統將無法自動生成對帳單</span>
     </div>
 
     <div class="white-box">
-      <div class="section-title">🏢 各主體收單時間 &amp; 大額付款定義</div>
-      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">各主體收單時間因應不同國家及銀行規定而有所不同。大額付款定義根據不同主體規模及營運模式而有差異。</p>
-      <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 時區皆為台灣時間 GMT+8</span>
+      <div class="section-title" data-i18n="recon-entity-title">🏢 各主體收單時間 &amp; 大額付款定義</div>
+      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;" data-i18n="recon-entity-desc">各主體收單時間因應不同國家及銀行規定而有所不同。大額付款定義根據不同主體規模及營運模式而有差異。</p>
+      <span style="display:inline-block;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="recon-entity-tz">✅ 時區皆為台灣時間 GMT+8</span>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📝 BPM 審核流程</div>
+      <div class="section-title" data-i18n="recon-bpm-title">📝 BPM 審核流程</div>
       <div class="flow-bar" style="margin-bottom:14px;">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">申請人送出</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="recon-bpm-flow1">申請人送出</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">主管審核</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="recon-bpm-flow2">主管審核</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">會計審核</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="recon-bpm-flow3">會計審核</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">財務審核</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="recon-bpm-flow4">財務審核</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 會計審核完畢後財務才能在 BPM 看到此單</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 向財務詢問前請確認會計審核是否完成</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 若需向財務詢問請提供 BPM 單號，財務無法查詢請款單號</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="recon-bpm-note1">⚠️ 會計審核完畢後財務才能在 BPM 看到此單</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="recon-bpm-note2">⚠️ 向財務詢問前請確認會計審核是否完成</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="recon-bpm-note3">⚠️ 若需向財務詢問請提供 BPM 單號，財務無法查詢請款單號</span>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">🚨 緊急付款申請 Email 格式</div>
+      <div class="section-title" data-i18n="recon-urgent-title">🚨 緊急付款申請 Email 格式</div>
       <div class="email-box">
         <div class="field-row">
           <span class="field-label">To:</span>
@@ -207,25 +210,261 @@
         </div>
         <div class="field-row">
           <span class="field-label">Subject:</span>
-          <span>【Urgent Payment Request】/ 【申請緊急出款】+ BPM 單號 ＋ 供應商名</span>
+          <span data-i18n="recon-urgent-subject">【Urgent Payment Request】/ 【申請緊急出款】+ BPM 單號 ＋ 供應商名</span>
         </div>
         <div style="margin-top:10px;border-top:1px solid var(--border);padding-top:10px;">
-          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">信件內容需填寫：</div>
+          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px;" data-i18n="recon-urgent-body-label">信件內容需填寫：</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">申請人</span>
-            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">我方公司別</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;" data-i18n="recon-urgent-field1">申請人</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;" data-i18n="recon-urgent-field2">我方公司別</span>
             <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">BPM 單號</span>
-            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">供應商</span>
-            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">幣別＋金額</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;" data-i18n="recon-urgent-field4">供應商</span>
+            <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;" data-i18n="recon-urgent-field5">幣別＋金額</span>
             <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">Expected Urgent payment date</span>
             <span style="background:#f0f4ff;color:#3c50e0;border:1px solid #c5d3f5;border-radius:4px;padding:2px 10px;font-size:12px;">Reason</span>
           </div>
         </div>
       </div>
-      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 若信件內容與實際 BPM 內容不符，可能會多一個工作日</span>
+      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="recon-urgent-note">⚠️ 若信件內容與實際 BPM 內容不符，可能會多一個工作日</span>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享',
+    'breadcrumb-home': '首頁',
+    'breadcrumb-accounting': '帳務管理',
+    'recon-breadcrumb-current': '對帳流程',
+    'recon-title': '對帳流程',
+    'recon-subtitle': '全自動、自動、人工對帳種類 + BPM 請款流程',
+    'recon-chip1': '對帳',
+    'recon-chip2': '帳務管理',
+    'recon-types-title': '🔄 對帳種類（三種）',
+    'recon-type1-title': '全自動對帳',
+    'recon-type1-desc': '系統於報表產出後第三天自動產出 Invoice，供應商無需進系統按確認。Auto-invoice BPM 自動送審。',
+    'recon-type1-tag1': '系統全自動',
+    'recon-type1-tag2': '供應商免操作',
+    'recon-type2-title': '自動對帳',
+    'recon-type2-desc': '供應商透過 SCM 或 Rezio 系統核對，仍須寄送 Invoice 或紙本發票。',
+    'recon-type2-tag2': '需寄送 Invoice',
+    'recon-type3-title': '人工對帳',
+    'recon-type3-desc': '供應商或 KKday 提供對帳報表，進行核對。',
+    'recon-type3-tag1': '人工核對',
+    'recon-schedule-title': '📅 對帳時程',
+    'recon-sched-report-label': '報表、自動 Invoice 產出日',
+    'recon-sched-report-date': '每月 3 日 & 18 日',
+    'recon-sched-billing-label': '應請款表更新',
+    'recon-sched-billing-date': '約每月 4 日 & 19 日',
+    'recon-sched-billing-note': '更新會在 go-scm 通知',
+    'recon-sched-autoinv-label': '全自動 Invoice 產出',
+    'recon-sched-autoinv-date': '報表後第三或七天自動產出',
+    'recon-sched-autoconfirm-label': '帳單自動確認',
+    'recon-sched-autoconfirm-date': '6 日 & 21 日',
+    'recon-autoflow-title': '🔁 自動對帳流程',
+    'recon-autoflow1': '系統自動產出 Invoice',
+    'recon-autoflow2': '系統自動跑 BPM',
+    'recon-autoflow3': '供應商點擊確認 + 寄 Invoice',
+    'recon-autoflow4': 'OP 收到 Invoice 後出款日作業',
+    'recon-autoflow-note': '⚠️ 如上月供應商未確認，次月系統將無法自動生成對帳單',
+    'recon-entity-title': '🏢 各主體收單時間 & 大額付款定義',
+    'recon-entity-desc': '各主體收單時間因應不同國家及銀行規定而有所不同。大額付款定義根據不同主體規模及營運模式而有差異。',
+    'recon-entity-tz': '✅ 時區皆為台灣時間 GMT+8',
+    'recon-bpm-title': '📝 BPM 審核流程',
+    'recon-bpm-flow1': '申請人送出',
+    'recon-bpm-flow2': '主管審核',
+    'recon-bpm-flow3': '會計審核',
+    'recon-bpm-flow4': '財務審核',
+    'recon-bpm-note1': '⚠️ 會計審核完畢後財務才能在 BPM 看到此單',
+    'recon-bpm-note2': '⚠️ 向財務詢問前請確認會計審核是否完成',
+    'recon-bpm-note3': '⚠️ 若需向財務詢問請提供 BPM 單號，財務無法查詢請款單號',
+    'recon-urgent-title': '🚨 緊急付款申請 Email 格式',
+    'recon-urgent-subject': '【Urgent Payment Request】/ 【申請緊急出款】+ BPM 單號 ＋ 供應商名',
+    'recon-urgent-body-label': '信件內容需填寫：',
+    'recon-urgent-field1': '申請人',
+    'recon-urgent-field2': '我方公司別',
+    'recon-urgent-field4': '供應商',
+    'recon-urgent-field5': '幣別＋金額',
+    'recon-urgent-note': '⚠️ 若信件內容與實際 BPM 內容不符，可能會多一個工作日',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally',
+    'breadcrumb-home': 'Home',
+    'breadcrumb-accounting': 'Accounting',
+    'recon-breadcrumb-current': 'Reconciliation',
+    'recon-title': 'Reconciliation Process',
+    'recon-subtitle': 'Fully Auto, Auto, Manual Reconciliation Types + BPM Billing Flow',
+    'recon-chip1': 'Reconciliation',
+    'recon-chip2': 'Accounting',
+    'recon-types-title': '🔄 Reconciliation Types (Three)',
+    'recon-type1-title': 'Fully Automatic Reconciliation',
+    'recon-type1-desc': 'System auto-generates Invoice on the 3rd day after report is produced; supplier does not need to confirm manually. Auto-invoice BPM is submitted automatically.',
+    'recon-type1-tag1': 'Fully Automated',
+    'recon-type1-tag2': 'No Supplier Action Needed',
+    'recon-type2-title': 'Automatic Reconciliation',
+    'recon-type2-desc': 'Supplier reconciles via SCM or Rezio system; Invoice or paper invoice must still be submitted.',
+    'recon-type2-tag2': 'Invoice Required',
+    'recon-type3-title': 'Manual Reconciliation',
+    'recon-type3-desc': 'Supplier or KKday provides reconciliation report for manual verification.',
+    'recon-type3-tag1': 'Manual Review',
+    'recon-schedule-title': '📅 Reconciliation Schedule',
+    'recon-sched-report-label': 'Report & Auto-Invoice Generation Date',
+    'recon-sched-report-date': '3rd & 18th of each month',
+    'recon-sched-billing-label': 'Billing Table Update',
+    'recon-sched-billing-date': 'Approx. 4th & 19th of each month',
+    'recon-sched-billing-note': 'Updates notified in go-scm',
+    'recon-sched-autoinv-label': 'Fully Auto Invoice Generation',
+    'recon-sched-autoinv-date': 'Auto-generated 3 or 7 days after report',
+    'recon-sched-autoconfirm-label': 'Statement Auto-Confirmation',
+    'recon-sched-autoconfirm-date': '6th & 21st',
+    'recon-autoflow-title': '🔁 Auto Reconciliation Flow',
+    'recon-autoflow1': 'System Auto-Generates Invoice',
+    'recon-autoflow2': 'System Auto-Runs BPM',
+    'recon-autoflow3': 'Supplier Confirms + Sends Invoice',
+    'recon-autoflow4': 'OP Processes Payment After Receiving Invoice',
+    'recon-autoflow-note': '⚠️ If supplier did not confirm last month, system cannot auto-generate statement next month',
+    'recon-entity-title': '🏢 Entity Submission Times & Large Payment Definitions',
+    'recon-entity-desc': 'Submission times vary by entity based on country and banking regulations. Large payment definitions differ by entity size and operation model.',
+    'recon-entity-tz': '✅ All times are Taiwan Time GMT+8',
+    'recon-bpm-title': '📝 BPM Approval Flow',
+    'recon-bpm-flow1': 'Applicant Submits',
+    'recon-bpm-flow2': 'Supervisor Reviews',
+    'recon-bpm-flow3': 'Accounting Reviews',
+    'recon-bpm-flow4': 'Finance Reviews',
+    'recon-bpm-note1': '⚠️ Finance can only view this BPM record after Accounting completes review',
+    'recon-bpm-note2': '⚠️ Confirm Accounting review is complete before contacting Finance',
+    'recon-bpm-note3': '⚠️ Provide BPM reference number when contacting Finance — billing number is not searchable',
+    'recon-urgent-title': '🚨 Urgent Payment Request Email Format',
+    'recon-urgent-subject': '【Urgent Payment Request】/ 【申請緊急出款】+ BPM No. + Supplier Name',
+    'recon-urgent-body-label': 'Email body must include:',
+    'recon-urgent-field1': 'Applicant',
+    'recon-urgent-field2': 'Our Entity',
+    'recon-urgent-field4': 'Supplier',
+    'recon-urgent-field5': 'Currency + Amount',
+    'recon-urgent-note': '⚠️ Discrepancy between email and actual BPM content may result in one additional business day',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定 · 外部共有禁止',
+    'breadcrumb-home': 'ホーム',
+    'breadcrumb-accounting': '経理管理',
+    'recon-breadcrumb-current': '照合フロー',
+    'recon-title': '照合フロー',
+    'recon-subtitle': '完全自動・自動・手動照合の種類 + BPM 請求フロー',
+    'recon-chip1': '照合',
+    'recon-chip2': '経理管理',
+    'recon-types-title': '🔄 照合種類（3種類）',
+    'recon-type1-title': '完全自動照合',
+    'recon-type1-desc': 'レポート出力の3日後にシステムが自動的に Invoice を生成。サプライヤーはシステムで確認操作不要。Auto-invoice BPM が自動送付。',
+    'recon-type1-tag1': '完全自動',
+    'recon-type1-tag2': 'サプライヤー操作不要',
+    'recon-type2-title': '自動照合',
+    'recon-type2-desc': 'サプライヤーが SCM または Rezio で照合。Invoice または紙の請求書の送付が必要。',
+    'recon-type2-tag2': 'Invoice 送付必要',
+    'recon-type3-title': '手動照合',
+    'recon-type3-desc': 'サプライヤーまたは KKday が照合レポートを提供し手動確認。',
+    'recon-type3-tag1': '手動確認',
+    'recon-schedule-title': '📅 照合スケジュール',
+    'recon-sched-report-label': 'レポート・自動 Invoice 出力日',
+    'recon-sched-report-date': '毎月3日 & 18日',
+    'recon-sched-billing-label': '請求対象表更新',
+    'recon-sched-billing-date': '毎月約4日 & 19日',
+    'recon-sched-billing-note': '更新は go-scm で通知',
+    'recon-sched-autoinv-label': '完全自動 Invoice 出力',
+    'recon-sched-autoinv-date': 'レポート後3日または7日後に自動出力',
+    'recon-sched-autoconfirm-label': '明細自動確認',
+    'recon-sched-autoconfirm-date': '6日 & 21日',
+    'recon-autoflow-title': '🔁 自動照合フロー',
+    'recon-autoflow1': 'システム自動 Invoice 生成',
+    'recon-autoflow2': 'システム自動 BPM 実行',
+    'recon-autoflow3': 'サプライヤーが確認 + Invoice 送付',
+    'recon-autoflow4': 'OP が Invoice 受領後に支払日業務',
+    'recon-autoflow-note': '⚠️ 前月にサプライヤーが確認しなかった場合、翌月システムは自動照合書類を生成できません',
+    'recon-entity-title': '🏢 各主体の受付時間 & 高額支払定義',
+    'recon-entity-desc': '各主体の受付時間は国や銀行規定により異なります。高額支払の定義は主体の規模や運営モデルにより異なります。',
+    'recon-entity-tz': '✅ すべて台湾時間 GMT+8',
+    'recon-bpm-title': '📝 BPM 承認フロー',
+    'recon-bpm-flow1': '申請者が送付',
+    'recon-bpm-flow2': '上長が審査',
+    'recon-bpm-flow3': '経理が審査',
+    'recon-bpm-flow4': '財務が審査',
+    'recon-bpm-note1': '⚠️ 経理審査完了後にのみ財務は BPM でこの案件を確認できます',
+    'recon-bpm-note2': '⚠️ 財務へ問い合わせる前に経理審査が完了しているか確認してください',
+    'recon-bpm-note3': '⚠️ 財務への問い合わせ時は BPM 番号を提供してください。請求番号では検索できません',
+    'recon-urgent-title': '🚨 緊急支払申請メール形式',
+    'recon-urgent-subject': '【Urgent Payment Request】/【緊急支払申請】+ BPM 番号 ＋ サプライヤー名',
+    'recon-urgent-body-label': 'メール本文に記載必須：',
+    'recon-urgent-field1': '申請者',
+    'recon-urgent-field2': '当社主体名',
+    'recon-urgent-field4': 'サプライヤー',
+    'recon-urgent-field5': '通貨 ＋ 金額',
+    'recon-urgent-note': '⚠️ メール内容と BPM 内容が不一致の場合、さらに1営業日かかる可能性があります',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
+    'breadcrumb-home': '홈',
+    'breadcrumb-accounting': '회계 관리',
+    'recon-breadcrumb-current': '대사 프로세스',
+    'recon-title': '대사 프로세스',
+    'recon-subtitle': '완전 자동·자동·수동 대사 유형 + BPM 청구 프로세스',
+    'recon-chip1': '대사',
+    'recon-chip2': '회계 관리',
+    'recon-types-title': '🔄 대사 유형（3가지）',
+    'recon-type1-title': '완전 자동 대사',
+    'recon-type1-desc': '시스템이 보고서 출력 후 3일째 자동으로 Invoice 생성. 공급업체는 시스템에서 확인 조작 불필요. Auto-invoice BPM 자동 제출.',
+    'recon-type1-tag1': '완전 자동화',
+    'recon-type1-tag2': '공급업체 조작 불필요',
+    'recon-type2-title': '자동 대사',
+    'recon-type2-desc': '공급업체가 SCM 또는 Rezio로 대사. Invoice 또는 종이 청구서 제출 필요.',
+    'recon-type2-tag2': 'Invoice 제출 필요',
+    'recon-type3-title': '수동 대사',
+    'recon-type3-desc': '공급업체 또는 KKday가 대사 보고서를 제공하여 수동 확인.',
+    'recon-type3-tag1': '수동 확인',
+    'recon-schedule-title': '📅 대사 일정',
+    'recon-sched-report-label': '보고서 · 자동 Invoice 출력일',
+    'recon-sched-report-date': '매월 3일 & 18일',
+    'recon-sched-billing-label': '청구 대상 표 업데이트',
+    'recon-sched-billing-date': '매월 약 4일 & 19일',
+    'recon-sched-billing-note': '업데이트는 go-scm에서 알림',
+    'recon-sched-autoinv-label': '완전 자동 Invoice 출력',
+    'recon-sched-autoinv-date': '보고서 후 3일 또는 7일째 자동 출력',
+    'recon-sched-autoconfirm-label': '명세서 자동 확인',
+    'recon-sched-autoconfirm-date': '6일 & 21일',
+    'recon-autoflow-title': '🔁 자동 대사 흐름',
+    'recon-autoflow1': '시스템 자동 Invoice 생성',
+    'recon-autoflow2': '시스템 자동 BPM 실행',
+    'recon-autoflow3': '공급업체 확인 클릭 + Invoice 발송',
+    'recon-autoflow4': 'OP가 Invoice 수령 후 결제일 업무',
+    'recon-autoflow-note': '⚠️ 지난달 공급업체 미확인 시 다음 달 시스템이 자동으로 대사 명세서 생성 불가',
+    'recon-entity-title': '🏢 각 주체 접수 시간 & 고액 결제 정의',
+    'recon-entity-desc': '각 주체의 접수 시간은 국가 및 은행 규정에 따라 다릅니다. 고액 결제 정의는 주체 규모 및 운영 방식에 따라 다릅니다.',
+    'recon-entity-tz': '✅ 모든 시간대는 대만 시간 GMT+8',
+    'recon-bpm-title': '📝 BPM 승인 프로세스',
+    'recon-bpm-flow1': '신청자 제출',
+    'recon-bpm-flow2': '상급자 검토',
+    'recon-bpm-flow3': '경리 검토',
+    'recon-bpm-flow4': '재무 검토',
+    'recon-bpm-note1': '⚠️ 경리 검토 완료 후에야 재무가 BPM에서 해당 건 확인 가능',
+    'recon-bpm-note2': '⚠️ 재무에 문의하기 전에 경리 검토 완료 여부 확인',
+    'recon-bpm-note3': '⚠️ 재무 문의 시 BPM 번호를 제공하세요. 청구 번호로는 검색 불가',
+    'recon-urgent-title': '🚨 긴급 결제 신청 이메일 형식',
+    'recon-urgent-subject': '【Urgent Payment Request】/【긴급 결제 신청】+ BPM 번호 ＋ 공급업체명',
+    'recon-urgent-body-label': '이메일 본문 필수 기재 항목：',
+    'recon-urgent-field1': '신청인',
+    'recon-urgent-field2': '당사 주체명',
+    'recon-urgent-field4': '공급업체',
+    'recon-urgent-field5': '통화 ＋ 금액',
+    'recon-urgent-note': '⚠️ 이메일 내용과 실제 BPM 내용 불일치 시 1영업일 추가 소요 가능',
+  }
+});
+</script>
 </body>
 </html>

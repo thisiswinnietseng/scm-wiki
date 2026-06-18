@@ -11,149 +11,332 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 商品設計邏輯</div>
+    <div class="breadcrumb"><a href="../index.html" data-i18n="pd-breadcrumb-home">首頁</a> / <span data-i18n="pd-breadcrumb-current">商品設計邏輯</span></div>
 
     <div class="page-header">
       <div class="page-header-icon">🛍️</div>
       <div class="page-header-body">
-        <h1>商品設計邏輯</h1>
+        <h1 data-i18n="pd-title">商品設計邏輯</h1>
         <div class="meta-row">
-          <span class="meta-chip">商品設定 · 訂購流程</span>
+          <span class="meta-chip" data-i18n="pd-chip">商品設定 · 訂購流程</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <p>商品設定對客人的認知與整體訂購處理流程均有直接影響。了解各設定項目的意義，有助於 CS 與 OP 提供更精準的服務。</p>
+      <p data-i18n="pd-intro">商品設定對客人的認知與整體訂購處理流程均有直接影響。了解各設定項目的意義，有助於 CS 與 OP 提供更精準的服務。</p>
     </div>
 
     <!-- 售前影響 -->
-    <h2>📣 售前影響</h2>
+    <h2 data-i18n="pd-presale-title">📣 售前影響</h2>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>產品諮詢</strong>
-            <p>旅客依商品頁面上的詳細行程規劃、住宿服務描述來判斷是否符合需求，CS 需熟悉商品描述以準確回覆旅客問題。</p>
+            <strong data-i18n="pd-presale-1-title">產品諮詢</strong>
+            <p data-i18n="pd-presale-1-desc">旅客依商品頁面上的詳細行程規劃、住宿服務描述來判斷是否符合需求，CS 需熟悉商品描述以準確回覆旅客問題。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>價格詢問與優惠</strong>
-            <p>價格透明度與折扣促銷資訊影響旅客購買決策，CS 應了解目前促銷設定，避免誤導旅客。</p>
+            <strong data-i18n="pd-presale-2-title">價格詢問與優惠</strong>
+            <p data-i18n="pd-presale-2-desc">價格透明度與折扣促銷資訊影響旅客購買決策，CS 應了解目前促銷設定，避免誤導旅客。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>旅客評價</strong>
-            <p>星級評分、圖片分享等內容影響旅客對商品的第一印象與信任度。</p>
+            <strong data-i18n="pd-presale-3-title">旅客評價</strong>
+            <p data-i18n="pd-presale-3-desc">星級評分、圖片分享等內容影響旅客對商品的第一印象與信任度。</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 售後影響 -->
-    <h2>📦 售後影響</h2>
+    <h2 data-i18n="pd-postsale-title">📦 售後影響</h2>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>訂單確認</strong>
-            <p>系統依商品設定寄送電子郵件通知，旅客可透過訂單追蹤頁面查看狀態。設定錯誤可能導致通知遺漏或錯誤。</p>
+            <strong data-i18n="pd-postsale-1-title">訂單確認</strong>
+            <p data-i18n="pd-postsale-1-desc">系統依商品設定寄送電子郵件通知，旅客可透過訂單追蹤頁面查看狀態。設定錯誤可能導致通知遺漏或錯誤。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>訂單修改與退換</strong>
-            <p>修改流程與退換政策由商品設定決定，CS 與 OP 需依照設定執行，不可逾越範圍承諾旅客額外權益。</p>
+            <strong data-i18n="pd-postsale-2-title">訂單修改與退換</strong>
+            <p data-i18n="pd-postsale-2-desc">修改流程與退換政策由商品設定決定，CS 與 OP 需依照設定執行，不可逾越範圍承諾旅客額外權益。</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 訂購處理流程影響 -->
-    <h2>⚙️ 訂購處理流程影響</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 各設定項目直接影響 CS / OP 的日常作業範疇，請務必熟悉對應關係。</span>
+    <h2 data-i18n="pd-process-title">⚙️ 訂購處理流程影響</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="pd-process-note">ℹ️ 各設定項目直接影響 CS / OP 的日常作業範疇，請務必熟悉對應關係。</span>
 
     <div class="white-box">
       <table class="wiki-table">
         <thead>
           <tr>
-            <th>設定項目</th>
-            <th>影響說明</th>
+            <th data-i18n="pd-table-col1">設定項目</th>
+            <th data-i18n="pd-table-col2">影響說明</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>商品設定</td>
-            <td>CS 根據商品主要描述回覆客人問題</td>
+            <td data-i18n="pd-row1-item">商品設定</td>
+            <td data-i18n="pd-row1-effect">CS 根據商品主要描述回覆客人問題</td>
           </tr>
           <tr>
-            <td>方案設定（票種、數量單位）</td>
-            <td>OP 根據規格設定進行訂購處理</td>
+            <td data-i18n="pd-row2-item">方案設定（票種、數量單位）</td>
+            <td data-i18n="pd-row2-effect">OP 根據規格設定進行訂購處理</td>
           </tr>
           <tr>
-            <td>月曆設定（前置日、作業時間）</td>
-            <td>規範可訂購日期、影響憑證發送時效</td>
+            <td data-i18n="pd-row3-item">月曆設定（前置日、作業時間）</td>
+            <td data-i18n="pd-row3-effect">規範可訂購日期、影響憑證發送時效</td>
           </tr>
           <tr>
-            <td>成本／售價設定</td>
-            <td>影響 OP 核對帳款、支付供應商款項</td>
+            <td data-i18n="pd-row4-item">成本／售價設定</td>
+            <td data-i18n="pd-row4-effect">影響 OP 核對帳款、支付供應商款項</td>
           </tr>
           <tr>
-            <td>取消設定</td>
-            <td>影響 OP／CS 執行取消流程</td>
+            <td data-i18n="pd-row5-item">取消設定</td>
+            <td data-i18n="pd-row5-effect">影響 OP／CS 執行取消流程</td>
           </tr>
           <tr>
-            <td>地點設定</td>
-            <td>CS 根據設定地點回答旅客查詢</td>
+            <td data-i18n="pd-row6-item">地點設定</td>
+            <td data-i18n="pd-row6-effect">CS 根據設定地點回答旅客查詢</td>
           </tr>
           <tr>
-            <td>訂購資料設定</td>
-            <td>OP 向供應商訂購時所需提交的資料</td>
+            <td data-i18n="pd-row7-item">訂購資料設定</td>
+            <td data-i18n="pd-row7-effect">OP 向供應商訂購時所需提交的資料</td>
           </tr>
           <tr>
-            <td>出票設定</td>
-            <td>決定是否需要 OP／CS 介入處理</td>
+            <td data-i18n="pd-row8-item">出票設定</td>
+            <td data-i18n="pd-row8-effect">決定是否需要 OP／CS 介入處理</td>
           </tr>
           <tr>
-            <td>供應商資訊</td>
-            <td>確認各套餐對應的供應商</td>
+            <td data-i18n="pd-row9-item">供應商資訊</td>
+            <td data-i18n="pd-row9-effect">確認各套餐對應的供應商</td>
           </tr>
           <tr>
-            <td>訂購方式／請款設定</td>
-            <td>影響 OP 訂購流程及請款時間</td>
+            <td data-i18n="pd-row10-item">訂購方式／請款設定</td>
+            <td data-i18n="pd-row10-effect">影響 OP 訂購流程及請款時間</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'pd-breadcrumb-home': '首頁',
+    'pd-breadcrumb-current': '商品設計邏輯',
+    'pd-title': '商品設計邏輯',
+    'pd-chip': '商品設定 · 訂購流程',
+    'pd-intro': '商品設定對客人的認知與整體訂購處理流程均有直接影響。了解各設定項目的意義，有助於 CS 與 OP 提供更精準的服務。',
+    'pd-presale-title': '📣 售前影響',
+    'pd-presale-1-title': '產品諮詢',
+    'pd-presale-1-desc': '旅客依商品頁面上的詳細行程規劃、住宿服務描述來判斷是否符合需求，CS 需熟悉商品描述以準確回覆旅客問題。',
+    'pd-presale-2-title': '價格詢問與優惠',
+    'pd-presale-2-desc': '價格透明度與折扣促銷資訊影響旅客購買決策，CS 應了解目前促銷設定，避免誤導旅客。',
+    'pd-presale-3-title': '旅客評價',
+    'pd-presale-3-desc': '星級評分、圖片分享等內容影響旅客對商品的第一印象與信任度。',
+    'pd-postsale-title': '📦 售後影響',
+    'pd-postsale-1-title': '訂單確認',
+    'pd-postsale-1-desc': '系統依商品設定寄送電子郵件通知，旅客可透過訂單追蹤頁面查看狀態。設定錯誤可能導致通知遺漏或錯誤。',
+    'pd-postsale-2-title': '訂單修改與退換',
+    'pd-postsale-2-desc': '修改流程與退換政策由商品設定決定，CS 與 OP 需依照設定執行，不可逾越範圍承諾旅客額外權益。',
+    'pd-process-title': '⚙️ 訂購處理流程影響',
+    'pd-process-note': 'ℹ️ 各設定項目直接影響 CS / OP 的日常作業範疇，請務必熟悉對應關係。',
+    'pd-table-col1': '設定項目',
+    'pd-table-col2': '影響說明',
+    'pd-row1-item': '商品設定',
+    'pd-row1-effect': 'CS 根據商品主要描述回覆客人問題',
+    'pd-row2-item': '方案設定（票種、數量單位）',
+    'pd-row2-effect': 'OP 根據規格設定進行訂購處理',
+    'pd-row3-item': '月曆設定（前置日、作業時間）',
+    'pd-row3-effect': '規範可訂購日期、影響憑證發送時效',
+    'pd-row4-item': '成本／售價設定',
+    'pd-row4-effect': '影響 OP 核對帳款、支付供應商款項',
+    'pd-row5-item': '取消設定',
+    'pd-row5-effect': '影響 OP／CS 執行取消流程',
+    'pd-row6-item': '地點設定',
+    'pd-row6-effect': 'CS 根據設定地點回答旅客查詢',
+    'pd-row7-item': '訂購資料設定',
+    'pd-row7-effect': 'OP 向供應商訂購時所需提交的資料',
+    'pd-row8-item': '出票設定',
+    'pd-row8-effect': '決定是否需要 OP／CS 介入處理',
+    'pd-row9-item': '供應商資訊',
+    'pd-row9-effect': '確認各套餐對應的供應商',
+    'pd-row10-item': '訂購方式／請款設定',
+    'pd-row10-effect': '影響 OP 訂購流程及請款時間',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用'
+  },
+  en: {
+    'pd-breadcrumb-home': 'Home',
+    'pd-breadcrumb-current': 'Product Design Logic',
+    'pd-title': 'Product Design Logic',
+    'pd-chip': 'Product Setup · Order Process',
+    'pd-intro': 'Product configuration directly affects customer perception and the overall order processing workflow. Understanding each setting helps CS and OP deliver more accurate service.',
+    'pd-presale-title': '📣 Pre-Sale Impact',
+    'pd-presale-1-title': 'Product Inquiry',
+    'pd-presale-1-desc': 'Customers evaluate products based on detailed itinerary and accommodation descriptions on the product page. CS must be familiar with product descriptions to answer inquiries accurately.',
+    'pd-presale-2-title': 'Pricing & Promotions',
+    'pd-presale-2-desc': 'Price transparency and promotional discount information affect customer purchase decisions. CS should be aware of current promotions to avoid misleading customers.',
+    'pd-presale-3-title': 'Customer Reviews',
+    'pd-presale-3-desc': 'Star ratings and shared photos shape customers\' first impressions and trust in the product.',
+    'pd-postsale-title': '📦 Post-Sale Impact',
+    'pd-postsale-1-title': 'Order Confirmation',
+    'pd-postsale-1-desc': 'The system sends email notifications based on product settings. Customers can track order status on the tracking page. Incorrect settings may cause missing or erroneous notifications.',
+    'pd-postsale-2-title': 'Order Modification & Returns',
+    'pd-postsale-2-desc': 'Modification procedures and return policies are determined by product settings. CS and OP must follow these settings and must not promise customers additional rights beyond the defined scope.',
+    'pd-process-title': '⚙️ Order Processing Impact',
+    'pd-process-note': 'ℹ️ Each setting directly affects CS / OP daily operations. Please familiarize yourself with the corresponding relationships.',
+    'pd-table-col1': 'Setting Item',
+    'pd-table-col2': 'Impact Description',
+    'pd-row1-item': 'Product Settings',
+    'pd-row1-effect': 'CS uses the main product description to answer customer inquiries',
+    'pd-row2-item': 'Package Settings (ticket type, quantity unit)',
+    'pd-row2-effect': 'OP processes orders based on the configured specifications',
+    'pd-row3-item': 'Calendar Settings (lead days, processing time)',
+    'pd-row3-effect': 'Governs bookable dates and affects voucher delivery timeliness',
+    'pd-row4-item': 'Cost / Selling Price Settings',
+    'pd-row4-effect': 'Affects OP account reconciliation and supplier payment',
+    'pd-row5-item': 'Cancellation Settings',
+    'pd-row5-effect': 'Affects OP / CS cancellation workflow',
+    'pd-row6-item': 'Location Settings',
+    'pd-row6-effect': 'CS uses configured locations to answer customer inquiries',
+    'pd-row7-item': 'Order Data Settings',
+    'pd-row7-effect': 'Information OP must submit when placing orders with suppliers',
+    'pd-row8-item': 'Ticketing Settings',
+    'pd-row8-effect': 'Determines whether OP / CS intervention is required',
+    'pd-row9-item': 'Supplier Information',
+    'pd-row9-effect': 'Confirms the supplier corresponding to each package',
+    'pd-row10-item': 'Order Method / Payment Request Settings',
+    'pd-row10-effect': 'Affects OP ordering process and payment request timing',
+    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only'
+  },
+  ja: {
+    'pd-breadcrumb-home': 'ホーム',
+    'pd-breadcrumb-current': '商品設計ロジック',
+    'pd-title': '商品設計ロジック',
+    'pd-chip': '商品設定 · 注文フロー',
+    'pd-intro': '商品設定はお客様の認識と全体的な注文処理フローに直接影響します。各設定項目の意味を理解することで、CS と OP がより正確なサービスを提供できます。',
+    'pd-presale-title': '📣 販売前の影響',
+    'pd-presale-1-title': '商品問い合わせ',
+    'pd-presale-1-desc': 'お客様は商品ページの詳細な行程説明や宿泊サービスの記述を参考に、ニーズに合うかを判断します。CS は商品説明を熟知し、正確に回答する必要があります。',
+    'pd-presale-2-title': '価格・プロモーションの問い合わせ',
+    'pd-presale-2-desc': '価格の透明性と割引情報はお客様の購買判断に影響します。CS は現在のプロモーション設定を把握し、誤った案内を避けてください。',
+    'pd-presale-3-title': '旅行者レビュー',
+    'pd-presale-3-desc': '星評価や写真シェアなどのコンテンツは、お客様の第一印象と信頼度に影響します。',
+    'pd-postsale-title': '📦 販売後の影響',
+    'pd-postsale-1-title': '注文確認',
+    'pd-postsale-1-desc': 'システムは商品設定に基づいてメール通知を送信します。お客様は注文追跡ページでステータスを確認できます。設定ミスは通知漏れや誤通知につながる可能性があります。',
+    'pd-postsale-2-title': '注文変更・返品・交換',
+    'pd-postsale-2-desc': '変更フローと返品ポリシーは商品設定によって決まります。CS と OP は設定に従って対応し、範囲外の追加権益を約束してはいけません。',
+    'pd-process-title': '⚙️ 注文処理フローへの影響',
+    'pd-process-note': 'ℹ️ 各設定項目は CS / OP の日常業務に直接影響します。対応関係を必ず熟知してください。',
+    'pd-table-col1': '設定項目',
+    'pd-table-col2': '影響説明',
+    'pd-row1-item': '商品設定',
+    'pd-row1-effect': 'CS は商品の主要説明に基づいてお客様の質問に回答する',
+    'pd-row2-item': 'プラン設定（チケット種別・数量単位）',
+    'pd-row2-effect': 'OP は仕様設定に基づいて注文処理を行う',
+    'pd-row3-item': 'カレンダー設定（リードタイム・処理時間）',
+    'pd-row3-effect': '予約可能日を規定し、バウチャー発送のタイムラインに影響する',
+    'pd-row4-item': 'コスト／販売価格設定',
+    'pd-row4-effect': 'OP の帳票照合と仕入先への支払いに影響する',
+    'pd-row5-item': 'キャンセル設定',
+    'pd-row5-effect': 'OP／CS のキャンセルフロー実行に影響する',
+    'pd-row6-item': '場所設定',
+    'pd-row6-effect': 'CS は設定場所に基づいてお客様の問い合わせに回答する',
+    'pd-row7-item': '注文データ設定',
+    'pd-row7-effect': 'OP が仕入先に注文する際に提出する必要のある情報',
+    'pd-row8-item': 'チケット発行設定',
+    'pd-row8-effect': 'OP／CS の介入が必要かどうかを決定する',
+    'pd-row9-item': '仕入先情報',
+    'pd-row9-effect': '各パッケージに対応する仕入先を確認する',
+    'pd-row10-item': '注文方法／請求設定',
+    'pd-row10-effect': 'OP の注文フローと請求タイミングに影響する',
+    'footer': 'SCM ナレッジベース — 受注処理チーム · 内部使用のみ'
+  },
+  ko: {
+    'pd-breadcrumb-home': '홈',
+    'pd-breadcrumb-current': '상품 설계 로직',
+    'pd-title': '상품 설계 로직',
+    'pd-chip': '상품 설정 · 주문 프로세스',
+    'pd-intro': '상품 설정은 고객의 인식과 전체 주문 처리 프로세스에 직접적인 영향을 미칩니다. 각 설정 항목의 의미를 이해하면 CS와 OP가 더 정확한 서비스를 제공하는 데 도움이 됩니다.',
+    'pd-presale-title': '📣 판매 전 영향',
+    'pd-presale-1-title': '상품 문의',
+    'pd-presale-1-desc': '여행객은 상품 페이지의 상세한 일정 계획과 숙박 서비스 설명을 바탕으로 필요에 부합하는지 판단합니다. CS는 상품 설명을 숙지하여 정확하게 답변해야 합니다.',
+    'pd-presale-2-title': '가격 문의 및 프로모션',
+    'pd-presale-2-desc': '가격 투명성과 할인 프로모션 정보는 여행객의 구매 결정에 영향을 미칩니다. CS는 현재 프로모션 설정을 파악하여 여행객을 오도하지 않아야 합니다.',
+    'pd-presale-3-title': '여행자 리뷰',
+    'pd-presale-3-desc': '별점 평가, 사진 공유 등의 콘텐츠는 여행객의 상품에 대한 첫인상과 신뢰도에 영향을 미칩니다.',
+    'pd-postsale-title': '📦 판매 후 영향',
+    'pd-postsale-1-title': '주문 확인',
+    'pd-postsale-1-desc': '시스템은 상품 설정에 따라 이메일 알림을 발송합니다. 여행객은 주문 추적 페이지에서 상태를 확인할 수 있습니다. 설정 오류는 알림 누락이나 오류로 이어질 수 있습니다.',
+    'pd-postsale-2-title': '주문 변경 및 반품·교환',
+    'pd-postsale-2-desc': '변경 프로세스와 반품 정책은 상품 설정에 의해 결정됩니다. CS와 OP는 설정에 따라 처리해야 하며, 범위를 초과하는 추가 권리를 여행객에게 약속해서는 안 됩니다.',
+    'pd-process-title': '⚙️ 주문 처리 프로세스 영향',
+    'pd-process-note': 'ℹ️ 각 설정 항목은 CS / OP의 일상 업무 범위에 직접적인 영향을 미칩니다. 반드시 대응 관계를 숙지하시기 바랍니다.',
+    'pd-table-col1': '설정 항목',
+    'pd-table-col2': '영향 설명',
+    'pd-row1-item': '상품 설정',
+    'pd-row1-effect': 'CS는 상품의 주요 설명을 바탕으로 고객 질문에 답변',
+    'pd-row2-item': '패키지 설정（티켓 종류, 수량 단위）',
+    'pd-row2-effect': 'OP는 사양 설정에 따라 주문 처리 수행',
+    'pd-row3-item': '캘린더 설정（리드 타임, 처리 시간）',
+    'pd-row3-effect': '예약 가능 날짜를 규정하고 바우처 발송 일정에 영향',
+    'pd-row4-item': '원가 / 판매가 설정',
+    'pd-row4-effect': 'OP의 계정 대사 및 공급업체 지불에 영향',
+    'pd-row5-item': '취소 설정',
+    'pd-row5-effect': 'OP / CS의 취소 프로세스 실행에 영향',
+    'pd-row6-item': '위치 설정',
+    'pd-row6-effect': 'CS는 설정된 위치를 바탕으로 여행객 문의에 답변',
+    'pd-row7-item': '주문 데이터 설정',
+    'pd-row7-effect': 'OP가 공급업체에 주문 시 제출해야 하는 정보',
+    'pd-row8-item': '발권 설정',
+    'pd-row8-effect': 'OP / CS 개입 필요 여부를 결정',
+    'pd-row9-item': '공급업체 정보',
+    'pd-row9-effect': '각 패키지에 해당하는 공급업체 확인',
+    'pd-row10-item': '주문 방식 / 청구 설정',
+    'pd-row10-effect': 'OP의 주문 프로세스 및 청구 시기에 영향',
+    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용'
+  }
+});
+</script>
 </body>
 </html>

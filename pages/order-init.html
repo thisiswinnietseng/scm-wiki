@@ -11,137 +11,140 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 訂單成立後初步處理</div>
+    <div class="breadcrumb" data-i18n="oi-breadcrumb">首頁 / 訂單成立後初步處理</div>
 
     <div class="page-header">
       <div class="page-header-icon">📋</div>
       <div class="page-header-body">
-        <h1>訂單成立後初步處理</h1>
+        <h1 data-i18n="oi-title">訂單成立後初步處理</h1>
         <div class="meta-row">
-          <span class="meta-chip">點單流程 · 風控</span>
+          <span class="meta-chip" data-i18n="oi-meta">點單流程 · 風控</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <p>訂單成立後，依照點單方式分為「SYSTEM 點單」與「CS 點單」兩種流程，另需留意風控（Risk Team）對訂單的影響。</p>
+      <p data-i18n="oi-intro">訂單成立後，依照點單方式分為「SYSTEM 點單」與「CS 點單」兩種流程，另需留意風控（Risk Team）對訂單的影響。</p>
     </div>
 
     <!-- SYSTEM 點單 -->
-    <h2>🤖 SYSTEM 點單</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 系統自動處理訂單流程，通常無需人工介入。</span>
+    <h2 data-i18n="oi-system-title">🤖 SYSTEM 點單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="oi-system-note">ℹ️ 系統自動處理訂單流程，通常無需人工介入。</span>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>客戶提交訂單</strong>
-            <p>旅客在 KKday 平台選擇商品、填寫個人資訊並完成付款。</p>
+            <strong data-i18n="oi-sys-step1-title">客戶提交訂單</strong>
+            <p data-i18n="oi-sys-step1-desc">旅客在 KKday 平台選擇商品、填寫個人資訊並完成付款。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>系統接收並儲存訂單資料</strong>
-            <p>KKday 系統自動接收訂單，並將所有資料完整儲存於後台。</p>
+            <strong data-i18n="oi-sys-step2-title">系統接收並儲存訂單資料</strong>
+            <p data-i18n="oi-sys-step2-desc">KKday 系統自動接收訂單，並將所有資料完整儲存於後台。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>系統確認資料完整性</strong>
-            <p>自動檢查旅客姓名、聯絡方式等必填欄位是否齊全。</p>
+            <strong data-i18n="oi-sys-step3-title">系統確認資料完整性</strong>
+            <p data-i18n="oi-sys-step3-desc">自動檢查旅客姓名、聯絡方式等必填欄位是否齊全。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>訂單進入 OP 處理</strong>
-            <p>OP 在「OP 訂單管理（新）」中查看需出票的訂單並進行後續作業。</p>
+            <strong data-i18n="oi-sys-step4-title">訂單進入 OP 處理</strong>
+            <p data-i18n="oi-sys-step4-desc">OP 在「OP 訂單管理（新）」中查看需出票的訂單並進行後續作業。</p>
           </div>
         </div>
       </div>
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 💡 訂單處理分為「即訂即出」和「非即訂即出」兩種類型，處理時效與流程有所不同。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="oi-sys-bottom-note">ℹ️ 💡 訂單處理分為「即訂即出」和「非即訂即出」兩種類型，處理時效與流程有所不同。</span>
     </div>
 
     <!-- CS 點單 -->
-    <h2>🧑‍💼 CS 點單</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ CS 點單前需確認旅客資料無誤，若資料有缺漏需補齊後再點單。</span>
+    <h2 data-i18n="oi-cs-title">🧑‍💼 CS 點單</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="oi-cs-note">⚠️ CS 點單前需確認旅客資料無誤，若資料有缺漏需補齊後再點單。</span>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>客戶提交訂單</strong>
-            <p>旅客透過平台或客服管道提交訂單。</p>
+            <strong data-i18n="oi-cs-step1-title">客戶提交訂單</strong>
+            <p data-i18n="oi-cs-step1-desc">旅客透過平台或客服管道提交訂單。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>系統接收並儲存訂單資料</strong>
-            <p>KKday 系統接收訂單並儲存至後台。</p>
+            <strong data-i18n="oi-cs-step2-title">系統接收並儲存訂單資料</strong>
+            <p data-i18n="oi-cs-step2-desc">KKday 系統接收訂單並儲存至後台。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>CS 確認資料完整性</strong>
-            <p>若商品頁面有明確要求特定資訊（如回程日期）→ 補充資訊後再點單；若無特殊要求，確認完整後即可點單。</p>
+            <strong data-i18n="oi-cs-step3-title">CS 確認資料完整性</strong>
+            <p data-i18n="oi-cs-step3-desc">若商品頁面有明確要求特定資訊（如回程日期）→ 補充資訊後再點單；若無特殊要求，確認完整後即可點單。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>訂單進入 OP 處理</strong>
-            <p>資料確認無誤後，訂單交由 OP 執行後續出票作業。</p>
+            <strong data-i18n="oi-cs-step4-title">訂單進入 OP 處理</strong>
+            <p data-i18n="oi-cs-step4-desc">資料確認無誤後，訂單交由 OP 執行後續出票作業。</p>
           </div>
         </div>
       </div>
 
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 📌 <strong>範例：</strong>永東車票需要備註回程日期，CS 點單前須向旅客確認此資訊並填入備註欄。</span>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n-html="oi-cs-example">✅ 📌 <strong>範例：</strong>永東車票需要備註回程日期，CS 點單前須向旅客確認此資訊並填入備註欄。</span>
     </div>
 
     <!-- 風控 -->
-    <h2>🛡️ 風控（Risk Team）</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 風控系統主要偵測可能造成公司損失的交易並加以阻擋，請勿忽視相關通知。</span>
+    <h2 data-i18n="oi-risk-title">🛡️ 風控（Risk Team）</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="oi-risk-note">⚠️ 風控系統主要偵測可能造成公司損失的交易並加以阻擋，請勿忽視相關通知。</span>
     <div class="white-box">
       <div class="cards-grid-3">
         <div class="box">
-          <strong>🚫 濫用折扣</strong>
-          <p>偵測不正常的折扣使用行為，防止惡意套利。</p>
+          <strong data-i18n="oi-risk-card1-title">🚫 濫用折扣</strong>
+          <p data-i18n="oi-risk-card1-desc">偵測不正常的折扣使用行為，防止惡意套利。</p>
         </div>
         <div class="box">
-          <strong>💳 盜刷偵測</strong>
-          <p>識別異常付款行為，保護旅客與平台安全。</p>
+          <strong data-i18n="oi-risk-card2-title">💳 盜刷偵測</strong>
+          <p data-i18n="oi-risk-card2-desc">識別異常付款行為，保護旅客與平台安全。</p>
         </div>
         <div class="box">
-          <strong>⛔ 違反使用規範</strong>
-          <p>偵測違反商品使用規範的訂單，進行人工審查。</p>
+          <strong data-i18n="oi-risk-card3-title">⛔ 違反使用規範</strong>
+          <p data-i18n="oi-risk-card3-desc">偵測違反商品使用規範的訂單，進行人工審查。</p>
         </div>
       </div>
 
-      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>📋 可疑帳號處理流程</strong>
+      <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="oi-risk-flow">ℹ️ <strong>📋 可疑帳號處理流程</strong>
         <p>當帳號狀態顯示「可疑」時，須待風控確認。確認完成後，訂單備註會出現：</p>
         <code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">
           已調整會員風險等級為：general，人工審查單編號：xxxxx
@@ -150,6 +153,170 @@
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+    'oi-breadcrumb': '首頁 / 訂單成立後初步處理',
+    'oi-title': '訂單成立後初步處理',
+    'oi-meta': '點單流程 · 風控',
+    'oi-intro': '訂單成立後，依照點單方式分為「SYSTEM 點單」與「CS 點單」兩種流程，另需留意風控（Risk Team）對訂單的影響。',
+    'oi-system-title': '🤖 SYSTEM 點單',
+    'oi-system-note': 'ℹ️ 系統自動處理訂單流程，通常無需人工介入。',
+    'oi-sys-step1-title': '客戶提交訂單',
+    'oi-sys-step1-desc': '旅客在 KKday 平台選擇商品、填寫個人資訊並完成付款。',
+    'oi-sys-step2-title': '系統接收並儲存訂單資料',
+    'oi-sys-step2-desc': 'KKday 系統自動接收訂單，並將所有資料完整儲存於後台。',
+    'oi-sys-step3-title': '系統確認資料完整性',
+    'oi-sys-step3-desc': '自動檢查旅客姓名、聯絡方式等必填欄位是否齊全。',
+    'oi-sys-step4-title': '訂單進入 OP 處理',
+    'oi-sys-step4-desc': 'OP 在「OP 訂單管理（新）」中查看需出票的訂單並進行後續作業。',
+    'oi-sys-bottom-note': 'ℹ️ 💡 訂單處理分為「即訂即出」和「非即訂即出」兩種類型，處理時效與流程有所不同。',
+    'oi-cs-title': '🧑‍💼 CS 點單',
+    'oi-cs-note': '⚠️ CS 點單前需確認旅客資料無誤，若資料有缺漏需補齊後再點單。',
+    'oi-cs-step1-title': '客戶提交訂單',
+    'oi-cs-step1-desc': '旅客透過平台或客服管道提交訂單。',
+    'oi-cs-step2-title': '系統接收並儲存訂單資料',
+    'oi-cs-step2-desc': 'KKday 系統接收訂單並儲存至後台。',
+    'oi-cs-step3-title': 'CS 確認資料完整性',
+    'oi-cs-step3-desc': '若商品頁面有明確要求特定資訊（如回程日期）→ 補充資訊後再點單；若無特殊要求，確認完整後即可點單。',
+    'oi-cs-step4-title': '訂單進入 OP 處理',
+    'oi-cs-step4-desc': '資料確認無誤後，訂單交由 OP 執行後續出票作業。',
+    'oi-cs-example': '✅ 📌 <strong>範例：</strong>永東車票需要備註回程日期，CS 點單前須向旅客確認此資訊並填入備註欄。',
+    'oi-risk-title': '🛡️ 風控（Risk Team）',
+    'oi-risk-note': '⚠️ 風控系統主要偵測可能造成公司損失的交易並加以阻擋，請勿忽視相關通知。',
+    'oi-risk-card1-title': '🚫 濫用折扣',
+    'oi-risk-card1-desc': '偵測不正常的折扣使用行為，防止惡意套利。',
+    'oi-risk-card2-title': '💳 盜刷偵測',
+    'oi-risk-card2-desc': '識別異常付款行為，保護旅客與平台安全。',
+    'oi-risk-card3-title': '⛔ 違反使用規範',
+    'oi-risk-card3-desc': '偵測違反商品使用規範的訂單，進行人工審查。',
+    'oi-risk-flow': 'ℹ️ <strong>📋 可疑帳號處理流程</strong><p>當帳號狀態顯示「可疑」時，須待風控確認。確認完成後，訂單備註會出現：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">已調整會員風險等級為：general，人工審查單編號：xxxxx</code><p style="margin-top:0.75rem;">出現上述備註後，即可正常出票。</p>',
+  },
+  en: {
+    'nav-title': 'SCM <em>Knowledge Base</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Knowledge Base — Order Processing Team · Internal Use',
+    'oi-breadcrumb': 'Home / Order Initialization',
+    'oi-title': 'Order Initialization',
+    'oi-meta': 'Order Placement · Risk Control',
+    'oi-intro': 'After an order is placed, it follows either the SYSTEM order flow or the CS order flow. Be sure to monitor the impact of Risk Team (fraud control) on orders.',
+    'oi-system-title': '🤖 SYSTEM Order',
+    'oi-system-note': 'ℹ️ Orders are processed automatically by the system. Manual intervention is usually not required.',
+    'oi-sys-step1-title': 'Customer Submits Order',
+    'oi-sys-step1-desc': 'The traveler selects a product on the KKday platform, fills in personal information, and completes payment.',
+    'oi-sys-step2-title': 'System Receives and Stores Order Data',
+    'oi-sys-step2-desc': 'The KKday system automatically receives the order and stores all data in the backend.',
+    'oi-sys-step3-title': 'System Validates Data Completeness',
+    'oi-sys-step3-desc': 'Automatically checks that required fields such as traveler name and contact information are filled in.',
+    'oi-sys-step4-title': 'Order Enters OP Processing',
+    'oi-sys-step4-desc': 'OP reviews orders pending issuance in "OP Order Management (New)" and proceeds with subsequent tasks.',
+    'oi-sys-bottom-note': 'ℹ️ 💡 Orders are categorized as "Instant Issuance" or "Non-Instant Issuance", each with different processing timelines and workflows.',
+    'oi-cs-title': '🧑‍💼 CS Order',
+    'oi-cs-note': '⚠️ Before placing a CS order, verify that all traveler information is correct. If any data is missing, collect it before placing the order.',
+    'oi-cs-step1-title': 'Customer Submits Order',
+    'oi-cs-step1-desc': 'The traveler submits an order via the platform or customer service channel.',
+    'oi-cs-step2-title': 'System Receives and Stores Order Data',
+    'oi-cs-step2-desc': 'The KKday system receives the order and stores it in the backend.',
+    'oi-cs-step3-title': 'CS Validates Data Completeness',
+    'oi-cs-step3-desc': 'If the product page requires specific information (e.g., return date) → collect it before placing the order. If no special requirements, confirm completeness and place the order.',
+    'oi-cs-step4-title': 'Order Enters OP Processing',
+    'oi-cs-step4-desc': 'Once data is verified, the order is handed to OP for subsequent ticket issuance.',
+    'oi-cs-example': '✅ 📌 <strong>Example:</strong> Wing On bus tickets require the return date in the remarks. CS must confirm this with the traveler before placing the order.',
+    'oi-risk-title': '🛡️ Risk Control (Risk Team)',
+    'oi-risk-note': '⚠️ The risk control system detects and blocks transactions that may cause financial loss to the company. Do not ignore related notifications.',
+    'oi-risk-card1-title': '🚫 Discount Abuse',
+    'oi-risk-card1-desc': 'Detects abnormal discount usage to prevent malicious arbitrage.',
+    'oi-risk-card2-title': '💳 Fraudulent Payment Detection',
+    'oi-risk-card2-desc': 'Identifies abnormal payment behavior to protect travelers and the platform.',
+    'oi-risk-card3-title': '⛔ Terms of Use Violations',
+    'oi-risk-card3-desc': 'Detects orders that violate product usage terms and flags them for manual review.',
+    'oi-risk-flow': 'ℹ️ <strong>📋 Suspicious Account Handling Process</strong><p>When an account status shows "Suspicious," wait for Risk Team confirmation. Once confirmed, the following remark will appear in the order:</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">Member risk level adjusted to: general, Manual review ID: xxxxx</code><p style="margin-top:0.75rem;">Once this remark appears, proceed with normal ticket issuance.</p>',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
+    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内使用',
+    'oi-breadcrumb': 'ホーム / 注文成立後の初期処理',
+    'oi-title': '注文成立後の初期処理',
+    'oi-meta': '注文フロー · リスク管理',
+    'oi-intro': '注文成立後、注文方式により「SYSTEM 注文」と「CS 注文」の2つのフローに分かれます。また、リスクチームによる注文への影響にも注意が必要です。',
+    'oi-system-title': '🤖 SYSTEM 注文',
+    'oi-system-note': 'ℹ️ システムが自動的に注文フローを処理します。通常、人手による介入は不要です。',
+    'oi-sys-step1-title': 'お客様が注文を送信',
+    'oi-sys-step1-desc': '旅行者が KKday プラットフォームで商品を選択し、個人情報を入力して支払いを完了します。',
+    'oi-sys-step2-title': 'システムが注文データを受信・保存',
+    'oi-sys-step2-desc': 'KKday システムが自動的に注文を受信し、すべてのデータをバックエンドに完全保存します。',
+    'oi-sys-step3-title': 'システムがデータの完全性を確認',
+    'oi-sys-step3-desc': '旅行者の氏名・連絡先など必須項目が揃っているか自動チェックします。',
+    'oi-sys-step4-title': '注文が OP 処理へ移行',
+    'oi-sys-step4-desc': 'OP は「OP 注文管理（新）」で発券が必要な注文を確認し、後続作業を行います。',
+    'oi-sys-bottom-note': 'ℹ️ 💡 注文処理は「即時発券」と「非即時発券」の2種類に分かれ、処理期限とフローが異なります。',
+    'oi-cs-title': '🧑‍💼 CS 注文',
+    'oi-cs-note': '⚠️ CS 注文前に旅行者情報に誤りがないか確認してください。不足がある場合は補完してから注文してください。',
+    'oi-cs-step1-title': 'お客様が注文を送信',
+    'oi-cs-step1-desc': '旅行者がプラットフォームまたはカスタマーサービス経由で注文を送信します。',
+    'oi-cs-step2-title': 'システムが注文データを受信・保存',
+    'oi-cs-step2-desc': 'KKday システムが注文を受信し、バックエンドに保存します。',
+    'oi-cs-step3-title': 'CS がデータの完全性を確認',
+    'oi-cs-step3-desc': '商品ページに特定情報（例：帰路日）の明示的な要求がある場合 → 情報補完後に注文。特別な要求がない場合は確認後に注文可能。',
+    'oi-cs-step4-title': '注文が OP 処理へ移行',
+    'oi-cs-step4-desc': 'データ確認後、注文は OP に引き渡されて後続の発券作業が行われます。',
+    'oi-cs-example': '✅ 📌 <strong>例：</strong>永東バスチケットには帰路日の備考記入が必要です。CS は注文前に旅行者に確認し、備考欄に記入してください。',
+    'oi-risk-title': '🛡️ リスク管理（Risk Team）',
+    'oi-risk-note': '⚠️ リスク管理システムは会社に損失をもたらす可能性のある取引を検知・ブロックします。関連通知を無視しないでください。',
+    'oi-risk-card1-title': '🚫 割引の不正利用',
+    'oi-risk-card1-desc': '異常な割引使用行為を検知し、悪意のある裁定取引を防止します。',
+    'oi-risk-card2-title': '💳 不正決済の検知',
+    'oi-risk-card2-desc': '異常な支払い行為を識別し、旅行者とプラットフォームの安全を保護します。',
+    'oi-risk-card3-title': '⛔ 利用規約違反',
+    'oi-risk-card3-desc': '商品利用規約に違反する注文を検知し、人工審査を実施します。',
+    'oi-risk-flow': 'ℹ️ <strong>📋 不審アカウント処理フロー</strong><p>アカウント状態が「不審」と表示された場合、リスクチームの確認を待ちます。確認完了後、注文備考に以下が表示されます：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">会員リスクレベルを general に調整済み、手動審査番号：xxxxx</code><p style="margin-top:0.75rem;">上記備考が表示されたら、通常通り発券可能です。</p>',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식 베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식 베이스 — 주문 처리팀 · 내부 사용',
+    'oi-breadcrumb': '홈 / 주문 성립 후 초기 처리',
+    'oi-title': '주문 성립 후 초기 처리',
+    'oi-meta': '주문 플로우 · 리스크 관리',
+    'oi-intro': '주문 성립 후, 주문 방식에 따라 「SYSTEM 주문」과 「CS 주문」 두 가지 플로우로 나뉩니다. 또한 리스크팀(Risk Team)의 주문에 대한 영향도 주의해야 합니다.',
+    'oi-system-title': '🤖 SYSTEM 주문',
+    'oi-system-note': 'ℹ️ 시스템이 자동으로 주문 플로우를 처리합니다. 일반적으로 수동 개입이 필요하지 않습니다.',
+    'oi-sys-step1-title': '고객 주문 제출',
+    'oi-sys-step1-desc': '여행자가 KKday 플랫폼에서 상품을 선택하고 개인 정보를 입력한 후 결제를 완료합니다.',
+    'oi-sys-step2-title': '시스템 주문 데이터 수신 및 저장',
+    'oi-sys-step2-desc': 'KKday 시스템이 자동으로 주문을 수신하고 모든 데이터를 백엔드에 완전히 저장합니다.',
+    'oi-sys-step3-title': '시스템 데이터 완전성 확인',
+    'oi-sys-step3-desc': '여행자 이름, 연락처 등 필수 항목이 모두 입력되었는지 자동으로 확인합니다.',
+    'oi-sys-step4-title': '주문이 OP 처리로 이동',
+    'oi-sys-step4-desc': 'OP는 「OP 주문 관리(신)」에서 발권이 필요한 주문을 확인하고 후속 작업을 진행합니다.',
+    'oi-sys-bottom-note': 'ℹ️ 💡 주문 처리는 「즉시 발권」과 「비즉시 발권」 두 가지 유형으로 나뉘며, 처리 기한과 플로우가 다릅니다.',
+    'oi-cs-title': '🧑‍💼 CS 주문',
+    'oi-cs-note': '⚠️ CS 주문 전에 여행자 정보가 정확한지 확인하세요. 정보가 부족한 경우 보완 후 주문하세요.',
+    'oi-cs-step1-title': '고객 주문 제출',
+    'oi-cs-step1-desc': '여행자가 플랫폼 또는 고객 서비스 채널을 통해 주문을 제출합니다.',
+    'oi-cs-step2-title': '시스템 주문 데이터 수신 및 저장',
+    'oi-cs-step2-desc': 'KKday 시스템이 주문을 수신하고 백엔드에 저장합니다.',
+    'oi-cs-step3-title': 'CS 데이터 완전성 확인',
+    'oi-cs-step3-desc': '상품 페이지에 특정 정보(예: 귀국 날짜)가 명시적으로 요구되는 경우 → 정보 보완 후 주문. 특별한 요구가 없는 경우 확인 후 주문 가능.',
+    'oi-cs-step4-title': '주문이 OP 처리로 이동',
+    'oi-cs-step4-desc': '데이터 확인 후, 주문은 OP에 넘겨져 후속 발권 작업이 진행됩니다.',
+    'oi-cs-example': '✅ 📌 <strong>예시：</strong>Wing On 버스 티켓은 귀국 날짜를 비고란에 기재해야 합니다. CS는 주문 전에 여행자에게 확인하고 비고란에 입력해야 합니다.',
+    'oi-risk-title': '🛡️ 리스크 관리（Risk Team）',
+    'oi-risk-note': '⚠️ 리스크 관리 시스템은 회사에 손실을 야기할 수 있는 거래를 감지하고 차단합니다. 관련 알림을 무시하지 마세요.',
+    'oi-risk-card1-title': '🚫 할인 남용',
+    'oi-risk-card1-desc': '비정상적인 할인 사용 행동을 감지하여 악의적인 차익 거래를 방지합니다.',
+    'oi-risk-card2-title': '💳 부정 결제 감지',
+    'oi-risk-card2-desc': '비정상적인 결제 행동을 식별하여 여행자와 플랫폼의 안전을 보호합니다.',
+    'oi-risk-card3-title': '⛔ 이용 약관 위반',
+    'oi-risk-card3-desc': '상품 이용 약관을 위반한 주문을 감지하여 수동 검토를 진행합니다.',
+    'oi-risk-flow': 'ℹ️ <strong>📋 의심 계정 처리 플로우</strong><p>계정 상태가 「의심」으로 표시되면 리스크팀의 확인을 기다립니다. 확인 완료 후 주문 비고에 다음이 표시됩니다：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">회원 리스크 등급을 general로 조정 완료, 수동 심사 번호：xxxxx</code><p style="margin-top:0.75rem;">위 비고가 나타나면 정상적으로 발권할 수 있습니다.</p>',
+  }
+});
+</script>
 </body>
 </html>

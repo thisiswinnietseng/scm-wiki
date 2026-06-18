@@ -61,149 +61,343 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
     <div class="breadcrumb">
-      <a href="../index.html">首頁</a>
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
       <span class="sep">/</span>
-      <a href="../index.html#accounting">帳務管理</a>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
       <span class="sep">/</span>
-      <span class="current">請款方式</span>
+      <span class="current" data-i18n="pm-breadcrumb-current">請款方式</span>
     </div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💳</div>
       <div class="page-header-body">
-        <h1>請款方式</h1>
-        <div class="subtitle">銀行匯款、預存款、信用卡三種請款方式總覽</div>
+        <h1 data-i18n="pm-title">請款方式</h1>
+        <div class="subtitle" data-i18n="pm-subtitle">銀行匯款、預存款、信用卡三種請款方式總覽</div>
         <div class="meta-row">
-          <span class="meta-chip badge-orange">請款</span>
-          <span class="meta-chip">帳務管理</span>
+          <span class="meta-chip badge-orange" data-i18n="pm-chip1">請款</span>
+          <span class="meta-chip" data-i18n="pm-chip2">帳務管理</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">💳 三種請款方式</div>
+      <div class="section-title" data-i18n="pm-methods-title">💳 三種請款方式</div>
 
       <div class="method-card" style="border-left:4px solid #e65100;">
         <div class="method-card-title">
           <span class="icon">🏦</span>
-          <h3>銀行匯款</h3>
+          <h3 data-i18n="pm-bank-title">銀行匯款</h3>
         </div>
-        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">供應商提供銀行帳號後，KKday 財務依據請款單進行匯款。依結算頻率分為以下幾種週期：</p>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;" data-i18n="pm-bank-desc">供應商提供銀行帳號後，KKday 財務依據請款單進行匯款。依結算頻率分為以下幾種週期：</p>
         <div class="tag-row">
-          <span class="cycle-tag">週結</span>
-          <span class="cycle-tag">半月結</span>
-          <span class="cycle-tag">月結</span>
-          <span class="cycle-tag">寄賣匯款</span>
+          <span class="cycle-tag" data-i18n="pm-cycle-weekly">週結</span>
+          <span class="cycle-tag" data-i18n="pm-cycle-bimonthly">半月結</span>
+          <span class="cycle-tag" data-i18n="pm-cycle-monthly">月結</span>
+          <span class="cycle-tag" data-i18n="pm-cycle-consignment">寄賣匯款</span>
         </div>
       </div>
 
       <div class="method-card" style="border-left:4px solid #3c50e0;">
         <div class="method-card-title">
           <span class="icon">🏧</span>
-          <h3>預存款</h3>
+          <h3 data-i18n="pm-prepaid-title">預存款</h3>
         </div>
-        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">KKday 先補款到供應商，供應商再從中扣款訂購。Be2 預存金餘額不可為負向。</p>
-        <div class="sub-label">最低水位設定模式</div>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;" data-i18n="pm-prepaid-desc">KKday 先補款到供應商，供應商再從中扣款訂購。Be2 預存金餘額不可為負向。</p>
+        <div class="sub-label" data-i18n="pm-prepaid-mode-label">最低水位設定模式</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;">
           <div class="mode-box">
-            <div class="mode-val">10 天</div>
-            <div class="mode-lbl">最低水位</div>
-            <div class="mode-sub">預計補款 21 天</div>
+            <div class="mode-val">10 <span data-i18n="pm-days">天</span></div>
+            <div class="mode-lbl" data-i18n="pm-min-level">最低水位</div>
+            <div class="mode-sub" data-i18n="pm-prepaid-21">預計補款 21 天</div>
           </div>
           <div class="mode-box">
-            <div class="mode-val">5 天</div>
-            <div class="mode-lbl">最低水位</div>
-            <div class="mode-sub">預計補款 12 天</div>
+            <div class="mode-val">5 <span data-i18n="pm-days">天</span></div>
+            <div class="mode-lbl" data-i18n="pm-min-level">最低水位</div>
+            <div class="mode-sub" data-i18n="pm-prepaid-12">預計補款 12 天</div>
           </div>
           <div class="mode-box">
-            <div class="mode-val">固定金額</div>
-            <div class="mode-lbl">最低水位</div>
-            <div class="mode-sub">預計補款自訂</div>
+            <div class="mode-val" data-i18n="pm-fixed-amount">固定金額</div>
+            <div class="mode-lbl" data-i18n="pm-min-level">最低水位</div>
+            <div class="mode-sub" data-i18n="pm-prepaid-custom">預計補款自訂</div>
           </div>
         </div>
-        <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ Be2 預存金餘額不可為負向</span>
+        <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pm-prepaid-note">⚠️ Be2 預存金餘額不可為負向</span>
       </div>
 
       <div class="method-card" style="border-left:4px solid #00695c;">
         <div class="method-card-title">
           <span class="icon">💳</span>
-          <h3>信用卡</h3>
+          <h3 data-i18n="pm-cc-title">信用卡</h3>
         </div>
-        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;">使用公司信用卡直接於供應商平台付款。財務每月提供帳單，須於隔月月底前核對完成並送出 BPM。</p>
+        <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:12px;" data-i18n="pm-cc-desc">使用公司信用卡直接於供應商平台付款。財務每月提供帳單，須於隔月月底前核對完成並送出 BPM。</p>
         <div class="tag-row">
-          <span class="cycle-tag" style="background:#e0f2f1;color:#00695c;border-color:#80cbc4;">實體信用卡</span>
-          <span class="cycle-tag" style="background:#e0f2f1;color:#00695c;border-color:#80cbc4;">虛擬信用卡</span>
+          <span class="cycle-tag" style="background:#e0f2f1;color:#00695c;border-color:#80cbc4;" data-i18n="pm-cc-physical">實體信用卡</span>
+          <span class="cycle-tag" style="background:#e0f2f1;color:#00695c;border-color:#80cbc4;" data-i18n="pm-cc-virtual">虛擬信用卡</span>
         </div>
       </div>
     </div>
 
     <div class="white-box">
-      <div class="section-title">📅 付款日期與時程</div>
+      <div class="section-title" data-i18n="pm-schedule-title">📅 付款日期與時程</div>
       <div class="timeline-row">
         <div class="timeline-item">
           <div class="timeline-dot" style="background:#3c50e0;"></div>
-          <p><strong>預存款</strong>：每週一確認餘額，每週二 12:00 前完成簽核，<strong>週四</strong>財務匯款</p>
+          <p data-i18n-html="pm-timeline-prepaid"><strong>預存款</strong>：每週一確認餘額，每週二 12:00 前完成簽核，<strong>週四</strong>財務匯款</p>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot" style="background:#e65100;"></div>
-          <p><strong>週結</strong>：每週三 18:00 前完成簽核，<strong>週四</strong>財務匯款</p>
+          <p data-i18n-html="pm-timeline-weekly"><strong>週結</strong>：每週三 18:00 前完成簽核，<strong>週四</strong>財務匯款</p>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot" style="background:#00695c;"></div>
-          <p><strong>銀行匯款</strong>：約付款日前六個工作天。實際截止日請留意 Slack 群組 <strong>tw-office</strong> 財務公告</p>
+          <p data-i18n-html="pm-timeline-bank"><strong>銀行匯款</strong>：約付款日前六個工作天。實際截止日請留意 Slack 群組 <strong>tw-office</strong> 財務公告</p>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px;">
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 只有請款方式是週結，才可以跑週結流程</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 留意需交紙本的主體，須在截止時間前印出紙本給會計工讀生掃完 code</span>
-        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;">⚠️ 需交紙本為台灣簽約主體：<br>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;" data-i18n="pm-note1">⚠️ 只有請款方式是週結，才可以跑週結流程</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;" data-i18n="pm-note2">⚠️ 留意需交紙本的主體，須在截止時間前印出紙本給會計工讀生掃完 code</span>
+        <span style="display:inline-block;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;" data-i18n-html="pm-note3">⚠️ 需交紙本為台灣簽約主體：<br>
           &nbsp;&nbsp;<span style="color:#718096;">• 酷遊天股份有限公司 - Kkday.com International Company Limited (Taiwan)</span><br>
           &nbsp;&nbsp;<span style="color:#718096;">• 酷遊天國際旅行社股份有限公司 - Taiwanmania.com International Travel Service Co., Ltd.</span></span>
       </div>
     </div>
 
-
     <div class="white-box">
-      <div class="section-title">🧾 結帳方式</div>
+      <div class="section-title" data-i18n="pm-checkout-title">🧾 結帳方式</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="background:#fafbff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
-          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">出發日請款</div>
-          <div style="font-size:13px;color:#4a5568;">訂單出發後，供應商再向 KKday 請款</div>
+          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;" data-i18n="pm-checkout-departure-title">出發日請款</div>
+          <div style="font-size:13px;color:#4a5568;" data-i18n="pm-checkout-departure-desc">訂單出發後，供應商再向 KKday 請款</div>
         </div>
         <div style="background:#fafbff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
-          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">核銷日請款</div>
-          <div style="font-size:13px;color:#4a5568;">訂單核銷後，供應商再向 KKday 請款</div>
+          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;" data-i18n="pm-checkout-redemption-title">核銷日請款</div>
+          <div style="font-size:13px;color:#4a5568;" data-i18n="pm-checkout-redemption-desc">訂單核銷後，供應商再向 KKday 請款</div>
         </div>
         <div style="background:#fafbff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
-          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">訂單處理完成請款</div>
-          <div style="font-size:13px;color:#4a5568;">供應商或 OP 完成訂單處理後（訂單狀態 ＝ 已處理），供應商再向 KKday 請款</div>
+          <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;" data-i18n="pm-checkout-processed-title">訂單處理完成請款</div>
+          <div style="font-size:13px;color:#4a5568;" data-i18n="pm-checkout-processed-desc">供應商或 OP 完成訂單處理後（訂單狀態 ＝ 已處理），供應商再向 KKday 請款</div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享',
+    'breadcrumb-home': '首頁',
+    'breadcrumb-accounting': '帳務管理',
+    'pm-breadcrumb-current': '請款方式',
+    'pm-title': '請款方式',
+    'pm-subtitle': '銀行匯款、預存款、信用卡三種請款方式總覽',
+    'pm-chip1': '請款',
+    'pm-chip2': '帳務管理',
+    'pm-methods-title': '💳 三種請款方式',
+    'pm-bank-title': '銀行匯款',
+    'pm-bank-desc': '供應商提供銀行帳號後，KKday 財務依據請款單進行匯款。依結算頻率分為以下幾種週期：',
+    'pm-cycle-weekly': '週結',
+    'pm-cycle-bimonthly': '半月結',
+    'pm-cycle-monthly': '月結',
+    'pm-cycle-consignment': '寄賣匯款',
+    'pm-prepaid-title': '預存款',
+    'pm-prepaid-desc': 'KKday 先補款到供應商，供應商再從中扣款訂購。Be2 預存金餘額不可為負向。',
+    'pm-prepaid-mode-label': '最低水位設定模式',
+    'pm-days': '天',
+    'pm-min-level': '最低水位',
+    'pm-prepaid-21': '預計補款 21 天',
+    'pm-prepaid-12': '預計補款 12 天',
+    'pm-fixed-amount': '固定金額',
+    'pm-prepaid-custom': '預計補款自訂',
+    'pm-prepaid-note': '⚠️ Be2 預存金餘額不可為負向',
+    'pm-cc-title': '信用卡',
+    'pm-cc-desc': '使用公司信用卡直接於供應商平台付款。財務每月提供帳單，須於隔月月底前核對完成並送出 BPM。',
+    'pm-cc-physical': '實體信用卡',
+    'pm-cc-virtual': '虛擬信用卡',
+    'pm-schedule-title': '📅 付款日期與時程',
+    'pm-timeline-prepaid': '<strong>預存款</strong>：每週一確認餘額，每週二 12:00 前完成簽核，<strong>週四</strong>財務匯款',
+    'pm-timeline-weekly': '<strong>週結</strong>：每週三 18:00 前完成簽核，<strong>週四</strong>財務匯款',
+    'pm-timeline-bank': '<strong>銀行匯款</strong>：約付款日前六個工作天。實際截止日請留意 Slack 群組 <strong>tw-office</strong> 財務公告',
+    'pm-note1': '⚠️ 只有請款方式是週結，才可以跑週結流程',
+    'pm-note2': '⚠️ 留意需交紙本的主體，須在截止時間前印出紙本給會計工讀生掃完 code',
+    'pm-note3': '⚠️ 需交紙本為台灣簽約主體：<br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天股份有限公司 - Kkday.com International Company Limited (Taiwan)</span><br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天國際旅行社股份有限公司 - Taiwanmania.com International Travel Service Co., Ltd.</span>',
+    'pm-checkout-title': '🧾 結帳方式',
+    'pm-checkout-departure-title': '出發日請款',
+    'pm-checkout-departure-desc': '訂單出發後，供應商再向 KKday 請款',
+    'pm-checkout-redemption-title': '核銷日請款',
+    'pm-checkout-redemption-desc': '訂單核銷後，供應商再向 KKday 請款',
+    'pm-checkout-processed-title': '訂單處理完成請款',
+    'pm-checkout-processed-desc': '供應商或 OP 完成訂單處理後（訂單狀態 ＝ 已處理），供應商再向 KKday 請款',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally',
+    'breadcrumb-home': 'Home',
+    'breadcrumb-accounting': 'Accounting',
+    'pm-breadcrumb-current': 'Payment Methods',
+    'pm-title': 'Payment Methods',
+    'pm-subtitle': 'Overview of Bank Transfer, Prepaid Deposit, and Credit Card Payment',
+    'pm-chip1': 'Billing',
+    'pm-chip2': 'Accounting',
+    'pm-methods-title': '💳 Three Payment Methods',
+    'pm-bank-title': 'Bank Transfer',
+    'pm-bank-desc': 'After the supplier provides bank account details, KKday Finance remits payment based on the billing statement. Settlement cycles include:',
+    'pm-cycle-weekly': 'Weekly',
+    'pm-cycle-bimonthly': 'Bi-monthly',
+    'pm-cycle-monthly': 'Monthly',
+    'pm-cycle-consignment': 'Consignment Transfer',
+    'pm-prepaid-title': 'Prepaid Deposit',
+    'pm-prepaid-desc': 'KKday tops up the supplier\'s account in advance; the supplier deducts from the deposit when ordering. Be2 prepaid balance cannot go negative.',
+    'pm-prepaid-mode-label': 'Minimum Balance Threshold Modes',
+    'pm-days': 'days',
+    'pm-min-level': 'Min. Threshold',
+    'pm-prepaid-21': 'Top-up for 21 days',
+    'pm-prepaid-12': 'Top-up for 12 days',
+    'pm-fixed-amount': 'Fixed Amount',
+    'pm-prepaid-custom': 'Custom top-up schedule',
+    'pm-prepaid-note': '⚠️ Be2 prepaid balance must not go negative',
+    'pm-cc-title': 'Credit Card',
+    'pm-cc-desc': 'Pay directly on supplier platform using corporate credit card. Finance provides monthly statements; must be reconciled and BPM submitted before end of the following month.',
+    'pm-cc-physical': 'Physical Credit Card',
+    'pm-cc-virtual': 'Virtual Credit Card',
+    'pm-schedule-title': '📅 Payment Dates & Schedule',
+    'pm-timeline-prepaid': '<strong>Prepaid Deposit</strong>: Confirm balance every Monday; complete approval by Tuesday 12:00; Finance remits on <strong>Thursday</strong>',
+    'pm-timeline-weekly': '<strong>Weekly Settlement</strong>: Complete approval by Wednesday 18:00; Finance remits on <strong>Thursday</strong>',
+    'pm-timeline-bank': '<strong>Bank Transfer</strong>: Approximately 6 business days before payment date. Check Slack channel <strong>tw-office</strong> for Finance announcements on actual deadlines',
+    'pm-note1': '⚠️ Only suppliers with weekly settlement can run the weekly settlement process',
+    'pm-note2': '⚠️ For entities requiring paper copies, print and have accounting interns scan before the deadline',
+    'pm-note3': '⚠️ Entities requiring paper copies are Taiwan-contracted entities:<br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天股份有限公司 - Kkday.com International Company Limited (Taiwan)</span><br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天國際旅行社股份有限公司 - Taiwanmania.com International Travel Service Co., Ltd.</span>',
+    'pm-checkout-title': '🧾 Checkout Methods',
+    'pm-checkout-departure-title': 'Departure Date Billing',
+    'pm-checkout-departure-desc': 'Supplier bills KKday after order departure',
+    'pm-checkout-redemption-title': 'Redemption Date Billing',
+    'pm-checkout-redemption-desc': 'Supplier bills KKday after order is redeemed',
+    'pm-checkout-processed-title': 'Order Completion Billing',
+    'pm-checkout-processed-desc': 'Supplier bills KKday after order is processed by supplier or OP (order status = Processed)',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定 · 外部共有禁止',
+    'breadcrumb-home': 'ホーム',
+    'breadcrumb-accounting': '経理管理',
+    'pm-breadcrumb-current': '請求方式',
+    'pm-title': '請求方式',
+    'pm-subtitle': '銀行振込・プリペイド・クレジットカードの3種類概要',
+    'pm-chip1': '請求',
+    'pm-chip2': '経理管理',
+    'pm-methods-title': '💳 3種類の請求方式',
+    'pm-bank-title': '銀行振込',
+    'pm-bank-desc': 'サプライヤーが銀行口座情報を提供後、KKday 経理が請求書に基づき送金。決済サイクルは以下の通り：',
+    'pm-cycle-weekly': '週次決済',
+    'pm-cycle-bimonthly': '月2回決済',
+    'pm-cycle-monthly': '月次決済',
+    'pm-cycle-consignment': '委託販売振込',
+    'pm-prepaid-title': 'プリペイド',
+    'pm-prepaid-desc': 'KKday がサプライヤーに事前入金し、サプライヤーがプリペイドから差し引いて発注。Be2 プリペイド残高はマイナスにできません。',
+    'pm-prepaid-mode-label': '最低残高しきい値設定モード',
+    'pm-days': '日',
+    'pm-min-level': '最低しきい値',
+    'pm-prepaid-21': '21日分を入金予定',
+    'pm-prepaid-12': '12日分を入金予定',
+    'pm-fixed-amount': '固定金額',
+    'pm-prepaid-custom': '入金スケジュール自由設定',
+    'pm-prepaid-note': '⚠️ Be2 プリペイド残高はマイナス不可',
+    'pm-cc-title': 'クレジットカード',
+    'pm-cc-desc': '法人クレジットカードでサプライヤープラットフォームへ直接支払い。経理が毎月明細を提供し、翌月末までに照合・BPM 送付が必要。',
+    'pm-cc-physical': '実体クレジットカード',
+    'pm-cc-virtual': 'バーチャルクレジットカード',
+    'pm-schedule-title': '📅 支払日程',
+    'pm-timeline-prepaid': '<strong>プリペイド</strong>：毎週月曜に残高確認、火曜 12:00 までに承認完了、<strong>木曜</strong>に経理が送金',
+    'pm-timeline-weekly': '<strong>週次決済</strong>：毎週水曜 18:00 までに承認完了、<strong>木曜</strong>に経理が送金',
+    'pm-timeline-bank': '<strong>銀行振込</strong>：支払日の約6営業日前。正確な締切日は Slack チャンネル <strong>tw-office</strong> の経理アナウンスを確認',
+    'pm-note1': '⚠️ 週次決済方式のサプライヤーのみ週次フローを実行できます',
+    'pm-note2': '⚠️ 紙書類が必要な主体は、締切前に印刷して経理アルバイトにスキャンさせること',
+    'pm-note3': '⚠️ 紙書類が必要な台湾契約主体：<br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天股份有限公司 - Kkday.com International Company Limited (Taiwan)</span><br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天國際旅行社股份有限公司 - Taiwanmania.com International Travel Service Co., Ltd.</span>',
+    'pm-checkout-title': '🧾 精算方式',
+    'pm-checkout-departure-title': '出発日請求',
+    'pm-checkout-departure-desc': '注文出発後にサプライヤーが KKday へ請求',
+    'pm-checkout-redemption-title': '精算日請求',
+    'pm-checkout-redemption-desc': '注文精算後にサプライヤーが KKday へ請求',
+    'pm-checkout-processed-title': '注文完了請求',
+    'pm-checkout-processed-desc': 'サプライヤーまたは OP が注文処理完了後（注文ステータス = 処理済み）にサプライヤーが KKday へ請求',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
+    'breadcrumb-home': '홈',
+    'breadcrumb-accounting': '회계 관리',
+    'pm-breadcrumb-current': '청구 방식',
+    'pm-title': '청구 방식',
+    'pm-subtitle': '은행 이체·선불 예치금·신용카드 3가지 청구 방식 개요',
+    'pm-chip1': '청구',
+    'pm-chip2': '회계 관리',
+    'pm-methods-title': '💳 3가지 청구 방식',
+    'pm-bank-title': '은행 이체',
+    'pm-bank-desc': '공급업체가 은행 계좌 정보 제공 후 KKday 재무팀이 청구서 기준으로 송금. 정산 주기별 구분:',
+    'pm-cycle-weekly': '주간 정산',
+    'pm-cycle-bimonthly': '격주 정산',
+    'pm-cycle-monthly': '월간 정산',
+    'pm-cycle-consignment': '위탁 판매 송금',
+    'pm-prepaid-title': '선불 예치금',
+    'pm-prepaid-desc': 'KKday가 공급업체에 선입금하고 공급업체가 예치금에서 차감하여 주문. Be2 선불 예치금 잔액은 음수 불가.',
+    'pm-prepaid-mode-label': '최소 잔액 기준 설정 모드',
+    'pm-days': '일',
+    'pm-min-level': '최소 기준',
+    'pm-prepaid-21': '21일분 입금 예정',
+    'pm-prepaid-12': '12일분 입금 예정',
+    'pm-fixed-amount': '고정 금액',
+    'pm-prepaid-custom': '입금 일정 자율 설정',
+    'pm-prepaid-note': '⚠️ Be2 선불 예치금 잔액은 음수 불가',
+    'pm-cc-title': '신용카드',
+    'pm-cc-desc': '법인 신용카드로 공급업체 플랫폼에 직접 결제. 재무팀이 매월 청구서 제공, 다음 달 말까지 대사 완료 및 BPM 제출 필요.',
+    'pm-cc-physical': '실물 신용카드',
+    'pm-cc-virtual': '가상 신용카드',
+    'pm-schedule-title': '📅 결제 일정',
+    'pm-timeline-prepaid': '<strong>선불 예치금</strong>：매주 월요일 잔액 확인, 화요일 12:00 전 결재 완료, <strong>목요일</strong> 재무 송금',
+    'pm-timeline-weekly': '<strong>주간 정산</strong>：매주 수요일 18:00 전 결재 완료, <strong>목요일</strong> 재무 송금',
+    'pm-timeline-bank': '<strong>은행 이체</strong>：결제일 약 6영업일 전. 실제 마감일은 Slack 채널 <strong>tw-office</strong> 재무 공지 확인',
+    'pm-note1': '⚠️ 청구 방식이 주간 정산인 경우에만 주간 정산 프로세스 실행 가능',
+    'pm-note2': '⚠️ 서류 제출이 필요한 주체는 마감 전에 출력하여 회계 알바생에게 스캔 완료 요청',
+    'pm-note3': '⚠️ 서류 제출이 필요한 대만 계약 주체：<br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天股份有限公司 - Kkday.com International Company Limited (Taiwan)</span><br>&nbsp;&nbsp;<span style="color:#718096;">• 酷遊天國際旅行社股份有限公司 - Taiwanmania.com International Travel Service Co., Ltd.</span>',
+    'pm-checkout-title': '🧾 정산 방식',
+    'pm-checkout-departure-title': '출발일 청구',
+    'pm-checkout-departure-desc': '주문 출발 후 공급업체가 KKday에 청구',
+    'pm-checkout-redemption-title': '사용일 청구',
+    'pm-checkout-redemption-desc': '주문 사용 후 공급업체가 KKday에 청구',
+    'pm-checkout-processed-title': '주문 처리 완료 청구',
+    'pm-checkout-processed-desc': '공급업체 또는 OP가 주문 처리 완료 후（주문 상태 = 처리됨）공급업체가 KKday에 청구',
+  }
+});
+</script>
 </body>
 </html>

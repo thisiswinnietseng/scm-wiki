@@ -24,35 +24,38 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 部分取消（部分退款）</div>
+    <div class="breadcrumb" data-i18n="pr-breadcrumb">首頁 / 部分取消（部分退款）</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#c2410c,#f97316);">💸</div>
       <div class="page-header-body">
-        <h1>部分取消（部分退款）</h1>
-        <p class="subtitle">保留訂單，僅有訂單金額變動。通常用於行程類商品。訂單狀態為「已處理」。</p>
+        <h1 data-i18n="pr-title">部分取消（部分退款）</h1>
+        <p class="subtitle" data-i18n="pr-subtitle">保留訂單，僅有訂單金額變動。通常用於行程類商品。訂單狀態為「已處理」。</p>
         <div class="meta-row">
-          <span class="meta-chip badge-red">異常處理</span>
+          <span class="meta-chip badge-red" data-i18n="pr-chip">異常處理</span>
         </div>
       </div>
     </div>
@@ -61,44 +64,122 @@
 
       <!-- 流程 -->
       <div class="flow-bar">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">OP 發起部分退款</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="pr-flow1">OP 發起部分退款</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">確認成本是否異動</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="pr-flow2">確認成本是否異動</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">選異動原因 & 備註退款金額</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="pr-flow3">選異動原因 &amp; 備註退款金額</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 送出給客服</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="pr-flow4">OP 送出給客服</span>
         <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="pr-flow5">CS 退款執行</span>
       </div>
 
-      <div style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px;">📋 適用情境</div>
+      <div style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px;" data-i18n="pr-scenario-title">📋 適用情境</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
         <div style="background:#fafbff;border:1px solid #c5d3f5;border-radius:10px;padding:14px 16px;">
-          <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:8px;">成本不變（供應商請款金額無異動）</div>
-          <div style="font-size:12px;color:#4a5568;">客訴原因為<strong>部門疏失</strong>，與供應商無關，由公司吸收部分退款給旅客。</div>
+          <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:8px;" data-i18n="pr-scenario1-title">成本不變（供應商請款金額無異動）</div>
+          <div style="font-size:12px;color:#4a5568;" data-i18n-html="pr-scenario1-desc">客訴原因為<strong>部門疏失</strong>，與供應商無關，由公司吸收部分退款給旅客。</div>
         </div>
         <div style="background:#fafbff;border:1px solid #c5d3f5;border-radius:10px;padding:14px 16px;">
-          <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:8px;">成本有變（供應商請款金額有異動）</div>
+          <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:8px;" data-i18n="pr-scenario2-title">成本有變（供應商請款金額有異動）</div>
           <ul style="margin:0;padding-left:16px;font-size:12px;color:#4a5568;display:flex;flex-direction:column;gap:4px;">
-            <li>客訴為<strong>供應商疏失</strong>，已提供服務但供應商同意部分退款</li>
-            <li>客人在免費取消期間提出<strong>人數變更</strong>，供應商同意部分退款</li>
+            <li data-i18n-html="pr-scenario2-li1">客訴為<strong>供應商疏失</strong>，已提供服務但供應商同意部分退款</li>
+            <li data-i18n-html="pr-scenario2-li2">客人在免費取消期間提出<strong>人數變更</strong>，供應商同意部分退款</li>
           </ul>
         </div>
       </div>
 
-      <div class="note-text">
+      <div class="note-text" data-i18n-html="pr-cost-note">
         <strong style="color:#555;">成本異動判斷：</strong><br>
         否（公司政策吸收）→ 直接進行<br>
         是（供應商疏失 / 客人在免費取消期間提出）→ 在「更改成本為」輸入供應商變更後成本
       </div>
-      <span style="display:inline-block;margin-top:6px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ HKD / MYR 幣別僅能輸入整數，需無條件進位</span>
-
-
+      <span style="display:inline-block;margin-top:6px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pr-currency-warning">⚠️ HKD / MYR 幣別僅能輸入整數，需無條件進位</span>
 
     </div>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'pr-breadcrumb': '首頁 / 部分取消（部分退款）',
+    'pr-title': '部分取消（部分退款）',
+    'pr-subtitle': '保留訂單，僅有訂單金額變動。通常用於行程類商品。訂單狀態為「已處理」。',
+    'pr-chip': '異常處理',
+    'pr-flow1': 'OP 發起部分退款',
+    'pr-flow2': '確認成本是否異動',
+    'pr-flow3': '選異動原因 & 備註退款金額',
+    'pr-flow4': 'OP 送出給客服',
+    'pr-flow5': 'CS 退款執行',
+    'pr-scenario-title': '📋 適用情境',
+    'pr-scenario1-title': '成本不變（供應商請款金額無異動）',
+    'pr-scenario1-desc': '客訴原因為<strong>部門疏失</strong>，與供應商無關，由公司吸收部分退款給旅客。',
+    'pr-scenario2-title': '成本有變（供應商請款金額有異動）',
+    'pr-scenario2-li1': '客訴為<strong>供應商疏失</strong>，已提供服務但供應商同意部分退款',
+    'pr-scenario2-li2': '客人在免費取消期間提出<strong>人數變更</strong>，供應商同意部分退款',
+    'pr-cost-note': '<strong style="color:#555;">成本異動判斷：</strong><br>否（公司政策吸收）→ 直接進行<br>是（供應商疏失 / 客人在免費取消期間提出）→ 在「更改成本為」輸入供應商變更後成本',
+    'pr-currency-warning': '⚠️ HKD / MYR 幣別僅能輸入整數，需無條件進位',
+  },
+  en: {
+    'pr-breadcrumb': 'Home / Partial Cancellation (Partial Refund)',
+    'pr-title': 'Partial Cancellation (Partial Refund)',
+    'pr-subtitle': 'Order is retained; only the order amount changes. Typically used for tour-type products. Order status must be "Processed".',
+    'pr-chip': 'Exception Handling',
+    'pr-flow1': 'OP Initiates Partial Refund',
+    'pr-flow2': 'Confirm Cost Change',
+    'pr-flow3': 'Select Change Reason & Note Refund Amount',
+    'pr-flow4': 'OP Submits to CS',
+    'pr-flow5': 'CS Executes Refund',
+    'pr-scenario-title': '📋 Applicable Scenarios',
+    'pr-scenario1-title': 'No Cost Change (Supplier invoice unchanged)',
+    'pr-scenario1-desc': 'Complaint caused by <strong>internal department error</strong>, unrelated to supplier; company absorbs the partial refund.',
+    'pr-scenario2-title': 'Cost Changes (Supplier invoice adjusted)',
+    'pr-scenario2-li1': 'Complaint due to <strong>supplier fault</strong>; service was provided but supplier agrees to partial refund',
+    'pr-scenario2-li2': 'Customer requests <strong>headcount change</strong> during free cancellation period; supplier agrees to partial refund',
+    'pr-cost-note': '<strong style="color:#555;">Cost Change Assessment:</strong><br>No (absorbed by company policy) → Proceed directly<br>Yes (supplier fault / raised during free cancellation period) → Enter revised supplier cost in "Update Cost To" field',
+    'pr-currency-warning': '⚠️ HKD / MYR currencies only accept integers — always round up',
+  },
+  ja: {
+    'pr-breadcrumb': 'ホーム / 一部キャンセル（一部返金）',
+    'pr-title': '一部キャンセル（一部返金）',
+    'pr-subtitle': '注文を保持したまま注文金額のみ変更。主にツアー系商品に使用。注文ステータスは「処理済み」であること。',
+    'pr-chip': '例外処理',
+    'pr-flow1': 'OP が一部返金を発起',
+    'pr-flow2': 'コスト変更有無を確認',
+    'pr-flow3': '変更理由を選択 & 返金額を備考',
+    'pr-flow4': 'OP が CS に送信',
+    'pr-flow5': 'CS が返金を実行',
+    'pr-scenario-title': '📋 適用シナリオ',
+    'pr-scenario1-title': 'コスト変更なし（サプライヤー請求額変動なし）',
+    'pr-scenario1-desc': 'クレームの原因が<strong>社内部門の過失</strong>でサプライヤー無関係；会社が部分返金を負担。',
+    'pr-scenario2-title': 'コスト変更あり（サプライヤー請求額に変動あり）',
+    'pr-scenario2-li1': 'クレームが<strong>サプライヤー過失</strong>；サービスは提供済みだがサプライヤーが一部返金に同意',
+    'pr-scenario2-li2': 'お客様が無料キャンセル期間に<strong>人数変更</strong>を申請；サプライヤーが一部返金に同意',
+    'pr-cost-note': '<strong style="color:#555;">コスト変更の判断：</strong><br>なし（会社規定で吸収）→ そのまま進める<br>あり（サプライヤー過失 / 無料キャンセル期間内の申請）→「コストを変更」欄にサプライヤー変更後のコストを入力',
+    'pr-currency-warning': '⚠️ HKD / MYR 通貨は整数のみ入力可能、切り上げが必要',
+  },
+  ko: {
+    'pr-breadcrumb': '홈 / 부분 취소（부분 환불）',
+    'pr-title': '부분 취소（부분 환불）',
+    'pr-subtitle': '주문을 유지하면서 주문 금액만 변경. 주로 투어 상품에 사용. 주문 상태는 「처리 완료」이어야 합니다.',
+    'pr-chip': '예외 처리',
+    'pr-flow1': 'OP 부분 환불 발기',
+    'pr-flow2': '비용 변동 여부 확인',
+    'pr-flow3': '변경 사유 선택 & 환불 금액 메모',
+    'pr-flow4': 'OP CS에 제출',
+    'pr-flow5': 'CS 환불 실행',
+    'pr-scenario-title': '📋 적용 시나리오',
+    'pr-scenario1-title': '비용 변동 없음（공급업체 청구 금액 변동 없음）',
+    'pr-scenario1-desc': '클레임 원인이 <strong>내부 부서 과실</strong>로 공급업체와 무관；회사가 부분 환불 부담.',
+    'pr-scenario2-title': '비용 변동 있음（공급업체 청구 금액 변동 있음）',
+    'pr-scenario2-li1': '클레임이 <strong>공급업체 과실</strong>；서비스는 제공되었으나 공급업체가 부분 환불에 동의',
+    'pr-scenario2-li2': '고객이 무료 취소 기간 중 <strong>인원 변경</strong> 요청；공급업체가 부분 환불에 동의',
+    'pr-cost-note': '<strong style="color:#555;">비용 변동 판단：</strong><br>없음（회사 정책 흡수）→ 직접 진행<br>있음（공급업체 과실 / 무료 취소 기간 중 요청）→ 「비용 변경」 필드에 공급업체 변경 후 비용 입력',
+    'pr-currency-warning': '⚠️ HKD / MYR 통화는 정수만 입력 가능, 무조건 올림 처리',
+  }
+});
+</script>
 </body>
 </html>

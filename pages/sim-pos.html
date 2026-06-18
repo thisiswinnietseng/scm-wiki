@@ -11,92 +11,195 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 實體 SIM 卡 POS 出貨</div>
+    <div class="breadcrumb" data-i18n="sim-breadcrumb">首頁 / 實體 SIM 卡 POS 出貨</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">📱</div>
       <div class="page-header-body">
-        <h1>實體 SIM 卡 POS 出貨</h1>
+        <h1 data-i18n="sim-title">實體 SIM 卡 POS 出貨</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-purple">實體出貨</span>
+          <span class="meta-chip badge-purple" data-i18n="sim-chip">實體出貨</span>
         </div>
       </div>
     </div>
 
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ <strong>作業時間：每天 11:00 前</strong></span>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n-html="sim-deadline">⚠️ <strong>作業時間：每天 11:00 前</strong></span>
 
     <div class="white-box">
       <ol class="step-list">
         <li class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>撈單</strong>
-            <p>BE2 → 訂單管理 → 訂單報表匯出；條件：郵寄 / 台灣郵寄共表 / KKday / 狀態：處理中＋已處理＋旅客資料已齊</p>
-            <p>特殊：<strong>24324 香港卓一電訊</strong>、<strong>25356 PhoneBox</strong> 用供應商模式撈</p>
+            <strong data-i18n="sim-step1-title">撈單</strong>
+            <p data-i18n-html="sim-step1-desc">BE2 → 訂單管理 → 訂單報表匯出；條件：郵寄 / 台灣郵寄共表 / KKday / 狀態：處理中＋已處理＋旅客資料已齊</p>
+            <p data-i18n-html="sim-step1-special">特殊：<strong>24324 香港卓一電訊</strong>、<strong>25356 PhoneBox</strong> 用供應商模式撈</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>整理表單</strong>
-            <p>貼至「撈單」，電話欄 Z→A 排序分台灣 / 海外；備註特殊處理：</p>
+            <strong data-i18n="sim-step2-title">整理表單</strong>
+            <p data-i18n-html="sim-step2-desc">貼至「撈單」，電話欄 Z→A 排序分台灣 / 海外；備註特殊處理：</p>
             <ul>
-              <li>指定時間寄送 → 通知客服</li>
-              <li>管理室代收 → 補充地址</li>
-              <li>SIM 卡相關 → 詢問 BD</li>
+              <li data-i18n="sim-step2-li1">指定時間寄送 → 通知客服</li>
+              <li data-i18n="sim-step2-li2">管理室代收 → 補充地址</li>
+              <li data-i18n="sim-step2-li3">SIM 卡相關 → 詢問 BD</li>
             </ul>
-            <p>海外訂單貼海外辦公室郵寄表並更新狀態；台灣訂單確認中文姓名（英文 → 退單）</p>
+            <p data-i18n-html="sim-step2-overseas">海外訂單貼海外辦公室郵寄表並更新狀態；台灣訂單確認中文姓名（英文 → 退單）</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>印標籤</strong>
-            <p>開「台灣郵寄共表」→ 🏷🔖📑 → 下載 xlsx → 開印標機系統 → 新連線 → 選 xlsx → 列印標籤</p>
+            <strong data-i18n="sim-step3-title">印標籤</strong>
+            <p data-i18n-html="sim-step3-desc">開「台灣郵寄共表」→ 🏷🔖📑 → 下載 xlsx → 開印標機系統 → 新連線 → 選 xlsx → 列印標籤</p>
           </div>
         </li>
         <li class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>揀貨</strong>
-            <p>開「當日應出貨品項數量」→ 前往 SIM 卡櫃 → 開 POS 系統選「總公司 OP 庫存」→ 管理訂單出貨 → 查詢訂單 → 核對品項 → 出貨 → 包裝 → 製作大宗普掛表（20 個要連號）→ 列印普掛表（兩份：給郵局 / 留底）</p>
+            <strong data-i18n="sim-step4-title">揀貨</strong>
+            <p data-i18n="sim-step4-desc">開「當日應出貨品項數量」→ 前往 SIM 卡櫃 → 開 POS 系統選「總公司 OP 庫存」→ 管理訂單出貨 → 查詢訂單 → 核對品項 → 出貨 → 包裝 → 製作大宗普掛表（20 個要連號）→ 列印普掛表（兩份：給郵局 / 留底）</p>
           </div>
         </li>
       </ol>
     </div>
 
-    <h2>POS 系統操作說明</h2>
+    <h2 data-i18n="sim-pos-section-title">POS 系統操作說明</h2>
     <div class="white-box">
       <ul>
-        <li><strong>控量商品：</strong>按數量後按出貨</li>
-        <li><strong>控貨商品：</strong>掃描條碼後按出貨</li>
-        <li>顯示「已出貨成功」＝ 完成</li>
+        <li data-i18n-html="sim-pos-li1"><strong>控量商品：</strong>按數量後按出貨</li>
+        <li data-i18n-html="sim-pos-li2"><strong>控貨商品：</strong>掃描條碼後按出貨</li>
+        <li data-i18n="sim-pos-li3">顯示「已出貨成功」＝ 完成</li>
       </ul>
     </div>
 
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 郵寄需<strong>中文姓名</strong>；外國旅客可英文；非外國旅客留英文 → 退單詢問</span>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n-html="sim-name-warning">⚠️ 郵寄需<strong>中文姓名</strong>；外國旅客可英文；非外國旅客留英文 → 退單詢問</span>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'sim-breadcrumb': '首頁 / 實體 SIM 卡 POS 出貨',
+    'sim-title': '實體 SIM 卡 POS 出貨',
+    'sim-chip': '實體出貨',
+    'sim-deadline': '⚠️ <strong>作業時間：每天 11:00 前</strong>',
+    'sim-step1-title': '撈單',
+    'sim-step1-desc': 'BE2 → 訂單管理 → 訂單報表匯出；條件：郵寄 / 台灣郵寄共表 / KKday / 狀態：處理中＋已處理＋旅客資料已齊',
+    'sim-step1-special': '特殊：<strong>24324 香港卓一電訊</strong>、<strong>25356 PhoneBox</strong> 用供應商模式撈',
+    'sim-step2-title': '整理表單',
+    'sim-step2-desc': '貼至「撈單」，電話欄 Z→A 排序分台灣 / 海外；備註特殊處理：',
+    'sim-step2-li1': '指定時間寄送 → 通知客服',
+    'sim-step2-li2': '管理室代收 → 補充地址',
+    'sim-step2-li3': 'SIM 卡相關 → 詢問 BD',
+    'sim-step2-overseas': '海外訂單貼海外辦公室郵寄表並更新狀態；台灣訂單確認中文姓名（英文 → 退單）',
+    'sim-step3-title': '印標籤',
+    'sim-step3-desc': '開「台灣郵寄共表」→ 🏷🔖📑 → 下載 xlsx → 開印標機系統 → 新連線 → 選 xlsx → 列印標籤',
+    'sim-step4-title': '揀貨',
+    'sim-step4-desc': '開「當日應出貨品項數量」→ 前往 SIM 卡櫃 → 開 POS 系統選「總公司 OP 庫存」→ 管理訂單出貨 → 查詢訂單 → 核對品項 → 出貨 → 包裝 → 製作大宗普掛表（20 個要連號）→ 列印普掛表（兩份：給郵局 / 留底）',
+    'sim-pos-section-title': 'POS 系統操作說明',
+    'sim-pos-li1': '<strong>控量商品：</strong>按數量後按出貨',
+    'sim-pos-li2': '<strong>控貨商品：</strong>掃描條碼後按出貨',
+    'sim-pos-li3': '顯示「已出貨成功」＝ 完成',
+    'sim-name-warning': '⚠️ 郵寄需<strong>中文姓名</strong>；外國旅客可英文；非外國旅客留英文 → 退單詢問',
+  },
+  en: {
+    'sim-breadcrumb': 'Home / Physical SIM Card POS Shipment',
+    'sim-title': 'Physical SIM Card POS Shipment',
+    'sim-chip': 'Physical Shipment',
+    'sim-deadline': '⚠️ <strong>Deadline: Daily by 11:00</strong>',
+    'sim-step1-title': 'Pull Orders',
+    'sim-step1-desc': 'BE2 → Order Management → Export Order Report; Criteria: Mail / Taiwan Mailing Master Sheet / KKday / Status: Processing + Processed + Traveler Info Complete',
+    'sim-step1-special': 'Special: <strong>24324 Hong Kong CiC Telecom</strong>, <strong>25356 PhoneBox</strong> — use Supplier Mode to pull',
+    'sim-step2-title': 'Organize Spreadsheet',
+    'sim-step2-desc': 'Paste into "Pull Orders" sheet; sort Phone column Z→A to separate Taiwan / Overseas; note special handling:',
+    'sim-step2-li1': 'Scheduled delivery → Notify CS',
+    'sim-step2-li2': 'Management office pickup → Add address',
+    'sim-step2-li3': 'SIM card related issues → Consult BD',
+    'sim-step2-overseas': 'Overseas orders: paste into overseas office mailing sheet and update status; Taiwan orders: confirm Chinese name (English name → return order)',
+    'sim-step3-title': 'Print Labels',
+    'sim-step3-desc': 'Open "Taiwan Mailing Master Sheet" → 🏷🔖📑 → Download xlsx → Open label printer system → New connection → Select xlsx → Print labels',
+    'sim-step4-title': 'Pick Items',
+    'sim-step4-desc': 'Open "Today\'s Shipment Quantity" → Go to SIM card cabinet → Open POS system, select "HQ OP Inventory" → Manage order shipment → Search order → Verify items → Ship → Pack → Create bulk registered mail form (20 items must be consecutive) → Print form (two copies: for post office / file copy)',
+    'sim-pos-section-title': 'POS System Operation Guide',
+    'sim-pos-li1': '<strong>Quantity-controlled items:</strong> Enter quantity, then click Ship',
+    'sim-pos-li2': '<strong>Barcode-controlled items:</strong> Scan barcode, then click Ship',
+    'sim-pos-li3': 'Display "Shipment Successful" = Done',
+    'sim-name-warning': '⚠️ Mailing requires a <strong>Chinese name</strong>; foreign travelers may use English; non-foreign travelers leaving English name → return order and inquire',
+  },
+  ja: {
+    'sim-breadcrumb': 'ホーム / 実物 SIM カード POS 出荷',
+    'sim-title': '実物 SIM カード POS 出荷',
+    'sim-chip': '実物出荷',
+    'sim-deadline': '⚠️ <strong>作業期限：毎日 11:00 まで</strong>',
+    'sim-step1-title': '受注データ取得',
+    'sim-step1-desc': 'BE2 → 注文管理 → 注文レポート出力；条件：郵送 / 台湾郵送共通表 / KKday / ステータス：処理中＋処理済み＋旅行者情報完備',
+    'sim-step1-special': '特別：<strong>24324 香港卓一電訊</strong>、<strong>25356 PhoneBox</strong> はサプライヤーモードで取得',
+    'sim-step2-title': '表の整理',
+    'sim-step2-desc': '「受注取得」シートに貼り付け、電話欄を Z→A で並び替え、台湾 / 海外に分類；特殊処理の備考：',
+    'sim-step2-li1': '指定時刻配送 → CS に通知',
+    'sim-step2-li2': '管理室受取 → 住所を追記',
+    'sim-step2-li3': 'SIM カード関連 → BD に確認',
+    'sim-step2-overseas': '海外注文：海外オフィス郵送表に貼り付けてステータス更新；台湾注文：中国語氏名を確認（英語表記 → 返品）',
+    'sim-step3-title': 'ラベル印刷',
+    'sim-step3-desc': '「台湾郵送共通表」を開く → 🏷🔖📑 → xlsx をダウンロード → ラベル印刷システムを起動 → 新規接続 → xlsx を選択 → ラベルを印刷',
+    'sim-step4-title': 'ピッキング',
+    'sim-step4-desc': '「本日出荷予定品目数量」を開く → SIM カード棚へ → POS システムで「本社 OP 在庫」を選択 → 注文出荷管理 → 注文を検索 → 品目を照合 → 出荷 → 梱包 → 一括書留表を作成（20 件は連番必須）→ 書留表を印刷（2 部：郵便局用 / 控え用）',
+    'sim-pos-section-title': 'POS システム操作ガイド',
+    'sim-pos-li1': '<strong>数量管理商品：</strong>数量を入力後、出荷ボタンを押す',
+    'sim-pos-li2': '<strong>バーコード管理商品：</strong>バーコードをスキャン後、出荷ボタンを押す',
+    'sim-pos-li3': '「出荷成功」と表示されたら完了',
+    'sim-name-warning': '⚠️ 郵送には<strong>中国語氏名</strong>が必要；外国人旅客は英語可；外国人でない旅客が英語のみの場合 → 返品して確認',
+  },
+  ko: {
+    'sim-breadcrumb': '홈 / 실물 SIM 카드 POS 출고',
+    'sim-title': '실물 SIM 카드 POS 출고',
+    'sim-chip': '실물 출고',
+    'sim-deadline': '⚠️ <strong>작업 시간：매일 11:00 전까지</strong>',
+    'sim-step1-title': '주문 조회',
+    'sim-step1-desc': 'BE2 → 주문 관리 → 주문 보고서 내보내기；조건：우편 / 대만 우편 통합표 / KKday / 상태：처리 중＋처리 완료＋여행자 정보 완비',
+    'sim-step1-special': '특별：<strong>24324 홍콩 卓一電訊</strong>、<strong>25356 PhoneBox</strong> 는 공급업체 모드로 조회',
+    'sim-step2-title': '표 정리',
+    'sim-step2-desc': '「주문 조회」시트에 붙여넣기, 전화 열을 Z→A 정렬하여 대만 / 해외로 분류；특수 처리 메모：',
+    'sim-step2-li1': '지정 시간 발송 → CS에 통보',
+    'sim-step2-li2': '관리실 수령 → 주소 보완',
+    'sim-step2-li3': 'SIM 카드 관련 → BD에 문의',
+    'sim-step2-overseas': '해외 주문：해외 사무소 우편표에 붙여넣고 상태 업데이트；대만 주문：중국어 이름 확인（영문 이름 → 반품）',
+    'sim-step3-title': '라벨 인쇄',
+    'sim-step3-desc': '「대만 우편 통합표」열기 → 🏷🔖📑 → xlsx 다운로드 → 라벨 인쇄기 시스템 열기 → 새 연결 → xlsx 선택 → 라벨 인쇄',
+    'sim-step4-title': '피킹',
+    'sim-step4-desc': '「당일 출고 품목 수량」열기 → SIM 카드 캐비닛으로 이동 → POS 시스템에서 「본사 OP 재고」선택 → 주문 출고 관리 → 주문 조회 → 품목 대조 → 출고 → 포장 → 대량 등기 목록 작성（20개는 연번 필수）→ 등기 목록 인쇄（2부：우체국용 / 보관용）',
+    'sim-pos-section-title': 'POS 시스템 운영 안내',
+    'sim-pos-li1': '<strong>수량 관리 상품：</strong>수량 입력 후 출고 버튼 클릭',
+    'sim-pos-li2': '<strong>바코드 관리 상품：</strong>바코드 스캔 후 출고 버튼 클릭',
+    'sim-pos-li3': '「출고 성공」표시 = 완료',
+    'sim-name-warning': '⚠️ 우편 발송 시 <strong>중국어 이름</strong> 필요；외국인 여행자는 영문 가능；외국인이 아닌 여행자가 영문만 있는 경우 → 반품 후 문의',
+  }
+});
+</script>
 </body>
 </html>

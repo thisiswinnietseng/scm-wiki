@@ -20,45 +20,124 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
 
 <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
 <div class="page-header" style="background:linear-gradient(135deg,#667eea,#764ba2)">
   <div class="ph-icon">🧩</div>
   <div>
-    <div class="breadcrumb"><a href="../index.html">首頁</a> / 商品認識</div>
-    <h1>商品認識</h1>
+    <div class="breadcrumb"><a href="../index.html" data-i18n="ph-breadcrumb-home">首頁</a> / <span data-i18n="ph-breadcrumb-current">商品認識</span></div>
+    <h1 data-i18n="ph-title">商品認識</h1>
   </div>
 </div>
 
 <div class="page-wrapper">
   <div class="white-box">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <a class="sop-card" href="frontend.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4>前台商品架構長相</h4><p>一般票券、點對點交通、飯店頁面結構</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
-      <a class="sop-card" href="product-design.html"><div class="sc-icon">🧠</div><div class="sc-body"><h4>商品設計邏輯</h4><p>商品設定如何影響客人認知及作業流程</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
-      <a class="sop-card" href="inventory.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>PSI 票倉介紹</h4><p>PSI 系統票券入庫、出庫、庫存管理</p></div><span class="sc-tag badge-blue">庫存</span></a>
-      <a class="sop-card" href="voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4>憑證類型說明</h4><p>PSI 票倉介紹、憑證類型說明</p></div><span class="sc-tag badge-blue">出票</span></a>
+      <a class="sop-card" href="frontend.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4 data-i18n="ph-card1-title">前台商品架構長相</h4><p data-i18n="ph-card1-desc">一般票券、點對點交通、飯店頁面結構</p></div><span class="sc-tag badge-blue" data-i18n="ph-card1-tag">新人必讀</span></a>
+      <a class="sop-card" href="product-design.html"><div class="sc-icon">🧠</div><div class="sc-body"><h4 data-i18n="ph-card2-title">商品設計邏輯</h4><p data-i18n="ph-card2-desc">商品設定如何影響客人認知及作業流程</p></div><span class="sc-tag badge-blue" data-i18n="ph-card2-tag">新人必讀</span></a>
+      <a class="sop-card" href="inventory.html"><div class="sc-icon">📦</div><div class="sc-body"><h4 data-i18n="ph-card3-title">PSI 票倉介紹</h4><p data-i18n="ph-card3-desc">PSI 系統票券入庫、出庫、庫存管理</p></div><span class="sc-tag badge-blue" data-i18n="ph-card3-tag">庫存</span></a>
+      <a class="sop-card" href="voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4 data-i18n="ph-card4-title">憑證類型說明</h4><p data-i18n="ph-card4-desc">PSI 票倉介紹、憑證類型說明</p></div><span class="sc-tag badge-blue" data-i18n="ph-card4-tag">出票</span></a>
     </div>
   </div>
 </div>
 
-<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'ph-breadcrumb-home': '首頁',
+    'ph-breadcrumb-current': '商品認識',
+    'ph-title': '商品認識',
+    'ph-card1-title': '前台商品架構長相',
+    'ph-card1-desc': '一般票券、點對點交通、飯店頁面結構',
+    'ph-card1-tag': '新人必讀',
+    'ph-card2-title': '商品設計邏輯',
+    'ph-card2-desc': '商品設定如何影響客人認知及作業流程',
+    'ph-card2-tag': '新人必讀',
+    'ph-card3-title': 'PSI 票倉介紹',
+    'ph-card3-desc': 'PSI 系統票券入庫、出庫、庫存管理',
+    'ph-card3-tag': '庫存',
+    'ph-card4-title': '憑證類型說明',
+    'ph-card4-desc': 'PSI 票倉介紹、憑證類型說明',
+    'ph-card4-tag': '出票',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享'
+  },
+  en: {
+    'ph-breadcrumb-home': 'Home',
+    'ph-breadcrumb-current': 'Product Knowledge',
+    'ph-title': 'Product Knowledge',
+    'ph-card1-title': 'Frontend Product Structure',
+    'ph-card1-desc': 'General tickets, point-to-point transport, hotel page layouts',
+    'ph-card1-tag': 'New Staff Must-Read',
+    'ph-card2-title': 'Product Design Logic',
+    'ph-card2-desc': 'How product settings affect customer perception and workflow',
+    'ph-card2-tag': 'New Staff Must-Read',
+    'ph-card3-title': 'PSI Inventory Introduction',
+    'ph-card3-desc': 'PSI system ticket stock in, stock out, inventory management',
+    'ph-card3-tag': 'Inventory',
+    'ph-card4-title': 'Voucher Types',
+    'ph-card4-desc': 'PSI inventory intro and voucher type explanations',
+    'ph-card4-tag': 'Ticketing',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally'
+  },
+  ja: {
+    'ph-breadcrumb-home': 'ホーム',
+    'ph-breadcrumb-current': '商品知識',
+    'ph-title': '商品知識',
+    'ph-card1-title': 'フロントエンド商品構造',
+    'ph-card1-desc': '一般チケット・点対点交通・ホテルページの構成',
+    'ph-card1-tag': '新人必読',
+    'ph-card2-title': '商品設計ロジック',
+    'ph-card2-desc': '商品設定がお客様の認識と業務フローに与える影響',
+    'ph-card2-tag': '新人必読',
+    'ph-card3-title': 'PSI チケット倉庫の紹介',
+    'ph-card3-desc': 'PSI システムの入庫・出庫・在庫管理',
+    'ph-card3-tag': '在庫',
+    'ph-card4-title': 'バウチャー種別説明',
+    'ph-card4-desc': 'PSI チケット倉庫の紹介とバウチャー種別説明',
+    'ph-card4-tag': 'チケット発行',
+    'footer': 'SCM ナレッジベース · 内部使用のみ — 外部への共有禁止'
+  },
+  ko: {
+    'ph-breadcrumb-home': '홈',
+    'ph-breadcrumb-current': '상품 이해',
+    'ph-title': '상품 이해',
+    'ph-card1-title': '프론트엔드 상품 구조',
+    'ph-card1-desc': '일반 티켓, 점대점 교통, 호텔 페이지 구성',
+    'ph-card1-tag': '신입 필독',
+    'ph-card2-title': '상품 설계 로직',
+    'ph-card2-desc': '상품 설정이 고객 인식 및 업무 프로세스에 미치는 영향',
+    'ph-card2-tag': '신입 필독',
+    'ph-card3-title': 'PSI 티켓 창고 소개',
+    'ph-card3-desc': 'PSI 시스템 입고, 출고, 재고 관리',
+    'ph-card3-tag': '재고',
+    'ph-card4-title': '바우처 유형 설명',
+    'ph-card4-desc': 'PSI 티켓 창고 소개 및 바우처 유형 설명',
+    'ph-card4-tag': '발권',
+    'footer': 'SCM 지식베이스 · 내부 전용 — 외부 공유 금지'
+  }
+});
+</script>
 </body>
 </html>

@@ -11,85 +11,180 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 自動出票 / OCBT</div>
+    <div class="breadcrumb" data-i18n="ocbt-breadcrumb">首頁 / 自動出票 / OCBT</div>
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)">📦</div>
       <div class="page-header-body">
-        <h1>OCBT 組合商品</h1>
-        <p class="subtitle">由兩家以上不同供應商的即訂即出商品組成的組合訂單</p>
-        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+        <h1 data-i18n="ocbt-title">OCBT 組合商品</h1>
+        <p class="subtitle" data-i18n="ocbt-subtitle">由兩家以上不同供應商的即訂即出商品組成的組合訂單</p>
+        <div class="meta-row"><span class="meta-chip badge-green" data-i18n="ocbt-meta">自動出票</span></div>
       </div>
     </div>
 
     <div class="white-box">
-      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。</span>
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="ocbt-definition">ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。</span>
     </div>
 
-    <h3 style="margin-top:1.5rem;">📋 OCBT 設定限制</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="ocbt-limits-title">📋 OCBT 設定限制</h3>
     <div class="white-box">
-      <ul style="line-height:2rem;padding-left:1.25rem;">
+      <ul style="line-height:2rem;padding-left:1.25rem;" data-i18n-html="ocbt-limits-list">
         <li>母商品前置日必須 <strong>≥</strong> 子商品前置日</li>
         <li>月曆模式：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span></li>
         <li>母商品的銷售日期必須符合子商品銷售日期</li>
         <li>母商品旅規必須覆蓋子商品旅規</li>
         <li>母商品開啟的市場，子商品也要一併開啟市場</li>
       </ul>
-      <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。</span>
+      <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="ocbt-limits-note">⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。</span>
     </div>
 
-    <h3 style="margin-top:1.5rem;">⚠️ OCBT 失敗處理方式</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="ocbt-fail-title">⚠️ OCBT 失敗處理方式</h3>
     <div class="white-box">
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>Slack 聯繫 BD／AM</strong>
-            <p>透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。</p>
+            <strong data-i18n="ocbt-step1-title">Slack 聯繫 BD／AM</strong>
+            <p data-i18n="ocbt-step1-desc">透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>BD／AM 確認失敗原因</strong>
-            <p>BD／AM 確認是哪個子商品出票失敗及原因。</p>
+            <strong data-i18n="ocbt-step2-title">BD／AM 確認失敗原因</strong>
+            <p data-i18n="ocbt-step2-desc">BD／AM 確認是哪個子商品出票失敗及原因。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>BD／AM 回覆後續作業方法</strong>
-            <p>依確認結果，BD／AM 回覆處理方式。</p>
+            <strong data-i18n="ocbt-step3-title">BD／AM 回覆後續作業方法</strong>
+            <p data-i18n="ocbt-step3-desc">依確認結果，BD／AM 回覆處理方式。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
-            <strong>若需人工出票</strong>
-            <p>請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。</p>
+            <strong data-i18n="ocbt-step4-title">若需人工出票</strong>
+            <p data-i18n-html="ocbt-step4-desc">請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用',
+    'ocbt-breadcrumb': '首頁 / 自動出票 / OCBT',
+    'ocbt-title': 'OCBT 組合商品',
+    'ocbt-subtitle': '由兩家以上不同供應商的即訂即出商品組成的組合訂單',
+    'ocbt-meta': '自動出票',
+    'ocbt-definition': 'ℹ️ <strong>定義：</strong>OCBT 由兩家以上不同供應商的即訂即出商品組成，母訂單實際上為空殼訂單，子訂單各自向對應供應商出票。',
+    'ocbt-limits-title': '📋 OCBT 設定限制',
+    'ocbt-limits-list': '<li>母商品前置日必須 <strong>≥</strong> 子商品前置日</li><li>月曆模式：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span></li><li>母商品的銷售日期必須符合子商品銷售日期</li><li>母商品旅規必須覆蓋子商品旅規</li><li>母商品開啟的市場，子商品也要一併開啟市場</li>',
+    'ocbt-limits-note': '⚠️ 當商品無法使用 OCBT，需由 OP 人工作業處理組合商品訂單。',
+    'ocbt-fail-title': '⚠️ OCBT 失敗處理方式',
+    'ocbt-step1-title': 'Slack 聯繫 BD／AM',
+    'ocbt-step1-desc': '透過 Slack 通知對應 BD 或 AM，告知 OCBT 出票失敗的訂單編號。',
+    'ocbt-step2-title': 'BD／AM 確認失敗原因',
+    'ocbt-step2-desc': 'BD／AM 確認是哪個子商品出票失敗及原因。',
+    'ocbt-step3-title': 'BD／AM 回覆後續作業方法',
+    'ocbt-step3-desc': '依確認結果，BD／AM 回覆處理方式。',
+    'ocbt-step4-title': '若需人工出票',
+    'ocbt-step4-desc': '請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。',
+  },
+  en: {
+    'nav-title': 'SCM <em>Knowledge Base</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Knowledge Base · Internal Use',
+    'ocbt-breadcrumb': 'Home / Auto Issuance / OCBT',
+    'ocbt-title': 'OCBT Bundle Products',
+    'ocbt-subtitle': 'A bundle order composed of instant-issuance products from two or more different suppliers',
+    'ocbt-meta': 'Auto Issuance',
+    'ocbt-definition': 'ℹ️ <strong>Definition：</strong>OCBT bundles instant-issuance products from two or more different suppliers. The parent order is a shell order; each child order issues tickets to its respective supplier independently.',
+    'ocbt-limits-title': '📋 OCBT Configuration Restrictions',
+    'ocbt-limits-list': '<li>Parent product lead days must be <strong>≥</strong> child product lead days</li><li>Calendar mode: <span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">Specified Date</span></li><li>Parent product sale dates must match child product sale dates</li><li>Parent product travel rules must cover child product travel rules</li><li>Markets enabled for the parent product must also be enabled for child products</li>',
+    'ocbt-limits-note': '⚠️ If a product cannot use OCBT, OP must handle the bundle order manually.',
+    'ocbt-fail-title': '⚠️ OCBT Failure Handling',
+    'ocbt-step1-title': 'Contact BD／AM via Slack',
+    'ocbt-step1-desc': 'Notify the relevant BD or AM via Slack with the order number of the OCBT issuance failure.',
+    'ocbt-step2-title': 'BD／AM Confirms Failure Reason',
+    'ocbt-step2-desc': 'BD／AM identifies which child product failed and the reason.',
+    'ocbt-step3-title': 'BD／AM Advises Next Steps',
+    'ocbt-step3-desc': 'Based on findings, BD／AM informs OP of the handling method.',
+    'ocbt-step4-title': 'If Manual Issuance is Required',
+    'ocbt-step4-desc': 'Request the ProdOID from BD／AM and proceed to the <strong>B2D page</strong> to manually place the order.',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
+    'footer': 'SCM ナレッジベース · 社内使用',
+    'ocbt-breadcrumb': 'ホーム / 自動発券 / OCBT',
+    'ocbt-title': 'OCBT セット商品',
+    'ocbt-subtitle': '2社以上の異なるサプライヤーの即時発券商品で構成されるセット注文',
+    'ocbt-meta': '自動発券',
+    'ocbt-definition': 'ℹ️ <strong>定義：</strong>OCBT は2社以上の異なるサプライヤーの即時発券商品で構成されます。親注文は実際にはシェル注文であり、子注文がそれぞれ対応するサプライヤーへ個別に発券します。',
+    'ocbt-limits-title': '📋 OCBT 設定制限',
+    'ocbt-limits-list': '<li>親商品のリードタイムは <strong>≥</strong> 子商品のリードタイムであること</li><li>カレンダーモード：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">指定日</span></li><li>親商品の販売日は子商品の販売日と一致していること</li><li>親商品の旅行規定は子商品の旅行規定をカバーしていること</li><li>親商品で有効な市場は子商品でも有効にすること</li>',
+    'ocbt-limits-note': '⚠️ 商品が OCBT を使用できない場合、OP が手動でセット商品注文を処理する必要があります。',
+    'ocbt-fail-title': '⚠️ OCBT 失敗時の対応方法',
+    'ocbt-step1-title': 'Slack で BD／AM に連絡',
+    'ocbt-step1-desc': 'Slack で担当 BD または AM に OCBT 発券失敗の注文番号を通知します。',
+    'ocbt-step2-title': 'BD／AM が失敗原因を確認',
+    'ocbt-step2-desc': 'BD／AM がどの子商品の発券が失敗したか、及びその原因を確認します。',
+    'ocbt-step3-title': 'BD／AM が後続対応方法を回答',
+    'ocbt-step3-desc': '確認結果に基づき、BD／AM が対応方法を回答します。',
+    'ocbt-step4-title': '手動発券が必要な場合',
+    'ocbt-step4-desc': 'BD／AM から ProdOID を入手し、<strong>B2D ページ</strong>で手動注文作業を行います。',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식 베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식 베이스 · 내부 사용',
+    'ocbt-breadcrumb': '홈 / 자동 발권 / OCBT',
+    'ocbt-title': 'OCBT 패키지 상품',
+    'ocbt-subtitle': '두 곳 이상의 서로 다른 공급업체의 즉시 발권 상품으로 구성된 패키지 주문',
+    'ocbt-meta': '자동 발권',
+    'ocbt-definition': 'ℹ️ <strong>정의：</strong>OCBT는 두 곳 이상의 서로 다른 공급업체의 즉시 발권 상품으로 구성됩니다. 부모 주문은 실질적으로 빈 껍데기 주문이며, 하위 주문이 각 공급업체에 개별적으로 발권합니다.',
+    'ocbt-limits-title': '📋 OCBT 설정 제한',
+    'ocbt-limits-list': '<li>부모 상품의 선행일은 <strong>≥</strong> 하위 상품의 선행일이어야 합니다</li><li>달력 모드：<span style="display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);color:white;letter-spacing:0.5px;">지정일</span></li><li>부모 상품의 판매 날짜는 하위 상품의 판매 날짜와 일치해야 합니다</li><li>부모 상품의 여행 규정은 하위 상품의 여행 규정을 포함해야 합니다</li><li>부모 상품에서 활성화된 시장은 하위 상품에서도 활성화되어야 합니다</li>',
+    'ocbt-limits-note': '⚠️ 상품이 OCBT를 사용할 수 없는 경우, OP가 패키지 상품 주문을 수동으로 처리해야 합니다.',
+    'ocbt-fail-title': '⚠️ OCBT 실패 처리 방법',
+    'ocbt-step1-title': 'Slack으로 BD／AM에 연락',
+    'ocbt-step1-desc': 'Slack을 통해 담당 BD 또는 AM에게 OCBT 발권 실패 주문 번호를 알립니다.',
+    'ocbt-step2-title': 'BD／AM가 실패 원인 확인',
+    'ocbt-step2-desc': 'BD／AM가 어떤 하위 상품의 발권이 실패했는지와 그 원인을 확인합니다.',
+    'ocbt-step3-title': 'BD／AM가 후속 처리 방법 회신',
+    'ocbt-step3-desc': '확인 결과에 따라 BD／AM가 처리 방법을 회신합니다.',
+    'ocbt-step4-title': '수동 발권이 필요한 경우',
+    'ocbt-step4-desc': 'BD／AM에게 ProdOID를 받아 <strong>B2D 페이지</strong>에서 수동 주문 작업을 진행합니다.',
+  }
+});
+</script>
 </body>
 </html>

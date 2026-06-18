@@ -28,34 +28,37 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 特例取消流程</div>
+    <div class="breadcrumb" data-i18n="cancel-breadcrumb">首頁 / 特例取消流程</div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#b91c1c,#ef4444);">❌</div>
       <div class="page-header-body">
-        <h1>特例取消流程</h1>
+        <h1 data-i18n="cancel-title">特例取消流程</h1>
         <div class="meta-row">
-          <span class="meta-chip badge-red">異常處理</span>
+          <span class="meta-chip badge-red" data-i18n="cancel-chip">異常處理</span>
         </div>
       </div>
     </div>
@@ -64,36 +67,36 @@
 
       <!-- KKday 正常情況說明 -->
       <div style="background:#f0f4ff;border-radius:10px;padding:16px 20px;margin-bottom:24px;border:1px solid #c5d3f5;">
-        <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">KKday 正常情況不會主動取消訂單，以下三種情況除外：</div>
+        <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;" data-i18n="cancel-normal-intro">KKday 正常情況不會主動取消訂單，以下三種情況除外：</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
           <div style="flex:1;min-width:160px;background:white;border:1px solid #c5d3f5;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
             <span style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</span>
-            <span style="font-size:12px;color:#2d3748;">訂單無法訂出</span>
+            <span style="font-size:12px;color:#2d3748;" data-i18n="cancel-exception1">訂單無法訂出</span>
           </div>
           <div style="flex:1;min-width:160px;background:white;border:1px solid #c5d3f5;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
             <span style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</span>
-            <span style="font-size:12px;color:#2d3748;">訂單處理完畢後的商品異動</span>
+            <span style="font-size:12px;color:#2d3748;" data-i18n="cancel-exception2">訂單處理完畢後的商品異動</span>
           </div>
           <div style="flex:1;min-width:160px;background:white;border:1px solid #c5d3f5;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
             <span style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</span>
-            <span style="font-size:12px;color:#2d3748;">供應商因手續費調整請求 KKday 協助取消</span>
+            <span style="font-size:12px;color:#2d3748;" data-i18n="cancel-exception3">供應商因手續費調整請求 KKday 協助取消</span>
           </div>
         </div>
       </div>
 
       <!-- KKday 端取消 -->
       <div class="cancel-section">
-        <h2>🏢 KKday 端取消</h2>
+        <h2 data-i18n="cancel-kkday-title">🏢 KKday 端取消</h2>
         <div class="flow-bar">
-          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">點擊特殊取消原因</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="cancel-kkday-flow1">點擊特殊取消原因</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">確認手續費</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="cancel-kkday-flow2">確認手續費</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">備註原因 & 送出給客服</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="cancel-kkday-flow3">備註原因 &amp; 送出給客服</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="cancel-kkday-flow4">CS 退款執行</span>
         </div>
-        <div style="margin-top:10px;font-size:12px;color:#718096;padding:0 4px;">
+        <div style="margin-top:10px;font-size:12px;color:#718096;padding:0 4px;" data-i18n-html="cancel-kkday-note">
           有手續費 → 計算（百分比或定額）→ 選手續費原因 → 備註取消原因 → 送出給客服<br>
           無手續費 → 直接送出<br>
         </div>
@@ -103,56 +106,56 @@
 
       <!-- 客人端需求取消 -->
       <div class="cancel-section">
-        <h2>👤 客人端需求取消</h2>
+        <h2 data-i18n="cancel-customer-title">👤 客人端需求取消</h2>
         <div class="flow-bar">
-          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">CS 接收需求</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="cancel-customer-flow1">CS 接收需求</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 確認可否取消</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="cancel-customer-flow2">OP 確認可否取消</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">CS 與旅客確認退款條件</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="cancel-customer-flow3">CS 與旅客確認退款條件</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP Be2 發起取消</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="cancel-customer-flow4">OP Be2 發起取消</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="cancel-customer-flow5">CS 退款執行</span>
         </div>
-        <div style="margin-top:10px;font-size:12px;color:#718096;padding:0 4px;">
+        <div style="margin-top:10px;font-size:12px;color:#718096;padding:0 4px;" data-i18n-html="cancel-customer-note">
           OP 確認可否取消時，需聯繫供應商確認同意取消及退費條件<br>
           <span style="display:inline-block;margin-top:3px;">退款依客人付款方式執行原路退款或匯款退款</span>
         </div>
-        <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 如有手續費需先告知客人</span>
+        <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="cancel-customer-warning">⚠️ 如有手續費需先告知客人</span>
       </div>
 
       <hr style="margin:1.5rem 0;border-color:var(--border);" />
 
       <!-- 供應商端取消 -->
       <div class="cancel-section">
-        <h2>🏪 供應商端取消（需 OP 作業特例）</h2>
-        <p style="font-size:13px;font-weight:600;color:#555;margin-bottom:10px;">適用情況</p>
+        <h2 data-i18n="cancel-supplier-title">🏪 供應商端取消（需 OP 作業特例）</h2>
+        <p style="font-size:13px;font-weight:600;color:#555;margin-bottom:10px;" data-i18n="cancel-supplier-applicable">適用情況</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
           <div style="flex:1;min-width:160px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
             <span style="font-size:18px;">💰</span>
-            <span style="font-size:13px;color:#2d3748;">供應商欲調整取消退費金額</span>
+            <span style="font-size:13px;color:#2d3748;" data-i18n="cancel-supplier-case1">供應商欲調整取消退費金額</span>
           </div>
           <div style="flex:1;min-width:160px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
             <span style="font-size:18px;">📅</span>
-            <span style="font-size:13px;color:#2d3748;">過出發日訂單取消（客訴處理）</span>
+            <span style="font-size:13px;color:#2d3748;" data-i18n="cancel-supplier-case2">過出發日訂單取消（客訴處理）</span>
           </div>
           <div style="flex:1;min-width:160px;background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
             <span style="font-size:18px;">✅</span>
-            <span style="font-size:13px;color:#2d3748;">供應商同意取消已核銷訂單</span>
+            <span style="font-size:13px;color:#2d3748;" data-i18n="cancel-supplier-case3">供應商同意取消已核銷訂單</span>
           </div>
         </div>
-        <p style="font-size:13px;font-weight:600;color:#555;margin-bottom:10px;">處理流程</p>
+        <p style="font-size:13px;font-weight:600;color:#555;margin-bottom:10px;" data-i18n="cancel-supplier-flow-label">處理流程</p>
         <div class="flow-bar">
-          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;">供應商通知 OP</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" data-i18n="cancel-supplier-flow1">供應商通知 OP</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">OP 確認原因</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="cancel-supplier-flow2">OP 確認原因</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;">Be2 發起特殊原因取消</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="cancel-supplier-flow3">Be2 發起特殊原因取消</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;">CS 與旅客確認</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="cancel-supplier-flow4">CS 與旅客確認</span>
           <span class="flow-arr">→</span>
-          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;">CS 退款執行</span>
+          <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="cancel-supplier-flow5">CS 退款執行</span>
         </div>
       </div>
 
@@ -160,20 +163,20 @@
 
       <!-- 手續費情境 -->
       <div class="cancel-section">
-        <h2>💸 取消手續費情境</h2>
+        <h2 data-i18n="cancel-fee-title">💸 取消手續費情境</h2>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px;">
           <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px 16px;">
-            <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:8px;">✅ 免收手續費</div>
+            <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:8px;" data-i18n="cancel-fee-free-title">✅ 免收手續費</div>
             <ul style="margin:0;padding-left:16px;font-size:12px;color:#374151;display:flex;flex-direction:column;gap:4px;">
-              <li>客人在<strong>免費取消期間</strong>申請取消</li>
-              <li>供應商疏失引發客訴，供應商同意免費取消</li>
+              <li data-i18n-html="cancel-fee-free-li1">客人在<strong>免費取消期間</strong>申請取消</li>
+              <li data-i18n="cancel-fee-free-li2">供應商疏失引發客訴，供應商同意免費取消</li>
             </ul>
           </div>
           <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:14px 16px;">
-            <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;">❌ 需收手續費</div>
+            <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;" data-i18n="cancel-fee-charged-title">❌ 需收手續費</div>
             <ul style="margin:0;padding-left:16px;font-size:12px;color:#374151;display:flex;flex-direction:column;gap:4px;">
-              <li><strong>%</strong>：e.g. 12/9 前申請取消收 10% 手續費</li>
-              <li><strong>特定金額</strong>：e.g. 公司政策退款，供應商不同意免費取消</li>
+              <li data-i18n-html="cancel-fee-charged-li1"><strong>%</strong>：e.g. 12/9 前申請取消收 10% 手續費</li>
+              <li data-i18n-html="cancel-fee-charged-li2"><strong>特定金額</strong>：e.g. 公司政策退款，供應商不同意免費取消</li>
             </ul>
           </div>
         </div>
@@ -183,13 +186,13 @@
 
       <!-- 公司政策退款 -->
       <div class="cancel-section">
-        <h2>🏛️ 公司政策退款（特殊情況）</h2>
-        <div style="font-size:12px;color:#4a5568;margin-bottom:12px;">當客人因特殊情況需取消，但供應商取消政策嚴格無法退款時，客服部門依公司政策審核是否可退款：</div>
+        <h2 data-i18n="cancel-policy-title">🏛️ 公司政策退款（特殊情況）</h2>
+        <div style="font-size:12px;color:#4a5568;margin-bottom:12px;" data-i18n="cancel-policy-desc">當客人因特殊情況需取消，但供應商取消政策嚴格無法退款時，客服部門依公司政策審核是否可退款：</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>😢</span> 旅客二等親內直系血親屬<strong>去世</strong></div>
-          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>🏥</span> 旅客二等親內直系血親屬<strong>生重病</strong></div>
-          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>🌪️</span> 目的地發生<strong>嚴重自然災害</strong>（不可抗力）</div>
-          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>✈️</span> 原訂班機<strong>停飛或嚴重延誤</strong></div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>😢</span> <span data-i18n-html="cancel-policy-case1">旅客二等親內直系血親屬<strong>去世</strong></span></div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>🏥</span> <span data-i18n-html="cancel-policy-case2">旅客二等親內直系血親屬<strong>生重病</strong></span></div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>🌪️</span> <span data-i18n-html="cancel-policy-case3">目的地發生<strong>嚴重自然災害</strong>（不可抗力）</span></div>
+          <div style="background:#fff8f0;border:1px solid #ffcc80;border-radius:8px;padding:10px 14px;font-size:12px;color:#2d3748;display:flex;align-items:center;gap:8px;"><span>✈️</span> <span data-i18n-html="cancel-policy-case4">原訂班機<strong>停飛或嚴重延誤</strong></span></div>
         </div>
       </div>
 
@@ -198,18 +201,226 @@
       <!-- 補充說明 -->
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="background:#fafbff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
-          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px;">💡 補充 — API 商品</div>
-          <div style="font-size:13px;color:#4a5568;">若商品有串接 API 取消，確認可取消後，進入 Be2 訂單管理的「B2B 串接訂單取消」操作</div>
+          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px;" data-i18n="cancel-api-title">💡 補充 — API 商品</div>
+          <div style="font-size:13px;color:#4a5568;" data-i18n="cancel-api-desc">若商品有串接 API 取消，確認可取消後，進入 Be2 訂單管理的「B2B 串接訂單取消」操作</div>
         </div>
         <div style="background:#fafbff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
-          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px;">💡 補充 — PSI 出票</div>
-          <div style="font-size:13px;color:#4a5568;">若訂單為 PSI 出票，取消後留意是否需要 PSI 退貨。<br><strong>注意：</strong>無論全額退款（訂單取消）或部分退款（訂單不取消），PSI 訂單的手續費／成本不會變動。</div>
+          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px;" data-i18n="cancel-psi-title">💡 補充 — PSI 出票</div>
+          <div style="font-size:13px;color:#4a5568;" data-i18n-html="cancel-psi-desc">若訂單為 PSI 出票，取消後留意是否需要 PSI 退貨。<br><strong>注意：</strong>無論全額退款（訂單取消）或部分退款（訂單不取消），PSI 訂單的手續費／成本不會變動。</div>
         </div>
       </div>
 
     </div>
 
-    <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
   </div>
+<script>
+SCMi18n.init({
+  zh: {
+    'cancel-breadcrumb': '首頁 / 特例取消流程',
+    'cancel-title': '特例取消流程',
+    'cancel-chip': '異常處理',
+    'cancel-normal-intro': 'KKday 正常情況不會主動取消訂單，以下三種情況除外：',
+    'cancel-exception1': '訂單無法訂出',
+    'cancel-exception2': '訂單處理完畢後的商品異動',
+    'cancel-exception3': '供應商因手續費調整請求 KKday 協助取消',
+    'cancel-kkday-title': '🏢 KKday 端取消',
+    'cancel-kkday-flow1': '點擊特殊取消原因',
+    'cancel-kkday-flow2': '確認手續費',
+    'cancel-kkday-flow3': '備註原因 & 送出給客服',
+    'cancel-kkday-flow4': 'CS 退款執行',
+    'cancel-kkday-note': '有手續費 → 計算（百分比或定額）→ 選手續費原因 → 備註取消原因 → 送出給客服<br>無手續費 → 直接送出<br>',
+    'cancel-customer-title': '👤 客人端需求取消',
+    'cancel-customer-flow1': 'CS 接收需求',
+    'cancel-customer-flow2': 'OP 確認可否取消',
+    'cancel-customer-flow3': 'CS 與旅客確認退款條件',
+    'cancel-customer-flow4': 'OP Be2 發起取消',
+    'cancel-customer-flow5': 'CS 退款執行',
+    'cancel-customer-note': 'OP 確認可否取消時，需聯繫供應商確認同意取消及退費條件<br><span style="display:inline-block;margin-top:3px;">退款依客人付款方式執行原路退款或匯款退款</span>',
+    'cancel-customer-warning': '⚠️ 如有手續費需先告知客人',
+    'cancel-supplier-title': '🏪 供應商端取消（需 OP 作業特例）',
+    'cancel-supplier-applicable': '適用情況',
+    'cancel-supplier-case1': '供應商欲調整取消退費金額',
+    'cancel-supplier-case2': '過出發日訂單取消（客訴處理）',
+    'cancel-supplier-case3': '供應商同意取消已核銷訂單',
+    'cancel-supplier-flow-label': '處理流程',
+    'cancel-supplier-flow1': '供應商通知 OP',
+    'cancel-supplier-flow2': 'OP 確認原因',
+    'cancel-supplier-flow3': 'Be2 發起特殊原因取消',
+    'cancel-supplier-flow4': 'CS 與旅客確認',
+    'cancel-supplier-flow5': 'CS 退款執行',
+    'cancel-fee-title': '💸 取消手續費情境',
+    'cancel-fee-free-title': '✅ 免收手續費',
+    'cancel-fee-free-li1': '客人在<strong>免費取消期間</strong>申請取消',
+    'cancel-fee-free-li2': '供應商疏失引發客訴，供應商同意免費取消',
+    'cancel-fee-charged-title': '❌ 需收手續費',
+    'cancel-fee-charged-li1': '<strong>%</strong>：e.g. 12/9 前申請取消收 10% 手續費',
+    'cancel-fee-charged-li2': '<strong>特定金額</strong>：e.g. 公司政策退款，供應商不同意免費取消',
+    'cancel-policy-title': '🏛️ 公司政策退款（特殊情況）',
+    'cancel-policy-desc': '當客人因特殊情況需取消，但供應商取消政策嚴格無法退款時，客服部門依公司政策審核是否可退款：',
+    'cancel-policy-case1': '旅客二等親內直系血親屬<strong>去世</strong>',
+    'cancel-policy-case2': '旅客二等親內直系血親屬<strong>生重病</strong>',
+    'cancel-policy-case3': '目的地發生<strong>嚴重自然災害</strong>（不可抗力）',
+    'cancel-policy-case4': '原訂班機<strong>停飛或嚴重延誤</strong>',
+    'cancel-api-title': '💡 補充 — API 商品',
+    'cancel-api-desc': '若商品有串接 API 取消，確認可取消後，進入 Be2 訂單管理的「B2B 串接訂單取消」操作',
+    'cancel-psi-title': '💡 補充 — PSI 出票',
+    'cancel-psi-desc': '若訂單為 PSI 出票，取消後留意是否需要 PSI 退貨。<br><strong>注意：</strong>無論全額退款（訂單取消）或部分退款（訂單不取消），PSI 訂單的手續費／成本不會變動。',
+  },
+  en: {
+    'cancel-breadcrumb': 'Home / Special Cancellation Flow',
+    'cancel-title': 'Special Cancellation Flow',
+    'cancel-chip': 'Exception Handling',
+    'cancel-normal-intro': 'KKday does not proactively cancel orders under normal circumstances. The following three exceptions apply:',
+    'cancel-exception1': 'Order cannot be booked',
+    'cancel-exception2': 'Product change after order is processed',
+    'cancel-exception3': 'Supplier requests KKday to cancel due to fee adjustment',
+    'cancel-kkday-title': '🏢 KKday-Initiated Cancellation',
+    'cancel-kkday-flow1': 'Click Special Cancel Reason',
+    'cancel-kkday-flow2': 'Confirm Handling Fee',
+    'cancel-kkday-flow3': 'Add Remark & Submit to CS',
+    'cancel-kkday-flow4': 'CS Executes Refund',
+    'cancel-kkday-note': 'With fee → Calculate (percentage or fixed) → Select fee reason → Add cancellation remark → Submit to CS<br>No fee → Submit directly<br>',
+    'cancel-customer-title': '👤 Customer-Requested Cancellation',
+    'cancel-customer-flow1': 'CS Receives Request',
+    'cancel-customer-flow2': 'OP Confirms Feasibility',
+    'cancel-customer-flow3': 'CS Confirms Refund Terms with Traveler',
+    'cancel-customer-flow4': 'OP Initiates Cancel in Be2',
+    'cancel-customer-flow5': 'CS Executes Refund',
+    'cancel-customer-note': 'When confirming feasibility, OP must contact supplier to confirm cancellation approval and refund terms<br><span style="display:inline-block;margin-top:3px;">Refund method follows customer\'s original payment method (original route or bank transfer)</span>',
+    'cancel-customer-warning': '⚠️ Notify customer of any handling fees before proceeding',
+    'cancel-supplier-title': '🏪 Supplier-Initiated Cancellation (Requires OP Special Handling)',
+    'cancel-supplier-applicable': 'Applicable Scenarios',
+    'cancel-supplier-case1': 'Supplier wants to adjust cancellation refund amount',
+    'cancel-supplier-case2': 'Cancellation after departure date (complaint handling)',
+    'cancel-supplier-case3': 'Supplier agrees to cancel a redeemed order',
+    'cancel-supplier-flow-label': 'Process Flow',
+    'cancel-supplier-flow1': 'Supplier Notifies OP',
+    'cancel-supplier-flow2': 'OP Confirms Reason',
+    'cancel-supplier-flow3': 'Be2 Initiates Special Cancel',
+    'cancel-supplier-flow4': 'CS Confirms with Traveler',
+    'cancel-supplier-flow5': 'CS Executes Refund',
+    'cancel-fee-title': '💸 Cancellation Fee Scenarios',
+    'cancel-fee-free-title': '✅ No Handling Fee',
+    'cancel-fee-free-li1': 'Customer cancels within the <strong>free cancellation period</strong>',
+    'cancel-fee-free-li2': 'Supplier fault caused complaint; supplier agrees to waive fee',
+    'cancel-fee-charged-title': '❌ Handling Fee Applies',
+    'cancel-fee-charged-li1': '<strong>%</strong>: e.g. 10% fee if canceled before 12/9',
+    'cancel-fee-charged-li2': '<strong>Fixed Amount</strong>: e.g. company policy refund; supplier refuses waiver',
+    'cancel-policy-title': '🏛️ Company Policy Refund (Special Cases)',
+    'cancel-policy-desc': 'When a customer needs to cancel due to special circumstances but the supplier\'s cancellation policy is strict, the CS department reviews eligibility based on company policy:',
+    'cancel-policy-case1': 'Death of a traveler\'s <strong>immediate family member</strong> (within 2nd degree)',
+    'cancel-policy-case2': 'Traveler\'s immediate family member has a <strong>serious illness</strong>',
+    'cancel-policy-case3': '<strong>Severe natural disaster</strong> at the destination (force majeure)',
+    'cancel-policy-case4': 'Original flight <strong>canceled or severely delayed</strong>',
+    'cancel-api-title': '💡 Note — API Products',
+    'cancel-api-desc': 'If the product supports API cancellation, after confirming eligibility, go to Be2 Order Management and use "B2B API Order Cancellation"',
+    'cancel-psi-title': '💡 Note — PSI Ticketing',
+    'cancel-psi-desc': 'If the order uses PSI ticketing, check whether a PSI return is required after cancellation.<br><strong>Note:</strong> Regardless of full refund (order cancel) or partial refund (order retained), PSI order fees/costs remain unchanged.',
+  },
+  ja: {
+    'cancel-breadcrumb': 'ホーム / 特例キャンセルフロー',
+    'cancel-title': '特例キャンセルフロー',
+    'cancel-chip': '例外処理',
+    'cancel-normal-intro': 'KKday は通常、積極的に注文をキャンセルしません。以下の3つの例外を除きます：',
+    'cancel-exception1': '注文が確定できない',
+    'cancel-exception2': '注文処理完了後の商品変更',
+    'cancel-exception3': 'サプライヤーが手数料調整のため KKday にキャンセルを依頼',
+    'cancel-kkday-title': '🏢 KKday 起点キャンセル',
+    'cancel-kkday-flow1': '特別キャンセル理由を選択',
+    'cancel-kkday-flow2': '手数料を確認',
+    'cancel-kkday-flow3': '理由を備考 & CS に送信',
+    'cancel-kkday-flow4': 'CS が返金を実行',
+    'cancel-kkday-note': '手数料あり → 計算（パーセンテージまたは定額）→ 手数料理由を選択 → キャンセル理由を備考 → CS に送信<br>手数料なし → 直接送信<br>',
+    'cancel-customer-title': '👤 お客様都合によるキャンセル',
+    'cancel-customer-flow1': 'CS がリクエストを受付',
+    'cancel-customer-flow2': 'OP がキャンセル可否を確認',
+    'cancel-customer-flow3': 'CS が旅客と返金条件を確認',
+    'cancel-customer-flow4': 'OP が Be2 でキャンセルを発起',
+    'cancel-customer-flow5': 'CS が返金を実行',
+    'cancel-customer-note': 'OP がキャンセル可否を確認する際、サプライヤーにキャンセル同意と返金条件を確認する必要があります<br><span style="display:inline-block;margin-top:3px;">返金はお客様の支払い方法に応じて元の経路または振込で対応</span>',
+    'cancel-customer-warning': '⚠️ 手数料がある場合は事前にお客様へ告知すること',
+    'cancel-supplier-title': '🏪 サプライヤー起点キャンセル（OP 特例作業が必要）',
+    'cancel-supplier-applicable': '適用状況',
+    'cancel-supplier-case1': 'サプライヤーがキャンセル返金額を調整したい',
+    'cancel-supplier-case2': '出発日後の注文キャンセル（クレーム対応）',
+    'cancel-supplier-case3': 'サプライヤーが使用済み注文のキャンセルに同意',
+    'cancel-supplier-flow-label': '処理フロー',
+    'cancel-supplier-flow1': 'サプライヤーが OP に通知',
+    'cancel-supplier-flow2': 'OP が理由を確認',
+    'cancel-supplier-flow3': 'Be2 で特別理由キャンセルを発起',
+    'cancel-supplier-flow4': 'CS が旅客に確認',
+    'cancel-supplier-flow5': 'CS が返金を実行',
+    'cancel-fee-title': '💸 キャンセル手数料のシナリオ',
+    'cancel-fee-free-title': '✅ 手数料なし',
+    'cancel-fee-free-li1': 'お客様が<strong>無料キャンセル期間内</strong>に申請',
+    'cancel-fee-free-li2': 'サプライヤーの過失によるクレーム、サプライヤーが無料キャンセルに同意',
+    'cancel-fee-charged-title': '❌ 手数料あり',
+    'cancel-fee-charged-li1': '<strong>%</strong>：例）12/9 以前にキャンセル申請で 10% 手数料',
+    'cancel-fee-charged-li2': '<strong>定額</strong>：例）会社規定返金、サプライヤーが無料キャンセルに不同意',
+    'cancel-policy-title': '🏛️ 会社規定による返金（特別な場合）',
+    'cancel-policy-desc': 'お客様が特別な事情でキャンセルが必要だが、サプライヤーのキャンセルポリシーが厳しく返金できない場合、CS 部門が会社規定に基づき審査します：',
+    'cancel-policy-case1': '旅客の2親等以内の直系親族が<strong>逝去</strong>',
+    'cancel-policy-case2': '旅客の2親等以内の直系親族が<strong>重篤な病気</strong>',
+    'cancel-policy-case3': '目的地で<strong>重大な自然災害</strong>（不可抗力）が発生',
+    'cancel-policy-case4': '予約フライトが<strong>欠航または大幅遅延</strong>',
+    'cancel-api-title': '💡 補足 — API 商品',
+    'cancel-api-desc': '商品に API キャンセル連携がある場合、キャンセル可否確認後、Be2 の注文管理で「B2B 連携注文キャンセル」を操作',
+    'cancel-psi-title': '💡 補足 — PSI 発券',
+    'cancel-psi-desc': '注文が PSI 発券の場合、キャンセル後に PSI 返品が必要か確認してください。<br><strong>注意：</strong>全額返金（注文キャンセル）または一部返金（注文保持）に関わらず、PSI 注文の手数料／コストは変動しません。',
+  },
+  ko: {
+    'cancel-breadcrumb': '홈 / 특례 취소 프로세스',
+    'cancel-title': '특례 취소 프로세스',
+    'cancel-chip': '예외 처리',
+    'cancel-normal-intro': 'KKday는 정상적인 상황에서 주문을 먼저 취소하지 않습니다. 다음 세 가지 예외를 제외합니다：',
+    'cancel-exception1': '주문을 확정할 수 없는 경우',
+    'cancel-exception2': '주문 처리 완료 후 상품 변경',
+    'cancel-exception3': '공급업체가 수수료 조정으로 KKday에 취소 요청',
+    'cancel-kkday-title': '🏢 KKday 주도 취소',
+    'cancel-kkday-flow1': '특별 취소 사유 선택',
+    'cancel-kkday-flow2': '수수료 확인',
+    'cancel-kkday-flow3': '사유 메모 & CS에 제출',
+    'cancel-kkday-flow4': 'CS 환불 실행',
+    'cancel-kkday-note': '수수료 있음 → 계산（비율 또는 고정액）→ 수수료 사유 선택 → 취소 사유 메모 → CS에 제출<br>수수료 없음 → 직접 제출<br>',
+    'cancel-customer-title': '👤 고객 요청 취소',
+    'cancel-customer-flow1': 'CS 요청 접수',
+    'cancel-customer-flow2': 'OP 취소 가능 여부 확인',
+    'cancel-customer-flow3': 'CS가 여행자와 환불 조건 확인',
+    'cancel-customer-flow4': 'OP Be2에서 취소 발기',
+    'cancel-customer-flow5': 'CS 환불 실행',
+    'cancel-customer-note': 'OP가 취소 가능 여부를 확인할 때 공급업체에 취소 동의 및 환불 조건을 확인해야 함<br><span style="display:inline-block;margin-top:3px;">환불은 고객 결제 방법에 따라 원래 경로 환불 또는 계좌 이체 환불</span>',
+    'cancel-customer-warning': '⚠️ 수수료가 있을 경우 사전에 고객에게 고지 필요',
+    'cancel-supplier-title': '🏪 공급업체 주도 취소（OP 특례 작업 필요）',
+    'cancel-supplier-applicable': '적용 상황',
+    'cancel-supplier-case1': '공급업체가 취소 환불 금액을 조정하고자 함',
+    'cancel-supplier-case2': '출발일 이후 주문 취소（클레임 처리）',
+    'cancel-supplier-case3': '공급업체가 사용 완료 주문 취소에 동의',
+    'cancel-supplier-flow-label': '처리 프로세스',
+    'cancel-supplier-flow1': '공급업체가 OP에 통보',
+    'cancel-supplier-flow2': 'OP 사유 확인',
+    'cancel-supplier-flow3': 'Be2에서 특별 사유 취소 발기',
+    'cancel-supplier-flow4': 'CS가 여행자에게 확인',
+    'cancel-supplier-flow5': 'CS 환불 실행',
+    'cancel-fee-title': '💸 취소 수수료 시나리오',
+    'cancel-fee-free-title': '✅ 수수료 없음',
+    'cancel-fee-free-li1': '고객이 <strong>무료 취소 기간 내</strong>에 취소 신청',
+    'cancel-fee-free-li2': '공급업체 과실로 인한 클레임, 공급업체가 무료 취소에 동의',
+    'cancel-fee-charged-title': '❌ 수수료 있음',
+    'cancel-fee-charged-li1': '<strong>%</strong>：예）12/9 전 취소 신청 시 10% 수수료',
+    'cancel-fee-charged-li2': '<strong>특정 금액</strong>：예）회사 정책 환불, 공급업체가 무료 취소 불동의',
+    'cancel-policy-title': '🏛️ 회사 정책 환불（특별 상황）',
+    'cancel-policy-desc': '고객이 특별한 사정으로 취소가 필요하지만 공급업체의 취소 정책이 엄격하여 환불이 불가한 경우, CS 부서가 회사 정책에 따라 환불 가능 여부를 심사합니다：',
+    'cancel-policy-case1': '여행자의 2촌 이내 직계 가족 <strong>사망</strong>',
+    'cancel-policy-case2': '여행자의 2촌 이내 직계 가족 <strong>중병</strong>',
+    'cancel-policy-case3': '목적지에 <strong>심각한 자연재해</strong> 발생（불가항력）',
+    'cancel-policy-case4': '예약 항공편 <strong>결항 또는 심각한 지연</strong>',
+    'cancel-api-title': '💡 참고 — API 상품',
+    'cancel-api-desc': '상품에 API 취소 연동이 있는 경우, 취소 가능 확인 후 Be2 주문 관리의 「B2B 연동 주문 취소」를 이용',
+    'cancel-psi-title': '💡 참고 — PSI 발권',
+    'cancel-psi-desc': '주문이 PSI 발권인 경우, 취소 후 PSI 반품이 필요한지 확인하세요.<br><strong>주의：</strong>전액 환불（주문 취소）또는 부분 환불（주문 유지）에 관계없이 PSI 주문의 수수료／비용은 변동되지 않습니다.',
+  }
+});
+</script>
 </body>
 </html>

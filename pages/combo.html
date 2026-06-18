@@ -11,35 +11,38 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 人工訂購 / 組合商品</div>
+    <div class="breadcrumb" data-i18n="cb-breadcrumb">首頁 / 人工訂購 / 組合商品</div>
 
     <div class="page-header">
       <div class="page-header-icon">📦</div>
       <div class="page-header-body">
-        <h1>人工訂購：組合商品</h1>
-        <p class="subtitle">由兩個以上不同商品組成的套餐方案，客人下訂的訂單僅包含母商品，故需人工協助訂購子商品。</p>
+        <h1 data-i18n="cb-title">人工訂購：組合商品</h1>
+        <p class="subtitle" data-i18n="cb-subtitle">由兩個以上不同商品組成的套餐方案，客人下訂的訂單僅包含母商品，故需人工協助訂購子商品。</p>
         <div class="meta-row">
-          <span class="meta-chip badge-orange">人工訂購</span>
+          <span class="meta-chip badge-orange" data-i18n="cb-meta">人工訂購</span>
         </div>
       </div>
     </div>
@@ -86,7 +89,7 @@
 
       <div class="tree">
         <!-- Root -->
-        <div class="tree-root">組合商品</div>
+        <div class="tree-root" data-i18n="cb-tree-root">組合商品</div>
         <div class="tree-connector-v"></div>
 
         <!-- Three columns connector -->
@@ -101,11 +104,11 @@
 
           <!-- 類型一 -->
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="tree-node top" style="width:100%;">母商品-需人工作業<br>子商品-需人工作業</div>
+            <div class="tree-node top" style="width:100%;" data-i18n-html="cb-type1-header">母商品-需人工作業<br>子商品-需人工作業</div>
             <div class="tree-connector-v"></div>
-            <div class="tree-node" style="width:90%;">人工訂出母商品</div>
+            <div class="tree-node" style="width:90%;" data-i18n="cb-type1-node1">人工訂出母商品</div>
             <div class="tree-connector-v"></div>
-            <div class="tree-node" style="width:90%;">人工訂出子商品</div>
+            <div class="tree-node" style="width:90%;" data-i18n="cb-type1-node2">人工訂出子商品</div>
             <div class="tree-connector-v"></div>
             <div style="display:flex;width:90%;border-top:1.5px solid #999;">
               <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:16px;background:#999;"></div></div>
@@ -113,25 +116,25 @@
             </div>
             <div style="display:flex;gap:8px;width:90%;">
               <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div class="tree-leaf green" style="width:100%;">子商品成本0</div>
+                <div class="tree-leaf green" style="width:100%;" data-i18n="cb-leaf-cost0">子商品成本0</div>
                 <div class="tree-connector-v"></div>
-                <div class="tree-leaf green" style="width:100%;">依照訂購方式訂出</div>
+                <div class="tree-leaf green" style="width:100%;" data-i18n="cb-leaf-order-method">依照訂購方式訂出</div>
               </div>
               <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div class="tree-leaf orange" style="width:100%;">子商品應請款</div>
+                <div class="tree-leaf orange" style="width:100%;" data-i18n="cb-leaf-invoice">子商品應請款</div>
                 <div class="tree-connector-v"></div>
-                <div class="tree-leaf orange" style="width:100%;">B2D平台下訂</div>
+                <div class="tree-leaf orange" style="width:100%;" data-i18n="cb-leaf-b2d">B2D平台下訂</div>
               </div>
             </div>
             <div class="tree-connector-v"></div>
-            <div class="tree-final">母訂單及子訂單憑證<br>一併寄出</div>
+            <div class="tree-final" data-i18n-html="cb-final">母訂單及子訂單憑證<br>一併寄出</div>
           </div>
 
           <!-- 類型二 -->
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="tree-node top" style="width:100%;">母商品-即訂即出<br>子商品-需人工作業<br><span style="font-size:11px;color:#666;">（假即訂即出）</span></div>
+            <div class="tree-node top" style="width:100%;" data-i18n-html="cb-type2-header">母商品-即訂即出<br>子商品-需人工作業<br><span style="font-size:11px;color:#666;">（假即訂即出）</span></div>
             <div class="tree-connector-v"></div>
-            <div class="tree-node" style="width:90%;">人工訂出子商品</div>
+            <div class="tree-node" style="width:90%;" data-i18n="cb-type2-node1">人工訂出子商品</div>
             <div class="tree-connector-v"></div>
             <div style="display:flex;width:90%;border-top:1.5px solid #999;">
               <div style="flex:1;display:flex;justify-content:center;"><div style="width:1.5px;height:16px;background:#999;"></div></div>
@@ -139,27 +142,27 @@
             </div>
             <div style="display:flex;gap:8px;width:90%;">
               <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div class="tree-leaf green" style="width:100%;">子商品成本0</div>
+                <div class="tree-leaf green" style="width:100%;" data-i18n="cb-leaf-cost0">子商品成本0</div>
                 <div class="tree-connector-v"></div>
-                <div class="tree-leaf green" style="width:100%;">依照訂購方式訂出</div>
+                <div class="tree-leaf green" style="width:100%;" data-i18n="cb-leaf-order-method">依照訂購方式訂出</div>
               </div>
               <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div class="tree-leaf orange" style="width:100%;">子商品應請款</div>
+                <div class="tree-leaf orange" style="width:100%;" data-i18n="cb-leaf-invoice">子商品應請款</div>
                 <div class="tree-connector-v"></div>
-                <div class="tree-leaf orange" style="width:100%;">B2D平台下訂</div>
+                <div class="tree-leaf orange" style="width:100%;" data-i18n="cb-leaf-b2d">B2D平台下訂</div>
               </div>
             </div>
             <div class="tree-connector-v"></div>
-            <div class="tree-final">母訂單及子訂單憑證<br>一併寄出</div>
+            <div class="tree-final" data-i18n-html="cb-final">母訂單及子訂單憑證<br>一併寄出</div>
           </div>
 
           <!-- 類型三 -->
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="tree-node top" style="width:100%;">母商品-即訂即出<br>子商品-即訂即出<br><span style="font-size:11px;color:#666;">（無法使用OCBT的商品）</span></div>
+            <div class="tree-node top" style="width:100%;" data-i18n-html="cb-type3-header">母商品-即訂即出<br>子商品-即訂即出<br><span style="font-size:11px;color:#666;">（無法使用OCBT的商品）</span></div>
             <div class="tree-connector-v"></div>
-            <div class="tree-node" style="width:90%;">至B2D平台下訂子商品</div>
+            <div class="tree-node" style="width:90%;" data-i18n="cb-type3-node1">至B2D平台下訂子商品</div>
             <div class="tree-connector-v"></div>
-            <div class="tree-final">母訂單及子訂單憑證<br>一併寄出</div>
+            <div class="tree-final" data-i18n-html="cb-final">母訂單及子訂單憑證<br>一併寄出</div>
           </div>
 
         </div>
@@ -169,29 +172,29 @@
 
 
     <!-- 類型一 -->
-    <h2>類型一：母商品及子商品皆需人工作業</h2>
+    <h2 data-i18n="cb-type1-h2">類型一：母商品及子商品皆需人工作業</h2>
     <div class="white-box">
       <div class="step-list">
 
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>依照訂購方式描述訂出母商品</strong>
+            <strong data-i18n="cb-type1-step1">依照訂購方式描述訂出母商品</strong>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>依照訂購方式描述訂出子商品</strong>
+            <strong data-i18n="cb-type1-step2-title">依照訂購方式描述訂出子商品</strong>
             <div class="situation-grid">
               <div class="situation-card situation-ok">
-                <strong>子商品 0 元成本／無需請款</strong>
-                <p>無需成立子訂單，依訂購方式作業即可。</p>
+                <strong data-i18n="cb-sub-cost0-title">子商品 0 元成本／無需請款</strong>
+                <p data-i18n="cb-sub-cost0-desc">無需成立子訂單，依訂購方式作業即可。</p>
               </div>
               <div class="situation-card situation-warn">
-                <strong>子商品涉及成本且需請款</strong>
-                <p>需至 B2D 平台建立並確認子訂單，將子訂單單號回填至母訂單訂單基本資訊內。</p>
+                <strong data-i18n="cb-sub-invoice-title">子商品涉及成本且需請款</strong>
+                <p data-i18n="cb-sub-invoice-desc">需至 B2D 平台建立並確認子訂單，將子訂單單號回填至母訂單訂單基本資訊內。</p>
               </div>
             </div>
           </div>
@@ -200,8 +203,8 @@
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>寄出所有憑證</strong>
-            <p>待母子商品訂單皆確認完成，將所有憑證一併寄出給客人（客人會持有兩份或以上的憑證）。</p>
+            <strong data-i18n="cb-type1-step3-title">寄出所有憑證</strong>
+            <p data-i18n="cb-type1-step3-desc">待母子商品訂單皆確認完成，將所有憑證一併寄出給客人（客人會持有兩份或以上的憑證）。</p>
           </div>
         </div>
 
@@ -209,24 +212,24 @@
     </div>
 
     <!-- 類型二 -->
-    <h2>類型二：母商品為即訂即出，子商品需人工作業（假即訂即出）</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 客人下訂完成會先收到母商品憑證，僅子商品需人工作業。</span>
+    <h2 data-i18n="cb-type2-h2">類型二：母商品為即訂即出，子商品需人工作業（假即訂即出）</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="cb-type2-note">ℹ️ 客人下訂完成會先收到母商品憑證，僅子商品需人工作業。</span>
     <div class="white-box">
       <div class="step-list">
 
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>依照訂購方式訂出子商品</strong>
-            <p>判斷邏輯同類型一步驟 2（依子商品是否涉及成本決定是否建立子訂單）。</p>
+            <strong data-i18n="cb-type2-step1-title">依照訂購方式訂出子商品</strong>
+            <p data-i18n="cb-type2-step1-desc">判斷邏輯同類型一步驟 2（依子商品是否涉及成本決定是否建立子訂單）。</p>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>寄出所有憑證</strong>
-            <p>待母子商品皆確認完成，將所有憑證一併寄出。</p>
+            <strong data-i18n="cb-type2-step2-title">寄出所有憑證</strong>
+            <p data-i18n="cb-type2-step2-desc">待母子商品皆確認完成，將所有憑證一併寄出。</p>
           </div>
         </div>
 
@@ -234,23 +237,23 @@
     </div>
 
     <!-- 類型三 -->
-    <h2>類型三：母商品及子商品皆為即訂即出（無法使用 OCBT）</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 受限制無法使用 OCBT，需透過 OP 人工作業。</span>
+    <h2 data-i18n="cb-type3-h2">類型三：母商品及子商品皆為即訂即出（無法使用 OCBT）</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="cb-type3-note">ℹ️ 受限制無法使用 OCBT，需透過 OP 人工作業。</span>
     <div class="white-box">
       <div class="step-list">
 
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>至 B2D 平台訂出子商品</strong>
+            <strong data-i18n="cb-type3-step1">至 B2D 平台訂出子商品</strong>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>寄出所有憑證</strong>
-            <p>子商品即訂即出，將所有憑證一併寄出。</p>
+            <strong data-i18n="cb-type3-step2-title">寄出所有憑證</strong>
+            <p data-i18n="cb-type3-step2-desc">子商品即訂即出，將所有憑證一併寄出。</p>
           </div>
         </div>
 
@@ -258,46 +261,46 @@
     </div>
 
     <!-- 取消 -->
-    <h2>組合訂單取消</h2>
-    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ 基本上不可取消，以下為例外情況。母子訂單掛的組別可能不同，需要在母訂單作業、發信息處理。</span>
+    <h2 data-i18n="cb-cancel-h2">組合訂單取消</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="cb-cancel-note">⚠️ 基本上不可取消，以下為例外情況。母子訂單掛的組別可能不同，需要在母訂單作業、發信息處理。</span>
 
     <div class="cards-grid-2">
 
       <div class="white-box">
-        <h3>整筆取消</h3>
+        <h3 data-i18n="cb-full-cancel-title">整筆取消</h3>
         <div class="step-list">
           <div class="step-item">
             <div class="step-num">1</div>
             <div class="step-content">
-              <strong>子訂單負責 OP 開啟取消</strong>
+              <strong data-i18n="cb-full-step1">子訂單負責 OP 開啟取消</strong>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">2</div>
             <div class="step-content">
-              <strong>確認子訂單完成取消後，OP 於母訂單開啟取消</strong>
+              <strong data-i18n="cb-full-step2">確認子訂單完成取消後，OP 於母訂單開啟取消</strong>
             </div>
           </div>
         </div>
       </div>
 
       <div class="white-box">
-        <h3>部分取消</h3>
+        <h3 data-i18n="cb-partial-cancel-title">部分取消</h3>
         <div class="step-list">
           <div class="step-item">
             <div class="step-num">1</div>
             <div class="step-content">
-              <strong>需要取消的子訂單負責 OP 開啟取消</strong>
+              <strong data-i18n="cb-partial-step1">需要取消的子訂單負責 OP 開啟取消</strong>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">2</div>
             <div class="step-content">
-              <strong>確認子訂單完成取消後，OP 於母訂單開啟「部分退款」</strong>
+              <strong data-i18n="cb-partial-step2-title">確認子訂單完成取消後，OP 於母訂單開啟「部分退款」</strong>
               <ul>
-                <li>成本異動選「否」</li>
-                <li>備註說明部分取消的商品</li>
-                <li>退款金額請客服向 BD 確認</li>
+                <li data-i18n="cb-partial-li1">成本異動選「否」</li>
+                <li data-i18n="cb-partial-li2">備註說明部分取消的商品</li>
+                <li data-i18n="cb-partial-li3">退款金額請客服向 BD 確認</li>
               </ul>
             </div>
           </div>
@@ -307,6 +310,222 @@
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'cb-breadcrumb': '首頁 / 人工訂購 / 組合商品',
+    'cb-title': '人工訂購：組合商品',
+    'cb-subtitle': '由兩個以上不同商品組成的套餐方案，客人下訂的訂單僅包含母商品，故需人工協助訂購子商品。',
+    'cb-meta': '人工訂購',
+    'cb-tree-root': '組合商品',
+    'cb-type1-header': '母商品-需人工作業<br>子商品-需人工作業',
+    'cb-type1-node1': '人工訂出母商品',
+    'cb-type1-node2': '人工訂出子商品',
+    'cb-leaf-cost0': '子商品成本0',
+    'cb-leaf-order-method': '依照訂購方式訂出',
+    'cb-leaf-invoice': '子商品應請款',
+    'cb-leaf-b2d': 'B2D平台下訂',
+    'cb-final': '母訂單及子訂單憑證<br>一併寄出',
+    'cb-type2-header': '母商品-即訂即出<br>子商品-需人工作業<br><span style="font-size:11px;color:#666;">（假即訂即出）</span>',
+    'cb-type2-node1': '人工訂出子商品',
+    'cb-type3-header': '母商品-即訂即出<br>子商品-即訂即出<br><span style="font-size:11px;color:#666;">（無法使用OCBT的商品）</span>',
+    'cb-type3-node1': '至B2D平台下訂子商品',
+    'cb-type1-h2': '類型一：母商品及子商品皆需人工作業',
+    'cb-type1-step1': '依照訂購方式描述訂出母商品',
+    'cb-type1-step2-title': '依照訂購方式描述訂出子商品',
+    'cb-sub-cost0-title': '子商品 0 元成本／無需請款',
+    'cb-sub-cost0-desc': '無需成立子訂單，依訂購方式作業即可。',
+    'cb-sub-invoice-title': '子商品涉及成本且需請款',
+    'cb-sub-invoice-desc': '需至 B2D 平台建立並確認子訂單，將子訂單單號回填至母訂單訂單基本資訊內。',
+    'cb-type1-step3-title': '寄出所有憑證',
+    'cb-type1-step3-desc': '待母子商品訂單皆確認完成，將所有憑證一併寄出給客人（客人會持有兩份或以上的憑證）。',
+    'cb-type2-h2': '類型二：母商品為即訂即出，子商品需人工作業（假即訂即出）',
+    'cb-type2-note': 'ℹ️ 客人下訂完成會先收到母商品憑證，僅子商品需人工作業。',
+    'cb-type2-step1-title': '依照訂購方式訂出子商品',
+    'cb-type2-step1-desc': '判斷邏輯同類型一步驟 2（依子商品是否涉及成本決定是否建立子訂單）。',
+    'cb-type2-step2-title': '寄出所有憑證',
+    'cb-type2-step2-desc': '待母子商品皆確認完成，將所有憑證一併寄出。',
+    'cb-type3-h2': '類型三：母商品及子商品皆為即訂即出（無法使用 OCBT）',
+    'cb-type3-note': 'ℹ️ 受限制無法使用 OCBT，需透過 OP 人工作業。',
+    'cb-type3-step1': '至 B2D 平台訂出子商品',
+    'cb-type3-step2-title': '寄出所有憑證',
+    'cb-type3-step2-desc': '子商品即訂即出，將所有憑證一併寄出。',
+    'cb-cancel-h2': '組合訂單取消',
+    'cb-cancel-note': '⚠️ 基本上不可取消，以下為例外情況。母子訂單掛的組別可能不同，需要在母訂單作業、發信息處理。',
+    'cb-full-cancel-title': '整筆取消',
+    'cb-full-step1': '子訂單負責 OP 開啟取消',
+    'cb-full-step2': '確認子訂單完成取消後，OP 於母訂單開啟取消',
+    'cb-partial-cancel-title': '部分取消',
+    'cb-partial-step1': '需要取消的子訂單負責 OP 開啟取消',
+    'cb-partial-step2-title': '確認子訂單完成取消後，OP 於母訂單開啟「部分退款」',
+    'cb-partial-li1': '成本異動選「否」',
+    'cb-partial-li2': '備註說明部分取消的商品',
+    'cb-partial-li3': '退款金額請客服向 BD 確認',
+    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'cb-breadcrumb': 'Home / Manual Ordering / Combo Products',
+    'cb-title': 'Manual Ordering: Combo Products',
+    'cb-subtitle': 'A package consisting of two or more different products. The customer\'s order only contains the parent product, so OP must manually order the sub-products.',
+    'cb-meta': 'Manual Ordering',
+    'cb-tree-root': 'Combo Product',
+    'cb-type1-header': 'Parent – Manual Required<br>Sub – Manual Required',
+    'cb-type1-node1': 'Manually order parent product',
+    'cb-type1-node2': 'Manually order sub-product',
+    'cb-leaf-cost0': 'Sub-product cost = 0',
+    'cb-leaf-order-method': 'Order per instructions',
+    'cb-leaf-invoice': 'Sub-product billable',
+    'cb-leaf-b2d': 'Order via B2D platform',
+    'cb-final': 'Parent & sub vouchers<br>sent together',
+    'cb-type2-header': 'Parent – Instant Booking<br>Sub – Manual Required<br><span style="font-size:11px;color:#666;">(Fake Instant Booking)</span>',
+    'cb-type2-node1': 'Manually order sub-product',
+    'cb-type3-header': 'Parent – Instant Booking<br>Sub – Instant Booking<br><span style="font-size:11px;color:#666;">(OCBT not applicable)</span>',
+    'cb-type3-node1': 'Order sub-product via B2D',
+    'cb-type1-h2': 'Type 1: Both Parent and Sub-products Require Manual Processing',
+    'cb-type1-step1': 'Order parent product per ordering instructions',
+    'cb-type1-step2-title': 'Order sub-product per ordering instructions',
+    'cb-sub-cost0-title': 'Sub-product cost = 0 / No invoice required',
+    'cb-sub-cost0-desc': 'No sub-order needed — process directly per ordering instructions.',
+    'cb-sub-invoice-title': 'Sub-product has cost and requires invoicing',
+    'cb-sub-invoice-desc': 'Create and confirm sub-order on B2D platform; enter sub-order number in the parent order\'s basic info.',
+    'cb-type1-step3-title': 'Send All Vouchers',
+    'cb-type1-step3-desc': 'Once both parent and sub-product orders are confirmed, send all vouchers to the customer (customer will hold two or more vouchers).',
+    'cb-type2-h2': 'Type 2: Parent is Instant Booking, Sub-product Requires Manual Processing (Fake Instant Booking)',
+    'cb-type2-note': 'ℹ️ The customer receives the parent product voucher upon booking; only the sub-product requires manual action.',
+    'cb-type2-step1-title': 'Order sub-product per ordering instructions',
+    'cb-type2-step1-desc': 'Use the same logic as Type 1 Step 2 (determine whether to create a sub-order based on cost involvement).',
+    'cb-type2-step2-title': 'Send All Vouchers',
+    'cb-type2-step2-desc': 'Once both parent and sub-products are confirmed, send all vouchers together.',
+    'cb-type3-h2': 'Type 3: Both Parent and Sub-products are Instant Booking (OCBT Not Applicable)',
+    'cb-type3-note': 'ℹ️ OCBT cannot be used due to restrictions; OP must handle manually.',
+    'cb-type3-step1': 'Order sub-product via B2D platform',
+    'cb-type3-step2-title': 'Send All Vouchers',
+    'cb-type3-step2-desc': 'Sub-product is instant booking; send all vouchers together.',
+    'cb-cancel-h2': 'Combo Order Cancellation',
+    'cb-cancel-note': '⚠️ Cancellation is generally not allowed; the following are exceptions. Parent and sub-orders may belong to different teams — process via parent order and notify via messaging.',
+    'cb-full-cancel-title': 'Full Cancellation',
+    'cb-full-step1': 'OP responsible for sub-order initiates cancellation',
+    'cb-full-step2': 'After sub-order cancellation is confirmed, OP initiates cancellation on the parent order',
+    'cb-partial-cancel-title': 'Partial Cancellation',
+    'cb-partial-step1': 'OP responsible for the sub-order to be cancelled initiates cancellation',
+    'cb-partial-step2-title': 'After sub-order cancellation is confirmed, OP initiates "Partial Refund" on the parent order',
+    'cb-partial-li1': 'Cost change: select "No"',
+    'cb-partial-li2': 'Note the partially cancelled product in remarks',
+    'cb-partial-li3': 'Refund amount to be confirmed by CS with BD',
+    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'cb-breadcrumb': 'ホーム / 手動注文 / セット商品',
+    'cb-title': '手動注文：セット商品',
+    'cb-subtitle': '2つ以上の異なる商品で構成されるパッケージ。旅行者の注文には親商品のみ含まれるため、OP が手動でサブ商品を注文する必要があります。',
+    'cb-meta': '手動注文',
+    'cb-tree-root': 'セット商品',
+    'cb-type1-header': '親商品-手動作業必要<br>サブ商品-手動作業必要',
+    'cb-type1-node1': '親商品を手動注文',
+    'cb-type1-node2': 'サブ商品を手動注文',
+    'cb-leaf-cost0': 'サブ商品コスト0',
+    'cb-leaf-order-method': '注文方法に従い注文',
+    'cb-leaf-invoice': 'サブ商品請求あり',
+    'cb-leaf-b2d': 'B2D プラットフォームで注文',
+    'cb-final': '親注文・サブ注文バウチャー<br>まとめて送付',
+    'cb-type2-header': '親商品-即時予約<br>サブ商品-手動作業必要<br><span style="font-size:11px;color:#666;">（仮即時予約）</span>',
+    'cb-type2-node1': 'サブ商品を手動注文',
+    'cb-type3-header': '親商品-即時予約<br>サブ商品-即時予約<br><span style="font-size:11px;color:#666;">（OCBT 使用不可の商品）</span>',
+    'cb-type3-node1': 'B2D でサブ商品を注文',
+    'cb-type1-h2': 'タイプ1：親商品・サブ商品ともに手動作業が必要',
+    'cb-type1-step1': '注文方法の説明に従い親商品を注文',
+    'cb-type1-step2-title': '注文方法の説明に従いサブ商品を注文',
+    'cb-sub-cost0-title': 'サブ商品コスト0円 / 請求不要',
+    'cb-sub-cost0-desc': 'サブ注文不要 — 注文方法に従って対応。',
+    'cb-sub-invoice-title': 'サブ商品にコストがあり請求が必要',
+    'cb-sub-invoice-desc': 'B2D プラットフォームでサブ注文を作成・確認し、サブ注文番号を親注文の基本情報に入力。',
+    'cb-type1-step3-title': '全バウチャーの送付',
+    'cb-type1-step3-desc': '親・サブ商品の注文がすべて確認できたら、全バウチャーをまとめて旅行者に送付（旅行者は2枚以上のバウチャーを受け取ります）。',
+    'cb-type2-h2': 'タイプ2：親商品が即時予約、サブ商品が手動作業（仮即時予約）',
+    'cb-type2-note': 'ℹ️ 旅行者は注文後すぐに親商品のバウチャーを受け取ります。手動作業はサブ商品のみ。',
+    'cb-type2-step1-title': '注文方法に従いサブ商品を注文',
+    'cb-type2-step1-desc': 'タイプ1のステップ2と同じ判断ロジック（コスト有無によりサブ注文作成を判断）。',
+    'cb-type2-step2-title': '全バウチャーの送付',
+    'cb-type2-step2-desc': '親・サブ商品がすべて確認できたら、全バウチャーをまとめて送付。',
+    'cb-type3-h2': 'タイプ3：親商品・サブ商品ともに即時予約（OCBT 使用不可）',
+    'cb-type3-note': 'ℹ️ 制限により OCBT が使用できないため、OP が手動で対応。',
+    'cb-type3-step1': 'B2D プラットフォームでサブ商品を注文',
+    'cb-type3-step2-title': '全バウチャーの送付',
+    'cb-type3-step2-desc': 'サブ商品は即時予約のため、全バウチャーをまとめて送付。',
+    'cb-cancel-h2': 'セット注文のキャンセル',
+    'cb-cancel-note': '⚠️ 原則キャンセル不可。以下は例外。親・サブ注文は担当チームが異なる場合があるため、親注文での対応・連絡が必要。',
+    'cb-full-cancel-title': '全量キャンセル',
+    'cb-full-step1': 'サブ注文担当 OP がキャンセル手続きを開始',
+    'cb-full-step2': 'サブ注文のキャンセル完了確認後、OP が親注文のキャンセルを開始',
+    'cb-partial-cancel-title': '一部キャンセル',
+    'cb-partial-step1': 'キャンセル対象のサブ注文担当 OP がキャンセル手続きを開始',
+    'cb-partial-step2-title': 'サブ注文のキャンセル完了確認後、OP が親注文で「一部返金」を開始',
+    'cb-partial-li1': 'コスト変動：「いいえ」を選択',
+    'cb-partial-li2': '備考に一部キャンセルした商品を記載',
+    'cb-partial-li3': '返金金額は CS が BD に確認',
+    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'cb-breadcrumb': '홈 / 수동 주문 / 세트 상품',
+    'cb-title': '수동 주문：세트 상품',
+    'cb-subtitle': '두 개 이상의 서로 다른 상품으로 구성된 패키지 상품. 고객의 주문에는 모 상품만 포함되므로 OP가 수동으로 하위 상품을 주문해야 합니다.',
+    'cb-meta': '수동 주문',
+    'cb-tree-root': '세트 상품',
+    'cb-type1-header': '모 상품-수동 처리 필요<br>하위 상품-수동 처리 필요',
+    'cb-type1-node1': '모 상품 수동 주문',
+    'cb-type1-node2': '하위 상품 수동 주문',
+    'cb-leaf-cost0': '하위 상품 원가 0',
+    'cb-leaf-order-method': '주문 방식에 따라 주문',
+    'cb-leaf-invoice': '하위 상품 청구 필요',
+    'cb-leaf-b2d': 'B2D 플랫폼에서 주문',
+    'cb-final': '모 주문 및 하위 주문 바우처<br>일괄 발송',
+    'cb-type2-header': '모 상품-즉시 예약<br>하위 상품-수동 처리 필요<br><span style="font-size:11px;color:#666;">（가짜 즉시 예약）</span>',
+    'cb-type2-node1': '하위 상품 수동 주문',
+    'cb-type3-header': '모 상품-즉시 예약<br>하위 상품-즉시 예약<br><span style="font-size:11px;color:#666;">（OCBT 사용 불가 상품）</span>',
+    'cb-type3-node1': 'B2D에서 하위 상품 주문',
+    'cb-type1-h2': '유형 1：모 상품 및 하위 상품 모두 수동 처리 필요',
+    'cb-type1-step1': '주문 방식 설명에 따라 모 상품 주문',
+    'cb-type1-step2-title': '주문 방식 설명에 따라 하위 상품 주문',
+    'cb-sub-cost0-title': '하위 상품 원가 0원 / 청구 불필요',
+    'cb-sub-cost0-desc': '하위 주문 불필요 — 주문 방식에 따라 처리.',
+    'cb-sub-invoice-title': '하위 상품에 원가가 있고 청구 필요',
+    'cb-sub-invoice-desc': 'B2D 플랫폼에서 하위 주문 생성 및 확인; 하위 주문 번호를 모 주문 기본 정보에 입력.',
+    'cb-type1-step3-title': '모든 바우처 발송',
+    'cb-type1-step3-desc': '모 상품 및 하위 상품 주문이 모두 확정되면 모든 바우처를 고객에게 일괄 발송（고객은 2장 이상의 바우처를 보유）.',
+    'cb-type2-h2': '유형 2：모 상품은 즉시 예약, 하위 상품은 수동 처리 필요（가짜 즉시 예약）',
+    'cb-type2-note': 'ℹ️ 고객은 주문 완료 후 먼저 모 상품 바우처를 받으며, 하위 상품만 수동 처리가 필요합니다.',
+    'cb-type2-step1-title': '주문 방식에 따라 하위 상품 주문',
+    'cb-type2-step1-desc': '판단 로직은 유형 1 단계 2와 동일（하위 상품의 원가 여부에 따라 하위 주문 생성 결정）.',
+    'cb-type2-step2-title': '모든 바우처 발송',
+    'cb-type2-step2-desc': '모 상품 및 하위 상품이 모두 확정되면 모든 바우처 일괄 발송.',
+    'cb-type3-h2': '유형 3：모 상품 및 하위 상품 모두 즉시 예약（OCBT 사용 불가）',
+    'cb-type3-note': 'ℹ️ 제한으로 인해 OCBT 사용 불가, OP가 수동으로 처리.',
+    'cb-type3-step1': 'B2D 플랫폼에서 하위 상품 주문',
+    'cb-type3-step2-title': '모든 바우처 발송',
+    'cb-type3-step2-desc': '하위 상품은 즉시 예약이므로 모든 바우처 일괄 발송.',
+    'cb-cancel-h2': '세트 주문 취소',
+    'cb-cancel-note': '⚠️ 원칙적으로 취소 불가, 아래는 예외 상황. 모 주문과 하위 주문의 담당 팀이 다를 수 있으므로 모 주문에서 작업 및 메시지 처리 필요.',
+    'cb-full-cancel-title': '전량 취소',
+    'cb-full-step1': '하위 주문 담당 OP가 취소 개시',
+    'cb-full-step2': '하위 주문 취소 완료 확인 후 OP가 모 주문에서 취소 개시',
+    'cb-partial-cancel-title': '부분 취소',
+    'cb-partial-step1': '취소할 하위 주문 담당 OP가 취소 개시',
+    'cb-partial-step2-title': '하위 주문 취소 완료 확인 후 OP가 모 주문에서 "부분 환불" 개시',
+    'cb-partial-li1': '원가 변동：「아니오」 선택',
+    'cb-partial-li2': '비고에 부분 취소 상품 기재',
+    'cb-partial-li3': '환불 금액은 CS가 BD에 확인',
+    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
+  }
+});
+</script>
 </body>
 </html>

@@ -66,42 +66,45 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
 
   <div class="page-wrapper">
     <div class="breadcrumb">
-      <a href="../index.html">首頁</a>
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
       <span class="sep">/</span>
-      <a href="../index.html#accounting">帳務管理</a>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
       <span class="sep">/</span>
-      <span class="current">佣金申請</span>
+      <span class="current" data-i18n="comm-breadcrumb-current">佣金申請</span>
     </div>
 
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#c62828,#ef5350)">📄</div>
       <div class="page-header-body">
-        <h1>佣金申請</h1>
-        <div class="subtitle">REM 專案入款通知單、INV 無入款憑證開立</div>
+        <h1 data-i18n="comm-title">佣金申請</h1>
+        <div class="subtitle" data-i18n="comm-subtitle">REM 專案入款通知單、INV 無入款憑證開立</div>
         <div class="meta-row">
-          <span class="meta-chip badge-red">佣金</span>
-          <span class="meta-chip">帳務管理</span>
+          <span class="meta-chip badge-red" data-i18n="comm-chip1">佣金</span>
+          <span class="meta-chip" data-i18n="comm-chip2">帳務管理</span>
         </div>
       </div>
     </div>
@@ -109,49 +112,49 @@
     <div>
       <div class="type-header">
         <span class="badge-label">REM</span>
-        <h2>專案入款通知單</h2>
+        <h2 data-i18n="comm-rem-header">專案入款通知單</h2>
       </div>
       <div class="type-body">
-        <div class="section-title">📌 適用情境</div>
+        <div class="section-title" data-i18n="comm-rem-scenario-title">📌 適用情境</div>
         <div class="scenario-list">
           <div class="scenario-item">
             <div class="scenario-num">1</div>
-            <p>先前已匯款完成，但後續需將款項扣回並匯款回至 KKday，需開立折讓單抵扣當時商家開立的發票金額</p>
+            <p data-i18n="comm-rem-scenario1">先前已匯款完成，但後續需將款項扣回並匯款回至 KKday，需開立折讓單抵扣當時商家開立的發票金額</p>
           </div>
           <div class="scenario-item">
             <div class="scenario-num">2</div>
-            <p>開立佣金發票且款項的部分商家另外匯回至 KKday，不會抵扣於當月的款項</p>
+            <p data-i18n="comm-rem-scenario2">開立佣金發票且款項的部分商家另外匯回至 KKday，不會抵扣於當月的款項</p>
           </div>
         </div>
 
-        <div class="section-title">📋 開立方式</div>
+        <div class="section-title" data-i18n="comm-rem-create-title">📋 開立方式</div>
         <div class="step-list">
           <div class="step-item">
             <div class="step-num">1</div>
             <div class="step-content">
-              <h4>填入商家資訊</h4>
-              <p>依照商家資料正確填寫相關欄位</p>
+              <h4 data-i18n="comm-rem-step1-title">填入商家資訊</h4>
+              <p data-i18n="comm-rem-step1-desc">依照商家資料正確填寫相關欄位</p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">2</div>
             <div class="step-content">
-              <h4>若開立佣金發票</h4>
-              <p>交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">三聯式發票</span>　交易摘要：<span class="field-tag">佣金</span></p>
+              <h4 data-i18n="comm-rem-step2-title">若開立佣金發票</h4>
+              <p data-i18n-html="comm-rem-step2-desc">交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">三聯式發票</span>　交易摘要：<span class="field-tag">佣金</span></p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">3</div>
             <div class="step-content">
-              <h4>若開立折讓單</h4>
-              <p>交易類別：<span class="field-tag">其他</span>　種類：<span class="field-tag">其他</span>　憑證備註務必填：<span class="field-tag">折讓單</span></p>
+              <h4 data-i18n="comm-rem-step3-title">若開立折讓單</h4>
+              <p data-i18n-html="comm-rem-step3-desc">交易類別：<span class="field-tag">其他</span>　種類：<span class="field-tag">其他</span>　憑證備註務必填：<span class="field-tag">折讓單</span></p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">4</div>
             <div class="step-content">
-              <h4>憑證類型說明</h4>
-              <p>佣金發票請使用<strong>電子憑證</strong>；折讓單請使用<strong>實體憑證</strong>（需蓋公司章）</p>
+              <h4 data-i18n="comm-rem-step4-title">憑證類型說明</h4>
+              <p data-i18n-html="comm-rem-step4-desc">佣金發票請使用<strong>電子憑證</strong>；折讓單請使用<strong>實體憑證</strong>（需蓋公司章）</p>
             </div>
           </div>
         </div>
@@ -161,69 +164,69 @@
     <div>
       <div class="type-header">
         <span class="badge-label">INV</span>
-        <h2>無入款憑證開立申請單</h2>
+        <h2 data-i18n="comm-inv-header">無入款憑證開立申請單</h2>
       </div>
       <div class="type-body">
-        <div class="section-title">📌 適用情境</div>
+        <div class="section-title" data-i18n="comm-inv-scenario-title">📌 適用情境</div>
         <div class="scenario-list">
           <div class="scenario-item">
             <div class="scenario-num">1</div>
-            <p>供應商開立銷售總額之稅金結算書 / Invoice</p>
+            <p data-i18n="comm-inv-scenario1">供應商開立銷售總額之稅金結算書 / Invoice</p>
           </div>
           <div class="scenario-item">
             <div class="scenario-num">2</div>
-            <p>我方需開立佣金之發票</p>
+            <p data-i18n="comm-inv-scenario2">我方需開立佣金之發票</p>
           </div>
         </div>
 
         <div class="formula-highlight">
-          <div class="formula-text">銷售總額 - 佣金 = 匯款金額</div>
-          <div class="formula-sub">依此公式計算開立金額</div>
+          <div class="formula-text" data-i18n="comm-inv-formula">銷售總額 - 佣金 = 匯款金額</div>
+          <div class="formula-sub" data-i18n="comm-inv-formula-sub">依此公式計算開立金額</div>
         </div>
 
-        <div class="section-title">📋 申請步驟</div>
+        <div class="section-title" data-i18n="comm-inv-steps-title">📋 申請步驟</div>
         <div class="step-list">
           <div class="step-item">
             <div class="step-num">1</div>
             <div class="step-content">
-              <h4>根據供應商資訊填寫</h4>
-              <p>依照供應商提供的資料正確填寫申請單</p>
+              <h4 data-i18n="comm-inv-step1-title">根據供應商資訊填寫</h4>
+              <p data-i18n="comm-inv-step1-desc">依照供應商提供的資料正確填寫申請單</p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">2</div>
             <div class="step-content">
-              <h4>填寫交易資訊</h4>
-              <p>交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">Invoice</span>　交易摘要：<span class="field-tag">XX月 佣金</span></p>
+              <h4 data-i18n="comm-inv-step2-title">填寫交易資訊</h4>
+              <p data-i18n-html="comm-inv-step2-desc">交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">Invoice</span>　交易摘要：<span class="field-tag">XX月 佣金</span></p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">3</div>
             <div class="step-content">
-              <h4>填寫預計開立日</h4>
-              <p>依據供應商要求填寫。若要求請款月份日期，需在匯款月份 10 號以前完成</p>
+              <h4 data-i18n="comm-inv-step3-title">填寫預計開立日</h4>
+              <p data-i18n="comm-inv-step3-desc">依據供應商要求填寫。若要求請款月份日期，需在匯款月份 10 號以前完成</p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">4</div>
             <div class="step-content">
-              <h4>填寫金額</h4>
-              <p>開立金額 = 銷售總額 - 匯款金額（= 佣金）</p>
+              <h4 data-i18n="comm-inv-step4-title">填寫金額</h4>
+              <p data-i18n="comm-inv-step4-desc">開立金額 = 銷售總額 - 匯款金額（= 佣金）</p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">5</div>
             <div class="step-content">
-              <h4>上傳附件與備註</h4>
-              <p>上傳：供應商 Invoice / 稅金結算書 / 報表證明</p>
-              <p>備註欄填：<span class="field-tag">銷售總額</span> / <span class="field-tag">佣金</span> / <span class="field-tag">匯款金額</span></p>
+              <h4 data-i18n="comm-inv-step5-title">上傳附件與備註</h4>
+              <p data-i18n="comm-inv-step5-desc">上傳：供應商 Invoice / 稅金結算書 / 報表證明</p>
+              <p data-i18n-html="comm-inv-step5-note">備註欄填：<span class="field-tag">銷售總額</span> / <span class="field-tag">佣金</span> / <span class="field-tag">匯款金額</span></p>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">6</div>
             <div class="step-content">
-              <h4>發票開立後送審</h4>
-              <p>發票開立後，逆開的稅金結算書和供應商給的稅金結算書一起上傳到 BPM → 送審</p>
+              <h4 data-i18n="comm-inv-step6-title">發票開立後送審</h4>
+              <p data-i18n="comm-inv-step6-desc">發票開立後，逆開的稅金結算書和供應商給的稅金結算書一起上傳到 BPM → 送審</p>
             </div>
           </div>
         </div>
@@ -231,6 +234,190 @@
     </div>
   </div>
 
-  <div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享',
+    'breadcrumb-home': '首頁',
+    'breadcrumb-accounting': '帳務管理',
+    'comm-breadcrumb-current': '佣金申請',
+    'comm-title': '佣金申請',
+    'comm-subtitle': 'REM 專案入款通知單、INV 無入款憑證開立',
+    'comm-chip1': '佣金',
+    'comm-chip2': '帳務管理',
+    'comm-rem-header': '專案入款通知單',
+    'comm-rem-scenario-title': '📌 適用情境',
+    'comm-rem-scenario1': '先前已匯款完成，但後續需將款項扣回並匯款回至 KKday，需開立折讓單抵扣當時商家開立的發票金額',
+    'comm-rem-scenario2': '開立佣金發票且款項的部分商家另外匯回至 KKday，不會抵扣於當月的款項',
+    'comm-rem-create-title': '📋 開立方式',
+    'comm-rem-step1-title': '填入商家資訊',
+    'comm-rem-step1-desc': '依照商家資料正確填寫相關欄位',
+    'comm-rem-step2-title': '若開立佣金發票',
+    'comm-rem-step2-desc': '交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">三聯式發票</span>　交易摘要：<span class="field-tag">佣金</span>',
+    'comm-rem-step3-title': '若開立折讓單',
+    'comm-rem-step3-desc': '交易類別：<span class="field-tag">其他</span>　種類：<span class="field-tag">其他</span>　憑證備註務必填：<span class="field-tag">折讓單</span>',
+    'comm-rem-step4-title': '憑證類型說明',
+    'comm-rem-step4-desc': '佣金發票請使用<strong>電子憑證</strong>；折讓單請使用<strong>實體憑證</strong>（需蓋公司章）',
+    'comm-inv-header': '無入款憑證開立申請單',
+    'comm-inv-scenario-title': '📌 適用情境',
+    'comm-inv-scenario1': '供應商開立銷售總額之稅金結算書 / Invoice',
+    'comm-inv-scenario2': '我方需開立佣金之發票',
+    'comm-inv-formula': '銷售總額 - 佣金 = 匯款金額',
+    'comm-inv-formula-sub': '依此公式計算開立金額',
+    'comm-inv-steps-title': '📋 申請步驟',
+    'comm-inv-step1-title': '根據供應商資訊填寫',
+    'comm-inv-step1-desc': '依照供應商提供的資料正確填寫申請單',
+    'comm-inv-step2-title': '填寫交易資訊',
+    'comm-inv-step2-desc': '交易類別：<span class="field-tag">供應商手續費退佣</span>　種類：<span class="field-tag">Invoice</span>　交易摘要：<span class="field-tag">XX月 佣金</span>',
+    'comm-inv-step3-title': '填寫預計開立日',
+    'comm-inv-step3-desc': '依據供應商要求填寫。若要求請款月份日期，需在匯款月份 10 號以前完成',
+    'comm-inv-step4-title': '填寫金額',
+    'comm-inv-step4-desc': '開立金額 = 銷售總額 - 匯款金額（= 佣金）',
+    'comm-inv-step5-title': '上傳附件與備註',
+    'comm-inv-step5-desc': '上傳：供應商 Invoice / 稅金結算書 / 報表證明',
+    'comm-inv-step5-note': '備註欄填：<span class="field-tag">銷售總額</span> / <span class="field-tag">佣金</span> / <span class="field-tag">匯款金額</span>',
+    'comm-inv-step6-title': '發票開立後送審',
+    'comm-inv-step6-desc': '發票開立後，逆開的稅金結算書和供應商給的稅金結算書一起上傳到 BPM → 送審',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally',
+    'breadcrumb-home': 'Home',
+    'breadcrumb-accounting': 'Accounting',
+    'comm-breadcrumb-current': 'Commission Application',
+    'comm-title': 'Commission Application',
+    'comm-subtitle': 'REM Project Payment Notice, INV No-Payment Voucher Issuance',
+    'comm-chip1': 'Commission',
+    'comm-chip2': 'Accounting',
+    'comm-rem-header': 'Project Payment Notice',
+    'comm-rem-scenario-title': '📌 Applicable Scenarios',
+    'comm-rem-scenario1': 'Payment was previously remitted but must be clawed back to KKday; a credit note is required to offset the invoice previously issued by the merchant',
+    'comm-rem-scenario2': 'Commission invoice issued and certain merchants separately remit to KKday; this does not offset the current month\'s payment',
+    'comm-rem-create-title': '📋 Issuance Method',
+    'comm-rem-step1-title': 'Fill in Merchant Information',
+    'comm-rem-step1-desc': 'Fill in relevant fields accurately based on merchant data',
+    'comm-rem-step2-title': 'If Issuing Commission Invoice',
+    'comm-rem-step2-desc': 'Transaction Type: <span class="field-tag">Supplier Commission Rebate</span>　Type: <span class="field-tag">Triplicate Invoice</span>　Summary: <span class="field-tag">Commission</span>',
+    'comm-rem-step3-title': 'If Issuing Credit Note',
+    'comm-rem-step3-desc': 'Transaction Type: <span class="field-tag">Other</span>　Type: <span class="field-tag">Other</span>　Voucher Remarks (required): <span class="field-tag">Credit Note</span>',
+    'comm-rem-step4-title': 'Voucher Type Notes',
+    'comm-rem-step4-desc': 'Commission invoices use <strong>electronic vouchers</strong>; credit notes use <strong>physical vouchers</strong> (company seal required)',
+    'comm-inv-header': 'No-Payment Voucher Issuance Application',
+    'comm-inv-scenario-title': '📌 Applicable Scenarios',
+    'comm-inv-scenario1': 'Supplier issues tax settlement statement / Invoice for total sales amount',
+    'comm-inv-scenario2': 'We need to issue a commission invoice',
+    'comm-inv-formula': 'Total Sales - Commission = Remittance Amount',
+    'comm-inv-formula-sub': 'Use this formula to calculate the issuance amount',
+    'comm-inv-steps-title': '📋 Application Steps',
+    'comm-inv-step1-title': 'Fill Based on Supplier Information',
+    'comm-inv-step1-desc': 'Fill in the application form accurately using supplier-provided data',
+    'comm-inv-step2-title': 'Fill in Transaction Information',
+    'comm-inv-step2-desc': 'Transaction Type: <span class="field-tag">Supplier Commission Rebate</span>　Type: <span class="field-tag">Invoice</span>　Summary: <span class="field-tag">Month XX Commission</span>',
+    'comm-inv-step3-title': 'Fill in Planned Issue Date',
+    'comm-inv-step3-desc': 'Fill per supplier requirement. If billing month date is requested, must complete before the 10th of the remittance month',
+    'comm-inv-step4-title': 'Fill in Amount',
+    'comm-inv-step4-desc': 'Issuance Amount = Total Sales - Remittance Amount (= Commission)',
+    'comm-inv-step5-title': 'Upload Attachments & Remarks',
+    'comm-inv-step5-desc': 'Upload: Supplier Invoice / Tax Settlement Statement / Report Proof',
+    'comm-inv-step5-note': 'Remarks field: <span class="field-tag">Total Sales</span> / <span class="field-tag">Commission</span> / <span class="field-tag">Remittance Amount</span>',
+    'comm-inv-step6-title': 'Submit for Approval After Invoice Issuance',
+    'comm-inv-step6-desc': 'After invoice issuance, upload both the reverse-issued tax statement and supplier\'s tax statement to BPM → Submit for approval',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
+    'footer': 'SCM ナレッジベース · 社内利用限定 · 外部共有禁止',
+    'breadcrumb-home': 'ホーム',
+    'breadcrumb-accounting': '経理管理',
+    'comm-breadcrumb-current': 'コミッション申請',
+    'comm-title': 'コミッション申請',
+    'comm-subtitle': 'REM 案件入金通知書・INV 入金なし証憑発行',
+    'comm-chip1': 'コミッション',
+    'comm-chip2': '経理管理',
+    'comm-rem-header': '案件入金通知書',
+    'comm-rem-scenario-title': '📌 適用シナリオ',
+    'comm-rem-scenario1': '以前に送金済みだが、その後 KKday への返金が必要になった場合、商家が発行した請求書に対して相殺するクレジットノートを発行する必要がある',
+    'comm-rem-scenario2': 'コミッション請求書を発行し、一部の商家が KKday に別途送金するケース（当月の支払いからは差し引かれない）',
+    'comm-rem-create-title': '📋 発行方法',
+    'comm-rem-step1-title': '商家情報を入力',
+    'comm-rem-step1-desc': '商家データに基づき関連欄を正確に入力',
+    'comm-rem-step2-title': 'コミッション請求書を発行する場合',
+    'comm-rem-step2-desc': '取引種別：<span class="field-tag">サプライヤー手数料返還コミッション</span>　種類：<span class="field-tag">3 連式請求書</span>　取引摘要：<span class="field-tag">コミッション</span>',
+    'comm-rem-step3-title': 'クレジットノートを発行する場合',
+    'comm-rem-step3-desc': '取引種別：<span class="field-tag">その他</span>　種類：<span class="field-tag">その他</span>　証憑備考（必須）：<span class="field-tag">クレジットノート</span>',
+    'comm-rem-step4-title': '証憑種類の説明',
+    'comm-rem-step4-desc': 'コミッション請求書は<strong>電子証憑</strong>を使用；クレジットノートは<strong>実体証憑</strong>（会社印が必要）',
+    'comm-inv-header': '入金なし証憑発行申請書',
+    'comm-inv-scenario-title': '📌 適用シナリオ',
+    'comm-inv-scenario1': 'サプライヤーが販売総額の税金精算書 / Invoice を発行する',
+    'comm-inv-scenario2': '当社がコミッション請求書を発行する必要がある',
+    'comm-inv-formula': '販売総額 - コミッション = 送金額',
+    'comm-inv-formula-sub': 'この公式で発行金額を計算',
+    'comm-inv-steps-title': '📋 申請ステップ',
+    'comm-inv-step1-title': 'サプライヤー情報に基づき入力',
+    'comm-inv-step1-desc': 'サプライヤー提供のデータに基づき申請書を正確に入力',
+    'comm-inv-step2-title': '取引情報を入力',
+    'comm-inv-step2-desc': '取引種別：<span class="field-tag">サプライヤー手数料返還コミッション</span>　種類：<span class="field-tag">Invoice</span>　取引摘要：<span class="field-tag">XX月 コミッション</span>',
+    'comm-inv-step3-title': '発行予定日を入力',
+    'comm-inv-step3-desc': 'サプライヤーの要望に従って入力。請求月の日付を要望する場合、送金月の10日前までに完了すること',
+    'comm-inv-step4-title': '金額を入力',
+    'comm-inv-step4-desc': '発行金額 = 販売総額 - 送金額（= コミッション）',
+    'comm-inv-step5-title': '添付ファイルと備考',
+    'comm-inv-step5-desc': 'アップロード：サプライヤー Invoice / 税金精算書 / 報告書証明',
+    'comm-inv-step5-note': '備考欄：<span class="field-tag">販売総額</span> / <span class="field-tag">コミッション</span> / <span class="field-tag">送金額</span>',
+    'comm-inv-step6-title': '請求書発行後に審査へ送付',
+    'comm-inv-step6-desc': '請求書発行後、逆発行の税金精算書とサプライヤー提供の税金精算書を BPM へアップロード → 審査に送付',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
+    'breadcrumb-home': '홈',
+    'breadcrumb-accounting': '회계 관리',
+    'comm-breadcrumb-current': '커미션 신청',
+    'comm-title': '커미션 신청',
+    'comm-subtitle': 'REM 프로젝트 입금 통지서·INV 무입금 증빙 발행',
+    'comm-chip1': '커미션',
+    'comm-chip2': '회계 관리',
+    'comm-rem-header': '프로젝트 입금 통지서',
+    'comm-rem-scenario-title': '📌 적용 시나리오',
+    'comm-rem-scenario1': '이전에 송금 완료되었으나 이후 금액을 회수하여 KKday로 재송금해야 하는 경우, 당시 업체가 발행한 청구서를 상계할 신용 메모를 발행해야 함',
+    'comm-rem-scenario2': '커미션 세금계산서를 발행하고 일부 업체가 KKday에 별도 송금하는 경우（당월 결제액에서 차감되지 않음）',
+    'comm-rem-create-title': '📋 발행 방법',
+    'comm-rem-step1-title': '업체 정보 입력',
+    'comm-rem-step1-desc': '업체 데이터에 따라 관련 항목을 정확하게 입력',
+    'comm-rem-step2-title': '커미션 세금계산서 발행 시',
+    'comm-rem-step2-desc': '거래 유형：<span class="field-tag">공급업체 수수료 커미션 반환</span>　종류：<span class="field-tag">3연식 세금계산서</span>　거래 적요：<span class="field-tag">커미션</span>',
+    'comm-rem-step3-title': '신용 메모 발행 시',
+    'comm-rem-step3-desc': '거래 유형：<span class="field-tag">기타</span>　종류：<span class="field-tag">기타</span>　증빙 비고（필수）：<span class="field-tag">신용 메모</span>',
+    'comm-rem-step4-title': '증빙 유형 설명',
+    'comm-rem-step4-desc': '커미션 세금계산서는 <strong>전자 증빙</strong> 사용；신용 메모는 <strong>실물 증빙</strong>（회사 도장 필요）',
+    'comm-inv-header': '무입금 증빙 발행 신청서',
+    'comm-inv-scenario-title': '📌 적용 시나리오',
+    'comm-inv-scenario1': '공급업체가 판매 총액의 세금 정산서 / Invoice 발행',
+    'comm-inv-scenario2': '당사가 커미션 세금계산서를 발행해야 하는 경우',
+    'comm-inv-formula': '판매 총액 - 커미션 = 송금액',
+    'comm-inv-formula-sub': '이 공식으로 발행 금액 계산',
+    'comm-inv-steps-title': '📋 신청 단계',
+    'comm-inv-step1-title': '공급업체 정보에 따라 입력',
+    'comm-inv-step1-desc': '공급업체 제공 데이터에 따라 신청서를 정확하게 입력',
+    'comm-inv-step2-title': '거래 정보 입력',
+    'comm-inv-step2-desc': '거래 유형：<span class="field-tag">공급업체 수수료 커미션 반환</span>　종류：<span class="field-tag">Invoice</span>　거래 적요：<span class="field-tag">XX월 커미션</span>',
+    'comm-inv-step3-title': '발행 예정일 입력',
+    'comm-inv-step3-desc': '공급업체 요구에 따라 입력. 청구 월 날짜를 요구하는 경우 송금 월 10일 이전에 완료해야 함',
+    'comm-inv-step4-title': '금액 입력',
+    'comm-inv-step4-desc': '발행 금액 = 판매 총액 - 송금액（= 커미션）',
+    'comm-inv-step5-title': '첨부 파일 및 비고',
+    'comm-inv-step5-desc': '업로드：공급업체 Invoice / 세금 정산서 / 보고서 증명',
+    'comm-inv-step5-note': '비고란：<span class="field-tag">판매 총액</span> / <span class="field-tag">커미션</span> / <span class="field-tag">송금액</span>',
+    'comm-inv-step6-title': '세금계산서 발행 후 검토 제출',
+    'comm-inv-step6-desc': '세금계산서 발행 후 역발행 세금 정산서와 공급업체 제공 세금 정산서를 BPM에 업로드 → 검토 제출',
+  }
+});
+</script>
 </body>
 </html>

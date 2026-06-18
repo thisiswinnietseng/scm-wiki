@@ -11,73 +11,164 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
+  <script src="../i18n.js"></script>
 </head>
 <body>
   <nav class="nav">
   <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="../index.html">首頁</a>
-    <a class="nav-link" href="../index.html">商品認識</a>
-    <a class="nav-link" href="../index.html">訂單管理</a>
-    <a class="nav-link" href="../index.html">帳務管理</a>
-    <a class="nav-link" href="messaging-hub.html">訊息管理</a>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
   </div>
 </nav>
   <div class="page-wrapper">
-    <div class="breadcrumb">首頁 / 自動出票 / API</div>
+    <div class="breadcrumb" data-i18n="api-breadcrumb">首頁 / 自動出票 / API</div>
     <div class="page-header">
       <div class="page-header-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">🔌</div>
       <div class="page-header-body">
-        <h1>API 自動出票</h1>
-        <p class="subtitle">BE2 系統與供應商訂購平台串接，即時查詢和預訂票券及酒店</p>
-        <div class="meta-row"><span class="meta-chip badge-green">自動出票</span></div>
+        <h1 data-i18n="api-title">API 自動出票</h1>
+        <p class="subtitle" data-i18n="api-subtitle">BE2 系統與供應商訂購平台串接，即時查詢和預訂票券及酒店</p>
+        <div class="meta-row"><span class="meta-chip badge-green" data-i18n="api-meta">自動出票</span></div>
       </div>
     </div>
 
     <div class="white-box">
-      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。</span>
+      <span style="display:inline-block;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="api-definition">ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。</span>
     </div>
 
-    <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;">✅ 通常無需 OP 作業，系統自動完成訂購與出票。</span>
+    <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="api-auto-note">✅ 通常無需 OP 作業，系統自動完成訂購與出票。</span>
 
-    <h3 style="margin-top:1.5rem;">⚠️ API 失敗處理方式</h3>
+    <h3 style="margin-top:1.5rem;" data-i18n="api-fail-title">⚠️ API 失敗處理方式</h3>
     <div class="white-box">
-      <span style="display:inline-block;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;">❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。</span>
+      <span style="display:inline-block;font-size:12px;border:1px solid #ef9a9a;color:#c62828;border-radius:4px;padding:2px 8px;" data-i18n="api-fail-note">❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。</span>
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-content">
-            <strong>Slack 聯繫 BD／AM</strong>
-            <p>透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。</p>
+            <strong data-i18n="api-step1-title">Slack 聯繫 BD／AM</strong>
+            <p data-i18n="api-step1-desc">透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-content">
-            <strong>BD／AM 確認失敗原因</strong>
-            <p>BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。</p>
+            <strong data-i18n="api-step2-title">BD／AM 確認失敗原因</strong>
+            <p data-i18n="api-step2-desc">BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-content">
-            <strong>BD／AM 回覆作業方法</strong>
-            <p>依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。</p>
+            <strong data-i18n="api-step3-title">BD／AM 回覆作業方法</strong>
+            <p data-i18n="api-step3-desc">依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。</p>
           </div>
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-        <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;">⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱確認常見錯誤原因。</span>
-        <span style="font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;">ℹ️ 若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。</span>
+        <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n-html="api-hk-note">⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱確認常見錯誤原因。</span>
+        <span style="font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="api-risk-note">ℹ️ 若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。</span>
       </div>
     </div>
   </div>
-  <div class="wiki-footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'footer': 'SCM 知識庫 · 內部使用',
+    'api-breadcrumb': '首頁 / 自動出票 / API',
+    'api-title': 'API 自動出票',
+    'api-subtitle': 'BE2 系統與供應商訂購平台串接，即時查詢和預訂票券及酒店',
+    'api-meta': '自動出票',
+    'api-definition': 'ℹ️ <strong>定義：</strong>API 讓 BE2 系統與供應商訂購平台互相連接並共享資訊，可即時查詢和預訂票券及酒店，大幅減少人工作業需求。',
+    'api-auto-note': '✅ 通常無需 OP 作業，系統自動完成訂購與出票。',
+    'api-fail-title': '⚠️ API 失敗處理方式',
+    'api-fail-note': '❌ OP 會收到兩則錯誤訊息，請依以下步驟處理。',
+    'api-step1-title': 'Slack 聯繫 BD／AM',
+    'api-step1-desc': '透過 Slack 通知對應的 BD 或 AM，說明 API 訂購失敗的訂單資訊。',
+    'api-step2-title': 'BD／AM 確認失敗原因',
+    'api-step2-desc': 'BD／AM 與供應商確認 API 失敗原因，可能為庫存不足、連線異常或商品下架等。',
+    'api-step3-title': 'BD／AM 回覆作業方法',
+    'api-step3-desc': '依確認結果，BD／AM 回覆 OP 後續處理方式（可點重串、人工補訂、改期或取消等）。',
+    'api-hk-note': '⚠️ <strong>HK AM 補充：</strong>HK AM 有建立 API 錯誤訊息對照表，可先查閱確認常見錯誤原因。',
+    'api-risk-note': 'ℹ️ 若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。',
+  },
+  en: {
+    'nav-title': 'SCM <em>Knowledge Base</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
+    'footer': 'SCM Knowledge Base · Internal Use',
+    'api-breadcrumb': 'Home / Auto Issuance / API',
+    'api-title': 'API Auto Issuance',
+    'api-subtitle': 'BE2 system integrates with supplier booking platforms for real-time ticket and hotel lookup and reservation',
+    'api-meta': 'Auto Issuance',
+    'api-definition': 'ℹ️ <strong>Definition：</strong>API connects the BE2 system with supplier booking platforms to share information, enabling real-time ticket and hotel lookup and reservation, significantly reducing manual workload.',
+    'api-auto-note': '✅ No OP action required under normal circumstances. The system completes booking and issuance automatically.',
+    'api-fail-title': '⚠️ API Failure Handling',
+    'api-fail-note': '❌ OP will receive two error messages. Follow the steps below to handle them.',
+    'api-step1-title': 'Contact BD／AM via Slack',
+    'api-step1-desc': 'Notify the relevant BD or AM via Slack with details of the API booking failure.',
+    'api-step2-title': 'BD／AM Confirms Failure Reason',
+    'api-step2-desc': 'BD／AM verifies the API failure cause with the supplier — may include insufficient inventory, connection error, or product delisted.',
+    'api-step3-title': 'BD／AM Advises Next Steps',
+    'api-step3-desc': 'Based on findings, BD／AM informs OP of the next action (retry API, manual booking, reschedule, cancel, etc.).',
+    'api-hk-note': '⚠️ <strong>HK AM Note：</strong>HK AM has an API error code reference table. Check it first to identify common error causes.',
+    'api-risk-note': 'ℹ️ If the failure is due to a suspicious order, Risk Team will re-trigger the API. No additional OP action needed.',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
+    'footer': 'SCM ナレッジベース · 社内使用',
+    'api-breadcrumb': 'ホーム / 自動発券 / API',
+    'api-title': 'API 自動発券',
+    'api-subtitle': 'BE2 システムとサプライヤー予約プラットフォームを連携し、チケット・ホテルのリアルタイム検索・予約が可能',
+    'api-meta': '自動発券',
+    'api-definition': 'ℹ️ <strong>定義：</strong>API により BE2 システムとサプライヤー予約プラットフォームが相互接続・情報共有され、チケットやホテルのリアルタイム検索・予約が可能になり、手動作業を大幅に削減します。',
+    'api-auto-note': '✅ 通常 OP 作業は不要です。システムが自動的に予約・発券を完了します。',
+    'api-fail-title': '⚠️ API 失敗時の対応方法',
+    'api-fail-note': '❌ OP は2件のエラーメッセージを受信します。以下の手順で対応してください。',
+    'api-step1-title': 'Slack で BD／AM に連絡',
+    'api-step1-desc': 'Slack で担当 BD または AM に API 予約失敗の注文情報を通知します。',
+    'api-step2-title': 'BD／AM が失敗原因を確認',
+    'api-step2-desc': 'BD／AM がサプライヤーと API 失敗原因を確認します（在庫不足、接続異常、商品終了など）。',
+    'api-step3-title': 'BD／AM が対応方法を回答',
+    'api-step3-desc': '確認結果に基づき、BD／AM が OP に後続対応方法を回答します（再試行、手動予約、日程変更、キャンセルなど）。',
+    'api-hk-note': '⚠️ <strong>HK AM 補足：</strong>HK AM には API エラーメッセージ対照表があります。まず参照して一般的なエラー原因を確認してください。',
+    'api-risk-note': 'ℹ️ 失敗原因が不審注文の場合、リスクチームが API を再接続します。OP の追加作業は不要です。',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식 베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'footer': 'SCM 지식 베이스 · 내부 사용',
+    'api-breadcrumb': '홈 / 자동 발권 / API',
+    'api-title': 'API 자동 발권',
+    'api-subtitle': 'BE2 시스템과 공급업체 예약 플랫폼을 연동하여 티켓 및 호텔 실시간 조회·예약 가능',
+    'api-meta': '자동 발권',
+    'api-definition': 'ℹ️ <strong>정의：</strong>API를 통해 BE2 시스템과 공급업체 예약 플랫폼이 상호 연결되어 정보를 공유하며, 티켓과 호텔의 실시간 조회·예약이 가능해져 수동 작업 필요성이 크게 줄어듭니다.',
+    'api-auto-note': '✅ 일반적으로 OP 작업이 필요하지 않습니다. 시스템이 자동으로 예약 및 발권을 완료합니다.',
+    'api-fail-title': '⚠️ API 실패 처리 방법',
+    'api-fail-note': '❌ OP는 두 개의 오류 메시지를 받습니다. 아래 절차에 따라 처리하세요.',
+    'api-step1-title': 'Slack으로 BD／AM에 연락',
+    'api-step1-desc': 'Slack을 통해 담당 BD 또는 AM에게 API 예약 실패 주문 정보를 알립니다.',
+    'api-step2-title': 'BD／AM가 실패 원인 확인',
+    'api-step2-desc': 'BD／AM가 공급업체와 API 실패 원인을 확인합니다（재고 부족, 연결 오류, 상품 삭제 등）.',
+    'api-step3-title': 'BD／AM가 처리 방법 회신',
+    'api-step3-desc': '확인 결과에 따라 BD／AM가 OP에게 후속 처리 방법을 알립니다（재시도, 수동 예약, 일정 변경, 취소 등）.',
+    'api-hk-note': '⚠️ <strong>HK AM 보충：</strong>HK AM에 API 오류 메시지 대조표가 있습니다. 먼저 참조하여 일반적인 오류 원인을 확인하세요.',
+    'api-risk-note': 'ℹ️ 실패 원인이 의심 주문인 경우 리스크팀이 API를 재연결합니다. OP의 추가 작업은 필요하지 않습니다.',
+  }
+});
+</script>
 </body>
 </html>
