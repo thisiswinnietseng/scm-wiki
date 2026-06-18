@@ -41,12 +41,22 @@
 .lc-step span { font-size:11px; color:#555; text-align:center; font-weight:600; line-height:1.4; }
 .lc-arrow { color:#d1d5db; font-size:16px; padding:0 2px; flex-shrink:0; margin-bottom:18px; }
 .d-purple { background:linear-gradient(135deg,#667eea,#764ba2); }
-.d-teal   { background:linear-gradient(135deg,#11998e,#38ef7d); }
-.d-orange { background:linear-gradient(135deg,#f7971e,#ffd200); }
-.d-blue   { background:linear-gradient(135deg,#2193b0,#6dd5ed); }
-.d-green  { background:linear-gradient(135deg,#56ab2f,#a8e063); }
-.d-gray   { background:linear-gradient(135deg,#636e72,#b2bec3); }
-.d-red    { background:linear-gradient(135deg,#f953c6,#b91d73); }
+.d-cs     { background:linear-gradient(135deg,#f093fb,#f5576c); }
+.d-sys    { background:linear-gradient(135deg,#4facfe,#00c6ff); }
+.d-op     { background:linear-gradient(135deg,#1a1a2e,#2193b0); }
+.d-green  { background:linear-gradient(135deg,#43e97b,#38f9d7); }
+.d-gold   { background:linear-gradient(135deg,#f7971e,#ffd200); }
+.d-csop   { background:linear-gradient(135deg,#f5576c,#764ba2); }
+
+/* Dept tag under lifecycle step */
+.lc-dept {
+  font-size:9px; font-weight:800; letter-spacing:0.5px;
+  padding:2px 7px; border-radius:8px; margin-top:1px;
+  display:inline-block; line-height:1.4;
+}
+.dept-cs   { background:#fde8f5; color:#c2185b; border:1px solid #f48fb1; }
+.dept-op   { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
+.dept-csop { background:#ede7f6; color:#512da8; border:1px solid #b39ddb; }
 
 /* Section accordion */
 .sec-accordion {
@@ -157,19 +167,45 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
   <div class="lifecycle-wrap">
     <div class="lifecycle-label" data-i18n="lc-label">訂單生命週期</div>
     <div class="lifecycle">
-      <div class="lc-step"><div class="lc-dot d-purple">🛒</div><span data-i18n="lc-1">旅客下單</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-purple">🛒</div>
+        <span data-i18n="lc-1">旅客下單</span>
+      </div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-teal">🔍</div><span data-i18n="lc-2">初步確認</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-cs">🔍</div>
+        <span data-i18n="lc-2">初步確認</span>
+        <span class="lc-dept dept-cs" data-i18n="dept-cs">CS</span>
+      </div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-orange">⚙️</div><span data-i18n="lc-3">訂單分流</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-sys">⚙️</div>
+        <span data-i18n="lc-3">訂單分流</span>
+      </div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-blue">🎫</div><span data-i18n="lc-4">出票/訂購</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-op">🎫</div>
+        <span data-i18n="lc-4">出票/訂購</span>
+        <span class="lc-dept dept-op" data-i18n="dept-op">OP</span>
+      </div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-green">📧</div><span data-i18n="lc-5">發送憑證</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-green">📧</div>
+        <span data-i18n="lc-5">發送憑證</span>
+        <span class="lc-dept dept-op" data-i18n="dept-op">OP</span>
+      </div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-gray">✅</div><span data-i18n="lc-6">訂單完成</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-gold">✅</div>
+        <span data-i18n="lc-6">訂單完成</span>
+        <span class="lc-dept dept-op" data-i18n="dept-op">OP</span>
+      </div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-red">⚠️</div><span data-i18n="lc-7">異常處理</span></div>
+      <div class="lc-step">
+        <div class="lc-dot d-csop">⚠️</div>
+        <span data-i18n="lc-7">異常處理</span>
+        <span class="lc-dept dept-csop" data-i18n="dept-csop">CS + OP</span>
+      </div>
     </div>
   </div>
 
@@ -344,6 +380,7 @@ SCMi18n.init({
     'lc-label': '訂單生命週期',
     'lc-1': '旅客下單', 'lc-2': '初步確認', 'lc-3': '訂單分流',
     'lc-4': '出票/訂購', 'lc-5': '發送憑證', 'lc-6': '訂單完成', 'lc-7': '異常處理',
+    'dept-cs': 'CS', 'dept-op': 'OP', 'dept-csop': 'CS + OP',
     'sec-common-title': 'SCM + CS 共同知識庫',
     'sec-common-sub': '前台架構 · 商品設計 · 訂單流程 · PSI票倉 · 憑證類型',
     'badge-scm': 'SCM', 'badge-cs': 'CS',
@@ -402,6 +439,7 @@ SCMi18n.init({
     'lc-label': 'Order Lifecycle',
     'lc-1': 'Customer Order', 'lc-2': 'Initial Review', 'lc-3': 'Order Routing',
     'lc-4': 'Ticket Issuance', 'lc-5': 'Send Voucher', 'lc-6': 'Order Complete', 'lc-7': 'Exception Handling',
+    'dept-cs': 'CS', 'dept-op': 'OP', 'dept-csop': 'CS + OP',
     'sec-common-title': 'SCM + CS Shared Knowledge Base',
     'sec-common-sub': 'Frontend Structure · Product Design · Order Flow · PSI Inventory · Voucher Types',
     'badge-scm': 'SCM', 'badge-cs': 'CS',
@@ -460,6 +498,7 @@ SCMi18n.init({
     'lc-label': '注文ライフサイクル',
     'lc-1': '顧客注文', 'lc-2': '初期確認', 'lc-3': '注文振り分け',
     'lc-4': 'チケット発行', 'lc-5': 'バウチャー送付', 'lc-6': '注文完了', 'lc-7': '例外処理',
+    'dept-cs': 'CS', 'dept-op': 'OP', 'dept-csop': 'CS + OP',
     'sec-common-title': 'SCM + CS 共通ナレッジベース',
     'sec-common-sub': 'フロントエンド構造 · 商品設計 · 注文フロー · PSI在庫 · バウチャータイプ',
     'badge-scm': 'SCM', 'badge-cs': 'CS',
@@ -518,6 +557,7 @@ SCMi18n.init({
     'lc-label': '주문 생애 주기',
     'lc-1': '고객 주문', 'lc-2': '초기 확인', 'lc-3': '주문 분류',
     'lc-4': '티켓 발행', 'lc-5': '바우처 발송', 'lc-6': '주문 완료', 'lc-7': '예외 처리',
+    'dept-cs': 'CS', 'dept-op': 'OP', 'dept-csop': 'CS + OP',
     'sec-common-title': 'SCM + CS 공통 지식베이스',
     'sec-common-sub': '프론트엔드 구조 · 상품 설계 · 주문 흐름 · PSI 재고 · 바우처 유형',
     'badge-scm': 'SCM', 'badge-cs': 'CS',
