@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GO 知識庫</title>
 <link rel="stylesheet" href="styles.css">
-<script src="i18n.js"></script>
-<script src="search-index.js"></script>
+<script src="i18n.js?v=2"></script>
+<script src="search-index.js?v=2"></script>
 <style>
 .nav { height: 96px !important; position: relative; }
 .nav-title {
@@ -275,6 +275,7 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
   <div class="search-wrap" id="searchWrap">
     <span class="search-icon">🔍</span>
     <input class="search-box" id="searchInput" type="text"
+      data-i18n-placeholder="search-placeholder"
       placeholder="搜尋知識庫… 例如：OCBT取消、對帳、信用卡"
       autocomplete="off" />
     <span class="search-shortcut" id="searchShortcut">⌘K</span>
@@ -605,6 +606,9 @@ SCMi18n.init({
     'card-credit-card-title': '信用卡對帳', 'card-credit-card-desc': '每月帳單核對、請款流程、BPM 送審',
     'card-commission-title': '佣金申請', 'card-commission-desc': 'REM 專案入款通知單、INV 無入款憑證開立',
     'card-messaging-hub-title': '訊息管理總覽', 'card-messaging-hub-desc': '四種溝通工具說明 · 供應商訊息處理流程',
+    'search-placeholder': '搜尋知識庫… 例如：OCBT取消、對帳、信用卡',
+    'search-results-count': '找到 {n} 筆結果',
+    'search-empty': '😅 找不到「{q}」相關內容，試試其他關鍵字',
     'cs-wip-title': 'CS 內容建置中',
     'cs-wip-desc': '客服相關 SOP、處理流程與常見問答即將上線，敬請期待。',
     'ql-label': '🔗 超連結專區',
@@ -667,6 +671,9 @@ SCMi18n.init({
     'card-credit-card-title': 'Credit Card Reconciliation', 'card-credit-card-desc': 'Monthly bill verification, payment flow, BPM submission',
     'card-commission-title': 'Commission Application', 'card-commission-desc': 'REM project deposit notice, INV non-deposit voucher issuance',
     'card-messaging-hub-title': 'Messaging Overview', 'card-messaging-hub-desc': '4 communication tools · Supplier message handling flow',
+    'search-placeholder': 'Search wiki… e.g. OCBT cancel, reconciliation, credit card',
+    'search-results-count': '{n} result(s) found',
+    'search-empty': '😅 No results for "{q}", try other keywords',
     'cs-wip-title': 'CS Content Coming Soon',
     'cs-wip-desc': 'CS SOPs, handling flows, and FAQs will be available soon. Stay tuned.',
     'ql-label': '🔗 Quick Links',
@@ -729,6 +736,9 @@ SCMi18n.init({
     'card-credit-card-title': 'クレジットカード照合', 'card-credit-card-desc': '月次請求書照合・支払フロー・BPM提出',
     'card-commission-title': 'コミッション申請', 'card-commission-desc': 'REMプロジェクト入金通知・INV非入金バウチャー開立',
     'card-messaging-hub-title': 'メッセージ管理概要', 'card-messaging-hub-desc': '4つのコミュニケーションツール · サプライヤーメッセージ処理フロー',
+    'search-placeholder': 'ナレッジベースを検索… 例：OCBT キャンセル、照合、クレカ',
+    'search-results-count': '{n} 件見つかりました',
+    'search-empty': '😅 「{q}」の結果が見つかりません。別のキーワードをお試しください',
     'cs-wip-title': 'CS コンテンツ準備中',
     'cs-wip-desc': 'CS SOP・処理フロー・FAQ を近日公開予定。お待ちください。',
     'ql-label': '🔗 クイックリンク',
@@ -791,6 +801,9 @@ SCMi18n.init({
     'card-credit-card-title': '신용카드 대사', 'card-credit-card-desc': '월별 청구서 확인, 결제 흐름, BPM 제출',
     'card-commission-title': '커미션 신청', 'card-commission-desc': 'REM 프로젝트 입금 통지, INV 비입금 바우처 발행',
     'card-messaging-hub-title': '메시지 관리 개요', 'card-messaging-hub-desc': '4가지 커뮤니케이션 도구 · 공급업체 메시지 처리 흐름',
+    'search-placeholder': '지식베이스 검색… 예: OCBT 취소, 대사, 신용카드',
+    'search-results-count': '{n}개 결과 발견',
+    'search-empty': '😅 「{q}」에 대한 결과가 없습니다. 다른 키워드를 시도해 보세요',
     'cs-wip-title': 'CS 콘텐츠 준비 중',
     'cs-wip-desc': 'CS SOP, 처리 흐름, FAQ가 곧 공개될 예정입니다. 기대해 주세요.',
     'ql-label': '🔗 빠른 링크',
@@ -842,15 +855,21 @@ function search(query) {
 function renderResults(scored, keywords, rawQ) {
   searchResults.innerHTML = '';
 
+  // get localized UI strings
+  const lang = SCMi18n.current();
+  const pt = window.PAGE_TRANSLATIONS?.[lang] || {};
+  const countTpl  = pt['search-results-count'] || '找到 {n} 筆結果';
+  const emptyTpl  = pt['search-empty']         || '😅 找不到「{q}」相關內容，試試其他關鍵字';
+
   if (!scored.length) {
-    searchResults.innerHTML = `<div class="search-empty">😅 找不到「${rawQ}」相關內容，試試其他關鍵字</div>`;
+    searchResults.innerHTML = `<div class="search-empty">${emptyTpl.replace('{q}', rawQ)}</div>`;
     searchResults.classList.add('active');
     return;
   }
 
   const header = document.createElement('div');
   header.className = 'search-header';
-  header.textContent = `找到 ${scored.length} 筆結果`;
+  header.textContent = countTpl.replace('{n}', scored.length);
   searchResults.appendChild(header);
 
   for (const { item } of scored) {
@@ -914,6 +933,12 @@ document.addEventListener('keydown', e => {
 document.addEventListener('click', e => {
   if (!document.getElementById('searchWrap').contains(e.target)) hideResults();
 });
+
+// 語系切換時：重跑搜尋（若有輸入內容）或清除
+window.onLangSwitch = function() {
+  const v = searchInput.value.trim();
+  if (v) search(v); // re-render results in new language
+};
 
 function toggleSec(id) {
   const body = document.getElementById('body-' + id);

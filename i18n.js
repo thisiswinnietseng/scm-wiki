@@ -1,4 +1,4 @@
-// SCM Wiki — Shared i18n utilities
+// GO Wiki — Shared i18n utilities
 // Include this in every page with: <script src="../i18n.js"></script>
 
 window.SCMi18n = (function () {
@@ -40,19 +40,28 @@ window.SCMi18n = (function () {
   function applyTranslations(pageTranslations) {
     const t = Object.assign({}, NAV_TRANSLATIONS[current], pageTranslations?.[current] || {});
 
+    // textContent
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) el.textContent = t[key];
     });
 
+    // innerHTML (with HTML tags)
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
       if (t[key] !== undefined) el.innerHTML = t[key];
     });
 
+    // title attribute
     document.querySelectorAll('[data-i18n-title]').forEach(el => {
       const key = el.getAttribute('data-i18n-title');
       if (t[key] !== undefined) el.title = t[key];
+    });
+
+    // placeholder attribute
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) el.placeholder = t[key];
     });
 
     document.documentElement.lang = LANG_META[current] || current;
@@ -69,6 +78,8 @@ window.SCMi18n = (function () {
     localStorage.setItem(STORAGE_KEY, lang);
     applyTranslations(window.PAGE_TRANSLATIONS);
     updateButtons();
+    // notify search module to re-render if open
+    if (typeof window.onLangSwitch === 'function') window.onLangSwitch(lang);
   }
 
   function init(pageTranslations) {
