@@ -15,7 +15,17 @@
 .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
 .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
 .nav-title em { color: #f5a623; font-style: normal; }
-.nav-links { flex-shrink: 0; margin-left: auto; }
+
+/* Language switcher */
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn {
+  padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700;
+  cursor:pointer; border:1.5px solid rgba(255,255,255,0.4);
+  background:transparent; color:white; transition:all 0.15s; line-height:1;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 
 .lifecycle-wrap {
   background:white; border-radius:var(--radius-lg);
@@ -92,151 +102,518 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
 <nav class="nav">
   <a class="nav-logo" href="index.html">kkday <span class="badge">SCM</span></a>
   <div class="nav-title">
-    <h1>SCM <em>知識庫</em></h1>
-    <p>OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
   </div>
-  <div class="nav-links">
-    <a class="nav-link active" href="index.html">首頁</a>
-    <a class="nav-link" href="#" onclick="openSec('product');return false;">商品認識</a>
-    <a class="nav-link" href="#" onclick="openSec('order');return false;">訂單管理</a>
-    <a class="nav-link" href="#" onclick="openSec('accounting');return false;">帳務管理</a>
-    <a class="nav-link" href="pages/messaging-hub.html">訊息管理</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="switchLang('zh')">中</button>
+    <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" onclick="switchLang('ja')">JP</button>
+    <button class="lang-btn" onclick="switchLang('ko')">KR</button>
   </div>
 </nav>
 
 <div class="page-wrapper-wide" style="padding-top:24px;">
 
   <div class="lifecycle-wrap">
-    <div class="lifecycle-label">訂單生命週期</div>
+    <div class="lifecycle-label" data-i18n="lc-label">訂單生命週期</div>
     <div class="lifecycle">
-      <div class="lc-step"><div class="lc-dot d-purple">🛒</div><span>旅客下單</span></div>
+      <div class="lc-step"><div class="lc-dot d-purple">🛒</div><span data-i18n="lc-1">旅客下單</span></div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-teal">🔍</div><span>初步確認</span></div>
+      <div class="lc-step"><div class="lc-dot d-teal">🔍</div><span data-i18n="lc-2">初步確認</span></div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-orange">⚙️</div><span>訂單分流</span></div>
+      <div class="lc-step"><div class="lc-dot d-orange">⚙️</div><span data-i18n="lc-3">訂單分流</span></div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-blue">🎫</div><span>出票/訂購</span></div>
+      <div class="lc-step"><div class="lc-dot d-blue">🎫</div><span data-i18n="lc-4">出票/訂購</span></div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-green">📧</div><span>發送憑證</span></div>
+      <div class="lc-step"><div class="lc-dot d-green">📧</div><span data-i18n="lc-5">發送憑證</span></div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-gray">✅</div><span>訂單完成</span></div>
+      <div class="lc-step"><div class="lc-dot d-gray">✅</div><span data-i18n="lc-6">訂單完成</span></div>
       <div class="lc-arrow">→</div>
-      <div class="lc-step"><div class="lc-dot d-red">⚠️</div><span>異常處理</span></div>
+      <div class="lc-step"><div class="lc-dot d-red">⚠️</div><span data-i18n="lc-7">異常處理</span></div>
     </div>
   </div>
 
+  <!-- 商品認識 -->
   <div class="sec-accordion">
     <div class="sec-header" onclick="toggleSec('product')" style="background:linear-gradient(135deg,#667eea,#764ba2)">
       <div class="sec-header-left">
         <div class="sec-header-icon">🧩</div>
         <div class="sec-header-text">
-          <h2>商品認識</h2>
-          <p>前台架構 · 商品設計 · PSI 票倉 · 憑證類型</p>
+          <h2 data-i18n="sec-product-title">商品認識</h2>
+          <p data-i18n="sec-product-sub">前台架構 · 商品設計 · PSI 票倉 · 憑證類型</p>
         </div>
       </div>
       <span class="sec-arr" id="arr-product">▾</span>
     </div>
     <div class="sec-body" id="body-product">
       <div class="sec-cards">
-        <a class="sop-card" href="pages/frontend.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4>前台商品架構長相</h4><p>一般票券、點對點交通、飯店頁面結構</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
-        <a class="sop-card" href="pages/product-design.html"><div class="sc-icon">🧠</div><div class="sc-body"><h4>商品設計邏輯</h4><p>商品設定如何影響客人認知及作業流程</p></div><span class="sc-tag badge-blue">新人必讀</span></a>
-        <a class="sop-card" href="pages/inventory.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>PSI 票倉介紹</h4><p>PSI 系統票券入庫、出庫、庫存管理</p></div><span class="sc-tag badge-blue">庫存</span></a>
-        <a class="sop-card" href="pages/voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4>憑證類型說明</h4><p>PSI 票倉介紹、憑證類型說明</p></div><span class="sc-tag badge-blue">出票</span></a>
+        <a class="sop-card" href="pages/frontend.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4 data-i18n="card-frontend-title">前台商品架構長相</h4><p data-i18n="card-frontend-desc">一般票券、點對點交通、飯店頁面結構</p></div><span class="sc-tag badge-blue" data-i18n="tag-new">新人必讀</span></a>
+        <a class="sop-card" href="pages/product-design.html"><div class="sc-icon">🧠</div><div class="sc-body"><h4 data-i18n="card-product-design-title">商品設計邏輯</h4><p data-i18n="card-product-design-desc">商品設定如何影響客人認知及作業流程</p></div><span class="sc-tag badge-blue" data-i18n="tag-new">新人必讀</span></a>
+        <a class="sop-card" href="pages/inventory.html"><div class="sc-icon">📦</div><div class="sc-body"><h4 data-i18n="card-inventory-title">PSI 票倉介紹</h4><p data-i18n="card-inventory-desc">PSI 系統票券入庫、出庫、庫存管理</p></div><span class="sc-tag badge-blue" data-i18n="tag-inventory">庫存</span></a>
+        <a class="sop-card" href="pages/voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4 data-i18n="card-voucher-title">憑證類型說明</h4><p data-i18n="card-voucher-desc">PSI 票倉介紹、憑證類型說明</p></div><span class="sc-tag badge-blue" data-i18n="tag-issuance">出票</span></a>
       </div>
     </div>
   </div>
 
+  <!-- 訂單管理 -->
   <div class="sec-accordion">
     <div class="sec-header" onclick="toggleSec('order')" style="background:linear-gradient(135deg,#1a1a2e,#2193b0)">
       <div class="sec-header-left">
         <div class="sec-header-icon">🛒</div>
         <div class="sec-header-text">
-          <h2>訂單管理</h2>
-          <p>處理流程 · 自動出票 · 人工訂購 · 實體出貨 · 異常處理</p>
+          <h2 data-i18n="sec-order-title">訂單管理</h2>
+          <p data-i18n="sec-order-sub">處理流程 · 自動出票 · 人工訂購 · 實體出貨 · 異常處理</p>
         </div>
       </div>
       <span class="sec-arr" id="arr-order">▾</span>
     </div>
     <div class="sec-body" id="body-order">
       <div class="sec-cards">
-        <div class="group-divider"><span class="group-divider-tag" style="background:#00695c"><span class="dot"></span>訂單處理流程</span></div>
-        <a class="sop-card" href="pages/order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4>訂單成立後初步處理</h4><p>SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal">訂單</span></a>
-        <a class="sop-card" href="pages/order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4>訂單進單後處理流程</h4><p>四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal">訂單</span></a>
+        <div class="group-divider"><span class="group-divider-tag" style="background:#00695c"><span class="dot"></span><span data-i18n="grp-order-flow">訂單處理流程</span></span></div>
+        <a class="sop-card" href="pages/order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4 data-i18n="card-order-init-title">訂單成立後初步處理</h4><p data-i18n="card-order-init-desc">SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal" data-i18n="tag-order">訂單</span></a>
+        <a class="sop-card" href="pages/order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4 data-i18n="card-order-flow-title">訂單進單後處理流程</h4><p data-i18n="card-order-flow-desc">四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal" data-i18n="tag-order">訂單</span></a>
 
-        <div class="group-divider"><span class="group-divider-tag" style="background:#2e7d32"><span class="dot"></span>自動出票</span></div>
-        <a class="sop-card" href="pages/api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4>API</h4><p>串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="pages/ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4>OCBT</h4><p>多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="pages/psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4>PSI</h4><p>票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="pages/general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4>一般即訂即出</h4><p>系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green">自動</span></a>
-        <a class="sop-card" href="pages/fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4>假即訂即出</h4><p>系統出憑證但仍需 OP 人工訂購</p></div></a>
+        <div class="group-divider"><span class="group-divider-tag" style="background:#2e7d32"><span class="dot"></span><span data-i18n="grp-auto">自動出票</span></span></div>
+        <a class="sop-card" href="pages/api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4 data-i18n="card-api-title">API</h4><p data-i18n="card-api-desc">串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+        <a class="sop-card" href="pages/ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4 data-i18n="card-ocbt-title">OCBT</h4><p data-i18n="card-ocbt-desc">多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+        <a class="sop-card" href="pages/psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4 data-i18n="card-psi-title">PSI</h4><p data-i18n="card-psi-desc">票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+        <a class="sop-card" href="pages/general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4 data-i18n="card-general-instant-title">一般即訂即出</h4><p data-i18n="card-general-instant-desc">系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+        <a class="sop-card" href="pages/fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4 data-i18n="card-fake-instant-title">假即訂即出</h4><p data-i18n="card-fake-instant-desc">系統出憑證但仍需 OP 人工訂購</p></div></a>
 
-        <div class="group-divider"><span class="group-divider-tag" style="background:#e65100"><span class="dot"></span>人工訂購</span></div>
-        <a class="sop-card" href="pages/platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4>平台訂購</h4><p>供應商平台 7 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="pages/mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4>Mail 訂購</h4><p>電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="pages/messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4>通訊軟體訂購</h4><p>KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="pages/google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4>Google Sheet 訂購</h4><p>填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange">人工</span></a>
-        <a class="sop-card" href="pages/combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4>組合商品訂購</h4><p>三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange">人工</span></a>
+        <div class="group-divider"><span class="group-divider-tag" style="background:#e65100"><span class="dot"></span><span data-i18n="grp-manual">人工訂購</span></span></div>
+        <a class="sop-card" href="pages/platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4 data-i18n="card-platform-title">平台訂購</h4><p data-i18n="card-platform-desc">供應商平台 7 步驟</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+        <a class="sop-card" href="pages/mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4 data-i18n="card-mail-order-title">Mail 訂購</h4><p data-i18n="card-mail-order-desc">電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+        <a class="sop-card" href="pages/messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="card-messaging-title">通訊軟體訂購</h4><p data-i18n="card-messaging-desc">KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+        <a class="sop-card" href="pages/google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4 data-i18n="card-google-sheet-title">Google Sheet 訂購</h4><p data-i18n="card-google-sheet-desc">填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+        <a class="sop-card" href="pages/combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4 data-i18n="card-combo-title">組合商品訂購</h4><p data-i18n="card-combo-desc">三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
 
-        <div class="group-divider"><span class="group-divider-tag" style="background:#6a1b9a"><span class="dot"></span>實體出貨</span></div>
-        <a class="sop-card" href="pages/sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4>實體 SIM 卡 POS 出貨</h4><p>每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple">實體</span></a>
-        <a class="sop-card" href="pages/mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4>郵寄流程</h4><p>JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple">實體</span></a>
+        <div class="group-divider"><span class="group-divider-tag" style="background:#6a1b9a"><span class="dot"></span><span data-i18n="grp-physical">實體出貨</span></span></div>
+        <a class="sop-card" href="pages/sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4 data-i18n="card-sim-pos-title">實體 SIM 卡 POS 出貨</h4><p data-i18n="card-sim-pos-desc">每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple" data-i18n="tag-physical">實體</span></a>
+        <a class="sop-card" href="pages/mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4 data-i18n="card-mail-delivery-title">郵寄流程</h4><p data-i18n="card-mail-delivery-desc">JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple" data-i18n="tag-physical">實體</span></a>
 
-        <div class="group-divider"><span class="group-divider-tag" style="background:#c62828"><span class="dot"></span>異常處理</span></div>
-        <a class="sop-card" href="pages/cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4>特例取消流程</h4><p>客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="pages/partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4>部分取消 / 部分退款</h4><p>保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="pages/order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4>訂單更改</h4><p>改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="pages/amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4>商品異動 & 挽單流程</h4><p>額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="pages/restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4>訂單恢復</h4><p>適用條件、三方審核流程</p></div><span class="sc-tag badge-red">異常</span></a>
-        <a class="sop-card" href="pages/fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4>盜刷處理 SOP</h4><p>風控通知、已使用/未使用分支</p></div><span class="sc-tag badge-red">異常</span></a>
+        <div class="group-divider"><span class="group-divider-tag" style="background:#c62828"><span class="dot"></span><span data-i18n="grp-exception">異常處理</span></span></div>
+        <a class="sop-card" href="pages/cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4 data-i18n="card-cancel-title">特例取消流程</h4><p data-i18n="card-cancel-desc">客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+        <a class="sop-card" href="pages/partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4 data-i18n="card-partial-refund-title">部分取消 / 部分退款</h4><p data-i18n="card-partial-refund-desc">保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+        <a class="sop-card" href="pages/order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4 data-i18n="card-order-change-title">訂單更改</h4><p data-i18n="card-order-change-desc">改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+        <a class="sop-card" href="pages/amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4 data-i18n="card-amendment-title">商品異動 &amp; 挽單流程</h4><p data-i18n="card-amendment-desc">額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+        <a class="sop-card" href="pages/restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4 data-i18n="card-restore-title">訂單恢復</h4><p data-i18n="card-restore-desc">適用條件、三方審核流程</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+        <a class="sop-card" href="pages/fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4 data-i18n="card-fraud-title">盜刷處理 SOP</h4><p data-i18n="card-fraud-desc">風控通知、已使用/未使用分支</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
       </div>
     </div>
   </div>
 
+  <!-- 帳務管理 -->
   <div class="sec-accordion">
     <div class="sec-header" onclick="toggleSec('accounting')" style="background:linear-gradient(135deg,#f7971e,#e65100)">
       <div class="sec-header-left">
         <div class="sec-header-icon">💰</div>
         <div class="sec-header-text">
-          <h2>帳務管理</h2>
-          <p>請款方式 · 對帳流程 · 預存款管理 · 信用卡 · 佣金申請</p>
+          <h2 data-i18n="sec-accounting-title">帳務管理</h2>
+          <p data-i18n="sec-accounting-sub">請款方式 · 對帳流程 · 預存款管理 · 信用卡 · 佣金申請</p>
         </div>
       </div>
       <span class="sec-arr" id="arr-accounting">▾</span>
     </div>
     <div class="sec-body" id="body-accounting">
       <div class="sec-cards">
-        <a class="sop-card" href="pages/payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>請款方式</h4><p>銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange">請款</span></a>
-        <a class="sop-card" href="pages/reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4>銀行匯款對帳流程</h4><p>全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal">對帳</span></a>
-        <a class="sop-card" href="pages/supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4>預存款管理</h4><p>補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue">預存款</span></a>
-        <a class="sop-card" href="pages/credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4>信用卡對帳</h4><p>每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue">信用卡</span></a>
-        <a class="sop-card" href="pages/commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4>佣金申請</h4><p>REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red">佣金</span></a>
+        <a class="sop-card" href="pages/payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="card-payment-title">請款方式</h4><p data-i18n="card-payment-desc">銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange" data-i18n="tag-payment">請款</span></a>
+        <a class="sop-card" href="pages/reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4 data-i18n="card-reconciliation-title">銀行匯款對帳流程</h4><p data-i18n="card-reconciliation-desc">全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal" data-i18n="tag-reconciliation">對帳</span></a>
+        <a class="sop-card" href="pages/supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4 data-i18n="card-supplier-payment-title">預存款管理</h4><p data-i18n="card-supplier-payment-desc">補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue" data-i18n="tag-prepayment">預存款</span></a>
+        <a class="sop-card" href="pages/credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="card-credit-card-title">信用卡對帳</h4><p data-i18n="card-credit-card-desc">每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue" data-i18n="tag-credit-card">信用卡</span></a>
+        <a class="sop-card" href="pages/commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4 data-i18n="card-commission-title">佣金申請</h4><p data-i18n="card-commission-desc">REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red" data-i18n="tag-commission">佣金</span></a>
       </div>
     </div>
   </div>
 
+  <!-- 訊息管理 -->
   <div class="sec-accordion">
     <div class="sec-header" onclick="toggleSec('messaging')" style="background:linear-gradient(135deg,#636e72,#2d3436)">
       <div class="sec-header-left">
         <div class="sec-header-icon">💬</div>
         <div class="sec-header-text">
-          <h2>訊息管理</h2>
-          <p>Be2 · 工單系統 · Slack · 供應商群組</p>
+          <h2 data-i18n="sec-messaging-title">訊息管理</h2>
+          <p data-i18n="sec-messaging-sub">Be2 · 工單系統 · Slack · 供應商群組</p>
         </div>
       </div>
       <span class="sec-arr" id="arr-messaging">▾</span>
     </div>
     <div class="sec-body" id="body-messaging">
       <div class="sec-cards">
-        <a class="sop-card" href="pages/messaging-hub.html"><div class="sc-icon">💬</div><div class="sc-body"><h4>訊息管理總覽</h4><p>四種溝通工具說明 · 供應商訊息處理流程</p></div><span class="sc-tag badge-blue">訊息</span></a>
+        <a class="sop-card" href="pages/messaging-hub.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="card-messaging-hub-title">訊息管理總覽</h4><p data-i18n="card-messaging-hub-desc">四種溝通工具說明 · 供應商訊息處理流程</p></div><span class="sc-tag badge-blue" data-i18n="tag-messaging">訊息</span></a>
       </div>
     </div>
   </div>
 
 </div>
 
-<div class="wiki-footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
 
 <script>
+const translations = {
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>',
+    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'lc-label': '訂單生命週期',
+    'lc-1': '旅客下單', 'lc-2': '初步確認', 'lc-3': '訂單分流',
+    'lc-4': '出票/訂購', 'lc-5': '發送憑證', 'lc-6': '訂單完成', 'lc-7': '異常處理',
+    'sec-product-title': '商品認識',
+    'sec-product-sub': '前台架構 · 商品設計 · PSI 票倉 · 憑證類型',
+    'sec-order-title': '訂單管理',
+    'sec-order-sub': '處理流程 · 自動出票 · 人工訂購 · 實體出貨 · 異常處理',
+    'sec-accounting-title': '帳務管理',
+    'sec-accounting-sub': '請款方式 · 對帳流程 · 預存款管理 · 信用卡 · 佣金申請',
+    'sec-messaging-title': '訊息管理',
+    'sec-messaging-sub': 'Be2 · 工單系統 · Slack · 供應商群組',
+    'grp-order-flow': '訂單處理流程', 'grp-auto': '自動出票',
+    'grp-manual': '人工訂購', 'grp-physical': '實體出貨', 'grp-exception': '異常處理',
+    'tag-new': '新人必讀', 'tag-inventory': '庫存', 'tag-issuance': '出票',
+    'tag-order': '訂單', 'tag-auto': '自動', 'tag-manual': '人工',
+    'tag-physical': '實體', 'tag-exception': '異常',
+    'tag-payment': '請款', 'tag-reconciliation': '對帳', 'tag-prepayment': '預存款',
+    'tag-credit-card': '信用卡', 'tag-commission': '佣金', 'tag-messaging': '訊息',
+    'card-frontend-title': '前台商品架構長相',
+    'card-frontend-desc': '一般票券、點對點交通、飯店頁面結構',
+    'card-product-design-title': '商品設計邏輯',
+    'card-product-design-desc': '商品設定如何影響客人認知及作業流程',
+    'card-inventory-title': 'PSI 票倉介紹',
+    'card-inventory-desc': 'PSI 系統票券入庫、出庫、庫存管理',
+    'card-voucher-title': '憑證類型說明',
+    'card-voucher-desc': 'PSI 票倉介紹、憑證類型說明',
+    'card-order-init-title': '訂單成立後初步處理',
+    'card-order-init-desc': 'SYSTEM 點單、CS 點單、風控可疑訂單',
+    'card-order-flow-title': '訂單進單後處理流程',
+    'card-order-flow-desc': '四大情境：資料齊全/不齊 × 供應商可/不可接單',
+    'card-api-title': 'API',
+    'card-api-desc': '串接供應商平台即時出票，失敗處理方式',
+    'card-ocbt-title': 'OCBT',
+    'card-ocbt-desc': '多供應商組合即訂即出，設定限制與失敗處理',
+    'card-psi-title': 'PSI',
+    'card-psi-desc': '票倉庫存出票，出貨失敗處理方式',
+    'card-general-instant-title': '一般即訂即出',
+    'card-general-instant-desc': '系統自動產出 KKday 憑證發送旅客',
+    'card-fake-instant-title': '假即訂即出',
+    'card-fake-instant-desc': '系統出憑證但仍需 OP 人工訂購',
+    'card-platform-title': '平台訂購',
+    'card-platform-desc': '供應商平台 7 步驟',
+    'card-mail-order-title': 'Mail 訂購',
+    'card-mail-order-desc': '電子郵件訂購 4 步驟',
+    'card-messaging-title': '通訊軟體訂購',
+    'card-messaging-desc': 'KakaoTalk / WhatsApp 訂購格式範本',
+    'card-google-sheet-title': 'Google Sheet 訂購',
+    'card-google-sheet-desc': '填單流程、告知供應商、追蹤確認',
+    'card-combo-title': '組合商品訂購',
+    'card-combo-desc': '三種組合類型、子訂單建立方式',
+    'card-sim-pos-title': '實體 SIM 卡 POS 出貨',
+    'card-sim-pos-desc': '每日撈單、印標籤、揀貨、POS 操作',
+    'card-mail-delivery-title': '郵寄流程',
+    'card-mail-delivery-desc': 'JRPASS、高鐵票券郵寄作業步驟',
+    'card-cancel-title': '特例取消流程',
+    'card-cancel-desc': '客人端、供應商端、KKday 發起取消',
+    'card-partial-refund-title': '部分取消 / 部分退款',
+    'card-partial-refund-desc': '保留訂單退部分款項，Be2 操作流程',
+    'card-order-change-title': '訂單更改',
+    'card-order-change-desc': '改日期、改旅客資料，四象限對照表',
+    'card-amendment-title': '商品異動 & 挽單流程',
+    'card-amendment-desc': '額滿售罄挽單、關閉前台日期操作',
+    'card-restore-title': '訂單恢復',
+    'card-restore-desc': '適用條件、三方審核流程',
+    'card-fraud-title': '盜刷處理 SOP',
+    'card-fraud-desc': '風控通知、已使用/未使用分支',
+    'card-payment-title': '請款方式',
+    'card-payment-desc': '銀行匯款、預存款、信用卡三種請款方式總覽',
+    'card-reconciliation-title': '銀行匯款對帳流程',
+    'card-reconciliation-desc': '全自動、自動、人工對帳種類 + BPM 請款流程',
+    'card-supplier-payment-title': '預存款管理',
+    'card-supplier-payment-desc': '補款申請、入款啟用、正負向操作、節日預估',
+    'card-credit-card-title': '信用卡對帳',
+    'card-credit-card-desc': '每月帳單核對、請款流程、BPM 送審',
+    'card-commission-title': '佣金申請',
+    'card-commission-desc': 'REM 專案入款通知單、INV 無入款憑證開立',
+    'card-messaging-hub-title': '訊息管理總覽',
+    'card-messaging-hub-desc': '四種溝通工具說明 · 供應商訊息處理流程',
+    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享'
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>',
+    'nav-subtitle': 'OP Daily Operations Manual · New Staff Guide · One-Stop Reference',
+    'lc-label': 'Order Lifecycle',
+    'lc-1': 'Customer Order', 'lc-2': 'Initial Review', 'lc-3': 'Order Routing',
+    'lc-4': 'Ticket Issuance', 'lc-5': 'Send Voucher', 'lc-6': 'Order Complete', 'lc-7': 'Exception Handling',
+    'sec-product-title': 'Product Knowledge',
+    'sec-product-sub': 'Frontend Structure · Product Design · PSI Inventory · Voucher Types',
+    'sec-order-title': 'Order Management',
+    'sec-order-sub': 'Processing Flow · Auto Issuance · Manual Purchase · Physical Delivery · Exceptions',
+    'sec-accounting-title': 'Accounting',
+    'sec-accounting-sub': 'Payment Methods · Reconciliation · Prepayment · Credit Card · Commission',
+    'sec-messaging-title': 'Messaging',
+    'sec-messaging-sub': 'Be2 · Ticket System · Slack · Supplier Groups',
+    'grp-order-flow': 'Order Processing Flow', 'grp-auto': 'Auto Issuance',
+    'grp-manual': 'Manual Purchase', 'grp-physical': 'Physical Delivery', 'grp-exception': 'Exception Handling',
+    'tag-new': 'Must Read', 'tag-inventory': 'Inventory', 'tag-issuance': 'Issuance',
+    'tag-order': 'Order', 'tag-auto': 'Auto', 'tag-manual': 'Manual',
+    'tag-physical': 'Physical', 'tag-exception': 'Exception',
+    'tag-payment': 'Payment', 'tag-reconciliation': 'Reconcile', 'tag-prepayment': 'Prepayment',
+    'tag-credit-card': 'Credit Card', 'tag-commission': 'Commission', 'tag-messaging': 'Message',
+    'card-frontend-title': 'Frontend Product Structure',
+    'card-frontend-desc': 'General tickets, point-to-point transport, hotel page layout',
+    'card-product-design-title': 'Product Design Logic',
+    'card-product-design-desc': 'How product settings affect customer perception and workflows',
+    'card-inventory-title': 'PSI Inventory Introduction',
+    'card-inventory-desc': 'PSI system ticket stock-in, stock-out, inventory management',
+    'card-voucher-title': 'Voucher Type Guide',
+    'card-voucher-desc': 'PSI inventory overview and voucher type explanation',
+    'card-order-init-title': 'Initial Order Processing',
+    'card-order-init-desc': 'SYSTEM orders, CS orders, risk-flagged suspicious orders',
+    'card-order-flow-title': 'Post-Receipt Order Flow',
+    'card-order-flow-desc': '4 scenarios: complete/incomplete data × supplier accept/reject',
+    'card-api-title': 'API',
+    'card-api-desc': 'Real-time ticketing via supplier API integration, failure handling',
+    'card-ocbt-title': 'OCBT',
+    'card-ocbt-desc': 'Multi-supplier combo instant booking/issuance, settings and failure handling',
+    'card-psi-title': 'PSI',
+    'card-psi-desc': 'Inventory-based ticket issuance, failure handling',
+    'card-general-instant-title': 'General Instant Booking',
+    'card-general-instant-desc': 'System auto-generates KKday voucher and sends to traveler',
+    'card-fake-instant-title': 'Pseudo Instant Booking',
+    'card-fake-instant-desc': 'System issues voucher but OP still needs to manually purchase',
+    'card-platform-title': 'Platform Purchase',
+    'card-platform-desc': '7-step supplier platform ordering procedure',
+    'card-mail-order-title': 'Email Purchase',
+    'card-mail-order-desc': '4-step email ordering procedure',
+    'card-messaging-title': 'Messaging App Purchase',
+    'card-messaging-desc': 'KakaoTalk / WhatsApp order format templates',
+    'card-google-sheet-title': 'Google Sheet Purchase',
+    'card-google-sheet-desc': 'Form fill process, notify supplier, track confirmation',
+    'card-combo-title': 'Combo Product Purchase',
+    'card-combo-desc': '3 combo types, sub-order creation methods',
+    'card-sim-pos-title': 'Physical SIM Card POS Fulfillment',
+    'card-sim-pos-desc': 'Daily order pull, label print, pick, POS operations',
+    'card-mail-delivery-title': 'Mail Delivery Flow',
+    'card-mail-delivery-desc': 'JRPASS, High-Speed Rail ticket mailing steps',
+    'card-cancel-title': 'Special Cancellation Flow',
+    'card-cancel-desc': 'Customer-initiated, supplier-initiated, KKday-initiated cancellations',
+    'card-partial-refund-title': 'Partial Cancel / Partial Refund',
+    'card-partial-refund-desc': 'Retain order with partial refund, Be2 operation flow',
+    'card-order-change-title': 'Order Modification',
+    'card-order-change-desc': 'Date change, traveler info update, quadrant reference table',
+    'card-amendment-title': 'Product Change & Retention Flow',
+    'card-amendment-desc': 'Sold-out retention, close frontend date operation',
+    'card-restore-title': 'Order Restoration',
+    'card-restore-desc': 'Eligibility conditions, tripartite review process',
+    'card-fraud-title': 'Fraud Handling SOP',
+    'card-fraud-desc': 'Risk control notice, used/unused branches',
+    'card-payment-title': 'Payment Methods',
+    'card-payment-desc': 'Overview of 3 methods: bank transfer, prepayment, credit card',
+    'card-reconciliation-title': 'Bank Transfer Reconciliation',
+    'card-reconciliation-desc': 'Full-auto, auto, manual reconciliation types + BPM payment flow',
+    'card-supplier-payment-title': 'Prepayment Management',
+    'card-supplier-payment-desc': 'Top-up application, deposit activation, positive/negative ops, holiday estimation',
+    'card-credit-card-title': 'Credit Card Reconciliation',
+    'card-credit-card-desc': 'Monthly bill verification, payment flow, BPM submission',
+    'card-commission-title': 'Commission Application',
+    'card-commission-desc': 'REM project deposit notice, INV non-deposit voucher issuance',
+    'card-messaging-hub-title': 'Messaging Overview',
+    'card-messaging-hub-desc': '4 communication tools · Supplier message handling flow',
+    'footer': 'SCM Wiki · Internal use only, do not share externally'
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>',
+    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ参照',
+    'lc-label': '注文ライフサイクル',
+    'lc-1': '顧客注文', 'lc-2': '初期確認', 'lc-3': '注文振り分け',
+    'lc-4': 'チケット発行', 'lc-5': 'バウチャー送付', 'lc-6': '注文完了', 'lc-7': '例外処理',
+    'sec-product-title': '商品知識',
+    'sec-product-sub': 'フロントエンド構造 · 商品設計 · PSI在庫 · バウチャータイプ',
+    'sec-order-title': '注文管理',
+    'sec-order-sub': '処理フロー · 自動発行 · 手動購入 · 実物配送 · 例外処理',
+    'sec-accounting-title': '経理管理',
+    'sec-accounting-sub': '支払方法 · 照合 · 前払金 · クレジットカード · コミッション',
+    'sec-messaging-title': 'メッセージ管理',
+    'sec-messaging-sub': 'Be2 · チケットシステム · Slack · サプライヤーグループ',
+    'grp-order-flow': '注文処理フロー', 'grp-auto': '自動発行',
+    'grp-manual': '手動購入', 'grp-physical': '実物配送', 'grp-exception': '例外処理',
+    'tag-new': '新人必読', 'tag-inventory': '在庫', 'tag-issuance': '発行',
+    'tag-order': '注文', 'tag-auto': '自動', 'tag-manual': '手動',
+    'tag-physical': '実物', 'tag-exception': '例外',
+    'tag-payment': '支払', 'tag-reconciliation': '照合', 'tag-prepayment': '前払金',
+    'tag-credit-card': 'クレカ', 'tag-commission': 'コミッション', 'tag-messaging': 'メッセージ',
+    'card-frontend-title': 'フロントエンド商品構造',
+    'card-frontend-desc': '一般チケット・ポイント間交通・ホテルページ構造',
+    'card-product-design-title': '商品設計ロジック',
+    'card-product-design-desc': '商品設定が顧客認識と作業フローに与える影響',
+    'card-inventory-title': 'PSI 在庫紹介',
+    'card-inventory-desc': 'PSIシステム チケット入庫・出庫・在庫管理',
+    'card-voucher-title': 'バウチャータイプ説明',
+    'card-voucher-desc': 'PSI在庫紹介・バウチャータイプ説明',
+    'card-order-init-title': '注文成立後の初期処理',
+    'card-order-init-desc': 'SYSTEMオーダー・CSオーダー・リスク疑い注文',
+    'card-order-flow-title': '注文受領後の処理フロー',
+    'card-order-flow-desc': '4シナリオ：データ完全/不完全 × 受注可/不可',
+    'card-api-title': 'API',
+    'card-api-desc': 'サプライヤーAPIリアルタイム発券連携・失敗処理',
+    'card-ocbt-title': 'OCBT',
+    'card-ocbt-desc': 'マルチサプライヤーコンボ即時予約・発行・設定と失敗処理',
+    'card-psi-title': 'PSI',
+    'card-psi-desc': '在庫からのチケット発行・失敗処理',
+    'card-general-instant-title': '一般即時予約発行',
+    'card-general-instant-desc': 'システムが自動でKKdayバウチャーを生成・送付',
+    'card-fake-instant-title': '疑似即時予約',
+    'card-fake-instant-desc': 'システムがバウチャー発行するがOP手動購入が必要',
+    'card-platform-title': 'プラットフォーム購入',
+    'card-platform-desc': 'サプライヤープラットフォーム 7ステップ',
+    'card-mail-order-title': 'メール購入',
+    'card-mail-order-desc': '電子メール注文 4ステップ',
+    'card-messaging-title': 'メッセージアプリ購入',
+    'card-messaging-desc': 'KakaoTalk / WhatsApp 注文フォーマットテンプレート',
+    'card-google-sheet-title': 'Googleシート購入',
+    'card-google-sheet-desc': 'フォーム記入・サプライヤー通知・確認追跡',
+    'card-combo-title': 'コンボ商品購入',
+    'card-combo-desc': '3種のコンボタイプ・サブオーダー作成方法',
+    'card-sim-pos-title': '実物SIMカード POS出荷',
+    'card-sim-pos-desc': '毎日の注文取得・ラベル印刷・ピッキング・POS操作',
+    'card-mail-delivery-title': '郵送フロー',
+    'card-mail-delivery-desc': 'JRPASS・新幹線チケット郵送手順',
+    'card-cancel-title': '特例キャンセルフロー',
+    'card-cancel-desc': '顧客起点・サプライヤー起点・KKday起点のキャンセル',
+    'card-partial-refund-title': '一部キャンセル / 一部返金',
+    'card-partial-refund-desc': '注文保持・一部返金・Be2操作フロー',
+    'card-order-change-title': '注文変更',
+    'card-order-change-desc': '日程変更・旅客情報変更・四象限対照表',
+    'card-amendment-title': '商品変動 & 引き留めフロー',
+    'card-amendment-desc': '売り切れ引き留め・フロントエンド日程クローズ操作',
+    'card-restore-title': '注文復元',
+    'card-restore-desc': '適用条件・三者審査フロー',
+    'card-fraud-title': '不正使用処理 SOP',
+    'card-fraud-desc': 'リスクコントロール通知・使用済み/未使用分岐',
+    'card-payment-title': '支払方法',
+    'card-payment-desc': '銀行振込・前払金・クレジットカード 3種の概要',
+    'card-reconciliation-title': '銀行振込照合フロー',
+    'card-reconciliation-desc': '完全自動・自動・手動照合タイプ + BPM支払フロー',
+    'card-supplier-payment-title': '前払金管理',
+    'card-supplier-payment-desc': '補充申請・入金有効化・正負操作・祝日予測',
+    'card-credit-card-title': 'クレジットカード照合',
+    'card-credit-card-desc': '月次請求書照合・支払フロー・BPM提出',
+    'card-commission-title': 'コミッション申請',
+    'card-commission-desc': 'REMプロジェクト入金通知・INV非入金バウチャー開立',
+    'card-messaging-hub-title': 'メッセージ管理概要',
+    'card-messaging-hub-desc': '4つのコミュニケーションツール · サプライヤーメッセージ処理フロー',
+    'footer': 'SCM ナレッジベース · 内部使用のみ、外部への共有禁止'
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>',
+    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
+    'lc-label': '주문 생애 주기',
+    'lc-1': '고객 주문', 'lc-2': '초기 확인', 'lc-3': '주문 분류',
+    'lc-4': '티켓 발행', 'lc-5': '바우처 발송', 'lc-6': '주문 완료', 'lc-7': '예외 처리',
+    'sec-product-title': '상품 이해',
+    'sec-product-sub': '프론트엔드 구조 · 상품 설계 · PSI 재고 · 바우처 유형',
+    'sec-order-title': '주문 관리',
+    'sec-order-sub': '처리 흐름 · 자동 발행 · 수동 구매 · 실물 배송 · 예외 처리',
+    'sec-accounting-title': '회계 관리',
+    'sec-accounting-sub': '결제 방법 · 대사 · 선불금 · 신용카드 · 커미션',
+    'sec-messaging-title': '메시지 관리',
+    'sec-messaging-sub': 'Be2 · 티켓 시스템 · Slack · 공급업체 그룹',
+    'grp-order-flow': '주문 처리 흐름', 'grp-auto': '자동 발행',
+    'grp-manual': '수동 구매', 'grp-physical': '실물 배송', 'grp-exception': '예외 처리',
+    'tag-new': '필독', 'tag-inventory': '재고', 'tag-issuance': '발행',
+    'tag-order': '주문', 'tag-auto': '자동', 'tag-manual': '수동',
+    'tag-physical': '실물', 'tag-exception': '예외',
+    'tag-payment': '결제', 'tag-reconciliation': '대사', 'tag-prepayment': '선불금',
+    'tag-credit-card': '신용카드', 'tag-commission': '커미션', 'tag-messaging': '메시지',
+    'card-frontend-title': '프론트엔드 상품 구조',
+    'card-frontend-desc': '일반 티켓, 포인트 간 교통, 호텔 페이지 구조',
+    'card-product-design-title': '상품 설계 로직',
+    'card-product-design-desc': '상품 설정이 고객 인식 및 작업 흐름에 미치는 영향',
+    'card-inventory-title': 'PSI 재고 소개',
+    'card-inventory-desc': 'PSI 시스템 티켓 입고, 출고, 재고 관리',
+    'card-voucher-title': '바우처 유형 설명',
+    'card-voucher-desc': 'PSI 재고 소개 및 바우처 유형 설명',
+    'card-order-init-title': '주문 성립 후 초기 처리',
+    'card-order-init-desc': 'SYSTEM 주문, CS 주문, 위험 의심 주문',
+    'card-order-flow-title': '주문 접수 후 처리 흐름',
+    'card-order-flow-desc': '4가지 시나리오: 데이터 완전/불완전 × 수락/거부',
+    'card-api-title': 'API',
+    'card-api-desc': '공급업체 API 연동 실시간 발권, 실패 처리',
+    'card-ocbt-title': 'OCBT',
+    'card-ocbt-desc': '다중 공급업체 콤보 즉시 예약/발행, 설정 제한 및 실패 처리',
+    'card-psi-title': 'PSI',
+    'card-psi-desc': '재고 기반 티켓 발행, 실패 처리',
+    'card-general-instant-title': '일반 즉시 예약 발행',
+    'card-general-instant-desc': '시스템이 자동으로 KKday 바우처 생성 및 여행자 발송',
+    'card-fake-instant-title': '가짜 즉시 예약',
+    'card-fake-instant-desc': '시스템이 바우처 발행하지만 OP 수동 구매 필요',
+    'card-platform-title': '플랫폼 구매',
+    'card-platform-desc': '공급업체 플랫폼 7단계 절차',
+    'card-mail-order-title': '이메일 구매',
+    'card-mail-order-desc': '이메일 주문 4단계 절차',
+    'card-messaging-title': '메신저 앱 구매',
+    'card-messaging-desc': 'KakaoTalk / WhatsApp 주문 형식 템플릿',
+    'card-google-sheet-title': 'Google 시트 구매',
+    'card-google-sheet-desc': '양식 작성, 공급업체 알림, 확인 추적',
+    'card-combo-title': '콤보 상품 구매',
+    'card-combo-desc': '3가지 콤보 유형, 하위 주문 생성 방법',
+    'card-sim-pos-title': '실물 SIM 카드 POS 출고',
+    'card-sim-pos-desc': '일일 주문 추출, 라벨 인쇄, 피킹, POS 운영',
+    'card-mail-delivery-title': '우편 배송 흐름',
+    'card-mail-delivery-desc': 'JRPASS, 고속철도 티켓 우편 발송 단계',
+    'card-cancel-title': '특례 취소 흐름',
+    'card-cancel-desc': '고객, 공급업체, KKday 시작 취소',
+    'card-partial-refund-title': '부분 취소 / 부분 환불',
+    'card-partial-refund-desc': '주문 유지 부분 환불, Be2 운영 흐름',
+    'card-order-change-title': '주문 변경',
+    'card-order-change-desc': '날짜 변경, 여행자 정보 변경, 사분면 참조 표',
+    'card-amendment-title': '상품 변동 & 유지 흐름',
+    'card-amendment-desc': '매진 유지, 프론트엔드 날짜 마감 운영',
+    'card-restore-title': '주문 복원',
+    'card-restore-desc': '적용 조건, 3자 심사 절차',
+    'card-fraud-title': '사기 처리 SOP',
+    'card-fraud-desc': '위험 관리 알림, 사용/미사용 분기',
+    'card-payment-title': '결제 방법',
+    'card-payment-desc': '은행 이체, 선불금, 신용카드 3가지 결제 방법 개요',
+    'card-reconciliation-title': '은행 이체 대사 흐름',
+    'card-reconciliation-desc': '완전 자동, 자동, 수동 대사 유형 + BPM 결제 흐름',
+    'card-supplier-payment-title': '선불금 관리',
+    'card-supplier-payment-desc': '충전 신청, 입금 활성화, 정/부 운영, 휴일 예측',
+    'card-credit-card-title': '신용카드 대사',
+    'card-credit-card-desc': '월별 청구서 확인, 결제 흐름, BPM 제출',
+    'card-commission-title': '커미션 신청',
+    'card-commission-desc': 'REM 프로젝트 입금 통지, INV 비입금 바우처 발행',
+    'card-messaging-hub-title': '메시지 관리 개요',
+    'card-messaging-hub-desc': '4가지 커뮤니케이션 도구 · 공급업체 메시지 처리 흐름',
+    'footer': 'SCM 지식베이스 · 내부 전용, 외부 공유 금지'
+  }
+};
+
+const htmlKeys = new Set(['nav-title']);
+
+function switchLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  // Update text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // Update innerHTML nodes (for elements with embedded tags)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  // Update html lang attribute
+  const langMap = { zh: 'zh-TW', en: 'en', ja: 'ja', ko: 'ko' };
+  document.documentElement.lang = langMap[lang] || lang;
+
+  localStorage.setItem('scm-lang', lang);
+}
+
 function toggleSec(id) {
   const body = document.getElementById('body-' + id);
   const arr = document.getElementById('arr-' + id);
@@ -244,6 +621,7 @@ function toggleSec(id) {
   body.classList.toggle('open');
   if (arr) arr.classList.toggle('open');
 }
+
 function openSec(id) {
   const body = document.getElementById('body-' + id);
   const arr = document.getElementById('arr-' + id);
@@ -252,6 +630,15 @@ function openSec(id) {
   if (arr) arr.classList.add('open');
   body.closest('.sec-accordion').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+// Restore saved language on load
+(function() {
+  const saved = localStorage.getItem('scm-lang');
+  if (saved && saved !== 'zh') {
+    const btn = document.querySelector(`.lang-btn[onclick="switchLang('${saved}')"]`);
+    if (btn) btn.click();
+  }
+})();
 </script>
 </body>
 </html>
