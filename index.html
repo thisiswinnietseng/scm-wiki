@@ -78,19 +78,26 @@
 
 .sec-cards { display:grid; grid-template-columns:1fr 1fr; padding:12px 16px 8px; gap:2px; }
 
-/* Inside-SCM sub-group headers */
-.sub-group {
-  grid-column:1/-1; margin:16px 0 6px;
-  display:flex; align-items:center; gap:10px;
+/* Inside-SCM nested accordion */
+.sub-accordion {
+  grid-column:1/-1; border-radius:10px; overflow:hidden;
+  border:1px solid var(--border); margin:10px 0 4px;
 }
-.sub-group-tag {
-  display:inline-flex; align-items:center; gap:7px;
-  font-size:13px; font-weight:700;
-  padding:6px 16px 6px 10px; border-radius:8px;
-  color:white;
+.sub-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; cursor:pointer; user-select:none;
+  transition:filter 0.15s;
 }
-.sub-group-tag .dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.6); flex-shrink:0; }
-.sub-group::after { content:''; flex:1; height:1px; background:#f0f0f0; }
+.sub-header:hover { filter:brightness(0.96); }
+.sub-header-left { display:flex; align-items:center; gap:10px; }
+.sub-header-label {
+  font-size:14px; font-weight:700; color:white;
+}
+.sub-arr { font-size:16px; color:rgba(255,255,255,0.8); transition:transform 0.25s; }
+.sub-arr.open { transform:rotate(180deg); }
+.sub-body { display:none; }
+.sub-body.open { display:block; }
+.sub-cards { display:grid; grid-template-columns:1fr 1fr; padding:8px 12px 4px; gap:2px; }
 
 /* Inner group dividers (within sub-groups) */
 .group-divider {
@@ -210,54 +217,92 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
       <span class="sec-arr" id="arr-scm">▾</span>
     </div>
     <div class="sec-body" id="body-scm">
-      <div class="sec-cards">
+      <div style="padding:12px 16px 8px; display:flex; flex-direction:column; gap:0;">
 
-        <!-- 訂單管理 -->
-        <div class="sub-group">
-          <span class="sub-group-tag" style="background:linear-gradient(135deg,#1a1a2e,#2193b0)"><span class="dot"></span><span data-i18n="sub-order">🛒 訂單管理</span></span>
+        <!-- 訂單管理 nested accordion -->
+        <div class="sub-accordion">
+          <div class="sub-header" onclick="toggleSub('order')" style="background:linear-gradient(135deg,#1a1a2e,#2193b0);">
+            <div class="sub-header-left">
+              <span style="font-size:22px;">🛒</span>
+              <div>
+                <div class="sub-header-label" data-i18n="sub-order-title">訂單管理</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px;" data-i18n="sub-order-sub">自動出票 · 人工訂購 · 實體出貨 · 異常處理</div>
+              </div>
+            </div>
+            <span class="sub-arr" id="sub-arr-order">▾</span>
+          </div>
+          <div class="sub-body" id="sub-body-order">
+            <div class="sub-cards">
+              <div class="group-divider"><span class="group-divider-tag" style="background:#2e7d32"><span class="dot"></span><span data-i18n="grp-auto">自動出票</span></span></div>
+              <a class="sop-card" href="pages/api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4 data-i18n="card-api-title">API</h4><p data-i18n="card-api-desc">串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+              <a class="sop-card" href="pages/ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4 data-i18n="card-ocbt-title">OCBT</h4><p data-i18n="card-ocbt-desc">多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+              <a class="sop-card" href="pages/psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4 data-i18n="card-psi-title">PSI</h4><p data-i18n="card-psi-desc">票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+              <a class="sop-card" href="pages/general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4 data-i18n="card-general-instant-title">一般即訂即出</h4><p data-i18n="card-general-instant-desc">系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
+              <a class="sop-card" href="pages/fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4 data-i18n="card-fake-instant-title">假即訂即出</h4><p data-i18n="card-fake-instant-desc">系統出憑證但仍需 OP 人工訂購</p></div></a>
+
+              <div class="group-divider"><span class="group-divider-tag" style="background:#e65100"><span class="dot"></span><span data-i18n="grp-manual">人工訂購</span></span></div>
+              <a class="sop-card" href="pages/platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4 data-i18n="card-platform-title">平台訂購</h4><p data-i18n="card-platform-desc">供應商平台 7 步驟</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+              <a class="sop-card" href="pages/mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4 data-i18n="card-mail-order-title">Mail 訂購</h4><p data-i18n="card-mail-order-desc">電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+              <a class="sop-card" href="pages/messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="card-messaging-title">通訊軟體訂購</h4><p data-i18n="card-messaging-desc">KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+              <a class="sop-card" href="pages/google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4 data-i18n="card-google-sheet-title">Google Sheet 訂購</h4><p data-i18n="card-google-sheet-desc">填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+              <a class="sop-card" href="pages/combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4 data-i18n="card-combo-title">組合商品訂購</h4><p data-i18n="card-combo-desc">三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
+
+              <div class="group-divider"><span class="group-divider-tag" style="background:#6a1b9a"><span class="dot"></span><span data-i18n="grp-physical">實體出貨</span></span></div>
+              <a class="sop-card" href="pages/sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4 data-i18n="card-sim-pos-title">實體 SIM 卡 POS 出貨</h4><p data-i18n="card-sim-pos-desc">每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple" data-i18n="tag-physical">實體</span></a>
+              <a class="sop-card" href="pages/mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4 data-i18n="card-mail-delivery-title">郵寄流程</h4><p data-i18n="card-mail-delivery-desc">JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple" data-i18n="tag-physical">實體</span></a>
+
+              <div class="group-divider"><span class="group-divider-tag" style="background:#c62828"><span class="dot"></span><span data-i18n="grp-exception">異常處理</span></span></div>
+              <a class="sop-card" href="pages/cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4 data-i18n="card-cancel-title">特例取消流程</h4><p data-i18n="card-cancel-desc">客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+              <a class="sop-card" href="pages/partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4 data-i18n="card-partial-refund-title">部分取消 / 部分退款</h4><p data-i18n="card-partial-refund-desc">保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+              <a class="sop-card" href="pages/order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4 data-i18n="card-order-change-title">訂單更改</h4><p data-i18n="card-order-change-desc">改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+              <a class="sop-card" href="pages/amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4 data-i18n="card-amendment-title">商品異動 &amp; 挽單流程</h4><p data-i18n="card-amendment-desc">額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+              <a class="sop-card" href="pages/restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4 data-i18n="card-restore-title">訂單恢復</h4><p data-i18n="card-restore-desc">適用條件、三方審核流程</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+              <a class="sop-card" href="pages/fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4 data-i18n="card-fraud-title">盜刷處理 SOP</h4><p data-i18n="card-fraud-desc">風控通知、已使用/未使用分支</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
+            </div>
+          </div>
         </div>
 
-        <div class="group-divider"><span class="group-divider-tag" style="background:#2e7d32"><span class="dot"></span><span data-i18n="grp-auto">自動出票</span></span></div>
-        <a class="sop-card" href="pages/api.html"><div class="sc-icon">🔌</div><div class="sc-body"><h4 data-i18n="card-api-title">API</h4><p data-i18n="card-api-desc">串接供應商平台即時出票，失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
-        <a class="sop-card" href="pages/ocbt.html"><div class="sc-icon">📦</div><div class="sc-body"><h4 data-i18n="card-ocbt-title">OCBT</h4><p data-i18n="card-ocbt-desc">多供應商組合即訂即出，設定限制與失敗處理</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
-        <a class="sop-card" href="pages/psi.html"><div class="sc-icon">🗄️</div><div class="sc-body"><h4 data-i18n="card-psi-title">PSI</h4><p data-i18n="card-psi-desc">票倉庫存出票，出貨失敗處理方式</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
-        <a class="sop-card" href="pages/general-instant.html"><div class="sc-icon">⚡</div><div class="sc-body"><h4 data-i18n="card-general-instant-title">一般即訂即出</h4><p data-i18n="card-general-instant-desc">系統自動產出 KKday 憑證發送旅客</p></div><span class="sc-tag badge-green" data-i18n="tag-auto">自動</span></a>
-        <a class="sop-card" href="pages/fake-instant.html"><div class="sc-icon">🎭</div><div class="sc-body"><h4 data-i18n="card-fake-instant-title">假即訂即出</h4><p data-i18n="card-fake-instant-desc">系統出憑證但仍需 OP 人工訂購</p></div></a>
-
-        <div class="group-divider"><span class="group-divider-tag" style="background:#e65100"><span class="dot"></span><span data-i18n="grp-manual">人工訂購</span></span></div>
-        <a class="sop-card" href="pages/platform.html"><div class="sc-icon">🖥️</div><div class="sc-body"><h4 data-i18n="card-platform-title">平台訂購</h4><p data-i18n="card-platform-desc">供應商平台 7 步驟</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
-        <a class="sop-card" href="pages/mail-order.html"><div class="sc-icon">📧</div><div class="sc-body"><h4 data-i18n="card-mail-order-title">Mail 訂購</h4><p data-i18n="card-mail-order-desc">電子郵件訂購 4 步驟</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
-        <a class="sop-card" href="pages/messaging.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="card-messaging-title">通訊軟體訂購</h4><p data-i18n="card-messaging-desc">KakaoTalk / WhatsApp 訂購格式範本</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
-        <a class="sop-card" href="pages/google-sheet.html"><div class="sc-icon">📊</div><div class="sc-body"><h4 data-i18n="card-google-sheet-title">Google Sheet 訂購</h4><p data-i18n="card-google-sheet-desc">填單流程、告知供應商、追蹤確認</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
-        <a class="sop-card" href="pages/combo.html"><div class="sc-icon">🧩</div><div class="sc-body"><h4 data-i18n="card-combo-title">組合商品訂購</h4><p data-i18n="card-combo-desc">三種組合類型、子訂單建立方式</p></div><span class="sc-tag badge-orange" data-i18n="tag-manual">人工</span></a>
-
-        <div class="group-divider"><span class="group-divider-tag" style="background:#6a1b9a"><span class="dot"></span><span data-i18n="grp-physical">實體出貨</span></span></div>
-        <a class="sop-card" href="pages/sim-pos.html"><div class="sc-icon">📱</div><div class="sc-body"><h4 data-i18n="card-sim-pos-title">實體 SIM 卡 POS 出貨</h4><p data-i18n="card-sim-pos-desc">每日撈單、印標籤、揀貨、POS 操作</p></div><span class="sc-tag badge-purple" data-i18n="tag-physical">實體</span></a>
-        <a class="sop-card" href="pages/mail-delivery.html"><div class="sc-icon">✉️</div><div class="sc-body"><h4 data-i18n="card-mail-delivery-title">郵寄流程</h4><p data-i18n="card-mail-delivery-desc">JRPASS、高鐵票券郵寄作業步驟</p></div><span class="sc-tag badge-purple" data-i18n="tag-physical">實體</span></a>
-
-        <div class="group-divider"><span class="group-divider-tag" style="background:#c62828"><span class="dot"></span><span data-i18n="grp-exception">異常處理</span></span></div>
-        <a class="sop-card" href="pages/cancel.html"><div class="sc-icon">❌</div><div class="sc-body"><h4 data-i18n="card-cancel-title">特例取消流程</h4><p data-i18n="card-cancel-desc">客人端、供應商端、KKday 發起取消</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
-        <a class="sop-card" href="pages/partial-refund.html"><div class="sc-icon">💸</div><div class="sc-body"><h4 data-i18n="card-partial-refund-title">部分取消 / 部分退款</h4><p data-i18n="card-partial-refund-desc">保留訂單退部分款項，Be2 操作流程</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
-        <a class="sop-card" href="pages/order-change.html"><div class="sc-icon">✏️</div><div class="sc-body"><h4 data-i18n="card-order-change-title">訂單更改</h4><p data-i18n="card-order-change-desc">改日期、改旅客資料，四象限對照表</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
-        <a class="sop-card" href="pages/amendment.html"><div class="sc-icon">🔀</div><div class="sc-body"><h4 data-i18n="card-amendment-title">商品異動 &amp; 挽單流程</h4><p data-i18n="card-amendment-desc">額滿售罄挽單、關閉前台日期操作</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
-        <a class="sop-card" href="pages/restore.html"><div class="sc-icon">🔁</div><div class="sc-body"><h4 data-i18n="card-restore-title">訂單恢復</h4><p data-i18n="card-restore-desc">適用條件、三方審核流程</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
-        <a class="sop-card" href="pages/fraud-sop.html"><div class="sc-icon">🛡️</div><div class="sc-body"><h4 data-i18n="card-fraud-title">盜刷處理 SOP</h4><p data-i18n="card-fraud-desc">風控通知、已使用/未使用分支</p></div><span class="sc-tag badge-red" data-i18n="tag-exception">異常</span></a>
-
-        <!-- 帳務管理 -->
-        <div class="sub-group">
-          <span class="sub-group-tag" style="background:linear-gradient(135deg,#f7971e,#e65100)"><span class="dot"></span><span data-i18n="sub-accounting">💰 帳務管理</span></span>
+        <!-- 帳務管理 nested accordion -->
+        <div class="sub-accordion">
+          <div class="sub-header" onclick="toggleSub('accounting')" style="background:linear-gradient(135deg,#f7971e,#e65100);">
+            <div class="sub-header-left">
+              <span style="font-size:22px;">💰</span>
+              <div>
+                <div class="sub-header-label" data-i18n="sub-accounting-title">帳務管理</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px;" data-i18n="sub-accounting-sub">請款方式 · 對帳流程 · 預存款 · 信用卡 · 佣金</div>
+              </div>
+            </div>
+            <span class="sub-arr" id="sub-arr-accounting">▾</span>
+          </div>
+          <div class="sub-body" id="sub-body-accounting">
+            <div class="sub-cards">
+              <a class="sop-card" href="pages/payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="card-payment-title">請款方式</h4><p data-i18n="card-payment-desc">銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange" data-i18n="tag-payment">請款</span></a>
+              <a class="sop-card" href="pages/reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4 data-i18n="card-reconciliation-title">銀行匯款對帳流程</h4><p data-i18n="card-reconciliation-desc">全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal" data-i18n="tag-reconciliation">對帳</span></a>
+              <a class="sop-card" href="pages/supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4 data-i18n="card-supplier-payment-title">預存款管理</h4><p data-i18n="card-supplier-payment-desc">補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue" data-i18n="tag-prepayment">預存款</span></a>
+              <a class="sop-card" href="pages/credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="card-credit-card-title">信用卡對帳</h4><p data-i18n="card-credit-card-desc">每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue" data-i18n="tag-credit-card">信用卡</span></a>
+              <a class="sop-card" href="pages/commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4 data-i18n="card-commission-title">佣金申請</h4><p data-i18n="card-commission-desc">REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red" data-i18n="tag-commission">佣金</span></a>
+            </div>
+          </div>
         </div>
-        <a class="sop-card" href="pages/payment-methods.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="card-payment-title">請款方式</h4><p data-i18n="card-payment-desc">銀行匯款、預存款、信用卡三種請款方式總覽</p></div><span class="sc-tag badge-orange" data-i18n="tag-payment">請款</span></a>
-        <a class="sop-card" href="pages/reconciliation.html"><div class="sc-icon">📋</div><div class="sc-body"><h4 data-i18n="card-reconciliation-title">銀行匯款對帳流程</h4><p data-i18n="card-reconciliation-desc">全自動、自動、人工對帳種類 + BPM 請款流程</p></div><span class="sc-tag badge-teal" data-i18n="tag-reconciliation">對帳</span></a>
-        <a class="sop-card" href="pages/supplier-payment.html"><div class="sc-icon">🏧</div><div class="sc-body"><h4 data-i18n="card-supplier-payment-title">預存款管理</h4><p data-i18n="card-supplier-payment-desc">補款申請、入款啟用、正負向操作、節日預估</p></div><span class="sc-tag badge-blue" data-i18n="tag-prepayment">預存款</span></a>
-        <a class="sop-card" href="pages/credit-card.html"><div class="sc-icon">💳</div><div class="sc-body"><h4 data-i18n="card-credit-card-title">信用卡對帳</h4><p data-i18n="card-credit-card-desc">每月帳單核對、請款流程、BPM 送審</p></div><span class="sc-tag badge-blue" data-i18n="tag-credit-card">信用卡</span></a>
-        <a class="sop-card" href="pages/commission.html"><div class="sc-icon">📄</div><div class="sc-body"><h4 data-i18n="card-commission-title">佣金申請</h4><p data-i18n="card-commission-desc">REM 專案入款通知單、INV 無入款憑證開立</p></div><span class="sc-tag badge-red" data-i18n="tag-commission">佣金</span></a>
 
-        <!-- 訊息管理 -->
-        <div class="sub-group">
-          <span class="sub-group-tag" style="background:linear-gradient(135deg,#636e72,#2d3436)"><span class="dot"></span><span data-i18n="sub-messaging">💬 訊息管理</span></span>
+        <!-- 訊息管理 nested accordion -->
+        <div class="sub-accordion">
+          <div class="sub-header" onclick="toggleSub('messaging')" style="background:linear-gradient(135deg,#636e72,#2d3436);">
+            <div class="sub-header-left">
+              <span style="font-size:22px;">💬</span>
+              <div>
+                <div class="sub-header-label" data-i18n="sub-messaging-title">訊息管理</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px;" data-i18n="sub-messaging-sub">Be2 · 工單系統 · Slack · 供應商群組</div>
+              </div>
+            </div>
+            <span class="sub-arr" id="sub-arr-messaging">▾</span>
+          </div>
+          <div class="sub-body" id="sub-body-messaging">
+            <div class="sub-cards">
+              <a class="sop-card" href="pages/messaging-hub.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="card-messaging-hub-title">訊息管理總覽</h4><p data-i18n="card-messaging-hub-desc">四種溝通工具說明 · 供應商訊息處理流程</p></div><span class="sc-tag badge-blue" data-i18n="tag-messaging">訊息</span></a>
+            </div>
+          </div>
         </div>
-        <a class="sop-card" href="pages/messaging-hub.html"><div class="sc-icon">💬</div><div class="sc-body"><h4 data-i18n="card-messaging-hub-title">訊息管理總覽</h4><p data-i18n="card-messaging-hub-desc">四種溝通工具說明 · 供應商訊息處理流程</p></div><span class="sc-tag badge-blue" data-i18n="tag-messaging">訊息</span></a>
 
       </div>
     </div>
@@ -309,6 +354,9 @@ SCMi18n.init({
     'sec-cs-sub': '客服作業流程 · 客訴處理 · 退款政策（待補）',
     'badge-cs-only': '僅 CS',
     'sub-order': '🛒 訂單管理', 'sub-accounting': '💰 帳務管理', 'sub-messaging': '💬 訊息管理',
+    'sub-order-title': '訂單管理', 'sub-order-sub': '自動出票 · 人工訂購 · 實體出貨 · 異常處理',
+    'sub-accounting-title': '帳務管理', 'sub-accounting-sub': '請款方式 · 對帳流程 · 預存款 · 信用卡 · 佣金',
+    'sub-messaging-title': '訊息管理', 'sub-messaging-sub': 'Be2 · 工單系統 · Slack · 供應商群組',
     'grp-auto': '自動出票', 'grp-manual': '人工訂購', 'grp-physical': '實體出貨', 'grp-exception': '異常處理',
     'tag-new': '新人必讀', 'tag-order': '訂單', 'tag-inventory': '庫存', 'tag-issuance': '出票',
     'tag-auto': '自動', 'tag-manual': '人工', 'tag-physical': '實體', 'tag-exception': '異常',
@@ -364,6 +412,9 @@ SCMi18n.init({
     'sec-cs-sub': 'CS Operations · Complaint Handling · Refund Policy (Coming Soon)',
     'badge-cs-only': 'CS Only',
     'sub-order': '🛒 Order Management', 'sub-accounting': '💰 Accounting', 'sub-messaging': '💬 Messaging',
+    'sub-order-title': 'Order Management', 'sub-order-sub': 'Auto Issuance · Manual Purchase · Physical Delivery · Exceptions',
+    'sub-accounting-title': 'Accounting', 'sub-accounting-sub': 'Payment Methods · Reconciliation · Prepayment · Credit Card · Commission',
+    'sub-messaging-title': 'Messaging', 'sub-messaging-sub': 'Be2 · Ticket System · Slack · Supplier Groups',
     'grp-auto': 'Auto Issuance', 'grp-manual': 'Manual Purchase', 'grp-physical': 'Physical Delivery', 'grp-exception': 'Exception Handling',
     'tag-new': 'Must Read', 'tag-order': 'Order', 'tag-inventory': 'Inventory', 'tag-issuance': 'Issuance',
     'tag-auto': 'Auto', 'tag-manual': 'Manual', 'tag-physical': 'Physical', 'tag-exception': 'Exception',
@@ -419,6 +470,9 @@ SCMi18n.init({
     'sec-cs-sub': 'CS業務フロー · クレーム処理 · 返金ポリシー（準備中）',
     'badge-cs-only': 'CS専用',
     'sub-order': '🛒 注文管理', 'sub-accounting': '💰 経理管理', 'sub-messaging': '💬 メッセージ管理',
+    'sub-order-title': '注文管理', 'sub-order-sub': '自動発行 · 手動購入 · 実物配送 · 例外処理',
+    'sub-accounting-title': '経理管理', 'sub-accounting-sub': '支払方法 · 照合 · 前払金 · クレカ · コミッション',
+    'sub-messaging-title': 'メッセージ管理', 'sub-messaging-sub': 'Be2 · チケットシステム · Slack · サプライヤーグループ',
     'grp-auto': '自動発行', 'grp-manual': '手動購入', 'grp-physical': '実物配送', 'grp-exception': '例外処理',
     'tag-new': '新人必読', 'tag-order': '注文', 'tag-inventory': '在庫', 'tag-issuance': '発行',
     'tag-auto': '自動', 'tag-manual': '手動', 'tag-physical': '実物', 'tag-exception': '例外',
@@ -474,6 +528,9 @@ SCMi18n.init({
     'sec-cs-sub': 'CS 업무 흐름 · 불만 처리 · 환불 정책 (준비 중)',
     'badge-cs-only': 'CS 전용',
     'sub-order': '🛒 주문 관리', 'sub-accounting': '💰 회계 관리', 'sub-messaging': '💬 메시지 관리',
+    'sub-order-title': '주문 관리', 'sub-order-sub': '자동 발행 · 수동 구매 · 실물 배송 · 예외 처리',
+    'sub-accounting-title': '회계 관리', 'sub-accounting-sub': '결제 방법 · 대사 · 선불금 · 신용카드 · 커미션',
+    'sub-messaging-title': '메시지 관리', 'sub-messaging-sub': 'Be2 · 티켓 시스템 · Slack · 공급업체 그룹',
     'grp-auto': '자동 발행', 'grp-manual': '수동 구매', 'grp-physical': '실물 배송', 'grp-exception': '예외 처리',
     'tag-new': '필독', 'tag-order': '주문', 'tag-inventory': '재고', 'tag-issuance': '발행',
     'tag-auto': '자동', 'tag-manual': '수동', 'tag-physical': '실물', 'tag-exception': '예외',
@@ -518,6 +575,13 @@ SCMi18n.init({
 function toggleSec(id) {
   const body = document.getElementById('body-' + id);
   const arr = document.getElementById('arr-' + id);
+  if (!body) return;
+  body.classList.toggle('open');
+  if (arr) arr.classList.toggle('open');
+}
+function toggleSub(id) {
+  const body = document.getElementById('sub-body-' + id);
+  const arr = document.getElementById('sub-arr-' + id);
   if (!body) return;
   body.classList.toggle('open');
   if (arr) arr.classList.toggle('open');
