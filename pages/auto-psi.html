@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>自動出票 — 一般即訂即出 & PSI — SCM 知識庫</title>
+  <title>自動出票 — 一般即訂即出 & PSI — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -110,7 +112,7 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="psi-footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="psi-footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
@@ -136,7 +138,7 @@ SCMi18n.init({
     'psi-step3-desc': '依確認結果，BD／AM 回覆 OP 應補票、重新出票或取消等作業指示。',
     'psi-step4-title': '若需重新出票',
     'psi-step4-desc': '至<strong>訂單領貨頁面</strong>，找到對應訂單後點擊「<strong>領貨</strong>」按鈕，手動觸發出票作業。',
-    'psi-footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
+    'psi-footer': 'GO 知識庫 — 訂單處理組 · 內部使用',
   },
   en: {
     'psi-breadcrumb': 'Home / Auto Ticketing — Instant Booking & PSI',

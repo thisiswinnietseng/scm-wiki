@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>自動出票 — API & OCBT — SCM 知識庫</title>
+  <title>自動出票 — API & OCBT — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -141,12 +143,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
     'api-breadcrumb': '首頁 / 自動出票 — API & OCBT',
     'api-title': '自動出票 — API & OCBT',
     'api-meta': 'API 串接 · 組合商品',
@@ -181,11 +181,8 @@ SCMi18n.init({
     'ocbt-fail-step3-desc': '依確認結果，BD／AM 回覆處理方式。',
     'ocbt-fail-step4-title': '若需人工出票',
     'ocbt-fail-step4-desc': '請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
     'api-breadcrumb': 'Home / Auto-Ticketing — API & OCBT',
     'api-title': 'Auto-Ticketing — API & OCBT',
     'api-meta': 'API Integration · Combo Products',
@@ -220,11 +217,8 @@ SCMi18n.init({
     'ocbt-fail-step3-desc': 'Based on findings, BD／AM advises OP on how to proceed.',
     'ocbt-fail-step4-title': 'Manual Ticketing If Required',
     'ocbt-fail-step4-desc': 'Request ProdOID from BD／AM and process manual booking via the <strong>B2D page</strong>.',
-    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
     'api-breadcrumb': 'ホーム / 自動発券 — API & OCBT',
     'api-title': '自動発券 — API & OCBT',
     'api-meta': 'API 連携 · セット商品',
@@ -259,11 +253,8 @@ SCMi18n.init({
     'ocbt-fail-step3-desc': '確認結果に基づき、BD／AM が対応方法を回答。',
     'ocbt-fail-step4-title': '手動発券が必要な場合',
     'ocbt-fail-step4-desc': 'BD／AM に ProdOID を提供してもらい、<strong>B2D ページ</strong>で手動注文作業を実施。',
-    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
     'api-breadcrumb': '홈 / 자동 발권 — API & OCBT',
     'api-title': '자동 발권 — API & OCBT',
     'api-meta': 'API 연동 · 세트 상품',
@@ -298,7 +289,6 @@ SCMi18n.init({
     'ocbt-fail-step3-desc': '확인 결과에 따라 BD／AM이 처리 방법을 안내합니다.',
     'ocbt-fail-step4-title': '수동 발권이 필요한 경우',
     'ocbt-fail-step4-desc': 'BD／AM에게 ProdOID를 받아 <strong>B2D 페이지</strong>에서 수동 주문 작업을 진행합니다.',
-    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
   }
 });
 </script>

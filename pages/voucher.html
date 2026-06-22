@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>憑證類型說明 — SCM 知識庫</title>
+  <title>憑證類型說明 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .section-title {
@@ -44,11 +44,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -105,7 +107,7 @@
 
     </div>
 
-    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
   </div>
 <script>
 SCMi18n.init({
@@ -125,7 +127,6 @@ SCMi18n.init({
     'vc-card3-title': 'Supplier 版型（非官方）',
     'vc-card3-desc': 'OP 自行整理的憑證格式，依照供應商要求的資訊自行製作，通常用於供應商無法提供官方憑證的情況。',
     'vc-card3-badge': 'OP 自行製作',
-    'footer': 'SCM 知識庫 · 內部使用'
   },
   en: {
     'vc-breadcrumb-home': 'Home',
@@ -143,7 +144,6 @@ SCMi18n.init({
     'vc-card3-title': 'Supplier Template (Unofficial)',
     'vc-card3-desc': 'A voucher format compiled by OP according to the supplier\'s required information. Typically used when the supplier cannot provide an official voucher.',
     'vc-card3-badge': 'OP Self-Created',
-    'footer': 'SCM Wiki · Internal Use Only'
   },
   ja: {
     'vc-breadcrumb-home': 'ホーム',
@@ -161,7 +161,6 @@ SCMi18n.init({
     'vc-card3-title': 'Supplier テンプレート（非公式）',
     'vc-card3-desc': 'OP が仕入先の要求情報に基づいて自作するバウチャー形式。仕入先が公式バウチャーを提供できない場合に使用します。',
     'vc-card3-badge': 'OP 自作',
-    'footer': 'SCM ナレッジベース · 内部使用のみ'
   },
   ko: {
     'vc-breadcrumb-home': '홈',
@@ -179,7 +178,6 @@ SCMi18n.init({
     'vc-card3-title': 'Supplier 템플릿（비공식）',
     'vc-card3-desc': 'OP가 공급업체 요구 정보에 따라 자체 제작하는 바우처 형식입니다. 공급업체가 공식 바우처를 제공할 수 없는 경우에 주로 사용됩니다.',
     'vc-card3-badge': 'OP 자체 제작',
-    'footer': 'SCM 지식베이스 · 내부 전용'
   }
 });
 </script>

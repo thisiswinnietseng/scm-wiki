@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>預存款管理 — SCM 知識庫</title>
+  <title>預存款管理 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .flow-bar {
@@ -54,11 +54,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -295,13 +297,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用，請勿對外分享</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享',
     'breadcrumb-home': '首頁',
     'breadcrumb-accounting': '帳務管理',
     'sp-breadcrumb-current': '預存款管理',
@@ -372,9 +371,6 @@ SCMi18n.init({
     'sp-formula-note2': '⚠️ 提出金額與 OP 預估差異較大，建議 BD 發信，市場主管同意',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally',
     'breadcrumb-home': 'Home',
     'breadcrumb-accounting': 'Accounting',
     'sp-breadcrumb-current': 'Prepaid Deposit Management',
@@ -445,9 +441,6 @@ SCMi18n.init({
     'sp-formula-note2': '⚠️ If proposed amount differs significantly from OP estimate, BD should email and obtain market supervisor approval',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
-    'footer': 'SCM ナレッジベース · 社内利用限定 · 外部共有禁止',
     'breadcrumb-home': 'ホーム',
     'breadcrumb-accounting': '経理管理',
     'sp-breadcrumb-current': 'プリペイド管理',
@@ -518,9 +511,6 @@ SCMi18n.init({
     'sp-formula-note2': '⚠️ 提案金額と OP 予測の差異が大きい場合は BD がメールを送り、市場責任者の承認を得ること',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
     'breadcrumb-home': '홈',
     'breadcrumb-accounting': '회계 관리',
     'sp-breadcrumb-current': '선불 예치금 관리',

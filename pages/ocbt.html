@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OCBT — SCM 知識庫</title>
+  <title>OCBT — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -93,13 +95,10 @@
       </div>
     </div>
   </div>
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 · 內部使用',
     'ocbt-breadcrumb': '首頁 / 自動出票 / OCBT',
     'ocbt-title': 'OCBT 組合商品',
     'ocbt-subtitle': '由兩家以上不同供應商的即訂即出商品組成的組合訂單',
@@ -119,9 +118,6 @@ SCMi18n.init({
     'ocbt-step4-desc': '請 BD／AM 提供 ProdOID，至 <strong>B2D 頁面</strong>進行人工訂出作業。',
   },
   en: {
-    'nav-title': 'SCM <em>Knowledge Base</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Knowledge Base · Internal Use',
     'ocbt-breadcrumb': 'Home / Auto Issuance / OCBT',
     'ocbt-title': 'OCBT Bundle Products',
     'ocbt-subtitle': 'A bundle order composed of instant-issuance products from two or more different suppliers',
@@ -141,9 +137,6 @@ SCMi18n.init({
     'ocbt-step4-desc': 'Request the ProdOID from BD／AM and proceed to the <strong>B2D page</strong> to manually place the order.',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
-    'footer': 'SCM ナレッジベース · 社内使用',
     'ocbt-breadcrumb': 'ホーム / 自動発券 / OCBT',
     'ocbt-title': 'OCBT セット商品',
     'ocbt-subtitle': '2社以上の異なるサプライヤーの即時発券商品で構成されるセット注文',
@@ -163,9 +156,6 @@ SCMi18n.init({
     'ocbt-step4-desc': 'BD／AM から ProdOID を入手し、<strong>B2D ページ</strong>で手動注文作業を行います。',
   },
   ko: {
-    'nav-title': 'SCM <em>지식 베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식 베이스 · 내부 사용',
     'ocbt-breadcrumb': '홈 / 자동 발권 / OCBT',
     'ocbt-title': 'OCBT 패키지 상품',
     'ocbt-subtitle': '두 곳 이상의 서로 다른 공급업체의 즉시 발권 상품으로 구성된 패키지 주문',

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>帳務管理 · SCM 知識庫</title>
+<title>帳務管理 · GO 知識庫</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
 .acc-wrap { background:white;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-bottom:6px;overflow:hidden; }
@@ -104,12 +104,14 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
 
 <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -290,7 +292,7 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 
 </div>
 
-<div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用，請勿對外分享</div>
 <script>
 function toggleAcc(id) {
   const body = document.getElementById(id);
@@ -380,7 +382,6 @@ SCMi18n.init({
     'ah-inv-step4': 'FA 審核後付款',
     'ah-inv-step5': '提供水單給供應商',
     'ah-inv-note': '⚠️ 需走 BPM 流程審核，時間較長，請提前安排',
-    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享'
   },
   en: {
     'ah-breadcrumb-home': 'Home',
@@ -435,7 +436,6 @@ SCMi18n.init({
     'ah-inv-step4': 'FA Approves and Processes Payment',
     'ah-inv-step5': 'Provide Remittance Slip to Supplier',
     'ah-inv-note': '⚠️ BPM approval process takes time — plan ahead',
-    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally'
   },
   ja: {
     'ah-breadcrumb-home': 'ホーム',
@@ -490,7 +490,6 @@ SCMi18n.init({
     'ah-inv-step4': 'FA が承認後に支払い',
     'ah-inv-step5': '仕入先に送金明細を提供',
     'ah-inv-note': '⚠️ BPM 承認フローには時間がかかります。早めに手続きしてください',
-    'footer': 'SCM ナレッジベース · 内部使用のみ — 外部への共有禁止'
   },
   ko: {
     'ah-breadcrumb-home': '홈',
@@ -545,7 +544,6 @@ SCMi18n.init({
     'ah-inv-step4': 'FA 승인 후 결제',
     'ah-inv-step5': '공급업체에 송금 명세서 제공',
     'ah-inv-note': '⚠️ BPM 승인 프로세스는 시간이 걸립니다. 미리 준비하세요',
-    'footer': 'SCM 지식베이스 · 내부 전용 — 외부 공유 금지'
   }
 });
 </script>

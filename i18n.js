@@ -7,24 +7,24 @@ window.SCMi18n = (function () {
 
   const NAV_TRANSLATIONS = {
     zh: {
-      'nav-title': 'SCM <em>知識庫</em>',
-      'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-      'footer': 'SCM 知識庫 · 內部使用'
+      'nav-title': 'GO <em>知識庫</em>',
+      'nav-subtitle': 'SCM + CS · 新人必讀 · 一站式查詢',
+      'footer': 'GO 知識庫 · 內部使用'
     },
     en: {
-      'nav-title': 'SCM <em>Wiki</em>',
-      'nav-subtitle': 'OP Daily Operations Manual · New Staff Guide · One-Stop Reference',
-      'footer': 'SCM Wiki · Internal use only'
+      'nav-title': 'GO <em>Wiki</em>',
+      'nav-subtitle': 'SCM + CS · New Staff Guide · One-Stop Reference',
+      'footer': 'GO Wiki · Internal use only'
     },
     ja: {
-      'nav-title': 'SCM <em>ナレッジベース</em>',
-      'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ参照',
-      'footer': 'SCM ナレッジベース · 内部使用のみ'
+      'nav-title': 'GO <em>ナレッジベース</em>',
+      'nav-subtitle': 'SCM + CS · 新人必読 · ワンストップ参照',
+      'footer': 'GO ナレッジベース · 内部使用のみ'
     },
     ko: {
-      'nav-title': 'SCM <em>지식베이스</em>',
-      'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-      'footer': 'SCM 지식베이스 · 내부 전용'
+      'nav-title': 'GO <em>지식베이스</em>',
+      'nav-subtitle': 'SCM + CS · 신입 필독 · 원스톱 조회',
+      'footer': 'GO 지식베이스 · 내부 전용'
     }
   };
 

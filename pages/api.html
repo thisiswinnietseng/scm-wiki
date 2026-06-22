@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API 自動出票 — SCM 知識庫</title>
+  <title>API 自動出票 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -81,13 +83,10 @@
       </div>
     </div>
   </div>
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 · 內部使用',
     'api-breadcrumb': '首頁 / 自動出票 / API',
     'api-title': 'API 自動出票',
     'api-subtitle': 'BE2 系統與供應商訂購平台串接，即時查詢和預訂票券及酒店',
@@ -106,9 +105,6 @@ SCMi18n.init({
     'api-risk-note': 'ℹ️ 若失敗原因為可疑訂單，風控會協助重新串出 API，OP 無需另外作業。',
   },
   en: {
-    'nav-title': 'SCM <em>Knowledge Base</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Knowledge Base · Internal Use',
     'api-breadcrumb': 'Home / Auto Issuance / API',
     'api-title': 'API Auto Issuance',
     'api-subtitle': 'BE2 system integrates with supplier booking platforms for real-time ticket and hotel lookup and reservation',
@@ -127,9 +123,6 @@ SCMi18n.init({
     'api-risk-note': 'ℹ️ If the failure is due to a suspicious order, Risk Team will re-trigger the API. No additional OP action needed.',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
-    'footer': 'SCM ナレッジベース · 社内使用',
     'api-breadcrumb': 'ホーム / 自動発券 / API',
     'api-title': 'API 自動発券',
     'api-subtitle': 'BE2 システムとサプライヤー予約プラットフォームを連携し、チケット・ホテルのリアルタイム検索・予約が可能',
@@ -148,9 +141,6 @@ SCMi18n.init({
     'api-risk-note': 'ℹ️ 失敗原因が不審注文の場合、リスクチームが API を再接続します。OP の追加作業は不要です。',
   },
   ko: {
-    'nav-title': 'SCM <em>지식 베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식 베이스 · 내부 사용',
     'api-breadcrumb': '홈 / 자동 발권 / API',
     'api-title': 'API 자동 발권',
     'api-subtitle': 'BE2 시스템과 공급업체 예약 플랫폼을 연동하여 티켓 및 호텔 실시간 조회·예약 가능',

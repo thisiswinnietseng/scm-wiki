@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google Sheet 訂購 — SCM 知識庫</title>
+  <title>Google Sheet 訂購 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -94,12 +96,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
     'gs-breadcrumb': '首頁 / 人工訂購 / Google Sheet 訂購',
     'gs-title': '人工訂購：Google Sheet 訂購',
     'gs-meta': '人工訂購',
@@ -114,11 +114,8 @@ SCMi18n.init({
     'gs-status-ok-desc': '發憑證。',
     'gs-status-fail': '❌ 不可預約',
     'gs-status-fail-desc': '挽單 or 取消。',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
     'gs-breadcrumb': 'Home / Manual Ordering / Google Sheet Order',
     'gs-title': 'Manual Ordering: Google Sheet Order',
     'gs-meta': 'Manual Ordering',
@@ -133,11 +130,8 @@ SCMi18n.init({
     'gs-status-ok-desc': 'Send voucher.',
     'gs-status-fail': '❌ Booking Not Available',
     'gs-status-fail-desc': 'Offer alternative or cancel.',
-    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
     'gs-breadcrumb': 'ホーム / 手動注文 / Google Sheet 注文',
     'gs-title': '手動注文：Google Sheet 注文',
     'gs-meta': '手動注文',
@@ -152,11 +146,8 @@ SCMi18n.init({
     'gs-status-ok-desc': 'バウチャーを送付。',
     'gs-status-fail': '❌ 予約不可',
     'gs-status-fail-desc': '代替案の提案またはキャンセル処理。',
-    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
     'gs-breadcrumb': '홈 / 수동 주문 / Google Sheet 주문',
     'gs-title': '수동 주문：Google Sheet 주문',
     'gs-meta': '수동 주문',
@@ -171,7 +162,6 @@ SCMi18n.init({
     'gs-status-ok-desc': '바우처 발송.',
     'gs-status-fail': '❌ 예약 불가',
     'gs-status-fail-desc': '대체 제안 또는 취소 처리.',
-    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
   }
 });
 </script>

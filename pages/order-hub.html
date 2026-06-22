@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>訂單管理 · SCM 知識庫</title>
+<title>訂單管理 · GO 知識庫</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
 .acc-wrap { background:white;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-bottom:6px;overflow:hidden; }
@@ -120,12 +120,14 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
 
 <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -347,7 +349,7 @@ a.sop-card .sc-tag { padding:2px 8px;border-radius:10px;font-size:10px;font-weig
 
 </div>
 
-<div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用，請勿對外分享</div>
 <script>
 function toggleAcc(id) {
   const body = document.getElementById(id);
@@ -478,7 +480,6 @@ SCMi18n.init({
     'oh-sub-msg-note': 'KakaoTalk / WhatsApp 格式訂購',
     'oh-sub-sheet-title': '📊 Google Sheet',
     'oh-sub-sheet-note': '填寫共用表單後通知供應商',
-    'footer': 'SCM 知識庫 · 內部使用，請勿對外分享'
   },
   en: {
     'oh-breadcrumb-home': 'Home',
@@ -574,7 +575,6 @@ SCMi18n.init({
     'oh-sub-msg-note': 'KakaoTalk / WhatsApp order format',
     'oh-sub-sheet-title': '📊 Google Sheet',
     'oh-sub-sheet-note': 'Fill in shared form and notify supplier',
-    'footer': 'SCM Wiki · Internal Use Only — Do Not Share Externally'
   },
   ja: {
     'oh-breadcrumb-home': 'ホーム',
@@ -670,7 +670,6 @@ SCMi18n.init({
     'oh-sub-msg-note': 'KakaoTalk / WhatsApp フォーマットで注文',
     'oh-sub-sheet-title': '📊 Google Sheet',
     'oh-sub-sheet-note': '共有フォームに記入後に仕入先へ通知',
-    'footer': 'SCM ナレッジベース · 内部使用のみ — 外部への共有禁止'
   },
   ko: {
     'oh-breadcrumb-home': '홈',
@@ -766,7 +765,6 @@ SCMi18n.init({
     'oh-sub-msg-note': 'KakaoTalk / WhatsApp 형식으로 주문',
     'oh-sub-sheet-title': '📊 Google Sheet',
     'oh-sub-sheet-note': '공유 양식 작성 후 공급업체에 통보',
-    'footer': 'SCM 지식베이스 · 내부 전용 — 외부 공유 금지'
   }
 });
 </script>

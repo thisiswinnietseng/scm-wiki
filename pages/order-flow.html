@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>訂單進單後處理流程 — SCM 知識庫</title>
+  <title>訂單進單後處理流程 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -176,13 +178,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
     'of-breadcrumb': '首頁 / 訂單進單後處理流程',
     'of-title': '訂單進單後處理流程',
     'of-meta': '進單流程 · 例外處理',
@@ -227,9 +226,6 @@ SCMi18n.init({
     'of-sit4-action': '多次通知仍未獲回覆，依政策取消訂單並通知旅客。',
   },
   en: {
-    'nav-title': 'SCM <em>Knowledge Base</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Knowledge Base — Order Processing Team · Internal Use',
     'of-breadcrumb': 'Home / Post-Order Processing Flow',
     'of-title': 'Post-Order Processing Flow',
     'of-meta': 'Order Flow · Exception Handling',
@@ -274,9 +270,6 @@ SCMi18n.init({
     'of-sit4-action': 'After multiple failed contact attempts, cancel the order per policy and notify the traveler.',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
-    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内使用',
     'of-breadcrumb': 'ホーム / 注文受付後の処理フロー',
     'of-title': '注文受付後の処理フロー',
     'of-meta': '注文フロー · 例外処理',
@@ -321,9 +314,6 @@ SCMi18n.init({
     'of-sit4-action': '複数回通知しても返答がない場合、ポリシーに従って注文をキャンセルし旅行者に通知します。',
   },
   ko: {
-    'nav-title': 'SCM <em>지식 베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식 베이스 — 주문 처리팀 · 내부 사용',
     'of-breadcrumb': '홈 / 주문 접수 후 처리 플로우',
     'of-title': '주문 접수 후 처리 플로우',
     'of-meta': '주문 플로우 · 예외 처리',

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>商品設計邏輯 — SCM 知識庫</title>
+  <title>商品設計邏輯 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -157,7 +159,7 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
@@ -202,7 +204,6 @@ SCMi18n.init({
     'pd-row9-effect': '確認各套餐對應的供應商',
     'pd-row10-item': '訂購方式／請款設定',
     'pd-row10-effect': '影響 OP 訂購流程及請款時間',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用'
   },
   en: {
     'pd-breadcrumb-home': 'Home',
@@ -246,7 +247,6 @@ SCMi18n.init({
     'pd-row9-effect': 'Confirms the supplier corresponding to each package',
     'pd-row10-item': 'Order Method / Payment Request Settings',
     'pd-row10-effect': 'Affects OP ordering process and payment request timing',
-    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only'
   },
   ja: {
     'pd-breadcrumb-home': 'ホーム',
@@ -290,7 +290,6 @@ SCMi18n.init({
     'pd-row9-effect': '各パッケージに対応する仕入先を確認する',
     'pd-row10-item': '注文方法／請求設定',
     'pd-row10-effect': 'OP の注文フローと請求タイミングに影響する',
-    'footer': 'SCM ナレッジベース — 受注処理チーム · 内部使用のみ'
   },
   ko: {
     'pd-breadcrumb-home': '홈',
@@ -334,7 +333,6 @@ SCMi18n.init({
     'pd-row9-effect': '각 패키지에 해당하는 공급업체 확인',
     'pd-row10-item': '주문 방식 / 청구 설정',
     'pd-row10-effect': 'OP의 주문 프로세스 및 청구 시기에 영향',
-    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용'
   }
 });
 </script>

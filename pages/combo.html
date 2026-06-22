@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>組合商品 — SCM 知識庫</title>
+  <title>組合商品 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -310,12 +312,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
     'cb-breadcrumb': '首頁 / 人工訂購 / 組合商品',
     'cb-title': '人工訂購：組合商品',
     'cb-subtitle': '由兩個以上不同商品組成的套餐方案，客人下訂的訂單僅包含母商品，故需人工協助訂購子商品。',
@@ -364,11 +364,8 @@ SCMi18n.init({
     'cb-partial-li1': '成本異動選「否」',
     'cb-partial-li2': '備註說明部分取消的商品',
     'cb-partial-li3': '退款金額請客服向 BD 確認',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
     'cb-breadcrumb': 'Home / Manual Ordering / Combo Products',
     'cb-title': 'Manual Ordering: Combo Products',
     'cb-subtitle': 'A package consisting of two or more different products. The customer\'s order only contains the parent product, so OP must manually order the sub-products.',
@@ -417,11 +414,8 @@ SCMi18n.init({
     'cb-partial-li1': 'Cost change: select "No"',
     'cb-partial-li2': 'Note the partially cancelled product in remarks',
     'cb-partial-li3': 'Refund amount to be confirmed by CS with BD',
-    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
     'cb-breadcrumb': 'ホーム / 手動注文 / セット商品',
     'cb-title': '手動注文：セット商品',
     'cb-subtitle': '2つ以上の異なる商品で構成されるパッケージ。旅行者の注文には親商品のみ含まれるため、OP が手動でサブ商品を注文する必要があります。',
@@ -470,11 +464,8 @@ SCMi18n.init({
     'cb-partial-li1': 'コスト変動：「いいえ」を選択',
     'cb-partial-li2': '備考に一部キャンセルした商品を記載',
     'cb-partial-li3': '返金金額は CS が BD に確認',
-    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
     'cb-breadcrumb': '홈 / 수동 주문 / 세트 상품',
     'cb-title': '수동 주문：세트 상품',
     'cb-subtitle': '두 개 이상의 서로 다른 상품으로 구성된 패키지 상품. 고객의 주문에는 모 상품만 포함되므로 OP가 수동으로 하위 상품을 주문해야 합니다.',
@@ -523,7 +514,6 @@ SCMi18n.init({
     'cb-partial-li1': '원가 변동：「아니오」 선택',
     'cb-partial-li2': '비고에 부분 취소 상품 기재',
     'cb-partial-li3': '환불 금액은 CS가 BD에 확인',
-    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
   }
 });
 </script>

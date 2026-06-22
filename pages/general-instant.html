@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>一般即訂即出 — SCM 知識庫</title>
+  <title>一般即訂即出 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -49,13 +51,10 @@
 
     <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n="gi-auto-note">✅ 正常訂單：系統自動產出憑證並發送，無需 OP 作業。</span>
   </div>
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 · 內部使用',
     'gi-breadcrumb': '首頁 / 自動出票 / 一般即訂即出',
     'gi-title': '一般即訂即出',
     'gi-subtitle': '訂單成立後系統自動產出 KKday 憑證並即時發送給旅客',
@@ -64,9 +63,6 @@ SCMi18n.init({
     'gi-auto-note': '✅ 正常訂單：系統自動產出憑證並發送，無需 OP 作業。',
   },
   en: {
-    'nav-title': 'SCM <em>Knowledge Base</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Knowledge Base · Internal Use',
     'gi-breadcrumb': 'Home / Auto Issuance / General Instant Issuance',
     'gi-title': 'General Instant Issuance',
     'gi-subtitle': 'Upon order placement, the system automatically generates a KKday Voucher and instantly delivers it to the traveler',
@@ -75,9 +71,6 @@ SCMi18n.init({
     'gi-auto-note': '✅ Normal orders: The system automatically generates and sends the voucher. No OP action required.',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
-    'footer': 'SCM ナレッジベース · 社内使用',
     'gi-breadcrumb': 'ホーム / 自動発券 / 一般即時発券',
     'gi-title': '一般即時発券',
     'gi-subtitle': '注文成立後、システムが KKday バウチャーを自動生成して旅行者に即時送付',
@@ -86,9 +79,6 @@ SCMi18n.init({
     'gi-auto-note': '✅ 通常注文：システムが自動でバウチャーを生成・送付します。OP 作業は不要です。',
   },
   ko: {
-    'nav-title': 'SCM <em>지식 베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식 베이스 · 내부 사용',
     'gi-breadcrumb': '홈 / 자동 발권 / 일반 즉시 발권',
     'gi-title': '일반 즉시 발권',
     'gi-subtitle': '주문 성립 후 시스템이 KKday 바우처를 자동으로 생성하여 여행자에게 즉시 발송',

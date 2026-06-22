@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>前台商品架構長相 — SCM 知識庫</title>
+<title>前台商品架構長相 — GO 知識庫</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
 .product-type { background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
@@ -27,11 +27,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -202,7 +204,7 @@
   </div>
 
 </div>
-<div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+<div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
@@ -275,7 +277,6 @@ SCMi18n.init({
     'frontend-t3f4-title': '❌ 取消政策 & 協助',
     'frontend-t3f4-li1': '商品的取消政策說明',
     'frontend-t3f4-li2': 'KKday 幫助中心 / 真人客服',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用'
   },
   en: {
     'frontend-breadcrumb-home': 'Home',
@@ -347,7 +348,6 @@ SCMi18n.init({
     'frontend-t3f4-title': '❌ Cancellation Policy & Support',
     'frontend-t3f4-li1': 'Product cancellation policy details',
     'frontend-t3f4-li2': 'KKday Help Center / Live support',
-    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only'
   },
   ja: {
     'frontend-breadcrumb-home': 'ホーム',
@@ -419,7 +419,6 @@ SCMi18n.init({
     'frontend-t3f4-title': '❌ キャンセルポリシー＆サポート',
     'frontend-t3f4-li1': '商品のキャンセルポリシー説明',
     'frontend-t3f4-li2': 'KKday ヘルプセンター / ライブサポート',
-    'footer': 'SCM ナレッジベース — 受注処理チーム · 内部使用のみ'
   },
   ko: {
     'frontend-breadcrumb-home': '홈',
@@ -491,7 +490,6 @@ SCMi18n.init({
     'frontend-t3f4-title': '❌ 취소 정책 & 지원',
     'frontend-t3f4-li1': '상품 취소 정책 설명',
     'frontend-t3f4-li2': 'KKday 고객센터 / 실시간 지원',
-    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용'
   }
 });
 </script>

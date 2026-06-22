@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>訂單成立後初步處理 — SCM 知識庫</title>
+  <title>訂單成立後初步處理 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -153,13 +155,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
     'oi-breadcrumb': '首頁 / 訂單成立後初步處理',
     'oi-title': '訂單成立後初步處理',
     'oi-meta': '點單流程 · 風控',
@@ -197,9 +196,6 @@ SCMi18n.init({
     'oi-risk-flow': 'ℹ️ <strong>📋 可疑帳號處理流程</strong><p>當帳號狀態顯示「可疑」時，須待風控確認。確認完成後，訂單備註會出現：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">已調整會員風險等級為：general，人工審查單編號：xxxxx</code><p style="margin-top:0.75rem;">出現上述備註後，即可正常出票。</p>',
   },
   en: {
-    'nav-title': 'SCM <em>Knowledge Base</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Knowledge Base — Order Processing Team · Internal Use',
     'oi-breadcrumb': 'Home / Order Initialization',
     'oi-title': 'Order Initialization',
     'oi-meta': 'Order Placement · Risk Control',
@@ -237,9 +233,6 @@ SCMi18n.init({
     'oi-risk-flow': 'ℹ️ <strong>📋 Suspicious Account Handling Process</strong><p>When an account status shows "Suspicious," wait for Risk Team confirmation. Once confirmed, the following remark will appear in the order:</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">Member risk level adjusted to: general, Manual review ID: xxxxx</code><p style="margin-top:0.75rem;">Once this remark appears, proceed with normal ticket issuance.</p>',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
-    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内使用',
     'oi-breadcrumb': 'ホーム / 注文成立後の初期処理',
     'oi-title': '注文成立後の初期処理',
     'oi-meta': '注文フロー · リスク管理',
@@ -277,9 +270,6 @@ SCMi18n.init({
     'oi-risk-flow': 'ℹ️ <strong>📋 不審アカウント処理フロー</strong><p>アカウント状態が「不審」と表示された場合、リスクチームの確認を待ちます。確認完了後、注文備考に以下が表示されます：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">会員リスクレベルを general に調整済み、手動審査番号：xxxxx</code><p style="margin-top:0.75rem;">上記備考が表示されたら、通常通り発券可能です。</p>',
   },
   ko: {
-    'nav-title': 'SCM <em>지식 베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식 베이스 — 주문 처리팀 · 내부 사용',
     'oi-breadcrumb': '홈 / 주문 성립 후 초기 처리',
     'oi-title': '주문 성립 후 초기 처리',
     'oi-meta': '주문 플로우 · 리스크 관리',

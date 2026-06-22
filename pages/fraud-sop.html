@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>盜刷處理 SOP — SCM 知識庫</title>
+  <title>盜刷處理 SOP — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .flow-bar {
@@ -32,11 +32,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -144,14 +146,11 @@
 
     </div>
 
-    <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+    <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
   </div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 · 內部使用',
     'fraud-breadcrumb': '首頁 / 盜刷處理 SOP',
     'fraud-title': '盜刷處理 SOP',
     'fraud-meta-chip': '異常處理',
@@ -179,9 +178,6 @@ SCMi18n.init({
     'fraud-note2': 'ℹ️ 確認訂單是否已使用：查看訂單碼狀態「已核銷（已使用）」或「未核銷（未使用）」，或依各線別商品查詢方式確認',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Wiki · Internal Use Only',
     'fraud-breadcrumb': 'Home / Fraud Order SOP',
     'fraud-title': 'Fraud Order Handling SOP',
     'fraud-meta-chip': 'Exception Handling',
@@ -209,9 +205,6 @@ SCMi18n.init({
     'fraud-note2': 'ℹ️ To confirm if order was used: check order code status "Redeemed (Used)" or "Unredeemed (Unused)", or verify via each product line\'s inquiry method',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
-    'footer': 'SCM ナレッジベース · 社内利用限定',
     'fraud-breadcrumb': 'ホーム / 不正利用対応 SOP',
     'fraud-title': '不正利用対応 SOP',
     'fraud-meta-chip': '異常処理',
@@ -239,9 +232,6 @@ SCMi18n.init({
     'fraud-note2': 'ℹ️ 注文使用済み確認方法：注文コードのステータス「精算済み（使用済み）」または「未精算（未使用）」を確認、または各商品ラインの照会方法で確認',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식베이스 · 내부 사용 전용',
     'fraud-breadcrumb': '홈 / 사기 결제 처리 SOP',
     'fraud-title': '사기 결제 처리 SOP',
     'fraud-meta-chip': '이상 처리',

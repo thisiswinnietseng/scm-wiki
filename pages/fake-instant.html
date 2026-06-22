@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>假即訂即出 — SCM 知識庫</title>
+  <title>假即訂即出 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -102,12 +104,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 — 訂單處理組 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 — 訂單處理組 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
     'fi-breadcrumb': '首頁 / 人工訂單處理 / 假即訂即出',
     'fi-page-title': '人工訂單處理：假即訂即出',
     'fi-desc': '客人下單付款後系統立即產生憑證並發送給客人，但「假即訂即出」仍需要 OP 人工處理訂單。',
@@ -136,11 +136,8 @@ SCMi18n.init({
     'fi-row4-label': '適用情況',
     'fi-row4-regular': '有庫存且可自動出票',
     'fi-row4-fake': '保證有貨但需向供應商訂購',
-    'footer': 'SCM 知識庫 — 訂單處理組 · 內部使用',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
     'fi-breadcrumb': 'Home / Manual Order Processing / Fake Instant Booking',
     'fi-page-title': 'Manual Order Processing: Fake Instant Booking',
     'fi-desc': 'After a customer places and pays for an order, the system immediately generates and sends a voucher — however, "Fake Instant Booking" still requires OP to manually process the order.',
@@ -169,11 +166,8 @@ SCMi18n.init({
     'fi-row4-label': 'Use Case',
     'fi-row4-regular': 'In stock, auto-ticketing enabled',
     'fi-row4-fake': 'Guaranteed availability, supplier order required',
-    'footer': 'SCM Wiki — Order Processing Team · Internal Use Only',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
     'fi-breadcrumb': 'ホーム / 手動注文処理 / 仮即時予約',
     'fi-page-title': '手動注文処理：仮即時予約',
     'fi-desc': '旅行者が注文・決済後、システムが即座にバウチャーを発行・送付しますが、「仮即時予約」では OP による手動処理が引き続き必要です。',
@@ -202,11 +196,8 @@ SCMi18n.init({
     'fi-row4-label': '適用ケース',
     'fi-row4-regular': '在庫あり・自動発券可',
     'fi-row4-fake': '在庫保証・サプライヤー注文が必要',
-    'footer': 'SCM ナレッジベース — 注文処理チーム · 社内専用',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
     'fi-breadcrumb': '홈 / 수동 주문 처리 / 가짜 즉시 예약',
     'fi-page-title': '수동 주문 처리：가짜 즉시 예약',
     'fi-desc': '고객이 주문 및 결제 완료 후 시스템이 즉시 바우처를 생성하여 전송하지만, "가짜 즉시 예약"은 여전히 OP의 수동 처리가 필요합니다.',
@@ -235,7 +226,6 @@ SCMi18n.init({
     'fi-row4-label': '적용 사례',
     'fi-row4-regular': '재고 있음·자동 발권 가능',
     'fi-row4-fake': '재고 보장·공급업체 주문 필요',
-    'footer': 'SCM 지식베이스 — 주문 처리팀 · 내부 전용',
   }
 });
 </script>

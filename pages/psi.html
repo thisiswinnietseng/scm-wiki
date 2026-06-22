@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PSI 即訂即出 — SCM 知識庫</title>
+  <title>PSI 即訂即出 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -147,13 +149,10 @@
       <span style="font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:4px 10px;display:inline-block;" data-i18n="psi-refund-note">⚠️ PSI 訂單取消退貨細節流程請找各線 OP 組長確認</span>
     </div>
   </div>
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
-    'footer': 'SCM 知識庫 · 內部使用',
     'psi-breadcrumb': '首頁 / 自動出票 / PSI',
     'psi-title': 'PSI 即訂即出',
     'psi-subtitle': 'BD／AM 與供應商事先切票或寄賣，入庫至 PSI 系統後自動出票',
@@ -198,9 +197,6 @@ SCMi18n.init({
     'psi-refund-note': '⚠️ PSI 訂單取消退貨細節流程請找各線 OP 組長確認',
   },
   en: {
-    'nav-title': 'SCM <em>Knowledge Base</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
-    'footer': 'SCM Knowledge Base · Internal Use',
     'psi-breadcrumb': 'Home / Auto Issuance / PSI',
     'psi-title': 'PSI Instant Issuance',
     'psi-subtitle': 'BD／AM pre-purchases or consigns tickets from suppliers; once stocked in PSI, tickets are issued automatically',
@@ -245,9 +241,6 @@ SCMi18n.init({
     'psi-refund-note': '⚠️ For detailed PSI order cancellation and return procedures, consult the OP team lead for your product line.',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · 一括検索',
-    'footer': 'SCM ナレッジベース · 社内使用',
     'psi-breadcrumb': 'ホーム / 自動発券 / PSI',
     'psi-title': 'PSI 即時発券',
     'psi-subtitle': 'BD／AM がサプライヤーと事前に切符購入または委託販売を行い、PSI システム入庫後に自動発券',
@@ -292,9 +285,6 @@ SCMi18n.init({
     'psi-refund-note': '⚠️ PSI 注文取消・返品の詳細フローは各ライン OP リーダーに確認してください。',
   },
   ko: {
-    'nav-title': 'SCM <em>지식 베이스</em>',
-    'nav-subtitle': 'OP 일상 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
-    'footer': 'SCM 지식 베이스 · 내부 사용',
     'psi-breadcrumb': '홈 / 자동 발권 / PSI',
     'psi-title': 'PSI 즉시 발권',
     'psi-subtitle': 'BD／AM가 공급업체와 사전에 티켓을 구매하거나 위탁 판매하여 PSI 시스템에 입고 후 자동 발권',

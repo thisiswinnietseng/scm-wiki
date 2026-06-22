@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>通訊軟體訂購 — SCM 知識庫</title>
+  <title>通訊軟體訂購 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -102,12 +104,10 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
-    'nav-title': 'SCM <em>知識庫</em>',
-    'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
     'msg-breadcrumb': '首頁 / 人工訂購 / 通訊軟體訂購',
     'msg-title': '通訊軟體訂購',
     'msg-subtitle': '利用各大通訊軟體（例：KakaoTalk、WhatsApp 等）向供應商進行訂購',
@@ -128,11 +128,8 @@ SCMi18n.init({
     'msg-status-fail-desc': '根據候補日期挽單；無合適日期則進入取消處理',
     'msg-status-warn': '⚠️ 其他注意事項',
     'msg-status-warn-desc': '長時間未回覆可主動跟進（建議 24 小時內）；訂單異常（價格錯誤）立即回報 BD',
-    'footer': 'SCM 知識庫 · 內部使用',
   },
   en: {
-    'nav-title': 'SCM <em>Wiki</em>',
-    'nav-subtitle': 'OP Daily Operations Manual · Onboarding Guide · One-Stop Reference',
     'msg-breadcrumb': 'Home / Manual Ordering / Messaging App Order',
     'msg-title': 'Messaging App Order',
     'msg-subtitle': 'Place orders with suppliers via messaging apps such as KakaoTalk, WhatsApp, etc.',
@@ -153,11 +150,8 @@ SCMi18n.init({
     'msg-status-fail-desc': 'Offer alternative dates to save the booking; if no suitable date, proceed with cancellation',
     'msg-status-warn': '⚠️ Other Notes',
     'msg-status-warn-desc': 'Follow up proactively if no reply for an extended period (within 24 hours recommended); report price discrepancies to BD immediately',
-    'footer': 'SCM Wiki · Internal Use Only',
   },
   ja: {
-    'nav-title': 'SCM <em>ナレッジベース</em>',
-    'nav-subtitle': 'OP 日常業務マニュアル · 新人必読 · ワンストップ検索',
     'msg-breadcrumb': 'ホーム / 手動注文 / メッセージアプリ注文',
     'msg-title': 'メッセージアプリ注文',
     'msg-subtitle': 'KakaoTalk、WhatsApp 等のメッセージアプリを使ってサプライヤーへ注文',
@@ -178,11 +172,8 @@ SCMi18n.init({
     'msg-status-fail-desc': '代替日程でのキャンセル防止を試みる；適切な日程がなければキャンセル処理へ',
     'msg-status-warn': '⚠️ その他の注意事項',
     'msg-status-warn-desc': '長時間返信がない場合は積極的にフォローアップ（24時間以内推奨）；価格異常は直ちに BD へ報告',
-    'footer': 'SCM ナレッジベース · 社内専用',
   },
   ko: {
-    'nav-title': 'SCM <em>지식베이스</em>',
-    'nav-subtitle': 'OP 일일 업무 매뉴얼 · 신입 필독 · 원스톱 조회',
     'msg-breadcrumb': '홈 / 수동 주문 / 메신저 주문',
     'msg-title': '메신저 주문',
     'msg-subtitle': 'KakaoTalk, WhatsApp 등 메신저 앱으로 공급업체에 주문',
@@ -203,7 +194,6 @@ SCMi18n.init({
     'msg-status-fail-desc': '대체 날짜로 예약 구제 시도; 적합한 날짜 없으면 취소 처리',
     'msg-status-warn': '⚠️ 기타 주의사항',
     'msg-status-warn-desc': '장시간 미회신 시 적극적으로 후속 조치（24시간 이내 권장）; 가격 이상은 즉시 BD에 보고',
-    'footer': 'SCM 지식베이스 · 내부 전용',
   }
 });
 </script>

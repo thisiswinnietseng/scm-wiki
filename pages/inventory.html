@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PSI 票倉介紹 — SCM 知識庫</title>
+  <title>PSI 票倉介紹 — GO 知識庫</title>
   <link rel="stylesheet" href="../styles.css" />
 <style>
 .nav { height: 96px !important; position: relative; }
@@ -16,11 +16,13 @@
 .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
 .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
 </style>
-  <script src="../i18n.js"></script>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-search.js?v=1"></script>
 </head>
 <body>
   <nav class="nav">
-  <a class="nav-logo" href="../index.html">kkday <span class="badge">SCM</span></a>
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
   <div class="nav-title">
     <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
     <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
@@ -129,7 +131,7 @@
     </div>
   </div>
 
-  <div class="wiki-footer" data-i18n="footer">SCM 知識庫 · 內部使用</div>
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
 <script>
 SCMi18n.init({
   zh: {
@@ -173,7 +175,6 @@ SCMi18n.init({
     'inv-ret3-title': '實體票退回',
     'inv-ret3-desc': '實體票券需旅客寄回 KKday 後，由 OP 確認收到實體票，再進行退庫。需注意票券完整性，並依供應商規定確認是否可重新販售或需銷毀。',
     'inv-ret3-warn': '⚠️ 實體票退回流程較長，需額外追蹤寄回狀態，請注意時效。',
-    'footer': 'SCM 知識庫 · 內部使用'
   },
   en: {
     'inv-breadcrumb-home': 'Home',
@@ -216,7 +217,6 @@ SCMi18n.init({
     'inv-ret3-title': 'Physical Ticket Return',
     'inv-ret3-desc': 'Physical tickets must be mailed back to KKday by the customer. OP confirms receipt before processing the return in PSI. Ticket integrity must be verified, and the supplier\'s policy on resale or destruction must be followed.',
     'inv-ret3-warn': '⚠️ Physical ticket returns take longer. Track the return shipment status carefully and be mindful of deadlines.',
-    'footer': 'SCM Wiki · Internal Use Only'
   },
   ja: {
     'inv-breadcrumb-home': 'ホーム',
@@ -259,7 +259,6 @@ SCMi18n.init({
     'inv-ret3-title': '実物チケット返品',
     'inv-ret3-desc': '実物チケットは旅行者が KKday に郵送した後、OP が受領を確認してから返品処理を行います。チケットの完全性を確認し、仕入先の規定に従って再販売または廃棄を判断してください。',
     'inv-ret3-warn': '⚠️ 実物チケットの返品フローは時間がかかります。返送状況を追跡し、期限に注意してください。',
-    'footer': 'SCM ナレッジベース · 内部使用のみ'
   },
   ko: {
     'inv-breadcrumb-home': '홈',
@@ -302,7 +301,6 @@ SCMi18n.init({
     'inv-ret3-title': '실물 티켓 반품',
     'inv-ret3-desc': '실물 티켓은 여행객이 KKday로 우편 발송한 후 OP가 수령을 확인하고 반품 처리를 진행합니다. 티켓의 완전성을 확인하고, 공급업체 규정에 따라 재판매 또는 폐기 여부를 결정해야 합니다.',
     'inv-ret3-warn': '⚠️ 실물 티켓 반품 프로세스는 시간이 더 걸립니다. 반송 상태를 별도로 추적하고 기한에 주의하십시오.',
-    'footer': 'SCM 지식베이스 · 내부 전용'
   }
 });
 </script>
