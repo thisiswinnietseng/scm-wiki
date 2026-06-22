@@ -4,6 +4,29 @@
 (function () {
   // ── CSS ──────────────────────────────────────────────────
   const css = `
+/* ── Breadcrumb links ── */
+.breadcrumb a.bc-home {
+  color:inherit; text-decoration:none; opacity:.65;
+  transition:opacity .15s;
+}
+.breadcrumb a.bc-home:hover { opacity:1; text-decoration:underline; text-underline-offset:3px; }
+.breadcrumb .bc-current { font-weight:600; color:#1a1a2e; }
+
+/* ── Back to top ── */
+.go-top-btn {
+  position:fixed; bottom:28px; right:24px; z-index:400;
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white; border:none; cursor:pointer;
+  font-size:18px; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 16px rgba(102,126,234,.4);
+  opacity:0; transform:translateY(12px);
+  transition:opacity .25s, transform .25s;
+  pointer-events:none;
+}
+.go-top-btn.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+.go-top-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(102,126,234,.5); }
+
 .gos-wrap { position:relative; margin-bottom:18px; }
 .gos-box {
   width:100%; box-sizing:border-box;
@@ -192,19 +215,64 @@
     });
   }
 
+  // ── Breadcrumb links ────────────────────────────────────
+  function makeBreadcrumbLinks() {
+    const bc = document.querySelector('.breadcrumb');
+    if (!bc) return;
+    const text = bc.textContent.trim();
+    const parts = text.split('/').map(p => p.trim()).filter(Boolean);
+    if (parts.length === 0) return;
+
+    let html = `<a href="../index.html" class="bc-home">${parts[0]}</a>`;
+    for (let i = 1; i < parts.length; i++) {
+      const isLast = i === parts.length - 1;
+      html += ` / ${isLast
+        ? `<span class="bc-current">${parts[i]}</span>`
+        : `<span>${parts[i]}</span>`}`;
+    }
+    bc.innerHTML = html;
+  }
+
+  // ── Back to top ─────────────────────────────────────────
+  function injectBackToTop() {
+    if (document.getElementById('goTopBtn')) return;
+    const btn = document.createElement('button');
+    btn.id = 'goTopBtn';
+    btn.className = 'go-top-btn';
+    btn.innerHTML = '↑';
+    btn.title = '回到頂部';
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 350);
+    }, { passive: true });
+  }
+
   // ── Language switch hook ─────────────────────────────────
-  window.onLangSwitch = function () {
+  // Called by i18n.js after each translation pass
+  document.addEventListener('langchange', () => {
     const input = document.getElementById('gosInput');
-    if (!input) return;
-    const lang = getLang();
-    input.placeholder = PLACEHOLDER[lang] || PLACEHOLDER.zh;
-    if (input.value.trim()) doSearch(input.value); // re-render in new lang
-  };
+    if (input) {
+      input.placeholder = PLACEHOLDER[getLang()] || PLACEHOLDER.zh;
+      if (input.value.trim()) doSearch(input.value);
+    }
+    makeBreadcrumbLinks(); // re-apply after lang change replaces text
+  });
 
   // ── Init ─────────────────────────────────────────────────
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', inject);
-  } else {
+  function init() {
     inject();
+    injectBackToTop();
+    // Breadcrumb links applied after langchange event fires from SCMi18n.init()
+    // (which fires after this script runs via DOMContentLoaded)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

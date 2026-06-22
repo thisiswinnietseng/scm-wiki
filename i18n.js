@@ -65,6 +65,9 @@ window.SCMi18n = (function () {
     });
 
     document.documentElement.lang = LANG_META[current] || current;
+
+    // 通知其他模組翻譯已套用
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: current } }));
   }
 
   function updateButtons() {

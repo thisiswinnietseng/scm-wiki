@@ -217,6 +217,21 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
   font-size:11px; color:#999; font-family:monospace; pointer-events:none;
 }
 
+/* ── Back to Top ────────────────────────────────── */
+.go-top-btn {
+  position:fixed; bottom:28px; right:24px; z-index:400;
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white; border:none; cursor:pointer;
+  font-size:18px; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 16px rgba(102,126,234,.4);
+  opacity:0; transform:translateY(12px);
+  transition:opacity .25s, transform .25s;
+  pointer-events:none;
+}
+.go-top-btn.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+.go-top-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(102,126,234,.5); }
+
 /* ── Floating Quick Links Sidebar ───────────────── */
 .ql-float-btn {
   position:fixed; left:0; top:50%; transform:translateY(-50%);
@@ -535,6 +550,9 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
 </div>
 
 <div class="wiki-footer" data-i18n="go-footer">GO 知識庫 · 內部使用，請勿對外分享</div>
+
+<!-- 回到頂部 -->
+<button id="goTopBtn" class="go-top-btn" title="回到頂部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- 浮動超連結側欄 -->
 <button class="ql-float-btn" onclick="toggleQlSidebar()" id="qlFloatBtn" aria-label="快速連結">
@@ -971,6 +989,11 @@ window.onLangSwitch = function() {
   const v = searchInput.value.trim();
   if (v) search(v); // re-render results in new language
 };
+
+// ── 回到頂部 ─────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('goTopBtn')?.classList.toggle('visible', window.scrollY > 350);
+}, { passive: true });
 
 // ── 浮動快速連結側欄 ─────────────────────────────────────
 function toggleQlSidebar() {
