@@ -361,6 +361,13 @@
     const sources = getSourceLinks(question);
     const lang = getLang();
 
+    // 📦 印出送給 Worker 的完整內容
+    console.group('📦 送給 Cloudflare Worker 的資料');
+    console.log('問題 question:', question);
+    console.log('語系 lang:', lang);
+    console.log('知識庫內容 context:', context || '（無匹配內容）');
+    console.groupEnd();
+
     try {
       const res = await fetch(WORKER_URL, {
         method: 'POST',
