@@ -84,7 +84,7 @@
 .go-ai-msg.user .go-ai-msg-avatar { background:linear-gradient(135deg,#667eea,#764ba2); }
 .go-ai-msg-bubble {
   max-width:80%; padding:10px 14px; border-radius:14px;
-  font-size:13px; line-height:1.7; white-space:pre-wrap;
+  font-size:13px; line-height:1.7;
 }
 .go-ai-msg.ai .go-ai-msg-bubble { background:#f7f8fc; color:#1a1a2e; border-radius:4px 14px 14px 14px; }
 .go-ai-msg.user .go-ai-msg-bubble { background:linear-gradient(135deg,#667eea,#764ba2); color:white; border-radius:14px 4px 14px 14px; }
@@ -127,6 +127,20 @@
   const styleEl = document.createElement('style');
   styleEl.textContent = css;
   document.head.appendChild(styleEl);
+
+  // ── Markdown → HTML ─────────────────────────────────────
+  function markdownToHtml(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')   // **bold**
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')               // *italic*
+      .replace(/^###\s(.+)/gm, '<b>$1</b>')               // ### heading
+      .replace(/^##\s(.+)/gm, '<b>$1</b>')                // ## heading
+      .replace(/^#\s(.+)/gm, '<b>$1</b>')                 // # heading
+      .replace(/^\d+\.\s/gm, match => `<br>${match}`)     // 1. list items
+      .replace(/^[-•]\s/gm, '<br>• ')                     // bullet points
+      .replace(/\n\n/g, '<br><br>')                        // double newline
+      .replace(/\n/g, '<br>');                             // single newline
+  }
 
   // ── Search helper：找相關知識庫內容 ─────────────────────
   function findContext(question) {
@@ -283,7 +297,7 @@
     div.innerHTML = `
       <div class="go-ai-msg-avatar">${avatar}</div>
       <div>
-        <div class="go-ai-msg-bubble">${text}</div>
+        <div class="go-ai-msg-bubble" ${role === 'ai' ? '' : ''}>${text}</div>
         ${sourcesHtml}
       </div>`;
     msgs.appendChild(div);
@@ -340,7 +354,7 @@
       const data = await res.json();
       removeTyping();
       if (data.ok) {
-        appendMsg('ai', data.answer, sources);
+        appendMsg('ai', markdownToHtml(data.answer), sources);
       } else {
         appendMsg('ai', getLabel('error'));
       }
