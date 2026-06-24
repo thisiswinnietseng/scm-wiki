@@ -143,10 +143,26 @@
   }
 
   // ── Search helper：找相關知識庫內容 ─────────────────────
+  function extractKeywords(question) {
+    const q = question.toLowerCase();
+    const kws = new Set();
+    // 英文與數字詞（含系統名稱如 OCBT、API、PSI）
+    (q.match(/[a-z0-9]+/g) || []).filter(k => k.length >= 1).forEach(k => kws.add(k));
+    // 中文字序列及二字詞
+    (q.match(/[一-鿿]+/g) || []).forEach(ch => {
+      kws.add(ch);
+      for (let i = 0; i < ch.length - 1; i++) kws.add(ch.slice(i, i + 2));
+      for (let i = 0; i < ch.length - 2; i++) kws.add(ch.slice(i, i + 3));
+    });
+    // 原始空白拆解
+    q.split(/\s+/).filter(k => k.length >= 1).forEach(k => kws.add(k));
+    return Array.from(kws);
+  }
+
   function findContext(question) {
     const idx = window.GO_SEARCH_INDEX || [];
     if (!idx.length) return '';
-    const kws = question.toLowerCase().split(/\s+/).filter(k => k.length > 1);
+    const kws = extractKeywords(question);
     const scored = [];
     for (const item of idx) {
       let score = 0;
@@ -171,7 +187,7 @@
   function getSourceLinks(question) {
     const idx = window.GO_SEARCH_INDEX || [];
     if (!idx.length) return [];
-    const kws = question.toLowerCase().split(/\s+/).filter(k => k.length > 1);
+    const kws = extractKeywords(question);
     const scored = [];
     for (const item of idx) {
       let score = 0;
