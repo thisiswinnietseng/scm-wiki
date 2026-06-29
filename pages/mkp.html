@@ -94,6 +94,68 @@
     .restrict-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     .restrict-title { font-size: 13px; font-weight: 700; color: #2d3748; margin-bottom: 3px; }
     .restrict-desc  { font-size: 12.5px; color: #4a5568; line-height: 1.55; }
+
+    /* ── 新版流程圖 ── */
+    .vf-wrap { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:24px 20px; }
+    .vf-step { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+    .vf-badge {
+      font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:20px;
+      white-space:nowrap; flex-shrink:0;
+    }
+    .vf-badge.cs  { background:#ede9fe; color:#5b21b6; }
+    .vf-badge.op  { background:#dbeafe; color:#1e40af; }
+    .vf-badge.am  { background:#dcfce7; color:#166534; }
+    .vf-badge.fa  { background:#fef3c7; color:#92400e; }
+    .vf-node {
+      flex:1; border-radius:8px; padding:9px 14px; font-size:12.5px; font-weight:600;
+      text-align:center; line-height:1.35;
+    }
+    .vf-node.cs  { background:#ede9fe; color:#5b21b6; border:1px solid #c4b5fd; }
+    .vf-node.op  { background:#dbeafe; color:#1e40af; border:1px solid #93c5fd; }
+    .vf-node.am  { background:#dcfce7; color:#166534; border:1px solid #86efac; }
+    .vf-node.fa  { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
+    .vf-diamond {
+      margin:0 auto 4px; max-width:260px; border-radius:20px; padding:9px 20px;
+      font-size:12.5px; font-weight:600; text-align:center;
+      background:#f9fafb; border:1.5px dashed #9ca3af; color:#374151;
+    }
+    .vf-arr { text-align:center; font-size:15px; color:#9ca3af; margin:4px 0; }
+    .vf-branches { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px; }
+    .vf-branch { border-radius:10px; padding:14px 14px 14px; }
+    .vf-branch.no  { background:#eff6ff; border:1.5px solid #93c5fd; }
+    .vf-branch.yes { background:#f0fdf4; border:1.5px solid #86efac; }
+    .vf-branch-lbl { font-size:11px; font-weight:700; margin-bottom:10px; }
+    .vf-branch-lbl.no  { color:#1e40af; }
+    .vf-branch-lbl.yes { color:#166534; }
+    .vf-inner-branch { border-radius:8px; padding:10px; margin-top:8px; }
+    .vf-inner-branch.no  { background:#fff1f2; border:1px solid #fecdd3; }
+    .vf-inner-branch.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+    .vf-inner-lbl { font-size:10.5px; font-weight:700; margin-bottom:7px; }
+    .vf-inner-lbl.no  { color:#be123c; }
+    .vf-inner-lbl.yes { color:#166534; }
+
+    /* ── 請款流程 橫向 ── */
+    .pay-flow-wrap {
+      display:flex; align-items:flex-start; gap:0;
+      background:#fff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden;
+    }
+    .pay-step-col { flex:1; display:flex; flex-direction:column; align-items:center; }
+    .pay-role-hdr {
+      width:100%; text-align:center; padding:10px 4px; font-size:12px; font-weight:700;
+      background:#1a1a2e; color:#fff; border-right:1px solid rgba(255,255,255,0.1);
+    }
+    .pay-role-hdr span { display:block; font-size:10px; color:rgba(255,255,255,0.45); font-weight:400; margin-top:2px; }
+    .pay-step-col:last-child .pay-role-hdr { border-right:none; }
+    .pay-step-body { flex:1; width:100%; padding:16px 10px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .pay-card {
+      width:100%; border-radius:8px; padding:12px 8px; font-size:11.5px; font-weight:600;
+      text-align:center; line-height:1.5;
+    }
+    .pay-card.sys  { background:#e0e7ff; color:#3730a3; border:1px solid #a5b4fc; }
+    .pay-card.sup  { background:#dcfce7; color:#166534; border:1px solid #86efac; }
+    .pay-card.fa   { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
+    .pay-card.empty{ background:transparent; border:none; }
+    .pay-arrow-col { display:flex; align-items:center; justify-content:center; padding:0 2px; margin-top:42px; font-size:18px; color:#9ca3af; flex-shrink:0; }
   </style>
   <style>
     .nav { height: 96px !important; position: relative; }
@@ -197,98 +259,87 @@
     <!-- ③ 完整作業流程 -->
     <div class="mkp-section">
       <h2>🔄 <span data-i18n="mkp-flow-title">完整作業流程</span></h2>
-      <div class="swimlane">
-        <div class="lane-header cols4">
-          <div class="lane-col">CRM<span>CS</span></div>
-          <div class="lane-col">SCM<span>OP</span></div>
-          <div class="lane-col">BD / AM</div>
-          <div class="lane-col">FA</div>
+      <div class="vf-wrap">
+
+        <!-- Step 1: CS 接收 -->
+        <div class="vf-step">
+          <div class="vf-badge cs">💬 CS</div>
+          <div class="vf-node cs" data-i18n="mkp-flow-s1">CS 接收旅客訊息</div>
         </div>
-        <div class="flow-body">
+        <div class="vf-arr">↓</div>
 
-          <!-- CS 接收 -->
-          <div class="flow-row cols4">
-            <div class="flow-box cs" data-i18n="mkp-flow-s1">CS 接收旅客訊息</div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-          </div>
-          <div class="flow-arrow">↓</div>
+        <!-- Decision 1 -->
+        <div class="vf-diamond" data-i18n="mkp-flow-d1">訂單已過出發日？</div>
 
-          <!-- 判斷：出發日 -->
-          <div class="flow-row cols4">
-            <div class="flow-box decision" data-i18n="mkp-flow-d1">訂單已過出發日？</div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-          </div>
+        <!-- Two main branches -->
+        <div class="vf-branches">
 
-          <!-- 否分支 -->
-          <div class="branch-block no">
-            <div class="branch-label no" data-i18n="mkp-flow-no-label">❌ 否（出發前 / 訂單未核銷）</div>
-            <div class="flow-row cols4">
-              <div class="flow-box empty"></div>
-              <div class="flow-box op" data-i18n="mkp-flow-op1">提醒供應商（不追蹤）</div>
-              <div class="flow-box empty"></div>
-              <div class="flow-box empty"></div>
+          <!-- Left: 否 -->
+          <div class="vf-branch no">
+            <div class="vf-branch-lbl no" data-i18n="mkp-flow-no-label">❌ 否（出發前 / 訂單未核銷）</div>
+            <div class="vf-step">
+              <div class="vf-badge op">⚙️ OP</div>
+              <div class="vf-node op" data-i18n="mkp-flow-op1">提醒供應商（不追蹤）</div>
             </div>
           </div>
 
-          <!-- 是分支 -->
-          <div class="branch-block yes">
-            <div class="branch-label yes" data-i18n="mkp-flow-yes-label">✅ 是（出發後）→ 客訴 / 品質問題</div>
+          <!-- Right: 是 -->
+          <div class="vf-branch yes">
+            <div class="vf-branch-lbl yes" data-i18n="mkp-flow-yes-label">✅ 是（出發後）→ 客訴 / 品質</div>
 
-            <!-- AM 確認 -->
-            <div class="flow-row cols4" style="margin-bottom:6px;">
-              <div class="flow-box empty"></div>
-              <div class="flow-box empty"></div>
-              <div class="flow-box am" data-i18n="mkp-flow-am1">確認品質及後續供應商退款及追蹤</div>
-              <div class="flow-box empty"></div>
+            <!-- AM 確認品質 -->
+            <div class="vf-step">
+              <div class="vf-badge am">🤝 AM</div>
+              <div class="vf-node am" data-i18n="mkp-flow-am1">確認品質及後續供應商退款及追蹤</div>
             </div>
+            <div class="vf-arr">↓</div>
 
-            <!-- 判斷：供應商同意？ -->
-            <div class="flow-row cols4" style="margin-bottom:6px;">
-              <div class="flow-box empty"></div>
-              <div class="flow-box empty"></div>
-              <div class="flow-box decision" data-i18n="mkp-flow-d2">供應商同意退款？</div>
-              <div class="flow-box empty"></div>
-            </div>
+            <!-- Decision 2 -->
+            <div class="vf-diamond" data-i18n="mkp-flow-d2">供應商同意退款？</div>
 
-            <!-- 否 -->
-            <div class="sub-branch no">
-              <div class="sub-label no" data-i18n="mkp-flow-no2-label">❌ 否</div>
-              <div class="flow-row cols4">
-                <div class="flow-box cs" style="font-size:11px;" data-i18n="mkp-flow-cs2">與客人聯繫說明</div>
-                <div class="flow-box empty"></div>
-                <div class="flow-box empty"></div>
-                <div class="flow-box fa" style="font-size:11px;" data-i18n="mkp-flow-fa1">出款 / 結案</div>
-              </div>
-            </div>
+            <!-- Sub-branches -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;">
 
-            <!-- 是 -->
-            <div class="sub-branch yes" style="margin-top:8px;">
-              <div class="sub-label yes" data-i18n="mkp-flow-yes2-label">✅ 是</div>
-              <div class="flow-row cols4" style="margin-bottom:6px;">
-                <div class="flow-box empty"></div>
-                <div class="flow-box empty"></div>
-                <div class="flow-box am" style="font-size:11px;" data-i18n="mkp-flow-am2">申請 BPM REM 單、通知 CS 退款、追蹤回填匯回日期</div>
-                <div class="flow-box empty"></div>
+              <!-- 否: CS 聯繫 -->
+              <div class="vf-inner-branch no">
+                <div class="vf-inner-lbl no" data-i18n="mkp-flow-no2-label">❌ 否</div>
+                <div class="vf-step" style="margin-bottom:6px;">
+                  <div class="vf-badge cs">💬 CS</div>
+                  <div class="vf-node cs" style="font-size:11.5px;" data-i18n="mkp-flow-cs2">與客人聯繫說明</div>
+                </div>
+                <div class="vf-step">
+                  <div class="vf-badge fa">💳 FA</div>
+                  <div class="vf-node fa" style="font-size:11.5px;" data-i18n="mkp-flow-fa1">出款 / 結案</div>
+                </div>
               </div>
-              <div class="flow-row cols4" style="margin-bottom:6px;">
-                <div class="flow-box cs" style="font-size:11px;" data-i18n="mkp-flow-cs3">取得資訊進行匯退</div>
-                <div class="flow-box empty"></div>
-                <div class="flow-box empty"></div>
-                <div class="flow-box fa" style="font-size:11px;" data-i18n="mkp-flow-fa2">追蹤表單、款項是否匯回</div>
+
+              <!-- 是: BPM + 匯退 -->
+              <div class="vf-inner-branch yes">
+                <div class="vf-inner-lbl yes" data-i18n="mkp-flow-yes2-label">✅ 是</div>
+                <div class="vf-step" style="margin-bottom:6px;">
+                  <div class="vf-badge am">🤝 AM</div>
+                  <div class="vf-node am" style="font-size:11px;" data-i18n="mkp-flow-am2">申請 BPM REM 單、通知 CS 退款、追蹤匯回日期</div>
+                </div>
+                <div class="vf-step" style="margin-bottom:6px;">
+                  <div class="vf-badge cs">💬 CS</div>
+                  <div class="vf-node cs" style="font-size:11.5px;" data-i18n="mkp-flow-cs3">取得資訊進行匯退</div>
+                </div>
+                <div class="vf-step" style="margin-bottom:6px;">
+                  <div class="vf-badge fa">💳 FA</div>
+                  <div class="vf-node fa" style="font-size:11px;" data-i18n="mkp-flow-fa2">追蹤表單、款項是否匯回</div>
+                </div>
+                <div class="vf-step" style="margin-bottom:6px;">
+                  <div class="vf-badge am">🤝 AM</div>
+                  <div class="vf-node am" style="font-size:11.5px;" data-i18n="mkp-flow-am3">追蹤供應商匯回</div>
+                </div>
+                <div class="vf-step">
+                  <div class="vf-badge fa">💳 FA</div>
+                  <div class="vf-node fa" style="font-size:11.5px;" data-i18n="mkp-flow-fa3">出款 / 結案</div>
+                </div>
               </div>
-              <div class="flow-row cols4">
-                <div class="flow-box cs" style="font-size:11px;" data-i18n="mkp-flow-cs4">結案</div>
-                <div class="flow-box empty"></div>
-                <div class="flow-box am" style="font-size:11px;" data-i18n="mkp-flow-am3">追蹤供應商匯回</div>
-                <div class="flow-box fa" style="font-size:11px;" data-i18n="mkp-flow-fa3">出款 / 結案</div>
-              </div>
+
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -326,42 +377,46 @@
       <h2>💰 <span data-i18n="mkp-pay-title">請款作業流程</span></h2>
       <p style="font-size:12px;color:#6b7280;margin-bottom:14px;" data-i18n="mkp-pay-subtitle">適用：JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商</p>
 
-      <div class="swimlane">
-        <div class="lane-header cols4">
-          <div class="lane-col">System</div>
-          <div class="lane-col">Supplier<span>供應商</span></div>
-          <div class="lane-col">SCM<span>OP</span></div>
-          <div class="lane-col">FA Team</div>
-        </div>
-        <div class="flow-body">
-          <div class="flow-row cols4">
-            <div class="flow-box sys" data-i18n="mkp-pay-s1">每月3日產出自動報表</div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-          </div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-row cols4">
-            <div class="flow-box empty"></div>
-            <div class="flow-box sup" data-i18n="mkp-pay-s2">5日內 / 3日內確認金額正確</div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-          </div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-row cols4">
-            <div class="flow-box sys" data-i18n="mkp-pay-s3">產生 BPM 單據，自動送 FA</div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-          </div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-row cols4">
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box empty"></div>
-            <div class="flow-box fa" data-i18n="mkp-pay-s4">確認內容及付款</div>
+      <div style="display:flex;align-items:stretch;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+
+        <!-- Step 1: System -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">System</div>
+          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #e2e8f0;">
+            <div style="width:100%;background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s1">每月3日<br>產出自動報表</div>
           </div>
         </div>
+
+        <div style="display:flex;align-items:center;font-size:18px;color:#9ca3af;padding:0 2px;margin-top:42px;">→</div>
+
+        <!-- Step 2: Supplier -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">Supplier<span style="display:block;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;margin-top:2px;">供應商</span></div>
+          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #e2e8f0;">
+            <div style="width:100%;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s2">5日內 / 3日內<br>確認金額正確</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;font-size:18px;color:#9ca3af;padding:0 2px;margin-top:42px;">→</div>
+
+        <!-- Step 3: System BPM -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">System</div>
+          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #e2e8f0;">
+            <div style="width:100%;background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s3">產生 BPM 單據<br>自動送 FA</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;font-size:18px;color:#9ca3af;padding:0 2px;margin-top:42px;">→</div>
+
+        <!-- Step 4: FA -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;">FA Team</div>
+          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+            <div style="width:100%;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s4">確認內容<br>及付款</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
