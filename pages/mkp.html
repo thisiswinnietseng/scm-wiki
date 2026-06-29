@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKP 處理流程 — GO 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .mkp-section { margin-bottom: 28px; }
+    .mkp-section h2 {
+      font-size: 15px; font-weight: 700; color: var(--primary);
+      margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .decision-card { border-radius: 12px; padding: 18px 20px; border: 1.5px solid; }
+    .decision-card.before { background: #eff6ff; border-color: #93c5fd; }
+    .decision-card.after  { background: #fef3c7; border-color: #fcd34d; }
+    .decision-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .decision-card p { font-size: 12.5px; color: #4a5568; line-height: 1.6; }
+
+    .exception-note {
+      background: #fff7ed; border: 1.5px solid #fed7aa;
+      border-radius: 8px; padding: 13px 16px;
+      font-size: 12.5px; color: #92400e; line-height: 1.6;
+    }
+
+    .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .role-card {
+      background: #fafbff; border: 1px solid #e2e8f0; border-radius: 10px;
+      padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;
+    }
+    .role-icon { font-size: 20px; flex-shrink: 0; }
+    .role-title { font-size: 13px; font-weight: 700; color: #1a1a2e; margin-bottom: 3px; }
+    .role-desc { font-size: 12px; color: #4a5568; line-height: 1.55; }
+
+    .swimlane { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+    .lane-header {
+      display: grid; gap: 0; background: #1a1a2e;
+    }
+    .lane-header.cols4 { grid-template-columns: repeat(4,1fr); }
+    .lane-col {
+      padding: 10px 6px; text-align: center;
+      font-size: 12px; font-weight: 700; color: white;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .lane-col:last-child { border-right: none; }
+    .lane-col span { display: block; font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 400; margin-top: 2px; }
+
+    .flow-body { padding: 18px; display: flex; flex-direction: column; gap: 4px; }
+    .flow-row { display: grid; gap: 8px; }
+    .flow-row.cols4 { grid-template-columns: repeat(4,1fr); }
+    .flow-box {
+      border-radius: 8px; padding: 9px 10px; font-size: 11.5px; font-weight: 600;
+      text-align: center; display: flex; align-items: center; justify-content: center;
+      line-height: 1.35; min-height: 38px;
+    }
+    .flow-box.empty { background: transparent !important; border: none !important; }
+    .flow-box.cs     { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+    .flow-box.op     { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .flow-box.am     { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .flow-box.fa     { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .flow-box.sys    { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+    .flow-box.sup    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .flow-box.decision {
+      background: #f9fafb; color: #374151;
+      border: 1.5px dashed #d1d5db; border-radius: 20px;
+    }
+    .flow-arrow { text-align: center; font-size: 14px; color: #9ca3af; padding: 2px 0; }
+
+    .branch-block {
+      border-radius: 8px; padding: 12px 14px; margin: 6px 0;
+    }
+    .branch-block.no  { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .branch-block.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .branch-label {
+      font-size: 11px; font-weight: 700; margin-bottom: 8px;
+    }
+    .branch-label.no  { color: #1e40af; }
+    .branch-label.yes { color: #166534; }
+    .sub-branch {
+      border-radius: 6px; padding: 10px; margin-top: 8px;
+    }
+    .sub-branch.no  { background: #fff1f2; border: 1px solid #fecdd3; }
+    .sub-branch.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .sub-label { font-size: 10.5px; font-weight: 700; margin-bottom: 6px; }
+    .sub-label.no  { color: #be123c; }
+    .sub-label.yes { color: #166534; }
+
+    .restrict-list { display: flex; flex-direction: column; gap: 10px; }
+    .restrict-card {
+      background: #fafbff; border: 1px solid #e2e8f0; border-radius: 8px;
+      padding: 13px 18px; display: flex; gap: 12px; align-items: flex-start;
+    }
+    .restrict-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .restrict-title { font-size: 13px; font-weight: 700; color: #2d3748; margin-bottom: 3px; }
+    .restrict-desc  { font-size: 12.5px; color: #4a5568; line-height: 1.55; }
+  </style>
+  <style>
+    .nav { height: 96px !important; position: relative; }
+    .nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+    .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+    .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+    .nav-title em { color: #f5a623; font-style: normal; }
+    .lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+    .lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+    .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+    .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
+  </style>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-ai.js?v=1"></script>
+  <script src="../go-search.js?v=1"></script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
+    <div class="nav-title">
+      <h1 data-i18n-html="nav-title">GO <em>知識庫</em></h1>
+      <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+      <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+      <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+      <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb" data-i18n="mkp-breadcrumb">首頁 / MKP 處理流程</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#0ea5e9,#6366f1);">🏪</div>
+      <div class="page-header-body">
+        <h1 data-i18n="mkp-title">MKP 處理流程</h1>
+        <p data-i18n="mkp-subtitle">訂單出發前後的責任分工與客訴退款作業</p>
+        <span class="page-chip" style="background:#e0f2fe;color:#0369a1;" data-i18n="mkp-chip">MKP</span>
+      </div>
+    </div>
+
+    <!-- ① 簡易定義 -->
+    <div class="mkp-section">
+      <h2>🎯 <span data-i18n="mkp-def-title">簡易定義</span></h2>
+      <p style="font-size:13px;color:#4a5568;margin-bottom:14px;" data-i18n="mkp-def-intro">CS 接收到訊息，以訂單是否『出發』作為基準判斷，決定由哪個部門跟進處理。</p>
+
+      <div class="decision-grid">
+        <div class="decision-card before">
+          <h3>🟢 <span data-i18n="mkp-before-title">出發前</span></h3>
+          <p data-i18n="mkp-before-desc">如有需要提醒供應商的作業事項，由 <strong>OP</strong> 轉達供應商。</p>
+        </div>
+        <div class="decision-card after">
+          <h3>🔴 <span data-i18n="mkp-after-title">出發後</span></h3>
+          <p data-i18n-html="mkp-after-desc">若為客訴或品質問題，由 <strong>AM</strong> 接手確認與處理。<br><span style="color:#b45309;font-size:11.5px;">**例外：訂單已使用但尚未核銷 → 仍由 OP 轉達供應商</span></p>
+        </div>
+      </div>
+
+      <div class="exception-note" data-i18n-html="mkp-refund-note">
+        💰 <strong>客訴匯退</strong>仍維持由 <strong>AM</strong> 申請 BPM 單據後上表，同步 CS / FA 後續追蹤。
+      </div>
+    </div>
+
+    <!-- ② 各部門職責 -->
+    <div class="mkp-section">
+      <h2>👥 <span data-i18n="mkp-roles-title">各部門職責</span></h2>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-icon">💬</div>
+          <div>
+            <div class="role-title">CRM (CS)</div>
+            <div class="role-desc" data-i18n="mkp-role-cs">接收旅客訊息、判斷出發前後、與旅客溝通說明、進行匯退操作</div>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">⚙️</div>
+          <div>
+            <div class="role-title">SCM (OP)</div>
+            <div class="role-desc" data-i18n="mkp-role-op">出發前或訂單未核銷時：提醒供應商（不追蹤）</div>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🤝</div>
+          <div>
+            <div class="role-title">BD / AM</div>
+            <div class="role-desc" data-i18n="mkp-role-am">出發後客訴/品質問題：確認品質、洽談供應商退款、申請 BPM REM 單、通知 CS 並追蹤匯回日期</div>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">💳</div>
+          <div>
+            <div class="role-title">FA</div>
+            <div class="role-desc" data-i18n="mkp-role-fa">追蹤退款表單、確認款項是否匯回、負責出款/結案</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ 完整作業流程 -->
+    <div class="mkp-section">
+      <h2>🔄 <span data-i18n="mkp-flow-title">完整作業流程</span></h2>
+      <div class="swimlane">
+        <div class="lane-header cols4">
+          <div class="lane-col">CRM<span>CS</span></div>
+          <div class="lane-col">SCM<span>OP</span></div>
+          <div class="lane-col">BD / AM</div>
+          <div class="lane-col">FA</div>
+        </div>
+        <div class="flow-body">
+
+          <!-- CS 接收 -->
+          <div class="flow-row cols4">
+            <div class="flow-box cs" data-i18n="mkp-flow-s1">CS 接收旅客訊息</div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+          </div>
+          <div class="flow-arrow">↓</div>
+
+          <!-- 判斷：出發日 -->
+          <div class="flow-row cols4">
+            <div class="flow-box decision" data-i18n="mkp-flow-d1">訂單已過出發日？</div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+          </div>
+
+          <!-- 否分支 -->
+          <div class="branch-block no">
+            <div class="branch-label no" data-i18n="mkp-flow-no-label">❌ 否（出發前 / 訂單未核銷）</div>
+            <div class="flow-row cols4">
+              <div class="flow-box empty"></div>
+              <div class="flow-box op" data-i18n="mkp-flow-op1">提醒供應商（不追蹤）</div>
+              <div class="flow-box empty"></div>
+              <div class="flow-box empty"></div>
+            </div>
+          </div>
+
+          <!-- 是分支 -->
+          <div class="branch-block yes">
+            <div class="branch-label yes" data-i18n="mkp-flow-yes-label">✅ 是（出發後）→ 客訴 / 品質問題</div>
+
+            <!-- AM 確認 -->
+            <div class="flow-row cols4" style="margin-bottom:6px;">
+              <div class="flow-box empty"></div>
+              <div class="flow-box empty"></div>
+              <div class="flow-box am" data-i18n="mkp-flow-am1">確認品質及後續供應商退款及追蹤</div>
+              <div class="flow-box empty"></div>
+            </div>
+
+            <!-- 判斷：供應商同意？ -->
+            <div class="flow-row cols4" style="margin-bottom:6px;">
+              <div class="flow-box empty"></div>
+              <div class="flow-box empty"></div>
+              <div class="flow-box decision" data-i18n="mkp-flow-d2">供應商同意退款？</div>
+              <div class="flow-box empty"></div>
+            </div>
+
+            <!-- 否 -->
+            <div class="sub-branch no">
+              <div class="sub-label no" data-i18n="mkp-flow-no2-label">❌ 否</div>
+              <div class="flow-row cols4">
+                <div class="flow-box cs" style="font-size:11px;" data-i18n="mkp-flow-cs2">與客人聯繫說明</div>
+                <div class="flow-box empty"></div>
+                <div class="flow-box empty"></div>
+                <div class="flow-box fa" style="font-size:11px;" data-i18n="mkp-flow-fa1">出款 / 結案</div>
+              </div>
+            </div>
+
+            <!-- 是 -->
+            <div class="sub-branch yes" style="margin-top:8px;">
+              <div class="sub-label yes" data-i18n="mkp-flow-yes2-label">✅ 是</div>
+              <div class="flow-row cols4" style="margin-bottom:6px;">
+                <div class="flow-box empty"></div>
+                <div class="flow-box empty"></div>
+                <div class="flow-box am" style="font-size:11px;" data-i18n="mkp-flow-am2">申請 BPM REM 單、通知 CS 退款、追蹤回填匯回日期</div>
+                <div class="flow-box empty"></div>
+              </div>
+              <div class="flow-row cols4" style="margin-bottom:6px;">
+                <div class="flow-box cs" style="font-size:11px;" data-i18n="mkp-flow-cs3">取得資訊進行匯退</div>
+                <div class="flow-box empty"></div>
+                <div class="flow-box empty"></div>
+                <div class="flow-box fa" style="font-size:11px;" data-i18n="mkp-flow-fa2">追蹤表單、款項是否匯回</div>
+              </div>
+              <div class="flow-row cols4">
+                <div class="flow-box cs" style="font-size:11px;" data-i18n="mkp-flow-cs4">結案</div>
+                <div class="flow-box empty"></div>
+                <div class="flow-box am" style="font-size:11px;" data-i18n="mkp-flow-am3">追蹤供應商匯回</div>
+                <div class="flow-box fa" style="font-size:11px;" data-i18n="mkp-flow-fa3">出款 / 結案</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 系統操作限制 -->
+    <div class="mkp-section">
+      <h2>🚫 <span data-i18n="mkp-restrict-title">MKP 系統操作限制</span></h2>
+      <div class="restrict-list">
+        <div class="restrict-card">
+          <div class="restrict-icon">👁️</div>
+          <div>
+            <div class="restrict-title" data-i18n="mkp-r1-title">旅客訊息</div>
+            <div class="restrict-desc" data-i18n="mkp-r1-desc">OP 無法查看；CS 可查看，但不得回覆。</div>
+          </div>
+        </div>
+        <div class="restrict-card">
+          <div class="restrict-icon">🚫</div>
+          <div>
+            <div class="restrict-title" data-i18n="mkp-r2-title">訂單取消與退款</div>
+            <div class="restrict-desc" data-i18n="mkp-r2-desc">OP 不得操作，包括部分退款。</div>
+          </div>
+        </div>
+        <div class="restrict-card">
+          <div class="restrict-icon">📄</div>
+          <div>
+            <div class="restrict-title" data-i18n="mkp-r3-title">COM 單據（MKP BPM 請款單）</div>
+            <div class="restrict-desc" data-i18n="mkp-r3-desc">SG / JP 簽約主體已自動流轉至財務，OP 無需作業。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ 請款作業流程 -->
+    <div class="mkp-section">
+      <h2>💰 <span data-i18n="mkp-pay-title">請款作業流程</span></h2>
+      <p style="font-size:12px;color:#6b7280;margin-bottom:14px;" data-i18n="mkp-pay-subtitle">適用：JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商</p>
+
+      <div class="swimlane">
+        <div class="lane-header cols4">
+          <div class="lane-col">System</div>
+          <div class="lane-col">Supplier<span>供應商</span></div>
+          <div class="lane-col">SCM<span>OP</span></div>
+          <div class="lane-col">FA Team</div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-row cols4">
+            <div class="flow-box sys" data-i18n="mkp-pay-s1">每月3日產出自動報表</div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-row cols4">
+            <div class="flow-box empty"></div>
+            <div class="flow-box sup" data-i18n="mkp-pay-s2">5日內 / 3日內確認金額正確</div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-row cols4">
+            <div class="flow-box sys" data-i18n="mkp-pay-s3">產生 BPM 單據，自動送 FA</div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-row cols4">
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box empty"></div>
+            <div class="flow-box fa" data-i18n="mkp-pay-s4">確認內容及付款</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
+  </div>
+
+<script>
+SCMi18n.init({
+  zh: {
+    'mkp-breadcrumb': '首頁 / MKP 處理流程',
+    'mkp-title': 'MKP 處理流程',
+    'mkp-subtitle': '訂單出發前後的責任分工與客訴退款作業',
+    'mkp-chip': 'MKP',
+    'mkp-def-title': '簡易定義',
+    'mkp-def-intro': 'CS 接收到訊息，以訂單是否『出發』作為基準判斷，決定由哪個部門跟進處理。',
+    'mkp-before-title': '出發前',
+    'mkp-before-desc': '如有需要提醒供應商的作業事項，由 OP 轉達供應商。',
+    'mkp-after-title': '出發後',
+    'mkp-after-desc': '若為客訴或品質問題，由 <strong>AM</strong> 接手確認與處理。<br><span style="color:#b45309;font-size:11.5px;">**例外：訂單已使用但尚未核銷 → 仍由 OP 轉達供應商</span>',
+    'mkp-refund-note': '💰 <strong>客訴匯退</strong>仍維持由 <strong>AM</strong> 申請 BPM 單據後上表，同步 CS / FA 後續追蹤。',
+    'mkp-roles-title': '各部門職責',
+    'mkp-role-cs': '接收旅客訊息、判斷出發前後、與旅客溝通說明、進行匯退操作',
+    'mkp-role-op': '出發前或訂單未核銷時：提醒供應商（不追蹤）',
+    'mkp-role-am': '出發後客訴/品質問題：確認品質、洽談供應商退款、申請 BPM REM 單、通知 CS 並追蹤匯回日期',
+    'mkp-role-fa': '追蹤退款表單、確認款項是否匯回、負責出款/結案',
+    'mkp-flow-title': '完整作業流程',
+    'mkp-flow-s1': 'CS 接收旅客訊息',
+    'mkp-flow-d1': '訂單已過出發日？',
+    'mkp-flow-no-label': '❌ 否（出發前 / 訂單未核銷）',
+    'mkp-flow-op1': '提醒供應商（不追蹤）',
+    'mkp-flow-yes-label': '✅ 是（出發後）→ 客訴 / 品質問題',
+    'mkp-flow-am1': '確認品質及後續供應商退款及追蹤',
+    'mkp-flow-d2': '供應商同意退款？',
+    'mkp-flow-no2-label': '❌ 否',
+    'mkp-flow-cs2': '與客人聯繫說明',
+    'mkp-flow-fa1': '出款 / 結案',
+    'mkp-flow-yes2-label': '✅ 是',
+    'mkp-flow-am2': '申請 BPM REM 單、通知 CS 退款、追蹤回填匯回日期',
+    'mkp-flow-cs3': '取得資訊進行匯退',
+    'mkp-flow-fa2': '追蹤表單、款項是否匯回',
+    'mkp-flow-cs4': '結案',
+    'mkp-flow-am3': '追蹤供應商匯回',
+    'mkp-flow-fa3': '出款 / 結案',
+    'mkp-restrict-title': 'MKP 系統操作限制',
+    'mkp-r1-title': '旅客訊息',
+    'mkp-r1-desc': 'OP 無法查看；CS 可查看，但不得回覆。',
+    'mkp-r2-title': '訂單取消與退款',
+    'mkp-r2-desc': 'OP 不得操作，包括部分退款。',
+    'mkp-r3-title': 'COM 單據（MKP BPM 請款單）',
+    'mkp-r3-desc': 'SG / JP 簽約主體已自動流轉至財務，OP 無需作業。',
+    'mkp-pay-title': '請款作業流程',
+    'mkp-pay-subtitle': '適用：JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商',
+    'mkp-pay-s1': '每月3日產出自動報表',
+    'mkp-pay-s2': '5日內 / 3日內確認金額正確',
+    'mkp-pay-s3': '產生 BPM 單據，自動送 FA',
+    'mkp-pay-s4': '確認內容及付款',
+  },
+  en: {
+    'mkp-breadcrumb': 'Home / MKP Operation Flow',
+    'mkp-title': 'MKP Operation Flow',
+    'mkp-subtitle': 'Role responsibility before/after departure and complaint refund process',
+    'mkp-chip': 'MKP',
+    'mkp-def-title': 'Simple Definition',
+    'mkp-def-intro': 'CS receives inquiries and uses whether the order has "departed" as the key criteria to decide which team handles it.',
+    'mkp-before-title': 'Before Departure',
+    'mkp-before-desc': 'If any supplier reminders are needed, OP will relay the message to the supplier.',
+    'mkp-after-title': 'After Departure',
+    'mkp-after-desc': 'For complaints or quality issues, <strong>AM</strong> takes over to confirm and resolve.<br><span style="color:#b45309;font-size:11.5px;">**Exception: If the order has been used but not yet redeemed, OP still relays to supplier.</span>',
+    'mkp-refund-note': '💰 <strong>Complaint refunds</strong> continue to be handled by <strong>AM</strong> who applies for the BPM document and notifies CS / FA for follow-up.',
+    'mkp-roles-title': 'Department Responsibilities',
+    'mkp-role-cs': 'Receive traveler inquiries, judge before/after departure, communicate with traveler, process remittance',
+    'mkp-role-op': 'Before departure or unredeemed orders: remind supplier (no follow-up)',
+    'mkp-role-am': 'After-departure complaints/quality: confirm quality, negotiate supplier refund, apply BPM REM, notify CS and track remit date',
+    'mkp-role-fa': 'Track refund forms, confirm payment received, handle payout/close case',
+    'mkp-flow-title': 'Full Operation Flow',
+    'mkp-flow-s1': 'CS Receives Inquiry',
+    'mkp-flow-d1': 'Order passed departure date?',
+    'mkp-flow-no-label': '❌ No (Before Departure / Unredeemed)',
+    'mkp-flow-op1': 'Remind Supplier (No Follow-up)',
+    'mkp-flow-yes-label': '✅ Yes (After Departure) → Complaint / Quality Issue',
+    'mkp-flow-am1': 'Quality Check & Supplier Refund Follow-up',
+    'mkp-flow-d2': 'Supplier Agrees to Refund?',
+    'mkp-flow-no2-label': '❌ No',
+    'mkp-flow-cs2': 'Contact Customer & Explain',
+    'mkp-flow-fa1': 'Payout / Close Case',
+    'mkp-flow-yes2-label': '✅ Yes',
+    'mkp-flow-am2': 'Apply BPM REM, Notify CS Refund, Track Remit Date',
+    'mkp-flow-cs3': 'Get Info & Remit',
+    'mkp-flow-fa2': 'Track Form, Confirm Payment Received',
+    'mkp-flow-cs4': 'Close Case',
+    'mkp-flow-am3': 'Track Supplier Remittance',
+    'mkp-flow-fa3': 'Payout / Close Case',
+    'mkp-restrict-title': 'MKP System Restrictions',
+    'mkp-r1-title': 'Traveler Messages',
+    'mkp-r1-desc': 'OP cannot view; CS can view but cannot reply.',
+    'mkp-r2-title': 'Order Cancellations & Refunds',
+    'mkp-r2-desc': 'OP is not allowed to process, including partial refunds.',
+    'mkp-r3-title': 'COM Documents (MKP BPM Payment Requests)',
+    'mkp-r3-desc': 'For SG/JP entities, the process is fully automated to Finance. OP has no action required.',
+    'mkp-pay-title': 'Payment Request Flow',
+    'mkp-pay-subtitle': 'For: JP MKP (KK Mall) COM / SG/HK entities, Auto Invoice suppliers',
+    'mkp-pay-s1': '3rd of each month: system auto-generates report',
+    'mkp-pay-s2': 'Within 3–5 days: supplier confirms amount',
+    'mkp-pay-s3': 'System auto-initiates BPM & sends to FA team',
+    'mkp-pay-s4': 'FA team confirms & processes payment',
+  },
+  ja: {
+    'mkp-breadcrumb': 'ホーム / MKP 処理フロー',
+    'mkp-title': 'MKP 処理フロー',
+    'mkp-subtitle': '出発前後の担当分担と苦情返金作業',
+    'mkp-chip': 'MKP',
+    'mkp-def-title': '簡易定義',
+    'mkp-def-intro': 'CS は問い合わせを受け取り、注文が「出発済み」かどうかを判断基準として、対応部署を決定します。',
+    'mkp-before-title': '出発前',
+    'mkp-before-desc': 'サプライヤーへの連絡が必要な場合は、OP が代わりに伝達します。',
+    'mkp-after-title': '出発後',
+    'mkp-after-desc': '苦情または品質問題の場合は、<strong>AM</strong> が引き継いで確認・処理します。<br><span style="color:#b45309;font-size:11.5px;">**例外：使用済みだが未核銷の場合 → 引き続き OP が対応</span>',
+    'mkp-refund-note': '💰 <strong>苦情による返金</strong>は引き続き <strong>AM</strong> が BPM 単を申請し、CS / FA に同期して追跡します。',
+    'mkp-roles-title': '各部門の役割',
+    'mkp-role-cs': '旅客の問い合わせ受付、出発前後の判断、旅客との連絡、返金処理',
+    'mkp-role-op': '出発前または未核銷の注文：サプライヤーに通知（追跡なし）',
+    'mkp-role-am': '出発後の苦情/品質：品質確認、サプライヤー返金交渉、BPM REM 申請、CS への通知と送金日追跡',
+    'mkp-role-fa': '返金フォームの追跡、入金確認、出款/結案担当',
+    'mkp-flow-title': '完全な作業フロー',
+    'mkp-flow-s1': 'CS が問い合わせを受付',
+    'mkp-flow-d1': '注文は出発日を過ぎましたか？',
+    'mkp-flow-no-label': '❌ いいえ（出発前 / 未核銷）',
+    'mkp-flow-op1': 'サプライヤーに通知（追跡なし）',
+    'mkp-flow-yes-label': '✅ はい（出発後）→ 苦情 / 品質問題',
+    'mkp-flow-am1': '品質確認とサプライヤー返金追跡',
+    'mkp-flow-d2': 'サプライヤーが返金に同意？',
+    'mkp-flow-no2-label': '❌ いいえ',
+    'mkp-flow-cs2': '顧客に連絡・説明',
+    'mkp-flow-fa1': '出款 / 結案',
+    'mkp-flow-yes2-label': '✅ はい',
+    'mkp-flow-am2': 'BPM REM 申請・CS に通知・送金日追跡',
+    'mkp-flow-cs3': '情報取得・返金処理',
+    'mkp-flow-fa2': 'フォーム追跡・入金確認',
+    'mkp-flow-cs4': '結案',
+    'mkp-flow-am3': 'サプライヤー送金追跡',
+    'mkp-flow-fa3': '出款 / 結案',
+    'mkp-restrict-title': 'MKP システム操作制限',
+    'mkp-r1-title': '旅客メッセージ',
+    'mkp-r1-desc': 'OP は閲覧不可；CS は閲覧可能だが返信不可。',
+    'mkp-r2-title': '注文キャンセルと返金',
+    'mkp-r2-desc': 'OP は操作不可、部分返金も含む。',
+    'mkp-r3-title': 'COM 単（MKP BPM 請款単）',
+    'mkp-r3-desc': 'SG/JP 締結主体はすでに財務部門に自動転送済み。OP の作業は不要。',
+    'mkp-pay-title': '請款作業フロー',
+    'mkp-pay-subtitle': '対象：JP MKP (KK Mall) COM / SG/HK 締結主体、Auto Invoice サプライヤー',
+    'mkp-pay-s1': '毎月3日：システムが自動レポートを生成',
+    'mkp-pay-s2': '3〜5日以内：サプライヤーが金額を確認',
+    'mkp-pay-s3': 'システムが BPM を自動起票し FA に送付',
+    'mkp-pay-s4': 'FA チームが内容確認・支払い処理',
+  },
+  ko: {
+    'mkp-breadcrumb': '홈 / MKP 처리 프로세스',
+    'mkp-title': 'MKP 처리 프로세스',
+    'mkp-subtitle': '출발 전후 역할 분담 및 클레임 환불 작업',
+    'mkp-chip': 'MKP',
+    'mkp-def-title': '간단 정의',
+    'mkp-def-intro': 'CS가 문의를 받으면 주문이 「출발」했는지 여부를 기준으로 판단하여 담당 부서를 결정합니다.',
+    'mkp-before-title': '출발 전',
+    'mkp-before-desc': '공급업체에 알림이 필요한 경우 OP가 대신 전달합니다.',
+    'mkp-after-title': '출발 후',
+    'mkp-after-desc': '클레임 또는 품질 문제의 경우 <strong>AM</strong>이 인수하여 확인 및 처리합니다.<br><span style="color:#b45309;font-size:11.5px;">**예외：사용되었지만 미결제인 경우 → 여전히 OP가 전달</span>',
+    'mkp-refund-note': '💰 <strong>클레임 환불</strong>은 계속 <strong>AM</strong>이 BPM 단을 신청한 후 CS / FA에 동기화하여 추적합니다.',
+    'mkp-roles-title': '각 부서 역할',
+    'mkp-role-cs': '여행자 문의 접수, 출발 전후 판단, 여행자 소통, 환불 처리',
+    'mkp-role-op': '출발 전 또는 미결제 주문：공급업체 알림（추적 없음）',
+    'mkp-role-am': '출발 후 클레임/품질：품질 확인, 공급업체 환불 협상, BPM REM 신청, CS 통보 및 송금일 추적',
+    'mkp-role-fa': '환불 양식 추적, 입금 확인, 출금/결안 담당',
+    'mkp-flow-title': '전체 작업 프로세스',
+    'mkp-flow-s1': 'CS 문의 접수',
+    'mkp-flow-d1': '주문이 출발일을 지났나요?',
+    'mkp-flow-no-label': '❌ 아니오（출발 전 / 미결제）',
+    'mkp-flow-op1': '공급업체 알림（추적 없음）',
+    'mkp-flow-yes-label': '✅ 예（출발 후）→ 클레임 / 품질 문제',
+    'mkp-flow-am1': '품질 확인 및 공급업체 환불 추적',
+    'mkp-flow-d2': '공급업체가 환불에 동의?',
+    'mkp-flow-no2-label': '❌ 아니오',
+    'mkp-flow-cs2': '고객 연락 및 설명',
+    'mkp-flow-fa1': '출금 / 결안',
+    'mkp-flow-yes2-label': '✅ 예',
+    'mkp-flow-am2': 'BPM REM 신청, CS 환불 통보, 송금일 추적',
+    'mkp-flow-cs3': '정보 수집 및 환불 처리',
+    'mkp-flow-fa2': '양식 추적, 입금 확인',
+    'mkp-flow-cs4': '결안',
+    'mkp-flow-am3': '공급업체 송금 추적',
+    'mkp-flow-fa3': '출금 / 결안',
+    'mkp-restrict-title': 'MKP 시스템 조작 제한',
+    'mkp-r1-title': '여행자 메시지',
+    'mkp-r1-desc': 'OP는 조회 불가；CS는 조회 가능하나 답장 불가.',
+    'mkp-r2-title': '주문 취소 및 환불',
+    'mkp-r2-desc': 'OP는 조작 불가, 부분 환불 포함.',
+    'mkp-r3-title': 'COM 서류（MKP BPM 청구서）',
+    'mkp-r3-desc': 'SG/JP 계약 주체는 이미 재무팀으로 자동 이전. OP 작업 불필요.',
+    'mkp-pay-title': '청구 작업 프로세스',
+    'mkp-pay-subtitle': '대상：JP MKP (KK Mall) COM / SG/HK 계약 주체, Auto Invoice 공급업체',
+    'mkp-pay-s1': '매월 3일：시스템 자동 보고서 생성',
+    'mkp-pay-s2': '3~5일 이내：공급업체 금액 확인',
+    'mkp-pay-s3': '시스템 BPM 자동 생성 후 FA팀 전송',
+    'mkp-pay-s4': 'FA팀 내용 확인 및 결제 처리',
+  }
+});
+</script>
+</body>
+</html>

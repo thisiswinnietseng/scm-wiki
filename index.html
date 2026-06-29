@@ -412,6 +412,7 @@ a.sop-card .sc-tag { padding:2px 8px; border-radius:10px; font-size:10px; font-w
         <a class="sop-card" href="pages/order-init.html"><div class="sc-icon">📬</div><div class="sc-body"><h4 data-i18n="card-order-init-title">訂單成立後初步處理</h4><p data-i18n="card-order-init-desc">SYSTEM 點單、CS 點單、風控可疑訂單</p></div><span class="sc-tag badge-teal" data-i18n="tag-order">訂單</span></a>
         <a class="sop-card" href="pages/order-flow.html"><div class="sc-icon">🔄</div><div class="sc-body"><h4 data-i18n="card-order-flow-title">訂單進單後處理流程</h4><p data-i18n="card-order-flow-desc">四大情境：資料齊全/不齊 × 供應商可/不可接單</p></div><span class="sc-tag badge-teal" data-i18n="tag-order">訂單</span></a>
         <a class="sop-card" href="pages/voucher.html"><div class="sc-icon">🎫</div><div class="sc-body"><h4 data-i18n="card-voucher-title">憑證類型說明</h4><p data-i18n="card-voucher-desc">KKday Voucher、Supplier 官方／非官方版型</p></div><span class="sc-tag badge-blue" data-i18n="tag-issuance">出票</span></a>
+        <a class="sop-card" href="pages/mkp.html"><div class="sc-icon">🏪</div><div class="sc-body"><h4 data-i18n="card-mkp-title">MKP 處理流程</h4><p data-i18n="card-mkp-desc">出發前後責任分工、客訴退款、系統操作限制</p></div><span class="sc-tag badge-purple" data-i18n="tag-mkp">MKP</span></a>
       </div>
     </div>
   </div>
@@ -623,7 +624,7 @@ SCMi18n.init({
     'sub-accounting-title': '帳務管理', 'sub-accounting-sub': '請款方式 · 對帳流程 · 預存款 · 信用卡 · 佣金',
     'sub-messaging-title': '訊息管理', 'sub-messaging-sub': 'Be2 · 工單系統 · Slack · 供應商群組',
     'grp-auto': '自動出票', 'grp-manual': '人工訂購', 'grp-physical': '實體出貨', 'grp-exception': '異常處理',
-    'tag-new': '新人必讀', 'tag-order': '訂單', 'tag-inventory': '庫存', 'tag-issuance': '出票',
+    'tag-new': '新人必讀', 'tag-order': '訂單', 'tag-inventory': '庫存', 'tag-issuance': '出票', 'tag-mkp': 'MKP',
     'tag-auto': '自動', 'tag-manual': '人工', 'tag-physical': '實體', 'tag-exception': '異常',
     'tag-payment': '請款', 'tag-reconciliation': '對帳', 'tag-prepayment': '預存款',
     'tag-credit-card': '信用卡', 'tag-commission': '佣金', 'tag-messaging': '訊息',
@@ -633,6 +634,7 @@ SCMi18n.init({
     'card-order-flow-title': '訂單進單後處理流程', 'card-order-flow-desc': '四大情境：資料齊全/不齊 × 供應商可/不可接單',
     'card-inventory-title': 'PSI 票倉介紹', 'card-inventory-desc': 'PSI 系統票券入庫、出庫、庫存管理',
     'card-voucher-title': '憑證類型說明', 'card-voucher-desc': 'KKday Voucher、Supplier 官方／非官方版型',
+    'card-mkp-title': 'MKP 處理流程', 'card-mkp-desc': '出發前後責任分工、客訴退款、系統操作限制',
     'card-api-title': 'API', 'card-api-desc': '串接供應商平台即時出票，失敗處理方式',
     'card-ocbt-title': 'OCBT', 'card-ocbt-desc': '多供應商組合即訂即出，設定限制與失敗處理',
     'card-psi-title': 'PSI', 'card-psi-desc': '票倉庫存出票，出貨失敗處理方式',
@@ -688,7 +690,7 @@ SCMi18n.init({
     'sub-accounting-title': 'Accounting', 'sub-accounting-sub': 'Payment Methods · Reconciliation · Prepayment · Credit Card · Commission',
     'sub-messaging-title': 'Messaging', 'sub-messaging-sub': 'Be2 · Ticket System · Slack · Supplier Groups',
     'grp-auto': 'Auto Issuance', 'grp-manual': 'Manual Purchase', 'grp-physical': 'Physical Delivery', 'grp-exception': 'Exception Handling',
-    'tag-new': 'Must Read', 'tag-order': 'Order', 'tag-inventory': 'Inventory', 'tag-issuance': 'Issuance',
+    'tag-new': 'Must Read', 'tag-order': 'Order', 'tag-inventory': 'Inventory', 'tag-issuance': 'Issuance', 'tag-mkp': 'MKP',
     'tag-auto': 'Auto', 'tag-manual': 'Manual', 'tag-physical': 'Physical', 'tag-exception': 'Exception',
     'tag-payment': 'Payment', 'tag-reconciliation': 'Reconcile', 'tag-prepayment': 'Prepayment',
     'tag-credit-card': 'Credit Card', 'tag-commission': 'Commission', 'tag-messaging': 'Message',
@@ -698,6 +700,7 @@ SCMi18n.init({
     'card-order-flow-title': 'Post-Receipt Order Flow', 'card-order-flow-desc': '4 scenarios: complete/incomplete data × supplier accept/reject',
     'card-inventory-title': 'PSI Inventory Introduction', 'card-inventory-desc': 'PSI system ticket stock-in, stock-out, inventory management',
     'card-voucher-title': 'Voucher Type Guide', 'card-voucher-desc': 'KKday Voucher, Supplier official/unofficial formats',
+    'card-mkp-title': 'MKP Operation Flow', 'card-mkp-desc': 'Pre/post-departure roles, complaint refunds, system restrictions',
     'card-api-title': 'API', 'card-api-desc': 'Real-time ticketing via supplier API integration, failure handling',
     'card-ocbt-title': 'OCBT', 'card-ocbt-desc': 'Multi-supplier combo instant booking/issuance, settings and failure handling',
     'card-psi-title': 'PSI', 'card-psi-desc': 'Inventory-based ticket issuance, failure handling',
@@ -753,7 +756,7 @@ SCMi18n.init({
     'sub-accounting-title': '経理管理', 'sub-accounting-sub': '支払方法 · 照合 · 前払金 · クレカ · コミッション',
     'sub-messaging-title': 'メッセージ管理', 'sub-messaging-sub': 'Be2 · チケットシステム · Slack · サプライヤーグループ',
     'grp-auto': '自動発行', 'grp-manual': '手動購入', 'grp-physical': '実物配送', 'grp-exception': '例外処理',
-    'tag-new': '新人必読', 'tag-order': '注文', 'tag-inventory': '在庫', 'tag-issuance': '発行',
+    'tag-new': '新人必読', 'tag-order': '注文', 'tag-inventory': '在庫', 'tag-issuance': '発行', 'tag-mkp': 'MKP',
     'tag-auto': '自動', 'tag-manual': '手動', 'tag-physical': '実物', 'tag-exception': '例外',
     'tag-payment': '支払', 'tag-reconciliation': '照合', 'tag-prepayment': '前払金',
     'tag-credit-card': 'クレカ', 'tag-commission': 'コミッション', 'tag-messaging': 'メッセージ',
@@ -763,6 +766,7 @@ SCMi18n.init({
     'card-order-flow-title': '注文受領後の処理フロー', 'card-order-flow-desc': '4シナリオ：データ完全/不完全 × 受注可/不可',
     'card-inventory-title': 'PSI 在庫紹介', 'card-inventory-desc': 'PSIシステム チケット入庫・出庫・在庫管理',
     'card-voucher-title': 'バウチャータイプ説明', 'card-voucher-desc': 'KKday Voucher、サプライヤー公式/非公式版型',
+    'card-mkp-title': 'MKP 処理フロー', 'card-mkp-desc': '出発前後の担当分担・苦情返金・システム制限',
     'card-api-title': 'API', 'card-api-desc': 'サプライヤーAPIリアルタイム発券連携・失敗処理',
     'card-ocbt-title': 'OCBT', 'card-ocbt-desc': 'マルチサプライヤーコンボ即時予約・発行・設定と失敗処理',
     'card-psi-title': 'PSI', 'card-psi-desc': '在庫からのチケット発行・失敗処理',
@@ -818,7 +822,7 @@ SCMi18n.init({
     'sub-accounting-title': '회계 관리', 'sub-accounting-sub': '결제 방법 · 대사 · 선불금 · 신용카드 · 커미션',
     'sub-messaging-title': '메시지 관리', 'sub-messaging-sub': 'Be2 · 티켓 시스템 · Slack · 공급업체 그룹',
     'grp-auto': '자동 발행', 'grp-manual': '수동 구매', 'grp-physical': '실물 배송', 'grp-exception': '예외 처리',
-    'tag-new': '필독', 'tag-order': '주문', 'tag-inventory': '재고', 'tag-issuance': '발행',
+    'tag-new': '필독', 'tag-order': '주문', 'tag-inventory': '재고', 'tag-issuance': '발행', 'tag-mkp': 'MKP',
     'tag-auto': '자동', 'tag-manual': '수동', 'tag-physical': '실물', 'tag-exception': '예외',
     'tag-payment': '결제', 'tag-reconciliation': '대사', 'tag-prepayment': '선불금',
     'tag-credit-card': '신용카드', 'tag-commission': '커미션', 'tag-messaging': '메시지',
@@ -828,6 +832,7 @@ SCMi18n.init({
     'card-order-flow-title': '주문 접수 후 처리 흐름', 'card-order-flow-desc': '4가지 시나리오: 데이터 완전/불완전 × 수락/거부',
     'card-inventory-title': 'PSI 재고 소개', 'card-inventory-desc': 'PSI 시스템 티켓 입고, 출고, 재고 관리',
     'card-voucher-title': '바우처 유형 설명', 'card-voucher-desc': 'KKday Voucher, 공급업체 공식/비공식 형식',
+    'card-mkp-title': 'MKP 처리 프로세스', 'card-mkp-desc': '출발 전후 역할 분담, 클레임 환불, 시스템 제한',
     'card-api-title': 'API', 'card-api-desc': '공급업체 API 연동 실시간 발권, 실패 처리',
     'card-ocbt-title': 'OCBT', 'card-ocbt-desc': '다중 공급업체 콤보 즉시 예약/발행, 설정 제한 및 실패 처리',
     'card-psi-title': 'PSI', 'card-psi-desc': '재고 기반 티켓 발행, 실패 처리',
