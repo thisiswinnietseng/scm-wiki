@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKP 請款作業流程 — GO 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .mkp-section { margin-bottom: 28px; }
+    .mkp-section h2 {
+      font-size: 15px; font-weight: 700; color: var(--primary);
+      margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .info-note {
+      background: #fff7ed; border: 1.5px solid #fed7aa;
+      border-radius: 8px; padding: 13px 16px;
+      font-size: 12.5px; color: #92400e; line-height: 1.6; margin-bottom: 20px;
+    }
+    .restrict-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .restrict-card {
+      background: #fafbff; border: 1px solid #e2e8f0; border-radius: 8px;
+      padding: 13px 18px; display: flex; gap: 12px; align-items: flex-start;
+    }
+    .restrict-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .restrict-title { font-size: 13px; font-weight: 700; color: #2d3748; margin-bottom: 3px; }
+    .restrict-desc { font-size: 12.5px; color: #4a5568; line-height: 1.55; }
+  </style>
+  <style>
+    .nav { height: 96px !important; position: relative; }
+    .nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+    .nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+    .nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+    .nav-title em { color: #f5a623; font-style: normal; }
+    .lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+    .lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+    .lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+    .lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
+  </style>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-ai.js?v=1"></script>
+  <script src="../go-search.js?v=1"></script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
+    <div class="nav-title">
+      <h1 data-i18n-html="nav-title">GO <em>知識庫</em></h1>
+      <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+      <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+      <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+      <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb" data-i18n="mkp-pay-breadcrumb">首頁 / MKP 請款作業流程</div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#f7971e,#e65100);">💰</div>
+      <div class="page-header-body">
+        <h1 data-i18n="mkp-pay-title">MKP 請款作業流程</h1>
+        <p data-i18n="mkp-pay-subtitle-page">JP MKP / SG/HK 簽約主體的自動請款與付款流程</p>
+        <span class="page-chip" style="background:#ffedd5;color:#c2410c;" data-i18n="mkp-pay-chip">MKP 請款</span>
+      </div>
+    </div>
+
+    <!-- 適用範圍 -->
+    <div class="mkp-section">
+      <div class="info-note" data-i18n-html="mkp-pay-scope">
+        📌 <strong>適用範圍：</strong>JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商
+      </div>
+
+      <!-- 系統限制提醒 -->
+      <h2>🚫 <span data-i18n="mkp-pay-restrict-title">OP 請注意</span></h2>
+      <div class="restrict-list">
+        <div class="restrict-card">
+          <div class="restrict-icon">📄</div>
+          <div>
+            <div class="restrict-title" data-i18n="mkp-pay-r1-title">COM 單據（MKP BPM 請款單）</div>
+            <div class="restrict-desc" data-i18n="mkp-pay-r1-desc">SG / JP 簽約主體已自動流轉至財務，OP 無需作業。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 請款流程 -->
+    <div class="mkp-section">
+      <h2>🔄 <span data-i18n="mkp-pay-flow-title">請款作業流程</span></h2>
+
+      <div style="display:flex;align-items:stretch;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+
+        <!-- Step 1: System -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:12px 6px;font-size:13px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">System</div>
+          <div style="flex:1;padding:20px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #e2e8f0;">
+            <div style="width:100%;background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc;border-radius:10px;padding:14px 10px;font-size:12.5px;font-weight:600;text-align:center;line-height:1.6;" data-i18n-html="mkp-pay-s1">每月 <strong>3日</strong><br>產出自動報表</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;font-size:20px;color:#9ca3af;padding:0 4px;padding-top:52px;">→</div>
+
+        <!-- Step 2: Supplier -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:12px 6px;font-size:13px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">Supplier<span style="display:block;font-size:10px;color:rgba(255,255,255,0.5);font-weight:400;margin-top:2px;" data-i18n="mkp-pay-col-supplier">供應商</span></div>
+          <div style="flex:1;padding:20px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #e2e8f0;">
+            <div style="width:100%;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:10px;padding:14px 10px;font-size:12.5px;font-weight:600;text-align:center;line-height:1.6;" data-i18n-html="mkp-pay-s2"><strong>5日內 / 3日內</strong><br>確認金額正確</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;font-size:20px;color:#9ca3af;padding:0 4px;padding-top:52px;">→</div>
+
+        <!-- Step 3: System BPM -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:12px 6px;font-size:13px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">System</div>
+          <div style="flex:1;padding:20px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #e2e8f0;">
+            <div style="width:100%;background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc;border-radius:10px;padding:14px 10px;font-size:12.5px;font-weight:600;text-align:center;line-height:1.6;" data-i18n-html="mkp-pay-s3">產生 <strong>BPM 單據</strong><br>自動送 FA</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;font-size:20px;color:#9ca3af;padding:0 4px;padding-top:52px;">→</div>
+
+        <!-- Step 4: FA -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:12px 6px;font-size:13px;font-weight:700;">FA Team</div>
+          <div style="flex:1;padding:20px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <div style="width:100%;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:10px;padding:14px 10px;font-size:12.5px;font-weight:600;text-align:center;line-height:1.6;" data-i18n-html="mkp-pay-s4">確認內容<br><strong>及付款</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 補充說明 -->
+    <div class="mkp-section">
+      <h2>💡 <span data-i18n="mkp-pay-note-title">補充說明</span></h2>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#fafbff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:5px;" data-i18n="mkp-pay-note1-title">📘 Auto Invoice 供應商</div>
+          <div style="font-size:12.5px;color:#4a5568;line-height:1.6;" data-i18n="mkp-pay-note1-desc">系統自動產出『支払い通知書』及『Auto invoice』，供應商於期限內確認後，由系統自動產生 BPM 單並送交 FA team。</div>
+        </div>
+        <div style="background:#fafbff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
+          <div style="font-size:13px;font-weight:700;color:#2d3748;margin-bottom:5px;" data-i18n="mkp-pay-note2-title">🔗 客訴匯退（另見 MKP 處理流程）</div>
+          <div style="font-size:12.5px;color:#4a5568;line-height:1.6;" data-i18n="mkp-pay-note2-desc">客訴退款由 AM 申請 BPM REM 單，與本頁常規請款流程為不同作業。詳見 <a href="mkp.html" style="color:#6366f1;text-decoration:underline;">MKP 處理流程</a> 頁面。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
+  </div>
+
+<script>
+SCMi18n.init({
+  zh: {
+    'mkp-pay-breadcrumb': '首頁 / MKP 請款作業流程',
+    'mkp-pay-title': 'MKP 請款作業流程',
+    'mkp-pay-subtitle-page': 'JP MKP / SG/HK 簽約主體的自動請款與付款流程',
+    'mkp-pay-chip': 'MKP 請款',
+    'mkp-pay-scope': '📌 <strong>適用範圍：</strong>JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商',
+    'mkp-pay-restrict-title': 'OP 請注意',
+    'mkp-pay-r1-title': 'COM 單據（MKP BPM 請款單）',
+    'mkp-pay-r1-desc': 'SG / JP 簽約主體已自動流轉至財務，OP 無需作業。',
+    'mkp-pay-flow-title': '請款作業流程',
+    'mkp-pay-col-supplier': '供應商',
+    'mkp-pay-s1': '每月 <strong>3日</strong><br>產出自動報表',
+    'mkp-pay-s2': '<strong>5日內 / 3日內</strong><br>確認金額正確',
+    'mkp-pay-s3': '產生 <strong>BPM 單據</strong><br>自動送 FA',
+    'mkp-pay-s4': '確認內容<br><strong>及付款</strong>',
+    'mkp-pay-note-title': '補充說明',
+    'mkp-pay-note1-title': '📘 Auto Invoice 供應商',
+    'mkp-pay-note1-desc': '系統自動產出『支払い通知書』及『Auto invoice』，供應商於期限內確認後，由系統自動產生 BPM 單並送交 FA team。',
+    'mkp-pay-note2-title': '🔗 客訴匯退（另見 MKP 處理流程）',
+    'mkp-pay-note2-desc': '客訴退款由 AM 申請 BPM REM 單，與本頁常規請款流程為不同作業。詳見 <a href="mkp.html" style="color:#6366f1;text-decoration:underline;">MKP 處理流程</a> 頁面。',
+  },
+  en: {
+    'mkp-pay-breadcrumb': 'Home / MKP Payment Flow',
+    'mkp-pay-title': 'MKP Payment Flow',
+    'mkp-pay-subtitle-page': 'Automated payment request flow for JP MKP / SG/HK entities',
+    'mkp-pay-chip': 'MKP Payment',
+    'mkp-pay-scope': '📌 <strong>Scope:</strong> JP MKP (KK Mall) COM / SG/HK entities using Auto Invoice suppliers',
+    'mkp-pay-restrict-title': 'OP Note',
+    'mkp-pay-r1-title': 'COM Documents (MKP BPM Payment Requests)',
+    'mkp-pay-r1-desc': 'For SG/JP entities, the process is fully automated to Finance. OP has no action required.',
+    'mkp-pay-flow-title': 'Payment Request Flow',
+    'mkp-pay-col-supplier': 'Supplier',
+    'mkp-pay-s1': '<strong>3rd</strong> of each month<br>Auto report generated',
+    'mkp-pay-s2': 'Within <strong>3–5 days</strong><br>Confirm amount correct',
+    'mkp-pay-s3': 'System generates<br><strong>BPM document</strong> → FA',
+    'mkp-pay-s4': 'Confirm details<br><strong>& Process Payment</strong>',
+    'mkp-pay-note-title': 'Notes',
+    'mkp-pay-note1-title': '📘 Auto Invoice Suppliers',
+    'mkp-pay-note1-desc': 'System auto-generates 『支払い通知書』and 『Auto invoice』. After supplier confirms within deadline, system auto-initiates BPM and sends to FA team.',
+    'mkp-pay-note2-title': '🔗 Complaint Refunds (see MKP Operation Flow)',
+    'mkp-pay-note2-desc': 'Complaint refunds are handled by AM via BPM REM — a separate process from this regular payment flow. See the <a href="mkp.html" style="color:#6366f1;text-decoration:underline;">MKP Operation Flow</a> page.',
+  },
+  ja: {
+    'mkp-pay-breadcrumb': 'ホーム / MKP 請款フロー',
+    'mkp-pay-title': 'MKP 請款フロー',
+    'mkp-pay-subtitle-page': 'JP MKP / SG/HK 締結主体の自動請款・支払いフロー',
+    'mkp-pay-chip': 'MKP 請款',
+    'mkp-pay-scope': '📌 <strong>適用範囲：</strong>JP MKP (KK Mall) COM / SG/HK 締結主体、Auto Invoice サプライヤー',
+    'mkp-pay-restrict-title': 'OP ご注意',
+    'mkp-pay-r1-title': 'COM 単（MKP BPM 請款単）',
+    'mkp-pay-r1-desc': 'SG/JP 締結主体はすでに財務部門に自動転送済み。OP の作業は不要。',
+    'mkp-pay-flow-title': '請款作業フロー',
+    'mkp-pay-col-supplier': 'サプライヤー',
+    'mkp-pay-s1': '毎月<strong>3日</strong><br>自動レポート生成',
+    'mkp-pay-s2': '<strong>3〜5日以内</strong><br>金額を確認',
+    'mkp-pay-s3': '<strong>BPM 単</strong>を自動生成<br>FA に送付',
+    'mkp-pay-s4': '内容確認<br><strong>・支払い処理</strong>',
+    'mkp-pay-note-title': '補足説明',
+    'mkp-pay-note1-title': '📘 Auto Invoice サプライヤー',
+    'mkp-pay-note1-desc': 'システムが自動で『支払い通知書』と『Auto invoice』を生成。サプライヤーが期限内に確認後、システムが BPM を自動起票し FA チームに送付。',
+    'mkp-pay-note2-title': '🔗 苦情返金（MKP 処理フロー参照）',
+    'mkp-pay-note2-desc': '苦情による返金は AM が BPM REM を申請する別作業です。<a href="mkp.html" style="color:#6366f1;text-decoration:underline;">MKP 処理フロー</a>ページをご参照ください。',
+  },
+  ko: {
+    'mkp-pay-breadcrumb': '홈 / MKP 청구 프로세스',
+    'mkp-pay-title': 'MKP 청구 프로세스',
+    'mkp-pay-subtitle-page': 'JP MKP / SG/HK 계약 주체의 자동 청구 및 결제 프로세스',
+    'mkp-pay-chip': 'MKP 청구',
+    'mkp-pay-scope': '📌 <strong>적용 범위：</strong>JP MKP (KK Mall) COM / SG/HK 계약 주체, Auto Invoice 공급업체',
+    'mkp-pay-restrict-title': 'OP 주의사항',
+    'mkp-pay-r1-title': 'COM 서류（MKP BPM 청구서）',
+    'mkp-pay-r1-desc': 'SG/JP 계약 주체는 이미 재무팀으로 자동 이전. OP 작업 불필요.',
+    'mkp-pay-flow-title': '청구 작업 프로세스',
+    'mkp-pay-col-supplier': '공급업체',
+    'mkp-pay-s1': '매월 <strong>3일</strong><br>자동 보고서 생성',
+    'mkp-pay-s2': '<strong>3~5일 이내</strong><br>금액 확인',
+    'mkp-pay-s3': '<strong>BPM 서류</strong> 자동 생성<br>FA팀 전송',
+    'mkp-pay-s4': '내용 확인<br><strong>및 결제 처리</strong>',
+    'mkp-pay-note-title': '보충 설명',
+    'mkp-pay-note1-title': '📘 Auto Invoice 공급업체',
+    'mkp-pay-note1-desc': '시스템이 자동으로 『支払い通知書』와 『Auto invoice』를 생성. 공급업체가 기한 내 확인 후 시스템이 BPM을 자동 생성하여 FA팀에 전송.',
+    'mkp-pay-note2-title': '🔗 클레임 환불（MKP 처리 프로세스 참조）',
+    'mkp-pay-note2-desc': '클레임 환불은 AM이 BPM REM을 신청하는 별도 작업입니다. <a href="mkp.html" style="color:#6366f1;text-decoration:underline;">MKP 처리 프로세스</a> 페이지를 참조하세요.',
+  }
+});
+</script>
+</body>
+</html>

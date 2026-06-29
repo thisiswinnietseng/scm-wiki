@@ -372,52 +372,10 @@
       </div>
     </div>
 
-    <!-- ⑤ 請款作業流程 -->
-    <div class="mkp-section">
-      <h2>💰 <span data-i18n="mkp-pay-title">請款作業流程</span></h2>
-      <p style="font-size:12px;color:#6b7280;margin-bottom:14px;" data-i18n="mkp-pay-subtitle">適用：JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商</p>
-
-      <div style="display:flex;align-items:stretch;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
-
-        <!-- Step 1: System -->
-        <div style="flex:1;display:flex;flex-direction:column;">
-          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">System</div>
-          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #e2e8f0;">
-            <div style="width:100%;background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s1">每月3日<br>產出自動報表</div>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;font-size:18px;color:#9ca3af;padding:0 2px;margin-top:42px;">→</div>
-
-        <!-- Step 2: Supplier -->
-        <div style="flex:1;display:flex;flex-direction:column;">
-          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">Supplier<span style="display:block;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;margin-top:2px;">供應商</span></div>
-          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #e2e8f0;">
-            <div style="width:100%;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s2">5日內 / 3日內<br>確認金額正確</div>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;font-size:18px;color:#9ca3af;padding:0 2px;margin-top:42px;">→</div>
-
-        <!-- Step 3: System BPM -->
-        <div style="flex:1;display:flex;flex-direction:column;">
-          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,0.1);">System</div>
-          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #e2e8f0;">
-            <div style="width:100%;background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s3">產生 BPM 單據<br>自動送 FA</div>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;font-size:18px;color:#9ca3af;padding:0 2px;margin-top:42px;">→</div>
-
-        <!-- Step 4: FA -->
-        <div style="flex:1;display:flex;flex-direction:column;">
-          <div style="background:#1a1a2e;color:#fff;text-align:center;padding:10px 6px;font-size:12px;font-weight:700;">FA Team</div>
-          <div style="flex:1;padding:16px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-            <div style="width:100%;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:8px;padding:11px 8px;font-size:11.5px;font-weight:600;text-align:center;line-height:1.5;" data-i18n="mkp-pay-s4">確認內容<br>及付款</div>
-          </div>
-        </div>
-
-      </div>
+    <!-- 請款另頁連結 -->
+    <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <div style="font-size:13px;color:#92400e;" data-i18n="mkp-pay-link-note">💰 MKP 請款作業流程已移至「SCM 專區 → 帳務管理」</div>
+      <a href="mkp-payment.html" style="flex-shrink:0;background:#f97316;color:white;border-radius:7px;padding:7px 16px;font-size:12px;font-weight:700;text-decoration:none;" data-i18n="mkp-pay-link-btn">前往查看 →</a>
     </div>
 
     <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
@@ -469,6 +427,8 @@ SCMi18n.init({
     'mkp-r3-desc': 'SG / JP 簽約主體已自動流轉至財務，OP 無需作業。',
     'mkp-pay-title': '請款作業流程',
     'mkp-pay-subtitle': '適用：JP MKP (KK Mall) COM 單 / SG/HK 簽約主體，使用 Auto Invoice 供應商',
+    'mkp-pay-link-note': '💰 MKP 請款作業流程已移至「SCM 專區 → 帳務管理」',
+    'mkp-pay-link-btn': '前往查看 →',
     'mkp-pay-s1': '每月3日產出自動報表',
     'mkp-pay-s2': '5日內 / 3日內確認金額正確',
     'mkp-pay-s3': '產生 BPM 單據，自動送 FA',
@@ -518,6 +478,8 @@ SCMi18n.init({
     'mkp-r3-desc': 'For SG/JP entities, the process is fully automated to Finance. OP has no action required.',
     'mkp-pay-title': 'Payment Request Flow',
     'mkp-pay-subtitle': 'For: JP MKP (KK Mall) COM / SG/HK entities, Auto Invoice suppliers',
+    'mkp-pay-link-note': '💰 MKP Payment Flow has moved to "SCM Zone → Billing Management"',
+    'mkp-pay-link-btn': 'View Page →',
     'mkp-pay-s1': '3rd of each month: system auto-generates report',
     'mkp-pay-s2': 'Within 3–5 days: supplier confirms amount',
     'mkp-pay-s3': 'System auto-initiates BPM & sends to FA team',
@@ -567,6 +529,8 @@ SCMi18n.init({
     'mkp-r3-desc': 'SG/JP 締結主体はすでに財務部門に自動転送済み。OP の作業は不要。',
     'mkp-pay-title': '請款作業フロー',
     'mkp-pay-subtitle': '対象：JP MKP (KK Mall) COM / SG/HK 締結主体、Auto Invoice サプライヤー',
+    'mkp-pay-link-note': '💰 MKP 請款フローは「SCM エリア → 帳務管理」に移動しました',
+    'mkp-pay-link-btn': 'ページへ →',
     'mkp-pay-s1': '毎月3日：システムが自動レポートを生成',
     'mkp-pay-s2': '3〜5日以内：サプライヤーが金額を確認',
     'mkp-pay-s3': 'システムが BPM を自動起票し FA に送付',
@@ -616,6 +580,8 @@ SCMi18n.init({
     'mkp-r3-desc': 'SG/JP 계약 주체는 이미 재무팀으로 자동 이전. OP 작업 불필요.',
     'mkp-pay-title': '청구 작업 프로세스',
     'mkp-pay-subtitle': '대상：JP MKP (KK Mall) COM / SG/HK 계약 주체, Auto Invoice 공급업체',
+    'mkp-pay-link-note': '💰 MKP 청구 프로세스는 「SCM 전문 구역 → 帳務管理」로 이동했습니다',
+    'mkp-pay-link-btn': '페이지 보기 →',
     'mkp-pay-s1': '매월 3일：시스템 자동 보고서 생성',
     'mkp-pay-s2': '3~5일 이내：공급업체 금액 확인',
     'mkp-pay-s3': '시스템 BPM 자동 생성 후 FA팀 전송',
