@@ -1028,20 +1028,24 @@ window.addEventListener('scroll', () => {
 function toggleQlSidebar() {
   const sidebar = document.getElementById('qlSidebar');
   const btn = document.getElementById('qlFloatBtn');
+  const faqBtn = document.querySelector('.faq-float-btn');
   const isOpen = sidebar.classList.toggle('open');
   btn.style.opacity = isOpen ? '0' : '1';
   btn.style.pointerEvents = isOpen ? 'none' : 'auto';
+  if (faqBtn) { faqBtn.style.opacity = isOpen ? '0' : '1'; faqBtn.style.pointerEvents = isOpen ? 'none' : 'auto'; }
 }
 // 點側欄外部關閉
 document.addEventListener('click', e => {
   const sidebar = document.getElementById('qlSidebar');
   const btn = document.getElementById('qlFloatBtn');
+  const faqBtn = document.querySelector('.faq-float-btn');
   if (sidebar.classList.contains('open') &&
       !sidebar.contains(e.target) &&
       !btn.contains(e.target)) {
     sidebar.classList.remove('open');
     btn.style.opacity = '1';
     btn.style.pointerEvents = 'auto';
+    if (faqBtn) { faqBtn.style.opacity = '1'; faqBtn.style.pointerEvents = 'auto'; }
   }
 });
 
