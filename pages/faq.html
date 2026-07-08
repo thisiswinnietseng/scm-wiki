@@ -146,6 +146,7 @@
     <div class="faq-chip" onclick="filterCat('accounting', this)">💰 帳務／請款</div>
     <div class="faq-chip" onclick="filterCat('mkp', this)">📦 MKP</div>
     <div class="faq-chip" onclick="filterCat('system', this)">⚙️ 系統操作</div>
+    <div class="faq-chip" onclick="filterCat('psi', this)">📦 PSI 庫存</div>
     <div class="faq-chip" onclick="filterCat('fraud', this)">🚨 異常／盜刷</div>
     <div class="faq-chip" onclick="filterCat('comm', this)">📬 訊息溝通</div>
   </div>
@@ -233,33 +234,6 @@
         <span class="faq-q-arr">▾</span>
       </button>
       <div class="faq-a">不一定，請參照 Be2 上「恢復訂單狀態」頁面規則，也尚需確認訂單是否已完成退款流程，可在款項資料的退款資料頁面查詢退款狀態。</div>
-    </div>
-
-    <div class="faq-item" data-cat="cancel">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">誤取消訂單的庫存要怎麼處理？</span>
-        <span class="faq-q-arr">▾</span>
-      </button>
-      <div class="faq-a">可先請 OP 組長或 CS 主管協助恢復訂單即可；如無法恢復，再找 PSI 討論後續處理方法。</div>
-    </div>
-
-    <div class="faq-item" data-cat="cancel">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">訂單部分退貨，發現退錯貨怎麼辦？</span>
-        <span class="faq-q-arr">▾</span>
-      </button>
-      <div class="faq-a">發現退錯貨時，請將退貨的貨品序號統整好並盡快通知 <strong>scm_psi_hank</strong> 協助鎖定庫存，後續再討論如何把正確的貨配回訂單中。</div>
-    </div>
-
-    <div class="faq-item" data-cat="cancel">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">取消訂單時 BDAM 告知不用退貨，應如何處理？</span>
-        <span class="faq-q-arr">▾</span>
-      </button>
-      <div class="faq-a">所有取消訂單都不應再掛有成本的貨品。若確認無法使用或無法確認貨品狀態，請統一退貨，「是否可再配」選否，使貨品退回不可出庫狀態。PSI 端將於每週一通知相關 AM 處置這些庫存。</div>
     </div>
 
   </div>
@@ -400,13 +374,52 @@
       <div class="faq-a">查看訂單的「出票設定」欄位：<strong>API</strong> = 串接自動；<strong>PSI</strong> = 票倉自動；<strong>即訂即出</strong> = 系統自動；無上述設定 = 需人工訂購。</div>
     </div>
 
-    <div class="faq-item" data-cat="system">
+  </div>
+
+  <!-- ── PSI ── -->
+  <div class="faq-category" data-cat="psi">
+    <div class="faq-cat-header">
+      <div class="faq-cat-icon" style="background:#dbeafe;">📦</div>
+      <div>
+        <div class="faq-cat-label">PSI 庫存管理</div>
+        <div class="faq-cat-count">4 個問題</div>
+      </div>
+    </div>
+
+    <div class="faq-item" data-cat="psi">
       <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#f1f5f9;color:#475569;">PSI</span>
+        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
         <span class="faq-q-text">高風險票券過去訂單要怎麼查詢？</span>
         <span class="faq-q-arr">▾</span>
       </button>
       <div class="faq-a">可藉由訂單倉庫出貨頁查看高風險欄位的貨品明細，或在 PSI 系統的查詢貨品功能下條件（以貨品序號）取得相關資訊。</div>
+    </div>
+
+    <div class="faq-item" data-cat="psi">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
+        <span class="faq-q-text">誤取消訂單的庫存要怎麼處理？</span>
+        <span class="faq-q-arr">▾</span>
+      </button>
+      <div class="faq-a">可先請 OP 組長或 CS 主管協助恢復訂單即可；如無法恢復，再找 PSI 討論後續處理方法。</div>
+    </div>
+
+    <div class="faq-item" data-cat="psi">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
+        <span class="faq-q-text">訂單部分退貨，發現退錯貨怎麼辦？</span>
+        <span class="faq-q-arr">▾</span>
+      </button>
+      <div class="faq-a">發現退錯貨時，請將退貨的貨品序號統整好並盡快通知 <strong>scm_psi_hank</strong> 協助鎖定庫存，後續再討論如何把正確的貨配回訂單中。</div>
+    </div>
+
+    <div class="faq-item" data-cat="psi">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
+        <span class="faq-q-text">取消訂單時 BDAM 告知不用退貨，應如何處理？</span>
+        <span class="faq-q-arr">▾</span>
+      </button>
+      <div class="faq-a">所有取消訂單都不應再掛有成本的貨品。若確認無法使用或無法確認貨品狀態，請統一退貨，「是否可再配」選否，使貨品退回不可出庫狀態。PSI 端將於每週一通知相關 AM 處置這些庫存。</div>
     </div>
   </div>
 
