@@ -50,48 +50,23 @@
 
     /* ── Category section ── */
     .faq-category { margin-bottom:28px; }
-    .faq-cat-header {
-      display:flex; align-items:center; gap:10px;
-      margin-bottom:12px;
-    }
-    .faq-cat-icon {
-      width:36px; height:36px; border-radius:9px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:18px; flex-shrink:0;
-    }
+    .faq-cat-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+    .faq-cat-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
     .faq-cat-label { font-size:15px; font-weight:800; color:var(--primary); }
     .faq-cat-count { font-size:11px; color:#94a3b8; font-weight:600; }
 
     /* ── Accordion items ── */
-    .faq-item {
-      border:1px solid var(--border); border-radius:10px;
-      margin-bottom:8px; overflow:hidden;
-      transition:box-shadow .15s;
-    }
+    .faq-item { border:1px solid var(--border); border-radius:10px; margin-bottom:8px; overflow:hidden; transition:box-shadow .15s; }
     .faq-item:hover { box-shadow:0 2px 12px rgba(0,0,0,0.07); }
     .faq-item.hidden { display:none; }
-    .faq-q {
-      width:100%; text-align:left; background:white;
-      border:none; padding:14px 16px; cursor:pointer;
-      display:flex; align-items:flex-start; gap:12px;
-      font-family:inherit; transition:background .12s;
-    }
+    .faq-q { width:100%; text-align:left; background:white; border:none; padding:14px 16px; cursor:pointer; display:flex; align-items:flex-start; gap:12px; font-family:inherit; transition:background .12s; }
     .faq-q:hover { background:#fafbff; }
     .faq-q.open { background:#fafbff; }
-    .faq-q-badge {
-      flex-shrink:0; font-size:10px; font-weight:800;
-      padding:3px 8px; border-radius:6px; margin-top:1px;
-      letter-spacing:.5px;
-    }
+    .faq-q-badge { flex-shrink:0; font-size:10px; font-weight:800; padding:3px 8px; border-radius:6px; margin-top:1px; letter-spacing:.5px; }
     .faq-q-text { flex:1; font-size:13px; font-weight:700; color:var(--primary); line-height:1.5; text-align:left; }
     .faq-q-arr { flex-shrink:0; font-size:14px; color:#94a3b8; transition:transform .2s; margin-top:2px; }
     .faq-q.open .faq-q-arr { transform:rotate(180deg); }
-    .faq-a {
-      display:none; padding:0 16px 14px 16px;
-      padding-left:calc(16px + 12px + 34px); /* align with text */
-      font-size:13px; color:#4a5568; line-height:1.75;
-      border-top:1px solid #f0f0f0; background:#fafbff;
-    }
+    .faq-a { display:none; padding:0 16px 14px 16px; padding-left:calc(16px + 12px + 34px); font-size:13px; color:#4a5568; line-height:1.75; border-top:1px solid #f0f0f0; background:#fafbff; }
     .faq-a.open { display:block; }
     .faq-a strong { color:var(--primary); }
 
@@ -121,13 +96,13 @@
 </nav>
 
 <div class="page-wrapper">
-  <div class="breadcrumb">首頁 › 常見問題 FAQ</div>
+  <div class="breadcrumb" data-i18n="faq-breadcrumb">首頁 › 常見問題 FAQ</div>
 
   <div class="page-header">
     <div class="page-header-icon" style="background:linear-gradient(135deg,#667eea,#764ba2);">💬</div>
     <div>
-      <h1 class="page-title">常見問題 FAQ</h1>
-      <p class="page-subtitle">新人常見疑問・依主題分類・快速搜尋</p>
+      <h1 class="page-title" data-i18n="faq-title">常見問題 FAQ</h1>
+      <p class="page-subtitle" data-i18n="faq-subtitle">新人常見疑問・依主題分類・快速搜尋</p>
     </div>
   </div>
 
@@ -140,14 +115,14 @@
 
   <!-- 分類篩選 chips -->
   <div class="faq-chips" id="faqChips">
-    <div class="faq-chip all active" onclick="filterCat('all', this)">全部</div>
-    <div class="faq-chip" onclick="filterCat('ticket', this)">🎫 出票／訂購</div>
-    <div class="faq-chip" onclick="filterCat('cancel', this)">❌ 取消／退款</div>
-    <div class="faq-chip" onclick="filterCat('accounting', this)">💰 帳務／請款</div>
-    <div class="faq-chip" onclick="filterCat('mkp', this)">📦 MKP</div>
-    <div class="faq-chip" onclick="filterCat('system', this)">⚙️ 系統操作</div>
-    <div class="faq-chip" onclick="filterCat('psi', this)">📦 PSI 庫存</div>
-    <div class="faq-chip" onclick="filterCat('fraud', this)">🚨 異常／盜刷</div>
+    <div class="faq-chip all active" onclick="filterCat('all', this)" data-i18n="faq-chip-all">全部</div>
+    <div class="faq-chip" onclick="filterCat('ticket', this)" data-i18n="faq-chip-ticket">🎫 出票／訂購</div>
+    <div class="faq-chip" onclick="filterCat('cancel', this)" data-i18n="faq-chip-cancel">❌ 取消／退款</div>
+    <div class="faq-chip" onclick="filterCat('accounting', this)" data-i18n="faq-chip-accounting">💰 帳務／請款</div>
+    <div class="faq-chip" onclick="filterCat('mkp', this)" data-i18n="faq-chip-mkp">📦 MKP</div>
+    <div class="faq-chip" onclick="filterCat('system', this)" data-i18n="faq-chip-system">⚙️ 系統操作</div>
+    <div class="faq-chip" onclick="filterCat('psi', this)" data-i18n="faq-chip-psi">📦 PSI 庫存</div>
+    <div class="faq-chip" onclick="filterCat('fraud', this)" data-i18n="faq-chip-fraud">🚨 異常／盜刷</div>
   </div>
 
   <!-- ── 出票／訂購 ── -->
@@ -155,38 +130,37 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#e8f7f9;">🎫</div>
       <div>
-        <div class="faq-cat-label">出票 / 訂購</div>
-        <div class="faq-cat-count">3 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-ticket">出票 / 訂購</div>
+        <div class="faq-cat-count" data-i18n="faq-count-ticket">3 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="ticket">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dcfce7;color:#166534;">出票</span>
-        <span class="faq-q-text">API 訂單出票失敗，我應該怎麼做？</span>
+        <span class="faq-q-text" data-i18n="faq-tq1">API 訂單出票失敗，我應該怎麼做？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">先在 Be2 確認錯誤訊息：若是庫存不足或供應商 API 逾時，可嘗試重新觸發；若持續失敗，請詢問 AM 或是轉為人工訂購。</div>
+      <div class="faq-a" data-i18n="faq-ta1">先在 Be2 確認錯誤訊息：若是庫存不足或供應商 API 逾時，可嘗試重新觸發；若持續失敗，請詢問 AM 或是轉為人工訂購。</div>
     </div>
 
     <div class="faq-item" data-cat="ticket">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dcfce7;color:#166534;">出票</span>
-        <span class="faq-q-text">假即訂即出的訂單，多久內要完成人工訂購？</span>
+        <span class="faq-q-text" data-i18n="faq-tq2">假即訂即出的訂單，多久內要完成人工訂購？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">從旅客下單時算起 <strong>24 小時內</strong>，OP 必須完成向供應商的人工訂購。請優先處理此類訂單，避免旅客出行前未收到有效憑證。</div>
+      <div class="faq-a" data-i18n-html="faq-ta2">從旅客下單時算起 <strong>24 小時內</strong>，OP 必須完成向供應商的人工訂購。請優先處理此類訂單，避免旅客出行前未收到有效憑證。</div>
     </div>
 
     <div class="faq-item" data-cat="ticket">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dcfce7;color:#166534;">OCBT</span>
-        <span class="faq-q-text">OCBT 子訂單其中一個失敗，需要整筆取消嗎？</span>
+        <span class="faq-q-text" data-i18n="faq-tq3">OCBT 子訂單其中一個失敗，需要整筆取消嗎？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">不一定。先判斷失敗原因，若只是單一子訂單問題，可針對失敗子訂單進行人工補訂；若供應商完全無法接單才考慮整筆取消。</div>
+      <div class="faq-a" data-i18n="faq-ta3">不一定。先判斷失敗原因，若只是單一子訂單問題，可針對失敗子訂單進行人工補訂；若供應商完全無法接單才考慮整筆取消。</div>
     </div>
-
   </div>
 
   <!-- ── 取消／退款 ── -->
@@ -194,38 +168,37 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#fee2e2;">❌</div>
       <div>
-        <div class="faq-cat-label">取消 / 退款</div>
-        <div class="faq-cat-count">3 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-cancel">取消 / 退款</div>
+        <div class="faq-cat-count" data-i18n="faq-count-cancel">3 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="cancel">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#fee2e2;color:#b91c1c;">取消</span>
-        <span class="faq-q-text">OCBT 商品要取消，有什麼特別注意事項？</span>
+        <span class="faq-q-text" data-i18n="faq-cq1">OCBT 商品要取消，有什麼特別注意事項？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">必須先確認<strong>所有子訂單皆已取消完成</strong>，才能執行母訂單取消。若子訂單未完全取消就取消母訂單，可能造成帳務與憑證異常。</div>
+      <div class="faq-a" data-i18n-html="faq-ca1">必須先確認<strong>所有子訂單皆已取消完成</strong>，才能執行母訂單取消。若子訂單未完全取消就取消母訂單，可能造成帳務與憑證異常。</div>
     </div>
 
     <div class="faq-item" data-cat="cancel">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#fee2e2;color:#b91c1c;">部分退款</span>
-        <span class="faq-q-text">旅客要部分取消（例如從 4 人減為 2 人），流程跟一般取消一樣嗎？</span>
+        <span class="faq-q-text" data-i18n="faq-cq2">旅客要部分取消（例如從 4 人減為 2 人），流程跟一般取消一樣嗎？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">不同。部分取消需在 Be2 執行部分退款操作，並先確認成本是否有變動（是否需向供應商退票）。幣別為 HKD/MYR 時，因系統問題尚未排除，需注意僅能取整數。</div>
+      <div class="faq-a" data-i18n="faq-ca2">不同。部分取消需在 Be2 執行部分退款操作，並先確認成本是否有變動（是否需向供應商退票）。幣別為 HKD/MYR 時，因系統問題尚未排除，需注意僅能取整數。</div>
     </div>
 
     <div class="faq-item" data-cat="cancel">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#fee2e2;color:#b91c1c;">恢復</span>
-        <span class="faq-q-text">所有訂單都可以恢復訂單嗎？</span>
+        <span class="faq-q-text" data-i18n="faq-cq3">所有訂單都可以恢復訂單嗎？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">不一定，請參照 Be2 上「恢復訂單狀態」頁面規則，也尚需確認訂單是否已完成退款流程，可在款項資料的退款資料頁面查詢退款狀態。</div>
+      <div class="faq-a" data-i18n="faq-ca3">不一定，請參照 Be2 上「恢復訂單狀態」頁面規則，也尚需確認訂單是否已完成退款流程，可在款項資料的退款資料頁面查詢退款狀態。</div>
     </div>
-
   </div>
 
   <!-- ── 帳務／請款 ── -->
@@ -233,18 +206,18 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#fff4e6;">💰</div>
       <div>
-        <div class="faq-cat-label">帳務 / 請款</div>
-        <div class="faq-cat-count">1 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-accounting">帳務 / 請款</div>
+        <div class="faq-cat-count" data-i18n="faq-count-accounting">1 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="accounting">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#fee2e2;color:#b91c1c;">佣金</span>
-        <span class="faq-q-text">佣金申請 REM 跟 INV 有什麼差別？</span>
+        <span class="faq-q-text" data-i18n="faq-aq1">佣金申請 REM 跟 INV 有什麼差別？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a"><strong>REM</strong>：供應商先匯款給 KKday，再附上津貼/折讓單。<br><strong>INV</strong>：KKday 主動開立憑證給供應商，無需供應商先入款。</div>
+      <div class="faq-a" data-i18n-html="faq-aa1"><strong>REM</strong>：供應商先匯款給 KKday，再附上津貼/折讓單。<br><strong>INV</strong>：KKday 主動開立憑證給供應商，無需供應商先入款。</div>
     </div>
   </div>
 
@@ -253,45 +226,45 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#ede9fe;">📦</div>
       <div>
-        <div class="faq-cat-label">MKP 相關</div>
-        <div class="faq-cat-count">4 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-mkp">MKP 相關</div>
+        <div class="faq-cat-count" data-i18n="faq-count-mkp">4 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="mkp">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#ede9fe;color:#5b21b6;">MKP</span>
-        <span class="faq-q-text">什麼是 MKP？</span>
+        <span class="faq-q-text" data-i18n="faq-mq1">什麼是 MKP？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">MKP 是 <strong>Marketplace</strong> 的縮寫，為 KKday 商城供應商合作模式。訂單日常作業由供應商自行處理，KKday 僅為平台方，OP/CS 只在特殊情境（客訴、退款、品質問題）時介入。</div>
+      <div class="faq-a" data-i18n-html="faq-ma1">MKP 是 <strong>Marketplace</strong> 的縮寫，為 KKday 商城供應商合作模式。訂單日常作業由供應商自行處理，KKday 僅為平台方，OP/CS 只在特殊情境（客訴、退款、品質問題）時介入。</div>
     </div>
 
     <div class="faq-item" data-cat="mkp">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#ede9fe;color:#5b21b6;">MKP</span>
-        <span class="faq-q-text">MKP 訂單出問題，OP 可以直接在 Be2 修改憑證內容嗎？</span>
+        <span class="faq-q-text" data-i18n="faq-mq2">MKP 訂單出問題，OP 可以直接在 Be2 修改憑證內容嗎？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">不行。MKP 訂單的憑證由供應商管理，OP 不可直接修改。若需取消，須透過 CS 發起特例取消流程。</div>
+      <div class="faq-a" data-i18n="faq-ma2">不行。MKP 訂單的憑證由供應商管理，OP 不可直接修改。若需取消，須透過 CS 發起特例取消流程。</div>
     </div>
 
     <div class="faq-item" data-cat="mkp">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#ede9fe;color:#5b21b6;">MKP</span>
-        <span class="faq-q-text">旅客對 MKP 商品體驗不滿意，CS 應該怎麼處理？</span>
+        <span class="faq-q-text" data-i18n="faq-mq3">旅客對 MKP 商品體驗不滿意，CS 應該怎麼處理？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">CS 收案後，轉 OP 聯繫供應商確認情況；若涉及退款，再轉 FA 執行；若為商品品質問題，由 AM 與供應商協調改善。</div>
+      <div class="faq-a" data-i18n="faq-ma3">CS 收案後，轉 OP 聯繫供應商確認情況；若涉及退款，再轉 FA 執行；若為商品品質問題，由 AM 與供應商協調改善。</div>
     </div>
 
     <div class="faq-item" data-cat="mkp">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#ede9fe;color:#5b21b6;">MKP</span>
-        <span class="faq-q-text">MKP 訂單需要退款，流程是什麼？</span>
+        <span class="faq-q-text" data-i18n="faq-mq4">MKP 訂單需要退款，流程是什麼？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a"><strong>OP 不得自行操作退款（含部分退款）。</strong>流程如下：CS 收案 → AM 確認品質並與供應商洽談退款 → AM 申請 BPM REM 單並通知 CS → FA 追蹤款項是否匯回並負責出款結案。</div>
+      <div class="faq-a" data-i18n-html="faq-ma4"><strong>OP 不得自行操作退款（含部分退款）。</strong>流程如下：CS 收案 → AM 確認品質並與供應商洽談退款 → AM 申請 BPM REM 單並通知 CS → FA 追蹤款項是否匯回並負責出款結案。</div>
     </div>
   </div>
 
@@ -300,25 +273,19 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#f1f5f9;">⚙️</div>
       <div>
-        <div class="faq-cat-label">系統操作</div>
-        <div class="faq-cat-count">1 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-system">系統操作</div>
+        <div class="faq-cat-count" data-i18n="faq-count-system">1 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="system">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#f1f5f9;color:#475569;">系統</span>
-        <span class="faq-q-text">Be2、B2D、BPM、PSI 各是什麼系統？</span>
+        <span class="faq-q-text" data-i18n="faq-sq1">Be2、B2D、BPM、PSI 各是什麼系統？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">
-        <strong>Be2</strong>：KKday 核心訂單管理系統（OP 主要使用）<br>
-        <strong>B2D</strong>：供應商後台系統<br>
-        <strong>BPM（Odoo）</strong>：內部流程審核與請款系統<br>
-        <strong>PSI</strong>：票倉庫存管理系統
-      </div>
+      <div class="faq-a" data-i18n-html="faq-sa1"><strong>Be2</strong>：KKday 核心訂單管理系統（OP 主要使用）<br><strong>B2D</strong>：供應商後台系統<br><strong>BPM（Odoo）</strong>：內部流程審核與請款系統<br><strong>PSI</strong>：票倉庫存管理系統</div>
     </div>
-
   </div>
 
   <!-- ── PSI ── -->
@@ -326,45 +293,45 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#dbeafe;">📦</div>
       <div>
-        <div class="faq-cat-label">PSI 庫存管理</div>
-        <div class="faq-cat-count">4 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-psi">PSI 庫存管理</div>
+        <div class="faq-cat-count" data-i18n="faq-count-psi">4 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="psi">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">高風險票券過去訂單要怎麼查詢？</span>
+        <span class="faq-q-text" data-i18n="faq-pq1">高風險票券過去訂單要怎麼查詢？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">可藉由訂單倉庫出貨頁查看高風險欄位的貨品明細，或在 PSI 系統的查詢貨品功能下條件（以貨品序號）取得相關資訊。</div>
+      <div class="faq-a" data-i18n="faq-pa1">可藉由訂單倉庫出貨頁查看高風險欄位的貨品明細，或在 PSI 系統的查詢貨品功能下條件（以貨品序號）取得相關資訊。</div>
     </div>
 
     <div class="faq-item" data-cat="psi">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">誤取消訂單的庫存要怎麼處理？</span>
+        <span class="faq-q-text" data-i18n="faq-pq2">誤取消訂單的庫存要怎麼處理？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">可先請 OP 組長或 CS 主管協助恢復訂單即可；如無法恢復，再找 PSI 討論後續處理方法。</div>
+      <div class="faq-a" data-i18n="faq-pa2">可先請 OP 組長或 CS 主管協助恢復訂單即可；如無法恢復，再找 PSI 討論後續處理方法。</div>
     </div>
 
     <div class="faq-item" data-cat="psi">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">訂單部分退貨，發現退錯貨怎麼辦？</span>
+        <span class="faq-q-text" data-i18n="faq-pq3">訂單部分退貨，發現退錯貨怎麼辦？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">發現退錯貨時，請將退貨的貨品序號統整好並盡快通知 <strong>scm_psi_hank</strong> 協助鎖定庫存，後續再討論如何把正確的貨配回訂單中。</div>
+      <div class="faq-a" data-i18n-html="faq-pa3">發現退錯貨時，請將退貨的貨品序號統整好並盡快通知 <strong>scm_psi_hank</strong> 協助鎖定庫存，後續再討論如何把正確的貨配回訂單中。</div>
     </div>
 
     <div class="faq-item" data-cat="psi">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">PSI</span>
-        <span class="faq-q-text">取消訂單時 BDAM 告知不用退貨，應如何處理？</span>
+        <span class="faq-q-text" data-i18n="faq-pq4">取消訂單時 BDAM 告知不用退貨，應如何處理？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">所有取消訂單都不應再掛有成本的貨品。若確認無法使用或無法確認貨品狀態，請統一退貨，「是否可再配」選否，使貨品退回不可出庫狀態。PSI 端將於每週一通知相關 AM 處置這些庫存。</div>
+      <div class="faq-a" data-i18n="faq-pa4">所有取消訂單都不應再掛有成本的貨品。若確認無法使用或無法確認貨品狀態，請統一退貨，「是否可再配」選否，使貨品退回不可出庫狀態。PSI 端將於每週一通知相關 AM 處置這些庫存。</div>
     </div>
   </div>
 
@@ -373,56 +340,270 @@
     <div class="faq-cat-header">
       <div class="faq-cat-icon" style="background:#fef3c7;">🚨</div>
       <div>
-        <div class="faq-cat-label">異常 / 盜刷</div>
-        <div class="faq-cat-count">2 個問題</div>
+        <div class="faq-cat-label" data-i18n="faq-cat-fraud">異常 / 盜刷</div>
+        <div class="faq-cat-count" data-i18n="faq-count-fraud">2 個問題</div>
       </div>
     </div>
 
     <div class="faq-item" data-cat="fraud">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#fef3c7;color:#92400e;">盜刷</span>
-        <span class="faq-q-text">收到風控通知說某筆訂單可能是盜刷，第一步要做什麼？</span>
+        <span class="faq-q-text" data-i18n="faq-fq1">收到風控通知說某筆訂單可能是盜刷，第一步要做什麼？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">先在 Be2 查看訂單詳情（訂購時間、IP、付款方式），再確認<strong>憑證是否已被使用</strong>，然後聯繫供應商確認服務狀態。</div>
+      <div class="faq-a" data-i18n-html="faq-fa1">先在 Be2 查看訂單詳情（訂購時間、IP、付款方式），再確認<strong>憑證是否已被使用</strong>，然後聯繫供應商確認服務狀態。</div>
     </div>
 
     <div class="faq-item" data-cat="fraud">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-badge" style="background:#fef3c7;color:#92400e;">盜刷</span>
-        <span class="faq-q-text">盜刷憑證已被使用，還能怎麼處理？</span>
+        <span class="faq-q-text" data-i18n="faq-fq2">盜刷憑證已被使用，還能怎麼處理？</span>
         <span class="faq-q-arr">▾</span>
       </button>
-      <div class="faq-a">無法撤銷已使用的憑證，需通知風控團隊，由風控與財務部門追究後續追償，OP 負責提供訂單明細配合調查。</div>
+      <div class="faq-a" data-i18n="faq-fa2">無法撤銷已使用的憑證，需通知風控團隊，由風控與財務部門追究後續追償，OP 負責提供訂單明細配合調查。</div>
     </div>
-
   </div>
 
-  <!-- ── 訊息溝通 ── -->
   <!-- No results -->
   <div class="faq-empty" id="faqEmpty">
     <div class="faq-empty-icon">😅</div>
-    <p>找不到相關問題，試試其他關鍵字<br>或直接問 🤖 AI 助理！</p>
+    <p data-i18n-html="faq-empty">找不到相關問題，試試其他關鍵字<br>或直接問 🤖 AI 助理！</p>
   </div>
 
 </div><!-- page-wrapper -->
 
-<div class="wiki-footer">GO 知識庫 · 內部使用，請勿對外分享</div>
+<div class="wiki-footer" data-i18n="faq-footer">GO 知識庫 · 內部使用，請勿對外分享</div>
 
 <script>
 SCMi18n.init({
-  zh: { 'nav-title': 'SCM <em>知識庫</em>', 'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢' },
-  en: { 'nav-title': 'SCM <em>Wiki</em>',   'nav-subtitle': 'OP Operations Manual · Must-Read · One-Stop Reference' },
-  ja: { 'nav-title': 'SCM <em>ナレッジベース</em>', 'nav-subtitle': 'OP 業務マニュアル · 新人必読 · ワンストップ参照' },
-  ko: { 'nav-title': 'SCM <em>지식베이스</em>', 'nav-subtitle': 'OP 업무 매뉴얼 · 신입 필독 · 원스톱 참조' },
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>', 'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'faq-breadcrumb': '首頁 › 常見問題 FAQ',
+    'faq-title': '常見問題 FAQ', 'faq-subtitle': '新人常見疑問・依主題分類・快速搜尋',
+    'faq-search-ph': '搜尋問題… 例如：OCBT 取消、預存款、盜刷',
+    'faq-chip-all': '全部', 'faq-chip-ticket': '🎫 出票／訂購', 'faq-chip-cancel': '❌ 取消／退款',
+    'faq-chip-accounting': '💰 帳務／請款', 'faq-chip-mkp': '📦 MKP',
+    'faq-chip-system': '⚙️ 系統操作', 'faq-chip-psi': '📦 PSI 庫存', 'faq-chip-fraud': '🚨 異常／盜刷',
+    'faq-cat-ticket': '出票 / 訂購', 'faq-count-ticket': '3 個問題',
+    'faq-cat-cancel': '取消 / 退款', 'faq-count-cancel': '3 個問題',
+    'faq-cat-accounting': '帳務 / 請款', 'faq-count-accounting': '1 個問題',
+    'faq-cat-mkp': 'MKP 相關', 'faq-count-mkp': '4 個問題',
+    'faq-cat-system': '系統操作', 'faq-count-system': '1 個問題',
+    'faq-cat-psi': 'PSI 庫存管理', 'faq-count-psi': '4 個問題',
+    'faq-cat-fraud': '異常 / 盜刷', 'faq-count-fraud': '2 個問題',
+    'faq-tq1': 'API 訂單出票失敗，我應該怎麼做？',
+    'faq-ta1': '先在 Be2 確認錯誤訊息：若是庫存不足或供應商 API 逾時，可嘗試重新觸發；若持續失敗，請詢問 AM 或是轉為人工訂購。',
+    'faq-tq2': '假即訂即出的訂單，多久內要完成人工訂購？',
+    'faq-ta2': '從旅客下單時算起 <strong>24 小時內</strong>，OP 必須完成向供應商的人工訂購。請優先處理此類訂單，避免旅客出行前未收到有效憑證。',
+    'faq-tq3': 'OCBT 子訂單其中一個失敗，需要整筆取消嗎？',
+    'faq-ta3': '不一定。先判斷失敗原因，若只是單一子訂單問題，可針對失敗子訂單進行人工補訂；若供應商完全無法接單才考慮整筆取消。',
+    'faq-cq1': 'OCBT 商品要取消，有什麼特別注意事項？',
+    'faq-ca1': '必須先確認<strong>所有子訂單皆已取消完成</strong>，才能執行母訂單取消。若子訂單未完全取消就取消母訂單，可能造成帳務與憑證異常。',
+    'faq-cq2': '旅客要部分取消（例如從 4 人減為 2 人），流程跟一般取消一樣嗎？',
+    'faq-ca2': '不同。部分取消需在 Be2 執行部分退款操作，並先確認成本是否有變動（是否需向供應商退票）。幣別為 HKD/MYR 時，因系統問題尚未排除，需注意僅能取整數。',
+    'faq-cq3': '所有訂單都可以恢復訂單嗎？',
+    'faq-ca3': '不一定，請參照 Be2 上「恢復訂單狀態」頁面規則，也尚需確認訂單是否已完成退款流程，可在款項資料的退款資料頁面查詢退款狀態。',
+    'faq-aq1': '佣金申請 REM 跟 INV 有什麼差別？',
+    'faq-aa1': '<strong>REM</strong>：供應商先匯款給 KKday，再附上津貼/折讓單。<br><strong>INV</strong>：KKday 主動開立憑證給供應商，無需供應商先入款。',
+    'faq-mq1': '什麼是 MKP？',
+    'faq-ma1': 'MKP 是 <strong>Marketplace</strong> 的縮寫，為 KKday 商城供應商合作模式。訂單日常作業由供應商自行處理，KKday 僅為平台方，OP/CS 只在特殊情境（客訴、退款、品質問題）時介入。',
+    'faq-mq2': 'MKP 訂單出問題，OP 可以直接在 Be2 修改憑證內容嗎？',
+    'faq-ma2': '不行。MKP 訂單的憑證由供應商管理，OP 不可直接修改。若需取消，須透過 CS 發起特例取消流程。',
+    'faq-mq3': '旅客對 MKP 商品體驗不滿意，CS 應該怎麼處理？',
+    'faq-ma3': 'CS 收案後，轉 OP 聯繫供應商確認情況；若涉及退款，再轉 FA 執行；若為商品品質問題，由 AM 與供應商協調改善。',
+    'faq-mq4': 'MKP 訂單需要退款，流程是什麼？',
+    'faq-ma4': '<strong>OP 不得自行操作退款（含部分退款）。</strong>流程如下：CS 收案 → AM 確認品質並與供應商洽談退款 → AM 申請 BPM REM 單並通知 CS → FA 追蹤款項是否匯回並負責出款結案。',
+    'faq-sq1': 'Be2、B2D、BPM、PSI 各是什麼系統？',
+    'faq-sa1': '<strong>Be2</strong>：KKday 核心訂單管理系統（OP 主要使用）<br><strong>B2D</strong>：供應商後台系統<br><strong>BPM（Odoo）</strong>：內部流程審核與請款系統<br><strong>PSI</strong>：票倉庫存管理系統',
+    'faq-pq1': '高風險票券過去訂單要怎麼查詢？',
+    'faq-pa1': '可藉由訂單倉庫出貨頁查看高風險欄位的貨品明細，或在 PSI 系統的查詢貨品功能下條件（以貨品序號）取得相關資訊。',
+    'faq-pq2': '誤取消訂單的庫存要怎麼處理？',
+    'faq-pa2': '可先請 OP 組長或 CS 主管協助恢復訂單即可；如無法恢復，再找 PSI 討論後續處理方法。',
+    'faq-pq3': '訂單部分退貨，發現退錯貨怎麼辦？',
+    'faq-pa3': '發現退錯貨時，請將退貨的貨品序號統整好並盡快通知 <strong>scm_psi_hank</strong> 協助鎖定庫存，後續再討論如何把正確的貨配回訂單中。',
+    'faq-pq4': '取消訂單時 BDAM 告知不用退貨，應如何處理？',
+    'faq-pa4': '所有取消訂單都不應再掛有成本的貨品。若確認無法使用或無法確認貨品狀態，請統一退貨，「是否可再配」選否，使貨品退回不可出庫狀態。PSI 端將於每週一通知相關 AM 處置這些庫存。',
+    'faq-fq1': '收到風控通知說某筆訂單可能是盜刷，第一步要做什麼？',
+    'faq-fa1': '先在 Be2 查看訂單詳情（訂購時間、IP、付款方式），再確認<strong>憑證是否已被使用</strong>，然後聯繫供應商確認服務狀態。',
+    'faq-fq2': '盜刷憑證已被使用，還能怎麼處理？',
+    'faq-fa2': '無法撤銷已使用的憑證，需通知風控團隊，由風控與財務部門追究後續追償，OP 負責提供訂單明細配合調查。',
+    'faq-empty': '找不到相關問題，試試其他關鍵字<br>或直接問 🤖 AI 助理！',
+    'faq-footer': 'GO 知識庫 · 內部使用，請勿對外分享',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>', 'nav-subtitle': 'OP Operations Manual · Must-Read · One-Stop Reference',
+    'faq-breadcrumb': 'Home › FAQ',
+    'faq-title': 'FAQ', 'faq-subtitle': 'Common questions for new staff · Categorized by topic · Quick search',
+    'faq-search-ph': 'Search… e.g. OCBT cancel, deposit, fraud',
+    'faq-chip-all': 'All', 'faq-chip-ticket': '🎫 Ticketing', 'faq-chip-cancel': '❌ Cancellation',
+    'faq-chip-accounting': '💰 Billing', 'faq-chip-mkp': '📦 MKP',
+    'faq-chip-system': '⚙️ Systems', 'faq-chip-psi': '📦 PSI Stock', 'faq-chip-fraud': '🚨 Fraud',
+    'faq-cat-ticket': 'Ticketing / Ordering', 'faq-count-ticket': '3 questions',
+    'faq-cat-cancel': 'Cancellation / Refund', 'faq-count-cancel': '3 questions',
+    'faq-cat-accounting': 'Billing / Payment', 'faq-count-accounting': '1 question',
+    'faq-cat-mkp': 'MKP', 'faq-count-mkp': '4 questions',
+    'faq-cat-system': 'Systems', 'faq-count-system': '1 question',
+    'faq-cat-psi': 'PSI Inventory', 'faq-count-psi': '4 questions',
+    'faq-cat-fraud': 'Fraud / Anomaly', 'faq-count-fraud': '2 questions',
+    'faq-tq1': 'API order ticketing failed — what should I do?',
+    'faq-ta1': 'Check the error message in Be2 first. If it\'s a stock shortage or supplier API timeout, try triggering again; if it keeps failing, consult AM or switch to manual ordering.',
+    'faq-tq2': 'For instant-confirmation orders, how soon must manual ordering be completed?',
+    'faq-ta2': 'OP must complete manual ordering with the supplier within <strong>24 hours</strong> of the customer\'s order. Prioritize these orders to ensure travelers receive valid vouchers before departure.',
+    'faq-tq3': 'If one OCBT sub-order fails, does the entire order need to be cancelled?',
+    'faq-ta3': 'Not necessarily. First identify the reason for failure. If it\'s a single sub-order issue, manually re-order just that sub-order; only cancel the entire order if the supplier cannot accept any of it.',
+    'faq-cq1': 'What should I watch out for when cancelling an OCBT order?',
+    'faq-ca1': 'You must confirm that <strong>all sub-orders are fully cancelled</strong> before cancelling the parent order. Cancelling the parent without completing sub-order cancellations may cause billing and voucher errors.',
+    'faq-cq2': 'A customer wants a partial cancellation (e.g., from 4 to 2 people) — is the process the same as a full cancellation?',
+    'faq-ca2': 'No. A partial cancellation requires executing a partial refund in Be2, and you must first confirm whether the cost has changed (i.e., whether a refund to the supplier is needed). For HKD/MYR, due to an unresolved system issue, only whole number amounts can be refunded.',
+    'faq-cq3': 'Can all cancelled orders be restored?',
+    'faq-ca3': 'Not necessarily. Please refer to the "Restore Order Status" page rules on Be2. You also need to confirm whether the refund process has been completed — check the refund status on the payment details / refund data page.',
+    'faq-aq1': 'What is the difference between REM and INV for commission applications?',
+    'faq-aa1': '<strong>REM</strong>: The supplier wires payment to KKday first, then attaches an allowance/credit note.<br><strong>INV</strong>: KKday proactively issues a document to the supplier; the supplier does not need to pay first.',
+    'faq-mq1': 'What is MKP?',
+    'faq-ma1': 'MKP stands for <strong>Marketplace</strong> — KKday\'s supplier cooperation model. Day-to-day order operations are handled by the supplier. KKday acts as the platform only; OP/CS intervenes only in special cases (complaints, refunds, quality issues).',
+    'faq-mq2': 'If there\'s a problem with an MKP order, can OP directly edit the voucher content in Be2?',
+    'faq-ma2': 'No. MKP order vouchers are managed by the supplier; OP may not modify them directly. If cancellation is needed, CS must initiate the exception cancellation process.',
+    'faq-mq3': 'A customer is unhappy with an MKP product experience — how should CS handle it?',
+    'faq-ma3': 'After CS receives the case, transfer to OP to contact the supplier for confirmation. If a refund is involved, transfer to FA for execution. If it\'s a product quality issue, AM coordinates improvement with the supplier.',
+    'faq-mq4': 'An MKP order needs a refund — what is the process?',
+    'faq-ma4': '<strong>OP must not process refunds (including partial refunds) on their own.</strong> Process: CS receives case → AM confirms quality and negotiates refund with supplier → AM applies for BPM REM and notifies CS → FA tracks whether payment is returned and handles disbursement/closure.',
+    'faq-sq1': 'What are Be2, B2D, BPM, and PSI?',
+    'faq-sa1': '<strong>Be2</strong>: KKday\'s core order management system (primarily used by OP)<br><strong>B2D</strong>: Supplier backend system<br><strong>BPM (Odoo)</strong>: Internal process review and payment system<br><strong>PSI</strong>: Ticket warehouse inventory management system',
+    'faq-pq1': 'How do I look up past orders for high-risk tickets?',
+    'faq-pa1': 'You can check the high-risk field in the order warehouse shipping page for item details, or use the PSI system\'s product inquiry function with conditions (by item serial number) to obtain the relevant information.',
+    'faq-pq2': 'How should inventory be handled for an accidentally cancelled order?',
+    'faq-pa2': 'First ask the OP team lead or CS supervisor to help restore the order. If restoration is not possible, contact PSI to discuss follow-up handling.',
+    'faq-pq3': 'A partial return was processed but the wrong item was returned — what should I do?',
+    'faq-pa3': 'When a wrong return is found, compile the serial numbers of the returned items and immediately notify <strong>scm_psi_hank</strong> to lock the inventory. Then discuss how to reallocate the correct items back to the order.',
+    'faq-pq4': 'When cancelling an order, BDAM says no return is needed — how should I handle it?',
+    'faq-pa4': 'All cancelled orders should not retain items with associated costs. If the item is confirmed unusable or its status cannot be determined, process a return and select "No" for re-allocation, returning the item to a non-shippable state. PSI will notify the relevant AM every Monday to handle this inventory.',
+    'faq-fq1': 'A risk control notification says an order may be fraudulent — what\'s the first step?',
+    'faq-fa1': 'First check the order details in Be2 (order time, IP, payment method), then confirm whether <strong>the voucher has already been used</strong>, and contact the supplier to verify the service status.',
+    'faq-fq2': 'A fraudulent voucher has already been used — what can still be done?',
+    'faq-fa2': 'Used vouchers cannot be revoked. Notify the risk control team; risk control and finance will handle follow-up compensation. OP is responsible for providing order details to support the investigation.',
+    'faq-empty': 'No results found. Try different keywords<br>or ask the 🤖 AI Assistant!',
+    'faq-footer': 'GO Wiki · Internal use only — do not share externally',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>', 'nav-subtitle': 'OP 業務マニュアル · 新人必読 · ワンストップ参照',
+    'faq-breadcrumb': 'ホーム › よくある質問 FAQ',
+    'faq-title': 'よくある質問 FAQ', 'faq-subtitle': '新人向けよくある疑問・テーマ別・クイック検索',
+    'faq-search-ph': '検索… 例：OCBT キャンセル、デポジット、不正',
+    'faq-chip-all': 'すべて', 'faq-chip-ticket': '🎫 発券／注文', 'faq-chip-cancel': '❌ キャンセル／返金',
+    'faq-chip-accounting': '💰 経理／請款', 'faq-chip-mkp': '📦 MKP',
+    'faq-chip-system': '⚙️ システム操作', 'faq-chip-psi': '📦 PSI 在庫', 'faq-chip-fraud': '🚨 異常／不正',
+    'faq-cat-ticket': '発券 / 注文', 'faq-count-ticket': '3 件',
+    'faq-cat-cancel': 'キャンセル / 返金', 'faq-count-cancel': '3 件',
+    'faq-cat-accounting': '経理 / 請款', 'faq-count-accounting': '1 件',
+    'faq-cat-mkp': 'MKP 関連', 'faq-count-mkp': '4 件',
+    'faq-cat-system': 'システム操作', 'faq-count-system': '1 件',
+    'faq-cat-psi': 'PSI 在庫管理', 'faq-count-psi': '4 件',
+    'faq-cat-fraud': '異常 / 不正利用', 'faq-count-fraud': '2 件',
+    'faq-tq1': 'API 注文の発券が失敗した場合、どうすればいいですか？',
+    'faq-ta1': 'まず Be2 でエラーメッセージを確認してください。在庫不足またはサプライヤー API タイムアウトの場合は再試行できます。失敗が続く場合は AM に相談するか、手動注文に切り替えてください。',
+    'faq-tq2': '即時確認注文の場合、手動注文はいつまでに完了する必要がありますか？',
+    'faq-ta2': '旅行者の注文から <strong>24時間以内</strong>にサプライヤーへの手動注文を完了する必要があります。出発前に有効なバウチャーが届くよう、優先的に処理してください。',
+    'faq-tq3': 'OCBT のサブ注文の一つが失敗した場合、全件キャンセルが必要ですか？',
+    'faq-ta3': '必ずしも必要ではありません。失敗原因を確認し、単一のサブ注文の問題であれば、そのサブ注文のみ手動で補注文できます。サプライヤーが全件受付不可の場合のみ、全件キャンセルを検討してください。',
+    'faq-cq1': 'OCBT 商品をキャンセルする際、特に注意すべきことは何ですか？',
+    'faq-ca1': '親注文をキャンセルする前に、<strong>すべてのサブ注文が完全にキャンセル済み</strong>であることを確認する必要があります。サブ注文が未完了のまま親注文をキャンセルすると、請求やバウチャーに異常が生じる可能性があります。',
+    'faq-cq2': '旅行者が一部キャンセル（例：4名→2名）を希望する場合、通常のキャンセルと同じ手順ですか？',
+    'faq-ca2': '異なります。一部キャンセルは Be2 で部分払い戻し操作が必要で、コストが変動しているか（サプライヤーへの払い戻しが必要か）を事前に確認してください。HKD/MYR の場合、システムの問題が未解決のため、整数のみ入力可能な点に注意してください。',
+    'faq-cq3': 'すべての注文を復元できますか？',
+    'faq-ca3': '必ずしも可能ではありません。Be2 の「注文状態の復元」ページのルールを参照してください。また、払い戻しプロセスが完了しているか確認が必要です。払い戻し状況は「支払い情報 > 払い戻しデータ」ページで確認できます。',
+    'faq-aq1': '手数料申請における REM と INV の違いは何ですか？',
+    'faq-aa1': '<strong>REM</strong>：サプライヤーが先に KKday へ送金し、その後手当/値引き書を添付します。<br><strong>INV</strong>：KKday がサプライヤーに対して先に書類を発行し、サプライヤーの先払いは不要です。',
+    'faq-mq1': 'MKP とは何ですか？',
+    'faq-ma1': 'MKP は <strong>Marketplace</strong> の略で、KKday モールのサプライヤー協力モデルです。日常の注文業務はサプライヤーが自ら処理し、KKday はプラットフォームのみです。OP/CS は特別な状況（クレーム、払い戻し、品質問題）のみ対応します。',
+    'faq-mq2': 'MKP 注文で問題が発生した場合、OP は Be2 でバウチャー内容を直接編集できますか？',
+    'faq-ma2': 'いいえ。MKP 注文のバウチャーはサプライヤーが管理しており、OP は直接変更できません。キャンセルが必要な場合は、CS が例外キャンセル手続きを開始する必要があります。',
+    'faq-mq3': '旅行者が MKP 商品の体験に不満な場合、CS はどう対応しますか？',
+    'faq-ma3': 'CS が案件を受け付けた後、OP に転送してサプライヤーに状況を確認します。払い戻しが必要な場合は FA に転送します。商品品質の問題であれば、AM がサプライヤーと改善を調整します。',
+    'faq-mq4': 'MKP 注文の払い戻しが必要な場合、手順はどうなりますか？',
+    'faq-ma4': '<strong>OP は自ら払い戻し（部分払い戻しを含む）を操作してはなりません。</strong>手順：CS が受付 → AM が品質確認・サプライヤーと払い戻し交渉 → AM が BPM REM を申請・CS に通知 → FA が入金確認・出金・案件完結を担当。',
+    'faq-sq1': 'Be2、B2D、BPM、PSI とはそれぞれ何のシステムですか？',
+    'faq-sa1': '<strong>Be2</strong>：KKday のコア注文管理システム（OP 主要使用）<br><strong>B2D</strong>：サプライヤーバックエンドシステム<br><strong>BPM（Odoo）</strong>：社内プロセス審査・請款システム<br><strong>PSI</strong>：チケット倉庫在庫管理システム',
+    'faq-pq1': '高リスクチケットの過去の注文はどのように照会しますか？',
+    'faq-pa1': '注文倉庫の出荷ページで高リスク欄の商品明細を確認するか、PSI システムの商品照会機能で条件（商品シリアル番号）を指定して情報を取得できます。',
+    'faq-pq2': '誤ってキャンセルした注文の在庫はどうすればいいですか？',
+    'faq-pa2': 'まず OP チームリーダーまたは CS スーパーバイザーに注文の復元を依頼してください。復元できない場合は、PSI に連絡して後続の対応方法を検討します。',
+    'faq-pq3': '部分返品で誤った商品が返品された場合、どうすればいいですか？',
+    'faq-pa3': '誤返品が発見されたら、返品した商品のシリアル番号をまとめ、速やかに <strong>scm_psi_hank</strong> へ通知して在庫をロックしてもらいます。その後、正しい商品を注文に戻す方法を協議します。',
+    'faq-pq4': '注文キャンセル時に BDAM から返品不要と伝えられた場合、どう対応すればいいですか？',
+    'faq-pa4': 'すべてのキャンセル注文には、コストのある商品を残してはなりません。使用不可または状態不明の場合は一括返品し、「再配可能か」を「いいえ」に選択して商品を出庫不可状態に戻してください。PSI 側が毎週月曜日に関連 AM へ通知してこれらの在庫を処理します。',
+    'faq-fq1': '風控からある注文が不正使用の可能性があると通知された場合、最初のステップは何ですか？',
+    'faq-fa1': 'まず Be2 で注文詳細（注文時間、IP、支払方法）を確認し、<strong>バウチャーが使用済みかどうか</strong>を確認してから、サプライヤーに連絡してサービス状態を確認します。',
+    'faq-fq2': '不正使用のバウチャーがすでに使用された場合、どうすることができますか？',
+    'faq-fa2': '使用済みのバウチャーは取り消せません。風控チームに通知し、風控と財務部門が追償を追及します。OP は調査に協力するため注文明細の提供を担当します。',
+    'faq-empty': '関連する質問が見つかりません。別のキーワードをお試しください<br>または 🤖 AI アシスタントにご質問ください！',
+    'faq-footer': 'GO ナレッジベース · 社内使用のみ・外部共有禁止',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>', 'nav-subtitle': 'OP 업무 매뉴얼 · 신입 필독 · 원스톱 참조',
+    'faq-breadcrumb': '홈 › 자주 묻는 질문 FAQ',
+    'faq-title': '자주 묻는 질문 FAQ', 'faq-subtitle': '신입 공통 질문 · 주제별 분류 · 빠른 검색',
+    'faq-search-ph': '검색… 예: OCBT 취소, 예치금, 사기',
+    'faq-chip-all': '전체', 'faq-chip-ticket': '🎫 발권／주문', 'faq-chip-cancel': '❌ 취소／환불',
+    'faq-chip-accounting': '💰 정산／청구', 'faq-chip-mkp': '📦 MKP',
+    'faq-chip-system': '⚙️ 시스템 운영', 'faq-chip-psi': '📦 PSI 재고', 'faq-chip-fraud': '🚨 이상／사기',
+    'faq-cat-ticket': '발권 / 주문', 'faq-count-ticket': '3개 질문',
+    'faq-cat-cancel': '취소 / 환불', 'faq-count-cancel': '3개 질문',
+    'faq-cat-accounting': '정산 / 청구', 'faq-count-accounting': '1개 질문',
+    'faq-cat-mkp': 'MKP 관련', 'faq-count-mkp': '4개 질문',
+    'faq-cat-system': '시스템 운영', 'faq-count-system': '1개 질문',
+    'faq-cat-psi': 'PSI 재고 관리', 'faq-count-psi': '4개 질문',
+    'faq-cat-fraud': '이상 / 사기', 'faq-count-fraud': '2개 질문',
+    'faq-tq1': 'API 주문 발권 실패 시 어떻게 해야 하나요?',
+    'faq-ta1': 'Be2에서 오류 메시지를 먼저 확인하세요. 재고 부족이나 공급업체 API 타임아웃이면 재시도해 보세요. 계속 실패하면 AM에게 문의하거나 수동 주문으로 전환하세요.',
+    'faq-tq2': '즉시 확인 주문의 경우, 수동 주문은 언제까지 완료해야 하나요?',
+    'faq-ta2': '여행자 주문 시점부터 <strong>24시간 이내</strong>에 공급업체에 수동 주문을 완료해야 합니다. 출발 전 유효한 바우처가 전달될 수 있도록 우선 처리하세요.',
+    'faq-tq3': 'OCBT 하위 주문 중 하나가 실패하면 전체를 취소해야 하나요?',
+    'faq-ta3': '반드시 그런 것은 아닙니다. 실패 원인을 먼저 파악하세요. 단일 하위 주문 문제라면 해당 주문만 수동으로 보충 주문할 수 있습니다. 공급업체가 전혀 수주할 수 없는 경우에만 전체 취소를 고려하세요.',
+    'faq-cq1': 'OCBT 상품 취소 시 특별히 주의할 사항은 무엇인가요?',
+    'faq-ca1': '모든 하위 주문이 완전히 취소된 것을 확인한 후에야 <strong>상위 주문을 취소</strong>할 수 있습니다. 하위 주문이 완전히 취소되지 않은 상태에서 상위 주문을 취소하면 결제 및 바우처 오류가 발생할 수 있습니다.',
+    'faq-cq2': '여행자가 부분 취소(예: 4명→2명)를 원할 경우, 일반 취소와 같은 절차인가요?',
+    'faq-ca2': '다릅니다. 부분 취소는 Be2에서 부분 환불 처리가 필요하며, 비용 변동 여부(공급업체 환불 필요 여부)를 먼저 확인해야 합니다. HKD/MYR 통화의 경우 시스템 문제가 미해결 상태로, 정수만 입력 가능한 점에 주의하세요.',
+    'faq-cq3': '모든 주문을 복원할 수 있나요?',
+    'faq-ca3': '반드시 가능한 것은 아닙니다. Be2의 \'주문 상태 복원\' 페이지 규칙을 참고하세요. 또한 환불 절차가 완료되었는지 확인이 필요합니다. 환불 상태는 결제 정보의 환불 데이터 페이지에서 조회할 수 있습니다.',
+    'faq-aq1': '수수료 신청 시 REM과 INV의 차이는 무엇인가요?',
+    'faq-aa1': '<strong>REM</strong>: 공급업체가 먼저 KKday에 송금한 후 수당/할인서를 첨부합니다.<br><strong>INV</strong>: KKday가 먼저 공급업체에 서류를 발행하며, 공급업체의 선지급이 불필요합니다.',
+    'faq-mq1': 'MKP란 무엇인가요?',
+    'faq-ma1': 'MKP는 <strong>Marketplace</strong>의 약자로 KKday 쇼핑몰 공급업체 협력 모델입니다. 일상적인 주문 업무는 공급업체가 직접 처리하며, KKday는 플랫폼 역할만 합니다. OP/CS는 특수 상황(컴플레인, 환불, 품질 문제)에서만 개입합니다.',
+    'faq-mq2': 'MKP 주문에 문제가 발생하면 OP가 Be2에서 바우처 내용을 직접 수정할 수 있나요?',
+    'faq-ma2': '불가능합니다. MKP 주문의 바우처는 공급업체가 관리하며 OP가 직접 수정할 수 없습니다. 취소가 필요한 경우 CS를 통해 예외 취소 절차를 진행해야 합니다.',
+    'faq-mq3': '여행자가 MKP 상품 이용에 불만이 있을 경우 CS는 어떻게 처리하나요?',
+    'faq-ma3': 'CS가 접수 후 OP로 전달하여 공급업체에 상황을 확인합니다. 환불이 관련된 경우 FA로 전달합니다. 상품 품질 문제라면 AM이 공급업체와 개선을 협의합니다.',
+    'faq-mq4': 'MKP 주문에 환불이 필요한 경우 절차는 어떻게 되나요?',
+    'faq-ma4': '<strong>OP는 환불(부분 환불 포함)을 직접 처리해서는 안 됩니다.</strong> 절차: CS 접수 → AM 품질 확인 및 공급업체와 환불 협의 → AM BPM REM 신청 및 CS 통보 → FA 입금 여부 추적 및 출금/종결 처리.',
+    'faq-sq1': 'Be2, B2D, BPM, PSI는 각각 어떤 시스템인가요?',
+    'faq-sa1': '<strong>Be2</strong>: KKday 핵심 주문 관리 시스템(OP 주요 사용)<br><strong>B2D</strong>: 공급업체 백엔드 시스템<br><strong>BPM(Odoo)</strong>: 내부 프로세스 검토 및 청구 시스템<br><strong>PSI</strong>: 티켓 창고 재고 관리 시스템',
+    'faq-pq1': '고위험 티켓의 과거 주문은 어떻게 조회하나요?',
+    'faq-pa1': '주문 창고 출고 페이지에서 고위험 항목의 상품 명세를 확인하거나, PSI 시스템의 상품 조회 기능에서 조건(상품 일련번호)을 설정하여 관련 정보를 얻을 수 있습니다.',
+    'faq-pq2': '실수로 취소된 주문의 재고는 어떻게 처리하나요?',
+    'faq-pa2': '먼저 OP 팀장 또는 CS 수퍼바이저에게 주문 복원을 요청하세요. 복원이 불가능하면 PSI에 연락하여 후속 처리 방법을 논의하세요.',
+    'faq-pq3': '부분 반품 처리 중 잘못된 상품이 반품된 경우 어떻게 하나요?',
+    'faq-pa3': '잘못된 반품이 발견되면 반품된 상품의 일련번호를 정리하여 즉시 <strong>scm_psi_hank</strong>에게 알려 재고를 잠가달라고 요청하세요. 이후 올바른 상품을 주문에 배분하는 방법을 논의합니다.',
+    'faq-pq4': '주문 취소 시 BDAM에서 반품이 필요없다고 알렸을 경우 어떻게 처리하나요?',
+    'faq-pa4': '취소된 모든 주문에는 비용이 발생한 상품이 남아있어서는 안 됩니다. 사용 불가 확인 또는 상태 확인 불가 시 통합 반품 처리하고, \'재배분 가능 여부\'를 \'아니오\'로 선택하여 출고 불가 상태로 되돌리세요. PSI는 매주 월요일 관련 AM에게 알려 재고를 처리하도록 합니다.',
+    'faq-fq1': '위험 관리 알림에서 특정 주문이 사기일 수 있다고 하면 첫 번째 단계는 무엇인가요?',
+    'faq-fa1': '먼저 Be2에서 주문 상세정보(주문 시간, IP, 결제 방법)를 확인하고, <strong>바우처가 이미 사용되었는지</strong>를 확인한 후 공급업체에 연락하여 서비스 상태를 확인하세요.',
+    'faq-fq2': '사기 바우처가 이미 사용된 경우 어떻게 할 수 있나요?',
+    'faq-fa2': '이미 사용된 바우처는 취소할 수 없습니다. 위험 관리팀에 통보하고, 위험 관리 및 재무 부서가 후속 배상을 처리합니다. OP는 조사에 협력하기 위해 주문 명세를 제공해야 합니다.',
+    'faq-empty': '관련 질문을 찾을 수 없습니다. 다른 키워드를 시도해 보세요<br>또는 🤖 AI 어시스턴트에게 질문하세요!',
+    'faq-footer': 'GO 지식베이스 · 내부 사용 전용 · 외부 공유 금지',
+  },
 });
+
+// ── Placeholder i18n ───────────────────────────────────────
+const PH = { zh:'搜尋問題… 例如：OCBT 取消、預存款、盜刷', en:'Search… e.g. OCBT cancel, deposit, fraud', ja:'検索… 例：OCBT キャンセル、デポジット、不正', ko:'검색… 예: OCBT 취소, 예치금, 사기' };
+const _origSwitch = SCMi18n.switch.bind(SCMi18n);
+SCMi18n.switch = function(lang) { _origSwitch(lang); document.getElementById('faqSearch').placeholder = PH[lang] || PH.zh; };
 
 // ── Accordion ─────────────────────────────────────────────
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const ans  = item.querySelector('.faq-a');
   const isOpen = btn.classList.contains('open');
-  // Close all in same category
   item.closest('.faq-category').querySelectorAll('.faq-q').forEach(b => {
     b.classList.remove('open');
     b.nextElementSibling.classList.remove('open');
@@ -472,7 +653,6 @@ function applyFilter() {
       item.classList.toggle('hidden', !show);
       if (show) { catHasVisible = true; anyVisible = true; }
 
-      // Highlight
       if (q && show) {
         highlightText(item.querySelector('.faq-q-text'), q);
         highlightText(item.querySelector('.faq-a'), q);
@@ -498,7 +678,6 @@ function removeHighlight(el) {
   if (el) el.innerHTML = el.innerHTML.replace(/<mark>(.*?)<\/mark>/gi, '$1');
 }
 
-// ── Keyboard shortcut ─────────────────────────────────────
 document.addEventListener('keydown', e => {
   if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
     e.preventDefault(); searchEl.focus(); searchEl.select();
