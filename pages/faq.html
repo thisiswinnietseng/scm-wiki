@@ -148,7 +148,6 @@
     <div class="faq-chip" onclick="filterCat('system', this)">⚙️ 系統操作</div>
     <div class="faq-chip" onclick="filterCat('psi', this)">📦 PSI 庫存</div>
     <div class="faq-chip" onclick="filterCat('fraud', this)">🚨 異常／盜刷</div>
-    <div class="faq-chip" onclick="filterCat('comm', this)">📬 訊息溝通</div>
   </div>
 
   <!-- ── 出票／訂購 ── -->
@@ -400,43 +399,6 @@
   </div>
 
   <!-- ── 訊息溝通 ── -->
-  <div class="faq-category" data-cat="comm">
-    <div class="faq-cat-header">
-      <div class="faq-cat-icon" style="background:#dbeafe;">📬</div>
-      <div>
-        <div class="faq-cat-label">訊息溝通</div>
-        <div class="faq-cat-count">3 個問題</div>
-      </div>
-    </div>
-
-    <div class="faq-item" data-cat="comm">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">溝通</span>
-        <span class="faq-q-text">旅客詢問訂單狀態，要找 CS 還是 OP？</span>
-        <span class="faq-q-arr">▾</span>
-      </button>
-      <div class="faq-a">一般旅客問題由 <strong>CS</strong> 處理；涉及出票、訂購操作的問題，CS 收案後轉 OP 執行，CS 再回覆旅客。</div>
-    </div>
-
-    <div class="faq-item" data-cat="comm">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">溝通</span>
-        <span class="faq-q-text">供應商傳來的訊息（如確認書、通知），要存在哪裡？</span>
-        <span class="faq-q-arr">▾</span>
-      </button>
-      <div class="faq-a">重要訊息（確認書、取消通知）需截圖或下載後，<strong>上傳至 Be2 對應訂單的附件區</strong>，作為後續對帳與客訴的憑據。</div>
-    </div>
-
-    <div class="faq-item" data-cat="comm">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-badge" style="background:#dbeafe;color:#1e40af;">Slack</span>
-        <span class="faq-q-text">Slack 上的供應商通知沒人看到，怎麼避免漏接？</span>
-        <span class="faq-q-arr">▾</span>
-      </button>
-      <div class="faq-a">建議在 Slack 設定關鍵字通知（供應商名稱、商品代碼），並由各班次的<strong>值班 OP</strong> 負責定時確認供應商群組。</div>
-    </div>
-  </div>
-
   <!-- No results -->
   <div class="faq-empty" id="faqEmpty">
     <div class="faq-empty-icon">😅</div>
