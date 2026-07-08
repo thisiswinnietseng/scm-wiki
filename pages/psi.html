@@ -91,7 +91,7 @@
         <div style="border:1px solid #ef9a9a;border-radius:8px;padding:12px;background:#fdf5f5;">
           <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;" data-i18n="psi-err-a-label">❌ 錯誤訊息 A</div>
           <code style="display:block;font-size:12px;background:rgba(0,0,0,0.05);padding:6px 8px;border-radius:4px;margin-bottom:6px;">PSI出貨失敗(200006,系統配票貨品不足)</code>
-          <div style="font-size:12px;color:#555;" data-i18n="psi-err-a-desc">庫存不足，需請 BD／AM 補票。</div>
+          <div style="font-size:12px;color:#555;" data-i18n="psi-err-a-desc">庫存不足 or 商品綁定有誤，需請 BD／AM 補票 or 確認。</div>
         </div>
         <div style="border:1px solid #ef9a9a;border-radius:8px;padding:12px;background:#fdf5f5;">
           <div style="font-size:12px;font-weight:700;color:#c62828;margin-bottom:6px;" data-i18n="psi-err-b-label">❌ 錯誤訊息 B</div>
@@ -177,7 +177,7 @@ SCMi18n.init({
     'psi-auto-note': '✅ 正常訂單：PSI 系統自動配票出貨，無需 OP 作業。',
     'psi-fail-title': '⚠️ 異常訂單：PSI 出貨失敗',
     'psi-err-a-label': '❌ 錯誤訊息 A',
-    'psi-err-a-desc': '庫存不足，需請 BD／AM 補票。',
+    'psi-err-a-desc': '庫存不足 or 商品綁定有誤，需請 BD／AM 補票 or 確認。',
     'psi-err-b-label': '❌ 錯誤訊息 B',
     'psi-err-b-desc': '系統異常，需確認 PSI 狀態。',
     'psi-step1-title': 'Slack 聯繫負責 BD／AM',
