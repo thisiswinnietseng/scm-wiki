@@ -216,7 +216,7 @@
       <div class="faq-cat-icon" style="background:#fff4e6;">💰</div>
       <div>
         <div class="faq-cat-label" data-i18n="faq-cat-accounting">帳務 / 請款</div>
-        <div class="faq-cat-count" data-i18n="faq-count-accounting">4 個問題</div>
+        <div class="faq-cat-count" data-i18n="faq-count-accounting">5 個問題</div>
       </div>
     </div>
 
@@ -263,6 +263,30 @@
         </div>
         狀態需為 <strong>財務確認</strong> 才會出現「啟用」按鈕（OP確認狀態欄位）。<br><br>
         若狀態尚未到達財務確認，請聯繫財務同仁確認並推進審核。</div>
+    </div>
+
+    <div class="faq-item" data-cat="accounting">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-badge" style="background:#f3e5f5;color:#6a1b9a;">新供應商</span>
+        <span class="faq-q-text" data-i18n="faq-aq5">新預存供應商需注意哪些事項？</span>
+        <span class="faq-q-arr">▾</span>
+      </button>
+      <div class="faq-a" data-i18n-html="faq-aa5">與 AM 確認以下三項後再進行後續操作：<br><br>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+          <div style="display:flex;align-items:flex-start;gap:10px;">
+            <span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">1</span>
+            <div><strong>初始值是否已入款</strong><br><span style="color:#666;font-size:13px;">確認供應商的預存款初始金額已匯入帳戶。</span></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;">
+            <span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">2</span>
+            <div><strong>請款方式</strong><br><span style="color:#666;font-size:13px;">確認此供應商採用哪種請款方式（如 REM、INV 等）。</span></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;">
+            <span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">3</span>
+            <div><strong>對帳方式</strong><br><span style="color:#666;font-size:13px;">確認對帳流程為手動或系統自動對帳。</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -431,7 +455,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ 系統操作', 'faq-chip-psi': '📦 PSI 庫存', 'faq-chip-fraud': '🚨 異常／盜刷',
     'faq-cat-ticket': '出票 / 訂購', 'faq-count-ticket': '3 個問題',
     'faq-cat-cancel': '取消 / 退款', 'faq-count-cancel': '3 個問題',
-    'faq-cat-accounting': '帳務 / 請款', 'faq-count-accounting': '4 個問題',
+    'faq-cat-accounting': '帳務 / 請款', 'faq-count-accounting': '5 個問題',
     'faq-cat-mkp': 'MKP 相關', 'faq-count-mkp': '4 個問題',
     'faq-cat-system': '系統操作', 'faq-count-system': '1 個問題',
     'faq-cat-psi': 'PSI 庫存管理', 'faq-count-psi': '4 個問題',
@@ -456,6 +480,8 @@ SCMi18n.init({
     'faq-aq2': '請款單已成立，但銀行資訊有誤，怎麼辦？',
     'faq-aq3': '什麼情況需要手動成立供應商付款單？',
     'faq-aq4': '預存款已入款，但 OP 無法啟用，怎麼辦？',
+    'faq-aq5': '新預存供應商需注意哪些事項？',
+    'faq-aa5': '與 AM 確認以下三項後再進行後續操作：<br><br><div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;"><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">1</span><div><strong>初始值是否已入款</strong><br><span style="color:#666;font-size:13px;">確認供應商的預存款初始金額已匯入帳戶。</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">2</span><div><strong>請款方式</strong><br><span style="color:#666;font-size:13px;">確認此供應商採用哪種請款方式（如 REM、INV 等）。</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">3</span><div><strong>對帳方式</strong><br><span style="color:#666;font-size:13px;">確認對帳流程為手動或系統自動對帳。</span></div></div></div>',
     'faq-aa4': '<strong>確認預存款的狀態是否為「財務確認」。</strong><br><br><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0 12px;"><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">申請中</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">會計核准</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#e0f2f1;color:#00695c;font-size:12px;font-weight:700;border:1.5px solid #80cbc4;">✅ 財務確認 ← 需到此狀態</span></div>狀態需為 <strong>財務確認</strong> 才會出現「啟用」按鈕（OP確認狀態欄位）。<br><br>若狀態尚未到達財務確認，請聯繫財務同仁確認並推進審核。',
     'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 全市場在無特殊情形下，不使用手起付款單</span><br><strong>適用情境：</strong>請款方式不同；成本幣別與付款幣別不同。<br><br><strong>注意事項：</strong><br>• 使用手動成立時，需要BPM備注欄位填入手起原因。<br>• 透過 BPM → 財務表單申請 → 供應商付款申請單 創立申請單。<br>• 手動成立的申請單為<strong>空白申請單</strong>，所有欄位皆須人工填入後才可進行後續流程。',
     'faq-aa2': '確認銀行資訊已在系統更新完成後，依請款單來源選擇處理方式：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>新增請款單頁面產生的</strong><br>作廢既有請款單 → 重新成立新請款單，新請款單會自動帶入最新銀行資訊。<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>自動對帳系統（供應商確認後）產生的</strong><br>作廢既有請款單 → 回到對帳單，點擊「對賬完成，成立請款單」按鈕重新產生，系統將帶入最新銀行資訊。',
@@ -494,7 +520,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ Systems', 'faq-chip-psi': '📦 PSI Stock', 'faq-chip-fraud': '🚨 Fraud',
     'faq-cat-ticket': 'Ticketing / Ordering', 'faq-count-ticket': '3 questions',
     'faq-cat-cancel': 'Cancellation / Refund', 'faq-count-cancel': '3 questions',
-    'faq-cat-accounting': 'Billing / Payment', 'faq-count-accounting': '4 questions',
+    'faq-cat-accounting': 'Billing / Payment', 'faq-count-accounting': '5 questions',
     'faq-cat-mkp': 'MKP', 'faq-count-mkp': '4 questions',
     'faq-cat-system': 'Systems', 'faq-count-system': '1 question',
     'faq-cat-psi': 'PSI Inventory', 'faq-count-psi': '4 questions',
@@ -517,6 +543,8 @@ SCMi18n.init({
     'faq-aa2': 'Confirm the bank info has been updated in the system, then follow the appropriate flow based on how the request was generated:<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>Created via Add Payment Request page</strong><br>Void the existing request → Create a new one. The new request will automatically use the latest bank info.<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>Auto-generated by reconciliation system (after supplier confirmation)</strong><br>Void the existing request → Return to the reconciliation record and click "Reconciliation Complete, Create Payment Request" to regenerate with the latest bank info.',
     'faq-aq3': 'When is a manual supplier payment order required?',
     'faq-aq4': 'The prepayment deposit has been received, but OP cannot activate it — what should I do?',
+    'faq-aq5': 'What should be noted for a new prepayment supplier?',
+    'faq-aa5': 'Confirm the following three points with AM before proceeding:<br><br><div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;"><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">1</span><div><strong>Initial deposit received</strong><br><span style="color:#666;font-size:13px;">Confirm the supplier\'s initial prepayment amount has been transferred to the account.</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">2</span><div><strong>Payment method</strong><br><span style="color:#666;font-size:13px;">Confirm which payment method this supplier uses (e.g. REM, INV, etc.).</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">3</span><div><strong>Reconciliation method</strong><br><span style="color:#666;font-size:13px;">Confirm whether reconciliation is done manually or via the automated system.</span></div></div></div>',
     'faq-aa4': '<strong>Check whether the prepayment status is "Finance Confirmed".</strong><br><br><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0 12px;"><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">Pending</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">Accounting Approved</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#e0f2f1;color:#00695c;font-size:12px;font-weight:700;border:1.5px solid #80cbc4;">✅ Finance Confirmed ← Required</span></div>The "Activate" button (OP Confirmation field) only appears when the status is <strong>Finance Confirmed</strong>.<br><br>If the status has not reached Finance Confirmed, contact the finance team to confirm and advance the review.',
     'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ Manual payment orders are not used market-wide unless there is a special case</span><br><strong>Applicable scenarios:</strong> Different payment method; cost currency differs from payment currency.<br><br><strong>Notes:</strong><br>• When creating manually, the BPM remarks field must include the reason for the manual creation.<br>• Create via BPM → Financial Form Application → Supplier Payment Application Form.<br>• Manually created forms are <strong>blank</strong> — all fields must be filled in manually before the process can continue.',
     'faq-mq1': 'What is MKP?',
@@ -554,7 +582,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ システム操作', 'faq-chip-psi': '📦 PSI 在庫', 'faq-chip-fraud': '🚨 異常／不正',
     'faq-cat-ticket': '発券 / 注文', 'faq-count-ticket': '3 件',
     'faq-cat-cancel': 'キャンセル / 返金', 'faq-count-cancel': '3 件',
-    'faq-cat-accounting': '経理 / 請款', 'faq-count-accounting': '4 件',
+    'faq-cat-accounting': '経理 / 請款', 'faq-count-accounting': '5 件',
     'faq-cat-mkp': 'MKP 関連', 'faq-count-mkp': '4 件',
     'faq-cat-system': 'システム操作', 'faq-count-system': '1 件',
     'faq-cat-psi': 'PSI 在庫管理', 'faq-count-psi': '4 件',
@@ -577,6 +605,8 @@ SCMi18n.init({
     'faq-aa2': 'システムで銀行情報の更新を確認してから、請求書の生成方法に応じて対応してください：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>請求書追加ページで作成した場合</strong><br>既存の請求書を無効化 → 新しい請求書を作成。最新の銀行情報が自動反映されます。<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>自動照合システム（サプライヤー確認後）で生成した場合</strong><br>既存の請求書を無効化 → 照合画面に戻り「照合完了・請求書作成」ボタンで再生成。最新の銀行情報が反映されます。',
     'faq-aq3': '手動でサプライヤー支払い申請書を作成する必要があるのはどのような場合ですか？',
     'faq-aq4': '前払い入金済みですが、OPが有効化できません。どうすればいいですか？',
+    'faq-aq5': '新規前払いサプライヤーの注意事項は何ですか？',
+    'faq-aa5': 'AMと以下の3点を確認してから後続操作を進めてください：<br><br><div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;"><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">1</span><div><strong>初期入金の確認</strong><br><span style="color:#666;font-size:13px;">サプライヤーの前払い初期金額が口座に入金されているか確認する。</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">2</span><div><strong>請求方式</strong><br><span style="color:#666;font-size:13px;">このサプライヤーが使用する請求方式（REM・INV など）を確認する。</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">3</span><div><strong>照合方式</strong><br><span style="color:#666;font-size:13px;">照合フローが手動か自動システムかを確認する。</span></div></div></div>',
     'faq-aa4': '<strong>前払いのステータスが「経理確認」になっているか確認してください。</strong><br><br><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0 12px;"><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">申請中</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">経理承認</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#e0f2f1;color:#00695c;font-size:12px;font-weight:700;border:1.5px solid #80cbc4;">✅ 経理確認 ← このステータスが必要</span></div>「有効化」ボタン（OP確認ステータス欄）は、ステータスが <strong>経理確認</strong> の場合のみ表示されます。<br><br>まだ経理確認に達していない場合は、経理担当者に連絡して審査を進めてもらってください。',
     'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 特殊事情がない限り、全市場で手動支払い申請書は使用しない</span><br><strong>適用場面：</strong>請求方式が異なる場合；コスト通貨と支払い通貨が異なる場合。<br><br><strong>注意事項：</strong><br>• 手動で作成する際は、BPMの備考欄に手動作成の理由を記入してください。<br>• BPM → 財務表単申請 → サプライヤー支払い申請書 から申請書を作成します。<br>• 手動作成の申請書は<strong>空白フォーム</strong>のため、すべての項目を手入力してから次の工程へ進んでください。',
     'faq-mq1': 'MKP とは何ですか？',
@@ -614,7 +644,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ 시스템 운영', 'faq-chip-psi': '📦 PSI 재고', 'faq-chip-fraud': '🚨 이상／사기',
     'faq-cat-ticket': '발권 / 주문', 'faq-count-ticket': '3개 질문',
     'faq-cat-cancel': '취소 / 환불', 'faq-count-cancel': '3개 질문',
-    'faq-cat-accounting': '정산 / 청구', 'faq-count-accounting': '4개 질문',
+    'faq-cat-accounting': '정산 / 청구', 'faq-count-accounting': '5개 질문',
     'faq-cat-mkp': 'MKP 관련', 'faq-count-mkp': '4개 질문',
     'faq-cat-system': '시스템 운영', 'faq-count-system': '1개 질문',
     'faq-cat-psi': 'PSI 재고 관리', 'faq-count-psi': '4개 질문',
@@ -637,6 +667,8 @@ SCMi18n.init({
     'faq-aa2': '시스템에서 은행 정보 업데이트를 확인한 후, 청구서 생성 방식에 따라 처리하세요：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>청구서 추가 페이지에서 생성한 경우</strong><br>기존 청구서 무효화 → 새 청구서 생성. 최신 은행 정보가 자동 반영됩니다.<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>자동 정산 시스템(공급업체 확인 후)에서 생성한 경우</strong><br>기존 청구서 무효화 → 정산 화면으로 돌아가 「정산 완료, 청구서 생성」버튼으로 재생성. 최신 은행 정보가 반영됩니다.',
     'faq-aq3': '공급업체 수동 지급 신청서가 필요한 경우는 언제인가요?',
     'faq-aq4': '선불금이 입금되었는데 OP가 활성화할 수 없습니다. 어떻게 해야 하나요?',
+    'faq-aq5': '신규 선불 공급업체 주의사항은 무엇인가요?',
+    'faq-aa5': 'AM과 다음 세 가지를 확인한 후 후속 작업을 진행하세요：<br><br><div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;"><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">1</span><div><strong>초기 입금 확인</strong><br><span style="color:#666;font-size:13px;">공급업체의 선불금 초기 금액이 계좌에 입금되었는지 확인한다.</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">2</span><div><strong>청구 방식</strong><br><span style="color:#666;font-size:13px;">이 공급업체가 사용하는 청구 방식(REM, INV 등)을 확인한다.</span></div></div><div style="display:flex;align-items:flex-start;gap:10px;"><span style="min-width:24px;height:24px;border-radius:50%;background:#f3e5f5;color:#6a1b9a;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">3</span><div><strong>정산 방식</strong><br><span style="color:#666;font-size:13px;">정산 프로세스가 수동인지 자동 시스템인지 확인한다.</span></div></div></div>',
     'faq-aa4': '<strong>선불금 상태가 「재무 확인」인지 확인하세요.</strong><br><br><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0 12px;"><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">신청 중</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#f5f5f5;color:#888;font-size:12px;font-weight:600;">회계 승인</span><span style="color:#bbb;font-size:13px;">→</span><span style="padding:3px 10px;border-radius:4px;background:#e0f2f1;color:#00695c;font-size:12px;font-weight:700;border:1.5px solid #80cbc4;">✅ 재무 확인 ← 이 상태 필요</span></div>「활성화」버튼（OP 확인 상태 필드）은 상태가 <strong>재무 확인</strong>일 때만 표시됩니다.<br><br>아직 재무 확인 상태가 아닌 경우, 재무 담당자에게 연락하여 검토를 진행해 달라고 요청하세요.',
     'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 특별한 사정이 없는 한 전 시장에서 수동 지급 신청서는 사용하지 않음</span><br><strong>적용 상황：</strong>청구 방식이 다른 경우；비용 통화와 지급 통화가 다른 경우。<br><br><strong>주의사항：</strong><br>• 수동으로 생성할 경우 BPM 비고란에 수동 생성 사유를 반드시 입력해야 합니다.<br>• BPM → 재무 양식 신청 → 공급업체 지급 신청서 에서 신청서를 생성합니다.<br>• 수동 생성된 신청서는 <strong>빈 양식</strong>으로, 모든 항목을 직접 입력한 후 다음 절차를 진행할 수 있습니다.',
     'faq-mq1': 'MKP란 무엇인가요?',
