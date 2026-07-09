@@ -316,7 +316,7 @@
 
     <div class="faq-item" data-cat="system">
       <button class="faq-q" onclick="toggleFaq(this)">
-        <span class="faq-q-text" data-i18n="faq-sq1">Be2、B2D、BPM、PSI 各是什麼系統？</span>
+        <span class="faq-q-text" data-i18n="faq-sq1">Be2、B2D、BPM、PSI、SCM 各是什麼系統？</span>
         <span class="faq-q-arr">▾</span>
       </button>
       <div class="faq-a" data-i18n-html="faq-sa1"><strong>Be2</strong>：KKday 核心訂單管理系統（OP 主要使用）<br><strong>B2D</strong>：OP 訂購子訂單的平台<br><strong>BPM（Odoo）</strong>：內部流程審核與請款系統<br><strong>PSI</strong>：票倉庫存管理系統<br><strong>SCM</strong>：供應商自理的平台</div>
@@ -453,7 +453,7 @@ SCMi18n.init({
     'faq-ma3': 'CS 收案後，轉 OP 聯繫供應商確認情況；若涉及退款，再轉 FA 執行；若為商品品質問題，由 AM 與供應商協調改善。',
     'faq-mq4': 'MKP 訂單需要退款，流程是什麼？',
     'faq-ma4': '<strong>OP 不得自行操作退款（含部分退款）。</strong>流程如下：CS 收案 → AM 確認品質並與供應商洽談退款 → AM 申請 BPM REM 單並通知 CS → FA 追蹤款項是否匯回並負責出款結案。',
-    'faq-sq1': 'Be2、B2D、BPM、PSI 各是什麼系統？',
+    'faq-sq1': 'Be2、B2D、BPM、PSI、SCM 各是什麼系統？',
     'faq-sa1': '<strong>Be2</strong>：KKday 核心訂單管理系統（OP 主要使用）<br><strong>B2D</strong>：OP 訂購子訂單的平台<br><strong>BPM（Odoo）</strong>：內部流程審核與請款系統<br><strong>PSI</strong>：票倉庫存管理系統<br><strong>SCM</strong>：供應商自理的平台',
     'faq-pq1': '高風險票券過去訂單要怎麼查詢？',
     'faq-pa1': '可藉由訂單倉庫出貨頁查看高風險欄位的貨品明細，或在 PSI 系統的查詢貨品功能下條件（以貨品序號）取得相關資訊。',
@@ -517,7 +517,7 @@ SCMi18n.init({
     'faq-ma3': 'After CS receives the case, transfer to OP to contact the supplier for confirmation. If a refund is involved, transfer to FA for execution. If it\'s a product quality issue, AM coordinates improvement with the supplier.',
     'faq-mq4': 'An MKP order needs a refund — what is the process?',
     'faq-ma4': '<strong>OP must not process refunds (including partial refunds) on their own.</strong> Process: CS receives case → AM confirms quality and negotiates refund with supplier → AM applies for BPM REM and notifies CS → FA tracks whether payment is returned and handles disbursement/closure.',
-    'faq-sq1': 'What are Be2, B2D, BPM, and PSI?',
+    'faq-sq1': 'What are Be2, B2D, BPM, PSI, and SCM?',
     'faq-sa1': '<strong>Be2</strong>: KKday\'s core order management system (primarily used by OP)<br><strong>B2D</strong>: Platform for OP to place sub-orders<br><strong>BPM (Odoo)</strong>: Internal process review and payment system<br><strong>PSI</strong>: Ticket warehouse inventory management system<br><strong>SCM</strong>: Self-managed platform for suppliers',
     'faq-pq1': 'How do I look up past orders for high-risk tickets?',
     'faq-pa1': 'You can check the high-risk field in the order warehouse shipping page for item details, or use the PSI system\'s product inquiry function with conditions (by item serial number) to obtain the relevant information.',
@@ -581,7 +581,7 @@ SCMi18n.init({
     'faq-ma3': 'CS が案件を受け付けた後、OP に転送してサプライヤーに状況を確認します。払い戻しが必要な場合は FA に転送します。商品品質の問題であれば、AM がサプライヤーと改善を調整します。',
     'faq-mq4': 'MKP 注文の払い戻しが必要な場合、手順はどうなりますか？',
     'faq-ma4': '<strong>OP は自ら払い戻し（部分払い戻しを含む）を操作してはなりません。</strong>手順：CS が受付 → AM が品質確認・サプライヤーと払い戻し交渉 → AM が BPM REM を申請・CS に通知 → FA が入金確認・出金・案件完結を担当。',
-    'faq-sq1': 'Be2、B2D、BPM、PSI とはそれぞれ何のシステムですか？',
+    'faq-sq1': 'Be2、B2D、BPM、PSI、SCM とはそれぞれ何のシステムですか？',
     'faq-sa1': '<strong>Be2</strong>：KKday のコア注文管理システム（OP 主要使用）<br><strong>B2D</strong>：OP がサブ注文を発注するプラットフォーム<br><strong>BPM（Odoo）</strong>：社内プロセス審査・請款システム<br><strong>PSI</strong>：チケット倉庫在庫管理システム<br><strong>SCM</strong>：サプライヤーが自己管理するプラットフォーム',
     'faq-pq1': '高リスクチケットの過去の注文はどのように照会しますか？',
     'faq-pa1': '注文倉庫の出荷ページで高リスク欄の商品明細を確認するか、PSI システムの商品照会機能で条件（商品シリアル番号）を指定して情報を取得できます。',
@@ -645,7 +645,7 @@ SCMi18n.init({
     'faq-ma3': 'CS가 접수 후 OP로 전달하여 공급업체에 상황을 확인합니다. 환불이 관련된 경우 FA로 전달합니다. 상품 품질 문제라면 AM이 공급업체와 개선을 협의합니다.',
     'faq-mq4': 'MKP 주문에 환불이 필요한 경우 절차는 어떻게 되나요?',
     'faq-ma4': '<strong>OP는 환불(부분 환불 포함)을 직접 처리해서는 안 됩니다.</strong> 절차: CS 접수 → AM 품질 확인 및 공급업체와 환불 협의 → AM BPM REM 신청 및 CS 통보 → FA 입금 여부 추적 및 출금/종결 처리.',
-    'faq-sq1': 'Be2, B2D, BPM, PSI는 각각 어떤 시스템인가요?',
+    'faq-sq1': 'Be2, B2D, BPM, PSI, SCM은 각각 어떤 시스템인가요?',
     'faq-sa1': '<strong>Be2</strong>: KKday 핵심 주문 관리 시스템(OP 주요 사용)<br><strong>B2D</strong>: OP가 하위 주문을 발주하는 플랫폼<br><strong>BPM(Odoo)</strong>: 내부 프로세스 검토 및 청구 시스템<br><strong>PSI</strong>: 티켓 창고 재고 관리 시스템<br><strong>SCM</strong>: 공급업체 자체 관리 플랫폼',
     'faq-pq1': '고위험 티켓의 과거 주문은 어떻게 조회하나요?',
     'faq-pa1': '주문 창고 출고 페이지에서 고위험 항목의 상품 명세를 확인하거나, PSI 시스템의 상품 조회 기능에서 조건(상품 일련번호)을 설정하여 관련 정보를 얻을 수 있습니다.',
