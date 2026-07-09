@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>請款單異常處理 — GO 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .type-header {
+      display:flex; align-items:center; gap:10px;
+      background:var(--primary); color:white;
+      border-radius:var(--radius-md) var(--radius-md) 0 0;
+      padding:16px 22px;
+    }
+    .type-header .badge-label {
+      background:rgba(255,255,255,0.15); padding:2px 10px;
+      border-radius:20px; font-size:11px; font-weight:700;
+    }
+    .type-header h2 { font-size:16px; font-weight:700; margin:0; }
+    .type-body {
+      background:white; border:1px solid var(--border);
+      border-top:none; border-radius:0 0 var(--radius-md) var(--radius-md);
+      padding:22px; margin-bottom:24px;
+    }
+    .type-card {
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:8px; padding:16px 18px; margin-bottom:10px;
+    }
+    .type-card h4 { font-size:13px; font-weight:700; color:var(--primary); margin-bottom:6px; }
+    .type-card p { font-size:13px; color:#4a5568; line-height:1.7; margin:0; }
+    .warn-box {
+      font-size:12px; border:1px solid #ffcc80; color:#e65100;
+      border-radius:5px; padding:8px 14px; display:inline-block;
+      background:#fff8ee; margin-bottom:14px;
+    }
+    .badge-type {
+      display:inline-block; padding:2px 10px; border-radius:5px;
+      font-size:11px; font-weight:700; margin-right:6px; margin-bottom:6px;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
+</style>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-ai.js?v=1"></script>
+  <script src="../go-search.js?v=1"></script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
+    <div class="nav-title">
+      <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+      <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+      <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+      <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+      <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current" data-i18n="be-breadcrumb">請款單異常處理</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#6a1b9a,#ab47bc)">🔧</div>
+      <div class="page-header-body">
+        <h1 data-i18n="be-title">請款單異常處理</h1>
+        <div class="subtitle" data-i18n="be-subtitle">請款單作廢流程、銀行資訊變更處理方式</div>
+        <div class="meta-row">
+          <span class="meta-chip" style="background:#f3e5f5;color:#6a1b9a;" data-i18n="be-chip1">異常處理</span>
+          <span class="meta-chip" data-i18n="be-chip2">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 請款單作廢 -->
+    <div class="type-header" style="background:linear-gradient(135deg,#c62828,#ef5350);">
+      <span class="badge-label" data-i18n="be-void-badge">作廢</span>
+      <h2 data-i18n="be-void-header">請款單作廢流程</h2>
+    </div>
+    <div class="type-body">
+      <div class="warn-box" data-i18n="be-void-warn">⚠️ 請款單成立後 30 分鐘內不可作廢（人工對帳同理）</div>
+
+      <div class="section-title" data-i18n="be-void-steps-title">📋 操作步驟</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4 data-i18n="be-void-step1-title">查詢請款單</h4>
+            <p data-i18n="be-void-step1-desc">進入 Be2 → 單據管理 → 請款單查詢，找到要作廢的請款單</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4 data-i18n="be-void-step2-title">點擊請款單編號</h4>
+            <p data-i18n="be-void-step2-desc">進入請款單詳細頁面</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4 data-i18n="be-void-step3-title">執行作廢</h4>
+            <p data-i18n="be-void-step3-desc">點擊「作廢」按鈕，確認後請款單即作廢完成</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 銀行資訊變更 -->
+    <div class="type-header" style="background:linear-gradient(135deg,#1565c0,#42a5f5);">
+      <span class="badge-label" data-i18n="be-bank-badge">銀行資訊</span>
+      <h2 data-i18n="be-bank-header">銀行資訊變更處理</h2>
+    </div>
+    <div class="type-body">
+      <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-bottom:16px;" data-i18n="be-bank-intro">請款單已成立，但供應商銀行資訊需要更新時，請確認銀行資訊已在系統更新完成後，依請款單來源選擇對應處理方式：</p>
+
+      <div class="type-card">
+        <h4><span class="badge-type" style="background:#e3f2fd;color:#1565c0;">Type 1</span><span data-i18n="be-type1-title">新增請款單頁面產生的請款單</span></h4>
+        <p data-i18n="be-type1-desc">作廢既有請款單 → 重新成立一張新請款單，新請款單會自動帶入當下最新的銀行資訊。</p>
+      </div>
+
+      <div class="type-card">
+        <h4><span class="badge-type" style="background:#e8f5e9;color:#2e7d32;">Type 2</span><span data-i18n="be-type2-title">自動對帳系統（供應商確認後）產生的請款單</span></h4>
+        <p data-i18n="be-type2-desc">作廢既有請款單 → 回到對帳單，點擊「對賬完成，成立請款單」按鈕重新產生，系統將帶入最新銀行資訊。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>', 'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'breadcrumb-home': '首頁', 'breadcrumb-accounting': '帳務管理', 'be-breadcrumb': '請款單異常處理',
+    'be-title': '請款單異常處理', 'be-subtitle': '請款單作廢流程、銀行資訊變更處理方式',
+    'be-chip1': '異常處理', 'be-chip2': '帳務管理',
+    'be-void-badge': '作廢', 'be-void-header': '請款單作廢流程',
+    'be-void-warn': '⚠️ 請款單成立後 30 分鐘內不可作廢（人工對帳同理）',
+    'be-void-steps-title': '📋 操作步驟',
+    'be-void-step1-title': '查詢請款單', 'be-void-step1-desc': '進入 Be2 → 單據管理 → 請款單查詢，找到要作廢的請款單',
+    'be-void-step2-title': '點擊請款單編號', 'be-void-step2-desc': '進入請款單詳細頁面',
+    'be-void-step3-title': '執行作廢', 'be-void-step3-desc': '點擊「作廢」按鈕，確認後請款單即作廢完成',
+    'be-bank-badge': '銀行資訊', 'be-bank-header': '銀行資訊變更處理',
+    'be-bank-intro': '請款單已成立，但供應商銀行資訊需要更新時，請確認銀行資訊已在系統更新完成後，依請款單來源選擇對應處理方式：',
+    'be-type1-title': '新增請款單頁面產生的請款單',
+    'be-type1-desc': '作廢既有請款單 → 重新成立一張新請款單，新請款單會自動帶入當下最新的銀行資訊。',
+    'be-type2-title': '自動對帳系統（供應商確認後）產生的請款單',
+    'be-type2-desc': '作廢既有請款單 → 回到對帳單，點擊「對賬完成，成立請款單」按鈕重新產生，系統將帶入最新銀行資訊。',
+    'footer': 'GO 知識庫 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>', 'nav-subtitle': 'OP Operations Manual · Must-Read · One-Stop Reference',
+    'breadcrumb-home': 'Home', 'breadcrumb-accounting': 'Accounting', 'be-breadcrumb': 'Billing Exceptions',
+    'be-title': 'Billing Exception Handling', 'be-subtitle': 'Payment request void flow & bank info change handling',
+    'be-chip1': 'Exception', 'be-chip2': 'Accounting',
+    'be-void-badge': 'Void', 'be-void-header': 'Payment Request Void Flow',
+    'be-void-warn': '⚠️ A payment request cannot be voided within 30 minutes of creation (same applies to manual reconciliation)',
+    'be-void-steps-title': '📋 Steps',
+    'be-void-step1-title': 'Look up the payment request', 'be-void-step1-desc': 'Go to Be2 → Document Management → Payment Request Query to find the request to void',
+    'be-void-step2-title': 'Click the request number', 'be-void-step2-desc': 'Enter the payment request detail page',
+    'be-void-step3-title': 'Execute void', 'be-void-step3-desc': 'Click the "Void" button and confirm — the request is voided',
+    'be-bank-badge': 'Bank Info', 'be-bank-header': 'Bank Information Change Handling',
+    'be-bank-intro': 'If the payment request is already created but the supplier\'s bank info needs updating, confirm the system has been updated first, then follow the appropriate flow based on how the request was generated:',
+    'be-type1-title': 'Request created via Add Payment Request page',
+    'be-type1-desc': 'Void the existing request → Create a new one. The new request will automatically use the latest bank information.',
+    'be-type2-title': 'Request auto-generated by reconciliation system (after supplier confirmation)',
+    'be-type2-desc': 'Void the existing request → Return to the reconciliation record and click "Reconciliation Complete, Create Payment Request" to regenerate with the latest bank info.',
+    'footer': 'GO Wiki · Internal Use',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>', 'nav-subtitle': 'OP 業務マニュアル · 新人必読 · ワンストップ参照',
+    'breadcrumb-home': 'ホーム', 'breadcrumb-accounting': '経理管理', 'be-breadcrumb': '請求書例外処理',
+    'be-title': '請求書例外処理', 'be-subtitle': '請求書無効フロー・銀行情報変更対応',
+    'be-chip1': '例外処理', 'be-chip2': '経理管理',
+    'be-void-badge': '無効', 'be-void-header': '請求書無効フロー',
+    'be-void-warn': '⚠️ 請求書作成後30分以内は無効化できません（手動照合も同様）',
+    'be-void-steps-title': '📋 手順',
+    'be-void-step1-title': '請求書を検索', 'be-void-step1-desc': 'Be2 → 書類管理 → 請求書照会 から対象を検索',
+    'be-void-step2-title': '請求書番号をクリック', 'be-void-step2-desc': '請求書詳細画面を開く',
+    'be-void-step3-title': '無効を実行', 'be-void-step3-desc': '「無効」ボタンをクリックして確認',
+    'be-bank-badge': '銀行情報', 'be-bank-header': '銀行情報変更対応',
+    'be-bank-intro': '請求書作成済みだが銀行情報を更新する必要がある場合、システムの更新を確認してから以下の方法で対応してください：',
+    'be-type1-title': '請求書追加ページで作成した請求書',
+    'be-type1-desc': '既存の請求書を無効化 → 新しい請求書を作成。最新の銀行情報が自動反映されます。',
+    'be-type2-title': '自動照合システム（サプライヤー確認後）で生成した請求書',
+    'be-type2-desc': '既存の請求書を無効化 → 照合画面に戻り「照合完了・請求書作成」ボタンで再生成。最新の銀行情報が反映されます。',
+    'footer': 'GO ナレッジベース · 社内利用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>', 'nav-subtitle': 'OP 업무 매뉴얼 · 신입 필독 · 원스톱 참조',
+    'breadcrumb-home': '홈', 'breadcrumb-accounting': '회계 관리', 'be-breadcrumb': '청구서 예외 처리',
+    'be-title': '청구서 예외 처리', 'be-subtitle': '청구서 무효 처리 흐름 및 은행 정보 변경 처리',
+    'be-chip1': '예외 처리', 'be-chip2': '회계 관리',
+    'be-void-badge': '무효', 'be-void-header': '청구서 무효 처리 흐름',
+    'be-void-warn': '⚠️ 청구서 생성 후 30분 이내에는 무효 처리 불가 (수동 정산도 동일)',
+    'be-void-steps-title': '📋 처리 단계',
+    'be-void-step1-title': '청구서 조회', 'be-void-step1-desc': 'Be2 → 서류 관리 → 청구서 조회에서 무효 처리할 청구서 검색',
+    'be-void-step2-title': '청구서 번호 클릭', 'be-void-step2-desc': '청구서 상세 페이지 진입',
+    'be-void-step3-title': '무효 실행', 'be-void-step3-desc': '「무효」버튼 클릭 후 확인',
+    'be-bank-badge': '은행 정보', 'be-bank-header': '은행 정보 변경 처리',
+    'be-bank-intro': '청구서가 이미 생성되었지만 은행 정보를 변경해야 하는 경우, 시스템 업데이트를 확인한 후 청구서 생성 방식에 따라 처리하세요:',
+    'be-type1-title': '청구서 추가 페이지에서 생성한 청구서',
+    'be-type1-desc': '기존 청구서 무효화 → 새 청구서 생성. 새 청구서에는 최신 은행 정보가 자동 반영됩니다.',
+    'be-type2-title': '자동 정산 시스템(공급업체 확인 후)에서 생성한 청구서',
+    'be-type2-desc': '기존 청구서 무효화 → 정산 화면으로 돌아가 「정산 완료, 청구서 생성」버튼으로 재생성. 최신 은행 정보가 반영됩니다.',
+    'footer': 'GO 지식베이스 · 내부 사용',
+  },
+});
+</script>
+</body>
+</html>

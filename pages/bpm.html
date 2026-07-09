@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPM 財務表單 — GO 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .section-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .form-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .form-table th { background:var(--primary); color:white; padding:10px 14px; text-align:left; font-weight:600; }
+    .form-table th:first-child { border-radius:8px 0 0 0; }
+    .form-table th:last-child { border-radius:0 8px 0 0; }
+    .form-table td { padding:10px 14px; border-bottom:1px solid var(--border); }
+    .form-table tr:last-child td { border-bottom:none; }
+    .form-table tr:nth-child(even) td { background:#fafbff; }
+    .code-badge {
+      display:inline-block; background:#e8f0fe; border:1px solid #c5d3f5;
+      color:#3c50e0; border-radius:5px; padding:2px 10px;
+      font-size:12px; font-weight:700; font-family:monospace; letter-spacing:0.5px;
+    }
+    .format-box {
+      background:#1a1a2e; color:white; border-radius:10px;
+      padding:16px 20px; margin-bottom:6px;
+    }
+    .format-box .label { font-size:11px; color:rgba(255,255,255,0.45); margin-bottom:6px; }
+    .format-box .code { font-size:15px; font-weight:700; letter-spacing:1px; font-family:monospace; }
+    .format-box .highlight { color:#f5a623; }
+    .flow-bar {
+      display:flex; align-items:center; flex-wrap:wrap; gap:6px;
+      background:#fafbff; border:1px solid var(--border);
+      border-radius:10px; padding:16px 20px; margin-bottom:16px;
+    }
+    .flow-tag { padding:7px 16px; border-radius:6px; font-size:12px; font-weight:600; white-space:nowrap; }
+    .flow-arr { color:#ccc; font-size:16px; }
+    .note-list { display:flex; flex-direction:column; gap:8px; }
+    .note-item {
+      display:flex; gap:10px; align-items:flex-start;
+      background:#fafbff; border:1px solid var(--border); border-radius:8px; padding:12px 16px;
+    }
+    .note-icon { font-size:14px; flex-shrink:0; margin-top:1px; }
+    .note-item p { font-size:13px; color:#4a5568; line-height:1.6; margin:0; }
+    .warn-box {
+      font-size:12px; border:1px solid #ffcc80; color:#e65100;
+      border-radius:5px; padding:6px 12px; display:inline-block;
+      background:#fff8ee; margin-top:12px;
+    }
+  </style>
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
+</style>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-ai.js?v=1"></script>
+  <script src="../go-search.js?v=1"></script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
+    <div class="nav-title">
+      <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+      <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+      <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+      <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+      <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb">
+      <a href="../index.html" data-i18n="breadcrumb-home">首頁</a>
+      <span class="sep">/</span>
+      <a href="../index.html#accounting" data-i18n="breadcrumb-accounting">帳務管理</a>
+      <span class="sep">/</span>
+      <span class="current" data-i18n="bpm-breadcrumb">BPM 財務表單</span>
+    </div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#1565c0,#42a5f5)">📑</div>
+      <div class="page-header-body">
+        <h1 data-i18n="bpm-title">BPM 財務表單</h1>
+        <div class="subtitle" data-i18n="bpm-subtitle">財務表單速查、BPM 審核流程與注意事項</div>
+        <div class="meta-row">
+          <span class="meta-chip badge-blue" data-i18n="bpm-chip1">BPM</span>
+          <span class="meta-chip" data-i18n="bpm-chip2">帳務管理</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 表單單號格式 -->
+    <div class="white-box" style="margin-bottom:16px;">
+      <div class="section-title" data-i18n="bpm-format-title">🔢 財務表單單號格式</div>
+      <div class="format-box">
+        <div class="label" data-i18n="bpm-format-label">範例</div>
+        <div class="code"><span class="highlight">SUP</span>-<span class="highlight">20240315</span>-<span class="highlight">001</span></div>
+      </div>
+      <div style="font-size:12px;color:#4a5568;line-height:2;margin-top:8px;">
+        <span data-i18n="bpm-format-desc">財務表單種類 ─ 申請日期 ─ 當日流水號</span>
+      </div>
+    </div>
+
+    <!-- 財務表單速查表 -->
+    <div class="white-box" style="margin-bottom:16px;">
+      <div class="section-title" data-i18n="bpm-table-title">📋 財務表單速查</div>
+      <div style="overflow-x:auto;">
+        <table class="form-table">
+          <thead>
+            <tr>
+              <th data-i18n="bpm-col-code">縮寫</th>
+              <th data-i18n="bpm-col-name">表單名稱</th>
+              <th data-i18n="bpm-col-use">使用情境</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-badge">TIC</span></td>
+              <td data-i18n="bpm-tic-name">切票付款申請單</td>
+              <td data-i18n="bpm-tic-use">預先購買票券，向供應商切票付款</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">SUP</span></td>
+              <td data-i18n="bpm-sup-name">供應商付款申請單</td>
+              <td data-i18n="bpm-sup-use">一般月結、週結等供應商請款主要使用</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">REM</span></td>
+              <td data-i18n="bpm-rem-name">專案入款通知單</td>
+              <td data-i18n="bpm-rem-use">供應商匯款回 KKday，需開立折讓單或佣金發票</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">INV</span></td>
+              <td data-i18n="bpm-inv-name">無入款憑證開立申請單</td>
+              <td data-i18n="bpm-inv-use">KKday 主動開立佣金發票給供應商，無需先入款</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">PRE</span></td>
+              <td data-i18n="bpm-pre-name">預存金申請單</td>
+              <td data-i18n="bpm-pre-use">預存款補款、正負向調整</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">COM</span></td>
+              <td data-i18n="bpm-com-name">供應商佣金收付款申請單</td>
+              <td data-i18n="bpm-com-use">佣金相關收付款作業</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">RPY</span></td>
+              <td data-i18n="bpm-rpy-name">再次付款申請單</td>
+              <td data-i18n="bpm-rpy-use">原款項需重新出款時使用</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">PUR</span></td>
+              <td data-i18n="bpm-pur-name">費用採購單</td>
+              <td data-i18n="bpm-pur-use">內部費用採購申請</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">TRA</span></td>
+              <td data-i18n="bpm-tra-name">出差申請單</td>
+              <td data-i18n="bpm-tra-use">出差前費用申請</td>
+            </tr>
+            <tr>
+              <td><span class="code-badge">TRE</span></td>
+              <td data-i18n="bpm-tre-name">出差報銷單</td>
+              <td data-i18n="bpm-tre-use">出差後費用核銷報銷</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BPM 審核流程 -->
+    <div class="white-box">
+      <div class="section-title" data-i18n="bpm-flow-title">🔄 BPM 審核流程</div>
+      <div class="flow-bar">
+        <span class="flow-tag" style="background:#e3f2fd;color:#1565c0;" data-i18n="bpm-step1">申請人送出申請</span>
+        <span class="flow-arr">▶</span>
+        <span class="flow-tag" style="background:#e8f5e9;color:#2e7d32;" data-i18n="bpm-step2">主管審核</span>
+        <span class="flow-arr">▶</span>
+        <span class="flow-tag" style="background:#fff3e0;color:#e65100;" data-i18n="bpm-step3">會計審核</span>
+        <span class="flow-arr">▶</span>
+        <span class="flow-tag" style="background:#fce4ec;color:#c62828;" data-i18n="bpm-step4">財務審核</span>
+      </div>
+
+      <div class="section-title" style="margin-top:4px;" data-i18n="bpm-notes-title">⚠️ 重要注意事項</div>
+      <div class="note-list">
+        <div class="note-item">
+          <span class="note-icon">📌</span>
+          <p data-i18n="bpm-note1">會計審核完畢後，財務才能在 BPM 看到此單。向財務詢問前請先確認會計審核是否完成。</p>
+        </div>
+        <div class="note-item">
+          <span class="note-icon">📌</span>
+          <p data-i18n="bpm-note2">若需向財務詢問，請提供 <strong>BPM 單號</strong>，財務無法以請款單號查詢。</p>
+        </div>
+        <div class="note-item">
+          <span class="note-icon">📌</span>
+          <p data-i18n="bpm-note3">需交紙本的主體，請確認主管審核完成後再提交紙本。</p>
+        </div>
+        <div class="note-item">
+          <span class="note-icon">📌</span>
+          <p data-i18n="bpm-note4">財務僅對主體、金額及銀行資訊做最終確認，若有特殊備註事項，請再次直接聯繫負責財務。</p>
+        </div>
+        <div class="note-item">
+          <span class="note-icon">🇹🇼</span>
+          <p data-i18n="bpm-note5">台灣區：須等會計退回才能補憑證，出款一週後方可補憑證。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'nav-title': 'SCM <em>知識庫</em>', 'nav-subtitle': 'OP 日常作業手冊 · 新人必讀 · 一站式查詢',
+    'breadcrumb-home': '首頁', 'breadcrumb-accounting': '帳務管理', 'bpm-breadcrumb': 'BPM 財務表單',
+    'bpm-title': 'BPM 財務表單', 'bpm-subtitle': '財務表單速查、BPM 審核流程與注意事項',
+    'bpm-chip1': 'BPM', 'bpm-chip2': '帳務管理',
+    'bpm-format-title': '🔢 財務表單單號格式', 'bpm-format-label': '範例',
+    'bpm-format-desc': '財務表單種類 ─ 申請日期 ─ 當日流水號',
+    'bpm-table-title': '📋 財務表單速查',
+    'bpm-col-code': '縮寫', 'bpm-col-name': '表單名稱', 'bpm-col-use': '使用情境',
+    'bpm-tic-name': '切票付款申請單', 'bpm-tic-use': '預先購買票券，向供應商切票付款',
+    'bpm-sup-name': '供應商付款申請單', 'bpm-sup-use': '一般月結、週結等供應商請款主要使用',
+    'bpm-rem-name': '專案入款通知單', 'bpm-rem-use': '供應商匯款回 KKday，需開立折讓單或佣金發票',
+    'bpm-inv-name': '無入款憑證開立申請單', 'bpm-inv-use': 'KKday 主動開立佣金發票給供應商，無需先入款',
+    'bpm-pre-name': '預存金申請單', 'bpm-pre-use': '預存款補款、正負向調整',
+    'bpm-com-name': '供應商佣金收付款申請單', 'bpm-com-use': '佣金相關收付款作業',
+    'bpm-rpy-name': '再次付款申請單', 'bpm-rpy-use': '原款項需重新出款時使用',
+    'bpm-pur-name': '費用採購單', 'bpm-pur-use': '內部費用採購申請',
+    'bpm-tra-name': '出差申請單', 'bpm-tra-use': '出差前費用申請',
+    'bpm-tre-name': '出差報銷單', 'bpm-tre-use': '出差後費用核銷報銷',
+    'bpm-flow-title': '🔄 BPM 審核流程',
+    'bpm-step1': '申請人送出申請', 'bpm-step2': '主管審核', 'bpm-step3': '會計審核', 'bpm-step4': '財務審核',
+    'bpm-notes-title': '⚠️ 重要注意事項',
+    'bpm-note1': '會計審核完畢後，財務才能在 BPM 看到此單。向財務詢問前請先確認會計審核是否完成。',
+    'bpm-note2': '若需向財務詢問，請提供 BPM 單號，財務無法以請款單號查詢。',
+    'bpm-note3': '需交紙本的主體，請確認主管審核完成後再提交紙本。',
+    'bpm-note4': '財務僅對主體、金額及銀行資訊做最終確認，若有特殊備註事項，請再次直接聯繫負責財務。',
+    'bpm-note5': '台灣區：須等會計退回才能補憑證，出款一週後方可補憑證。',
+    'footer': 'GO 知識庫 · 內部使用',
+  },
+  en: {
+    'nav-title': 'SCM <em>Wiki</em>', 'nav-subtitle': 'OP Operations Manual · Must-Read · One-Stop Reference',
+    'breadcrumb-home': 'Home', 'breadcrumb-accounting': 'Accounting', 'bpm-breadcrumb': 'BPM Forms',
+    'bpm-title': 'BPM Financial Forms', 'bpm-subtitle': 'Form quick reference & BPM approval flow',
+    'bpm-chip1': 'BPM', 'bpm-chip2': 'Accounting',
+    'bpm-format-title': '🔢 Form Number Format', 'bpm-format-label': 'Example',
+    'bpm-format-desc': 'Form type ─ Application date ─ Daily sequence',
+    'bpm-table-title': '📋 Form Quick Reference',
+    'bpm-col-code': 'Code', 'bpm-col-name': 'Form Name', 'bpm-col-use': 'Use Case',
+    'bpm-tic-name': 'Ticket Purchase Payment', 'bpm-tic-use': 'Pre-purchase tickets from supplier',
+    'bpm-sup-name': 'Supplier Payment Request', 'bpm-sup-use': 'Main form for monthly/weekly supplier billing',
+    'bpm-rem-name': 'Project Inflow Notice', 'bpm-rem-use': 'Supplier remits back to KKday; issue allowance or commission invoice',
+    'bpm-inv-name': 'Invoice Without Inflow', 'bpm-inv-use': 'KKday issues commission invoice to supplier proactively',
+    'bpm-pre-name': 'Prepayment Request', 'bpm-pre-use': 'Prepayment top-up, positive/negative adjustments',
+    'bpm-com-name': 'Supplier Commission Payment', 'bpm-com-use': 'Commission receipt/payment operations',
+    'bpm-rpy-name': 'Re-payment Request', 'bpm-rpy-use': 'Re-issue a previous payment',
+    'bpm-pur-name': 'Purchase Order', 'bpm-pur-use': 'Internal expense procurement',
+    'bpm-tra-name': 'Business Trip Application', 'bpm-tra-use': 'Pre-trip expense request',
+    'bpm-tre-name': 'Business Trip Expense Report', 'bpm-tre-use': 'Post-trip expense reimbursement',
+    'bpm-flow-title': '🔄 BPM Approval Flow',
+    'bpm-step1': 'Submit Application', 'bpm-step2': 'Manager Review', 'bpm-step3': 'Accounting Review', 'bpm-step4': 'Finance Review',
+    'bpm-notes-title': '⚠️ Key Notes',
+    'bpm-note1': 'Finance can only see the form after accounting completes review. Confirm accounting status before contacting finance.',
+    'bpm-note2': 'When contacting finance, always provide the BPM number — finance cannot look up by payment request number.',
+    'bpm-note3': 'For entities requiring paper submission, ensure manager approval is done before submitting paper copy.',
+    'bpm-note4': 'Finance only verifies entity, amount, and bank info. For special notes, contact the responsible finance person directly.',
+    'bpm-note5': 'Taiwan entities: vouchers can only be submitted after accounting returns the form; supplement within one week of payment.',
+    'footer': 'GO Wiki · Internal Use',
+  },
+  ja: {
+    'nav-title': 'SCM <em>ナレッジベース</em>', 'nav-subtitle': 'OP 業務マニュアル · 新人必読 · ワンストップ参照',
+    'breadcrumb-home': 'ホーム', 'breadcrumb-accounting': '経理管理', 'bpm-breadcrumb': 'BPM 財務フォーム',
+    'bpm-title': 'BPM 財務フォーム', 'bpm-subtitle': 'フォーム速引き・BPM 審査フロー',
+    'bpm-chip1': 'BPM', 'bpm-chip2': '経理管理',
+    'bpm-format-title': '🔢 フォーム番号フォーマット', 'bpm-format-label': '例',
+    'bpm-format-desc': 'フォーム種類 ─ 申請日 ─ 当日連番',
+    'bpm-table-title': '📋 フォーム速引き',
+    'bpm-col-code': '略号', 'bpm-col-name': 'フォーム名', 'bpm-col-use': '使用シーン',
+    'bpm-tic-name': 'チケット購入申請', 'bpm-tic-use': 'サプライヤーへの事前チケット購入',
+    'bpm-sup-name': 'サプライヤー支払申請', 'bpm-sup-use': '月締め・週締め等の通常請求に使用',
+    'bpm-rem-name': 'プロジェクト入金通知', 'bpm-rem-use': 'サプライヤーがKKdayへ返金する場合',
+    'bpm-inv-name': '入金なし証憑開立申請', 'bpm-inv-use': 'KKdayが先行して請求書を発行する場合',
+    'bpm-pre-name': '前払金申請', 'bpm-pre-use': '前払い補充・正負向調整',
+    'bpm-com-name': 'サプライヤー手数料申請', 'bpm-com-use': '手数料の収支処理',
+    'bpm-rpy-name': '再支払申請', 'bpm-rpy-use': '再出金が必要な場合',
+    'bpm-pur-name': '費用購買申請', 'bpm-pur-use': '社内費用購買',
+    'bpm-tra-name': '出張申請', 'bpm-tra-use': '出張前の費用申請',
+    'bpm-tre-name': '出張精算', 'bpm-tre-use': '出張後の費用精算',
+    'bpm-flow-title': '🔄 BPM 審査フロー',
+    'bpm-step1': '申請者が提出', 'bpm-step2': '上長審査', 'bpm-step3': '経理審査', 'bpm-step4': '財務審査',
+    'bpm-notes-title': '⚠️ 重要な注意事項',
+    'bpm-note1': '財務は経理審査完了後にのみ伝票を確認できます。財務へ問い合わせる前に経理審査の完了を確認してください。',
+    'bpm-note2': '財務への問い合わせには BPM 番号を提供してください。請求番号では検索できません。',
+    'bpm-note3': '紙本提出が必要な主体は、上長審査完了後に紙本を提出してください。',
+    'bpm-note4': '財務は主体・金額・銀行情報のみ確認します。特別な備考がある場合は担当財務へ直接連絡してください。',
+    'bpm-note5': '台湾主体：証憑は経理が戻した後のみ補充可能。出金から1週間以内に補充してください。',
+    'footer': 'GO ナレッジベース · 社内利用',
+  },
+  ko: {
+    'nav-title': 'SCM <em>지식베이스</em>', 'nav-subtitle': 'OP 업무 매뉴얼 · 신입 필독 · 원스톱 참조',
+    'breadcrumb-home': '홈', 'breadcrumb-accounting': '회계 관리', 'bpm-breadcrumb': 'BPM 재무 양식',
+    'bpm-title': 'BPM 재무 양식', 'bpm-subtitle': '양식 빠른 참조 및 BPM 승인 흐름',
+    'bpm-chip1': 'BPM', 'bpm-chip2': '회계 관리',
+    'bpm-format-title': '🔢 양식 번호 형식', 'bpm-format-label': '예시',
+    'bpm-format-desc': '양식 종류 ─ 신청일 ─ 당일 일련번호',
+    'bpm-table-title': '📋 양식 빠른 참조',
+    'bpm-col-code': '약어', 'bpm-col-name': '양식 이름', 'bpm-col-use': '사용 상황',
+    'bpm-tic-name': '티켓 구매 신청서', 'bpm-tic-use': '공급업체에 티켓 선구매',
+    'bpm-sup-name': '공급업체 지급 신청서', 'bpm-sup-use': '월결, 주결 등 일반 청구에 사용',
+    'bpm-rem-name': '프로젝트 입금 통지서', 'bpm-rem-use': '공급업체가 KKday로 반환 시',
+    'bpm-inv-name': '입금 없는 증빙 개설 신청서', 'bpm-inv-use': 'KKday가 먼저 청구서 발행',
+    'bpm-pre-name': '선불금 신청서', 'bpm-pre-use': '선불 충전, 양방향 조정',
+    'bpm-com-name': '공급업체 수수료 신청서', 'bpm-com-use': '수수료 수지 처리',
+    'bpm-rpy-name': '재지급 신청서', 'bpm-rpy-use': '재출금이 필요한 경우',
+    'bpm-pur-name': '비용 구매 신청서', 'bpm-pur-use': '내부 비용 구매',
+    'bpm-tra-name': '출장 신청서', 'bpm-tra-use': '출장 전 비용 신청',
+    'bpm-tre-name': '출장 정산서', 'bpm-tre-use': '출장 후 비용 정산',
+    'bpm-flow-title': '🔄 BPM 승인 흐름',
+    'bpm-step1': '신청자 제출', 'bpm-step2': '관리자 검토', 'bpm-step3': '회계 검토', 'bpm-step4': '재무 검토',
+    'bpm-notes-title': '⚠️ 주요 유의사항',
+    'bpm-note1': '재무는 회계 검토 완료 후에만 전표를 볼 수 있습니다. 재무에 문의하기 전에 회계 검토 완료 여부를 확인하세요.',
+    'bpm-note2': '재무 문의 시 BPM 번호를 제공하세요. 청구 번호로는 조회할 수 없습니다.',
+    'bpm-note3': '서류 제출이 필요한 주체는 관리자 승인 후 서류를 제출하세요.',
+    'bpm-note4': '재무는 주체, 금액, 은행 정보만 최종 확인합니다. 특별 사항은 담당 재무에게 직접 연락하세요.',
+    'bpm-note5': '대만 주체: 회계가 반려한 후에만 증빙 보충 가능. 출금 후 1주일 이내에 보충하세요.',
+    'footer': 'GO 지식베이스 · 내부 사용',
+  },
+});
+</script>
+</body>
+</html>
