@@ -131,7 +131,7 @@
       <div class="faq-cat-icon" style="background:#e8f7f9;">🎫</div>
       <div>
         <div class="faq-cat-label" data-i18n="faq-cat-ticket">出票 / 訂購</div>
-        <div class="faq-cat-count" data-i18n="faq-count-ticket">3 個問題</div>
+        <div class="faq-cat-count" data-i18n="faq-count-ticket">4 個問題</div>
       </div>
     </div>
 
@@ -160,6 +160,15 @@
         <span class="faq-q-arr">▾</span>
       </button>
       <div class="faq-a" data-i18n="faq-ta3">不一定。先判斷失敗原因，若只是單一子訂單問題，可針對失敗子訂單進行人工補訂；若供應商完全無法接單才考慮整筆取消。</div>
+    </div>
+
+    <div class="faq-item" data-cat="ticket">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-badge" style="background:#fef9c3;color:#854d0e;">額滿</span>
+        <span class="faq-q-text" data-i18n="faq-tq4">哪些情況不需要進行額滿挽單？</span>
+        <span class="faq-q-arr">▾</span>
+      </button>
+      <div class="faq-a" data-i18n="faq-ta4">以下情況可直接取消，不需嘗試挽單：供應商明確回覆無法補位或不接受候補；AGODA 分銷商訂單遇額滿，依規定一律取消；MKP 訂單由供應商自行處理，OP 不介入；旅客已主動確認接受取消退款。如不確定是否需挽單，請先詢問 AM 確認供應商態度再決定。</div>
     </div>
   </div>
 
@@ -397,6 +406,9 @@ SCMi18n.init({
     'faq-ta2': '從旅客下單時算起 <strong>24 小時內</strong>，OP 必須完成向供應商的人工訂購。請優先處理此類訂單，避免旅客出行前未收到有效憑證。',
     'faq-tq3': 'OCBT 子訂單其中一個失敗，需要整筆取消嗎？',
     'faq-ta3': '不一定。先判斷失敗原因，若只是單一子訂單問題，可針對失敗子訂單進行人工補訂；若供應商完全無法接單才考慮整筆取消。',
+    'faq-tq4': '哪些情況不需要進行額滿挽單？',
+    'faq-ta4': '以下情況可直接取消，不需嘗試挽單：供應商明確回覆無法補位或不接受候補；AGODA 分銷商訂單遇額滿，依規定一律取消；MKP 訂單由供應商自行處理，OP 不介入；旅客已主動確認接受取消退款。如不確定是否需挽單，請先詢問 AM 確認供應商態度再決定。',
+    'faq-count-ticket': '4 個問題',
     'faq-cq1': 'OCBT 商品要取消，有什麼特別注意事項？',
     'faq-ca1': '必須先確認<strong>所有子訂單皆已取消完成</strong>，才能執行母訂單取消。若子訂單未完全取消就取消母訂單，可能造成帳務與憑證異常。',
     'faq-cq2': '旅客要部分取消（例如從 4 人減為 2 人），流程跟一般取消一樣嗎？',
