@@ -216,7 +216,7 @@
       <div class="faq-cat-icon" style="background:#fff4e6;">💰</div>
       <div>
         <div class="faq-cat-label" data-i18n="faq-cat-accounting">帳務 / 請款</div>
-        <div class="faq-cat-count" data-i18n="faq-count-accounting">2 個問題</div>
+        <div class="faq-cat-count" data-i18n="faq-count-accounting">3 個問題</div>
       </div>
     </div>
 
@@ -236,6 +236,15 @@
         <span class="faq-q-arr">▾</span>
       </button>
       <div class="faq-a" data-i18n-html="faq-aa2">確認銀行資訊已在系統更新完成後，依請款單來源選擇處理方式：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>新增請款單頁面產生的</strong><br>作廢既有請款單 → 重新成立新請款單，新請款單會自動帶入最新銀行資訊。<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>自動對帳系統（供應商確認後）產生的</strong><br>作廢既有請款單 → 回到對帳單，點擊「對賬完成，成立請款單」按鈕重新產生，系統將帶入最新銀行資訊。</div>
+    </div>
+
+    <div class="faq-item" data-cat="accounting">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-badge" style="background:#fff3e0;color:#e65100;">手起</span>
+        <span class="faq-q-text" data-i18n="faq-aq3">什麼情況需要手動成立供應商付款單？</span>
+        <span class="faq-q-arr">▾</span>
+      </button>
+      <div class="faq-a" data-i18n-html="faq-aa3"><span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 全市場在無特殊情形下，不使用手起付款單</span><br><strong>適用情境：</strong>請款方式不同；成本幣別與付款幣別不同。<br><br><strong>注意事項：</strong><br>• 使用手動成立時，須知會財務同仁，需由相關人員向財務端提出需求後才可執行。<br>• 透過 BPM → 財務表單申請 → 供應商付款申請單 創立申請單。<br>• 手動成立的申請單為<strong>空白申請單</strong>，所有欄位皆須人工填入後才可進行後續流程。</div>
     </div>
   </div>
 
@@ -404,7 +413,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ 系統操作', 'faq-chip-psi': '📦 PSI 庫存', 'faq-chip-fraud': '🚨 異常／盜刷',
     'faq-cat-ticket': '出票 / 訂購', 'faq-count-ticket': '3 個問題',
     'faq-cat-cancel': '取消 / 退款', 'faq-count-cancel': '3 個問題',
-    'faq-cat-accounting': '帳務 / 請款', 'faq-count-accounting': '2 個問題',
+    'faq-cat-accounting': '帳務 / 請款', 'faq-count-accounting': '3 個問題',
     'faq-cat-mkp': 'MKP 相關', 'faq-count-mkp': '4 個問題',
     'faq-cat-system': '系統操作', 'faq-count-system': '1 個問題',
     'faq-cat-psi': 'PSI 庫存管理', 'faq-count-psi': '4 個問題',
@@ -427,6 +436,8 @@ SCMi18n.init({
     'faq-aq1': '佣金申請 REM 跟 INV 有什麼差別？',
     'faq-aa1': '<strong>REM</strong>：供應商先匯款給 KKday，再附上津貼/折讓單。<br><strong>INV</strong>：KKday 主動開立憑證給供應商，無需供應商先入款。',
     'faq-aq2': '請款單已成立，但銀行資訊有誤，怎麼辦？',
+    'faq-aq3': '什麼情況需要手動成立供應商付款單？',
+    'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 全市場在無特殊情形下，不使用手起付款單</span><br><strong>適用情境：</strong>請款方式不同；成本幣別與付款幣別不同。<br><br><strong>注意事項：</strong><br>• 使用手動成立時，須知會財務同仁，需由相關人員向財務端提出需求後才可執行。<br>• 透過 BPM → 財務表單申請 → 供應商付款申請單 創立申請單。<br>• 手動成立的申請單為<strong>空白申請單</strong>，所有欄位皆須人工填入後才可進行後續流程。',
     'faq-aa2': '確認銀行資訊已在系統更新完成後，依請款單來源選擇處理方式：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>新增請款單頁面產生的</strong><br>作廢既有請款單 → 重新成立新請款單，新請款單會自動帶入最新銀行資訊。<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>自動對帳系統（供應商確認後）產生的</strong><br>作廢既有請款單 → 回到對帳單，點擊「對賬完成，成立請款單」按鈕重新產生，系統將帶入最新銀行資訊。',
     'faq-mq1': '什麼是 MKP？',
     'faq-ma1': 'MKP 是 <strong>Marketplace</strong> 的縮寫，為 KKday 商城供應商合作模式。訂單日常作業由供應商自行處理，KKday 僅為平台方，OP/CS 只在特殊情境（客訴、退款、品質問題）時介入。',
@@ -463,7 +474,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ Systems', 'faq-chip-psi': '📦 PSI Stock', 'faq-chip-fraud': '🚨 Fraud',
     'faq-cat-ticket': 'Ticketing / Ordering', 'faq-count-ticket': '3 questions',
     'faq-cat-cancel': 'Cancellation / Refund', 'faq-count-cancel': '3 questions',
-    'faq-cat-accounting': 'Billing / Payment', 'faq-count-accounting': '2 questions',
+    'faq-cat-accounting': 'Billing / Payment', 'faq-count-accounting': '3 questions',
     'faq-cat-mkp': 'MKP', 'faq-count-mkp': '4 questions',
     'faq-cat-system': 'Systems', 'faq-count-system': '1 question',
     'faq-cat-psi': 'PSI Inventory', 'faq-count-psi': '4 questions',
@@ -484,6 +495,8 @@ SCMi18n.init({
     'faq-aa1': '<strong>REM</strong>: The supplier wires payment to KKday first, then attaches an allowance/credit note.<br><strong>INV</strong>: KKday proactively issues a document to the supplier; the supplier does not need to pay first.',
     'faq-aq2': 'A payment request is already created but the bank info is wrong — what should I do?',
     'faq-aa2': 'Confirm the bank info has been updated in the system, then follow the appropriate flow based on how the request was generated:<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>Created via Add Payment Request page</strong><br>Void the existing request → Create a new one. The new request will automatically use the latest bank info.<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>Auto-generated by reconciliation system (after supplier confirmation)</strong><br>Void the existing request → Return to the reconciliation record and click "Reconciliation Complete, Create Payment Request" to regenerate with the latest bank info.',
+    'faq-aq3': 'When is a manual supplier payment order required?',
+    'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ Manual payment orders are not used market-wide unless there is a special case</span><br><strong>Applicable scenarios:</strong> Different payment method; cost currency differs from payment currency.<br><br><strong>Notes:</strong><br>• When creating manually, finance must be informed in advance — the relevant team must submit a request to Finance before proceeding.<br>• Create via BPM → Financial Form Application → Supplier Payment Application Form.<br>• Manually created forms are <strong>blank</strong> — all fields must be filled in manually before the process can continue.',
     'faq-mq1': 'What is MKP?',
     'faq-ma1': 'MKP stands for <strong>Marketplace</strong> — KKday\'s supplier cooperation model. Day-to-day order operations are handled by the supplier. KKday acts as the platform only; OP/CS intervenes only in special cases (complaints, refunds, quality issues).',
     'faq-mq2': 'If there\'s a problem with an MKP order, can OP directly edit the voucher content in Be2?',
@@ -519,7 +532,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ システム操作', 'faq-chip-psi': '📦 PSI 在庫', 'faq-chip-fraud': '🚨 異常／不正',
     'faq-cat-ticket': '発券 / 注文', 'faq-count-ticket': '3 件',
     'faq-cat-cancel': 'キャンセル / 返金', 'faq-count-cancel': '3 件',
-    'faq-cat-accounting': '経理 / 請款', 'faq-count-accounting': '2 件',
+    'faq-cat-accounting': '経理 / 請款', 'faq-count-accounting': '3 件',
     'faq-cat-mkp': 'MKP 関連', 'faq-count-mkp': '4 件',
     'faq-cat-system': 'システム操作', 'faq-count-system': '1 件',
     'faq-cat-psi': 'PSI 在庫管理', 'faq-count-psi': '4 件',
@@ -540,6 +553,8 @@ SCMi18n.init({
     'faq-aa1': '<strong>REM</strong>：サプライヤーが先に KKday へ送金し、その後手当/値引き書を添付します。<br><strong>INV</strong>：KKday がサプライヤーに対して先に書類を発行し、サプライヤーの先払いは不要です。',
     'faq-aq2': '請求書は作成済みですが、銀行情報が誤っている場合はどうすればいいですか？',
     'faq-aa2': 'システムで銀行情報の更新を確認してから、請求書の生成方法に応じて対応してください：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>請求書追加ページで作成した場合</strong><br>既存の請求書を無効化 → 新しい請求書を作成。最新の銀行情報が自動反映されます。<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>自動照合システム（サプライヤー確認後）で生成した場合</strong><br>既存の請求書を無効化 → 照合画面に戻り「照合完了・請求書作成」ボタンで再生成。最新の銀行情報が反映されます。',
+    'faq-aq3': '手動でサプライヤー支払い申請書を作成する必要があるのはどのような場合ですか？',
+    'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 特殊事情がない限り、全市場で手動支払い申請書は使用しない</span><br><strong>適用場面：</strong>請求方式が異なる場合；コスト通貨と支払い通貨が異なる場合。<br><br><strong>注意事項：</strong><br>• 手動で作成する際は、事前に経理担当者へ連絡が必要です。関係者が経理側へ依頼してから実行してください。<br>• BPM → 財務表単申請 → サプライヤー支払い申請書 から申請書を作成します。<br>• 手動作成の申請書は<strong>空白フォーム</strong>のため、すべての項目を手入力してから次の工程へ進んでください。',
     'faq-mq1': 'MKP とは何ですか？',
     'faq-ma1': 'MKP は <strong>Marketplace</strong> の略で、KKday モールのサプライヤー協力モデルです。日常の注文業務はサプライヤーが自ら処理し、KKday はプラットフォームのみです。OP/CS は特別な状況（クレーム、払い戻し、品質問題）のみ対応します。',
     'faq-mq2': 'MKP 注文で問題が発生した場合、OP は Be2 でバウチャー内容を直接編集できますか？',
@@ -575,7 +590,7 @@ SCMi18n.init({
     'faq-chip-system': '⚙️ 시스템 운영', 'faq-chip-psi': '📦 PSI 재고', 'faq-chip-fraud': '🚨 이상／사기',
     'faq-cat-ticket': '발권 / 주문', 'faq-count-ticket': '3개 질문',
     'faq-cat-cancel': '취소 / 환불', 'faq-count-cancel': '3개 질문',
-    'faq-cat-accounting': '정산 / 청구', 'faq-count-accounting': '2개 질문',
+    'faq-cat-accounting': '정산 / 청구', 'faq-count-accounting': '3개 질문',
     'faq-cat-mkp': 'MKP 관련', 'faq-count-mkp': '4개 질문',
     'faq-cat-system': '시스템 운영', 'faq-count-system': '1개 질문',
     'faq-cat-psi': 'PSI 재고 관리', 'faq-count-psi': '4개 질문',
@@ -596,6 +611,8 @@ SCMi18n.init({
     'faq-aa1': '<strong>REM</strong>: 공급업체가 먼저 KKday에 송금한 후 수당/할인서를 첨부합니다.<br><strong>INV</strong>: KKday가 먼저 공급업체에 서류를 발행하며, 공급업체의 선지급이 불필요합니다.',
     'faq-aq2': '청구서가 이미 생성되었는데 은행 정보가 잘못되었다면 어떻게 해야 하나요?',
     'faq-aa2': '시스템에서 은행 정보 업데이트를 확인한 후, 청구서 생성 방식에 따라 처리하세요：<br><br><span style="display:inline-block;background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 1</span> <strong>청구서 추가 페이지에서 생성한 경우</strong><br>기존 청구서 무효화 → 새 청구서 생성. 최신 은행 정보가 자동 반영됩니다.<br><br><span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 8px;font-size:11px;font-weight:700;margin-bottom:4px;">Type 2</span> <strong>자동 정산 시스템(공급업체 확인 후)에서 생성한 경우</strong><br>기존 청구서 무효화 → 정산 화면으로 돌아가 「정산 완료, 청구서 생성」버튼으로 재생성. 최신 은행 정보가 반영됩니다.',
+    'faq-aq3': '공급업체 수동 지급 신청서가 필요한 경우는 언제인가요?',
+    'faq-aa3': '<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 10px;font-size:12px;font-weight:700;margin-bottom:8px;">⚠️ 특별한 사정이 없는 한 전 시장에서 수동 지급 신청서는 사용하지 않음</span><br><strong>적용 상황：</strong>청구 방식이 다른 경우；비용 통화와 지급 통화가 다른 경우。<br><br><strong>주의사항：</strong><br>• 수동으로 생성할 경우 사전에 재무 담당자에게 알려야 하며, 관련 담당자가 재무팀에 요청한 후 진행해야 합니다.<br>• BPM → 재무 양식 신청 → 공급업체 지급 신청서 에서 신청서를 생성합니다.<br>• 수동 생성된 신청서는 <strong>빈 양식</strong>으로, 모든 항목을 직접 입력한 후 다음 절차를 진행할 수 있습니다.',
     'faq-mq1': 'MKP란 무엇인가요?',
     'faq-ma1': 'MKP는 <strong>Marketplace</strong>의 약자로 KKday 쇼핑몰 공급업체 협력 모델입니다. 일상적인 주문 업무는 공급업체가 직접 처리하며, KKday는 플랫폼 역할만 합니다. OP/CS는 특수 상황(컴플레인, 환불, 품질 문제)에서만 개입합니다.',
     'faq-mq2': 'MKP 주문에 문제가 발생하면 OP가 Be2에서 바우처 내용을 직접 수정할 수 있나요?',
