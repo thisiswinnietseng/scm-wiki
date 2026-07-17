@@ -357,22 +357,14 @@
     document.getElementById('goAiSendBtn').disabled = true;
     showTyping();
 
-    const context = findContext(question);
     const sources = getSourceLinks(question);
     const lang = getLang();
-
-    // 📦 印出送給 Worker 的完整內容
-    console.group('📦 送給 Cloudflare Worker 的資料');
-    console.log('問題 question:', question);
-    console.log('語系 lang:', lang);
-    console.log('知識庫內容 context:', context || '（無匹配內容）');
-    console.groupEnd();
 
     try {
       const res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question, lang, context })
+        body: JSON.stringify({ question, lang })
       });
       const data = await res.json();
       removeTyping();
