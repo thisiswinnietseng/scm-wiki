@@ -159,17 +159,6 @@
         </div>
       </div>
 
-      <div class="section-title" data-i18n="recon-autoflow-title">🔁 自動對帳流程</div>
-      <div class="flow-bar">
-        <span class="flow-tag" style="background:linear-gradient(135deg,#11998e,#38ef7d);color:white;" data-i18n="recon-autoflow1">系統自動產出 Invoice</span>
-        <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#2193b0,#6dd5ed);color:white;" data-i18n="recon-autoflow2">系統自動跑 BPM</span>
-        <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#f7971e,#ffd200);color:#1a1a2e;" data-i18n="recon-autoflow3">供應商點擊確認 + 寄 Invoice</span>
-        <span class="flow-arr">→</span>
-        <span class="flow-tag" style="background:linear-gradient(135deg,#56ab2f,#a8e063);color:white;" data-i18n="recon-autoflow4">OP 收到 Invoice 後出款日作業</span>
-      </div>
-      <span style="display:inline-block;margin-top:10px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="recon-autoflow-note">⚠️ 如上月供應商未確認，次月系統將無法自動生成對帳單</span>
     </div>
 
     <div class="white-box">
@@ -258,12 +247,6 @@ SCMi18n.init({
     'recon-sched-billing-note': '更新會在 go-scm 通知',
     'recon-sched-autoconfirm-label': '帳單自動確認',
     'recon-sched-autoconfirm-date': '6 日 & 21 日',
-    'recon-autoflow-title': '🔁 自動對帳流程',
-    'recon-autoflow1': '系統自動產出 Invoice',
-    'recon-autoflow2': '系統自動跑 BPM',
-    'recon-autoflow3': '供應商點擊確認 + 寄 Invoice',
-    'recon-autoflow4': 'OP 收到 Invoice 後出款日作業',
-    'recon-autoflow-note': '⚠️ 如上月供應商未確認，次月系統將無法自動生成對帳單',
     'recon-entity-title': '🏢 各主體收單時間 & 大額付款定義',
     'recon-entity-desc': '各主體收單時間因應不同國家及銀行規定而有所不同。大額付款定義根據不同主體規模及營運模式而有差異。',
     'recon-entity-tz': '✅ 時區皆為台灣時間 GMT+8',
@@ -311,12 +294,6 @@ SCMi18n.init({
     'recon-sched-billing-note': 'Updates notified in go-scm',
     'recon-sched-autoconfirm-label': 'Statement Auto-Confirmation',
     'recon-sched-autoconfirm-date': '6th & 21st',
-    'recon-autoflow-title': '🔁 Auto Reconciliation Flow',
-    'recon-autoflow1': 'System Auto-Generates Invoice',
-    'recon-autoflow2': 'System Auto-Runs BPM',
-    'recon-autoflow3': 'Supplier Confirms + Sends Invoice',
-    'recon-autoflow4': 'OP Processes Payment After Receiving Invoice',
-    'recon-autoflow-note': '⚠️ If supplier did not confirm last month, system cannot auto-generate statement next month',
     'recon-entity-title': '🏢 Entity Submission Times & Large Payment Definitions',
     'recon-entity-desc': 'Submission times vary by entity based on country and banking regulations. Large payment definitions differ by entity size and operation model.',
     'recon-entity-tz': '✅ All times are Taiwan Time GMT+8',
@@ -364,12 +341,6 @@ SCMi18n.init({
     'recon-sched-billing-note': '更新は go-scm で通知',
     'recon-sched-autoconfirm-label': '明細自動確認',
     'recon-sched-autoconfirm-date': '6日 & 21日',
-    'recon-autoflow-title': '🔁 自動照合フロー',
-    'recon-autoflow1': 'システム自動 Invoice 生成',
-    'recon-autoflow2': 'システム自動 BPM 実行',
-    'recon-autoflow3': 'サプライヤーが確認 + Invoice 送付',
-    'recon-autoflow4': 'OP が Invoice 受領後に支払日業務',
-    'recon-autoflow-note': '⚠️ 前月にサプライヤーが確認しなかった場合、翌月システムは自動照合書類を生成できません',
     'recon-entity-title': '🏢 各主体の受付時間 & 高額支払定義',
     'recon-entity-desc': '各主体の受付時間は国や銀行規定により異なります。高額支払の定義は主体の規模や運営モデルにより異なります。',
     'recon-entity-tz': '✅ すべて台湾時間 GMT+8',
@@ -417,12 +388,6 @@ SCMi18n.init({
     'recon-sched-billing-note': '업데이트는 go-scm에서 알림',
     'recon-sched-autoconfirm-label': '명세서 자동 확인',
     'recon-sched-autoconfirm-date': '6일 & 21일',
-    'recon-autoflow-title': '🔁 자동 대사 흐름',
-    'recon-autoflow1': '시스템 자동 Invoice 생성',
-    'recon-autoflow2': '시스템 자동 BPM 실행',
-    'recon-autoflow3': '공급업체 확인 클릭 + Invoice 발송',
-    'recon-autoflow4': 'OP가 Invoice 수령 후 결제일 업무',
-    'recon-autoflow-note': '⚠️ 지난달 공급업체 미확인 시 다음 달 시스템이 자동으로 대사 명세서 생성 불가',
     'recon-entity-title': '🏢 각 주체 접수 시간 & 고액 결제 정의',
     'recon-entity-desc': '각 주체의 접수 시간은 국가 및 은행 규정에 따라 다릅니다. 고액 결제 정의는 주체 규모 및 운영 방식에 따라 다릅니다.',
     'recon-entity-tz': '✅ 모든 시간대는 대만 시간 GMT+8',
