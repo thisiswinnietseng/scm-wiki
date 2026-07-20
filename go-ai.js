@@ -263,7 +263,7 @@
       faqFab.href = faqHref;
       faqFab.innerHTML = `<span class="fab-icon">💬</span><span id="goFaqFabText">FAQ</span>`;
       faqFab.className = 'go-ai-fab';
-      faqFab.style.cssText = 'position:fixed;bottom:148px;right:24px;z-index:410;background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 18px rgba(102,126,234,.45);text-decoration:none;';
+      faqFab.style.cssText = 'position:fixed;bottom:148px;right:24px;z-index:410;background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 18px rgba(102,126,234,.45);text-decoration:none;padding:12px 18px;font-size:13px;font-weight:700;border-radius:28px;';
       document.body.appendChild(faqFab);
     }
 
