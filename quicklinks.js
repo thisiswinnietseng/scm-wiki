@@ -1,11 +1,10 @@
 (function() {
-  // Detect if we're in pages/ subfolder
   var inSubfolder = window.location.pathname.indexOf('/pages/') !== -1;
   var faqHref = inSubfolder ? 'faq.html' : 'pages/faq.html';
 
-  // Inject CSS
   var style = document.createElement('style');
   style.textContent = `
+body { padding-left: 52px; }
 .ql-float-btn {
   position:fixed; left:0; top:50%; transform:translateY(-50%);
   z-index:300;
@@ -70,66 +69,101 @@
   `;
   document.head.appendChild(style);
 
-  // Inject HTML
+  var QL_LABELS = {
+    zh: { title:'🔗 超連結專區', btn:'快速連結', faq:'FAQ',
+          scm:'SCM 班表', crm:'CRM 班表', be2:'Be2 系統', b2d:'B2D 系統',
+          bpm:'BPM 系統', psi:'PSI 系統', onboard:'新人教學時程', payment:'應請款表' },
+    en: { title:'🔗 Quick Links', btn:'Links', faq:'FAQ',
+          scm:'SCM Schedule', crm:'CRM Schedule', be2:'Be2 System', b2d:'B2D System',
+          bpm:'BPM System', psi:'PSI System', onboard:'Onboarding Schedule', payment:'Payment Sheet' },
+    ja: { title:'🔗 クイックリンク', btn:'リンク', faq:'FAQ',
+          scm:'SCM シフト表', crm:'CRM シフト表', be2:'Be2 システム', b2d:'B2D システム',
+          bpm:'BPM システム', psi:'PSI システム', onboard:'研修スケジュール', payment:'請求申請表' },
+    ko: { title:'🔗 빠른 링크', btn:'링크', faq:'FAQ',
+          scm:'SCM 스케줄', crm:'CRM 스케줄', be2:'Be2 시스템', b2d:'B2D 시스템',
+          bpm:'BPM 시스템', psi:'PSI 시스템', onboard:'신입 교육 일정', payment:'청구 신청서' }
+  };
+
   var html = `
 <button class="ql-float-btn" onclick="toggleQlSidebar()" id="qlFloatBtn" aria-label="快速連結">
   <span class="ql-btn-icon">🔗</span>
-  <span class="ql-btn-text">快速連結</span>
+  <span class="ql-btn-text" id="ql-btn-text">快速連結</span>
 </button>
-<a class="ql-float-btn faq-float-btn" href="${faqHref}" aria-label="常見問題 FAQ">
+<a class="ql-float-btn faq-float-btn" href="${faqHref}" aria-label="FAQ" id="ql-faq-btn">
   <span class="ql-btn-icon">💬</span>
-  <span class="ql-btn-text">FAQ</span>
+  <span class="ql-btn-text" id="ql-faq-text">FAQ</span>
 </a>
 <div class="ql-sidebar" id="qlSidebar">
   <div class="ql-sidebar-header">
-    <span class="ql-sidebar-title">🔗 超連結專區</span>
+    <span class="ql-sidebar-title" id="ql-title">🔗 超連結專區</span>
     <button class="ql-sidebar-close" onclick="toggleQlSidebar()">✕</button>
   </div>
   <div class="ql-links">
     <a class="ql-card" href="https://docs.google.com/spreadsheets/d/1_Y-sEdNWoSkgOoI3o1caoPHs9ggiy0Wvu6TwI8Jpa_Y/edit?pli=1#gid=654199293" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">📅</div>
-      <div class="ql-body"><div class="ql-name">SCM 班表</div><div class="ql-url">Google Sheets</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-scm">SCM 班表</div><div class="ql-url">Google Sheets</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://docs.google.com/spreadsheets/d/1WREYLFm7yiAAZlAoTgWX5O7N87yAR8V6fatMVLiVGPU/edit?pli=1&gid=625913861#gid=625913861" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)">📅</div>
-      <div class="ql-body"><div class="ql-name">CRM 班表</div><div class="ql-url">Google Sheets</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-crm">CRM 班表</div><div class="ql-url">Google Sheets</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://be2.kkday.com/v2/auth/login" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">🖥️</div>
-      <div class="ql-body"><div class="ql-name">Be2 系統</div><div class="ql-url">be2.kkday.com</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-be2">Be2 系統</div><div class="ql-url">be2.kkday.com</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://b2d.kkday.com/Login/?ReturnUrl=%2F" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🖥️</div>
-      <div class="ql-body"><div class="ql-name">B2D 系統</div><div class="ql-url">b2d.kkday.com</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-b2d">B2D 系統</div><div class="ql-url">b2d.kkday.com</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://odoo.eip.kkday.net/zh_TW/home" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">📋</div>
-      <div class="ql-body"><div class="ql-name">BPM 系統</div><div class="ql-url">odoo.eip.kkday.net</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-bpm">BPM 系統</div><div class="ql-url">odoo.eip.kkday.net</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://psi.kkday.com/auth/login" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#1a1a2e,#2193b0)">📦</div>
-      <div class="ql-body"><div class="ql-name">PSI 系統</div><div class="ql-url">psi.kkday.com</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-psi">PSI 系統</div><div class="ql-url">psi.kkday.com</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://docs.google.com/spreadsheets/d/1EietW_y2Z_AeF49wj-Yu-hm4JUygAk_rj9AOt8xCF7I/edit?gid=1732273449#gid=1732273449" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d)">🗓️</div>
-      <div class="ql-body"><div class="ql-name">新人教學時程</div><div class="ql-url">Google Sheets</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-onboard">新人教學時程</div><div class="ql-url">Google Sheets</div></div>
       <span class="ql-arrow">↗</span>
     </a>
     <a class="ql-card" href="https://docs.google.com/spreadsheets/d/1ZJHc3WgAWCsYGF8Ymf3NG0u-i0loDq8Qo1mpqTTJgYY/edit?pli=1&gid=1405475943#gid=1405475943" target="_blank">
       <div class="ql-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200)">💰</div>
-      <div class="ql-body"><div class="ql-name">應請款表</div><div class="ql-url">Google Sheets</div></div>
+      <div class="ql-body"><div class="ql-name" id="ql-payment">應請款表</div><div class="ql-url">Google Sheets</div></div>
       <span class="ql-arrow">↗</span>
     </a>
   </div>
 </div>`;
 
   document.body.insertAdjacentHTML('beforeend', html);
+
+  function applyLang(lang) {
+    var t = QL_LABELS[lang] || QL_LABELS.zh;
+    var ids = ['title','btn-text','faq-text','scm','crm','be2','b2d','bpm','psi','onboard','payment'];
+    var keys = ['title','btn','faq','scm','crm','be2','b2d','bpm','psi','onboard','payment'];
+    ids.forEach(function(id, i) {
+      var el = document.getElementById('ql-' + id);
+      if (el) el.textContent = t[keys[i]];
+    });
+  }
+
+  // Apply current language on load
+  document.addEventListener('DOMContentLoaded', function() {
+    var lang = (window.SCMi18n && window.SCMi18n.current()) || localStorage.getItem('scm-lang') || 'zh';
+    applyLang(lang);
+  });
+
+  // Listen for language changes
+  document.addEventListener('langchange', function(e) {
+    applyLang(e.detail && e.detail.lang || 'zh');
+  });
 
   window.toggleQlSidebar = function() {
     var sidebar = document.getElementById('qlSidebar');
