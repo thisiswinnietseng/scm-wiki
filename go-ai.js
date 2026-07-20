@@ -251,6 +251,20 @@
       </div>
     `;
 
+    // FAQ button (above AI button)
+    if (!document.getElementById('goFaqFab')) {
+      const isSubpage = window.location.pathname.indexOf('/pages/') !== -1;
+      const faqHref = isSubpage ? 'faq.html' : 'pages/faq.html';
+      const faqFab = document.createElement('a');
+      faqFab.id = 'goFaqFab';
+      faqFab.href = faqHref;
+      faqFab.innerHTML = `<span class="fab-icon">💬</span><span>FAQ</span>`;
+      faqFab.style.cssText = 'position:fixed;bottom:148px;right:24px;z-index:410;display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:28px;padding:12px 18px;text-decoration:none;font-family:inherit;font-size:13px;font-weight:700;box-shadow:0 4px 18px rgba(102,126,234,.45);transition:transform .2s,box-shadow .2s;white-space:nowrap;';
+      faqFab.onmouseover = function(){ this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 24px rgba(102,126,234,.55)'; };
+      faqFab.onmouseout = function(){ this.style.transform=''; this.style.boxShadow='0 4px 18px rgba(102,126,234,.45)'; };
+      document.body.appendChild(faqFab);
+    }
+
     document.body.appendChild(fab);
     document.body.appendChild(panel);
 
