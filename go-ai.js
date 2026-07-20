@@ -13,6 +13,9 @@
 
   // ── CSS ──────────────────────────────────────────────────
   const css = `
+/* 強制隱藏舊快速連結 sidebar（舊快取頁面殘留） */
+#goQlFab, .ql-sidebar, .ql-panel, [id^="goQl"] { display:none !important; }
+
 /* AI 浮動按鈕 */
 .go-ai-fab {
   position:fixed; bottom:82px; right:24px; z-index:410;
