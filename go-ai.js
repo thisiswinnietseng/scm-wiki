@@ -19,7 +19,8 @@
 /* AI 浮動按鈕 */
 .go-ai-fab {
   position:fixed; bottom:82px; right:24px; z-index:410;
-  display:flex; align-items:center; gap:8px;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  min-width:120px;
   background:linear-gradient(135deg,#f093fb,#f5576c);
   color:white; border:none; border-radius:28px;
   padding:12px 18px; cursor:pointer; font-family:inherit;
