@@ -411,7 +411,6 @@
   function init() {
     inject();
     injectBackToTop();
-    injectQuickLinks();
   }
 
   if (document.readyState === 'loading') {
