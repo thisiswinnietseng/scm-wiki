@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>商品異動 & 挽單流程 — GO 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
+</style>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-ai.js?v=2"></script>
+  <script src="../go-search.js?v=2"></script>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
+  <div class="nav-title">
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb"><a href="../index.html" data-i18n="pc-breadcrumb-home">首頁</a> / <span data-i18n="pc-breadcrumb-current">商品異動 &amp; 挽單流程</span></div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)">🔔</div>
+      <div class="page-header-body">
+        <h1 data-i18n="pc-title">商品異動 &amp; 挽單流程</h1>
+        <p class="subtitle" data-i18n="pc-subtitle">當商品發生異動時，如何通知旅客並盡力挽留訂單</p>
+        <div class="meta-row">
+          <span class="meta-chip badge-orange" data-i18n="pc-chip1">商品異動</span>
+          <span class="meta-chip badge-blue" data-i18n="pc-chip2">挽單</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <p data-i18n="pc-intro">當供應商通知商品發生變更（如關閉日期、停止販售、規格調整），OP 需依照標準流程通知受影響旅客，並視情況執行挽單作業。</p>
+    </div>
+
+    <!-- 商品異動通知流程 -->
+    <h2 data-i18n="pc-notify-title">📣 商品異動通知流程</h2>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong data-i18n="pc-notify-step1">供應商通知商品異動</strong>
+            <p data-i18n="pc-notify-step1-desc">供應商透過 Slack、Email 或電話告知 BD／AM，說明哪些日期或商品規格將發生變更。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong data-i18n="pc-notify-step2">BD／AM 確認異動範圍並通知 OP</strong>
+            <p data-i18n="pc-notify-step2-desc">BD／AM 確認受影響的訂單範圍，並透過 Slack 或 Email 通知 OP 進行後續處理。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong data-i18n="pc-notify-step3">OP 查詢受影響訂單</strong>
+            <p data-i18n="pc-notify-step3-desc">至 Be2 後台查詢受影響日期或商品的所有訂單，確認訂單清單。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong data-i18n="pc-notify-step4">OP 聯繫旅客告知異動</strong>
+            <p data-i18n="pc-notify-step4-desc">透過系統發送通知或請 CS 聯繫旅客，說明商品異動內容，並提供改期或取消的選項。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong data-i18n="pc-notify-step5">依旅客意願處理訂單</strong>
+            <p data-i18n="pc-notify-step5-desc">旅客選擇改期者執行挽單流程；選擇取消者依退款政策辦理取消退款。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 挽單流程 -->
+    <h2 data-i18n="pc-retain-title">🛡️ 挽單流程</h2>
+    <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="pc-retain-note">ℹ️ 挽單目的在於盡力保留訂單，給旅客改期或其他解決方案，避免直接取消。</span>
+    <div class="white-box" style="margin-top:1rem;">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong data-i18n="pc-retain-step1">提供旅客可改期的替代日期</strong>
+            <p data-i18n="pc-retain-step1-desc">與 BD／AM 確認供應商可接受的替代日期，主動提供旅客選擇。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong data-i18n="pc-retain-step2">旅客確認新日期後執行改期</strong>
+            <p data-i18n="pc-retain-step2-desc">旅客同意新日期後，OP 至 Be2 執行訂單改期作業，並通知供應商。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong data-i18n="pc-retain-step3">更新憑證並發送給旅客</strong>
+            <p data-i18n="pc-retain-step3-desc">改期完成後，重新產出或請供應商提供新日期的憑證，並發送給旅客確認。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong data-i18n="pc-retain-step4">記錄處理結果</strong>
+            <p data-i18n="pc-retain-step4-desc">將異動原因、旅客決定及處理結果記錄於 Be2 訂單備註，完成作業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 關閉前台日期操作 -->
+    <h2 data-i18n="pc-close-title">🔒 關閉前台日期操作</h2>
+    <div class="white-box">
+      <span style="display:inline-block;margin-bottom:12px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="pc-close-warn">⚠️ 關閉前台日期前，務必確認已通知所有受影響旅客，並獲得 BD／AM 授權。</span>
+      <ul style="line-height:2rem;padding-left:1.25rem;">
+        <li data-i18n="pc-close-p1">確認 BD／AM 授權可關閉前台日期後，至後台商品管理頁面執行</li>
+        <li data-i18n="pc-close-p2">關閉日期後確認前台已無法選擇該日期，避免旅客繼續下單</li>
+        <li data-i18n="pc-close-p3">操作完成後回報 BD／AM 確認，並記錄於相關作業紀錄</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'pc-breadcrumb-home': '首頁',
+    'pc-breadcrumb-current': '商品異動 & 挽單流程',
+    'pc-title': '商品異動 & 挽單流程',
+    'pc-subtitle': '當商品發生異動時，如何通知旅客並盡力挽留訂單',
+    'pc-chip1': '商品異動',
+    'pc-chip2': '挽單',
+    'pc-intro': '當供應商通知商品發生變更（如關閉日期、停止販售、規格調整），OP 需依照標準流程通知受影響旅客，並視情況執行挽單作業。',
+    'pc-notify-title': '📣 商品異動通知流程',
+    'pc-notify-step1': '供應商通知商品異動',
+    'pc-notify-step1-desc': '供應商透過 Slack、Email 或電話告知 BD／AM，說明哪些日期或商品規格將發生變更。',
+    'pc-notify-step2': 'BD／AM 確認異動範圍並通知 OP',
+    'pc-notify-step2-desc': 'BD／AM 確認受影響的訂單範圍，並透過 Slack 或 Email 通知 OP 進行後續處理。',
+    'pc-notify-step3': 'OP 查詢受影響訂單',
+    'pc-notify-step3-desc': '至 Be2 後台查詢受影響日期或商品的所有訂單，確認訂單清單。',
+    'pc-notify-step4': 'OP 聯繫旅客告知異動',
+    'pc-notify-step4-desc': '透過系統發送通知或請 CS 聯繫旅客，說明商品異動內容，並提供改期或取消的選項。',
+    'pc-notify-step5': '依旅客意願處理訂單',
+    'pc-notify-step5-desc': '旅客選擇改期者執行挽單流程；選擇取消者依退款政策辦理取消退款。',
+    'pc-retain-title': '🛡️ 挽單流程',
+    'pc-retain-note': 'ℹ️ 挽單目的在於盡力保留訂單，給旅客改期或其他解決方案，避免直接取消。',
+    'pc-retain-step1': '提供旅客可改期的替代日期',
+    'pc-retain-step1-desc': '與 BD／AM 確認供應商可接受的替代日期，主動提供旅客選擇。',
+    'pc-retain-step2': '旅客確認新日期後執行改期',
+    'pc-retain-step2-desc': '旅客同意新日期後，OP 至 Be2 執行訂單改期作業，並通知供應商。',
+    'pc-retain-step3': '更新憑證並發送給旅客',
+    'pc-retain-step3-desc': '改期完成後，重新產出或請供應商提供新日期的憑證，並發送給旅客確認。',
+    'pc-retain-step4': '記錄處理結果',
+    'pc-retain-step4-desc': '將異動原因、旅客決定及處理結果記錄於 Be2 訂單備註，完成作業。',
+    'pc-close-title': '🔒 關閉前台日期操作',
+    'pc-close-warn': '⚠️ 關閉前台日期前，務必確認已通知所有受影響旅客，並獲得 BD／AM 授權。',
+    'pc-close-p1': '確認 BD／AM 授權可關閉前台日期後，至後台商品管理頁面執行',
+    'pc-close-p2': '關閉日期後確認前台已無法選擇該日期，避免旅客繼續下單',
+    'pc-close-p3': '操作完成後回報 BD／AM 確認，並記錄於相關作業紀錄',
+  },
+  en: {
+    'pc-breadcrumb-home': 'Home',
+    'pc-breadcrumb-current': 'Product Changes & Order Retention',
+    'pc-title': 'Product Changes & Order Retention Flow',
+    'pc-subtitle': 'How to notify travelers and retain orders when product changes occur',
+    'pc-chip1': 'Product Changes',
+    'pc-chip2': 'Order Retention',
+    'pc-intro': 'When a supplier notifies of product changes (e.g., date closures, discontinued sales, specification adjustments), OP must follow the standard process to notify affected travelers and execute order retention efforts as appropriate.',
+    'pc-notify-title': '📣 Product Change Notification Flow',
+    'pc-notify-step1': 'Supplier Notifies of Product Change',
+    'pc-notify-step1-desc': 'The supplier informs BD/AM via Slack, email, or phone, specifying which dates or product specifications will change.',
+    'pc-notify-step2': 'BD/AM Confirms Scope and Notifies OP',
+    'pc-notify-step2-desc': 'BD/AM confirms the range of affected orders and notifies OP via Slack or email for follow-up handling.',
+    'pc-notify-step3': 'OP Looks Up Affected Orders',
+    'pc-notify-step3-desc': 'Query all orders for the affected dates or products in the Be2 backend and compile the order list.',
+    'pc-notify-step4': 'OP Contacts Travelers to Inform of Change',
+    'pc-notify-step4-desc': 'Send system notifications or ask CS to contact travelers, explain the product change, and offer options for reschedule or cancellation.',
+    'pc-notify-step5': 'Process Orders Based on Traveler Preference',
+    'pc-notify-step5-desc': 'For travelers who choose to reschedule, execute the retention flow. For those who choose to cancel, process a refund per the cancellation policy.',
+    'pc-retain-title': '🛡️ Order Retention Flow',
+    'pc-retain-note': 'ℹ️ The goal of order retention is to keep the booking by offering the traveler a reschedule or alternative solution, avoiding outright cancellation.',
+    'pc-retain-step1': 'Offer Traveler Alternative Dates for Reschedule',
+    'pc-retain-step1-desc': 'Confirm acceptable alternative dates with BD/AM and proactively offer them to the traveler.',
+    'pc-retain-step2': 'Execute Reschedule After Traveler Confirms New Date',
+    'pc-retain-step2-desc': 'Once the traveler agrees to the new date, OP processes the date change in Be2 and notifies the supplier.',
+    'pc-retain-step3': 'Update Voucher and Send to Traveler',
+    'pc-retain-step3-desc': 'After rescheduling is complete, regenerate or request an updated voucher from the supplier for the new date, and send it to the traveler for confirmation.',
+    'pc-retain-step4': 'Record the Outcome',
+    'pc-retain-step4-desc': 'Document the reason for the change, the traveler\'s decision, and the handling outcome in the Be2 order remarks to close out the task.',
+    'pc-close-title': '🔒 Closing Front-End Dates',
+    'pc-close-warn': '⚠️ Before closing front-end dates, confirm that all affected travelers have been notified and that BD/AM authorization has been obtained.',
+    'pc-close-p1': 'After BD/AM authorizes the date closure, proceed to the product management page in the backend to execute',
+    'pc-close-p2': 'After closing the date, confirm that the date is no longer selectable on the front end to prevent new orders',
+    'pc-close-p3': 'After completing the operation, report back to BD/AM for confirmation and record the action in the relevant operation log',
+  },
+  ja: {
+    'pc-breadcrumb-home': 'ホーム',
+    'pc-breadcrumb-current': '商品変更 & 注文維持フロー',
+    'pc-title': '商品変更 & 注文維持フロー',
+    'pc-subtitle': '商品に変更が生じた際に旅行者へ通知し、注文を維持する方法',
+    'pc-chip1': '商品変更',
+    'pc-chip2': '注文維持',
+    'pc-intro': 'サプライヤーが商品変更（日程のクローズ、販売停止、仕様変更など）を通知した場合、OP は標準フローに従って影響を受ける旅行者に通知し、必要に応じて注文維持作業を実施します。',
+    'pc-notify-title': '📣 商品変更通知フロー',
+    'pc-notify-step1': 'サプライヤーが商品変更を通知',
+    'pc-notify-step1-desc': 'サプライヤーが Slack、メール、または電話で BD/AM に変更予定の日程や商品仕様を通知します。',
+    'pc-notify-step2': 'BD/AM が変更範囲を確認し OP に通知',
+    'pc-notify-step2-desc': 'BD/AM が影響を受ける注文範囲を確認し、後続処理のために Slack またはメールで OP に通知します。',
+    'pc-notify-step3': 'OP が影響を受ける注文を照会',
+    'pc-notify-step3-desc': 'Be2 バックエンドで影響を受ける日程や商品の全注文を照会し、注文リストを確認します。',
+    'pc-notify-step4': 'OP が旅行者に変更を通知',
+    'pc-notify-step4-desc': 'システム通知を送信するか CS に依頼して旅行者に連絡し、商品変更内容を説明して日程変更またはキャンセルのオプションを提供します。',
+    'pc-notify-step5': '旅行者の意向に従って注文を処理',
+    'pc-notify-step5-desc': '日程変更を選んだ旅行者には維持フローを実行し、キャンセルを選んだ旅行者にはキャンセルポリシーに従って払い戻し処理を行います。',
+    'pc-retain-title': '🛡️ 注文維持フロー',
+    'pc-retain-note': 'ℹ️ 注文維持の目的は、旅行者に日程変更や代替案を提供してできるだけ注文を保持し、直接キャンセルを避けることです。',
+    'pc-retain-step1': '変更可能な代替日程を旅行者に提示',
+    'pc-retain-step1-desc': 'BD/AM とサプライヤーが受け入れ可能な代替日程を確認し、積極的に旅行者に選択肢を提示します。',
+    'pc-retain-step2': '旅行者が新日程を確認後に変更を実行',
+    'pc-retain-step2-desc': '旅行者が新日程に同意後、OP が Be2 で日程変更作業を実行し、サプライヤーに通知します。',
+    'pc-retain-step3': 'バウチャーを更新して旅行者に送付',
+    'pc-retain-step3-desc': '日程変更完了後、新日程のバウチャーを再生成またはサプライヤーに依頼し、旅行者に確認のため送付します。',
+    'pc-retain-step4': '処理結果を記録',
+    'pc-retain-step4-desc': '変更原因、旅行者の決定、処理結果を Be2 注文備考に記録して作業を完了します。',
+    'pc-close-title': '🔒 フロントエンドの日程クローズ操作',
+    'pc-close-warn': '⚠️ フロントエンドの日程をクローズする前に、影響を受けるすべての旅行者への通知と BD/AM の承認を必ず確認してください。',
+    'pc-close-p1': 'BD/AM から日程クローズの承認を得た後、バックエンドの商品管理ページで操作します',
+    'pc-close-p2': 'クローズ後、フロントエンドでその日程が選択できないことを確認し、新規注文を防ぎます',
+    'pc-close-p3': '操作完了後に BD/AM へ報告して確認を得、関連作業記録に記録します',
+  },
+  ko: {
+    'pc-breadcrumb-home': '홈',
+    'pc-breadcrumb-current': '상품 변경 & 주문 유지 플로우',
+    'pc-title': '상품 변경 & 주문 유지 플로우',
+    'pc-subtitle': '상품에 변경이 생겼을 때 여행객에게 알리고 주문을 유지하는 방법',
+    'pc-chip1': '상품 변경',
+    'pc-chip2': '주문 유지',
+    'pc-intro': '공급업체가 상품 변경(날짜 마감, 판매 중단, 사양 조정 등)을 통지하면 OP는 표준 프로세스에 따라 영향을 받는 여행객에게 알리고 상황에 따라 주문 유지 작업을 수행해야 합니다.',
+    'pc-notify-title': '📣 상품 변경 통지 플로우',
+    'pc-notify-step1': '공급업체가 상품 변경 통지',
+    'pc-notify-step1-desc': '공급업체가 Slack, 이메일 또는 전화로 BD/AM에게 변경 예정인 날짜 또는 상품 사양을 알립니다.',
+    'pc-notify-step2': 'BD/AM이 변경 범위 확인 후 OP에 통지',
+    'pc-notify-step2-desc': 'BD/AM이 영향을 받는 주문 범위를 확인하고 Slack 또는 이메일로 OP에게 후속 처리를 요청합니다.',
+    'pc-notify-step3': 'OP가 영향을 받는 주문 조회',
+    'pc-notify-step3-desc': 'Be2 백엔드에서 영향을 받는 날짜 또는 상품의 모든 주문을 조회하고 주문 목록을 확인합니다.',
+    'pc-notify-step4': 'OP가 여행객에게 변경 사항 통지',
+    'pc-notify-step4-desc': '시스템 알림을 발송하거나 CS에게 여행객 연락을 요청하여 상품 변경 내용을 설명하고 일정 변경 또는 취소 옵션을 제공합니다.',
+    'pc-notify-step5': '여행객 의사에 따라 주문 처리',
+    'pc-notify-step5-desc': '일정 변경을 선택한 여행객은 유지 플로우를 실행하고, 취소를 선택한 여행객은 환불 정책에 따라 취소 환불을 처리합니다.',
+    'pc-retain-title': '🛡️ 주문 유지 플로우',
+    'pc-retain-note': 'ℹ️ 주문 유지의 목적은 여행객에게 일정 변경이나 대안을 제공하여 가능한 한 주문을 유지하고 직접 취소를 피하는 것입니다.',
+    'pc-retain-step1': '여행객에게 변경 가능한 대체 날짜 제공',
+    'pc-retain-step1-desc': 'BD/AM과 공급업체가 수용할 수 있는 대체 날짜를 확인하고 여행객에게 적극적으로 선택지를 제공합니다.',
+    'pc-retain-step2': '여행객이 새 날짜 확인 후 변경 실행',
+    'pc-retain-step2-desc': '여행객이 새 날짜에 동의하면 OP가 Be2에서 주문 일정 변경 작업을 실행하고 공급업체에 알립니다.',
+    'pc-retain-step3': '바우처 업데이트 후 여행객에게 발송',
+    'pc-retain-step3-desc': '일정 변경 완료 후, 새 날짜의 바우처를 재생성하거나 공급업체에 요청하여 여행객에게 확인을 위해 발송합니다.',
+    'pc-retain-step4': '처리 결과 기록',
+    'pc-retain-step4-desc': '변경 원인, 여행객의 결정, 처리 결과를 Be2 주문 비고에 기록하여 작업을 완료합니다.',
+    'pc-close-title': '🔒 프론트엔드 날짜 마감 작업',
+    'pc-close-warn': '⚠️ 프론트엔드 날짜를 마감하기 전에 영향을 받는 모든 여행객에게 통지하고 BD/AM의 승인을 받았는지 반드시 확인하세요.',
+    'pc-close-p1': 'BD/AM으로부터 날짜 마감 승인을 받은 후 백엔드 상품 관리 페이지에서 실행합니다',
+    'pc-close-p2': '마감 후 프론트엔드에서 해당 날짜를 선택할 수 없는지 확인하여 신규 주문을 방지합니다',
+    'pc-close-p3': '작업 완료 후 BD/AM에 보고하여 확인을 받고 관련 작업 기록에 기록합니다',
+  }
+});
+</script>
+</body>
+</html>

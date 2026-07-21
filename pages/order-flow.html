@@ -54,6 +54,42 @@
       <p data-i18n-html="of-intro">訂單進單後，依照處理方式分為「<strong>供應商處理訂單</strong>」與「<strong>KKday 處理訂單</strong>」兩大類。正常情況下盡量減少人工介入，以下說明各類型的標準流程與例外情境。</p>
     </div>
 
+    <!-- 四大情境類型 -->
+    <h2 data-i18n="of-types-title">📋 出票方式四大情境</h2>
+    <div class="white-box">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th data-i18n="of-types-th1">情境類型</th>
+            <th data-i18n="of-types-th2">說明</th>
+            <th data-i18n="of-types-th3">OP 作業</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="of-types-row1-type">自動出票</td>
+            <td data-i18n="of-types-row1-desc">API 串接供應商系統，訂單成立後自動出票</td>
+            <td data-i18n="of-types-row1-op">無需介入，僅需確認狀態</td>
+          </tr>
+          <tr>
+            <td data-i18n="of-types-row2-type">人工出票</td>
+            <td data-i18n="of-types-row2-desc">OP 人工向供應商下訂並取得憑證</td>
+            <td data-i18n="of-types-row2-op">需在時效內完成訂購與發憑</td>
+          </tr>
+          <tr>
+            <td data-i18n="of-types-row3-type">假即訂即出</td>
+            <td data-i18n="of-types-row3-desc">系統立即出票，但仍需 OP 人工訂購</td>
+            <td data-i18n="of-types-row3-op">24 小時內完成訂購作業</td>
+          </tr>
+          <tr>
+            <td data-i18n="of-types-row4-type">特殊商品</td>
+            <td data-i18n="of-types-row4-desc">需特殊作業（如實體票、SIM 卡、郵寄）</td>
+            <td data-i18n="of-types-row4-op">依商品別作業規範處理</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <!-- 供應商處理訂單 -->
     <h2 data-i18n="of-supplier-title">🏪 供應商處理訂單</h2>
     <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #a5d6a7;color:#2e7d32;border-radius:4px;padding:2px 8px;" data-i18n-html="of-supplier-note">✅ 正常情況下，供應商系統自動處理訂單，<strong>不需人工介入</strong>。</span>
@@ -184,6 +220,22 @@
 <script>
 SCMi18n.init({
   zh: {
+    'of-types-title': '📋 出票方式四大情境',
+    'of-types-th1': '情境類型',
+    'of-types-th2': '說明',
+    'of-types-th3': 'OP 作業',
+    'of-types-row1-type': '自動出票',
+    'of-types-row1-desc': 'API 串接供應商系統，訂單成立後自動出票',
+    'of-types-row1-op': '無需介入，僅需確認狀態',
+    'of-types-row2-type': '人工出票',
+    'of-types-row2-desc': 'OP 人工向供應商下訂並取得憑證',
+    'of-types-row2-op': '需在時效內完成訂購與發憑',
+    'of-types-row3-type': '假即訂即出',
+    'of-types-row3-desc': '系統立即出票，但仍需 OP 人工訂購',
+    'of-types-row3-op': '24 小時內完成訂購作業',
+    'of-types-row4-type': '特殊商品',
+    'of-types-row4-desc': '需特殊作業（如實體票、SIM 卡、郵寄）',
+    'of-types-row4-op': '依商品別作業規範處理',
     'of-breadcrumb': '首頁 / 訂單進單後處理流程',
     'of-title': '訂單進單後處理流程',
     'of-meta': '進單流程 · 例外處理',
@@ -228,6 +280,22 @@ SCMi18n.init({
     'of-sit4-action': '多次通知仍未獲回覆，依政策取消訂單並通知旅客。',
   },
   en: {
+    'of-types-title': '📋 Four Fulfillment Scenarios',
+    'of-types-th1': 'Scenario Type',
+    'of-types-th2': 'Description',
+    'of-types-th3': 'OP Action',
+    'of-types-row1-type': 'Auto Issuance',
+    'of-types-row1-desc': 'API connects to supplier system; ticket issued automatically upon order placement',
+    'of-types-row1-op': 'No action needed; just verify status',
+    'of-types-row2-type': 'Manual Issuance',
+    'of-types-row2-desc': 'OP manually places order with supplier and obtains voucher',
+    'of-types-row2-op': 'Complete ordering and voucher delivery within the deadline',
+    'of-types-row3-type': 'Fake Instant Booking',
+    'of-types-row3-desc': 'System issues voucher immediately, but OP still needs to place manual order',
+    'of-types-row3-op': 'Complete order placement within 24 hours',
+    'of-types-row4-type': 'Special Products',
+    'of-types-row4-desc': 'Requires special handling (e.g., physical tickets, SIM cards, mail delivery)',
+    'of-types-row4-op': 'Follow product-specific operating procedures',
     'of-breadcrumb': 'Home / Post-Order Processing Flow',
     'of-title': 'Post-Order Processing Flow',
     'of-meta': 'Order Flow · Exception Handling',
@@ -272,6 +340,22 @@ SCMi18n.init({
     'of-sit4-action': 'After multiple failed contact attempts, cancel the order per policy and notify the traveler.',
   },
   ja: {
+    'of-types-title': '📋 発券方式の4つのシナリオ',
+    'of-types-th1': 'シナリオタイプ',
+    'of-types-th2': '説明',
+    'of-types-th3': 'OP 作業',
+    'of-types-row1-type': '自動発券',
+    'of-types-row1-desc': 'API がサプライヤーシステムと連携し、注文成立後に自動発券',
+    'of-types-row1-op': '介入不要。ステータス確認のみ',
+    'of-types-row2-type': '手動発券',
+    'of-types-row2-desc': 'OP がサプライヤーへ手動で発注しバウチャーを取得',
+    'of-types-row2-op': '期限内に発注とバウチャー送付を完了',
+    'of-types-row3-type': '仮即時予約',
+    'of-types-row3-desc': 'システムが即座に発券するが、OP の手動発注が依然として必要',
+    'of-types-row3-op': '24時間以内に発注を完了',
+    'of-types-row4-type': '特殊商品',
+    'of-types-row4-desc': '特殊な対応が必要（例：実物チケット、SIM カード、郵送）',
+    'of-types-row4-op': '商品別の作業規定に従って処理',
     'of-breadcrumb': 'ホーム / 注文受付後の処理フロー',
     'of-title': '注文受付後の処理フロー',
     'of-meta': '注文フロー · 例外処理',
@@ -316,6 +400,22 @@ SCMi18n.init({
     'of-sit4-action': '複数回通知しても返答がない場合、ポリシーに従って注文をキャンセルし旅行者に通知します。',
   },
   ko: {
+    'of-types-title': '📋 발권 방식의 4가지 시나리오',
+    'of-types-th1': '시나리오 유형',
+    'of-types-th2': '설명',
+    'of-types-th3': 'OP 작업',
+    'of-types-row1-type': '자동 발권',
+    'of-types-row1-desc': 'API가 공급업체 시스템과 연동되어 주문 성립 후 자동 발권',
+    'of-types-row1-op': '개입 불필요. 상태만 확인',
+    'of-types-row2-type': '수동 발권',
+    'of-types-row2-desc': 'OP가 수동으로 공급업체에 발주하고 바우처를 취득',
+    'of-types-row2-op': '기한 내 발주 및 바우처 발송 완료',
+    'of-types-row3-type': '가짜 즉시 예약',
+    'of-types-row3-desc': '시스템이 즉시 발권하지만 OP의 수동 발주가 여전히 필요',
+    'of-types-row3-op': '24시간 이내에 발주 완료',
+    'of-types-row4-type': '특수 상품',
+    'of-types-row4-desc': '특수 처리 필요（예: 실물 티켓, SIM 카드, 우편 발송）',
+    'of-types-row4-op': '상품별 작업 규정에 따라 처리',
     'of-breadcrumb': '홈 / 주문 접수 후 처리 플로우',
     'of-title': '주문 접수 후 처리 플로우',
     'of-meta': '주문 플로우 · 예외 처리',

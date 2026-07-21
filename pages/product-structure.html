@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>前台商品架構 — GO 知識庫</title>
+  <link rel="stylesheet" href="../styles.css" />
+<style>
+.nav { height: 96px !important; position: relative; }
+.nav-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; color: white; pointer-events: none; white-space: nowrap; }
+.nav-title h1 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.nav-title p { font-size: 11px; color: rgba(255,255,255,0.5); }
+.nav-title em { color: #f5a623; font-style: normal; }
+.lang-switcher { display:flex; gap:6px; flex-shrink:0; margin-left:auto; align-items:center; }
+.lang-btn { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.4); background:transparent; color:white; transition:all 0.15s; line-height:1; font-family:'Noto Sans TC',sans-serif; }
+.lang-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.7); }
+.lang-btn.active { background:white; color:#1a1a2e; border-color:white; }
+</style>
+  <script src="../search-index.js?v=2"></script>
+  <script src="../i18n.js?v=3"></script>
+  <script src="../go-ai.js?v=2"></script>
+  <script src="../go-search.js?v=2"></script>
+</head>
+<body>
+  <nav class="nav">
+  <a class="nav-logo" href="../index.html">kkday <span class="badge">GO</span></a>
+  <div class="nav-title">
+    <h1 data-i18n-html="nav-title">SCM <em>知識庫</em></h1>
+    <p data-i18n="nav-subtitle">OP 日常作業手冊 · 新人必讀 · 一站式查詢</p>
+  </div>
+    <div class="lang-switcher">
+    <button class="lang-btn" data-lang="zh" onclick="SCMi18n.switch('zh')">中</button>
+    <button class="lang-btn" data-lang="en" onclick="SCMi18n.switch('en')">EN</button>
+    <button class="lang-btn" data-lang="ja" onclick="SCMi18n.switch('ja')">JP</button>
+    <button class="lang-btn" data-lang="ko" onclick="SCMi18n.switch('ko')">KR</button>
+  </div>
+</nav>
+
+  <div class="page-wrapper">
+    <div class="breadcrumb"><a href="../index.html" data-i18n="ps-breadcrumb-home">首頁</a> / <span data-i18n="ps-breadcrumb-current">前台商品架構</span></div>
+
+    <div class="page-header">
+      <div class="page-header-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🏪</div>
+      <div class="page-header-body">
+        <h1 data-i18n="ps-title">前台商品架構長相</h1>
+        <p class="subtitle" data-i18n="ps-subtitle">認識 KKday 前台商品的三大類型與對應 OP 作業重點</p>
+        <div class="meta-row">
+          <span class="meta-chip badge-blue" data-i18n="ps-chip1">商品知識</span>
+          <span class="meta-chip badge-green" data-i18n="ps-chip2">新人必讀</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-box">
+      <p data-i18n="ps-intro">KKday 前台商品依類型分為三大類：一般商品、點對點商品與飯店。了解各類型的架構與特性，有助於 OP 在處理訂單時快速判斷作業方式。</p>
+    </div>
+
+    <!-- 一般商品 -->
+    <h2 data-i18n="ps-general-title">🎫 一般商品</h2>
+    <div class="white-box">
+      <p data-i18n="ps-general-desc">一般商品為 KKday 最常見的商品類型，涵蓋景點門票、活動體驗、交通票券等。</p>
+      <ul style="line-height:2rem;padding-left:1.25rem;margin-top:0.75rem;">
+        <li data-i18n="ps-general-p1">商品由 BD／AM 上架設定，包含旅規、銷售日期、前置日等</li>
+        <li data-i18n="ps-general-p2">出票方式可為自動（API）或人工，依商品設定而定</li>
+        <li data-i18n="ps-general-p3">憑證類型可為 KKday Voucher 或 Supplier Voucher</li>
+        <li data-i18n="ps-general-p4">訂單成立後，OP 依商品出票方式進行對應作業</li>
+      </ul>
+    </div>
+
+    <!-- 點對點商品 -->
+    <h2 data-i18n="ps-p2p-title">🚗 點對點商品</h2>
+    <div class="white-box">
+      <p data-i18n="ps-p2p-desc">點對點商品為接送服務類型，旅客設定起點與終點，供應商提供門到門接送。</p>
+      <ul style="line-height:2rem;padding-left:1.25rem;margin-top:0.75rem;">
+        <li data-i18n="ps-p2p-p1">需旅客填寫詳細接送資訊（航班、地址、抵達時間等）</li>
+        <li data-i18n="ps-p2p-p2">旅客資料的完整性是出票的關鍵，資料不全不可出票</li>
+        <li data-i18n="ps-p2p-p3">通常需要 OP 人工向供應商確認並下訂</li>
+        <li data-i18n="ps-p2p-p4">供應商確認後需將司機資訊或接送確認函發送給旅客</li>
+      </ul>
+      <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #ffcc80;color:#e65100;border-radius:4px;padding:2px 8px;" data-i18n="ps-p2p-note">⚠️ 接送資訊若有任何缺漏，必須請 CS 聯繫旅客補齊，不得自行假設。</span>
+    </div>
+
+    <!-- 飯店 -->
+    <h2 data-i18n="ps-hotel-title">🏨 飯店</h2>
+    <div class="white-box">
+      <p data-i18n="ps-hotel-desc">飯店商品為住宿類型，旅客選定入住日期、房型後完成訂購。</p>
+      <ul style="line-height:2rem;padding-left:1.25rem;margin-top:0.75rem;">
+        <li data-i18n="ps-hotel-p1">需確認旅客入住/退房日期、房型與人數資訊</li>
+        <li data-i18n="ps-hotel-p2">部分飯店商品需 OP 人工向飯店確認訂房</li>
+        <li data-i18n="ps-hotel-p3">確認訂房後，需將訂房確認單或憑證發送給旅客</li>
+        <li data-i18n="ps-hotel-p4">特殊需求（加床、早餐、特殊樓層）需額外與飯店確認</li>
+      </ul>
+      <span style="display:inline-block;margin-top:8px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="ps-hotel-note">ℹ️ 飯店訂單的退款政策通常較嚴格，取消前請確認退款規則。</span>
+    </div>
+
+    <!-- 商品類型對照表 -->
+    <h2 data-i18n="ps-table-title">📊 三大類型快速對照</h2>
+    <div class="white-box">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th data-i18n="ps-th1">商品類型</th>
+            <th data-i18n="ps-th2">代表商品</th>
+            <th data-i18n="ps-th3">資料重點</th>
+            <th data-i18n="ps-th4">OP 作業重點</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="ps-row1-type">一般商品</td>
+            <td data-i18n="ps-row1-example">門票、體驗、交通票</td>
+            <td data-i18n="ps-row1-data">旅客姓名、使用日期</td>
+            <td data-i18n="ps-row1-op">依出票方式（自動/人工）作業</td>
+          </tr>
+          <tr>
+            <td data-i18n="ps-row2-type">點對點商品</td>
+            <td data-i18n="ps-row2-example">機場接送、包車服務</td>
+            <td data-i18n="ps-row2-data">航班資訊、地址、接送時間</td>
+            <td data-i18n="ps-row2-op">確認資料完整後人工訂購</td>
+          </tr>
+          <tr>
+            <td data-i18n="ps-row3-type">飯店</td>
+            <td data-i18n="ps-row3-example">住宿訂房</td>
+            <td data-i18n="ps-row3-data">入退住日期、房型、人數</td>
+            <td data-i18n="ps-row3-op">確認訂房並發送確認單</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="wiki-footer" data-i18n="footer">GO 知識庫 · 內部使用</div>
+<script>
+SCMi18n.init({
+  zh: {
+    'ps-breadcrumb-home': '首頁',
+    'ps-breadcrumb-current': '前台商品架構',
+    'ps-title': '前台商品架構長相',
+    'ps-subtitle': '認識 KKday 前台商品的三大類型與對應 OP 作業重點',
+    'ps-chip1': '商品知識',
+    'ps-chip2': '新人必讀',
+    'ps-intro': 'KKday 前台商品依類型分為三大類：一般商品、點對點商品與飯店。了解各類型的架構與特性，有助於 OP 在處理訂單時快速判斷作業方式。',
+    'ps-general-title': '🎫 一般商品',
+    'ps-general-desc': '一般商品為 KKday 最常見的商品類型，涵蓋景點門票、活動體驗、交通票券等。',
+    'ps-general-p1': '商品由 BD／AM 上架設定，包含旅規、銷售日期、前置日等',
+    'ps-general-p2': '出票方式可為自動（API）或人工，依商品設定而定',
+    'ps-general-p3': '憑證類型可為 KKday Voucher 或 Supplier Voucher',
+    'ps-general-p4': '訂單成立後，OP 依商品出票方式進行對應作業',
+    'ps-p2p-title': '🚗 點對點商品',
+    'ps-p2p-desc': '點對點商品為接送服務類型，旅客設定起點與終點，供應商提供門到門接送。',
+    'ps-p2p-p1': '需旅客填寫詳細接送資訊（航班、地址、抵達時間等）',
+    'ps-p2p-p2': '旅客資料的完整性是出票的關鍵，資料不全不可出票',
+    'ps-p2p-p3': '通常需要 OP 人工向供應商確認並下訂',
+    'ps-p2p-p4': '供應商確認後需將司機資訊或接送確認函發送給旅客',
+    'ps-p2p-note': '⚠️ 接送資訊若有任何缺漏，必須請 CS 聯繫旅客補齊，不得自行假設。',
+    'ps-hotel-title': '🏨 飯店',
+    'ps-hotel-desc': '飯店商品為住宿類型，旅客選定入住日期、房型後完成訂購。',
+    'ps-hotel-p1': '需確認旅客入住/退房日期、房型與人數資訊',
+    'ps-hotel-p2': '部分飯店商品需 OP 人工向飯店確認訂房',
+    'ps-hotel-p3': '確認訂房後，需將訂房確認單或憑證發送給旅客',
+    'ps-hotel-p4': '特殊需求（加床、早餐、特殊樓層）需額外與飯店確認',
+    'ps-hotel-note': 'ℹ️ 飯店訂單的退款政策通常較嚴格，取消前請確認退款規則。',
+    'ps-table-title': '📊 三大類型快速對照',
+    'ps-th1': '商品類型',
+    'ps-th2': '代表商品',
+    'ps-th3': '資料重點',
+    'ps-th4': 'OP 作業重點',
+    'ps-row1-type': '一般商品',
+    'ps-row1-example': '門票、體驗、交通票',
+    'ps-row1-data': '旅客姓名、使用日期',
+    'ps-row1-op': '依出票方式（自動/人工）作業',
+    'ps-row2-type': '點對點商品',
+    'ps-row2-example': '機場接送、包車服務',
+    'ps-row2-data': '航班資訊、地址、接送時間',
+    'ps-row2-op': '確認資料完整後人工訂購',
+    'ps-row3-type': '飯店',
+    'ps-row3-example': '住宿訂房',
+    'ps-row3-data': '入退住日期、房型、人數',
+    'ps-row3-op': '確認訂房並發送確認單',
+  },
+  en: {
+    'ps-breadcrumb-home': 'Home',
+    'ps-breadcrumb-current': 'Product Structure',
+    'ps-title': 'Front-End Product Structure',
+    'ps-subtitle': 'Understanding the three main product types on KKday and the corresponding OP tasks',
+    'ps-chip1': 'Product Knowledge',
+    'ps-chip2': 'Must-Read for New Staff',
+    'ps-intro': 'KKday front-end products are divided into three main types: General Products, Point-to-Point Products, and Hotels. Understanding the structure and characteristics of each type helps OP quickly determine the appropriate handling method when processing orders.',
+    'ps-general-title': '🎫 General Products',
+    'ps-general-desc': 'General products are the most common type on KKday, covering attraction tickets, activity experiences, transportation tickets, and more.',
+    'ps-general-p1': 'Products are listed and configured by BD/AM, including travel rules, sale dates, and lead days',
+    'ps-general-p2': 'Ticketing method can be automatic (API) or manual, depending on product configuration',
+    'ps-general-p3': 'Voucher type can be KKday Voucher or Supplier Voucher',
+    'ps-general-p4': 'After order placement, OP performs tasks based on the product\'s ticketing method',
+    'ps-p2p-title': '🚗 Point-to-Point Products',
+    'ps-p2p-desc': 'Point-to-point products are transfer services where the traveler sets pickup and drop-off locations, and the supplier provides door-to-door service.',
+    'ps-p2p-p1': 'Requires traveler to fill in detailed transfer information (flight details, address, arrival time, etc.)',
+    'ps-p2p-p2': 'Completeness of traveler data is critical — do not issue tickets with incomplete information',
+    'ps-p2p-p3': 'Usually requires OP to manually confirm and place order with supplier',
+    'ps-p2p-p4': 'After supplier confirms, send driver information or transfer confirmation to the traveler',
+    'ps-p2p-note': '⚠️ If any transfer information is missing, CS must contact the traveler to obtain it — do not make assumptions.',
+    'ps-hotel-title': '🏨 Hotels',
+    'ps-hotel-desc': 'Hotel products are accommodation bookings where the traveler selects check-in dates and room type.',
+    'ps-hotel-p1': 'Confirm traveler check-in/check-out dates, room type, and number of guests',
+    'ps-hotel-p2': 'Some hotel products require OP to manually confirm the reservation with the hotel',
+    'ps-hotel-p3': 'After booking is confirmed, send the confirmation letter or voucher to the traveler',
+    'ps-hotel-p4': 'Special requests (extra bed, breakfast, specific floor) require additional confirmation with the hotel',
+    'ps-hotel-note': 'ℹ️ Hotel order refund policies are generally stricter — confirm the refund terms before initiating any cancellation.',
+    'ps-table-title': '📊 Quick Comparison of Three Product Types',
+    'ps-th1': 'Product Type',
+    'ps-th2': 'Examples',
+    'ps-th3': 'Key Data',
+    'ps-th4': 'OP Key Actions',
+    'ps-row1-type': 'General Products',
+    'ps-row1-example': 'Tickets, experiences, transport passes',
+    'ps-row1-data': 'Traveler name, use date',
+    'ps-row1-op': 'Handle per ticketing method (auto/manual)',
+    'ps-row2-type': 'Point-to-Point Products',
+    'ps-row2-example': 'Airport transfers, private car hire',
+    'ps-row2-data': 'Flight info, address, pickup time',
+    'ps-row2-op': 'Verify data completeness before manual booking',
+    'ps-row3-type': 'Hotels',
+    'ps-row3-example': 'Accommodation bookings',
+    'ps-row3-data': 'Check-in/out dates, room type, guest count',
+    'ps-row3-op': 'Confirm booking and send confirmation',
+  },
+  ja: {
+    'ps-breadcrumb-home': 'ホーム',
+    'ps-breadcrumb-current': '商品構造',
+    'ps-title': 'フロントエンド商品の構造',
+    'ps-subtitle': 'KKday の3つの主要商品タイプと対応する OP 作業のポイントを理解する',
+    'ps-chip1': '商品知識',
+    'ps-chip2': '新入社員必読',
+    'ps-intro': 'KKday のフロントエンド商品は、一般商品、ポイントツーポイント商品、ホテルの3つの主要タイプに分かれます。各タイプの構造と特性を理解することで、OP が注文処理時に適切な対応方法を素早く判断できます。',
+    'ps-general-title': '🎫 一般商品',
+    'ps-general-desc': '一般商品は KKday で最も一般的な商品タイプで、観光スポットのチケット、アクティビティ体験、交通チケットなどを含みます。',
+    'ps-general-p1': '商品は BD／AM が旅行者ルール、販売日、リードタイムなどを含めて登録・設定します',
+    'ps-general-p2': '発券方式は商品設定に応じて自動（API）または手動となります',
+    'ps-general-p3': 'バウチャー種別は KKday Voucher またはサプライヤーバウチャーです',
+    'ps-general-p4': '注文成立後、OP は商品の発券方式に応じた作業を行います',
+    'ps-p2p-title': '🚗 ポイントツーポイント商品',
+    'ps-p2p-desc': 'ポイントツーポイント商品は送迎サービスタイプで、旅行者が乗車・降車場所を設定し、サプライヤーがドアツードアで送迎を提供します。',
+    'ps-p2p-p1': '旅行者が詳細な送迎情報（フライト情報、住所、到着時刻など）を入力する必要があります',
+    'ps-p2p-p2': '旅行者情報の完全性が発券の鍵です。情報が不完全な場合は発券できません',
+    'ps-p2p-p3': '通常、OP がサプライヤーへ手動で確認・発注する必要があります',
+    'ps-p2p-p4': 'サプライヤー確認後、ドライバー情報または送迎確認書を旅行者に送付します',
+    'ps-p2p-note': '⚠️ 送迎情報に不備がある場合は、CS が旅行者に連絡して補完する必要があります。自己判断で補完しないでください。',
+    'ps-hotel-title': '🏨 ホテル',
+    'ps-hotel-desc': 'ホテル商品は宿泊タイプで、旅行者がチェックイン日とルームタイプを選択して予約します。',
+    'ps-hotel-p1': '旅行者のチェックイン/チェックアウト日、ルームタイプ、人数を確認します',
+    'ps-hotel-p2': '一部のホテル商品は OP がホテルへ手動で予約確認を行う必要があります',
+    'ps-hotel-p3': '予約確認後、予約確認書またはバウチャーを旅行者に送付します',
+    'ps-hotel-p4': '特別リクエスト（エキストラベッド、朝食、特定フロア）はホテルへの追加確認が必要です',
+    'ps-hotel-note': 'ℹ️ ホテル注文のキャンセルポリシーは一般的に厳しいため、キャンセル前に払い戻し条件を確認してください。',
+    'ps-table-title': '📊 3タイプ早見表',
+    'ps-th1': '商品タイプ',
+    'ps-th2': '代表的な商品',
+    'ps-th3': '重要な情報',
+    'ps-th4': 'OP の主な作業',
+    'ps-row1-type': '一般商品',
+    'ps-row1-example': 'チケット・体験・交通パス',
+    'ps-row1-data': '旅行者名、使用日',
+    'ps-row1-op': '発券方式（自動/手動）に応じて対応',
+    'ps-row2-type': 'ポイントツーポイント商品',
+    'ps-row2-example': '空港送迎・チャーター車',
+    'ps-row2-data': 'フライト情報、住所、送迎時刻',
+    'ps-row2-op': 'データ確認後に手動発注',
+    'ps-row3-type': 'ホテル',
+    'ps-row3-example': '宿泊予約',
+    'ps-row3-data': 'チェックイン/アウト日、部屋タイプ、人数',
+    'ps-row3-op': '予約確認後に確認書を送付',
+  },
+  ko: {
+    'ps-breadcrumb-home': '홈',
+    'ps-breadcrumb-current': '상품 구조',
+    'ps-title': '프론트엔드 상품 구조',
+    'ps-subtitle': 'KKday의 3가지 주요 상품 유형과 해당 OP 작업 포인트 이해하기',
+    'ps-chip1': '상품 지식',
+    'ps-chip2': '신입 필독',
+    'ps-intro': 'KKday 프론트엔드 상품은 일반 상품, 포인트 투 포인트 상품, 호텔 세 가지 주요 유형으로 나뉩니다. 각 유형의 구조와 특성을 이해하면 OP가 주문 처리 시 적절한 처리 방법을 빠르게 판단할 수 있습니다.',
+    'ps-general-title': '🎫 일반 상품',
+    'ps-general-desc': '일반 상품은 KKday에서 가장 일반적인 상품 유형으로 관광지 입장권, 액티비티 체험, 교통 티켓 등을 포함합니다.',
+    'ps-general-p1': '상품은 BD/AM이 여행자 규정, 판매 날짜, 선행 일수 등을 포함하여 등록·설정합니다',
+    'ps-general-p2': '발권 방식은 상품 설정에 따라 자동(API) 또는 수동으로 나뉩니다',
+    'ps-general-p3': '바우처 유형은 KKday Voucher 또는 공급업체 바우처입니다',
+    'ps-general-p4': '주문 성립 후 OP는 상품의 발권 방식에 따라 해당 작업을 진행합니다',
+    'ps-p2p-title': '🚗 포인트 투 포인트 상품',
+    'ps-p2p-desc': '포인트 투 포인트 상품은 픽업 서비스 유형으로, 여행객이 출발지와 도착지를 설정하면 공급업체가 도어 투 도어 픽업 서비스를 제공합니다.',
+    'ps-p2p-p1': '여행객이 상세한 픽업 정보(항공편, 주소, 도착 시간 등)를 입력해야 합니다',
+    'ps-p2p-p2': '여행객 정보의 완전성이 발권의 핵심입니다. 정보가 불완전하면 발권할 수 없습니다',
+    'ps-p2p-p3': '일반적으로 OP가 공급업체에 수동으로 확인 및 주문해야 합니다',
+    'ps-p2p-p4': '공급업체 확인 후 기사 정보 또는 픽업 확인서를 여행객에게 발송합니다',
+    'ps-p2p-note': '⚠️ 픽업 정보에 누락이 있는 경우, CS가 여행객에게 연락하여 보완해야 합니다. 임의로 판단해서는 안 됩니다.',
+    'ps-hotel-title': '🏨 호텔',
+    'ps-hotel-desc': '호텔 상품은 숙박 유형으로 여행객이 체크인 날짜와 객실 유형을 선택하여 예약합니다.',
+    'ps-hotel-p1': '여행객의 체크인/체크아웃 날짜, 객실 유형 및 인원 수를 확인합니다',
+    'ps-hotel-p2': '일부 호텔 상품은 OP가 호텔에 수동으로 예약 확인을 해야 합니다',
+    'ps-hotel-p3': '예약 확인 후 예약 확인서 또는 바우처를 여행객에게 발송합니다',
+    'ps-hotel-p4': '특별 요청(추가 침대, 조식, 특정 층)은 호텔과 추가 확인이 필요합니다',
+    'ps-hotel-note': 'ℹ️ 호텔 주문의 환불 정책은 일반적으로 더 엄격합니다. 취소 전에 환불 규정을 확인하세요.',
+    'ps-table-title': '📊 3가지 유형 빠른 비교',
+    'ps-th1': '상품 유형',
+    'ps-th2': '대표 상품',
+    'ps-th3': '핵심 데이터',
+    'ps-th4': 'OP 주요 작업',
+    'ps-row1-type': '일반 상품',
+    'ps-row1-example': '입장권, 체험, 교통 패스',
+    'ps-row1-data': '여행객 이름, 사용 날짜',
+    'ps-row1-op': '발권 방식(자동/수동)에 따라 처리',
+    'ps-row2-type': '포인트 투 포인트 상품',
+    'ps-row2-example': '공항 픽업, 전세 차량',
+    'ps-row2-data': '항공편 정보, 주소, 픽업 시간',
+    'ps-row2-op': '데이터 확인 후 수동 발주',
+    'ps-row3-type': '호텔',
+    'ps-row3-example': '숙박 예약',
+    'ps-row3-data': '체크인/아웃 날짜, 객실 유형, 인원',
+    'ps-row3-op': '예약 확인 후 확인서 발송',
+  }
+});
+</script>
+</body>
+</html>

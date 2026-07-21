@@ -70,6 +70,47 @@
     <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="fi-scenario-desc">ℹ️ 當商品保證有貨，但仍需要 OP 向供應商進行訂購時，設定為「假即訂即出」。<br />
       此類訂單出現在「OP 訂單管理」內，訂單狀態顯示為「已處理」。</span>
 
+    <h2 data-i18n="fi-flow-title">📋 假即訂即出作業流程</h2>
+    <div class="white-box">
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong data-i18n="fi-flow-step1">旅客下單付款，系統立即出票</strong>
+            <p data-i18n="fi-flow-step1-desc">旅客完成付款後，系統自動產出憑證並發送，旅客無感知差異。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong data-i18n="fi-flow-step2">OP 在「OP 訂單管理」查看待處理訂單</strong>
+            <p data-i18n="fi-flow-step2-desc">訂單會出現在 OP 訂單管理列表，狀態顯示為「已處理」，OP 須在 24 小時內完成作業。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong data-i18n="fi-flow-step3">OP 向供應商下訂</strong>
+            <p data-i18n="fi-flow-step3-desc">依照訂單資訊，OP 透過供應商系統或郵件進行訂購作業。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong data-i18n="fi-flow-step4">供應商確認訂單</strong>
+            <p data-i18n="fi-flow-step4-desc">供應商回覆確認接單，若有異常則依例外狀況處理。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong data-i18n="fi-flow-step5">OP 完成訂單作業</strong>
+            <p data-i18n="fi-flow-step5-desc">確認訂出成功後，更新 Be2 訂單狀態並記錄相關資訊，完成作業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <h2 data-i18n="fi-diff-title">與一般即訂即出的差異</h2>
     <div class="white-box">
       <table class="wiki-table">
@@ -122,6 +163,17 @@ SCMi18n.init({
     'fi-op-value': '是，要處理',
     'fi-scenario-title': '適用情境',
     'fi-scenario-desc': 'ℹ️ 當商品保證有貨，但仍需要 OP 向供應商進行訂購時，設定為「假即訂即出」。<br />此類訂單出現在「OP 訂單管理」內，訂單狀態顯示為「已處理」。',
+    'fi-flow-title': '📋 假即訂即出作業流程',
+    'fi-flow-step1': '旅客下單付款，系統立即出票',
+    'fi-flow-step1-desc': '旅客完成付款後，系統自動產出憑證並發送，旅客無感知差異。',
+    'fi-flow-step2': 'OP 在「OP 訂單管理」查看待處理訂單',
+    'fi-flow-step2-desc': '訂單會出現在 OP 訂單管理列表，狀態顯示為「已處理」，OP 須在 24 小時內完成作業。',
+    'fi-flow-step3': 'OP 向供應商下訂',
+    'fi-flow-step3-desc': '依照訂單資訊，OP 透過供應商系統或郵件進行訂購作業。',
+    'fi-flow-step4': '供應商確認訂單',
+    'fi-flow-step4-desc': '供應商回覆確認接單，若有異常則依例外狀況處理。',
+    'fi-flow-step5': 'OP 完成訂單作業',
+    'fi-flow-step5-desc': '確認訂出成功後，更新 Be2 訂單狀態並記錄相關資訊，完成作業。',
     'fi-diff-title': '與一般即訂即出的差異',
     'fi-th-item': '項目',
     'fi-th-regular': '一般即訂即出',
@@ -152,6 +204,17 @@ SCMi18n.init({
     'fi-op-value': 'Yes, manual action required',
     'fi-scenario-title': 'Applicable Scenarios',
     'fi-scenario-desc': 'ℹ️ When a product is guaranteed to be available but still requires OP to place an order with the supplier, configure it as "Fake Instant Booking."<br />These orders appear in "OP Order Management" with status "Processed."',
+    'fi-flow-title': '📋 Fake Instant Booking Workflow',
+    'fi-flow-step1': 'Traveler places order and pays; system instantly issues voucher',
+    'fi-flow-step1-desc': 'After payment, the system automatically generates and sends the voucher — the traveler experiences no difference.',
+    'fi-flow-step2': 'OP reviews the order in "OP Order Management"',
+    'fi-flow-step2-desc': 'The order appears in the OP Order Management list with status "Processed." OP must complete action within 24 hours.',
+    'fi-flow-step3': 'OP places order with supplier',
+    'fi-flow-step3-desc': 'Based on the order information, OP places the order through the supplier\'s system or via email.',
+    'fi-flow-step4': 'Supplier confirms order',
+    'fi-flow-step4-desc': 'Supplier replies with order confirmation. If there are any issues, handle according to exception procedures.',
+    'fi-flow-step5': 'OP completes order processing',
+    'fi-flow-step5-desc': 'After confirming the booking is successful, update the Be2 order status and record relevant information to close out the task.',
     'fi-diff-title': 'Difference from Regular Instant Booking',
     'fi-th-item': 'Item',
     'fi-th-regular': 'Regular Instant Booking',
@@ -182,6 +245,17 @@ SCMi18n.init({
     'fi-op-value': 'はい、処理が必要',
     'fi-scenario-title': '適用シナリオ',
     'fi-scenario-desc': 'ℹ️ 商品の在庫が保証されているが、OP がサプライヤーへ注文する必要がある場合、「仮即時予約」に設定します。<br />この種の注文は「OP 注文管理」に表示され、注文ステータスは「処理済み」となります。',
+    'fi-flow-title': '📋 仮即時予約の作業フロー',
+    'fi-flow-step1': '旅行者が注文・決済し、システムが即座に発券',
+    'fi-flow-step1-desc': '決済後、システムが自動的にバウチャーを生成・送付します。旅行者は違いを感じません。',
+    'fi-flow-step2': 'OP が「OP 注文管理」で処理待ち注文を確認',
+    'fi-flow-step2-desc': '注文は OP 注文管理リストに「処理済み」ステータスで表示されます。OP は 24 時間以内に作業を完了する必要があります。',
+    'fi-flow-step3': 'OP がサプライヤーへ発注',
+    'fi-flow-step3-desc': '注文情報に基づき、OP はサプライヤーのシステムまたはメールで発注作業を行います。',
+    'fi-flow-step4': 'サプライヤーが注文を確認',
+    'fi-flow-step4-desc': 'サプライヤーが受注を確認して返答します。異常がある場合は例外手順に従って処理します。',
+    'fi-flow-step5': 'OP が注文作業を完了',
+    'fi-flow-step5-desc': '発注成功を確認後、Be2 の注文ステータスを更新し関連情報を記録して作業を完了します。',
     'fi-diff-title': '通常の即時予約との違い',
     'fi-th-item': '項目',
     'fi-th-regular': '通常即時予約',
@@ -212,6 +286,17 @@ SCMi18n.init({
     'fi-op-value': '예, 처리 필요',
     'fi-scenario-title': '적용 시나리오',
     'fi-scenario-desc': 'ℹ️ 상품의 재고가 보장되지만 OP가 공급업체에 주문해야 하는 경우 "가짜 즉시 예약"으로 설정합니다.<br />이러한 주문은 "OP 주문 관리"에 표시되며 주문 상태는 "처리됨"으로 표시됩니다.',
+    'fi-flow-title': '📋 가짜 즉시 예약 작업 플로우',
+    'fi-flow-step1': '여행객이 주문·결제하면 시스템이 즉시 발권',
+    'fi-flow-step1-desc': '결제 완료 후 시스템이 자동으로 바우처를 생성·발송합니다. 여행객은 차이를 느끼지 못합니다.',
+    'fi-flow-step2': 'OP가 「OP 주문 관리」에서 처리 대기 주문 확인',
+    'fi-flow-step2-desc': '주문이 OP 주문 관리 목록에 「처리됨」 상태로 표시됩니다. OP는 24시간 이내에 작업을 완료해야 합니다.',
+    'fi-flow-step3': 'OP가 공급업체에 발주',
+    'fi-flow-step3-desc': '주문 정보에 따라 OP는 공급업체 시스템 또는 이메일을 통해 발주 작업을 진행합니다.',
+    'fi-flow-step4': '공급업체가 주문 확인',
+    'fi-flow-step4-desc': '공급업체가 수주 확인 회신을 합니다. 이상이 있는 경우 예외 절차에 따라 처리합니다.',
+    'fi-flow-step5': 'OP가 주문 작업 완료',
+    'fi-flow-step5-desc': '발주 성공 확인 후 Be2 주문 상태를 업데이트하고 관련 정보를 기록하여 작업을 완료합니다.',
     'fi-diff-title': '일반 즉시 예약과의 차이점',
     'fi-th-item': '항목',
     'fi-th-regular': '일반 즉시 예약',

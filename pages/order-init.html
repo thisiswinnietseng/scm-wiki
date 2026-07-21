@@ -54,6 +54,37 @@
       <p data-i18n="oi-intro">訂單成立後，依照點單方式分為「SYSTEM 點單」與「CS 點單」兩種流程，另需留意風控（Risk Team）對訂單的影響。</p>
     </div>
 
+    <!-- 進單類型總覽 -->
+    <h2 data-i18n="oi-types-title">📋 進單類型總覽</h2>
+    <div class="white-box">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th data-i18n="oi-types-th1">進單類型</th>
+            <th data-i18n="oi-types-th2">說明</th>
+            <th data-i18n="oi-types-th3">OP 作業</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="oi-types-row1-type">SYSTEM 點單</td>
+            <td data-i18n="oi-types-row1-desc">系統自動接收並處理訂單</td>
+            <td data-i18n="oi-types-row1-op">通常無需介入</td>
+          </tr>
+          <tr>
+            <td data-i18n="oi-types-row2-type">CS 點單</td>
+            <td data-i18n="oi-types-row2-desc">客服確認旅客資料後手動點單</td>
+            <td data-i18n="oi-types-row2-op">確認資料完整後出票</td>
+          </tr>
+          <tr>
+            <td data-i18n="oi-types-row3-type">風控可疑訂單</td>
+            <td data-i18n="oi-types-row3-desc">系統偵測異常交易，暫停出票等待審查</td>
+            <td data-i18n="oi-types-row3-op">待風控確認後依指示處理</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <!-- SYSTEM 點單 -->
     <h2 data-i18n="oi-system-title">🤖 SYSTEM 點單</h2>
     <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n="oi-system-note">ℹ️ 系統自動處理訂單流程，通常無需人工介入。</span>
@@ -148,6 +179,31 @@
         </div>
       </div>
 
+      <h3 style="margin-top:1.5rem;" data-i18n="oi-risk-cancel-title">🚨 風控可疑訂單處理步驟</h3>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong data-i18n="oi-risk-cancel-step1">確認訂單是否為風控標記</strong>
+            <p data-i18n="oi-risk-cancel-step1-desc">至 Be2 系統查看訂單狀態，確認是否已被風控標記為可疑。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong data-i18n="oi-risk-cancel-step2">聯繫風控團隊確認是否需要取消</strong>
+            <p data-i18n="oi-risk-cancel-step2-desc">透過 Slack 聯繫風控團隊，確認訂單是否屬於盜刷或需取消。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong data-i18n="oi-risk-cancel-step3">若確認為盜刷，執行特例取消流程</strong>
+            <p data-i18n="oi-risk-cancel-step3-desc">依風控指示，執行特例取消流程並記錄原因於訂單備註。</p>
+          </div>
+        </div>
+      </div>
+
       <span style="display:inline-block;margin-top:5px;font-size:12px;border:1px solid #90caf9;color:#1565c0;border-radius:4px;padding:2px 8px;" data-i18n-html="oi-risk-flow">ℹ️ <strong>📋 可疑帳號處理流程</strong>
         <p>當帳號狀態顯示「可疑」時，須待風控確認。確認完成後，訂單備註會出現：</p>
         <code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">
@@ -196,6 +252,26 @@ SCMi18n.init({
     'oi-risk-card3-title': '⛔ 違反使用規範',
     'oi-risk-card3-desc': '偵測違反商品使用規範的訂單，進行人工審查。',
     'oi-risk-flow': 'ℹ️ <strong>📋 可疑帳號處理流程</strong><p>當帳號狀態顯示「可疑」時，須待風控確認。確認完成後，訂單備註會出現：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">已調整會員風險等級為：general，人工審查單編號：xxxxx</code><p style="margin-top:0.75rem;">出現上述備註後，即可正常出票。</p>',
+    'oi-types-title': '📋 進單類型總覽',
+    'oi-types-th1': '進單類型',
+    'oi-types-th2': '說明',
+    'oi-types-th3': 'OP 作業',
+    'oi-types-row1-type': 'SYSTEM 點單',
+    'oi-types-row1-desc': '系統自動接收並處理訂單',
+    'oi-types-row1-op': '通常無需介入',
+    'oi-types-row2-type': 'CS 點單',
+    'oi-types-row2-desc': '客服確認旅客資料後手動點單',
+    'oi-types-row2-op': '確認資料完整後出票',
+    'oi-types-row3-type': '風控可疑訂單',
+    'oi-types-row3-desc': '系統偵測異常交易，暫停出票等待審查',
+    'oi-types-row3-op': '待風控確認後依指示處理',
+    'oi-risk-cancel-title': '🚨 風控可疑訂單處理步驟',
+    'oi-risk-cancel-step1': '確認訂單是否為風控標記',
+    'oi-risk-cancel-step1-desc': '至 Be2 系統查看訂單狀態，確認是否已被風控標記為可疑。',
+    'oi-risk-cancel-step2': '聯繫風控團隊確認是否需要取消',
+    'oi-risk-cancel-step2-desc': '透過 Slack 聯繫風控團隊，確認訂單是否屬於盜刷或需取消。',
+    'oi-risk-cancel-step3': '若確認為盜刷，執行特例取消流程',
+    'oi-risk-cancel-step3-desc': '依風控指示，執行特例取消流程並記錄原因於訂單備註。',
   },
   en: {
     'oi-breadcrumb': 'Home / Order Initialization',
@@ -233,6 +309,26 @@ SCMi18n.init({
     'oi-risk-card3-title': '⛔ Terms of Use Violations',
     'oi-risk-card3-desc': 'Detects orders that violate product usage terms and flags them for manual review.',
     'oi-risk-flow': 'ℹ️ <strong>📋 Suspicious Account Handling Process</strong><p>When an account status shows "Suspicious," wait for Risk Team confirmation. Once confirmed, the following remark will appear in the order:</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">Member risk level adjusted to: general, Manual review ID: xxxxx</code><p style="margin-top:0.75rem;">Once this remark appears, proceed with normal ticket issuance.</p>',
+    'oi-types-title': '📋 Order Type Overview',
+    'oi-types-th1': 'Order Type',
+    'oi-types-th2': 'Description',
+    'oi-types-th3': 'OP Action',
+    'oi-types-row1-type': 'SYSTEM Order',
+    'oi-types-row1-desc': 'System automatically receives and processes orders',
+    'oi-types-row1-op': 'Usually no intervention needed',
+    'oi-types-row2-type': 'CS Order',
+    'oi-types-row2-desc': 'CS confirms traveler data and manually places order',
+    'oi-types-row2-op': 'Verify data completeness before issuing',
+    'oi-types-row3-type': 'Risk-Flagged Order',
+    'oi-types-row3-desc': 'System detects suspicious transaction, suspends ticketing pending review',
+    'oi-types-row3-op': 'Follow risk team instructions after confirmation',
+    'oi-risk-cancel-title': '🚨 Risk-Flagged Order Handling Steps',
+    'oi-risk-cancel-step1': 'Confirm if the order is risk-flagged',
+    'oi-risk-cancel-step1-desc': 'Check the order status in Be2 to confirm whether it has been flagged as suspicious by risk control.',
+    'oi-risk-cancel-step2': 'Contact Risk Team to confirm if cancellation is needed',
+    'oi-risk-cancel-step2-desc': 'Reach out to the Risk Team via Slack to confirm whether the order is fraudulent or requires cancellation.',
+    'oi-risk-cancel-step3': 'If confirmed as fraud, execute the special cancellation process',
+    'oi-risk-cancel-step3-desc': 'Following Risk Team instructions, execute the special cancellation and record the reason in the order remarks.',
   },
   ja: {
     'oi-breadcrumb': 'ホーム / 注文成立後の初期処理',
@@ -270,6 +366,26 @@ SCMi18n.init({
     'oi-risk-card3-title': '⛔ 利用規約違反',
     'oi-risk-card3-desc': '商品利用規約に違反する注文を検知し、人工審査を実施します。',
     'oi-risk-flow': 'ℹ️ <strong>📋 不審アカウント処理フロー</strong><p>アカウント状態が「不審」と表示された場合、リスクチームの確認を待ちます。確認完了後、注文備考に以下が表示されます：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">会員リスクレベルを general に調整済み、手動審査番号：xxxxx</code><p style="margin-top:0.75rem;">上記備考が表示されたら、通常通り発券可能です。</p>',
+    'oi-types-title': '📋 注文タイプ概要',
+    'oi-types-th1': '注文タイプ',
+    'oi-types-th2': '説明',
+    'oi-types-th3': 'OP 作業',
+    'oi-types-row1-type': 'SYSTEM 注文',
+    'oi-types-row1-desc': 'システムが自動で注文を受信・処理',
+    'oi-types-row1-op': '通常介入不要',
+    'oi-types-row2-type': 'CS 注文',
+    'oi-types-row2-desc': 'CS が旅行者情報を確認後、手動で注文',
+    'oi-types-row2-op': 'データ確認後に発券',
+    'oi-types-row3-type': 'リスク疑い注文',
+    'oi-types-row3-desc': 'システムが不審取引を検知し、審査保留中',
+    'oi-types-row3-op': 'リスクチーム確認後に指示に従って処理',
+    'oi-risk-cancel-title': '🚨 リスク疑い注文の処理手順',
+    'oi-risk-cancel-step1': '注文がリスクフラグかどうかを確認',
+    'oi-risk-cancel-step1-desc': 'Be2 システムで注文ステータスを確認し、リスク管理によって不審フラグが立てられているかどうかを確認します。',
+    'oi-risk-cancel-step2': 'リスクチームに連絡してキャンセル要否を確認',
+    'oi-risk-cancel-step2-desc': 'Slack でリスクチームに連絡し、注文が不正利用かどうか、またはキャンセルが必要かどうかを確認します。',
+    'oi-risk-cancel-step3': '不正と確認された場合、特例キャンセル手続きを実行',
+    'oi-risk-cancel-step3-desc': 'リスクチームの指示に従い、特例キャンセル手続きを実行し、理由を注文備考に記録します。',
   },
   ko: {
     'oi-breadcrumb': '홈 / 주문 성립 후 초기 처리',
@@ -307,6 +423,26 @@ SCMi18n.init({
     'oi-risk-card3-title': '⛔ 이용 약관 위반',
     'oi-risk-card3-desc': '상품 이용 약관을 위반한 주문을 감지하여 수동 검토를 진행합니다.',
     'oi-risk-flow': 'ℹ️ <strong>📋 의심 계정 처리 플로우</strong><p>계정 상태가 「의심」으로 표시되면 리스크팀의 확인을 기다립니다. 확인 완료 후 주문 비고에 다음이 표시됩니다：</p><code style="display:block; background:#f5f5f5; padding:0.5rem 0.75rem; border-radius:6px; margin-top:0.5rem; font-size:0.9em;">회원 리스크 등급을 general로 조정 완료, 수동 심사 번호：xxxxx</code><p style="margin-top:0.75rem;">위 비고가 나타나면 정상적으로 발권할 수 있습니다.</p>',
+    'oi-types-title': '📋 주문 유형 개요',
+    'oi-types-th1': '주문 유형',
+    'oi-types-th2': '설명',
+    'oi-types-th3': 'OP 작업',
+    'oi-types-row1-type': 'SYSTEM 주문',
+    'oi-types-row1-desc': '시스템이 자동으로 주문을 수신·처리',
+    'oi-types-row1-op': '일반적으로 개입 불필요',
+    'oi-types-row2-type': 'CS 주문',
+    'oi-types-row2-desc': 'CS가 여행자 정보 확인 후 수동 주문',
+    'oi-types-row2-op': '정보 확인 후 발권',
+    'oi-types-row3-type': '리스크 의심 주문',
+    'oi-types-row3-desc': '시스템이 의심 거래 감지, 심사 대기 중 발권 중단',
+    'oi-types-row3-op': '리스크팀 확인 후 지시에 따라 처리',
+    'oi-risk-cancel-title': '🚨 리스크 의심 주문 처리 단계',
+    'oi-risk-cancel-step1': '주문이 리스크 플래그인지 확인',
+    'oi-risk-cancel-step1-desc': 'Be2 시스템에서 주문 상태를 확인하여 리스크 관리에 의해 의심 플래그가 표시되었는지 확인합니다.',
+    'oi-risk-cancel-step2': '리스크팀에 연락하여 취소 필요 여부 확인',
+    'oi-risk-cancel-step2-desc': 'Slack으로 리스크팀에 연락하여 주문이 부정 결제인지 또는 취소가 필요한지 확인합니다.',
+    'oi-risk-cancel-step3': '부정으로 확인되면 특례 취소 절차 실행',
+    'oi-risk-cancel-step3-desc': '리스크팀 지시에 따라 특례 취소 절차를 실행하고 사유를 주문 비고에 기록합니다.',
   }
 });
 </script>
